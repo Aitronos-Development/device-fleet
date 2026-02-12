@@ -451,6 +451,10 @@ type CountSoftwareFunc func(ctx context.Context, opt fleet.SoftwareListOptions) 
 
 type SaveHostSoftwareInstallResultFunc func(ctx context.Context, result *fleet.HostSoftwareInstallResultPayload) error
 
+type GetHostAppUsageFunc func(ctx context.Context, hostID uint, opts fleet.AppUsageListOptions) ([]fleet.AppUsageEntry, *fleet.PaginationMetadata, error)
+
+type GetAppUsageFunc func(ctx context.Context, opts fleet.AppUsageAggregateOptions) ([]fleet.AppUsageAggregate, *fleet.PaginationMetadata, error)
+
 type ListSoftwareTitlesFunc func(ctx context.Context, opt fleet.SoftwareTitleListOptions) ([]fleet.SoftwareTitleListResult, int, *fleet.PaginationMetadata, error)
 
 type SoftwareTitleByIDFunc func(ctx context.Context, id uint, teamID *uint) (*fleet.SoftwareTitle, error)
@@ -1525,6 +1529,12 @@ type Service struct {
 
 	SaveHostSoftwareInstallResultFunc        SaveHostSoftwareInstallResultFunc
 	SaveHostSoftwareInstallResultFuncInvoked bool
+
+	GetHostAppUsageFunc        GetHostAppUsageFunc
+	GetHostAppUsageFuncInvoked bool
+
+	GetAppUsageFunc        GetAppUsageFunc
+	GetAppUsageFuncInvoked bool
 
 	ListSoftwareTitlesFunc        ListSoftwareTitlesFunc
 	ListSoftwareTitlesFuncInvoked bool
@@ -3678,6 +3688,20 @@ func (s *Service) SaveHostSoftwareInstallResult(ctx context.Context, result *fle
 	s.SaveHostSoftwareInstallResultFuncInvoked = true
 	s.mu.Unlock()
 	return s.SaveHostSoftwareInstallResultFunc(ctx, result)
+}
+
+func (s *Service) GetHostAppUsage(ctx context.Context, hostID uint, opts fleet.AppUsageListOptions) ([]fleet.AppUsageEntry, *fleet.PaginationMetadata, error) {
+	s.mu.Lock()
+	s.GetHostAppUsageFuncInvoked = true
+	s.mu.Unlock()
+	return s.GetHostAppUsageFunc(ctx, hostID, opts)
+}
+
+func (s *Service) GetAppUsage(ctx context.Context, opts fleet.AppUsageAggregateOptions) ([]fleet.AppUsageAggregate, *fleet.PaginationMetadata, error) {
+	s.mu.Lock()
+	s.GetAppUsageFuncInvoked = true
+	s.mu.Unlock()
+	return s.GetAppUsageFunc(ctx, opts)
 }
 
 func (s *Service) ListSoftwareTitles(ctx context.Context, opt fleet.SoftwareTitleListOptions) ([]fleet.SoftwareTitleListResult, int, *fleet.PaginationMetadata, error) {

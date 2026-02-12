@@ -33,6 +33,7 @@ interface IQueryKey extends ISoftwareFleetMaintainedAppsQueryParams {
 
 interface ISoftwareFleetMaintainedProps {
   currentTeamId: number;
+  teamIds?: number[];
   router: InjectedRouter;
   location: Location<ISoftwareAddPageQueryParams>;
 }
@@ -50,6 +51,7 @@ const DEFAULT_PAGE = 0;
 
 const SoftwareFleetMaintained = ({
   currentTeamId,
+  teamIds,
   router,
   location,
 }: ISoftwareFleetMaintainedProps) => {
@@ -111,6 +113,7 @@ const SoftwareFleetMaintained = ({
         router={router}
         query={query}
         teamId={currentTeamId}
+        teamIds={teamIds}
         orderDirection={order_direction}
         orderKey={order_key}
         perPage={DEFAULT_PAGE_SIZE}

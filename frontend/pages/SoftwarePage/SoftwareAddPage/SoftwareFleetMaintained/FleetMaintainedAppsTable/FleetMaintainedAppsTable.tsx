@@ -76,6 +76,7 @@ const combineAppsByPlatform = (
 
 interface IFleetMaintainedAppsTableProps {
   teamId: number;
+  teamIds?: number[];
   isLoading: boolean;
   query: string;
   perPage: number;
@@ -92,6 +93,7 @@ interface IRowProps {
 
 const FleetMaintainedAppsTable = ({
   teamId,
+  teamIds,
   isLoading,
   data,
   router,
@@ -184,8 +186,8 @@ const FleetMaintainedAppsTable = ({
 
   const tableHeadersConfig = useMemo(() => {
     if (!data) return [];
-    return generateTableConfig(router, teamId);
-  }, [data, router, teamId]);
+    return generateTableConfig(router, teamId, teamIds);
+  }, [data, router, teamId, teamIds]);
 
   // Note: Serverside filtering will be buggy with pagination if > 20 apps
   // API will need to be refactored to combine macOS/windows apps

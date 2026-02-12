@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "fleet-dev": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "mcp",
+        "python",
+        "scripts/development/mcp_dev_server.py"
+      ],
+      "cwd": "/Users/philliploacker/Documents/GitHub/device-fleet"
+    }
+  }
+}

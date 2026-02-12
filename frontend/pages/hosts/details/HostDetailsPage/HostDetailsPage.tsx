@@ -112,6 +112,7 @@ import PoliciesCard from "../cards/Policies";
 import QueriesCard from "../cards/Queries";
 import PolicyDetailsModal from "../cards/Policies/HostPoliciesTable/PolicyDetailsModal";
 import CertificatesCard from "../cards/Certificates";
+import AppUsageCard from "../cards/AppUsage";
 
 import TransferHostModal from "../../components/TransferHostModal";
 import DeleteHostModal from "../../components/DeleteHostModal";
@@ -1462,6 +1463,12 @@ const HostDetailsPage = ({
                     sortDirection={sortCerts.order_direction}
                     sortHeader={sortCerts.order_key}
                     onSortChange={setSortCerts}
+                  />
+                )}
+                {host.platform === "darwin" && (
+                  <AppUsageCard
+                    className={fullWidthCardClass}
+                    hostId={host.id}
                   />
                 )}
               </TabPanel>

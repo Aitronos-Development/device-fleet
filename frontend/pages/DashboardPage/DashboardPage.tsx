@@ -77,7 +77,7 @@ import WelcomeHost from "./cards/WelcomeHost";
 import Mdm from "./cards/MDM";
 import Munki from "./cards/Munki";
 import OperatingSystems from "./cards/OperatingSystems";
-import AddHostsModal from "../../components/AddHostsModal";
+// AddHostsModal replaced by dedicated AddDevicePage
 import MdmSolutionModal from "./components/MdmSolutionModal";
 import ActivityFeedAutomationsModal from "./components/ActivityFeedAutomationsModal";
 import { IAFAMFormData } from "./components/ActivityFeedAutomationsModal/ActivityFeedAutomationsModal";
@@ -150,7 +150,7 @@ const DashboardPage = ({ router, location }: IDashboardProps): JSX.Element => {
   const [softwareActionUrl, setSoftwareActionUrl] = useState<string>();
   const [showMdmCard, setShowMdmCard] = useState(true);
   const [showSoftwareCard, setShowSoftwareCard] = useState(false);
-  const [showAddHostsModal, setShowAddHostsModal] = useState(false);
+  // showAddHostsModal removed — now uses dedicated AddDevicePage
   const [showMdmSolutionModal, setShowMdmSolutionModal] = useState(false);
   const [
     showActivityFeedAutomationsModal,
@@ -481,8 +481,8 @@ const DashboardPage = ({ router, location }: IDashboardProps): JSX.Element => {
     }
   }, [labels, selectedPlatform]);
 
-  const toggleAddHostsModal = () => {
-    setShowAddHostsModal(!showAddHostsModal);
+  const navigateToAddDevice = () => {
+    router.push(paths.ADD_DEVICE);
   };
 
   // This is called once on the initial rendering. The initial render of
@@ -603,7 +603,7 @@ const DashboardPage = ({ router, location }: IDashboardProps): JSX.Element => {
         totalsHostsCount={
           (hostSummaryData && hostSummaryData.totals_hosts_count) || 0
         }
-        toggleAddHostsModal={toggleAddHostsModal}
+        toggleAddHostsModal={navigateToAddDevice}
       />
     ),
   });
@@ -815,21 +815,7 @@ const DashboardPage = ({ router, location }: IDashboardProps): JSX.Element => {
     }
   };
 
-  const renderAddHostsModal = () => {
-    const enrollSecret = isAnyTeamSelected
-      ? teamSecrets?.[0].secret
-      : globalSecrets?.[0].secret;
-
-    return (
-      <AddHostsModal
-        currentTeamName={currentTeamName}
-        enrollSecret={enrollSecret}
-        isAnyTeamSelected={isAnyTeamSelected}
-        isLoading={isLoadingTeams || isGlobalSecretsLoading}
-        onCancel={toggleAddHostsModal}
-      />
-    );
-  };
+  // renderAddHostsModal removed — now uses dedicated AddDevicePage
 
   const renderMdmSolutionModal = () => {
     if (!mdmSolutions) {
@@ -918,7 +904,7 @@ const DashboardPage = ({ router, location }: IDashboardProps): JSX.Element => {
           </>
         </div>
         {renderCards()}
-        {showAddHostsModal && renderAddHostsModal()}
+        {/* Add hosts modal removed — now uses dedicated AddDevicePage */}
         {showMdmSolutionModal && renderMdmSolutionModal()}
         {showActivityFeedAutomationsModal && config && (
           <ActivityFeedAutomationsModal

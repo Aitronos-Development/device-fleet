@@ -16,7 +16,8 @@ type ITableHeaderProps = IHeaderProps<ICombinedFMA>;
 // eslint-disable-next-line import/prefer-default-export
 export const generateTableConfig = (
   router: InjectedRouter,
-  teamId: number
+  teamId: number,
+  teamIds?: number[]
 ): IFleetMaintainedAppsTableConfig[] => {
   return [
     {
@@ -38,7 +39,12 @@ export const generateTableConfig = (
         const { macos } = cellProps.row.original;
 
         return (
-          <InstallerActionCell teamId={teamId} value={macos} router={router} />
+          <InstallerActionCell
+            teamId={teamId}
+            teamIds={teamIds}
+            value={macos}
+            router={router}
+          />
         );
       },
       disableSortBy: true,
@@ -52,6 +58,7 @@ export const generateTableConfig = (
         return (
           <InstallerActionCell
             teamId={teamId}
+            teamIds={teamIds}
             value={windows}
             router={router}
           />

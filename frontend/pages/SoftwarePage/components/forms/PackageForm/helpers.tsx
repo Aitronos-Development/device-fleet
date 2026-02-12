@@ -65,7 +65,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Install script is required for .exe packages.",
+        message: "Please provide an install script for .exe files.",
       },
       {
         name: "requiredForZip",
@@ -79,7 +79,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Install script is required for .zip packages.",
+        message: "Please provide an install script for .zip files.",
       },
       {
         name: "requiredForTgz",
@@ -93,7 +93,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Install script is required for .tar.gz archives.",
+        message: "Please provide an install script for .tar.gz files.",
       },
     ],
   },
@@ -111,7 +111,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Uninstall script is required for .exe packages.",
+        message: "Please provide an uninstall script for .exe files.",
       },
       {
         name: "requiredForZip",
@@ -125,7 +125,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Uninstall script is required for .zip packages.",
+        message: "Please provide an uninstall script for .zip files.",
       },
       {
         name: "requiredForTgz",
@@ -139,7 +139,7 @@ const FORM_VALIDATION_CONFIG: Record<
           }
           return true;
         },
-        message: "Uninstall script is required for .tar.gz archives.",
+        message: "Please provide an uninstall script for .tar.gz files.",
       },
     ],
   },

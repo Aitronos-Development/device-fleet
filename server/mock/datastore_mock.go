@@ -527,6 +527,12 @@ type ListCVEsFunc func(ctx context.Context, maxAge time.Duration) ([]fleet.CVEMe
 
 type ListHostSoftwareFunc func(ctx context.Context, host *fleet.Host, opts fleet.HostSoftwareTitleListOptions) ([]*fleet.HostSoftwareWithInstaller, *fleet.PaginationMetadata, error)
 
+type ReplaceHostAppUsageFunc func(ctx context.Context, hostID uint, entries []fleet.AppUsageEntry) error
+
+type ListHostAppUsageFunc func(ctx context.Context, hostID uint, opts fleet.AppUsageListOptions) ([]fleet.AppUsageEntry, *fleet.PaginationMetadata, error)
+
+type AggregateAppUsageFunc func(ctx context.Context, opts fleet.AppUsageAggregateOptions) ([]fleet.AppUsageAggregate, *fleet.PaginationMetadata, error)
+
 type IsSoftwareInstallerLabelScopedFunc func(ctx context.Context, installerID uint, hostID uint) (bool, error)
 
 type IsVPPAppLabelScopedFunc func(ctx context.Context, vppAppTeamID uint, hostID uint) (bool, error)
@@ -2527,6 +2533,15 @@ type DataStore struct {
 
 	ListHostSoftwareFunc        ListHostSoftwareFunc
 	ListHostSoftwareFuncInvoked bool
+
+	ReplaceHostAppUsageFunc        ReplaceHostAppUsageFunc
+	ReplaceHostAppUsageFuncInvoked bool
+
+	ListHostAppUsageFunc        ListHostAppUsageFunc
+	ListHostAppUsageFuncInvoked bool
+
+	AggregateAppUsageFunc        AggregateAppUsageFunc
+	AggregateAppUsageFuncInvoked bool
 
 	IsSoftwareInstallerLabelScopedFunc        IsSoftwareInstallerLabelScopedFunc
 	IsSoftwareInstallerLabelScopedFuncInvoked bool
@@ -6159,6 +6174,27 @@ func (s *DataStore) ListHostSoftware(ctx context.Context, host *fleet.Host, opts
 	s.ListHostSoftwareFuncInvoked = true
 	s.mu.Unlock()
 	return s.ListHostSoftwareFunc(ctx, host, opts)
+}
+
+func (s *DataStore) ReplaceHostAppUsage(ctx context.Context, hostID uint, entries []fleet.AppUsageEntry) error {
+	s.mu.Lock()
+	s.ReplaceHostAppUsageFuncInvoked = true
+	s.mu.Unlock()
+	return s.ReplaceHostAppUsageFunc(ctx, hostID, entries)
+}
+
+func (s *DataStore) ListHostAppUsage(ctx context.Context, hostID uint, opts fleet.AppUsageListOptions) ([]fleet.AppUsageEntry, *fleet.PaginationMetadata, error) {
+	s.mu.Lock()
+	s.ListHostAppUsageFuncInvoked = true
+	s.mu.Unlock()
+	return s.ListHostAppUsageFunc(ctx, hostID, opts)
+}
+
+func (s *DataStore) AggregateAppUsage(ctx context.Context, opts fleet.AppUsageAggregateOptions) ([]fleet.AppUsageAggregate, *fleet.PaginationMetadata, error) {
+	s.mu.Lock()
+	s.AggregateAppUsageFuncInvoked = true
+	s.mu.Unlock()
+	return s.AggregateAppUsageFunc(ctx, opts)
 }
 
 func (s *DataStore) IsSoftwareInstallerLabelScoped(ctx context.Context, installerID uint, hostID uint) (bool, error) {

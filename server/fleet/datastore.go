@@ -690,6 +690,15 @@ type Datastore interface {
 
 	ListHostSoftware(ctx context.Context, host *Host, opts HostSoftwareTitleListOptions) ([]*HostSoftwareWithInstaller, *PaginationMetadata, error)
 
+	// ReplaceHostAppUsage upserts app usage entries for a host.
+	// For each entry, if a row already exists for the (host_id, bundle_identifier, usage_date)
+	// combination, the active_seconds are replaced with the new value.
+	ReplaceHostAppUsage(ctx context.Context, hostID uint, entries []AppUsageEntry) error
+	// ListHostAppUsage returns app usage data for a specific host, optionally filtered by date range.
+	ListHostAppUsage(ctx context.Context, hostID uint, opts AppUsageListOptions) ([]AppUsageEntry, *PaginationMetadata, error)
+	// AggregateAppUsage returns fleet-wide aggregated app usage data.
+	AggregateAppUsage(ctx context.Context, opts AppUsageAggregateOptions) ([]AppUsageAggregate, *PaginationMetadata, error)
+
 	// IsSoftwareInstallerLabelScoped returns whether or not the given installerID is scoped to the
 	// given host ID by labels.
 	IsSoftwareInstallerLabelScoped(ctx context.Context, installerID, hostID uint) (bool, error)

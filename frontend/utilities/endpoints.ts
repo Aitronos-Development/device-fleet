@@ -87,6 +87,8 @@ export default {
   HOST_WIPE: (id: number) => `/${API_VERSION}/fleet/hosts/${id}/wipe`,
   HOST_RESEND_PROFILE: (hostId: number, profileUUID: string) =>
     `/${API_VERSION}/fleet/hosts/${hostId}/configuration_profiles/${profileUUID}/resend`,
+  HOST_APP_USAGE: (id: number) =>
+    `/${API_VERSION}/fleet/hosts/${id}/app_usage`,
   HOST_SOFTWARE: (id: number) => `/${API_VERSION}/fleet/hosts/${id}/software`,
   HOST_SOFTWARE_PACKAGE_INSTALL: (hostId: number, softwareId: number) =>
     `/${API_VERSION}/fleet/hosts/${hostId}/software/${softwareId}/install`,
@@ -215,6 +217,7 @@ export default {
 
   // Software endpoints
   SOFTWARE: `/${API_VERSION}/fleet/software`,
+  APP_USAGE: `/${API_VERSION}/fleet/app_usage`,
   SOFTWARE_TITLES: `/${API_VERSION}/fleet/software/titles`,
   SOFTWARE_TITLE: (id: number) => `/${API_VERSION}/fleet/software/titles/${id}`,
   EDIT_SOFTWARE_PACKAGE: (id: number) =>

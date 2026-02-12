@@ -302,6 +302,101 @@ type brewAppTarget struct {
 	Target string `json:"target"`
 }
 
+// CaskInfo contains metadata fetched from the Homebrew API, used by the --create flow.
+type CaskInfo struct {
+	Token           string
+	Name            string
+	Description     string
+	URL             string
+	InstallerFormat string
+	AppNames        []string
+}
+
+// FetchCaskInfo fetches cask metadata from the Homebrew API for a given cask token.
+func FetchCaskInfo(ctx context.Context, token string) (*CaskInfo, error) {
+	client := fleethttp.NewClient(fleethttp.WithTimeout(10 * time.Second))
+	apiURL := fmt.Sprintf("%scask/%s.json", baseBrewAPIURL, token)
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, apiURL, nil)
+	if err != nil {
+		return nil, fmt.Errorf("create http request: %w", err)
+	}
+
+	res, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("execute http request: %w", err)
+	}
+	defer res.Body.Close()
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		return nil, fmt.Errorf("read http response body: %w", err)
+	}
+
+	if res.StatusCode == http.StatusNotFound {
+		return nil, fmt.Errorf("cask %q not found in Homebrew (search at https://formulae.brew.sh/cask/)", token)
+	}
+	if res.StatusCode != http.StatusOK {
+		if len(body) > 512 {
+			body = body[:512]
+		}
+		return nil, fmt.Errorf("brew API returned status %d: %s", res.StatusCode, string(body))
+	}
+
+	var cask brewCask
+	if err := json.Unmarshal(body, &cask); err != nil {
+		return nil, fmt.Errorf("unmarshal brew cask for %s: %w", token, err)
+	}
+
+	info := &CaskInfo{
+		Token:       cask.Token,
+		Description: cask.Desc,
+		URL:         cask.URL,
+	}
+
+	if len(cask.Name) > 0 {
+		info.Name = cask.Name[0]
+	}
+
+	// Auto-detect installer format from URL
+	lowerURL := strings.ToLower(cask.URL)
+	switch {
+	case strings.HasSuffix(lowerURL, ".dmg"):
+		info.InstallerFormat = "dmg"
+	case strings.HasSuffix(lowerURL, ".zip"):
+		info.InstallerFormat = "zip"
+	case strings.HasSuffix(lowerURL, ".pkg"):
+		info.InstallerFormat = "pkg"
+	default:
+		// Check artifacts for pkg entries
+		for _, artifact := range cask.Artifacts {
+			if len(artifact.Pkg) > 0 {
+				info.InstallerFormat = "pkg"
+				break
+			}
+		}
+		if info.InstallerFormat == "" {
+			for _, artifact := range cask.Artifacts {
+				if len(artifact.App) > 0 {
+					info.InstallerFormat = "dmg"
+					break
+				}
+			}
+		}
+	}
+
+	// Extract app names from artifacts
+	for _, artifact := range cask.Artifacts {
+		for _, app := range artifact.App {
+			if !app.IsOther && app.String != "" {
+				info.AppNames = append(info.AppNames, app.String)
+			}
+		}
+	}
+
+	return info, nil
+}
+
 // unlike brewArtifact, a single brewUninstall can have many fields set.
 // All fields can have one or multiple strings (string or []string).
 type brewUninstall struct {

@@ -6,6 +6,7 @@ import (
 	"context"
 
 	"github.com/fleetdm/fleet/v4/orbit/pkg/table/app_sso_platform"
+	"github.com/fleetdm/fleet/v4/orbit/pkg/table/app_usage"
 	"github.com/fleetdm/fleet/v4/orbit/pkg/table/authdb"
 	"github.com/fleetdm/fleet/v4/orbit/pkg/table/codesign"
 	"github.com/fleetdm/fleet/v4/orbit/pkg/table/csrutil_info"
@@ -113,6 +114,9 @@ func PlatformTables(opts PluginOpts) ([]osquery.OsqueryPlugin, error) {
 		table.NewPlugin("santa_allowed", santa.LogColumns(), santa.GenerateAllowed),
 		table.NewPlugin("santa_denied", santa.LogColumns(), santa.GenerateDenied),
 		table.NewPlugin("executable_hashes", executable_hashes.Columns(), executable_hashes.Generate),
+
+		// App usage tracking via macOS knowledgeC.db
+		table.NewPlugin("app_usage", app_usage.Columns(), app_usage.Generate),
 	}
 
 	// append platform specific tables

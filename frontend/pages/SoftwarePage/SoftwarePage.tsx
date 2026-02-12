@@ -58,6 +58,10 @@ const softwareSubNav: ISoftwareSubNavItem[] = [
     name: "Vulnerabilities",
     pathname: PATHS.SOFTWARE_VULNERABILITIES,
   },
+  {
+    name: "Usage",
+    pathname: PATHS.SOFTWARE_USAGE,
+  },
 ];
 
 const getTabIndex = (path: string): number => {
@@ -280,6 +284,26 @@ const SoftwarePage = ({ children, router, location }: ISoftwarePageProps) => {
     }
   }, [currentTeamId, router]);
 
+  const onTeamsSelected = useCallback(
+    (teamIds: number[]) => {
+      setShowAddSoftwareModal(false);
+      if (teamIds.length === 1) {
+        router.push(
+          getPathWithQueryParams(PATHS.SOFTWARE_ADD_FLEET_MAINTAINED, {
+            team_id: teamIds[0],
+          })
+        );
+      } else {
+        router.push(
+          getPathWithQueryParams(PATHS.SOFTWARE_ADD_FLEET_MAINTAINED, {
+            team_ids: teamIds.join(","),
+          })
+        );
+      }
+    },
+    [router]
+  );
+
   const onTeamChange = useCallback(
     (teamId: number) => {
       handleTeamChange(teamId);
@@ -365,16 +389,17 @@ const SoftwarePage = ({ children, router, location }: ISoftwarePageProps) => {
             underline={false}
             tipContent={
               <div className={`${baseClass}__header__tooltip`}>
-                {isPremiumTier
-                  ? "Select a team to add software."
-                  : "This feature is included in Fleet Premium."}
+                This feature is included in Fleet Premium.
               </div>
             }
-            disableTooltip={!isAllTeamsSelected}
+            disableTooltip={isPremiumTier || !isFreeTier}
             position="top"
             showArrow
           >
-            <Button onClick={onAddSoftware} disabled={isAllTeamsSelected}>
+            <Button
+              onClick={onAddSoftware}
+              disabled={isFreeTier && !isPremiumTier}
+            >
               <span>Add software</span>
             </Button>
           </TooltipWrapper>
@@ -480,6 +505,8 @@ const SoftwarePage = ({ children, router, location }: ISoftwarePageProps) => {
           <AddSoftwareModal
             onExit={() => setShowAddSoftwareModal(false)}
             isFreeTier={isFreeTier}
+            userTeams={userTeams}
+            onTeamsSelected={onTeamsSelected}
           />
         )}
         {showSoftwareFiltersModal && (

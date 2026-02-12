@@ -75,13 +75,13 @@ const AdvancedOptionsFields = ({
         focus
         error={errors.preInstallQuery}
         value={preInstallQuery}
-        placeholder="SELECT * FROM osquery_info WHERE start_time > 1"
-        label="Pre-install query"
+        placeholder="SELECT 1 FROM some_table WHERE condition = 'value'"
+        label="Pre-install condition (optional)"
         name="preInstallQuery"
         maxLines={10}
         onChange={onChangePreInstallQuery}
         labelActionComponent={renderLabelComponent()}
-        helpText="Software will be installed only if the query returns results."
+        helpText="If provided, the software will only be installed when this query finds a match on the device."
         readOnly={disableFields}
       />
       <Editor
@@ -96,7 +96,7 @@ const AdvancedOptionsFields = ({
         readOnly={disableFields}
       />
       <Editor
-        label="Post-install script"
+        label="Post-install script (optional)"
         focus
         error={errors.postInstallScript}
         wrapEnabled

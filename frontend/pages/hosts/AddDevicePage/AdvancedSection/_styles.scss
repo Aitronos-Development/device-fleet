@@ -1,0 +1,56 @@
+.advanced-section {
+  margin-top: $pad-large;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $pad-xlarge;
+    margin-top: $pad-large;
+    padding: $pad-large;
+    border: 1px solid $ui-fleet-black-10;
+    border-radius: $border-radius-large;
+    background: $core-fleet-white;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $pad-smedium;
+
+    h3 {
+      font-size: $small;
+      font-weight: $bold;
+      color: $core-fleet-black;
+      margin: 0;
+    }
+
+    p {
+      font-size: $x-small;
+      color: $ui-fleet-black-75;
+      margin: 0;
+    }
+  }
+
+  &__input {
+    max-width: 600px;
+
+    textarea {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+        monospace;
+      font-size: $xxx-small;
+      min-height: 60px;
+    }
+  }
+
+  &__plain-osquery {
+    display: flex;
+    flex-direction: column;
+    gap: $pad-medium;
+    margin-top: $pad-small;
+  }
+
+  &__error {
+    color: $ui-error;
+    font-size: $xx-small;
+  }
+}

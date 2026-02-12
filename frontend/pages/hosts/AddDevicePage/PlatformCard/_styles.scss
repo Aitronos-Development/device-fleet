@@ -1,0 +1,99 @@
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  gap: $pad-smedium;
+  padding: $pad-large;
+  border: 1px solid $ui-fleet-black-10;
+  border-radius: $border-radius-large;
+  background: $core-fleet-white;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+
+  &:hover {
+    border-color: $ui-fleet-black-25;
+  }
+
+  &--recommended {
+    border-color: $core-fleet-green;
+    box-shadow: 0 0 0 1px $core-fleet-green;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__platform-info {
+    display: flex;
+    align-items: center;
+    gap: $pad-smedium;
+  }
+
+  &__platform-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__platform-name {
+    font-size: $x-small;
+    font-weight: $bold;
+    color: $core-fleet-black;
+  }
+
+  &__platform-desc {
+    font-size: $xxx-small;
+    color: $ui-fleet-black-75;
+  }
+
+  &__badge {
+    font-size: $xxx-small;
+    font-weight: $bold;
+    color: $core-fleet-green;
+    background: rgba($core-fleet-green, 0.1);
+    padding: $pad-xxsmall $pad-small;
+    border-radius: $border-radius;
+    white-space: nowrap;
+  }
+
+  &__host-type {
+    display: flex;
+    gap: $pad-medium;
+  }
+
+  &__command-input {
+    .input-field {
+      font-size: $xxx-small;
+    }
+
+    textarea {
+      min-height: 60px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+        monospace;
+      font-size: $xxx-small;
+      resize: none;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $pad-medium;
+  }
+
+  &__copy-btn {
+    display: flex;
+    align-items: center;
+    gap: $pad-xsmall;
+  }
+
+  &__guide-link {
+    font-size: $x-small;
+    color: $core-vibrant-blue;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

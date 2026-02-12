@@ -3,4 +3,19 @@
   .tab-nav {
     margin-bottom: 0;
   }
+
+  &__select-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  &__team-checkboxes {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }

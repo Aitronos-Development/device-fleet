@@ -74,6 +74,7 @@ import SoftwarePage from "pages/SoftwarePage";
 import SoftwareTitles from "pages/SoftwarePage/SoftwareTitles";
 import SoftwareOS from "pages/SoftwarePage/SoftwareOS";
 import SoftwareVulnerabilities from "pages/SoftwarePage/SoftwareVulnerabilities";
+import SoftwareUsage from "pages/SoftwarePage/SoftwareUsage";
 import SoftwareTitleDetailsPage from "pages/SoftwarePage/SoftwareTitleDetailsPage";
 import SoftwareVersionDetailsPage from "pages/SoftwarePage/SoftwareVersionDetailsPage";
 import TeamSettings from "pages/admin/TeamManagementPage/TeamDetailsWrapper/TeamSettings";
@@ -85,6 +86,8 @@ import SoftwareCustomPackage from "pages/SoftwarePage/SoftwareAddPage/SoftwareCu
 import SoftwareAppStore from "pages/SoftwarePage/SoftwareAddPage/SoftwareAppStore";
 import FleetMaintainedAppDetailsPage from "pages/SoftwarePage/SoftwareAddPage/SoftwareFleetMaintained/FleetMaintainedAppDetailsPage";
 import ScriptBatchDetailsPage from "pages/ManageControlsPage/Scripts/ScriptBatchDetailsPage";
+import AddDevicePage from "pages/hosts/AddDevicePage";
+import SetupGuidePage from "pages/hosts/AddDevicePage/SetupGuidePage";
 
 import PATHS from "router/paths";
 
@@ -256,6 +259,11 @@ const routes = (
           </Route>
           <Route path="hosts">
             <IndexRedirect to="manage" />
+            <Route path="add-device" component={AddDevicePage} />
+            <Route
+              path="add-device/guide/:package_type"
+              component={SetupGuidePage}
+            />
             <Route path="manage" component={ManageHostsPage} />
             <Route path="manage/labels/:label_id" component={ManageHostsPage} />
             <Route path="manage/:active_label" component={ManageHostsPage} />
@@ -341,6 +349,7 @@ const routes = (
                 path="vulnerabilities"
                 component={SoftwareVulnerabilities}
               />
+              <Route path="usage" component={SoftwareUsage} />
               {/* This redirect keeps the old software/:id working */}
               <Redirect from=":id" to="versions/:id" />
             </Route>

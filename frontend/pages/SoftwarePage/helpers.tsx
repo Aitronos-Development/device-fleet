@@ -131,12 +131,12 @@ export const generateHelpText = (
   if (customTarget === "labelsIncludeAny") {
     return !automaticInstall ? (
       <>
-        Software will only be available for install on hosts that{" "}
-        <b>have any</b> of these labels:
+        Software will only be available on devices that{" "}
+        <b>match any</b> of these labels:
       </>
     ) : (
       <>
-        Software will only be installed on hosts that <b>have any</b> of these
+        Software will be installed on devices that <b>match any</b> of these
         labels:
       </>
     );
@@ -145,13 +145,13 @@ export const generateHelpText = (
   // this is the case for labelsExcludeAny
   return !automaticInstall ? (
     <>
-      Software will only be available for install on hosts that{" "}
-      <b>don&apos;t have any</b> of these labels:
+      Software will only be available on devices that{" "}
+      <b>do not match</b> these labels:
     </>
   ) : (
     <>
-      Software will only be installed on hosts that <b>don&apos;t have any</b>{" "}
-      of these labels:{" "}
+      Software will be installed on devices that <b>do not match</b> these
+      labels:
     </>
   );
 };
@@ -160,12 +160,12 @@ export const generateHelpText = (
 export const CUSTOM_TARGET_OPTIONS: IDropdownOption[] = [
   {
     value: "labelsIncludeAny",
-    label: "Include any",
+    label: "Only these devices",
     disabled: false,
   },
   {
     value: "labelsExcludeAny",
-    label: "Exclude any",
+    label: "All except these devices",
     disabled: false,
   },
 ];
@@ -177,7 +177,7 @@ export const getSelfServiceTooltip = (
   if (isAndroidPlayStoreApp) {
     return (
       <>
-        End users can install from the <strong>Play Store</strong> <br />
+        Users can install this from the <strong>Play Store</strong> <br />
         in their work profile.
       </>
     );
@@ -185,11 +185,11 @@ export const getSelfServiceTooltip = (
   if (isIosOrIpadosApp)
     return (
       <>
-        End users can install from self-service.
+        Users can install this themselves.
         <br />
         <CustomLink
           newTab
-          text="Learn how to deploy self-service"
+          text="Learn how to set up self-service"
           variant="tooltip-link"
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/deploy-self-service-to-ios`}
         />
@@ -198,7 +198,7 @@ export const getSelfServiceTooltip = (
 
   return (
     <>
-      End users can install from <br />
+      Users can install this themselves from <br />
       <strong>Fleet Desktop</strong> &gt; <strong>Self-service</strong>. <br />
       <CustomLink
         newTab
