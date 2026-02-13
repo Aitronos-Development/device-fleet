@@ -15,11 +15,11 @@ describe("ChangePasswordForm - component", () => {
     expect(screen.getByLabelText("Original password")).toBeInTheDocument();
     expect(screen.getByLabelText("New password")).toBeInTheDocument();
     expect(
-      screen.getByLabelText("New password confirmation")
+      screen.getByLabelText("New password confirmation"),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Change password" })
+      screen.getByRole("button", { name: "Change password" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
   });
@@ -29,15 +29,15 @@ describe("ChangePasswordForm - component", () => {
 
     expect(screen.getByLabelText("Original password")).toHaveAttribute(
       "type",
-      "password"
+      "password",
     );
     expect(screen.getByLabelText("New password")).toHaveAttribute(
       "type",
-      "password"
+      "password",
     );
     expect(screen.getByLabelText("New password confirmation")).toHaveAttribute(
       "type",
-      "password"
+      "password",
     );
   });
 
@@ -49,13 +49,13 @@ describe("ChangePasswordForm - component", () => {
     // then
     expect(props.handleSubmit).not.toHaveBeenCalled();
     expect(
-      await screen.findByText("Password must be present")
+      await screen.findByText("Password must be present"),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText("New password must be present")
+      await screen.findByText("New password must be present"),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText("New password confirmation must be present")
+      await screen.findByText("New password confirmation must be present"),
     ).toBeInTheDocument();
   });
 
@@ -69,20 +69,20 @@ describe("ChangePasswordForm - component", () => {
 
     await user.type(
       screen.getByLabelText("Original password"),
-      expectedFormData.old_password
+      expectedFormData.old_password,
     );
     await user.type(
       screen.getByLabelText("New password"),
-      expectedFormData.new_password
+      expectedFormData.new_password,
     );
     await user.type(
       screen.getByLabelText("New password confirmation"),
-      expectedFormData.new_password_confirmation
+      expectedFormData.new_password_confirmation,
     );
     await user.click(screen.getByRole("button", { name: "Change password" }));
 
     const passwordError = screen.getByText(
-      "Password must meet the criteria below"
+      "Password must meet the criteria below",
     );
     expect(props.handleSubmit).not.toHaveBeenCalled();
     expect(passwordError).toBeInTheDocument();
@@ -98,20 +98,20 @@ describe("ChangePasswordForm - component", () => {
 
     await user.type(
       screen.getByLabelText("Original password"),
-      expectedFormData.old_password
+      expectedFormData.old_password,
     );
     await user.type(
       screen.getByLabelText("New password"),
-      expectedFormData.new_password
+      expectedFormData.new_password,
     );
     await user.type(
       screen.getByLabelText("New password confirmation"),
-      expectedFormData.new_password_confirmation
+      expectedFormData.new_password_confirmation,
     );
     await user.click(screen.getByRole("button", { name: "Change password" }));
 
     const passwordConfirmError = screen.getByText(
-      "New password confirmation does not match new password"
+      "New password confirmation does not match new password",
     );
     expect(props.handleSubmit).not.toHaveBeenCalled();
     expect(passwordConfirmError).toBeInTheDocument();
@@ -128,15 +128,15 @@ describe("ChangePasswordForm - component", () => {
 
     await user.type(
       screen.getByLabelText("Original password"),
-      expectedFormData.old_password
+      expectedFormData.old_password,
     );
     await user.type(
       screen.getByLabelText("New password"),
-      expectedFormData.new_password
+      expectedFormData.new_password,
     );
     await user.type(
       screen.getByLabelText("New password confirmation"),
-      expectedFormData.new_password_confirmation
+      expectedFormData.new_password_confirmation,
     );
     await user.click(screen.getByRole("button", { name: "Change password" }));
     // then

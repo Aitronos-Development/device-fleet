@@ -8,7 +8,7 @@ import {
 } from "interfaces/mdm";
 
 const convertWinDiskEncryptionStatusToSettingStatus = (
-  diskEncryptionStatus: WindowsDiskEncryptionStatus
+  diskEncryptionStatus: WindowsDiskEncryptionStatus,
 ): MdmProfileStatus | "action_required" => {
   return diskEncryptionStatus === "enforcing"
     ? "pending"
@@ -17,7 +17,7 @@ const convertWinDiskEncryptionStatusToSettingStatus = (
 
 const generateWindowsDiskEncryptionMessage = (
   status: WindowsDiskEncryptionStatus,
-  detail: string
+  detail: string,
 ) => {
   if (status === "failed") {
     detail += ". Fleet will retry automatically.";
@@ -32,7 +32,7 @@ const generateWindowsDiskEncryptionMessage = (
  */
 export const generateWinDiskEncryptionSetting = (
   diskEncryptionStatus: WindowsDiskEncryptionStatus,
-  detail: string
+  detail: string,
 ): IHostMdmProfile => {
   return {
     profile_uuid: "0", // This is the only type of profile that can have this value
@@ -54,7 +54,7 @@ export const generateWinDiskEncryptionSetting = (
 // eslint-disable-next-line import/prefer-default-export
 export const generateLinuxDiskEncryptionSetting = (
   diskEncryptionStatus: LinuxDiskEncryptionStatus,
-  detail: string
+  detail: string,
 ): IHostMdmProfile => {
   return {
     profile_uuid: "0", // This is the only type of profile that can have this value
@@ -107,7 +107,7 @@ const deviceUpdatingStates = ["unlocking", "locking", "wiping"] as const;
  */
 export const getHostDeviceStatusUIState = (
   deviceStatus: HostMdmDeviceStatus,
-  pendingAction: HostMdmPendingAction
+  pendingAction: HostMdmPendingAction,
 ): HostMdmDeviceStatusUIState => {
   if (pendingAction === "") {
     return API_TO_UI_DEVICE_STATUS_MAP[deviceStatus];
@@ -127,7 +127,7 @@ export const getHostDeviceStatusUIState = (
  * Checks if our device status UI state is in an updating state.
  */
 export const isDeviceStatusUpdating = (
-  deviceStatus: HostMdmDeviceStatusUIState
+  deviceStatus: HostMdmDeviceStatusUIState,
 ) => {
   return deviceUpdatingStates.includes(deviceStatus as any);
 };

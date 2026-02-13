@@ -127,7 +127,7 @@ const App = ({ children, location }: IAppProps): JSX.Element => {
           setABMExpiry({
             earliestExpiry: getEarliestExpiry(abm_tokens),
             needsAbmTermsRenewal: abm_tokens.some(
-              (token) => token.terms_expired
+              (token) => token.terms_expired,
             ),
           });
       },
@@ -141,7 +141,7 @@ const App = ({ children, location }: IAppProps): JSX.Element => {
           });
         }
       },
-    }
+    },
   );
 
   // Get the Apple Push Notification token expiration date
@@ -163,7 +163,7 @@ const App = ({ children, location }: IAppProps): JSX.Element => {
       onSuccess: ({ vpp_tokens }) => {
         vpp_tokens.length && setVppExpiry(getEarliestExpiry(vpp_tokens));
       },
-    }
+    },
   );
 
   const fetchConfig = async () => {
@@ -227,7 +227,7 @@ const App = ({ children, location }: IAppProps): JSX.Element => {
     // Also applies title to subpaths such as settings/organization/webaddress
     // TODO - handle different kinds of paths from PATHS - string, function w/params
     const curTitle = page_titles.find((item) =>
-      location?.pathname.includes(item.path)
+      location?.pathname.includes(item.path),
     );
 
     if (curTitle && curTitle.title) {

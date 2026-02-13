@@ -27,13 +27,13 @@ describe("UserForm - component", () => {
     await user.click(submitButton);
 
     expect(
-      screen.getByText("Name field must be completed")
+      screen.getByText("Name field must be completed"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Email field must be completed")
+      screen.getByText("Email field must be completed"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Password field must be completed")
+      screen.getByText("Password field must be completed"),
     ).toBeInTheDocument();
   });
 
@@ -49,7 +49,7 @@ describe("UserForm - component", () => {
         {...defaultProps}
         smtpConfigured={false}
         sesConfigured={false}
-      />
+      />,
     );
 
     const inviteUserRadio = screen.getByLabelText("Invite user");
@@ -63,7 +63,7 @@ describe("UserForm - component", () => {
     expect(screen.queryByText("Global user")).not.toBeInTheDocument();
     expect(screen.queryByText("Assign team(s)")).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Enable two-factor authentication")
+      screen.queryByText("Enable two-factor authentication"),
     ).not.toBeInTheDocument();
     expect(screen.queryByText(/team/i)).not.toBeInTheDocument();
 
@@ -71,7 +71,7 @@ describe("UserForm - component", () => {
     expect(screen.getByLabelText("Full name")).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(
-      screen.queryByRole("radio", { name: "Password" })
+      screen.queryByRole("radio", { name: "Password" }),
     ).toBeInTheDocument();
   });
 
@@ -88,10 +88,10 @@ describe("UserForm - component", () => {
 
     // Check that password input field and 2FA sections are not present
     expect(
-      screen.queryByRole("input", { name: "Password" })
+      screen.queryByRole("input", { name: "Password" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Enable two-factor authentication")
+      screen.queryByText("Enable two-factor authentication"),
     ).not.toBeInTheDocument();
   });
 
@@ -114,7 +114,7 @@ describe("UserForm - component", () => {
 
     await user.click(screen.getByText("Save"));
     expect(
-      screen.getByText(/Password field must be completed/i)
+      screen.getByText(/Password field must be completed/i),
     ).toBeInTheDocument();
   });
 });

@@ -120,7 +120,7 @@ const ModalContent = ({
   if (data.results.length > 1) {
     // this should not happen, but just in case
     console.error(
-      `Expected one result, but found ${data.results.length} results.`
+      `Expected one result, but found ${data.results.length} results.`,
     );
     return <DataError description="Close this modal and try again." />;
   }
@@ -189,7 +189,7 @@ const CommandResultsModal = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       keepPreviousData: true,
       staleTime: 2000,
-    }
+    },
   );
 
   return (

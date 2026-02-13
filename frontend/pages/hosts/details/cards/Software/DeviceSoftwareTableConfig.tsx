@@ -22,7 +22,7 @@ type IInstalledVersionsCellProps = CellProps<
 type IVulnerabilitiesCellProps = IInstalledVersionsCellProps;
 
 export const generateSoftwareTableData = (
-  software: IHostSoftware[]
+  software: IHostSoftware[],
 ): IHostSoftware[] => {
   return software;
 };

@@ -31,7 +31,7 @@ describe("EditConfigurationModal", () => {
 
     // Help text / learn more link
     expect(
-      screen.getByText(/The Android app's configuration in JSON format/i)
+      screen.getByText(/The Android app's configuration in JSON format/i),
     ).toBeInTheDocument();
     expect(screen.getByText("Learn more")).toBeInTheDocument();
 
@@ -45,7 +45,7 @@ describe("EditConfigurationModal", () => {
 
     // InstallerDetailsWidget should show the software name somewhere
     expect(screen.getAllByText(softwareInstaller.name).length).toBeGreaterThan(
-      0
+      0,
     );
 
     // CustomDetails is "Android" in your props
@@ -91,7 +91,7 @@ describe("EditConfigurationModal", () => {
     });
 
     expect(
-      screen.getByText(/Expected property name or '}'/i)
+      screen.getByText(/Expected property name or '}'/i),
     ).toBeInTheDocument();
   });
 

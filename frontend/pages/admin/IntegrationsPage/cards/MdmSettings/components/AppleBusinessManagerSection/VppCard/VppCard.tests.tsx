@@ -11,8 +11,8 @@ describe("Vpp Card", () => {
 
     expect(
       await screen.findByText(
-        "To enable Volume Purchasing Program (VPP), first turn on Apple (macOS, iOS, iPadOS) MDM."
-      )
+        "To enable Volume Purchasing Program (VPP), first turn on Apple (macOS, iOS, iPadOS) MDM.",
+      ),
     ).toBeInTheDocument();
   });
 
@@ -20,14 +20,14 @@ describe("Vpp Card", () => {
     render(<VppCard viewDetails={noop} isVppOn={false} isAppleMdmOn />);
 
     expect(
-      await screen.findByRole("button", { name: "Add VPP" })
+      await screen.findByRole("button", { name: "Add VPP" }),
     ).toBeInTheDocument();
   });
 
   it("renders edit vpp when vpp is enabled", async () => {
     render(<VppCard viewDetails={noop} isVppOn isAppleMdmOn />);
     expect(
-      await screen.findByRole("button", { name: "Edit" })
+      await screen.findByRole("button", { name: "Edit" }),
     ).toBeInTheDocument();
   });
 });

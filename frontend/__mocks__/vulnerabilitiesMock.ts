@@ -51,7 +51,7 @@ const DEFAULT_VULNERABILITY_DETAILS: IVulnerabilityResponse = {
 };
 
 export const createMockVulnerability = (
-  overrides?: Partial<IVulnerability>
+  overrides?: Partial<IVulnerability>,
 ): IVulnerability => {
   return { ...DEFAULT_VULNERABILITY, ...overrides };
 };
@@ -135,14 +135,14 @@ const DEFAULT_VULNERABILITIES_RESPONSE: IVulnerabilitiesResponse = {
 };
 
 export const createMockVulnerabilityResponse = (
-  overrides?: Partial<IVulnerabilityResponse>
+  overrides?: Partial<IVulnerabilityResponse>,
 ): IVulnerabilityResponse => {
   return { ...DEFAULT_VULNERABILITY_DETAILS, ...overrides };
 };
 
 // eslint-disable-next-line import/prefer-default-export
 export const createMockVulnerabilitiesResponse = (
-  overrides?: Partial<IVulnerabilitiesResponse>
+  overrides?: Partial<IVulnerabilitiesResponse>,
 ): IVulnerabilitiesResponse => {
   return { ...DEFAULT_VULNERABILITIES_RESPONSE, ...overrides };
 };

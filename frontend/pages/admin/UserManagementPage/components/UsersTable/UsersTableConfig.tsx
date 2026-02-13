@@ -65,7 +65,7 @@ export interface IUserTableData {
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 const generateTableHeaders = (
   actionSelectHandler: (value: string, user: IUser | IInvite) => void,
-  isPremiumTier: boolean | undefined
+  isPremiumTier: boolean | undefined,
 ): IDataColumn[] => {
   const tableHeaders: IDataColumn[] = [
     {
@@ -206,7 +206,7 @@ const generateStatus = (type: string, data: IUser | IInvite): string => {
 const generateActionDropdownOptions = (
   isCurrentUser: boolean,
   isInvitePending: boolean,
-  isSsoEnabled: boolean
+  isSsoEnabled: boolean,
 ): IDropdownOption[] => {
   const disableDelete = isCurrentUser;
 
@@ -247,14 +247,14 @@ const generateActionDropdownOptions = (
   if (isCurrentUser) {
     // remove "Reset sessions" from dropdownOptions
     dropdownOptions = dropdownOptions.filter(
-      (option) => option.label !== "Reset sessions"
+      (option) => option.label !== "Reset sessions",
     );
   }
 
   if (isSsoEnabled) {
     // remove "Require password reset" from dropdownOptions
     dropdownOptions = dropdownOptions.filter(
-      (option) => option.label !== "Require password reset"
+      (option) => option.label !== "Require password reset",
     );
   }
   return dropdownOptions;
@@ -262,7 +262,7 @@ const generateActionDropdownOptions = (
 
 const enhanceUserData = (
   users: IUser[],
-  currentUserId: number
+  currentUserId: number,
 ): IUserTableData[] => {
   return users.map((user) => {
     return {
@@ -274,7 +274,7 @@ const enhanceUserData = (
       actions: generateActionDropdownOptions(
         user.id === currentUserId,
         false,
-        user.sso_enabled
+        user.sso_enabled,
       ),
       id: user.id,
       type: "user",
@@ -302,7 +302,7 @@ const enhanceInviteData = (invites: IInvite[]): IUserTableData[] => {
 const combineDataSets = (
   users: IUser[],
   invites: IInvite[],
-  currentUserId: number
+  currentUserId: number,
 ): IUserTableData[] => {
   return [
     ...enhanceUserData(users, currentUserId),

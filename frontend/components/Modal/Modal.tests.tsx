@@ -9,7 +9,7 @@ describe("Modal", () => {
     render(
       <Modal title="Foobar" onExit={noop}>
         <div>test</div>
-      </Modal>
+      </Modal>,
     );
 
     expect(screen.getByText("Foobar")).toBeVisible();

@@ -41,7 +41,7 @@ const OSTable = ({
 }: IOSTableProps) => {
   const columnConfigs = useMemo(
     () => generateTableHeaders(currentTeamId, undefined),
-    [currentTeamId]
+    [currentTeamId],
   );
 
   const showPaginationControls = osVersions.length > PAGE_SIZE;

@@ -98,10 +98,8 @@ const ScriptBatchDetailsPage = ({
 
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [showBatchScriptDetails, setShowBatchScriptDetails] = useState(false);
-  const [
-    hostScriptExecutionIdForModal,
-    setHostScriptExecutionIdForModal,
-  ] = useState<string | null>(null);
+  const [hostScriptExecutionIdForModal, setHostScriptExecutionIdForModal] =
+    useState<string | null>(null);
   const [isCanceling, setIsCanceling] = useState(false);
 
   const { renderFlash } = useContext(NotificationContext);
@@ -119,7 +117,7 @@ const ScriptBatchDetailsPage = ({
   >(
     [{ scope: "script_batch_summary", batch_execution_id: batchExecutionId }],
     ({ queryKey }) => scriptsAPI.getRunScriptBatchSummaryV2(queryKey[0]),
-    { ...DEFAULT_USE_QUERY_OPTIONS, enabled: !!batchExecutionId }
+    { ...DEFAULT_USE_QUERY_OPTIONS, enabled: !!batchExecutionId },
   );
 
   const pathToProgress = useMemo(() => {
@@ -158,12 +156,12 @@ const ScriptBatchDetailsPage = ({
       router.push(
         paths
           .CONTROLS_SCRIPTS_BATCH_DETAILS(batchExecutionId)
-          .concat(newQuery ? `?${newQuery}` : "")
+          .concat(newQuery ? `?${newQuery}` : ""),
       );
       // update page's summary data (e.g. pct hosts responded) whenever changing tabs
       refetchBatchDetails();
     },
-    [batchExecutionId, location?.search, refetchBatchDetails, router]
+    [batchExecutionId, location?.search, refetchBatchDetails, router],
   );
 
   useEffect(() => {
@@ -174,7 +172,7 @@ const ScriptBatchDetailsPage = ({
 
   const renderTabContent = ([hostStatus, hostStatusCount]: [
     ScriptBatchHostStatus,
-    number
+    number,
   ]) => {
     if (hostStatusCount === 0) {
       return getEmptyState(hostStatus);
@@ -226,13 +224,15 @@ const ScriptBatchDetailsPage = ({
     } = batchDetails || {};
 
     const getHostStatusAndCountByIndex = (i: number) =>
-      ([
-        ["ran", ran],
-        ["errored", errored],
-        ["pending", pending],
-        ["incompatible", incompatible],
-        ["canceled", canceled],
-      ] as [ScriptBatchHostStatus, number][])[i];
+      (
+        [
+          ["ran", ran],
+          ["errored", errored],
+          ["pending", pending],
+          ["incompatible", incompatible],
+          ["canceled", canceled],
+        ] as [ScriptBatchHostStatus, number][]
+      )[i];
 
     const subTitle = (
       <>

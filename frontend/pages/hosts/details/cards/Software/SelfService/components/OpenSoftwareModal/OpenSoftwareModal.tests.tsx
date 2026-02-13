@@ -11,7 +11,7 @@ describe("OpenSoftwareModal", () => {
         softwareSource="apps"
         softwareName="Slack"
         onExit={noop}
-      />
+      />,
     );
 
     expect(screen.getAllByText(/Slack/i)).toHaveLength(2); // Says Slack twice
@@ -27,7 +27,7 @@ describe("OpenSoftwareModal", () => {
         softwareSource="programs"
         softwareName="Zoom"
         onExit={noop}
-      />
+      />,
     );
 
     expect(screen.getByText(/Find/i)).toBeVisible();
@@ -44,12 +44,12 @@ describe("OpenSoftwareModal", () => {
         softwareSource="chrome_extensions"
         softwareName="Chrome extension"
         onExit={noop}
-      />
+      />,
     );
 
     // should not find expected text
     expect(
-      screen.queryByText(/Find Chrome extension/i)
+      screen.queryByText(/Find Chrome extension/i),
     ).not.toBeInTheDocument();
   });
 
@@ -60,7 +60,7 @@ describe("OpenSoftwareModal", () => {
         softwareSource="apps"
         softwareName="Slack"
         onExit={onExitMock}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("button", { name: /Done/i }));

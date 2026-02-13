@@ -26,7 +26,7 @@ const RenameTeamModal = ({
 }: IRenameTeamModalProps): JSX.Element => {
   const [name, setName] = useState(defaultName);
   const [errors, setErrors] = useState<{ [key: string]: string }>(
-    backendValidators
+    backendValidators,
   );
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const RenameTeamModal = ({
       setName(value);
       setErrors({});
     },
-    [setName]
+    [setName],
   );
 
   const onFormSubmit = (evt: React.MouseEvent<HTMLFormElement>) => {

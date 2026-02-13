@@ -14,7 +14,7 @@ describe("CanceledRunScriptActivityItem", () => {
 
   it("renders the activity content", () => {
     render(
-      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />
+      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
@@ -24,7 +24,7 @@ describe("CanceledRunScriptActivityItem", () => {
 
   it("does not render the cancel icon", () => {
     render(
-      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />
+      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -32,7 +32,7 @@ describe("CanceledRunScriptActivityItem", () => {
 
   it("does not render the show details icon", () => {
     render(
-      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />
+      <CanceledRunScriptActivityItem tab="past" activity={mockActivity} />,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();

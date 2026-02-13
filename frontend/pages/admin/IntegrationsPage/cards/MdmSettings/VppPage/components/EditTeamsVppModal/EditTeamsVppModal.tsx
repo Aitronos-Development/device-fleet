@@ -91,7 +91,7 @@ const isTokenUnassigned = (token: IMdmVppToken) => token.teams === null;
  */
 const getUnavailableTeamIds = (
   currentTokenId: number,
-  tokens: IMdmVppToken[]
+  tokens: IMdmVppToken[],
 ) => {
   const unavailableTeamIds: Record<string, boolean> = {};
   tokens.forEach((token) => {
@@ -110,7 +110,7 @@ export const getOptions = (
   availableTeams: ITeamSummary[],
   tokens: IMdmVppToken[],
   currentToken: IMdmVppToken,
-  pendingTeamIds: string[]
+  pendingTeamIds: string[],
 ) => {
   const allTeamsOption = {
     label: "All teams",
@@ -130,7 +130,7 @@ export const getOptions = (
 
   // Determine state of pending assignment
   const isPendingAllTeams = pendingTeamIds?.includes(
-    APP_CONTEXT_ALL_TEAMS_ID.toString()
+    APP_CONTEXT_ALL_TEAMS_ID.toString(),
   );
 
   // Case 1: All tokens are unassigned → show all options, including "All teams"
@@ -141,7 +141,7 @@ export const getOptions = (
   // Case 2: If another token (not current) is assigned "All teams", restrict everything unless current/pending choosing "all teams"
   if (
     tokens.some(
-      (token) => isTokenAllTeams(token) && token.id !== currentToken.id
+      (token) => isTokenAllTeams(token) && token.id !== currentToken.id,
     ) &&
     !isPendingAllTeams
   ) {
@@ -157,7 +157,7 @@ export const getOptions = (
   let filteredOptions = allOptions;
   if (anotherAssigned && !isPendingAllTeams) {
     filteredOptions = allOptions.filter(
-      (o) => o.value !== APP_CONTEXT_ALL_TEAMS_ID
+      (o) => o.value !== APP_CONTEXT_ALL_TEAMS_ID,
     );
   }
 
@@ -168,7 +168,7 @@ export const getOptions = (
   return filteredOptions.filter(
     (o) =>
       !unavailableTeamIds[o.value.toString()] ||
-      pendingTeamIds.includes(o.value.toString())
+      pendingTeamIds.includes(o.value.toString()),
   );
 };
 
@@ -184,7 +184,7 @@ const EditTeamsVppModal = ({
   // react-select uses a string of comma-separated values for multi-select so we're using a string
   // of ids here so that we don't need to worry about a team name including a comma
   const [selectedValue, setSelectedValue] = useState<string>(
-    selectedValueFromToken(currentToken)
+    selectedValueFromToken(currentToken),
   );
   const [isSaving, setIsSaving] = useState(false);
 
@@ -196,7 +196,7 @@ const EditTeamsVppModal = ({
             .map((v) => v.trim())
             .filter(Boolean)
         : [],
-    [selectedValue]
+    [selectedValue],
   );
 
   const options = useMemo(() => {
@@ -204,13 +204,14 @@ const EditTeamsVppModal = ({
       availableTeams || [],
       tokens,
       currentToken,
-      selectedValueArr
+      selectedValueArr,
     );
   }, [availableTeams, tokens, currentToken, selectedValueArr]);
 
-  const isAnyTokenAllTeams = useMemo(() => tokens.some(isTokenAllTeams), [
-    tokens,
-  ]);
+  const isAnyTokenAllTeams = useMemo(
+    () => tokens.some(isTokenAllTeams),
+    [tokens],
+  );
 
   const onChange = useCallback((val: string) => {
     setSelectedValue((prev) => updateSelectedValue(prev, val));
@@ -233,7 +234,7 @@ const EditTeamsVppModal = ({
         setIsSaving(false);
       }
     },
-    [currentToken.id, selectedValue, renderFlash, onSuccess]
+    [currentToken.id, selectedValue, renderFlash, onSuccess],
   );
 
   const isDropdownDisabled = options.length === 0 && isAnyTokenAllTeams;

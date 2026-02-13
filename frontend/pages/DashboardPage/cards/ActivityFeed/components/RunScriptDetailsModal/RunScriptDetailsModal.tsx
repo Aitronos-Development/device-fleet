@@ -30,7 +30,7 @@ const StatusMessageRunning = () => (
   <IconStatusMessage
     className={`${baseClass}__status-message`}
     iconName="pending-outline"
-    message="Script is running or will run when the host comes online."
+    message="Script is running or will run when the device comes online."
   />
 );
 
@@ -171,7 +171,7 @@ const RunScriptDetailsModal = ({
     () => {
       return scriptsAPI.getScriptResult(scriptExecutionId);
     },
-    { refetchOnWindowFocus: false, enabled: !!scriptExecutionId }
+    { refetchOnWindowFocus: false, enabled: !!scriptExecutionId },
   );
 
   // For scrollable modal

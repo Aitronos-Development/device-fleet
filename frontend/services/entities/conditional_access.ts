@@ -12,15 +12,19 @@ export type ConfirmMSConditionalAccessResponse = {
 
 const conditionalAccessService = {
   triggerMicrosoftConditionalAccess: (
-    msTenantId: string
+    msTenantId: string,
   ): Promise<TriggerMSConditionalStatusResponse> => {
     return sendRequest("POST", endpoints.CONDITIONAL_ACCESS_MICROSOFT, {
       microsoft_tenant_id: msTenantId,
     });
   },
-  confirmMicrosoftConditionalAccess: (): Promise<ConfirmMSConditionalAccessResponse> => {
-    return sendRequest("POST", endpoints.CONDITIONAL_ACCESS_MICROSOFT_CONFIRM);
-  },
+  confirmMicrosoftConditionalAccess:
+    (): Promise<ConfirmMSConditionalAccessResponse> => {
+      return sendRequest(
+        "POST",
+        endpoints.CONDITIONAL_ACCESS_MICROSOFT_CONFIRM,
+      );
+    },
   deleteMicrosoftConditionalAccess: () => {
     return sendRequest("DELETE", endpoints.CONDITIONAL_ACCESS_MICROSOFT);
   },
@@ -29,7 +33,7 @@ const conditionalAccessService = {
       "GET",
       endpoints.CONDITIONAL_ACCESS_IDP_APPLE_PROFILE,
       undefined,
-      "text"
+      "text",
     );
   },
   getIdpSigningCert: (): Promise<Blob> => {
@@ -37,7 +41,7 @@ const conditionalAccessService = {
       "GET",
       endpoints.CONDITIONAL_ACCESS_IDP_SIGNING_CERT,
       undefined,
-      "blob"
+      "blob",
     );
   },
 };

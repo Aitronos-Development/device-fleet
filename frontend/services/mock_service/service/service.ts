@@ -23,7 +23,7 @@ const splitRouteAndQueryString = (path: string) => {
 
   if (strings.length > 2) {
     throw new Error(
-      "Invalid usage: URL cannot contain more than one `?` and query string must follow format `?key=value&another_key=another_value`"
+      "Invalid usage: URL cannot contain more than one `?` and query string must follow format `?key=value&another_key=another_value`",
     );
   }
   if (strings.length === 1) {
@@ -56,7 +56,7 @@ Object.entries(RESPONSES).forEach(([method, paths]) => {
 const isPartMatch = (
   partToMatch: string,
   configPart: string,
-  wildcards: string[] = []
+  wildcards: string[] = [],
 ) => {
   return (
     partToMatch === configPart || wildcards.some((w) => configPart.includes(w)) // if a config part includes any wildcards, it matches with any value
@@ -71,7 +71,7 @@ const matchPathToResponse = (method: string, requestPath: string) => {
         requestParts.length === configParts.length &&
         requestParts.every((p, i) => isPartMatch(p, configParts[i], WILDCARDS))
       );
-    }
+    },
   );
 
   return results;
@@ -80,7 +80,7 @@ const matchPathToResponse = (method: string, requestPath: string) => {
 export const sendRequest = async (
   method = "GET",
   requestPath: string,
-  data?: unknown
+  data?: unknown,
 ): Promise<any> => {
   console.log("Mock service request URL: ", requestPath);
   console.log("Mock service request body: ", data);

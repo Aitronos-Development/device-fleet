@@ -87,43 +87,36 @@ const EditSoftwareModal = ({
     [`${baseClass}__package-form--disabled`]: isGitOpsCompatible,
   });
 
-  const [editSoftwareModalClasses, setEditSoftwareModalClasses] = useState(
-    baseClass
-  );
+  const [editSoftwareModalClasses, setEditSoftwareModalClasses] =
+    useState(baseClass);
   const [isUpdatingSoftware, setIsUpdatingSoftware] = useState(false);
-  const [
-    showConfirmSaveChangesModal,
-    setShowConfirmSaveChangesModal,
-  ] = useState(false);
+  const [showConfirmSaveChangesModal, setShowConfirmSaveChangesModal] =
+    useState(false);
   const [
     showPreviewEndUserExperienceModal,
     setShowPreviewEndUserExperienceModal,
   ] = useState(false);
 
-  const [
-    pendingPackageUpdates,
-    setPendingPackageUpdates,
-  ] = useState<IEditPackageFormData>({
-    software: null,
-    installScript: "",
-    selfService: false,
-    automaticInstall: false,
-    targetType: "",
-    customTarget: "",
-    labelTargets: {},
-    categories: [],
-  });
-  const [
-    pendingVppUpdates,
-    setPendingVppUpdates,
-  ] = useState<ISoftwareVppFormData>({
-    selfService: false,
-    automaticInstall: false,
-    targetType: "",
-    customTarget: "",
-    labelTargets: {},
-    categories: [],
-  });
+  const [pendingPackageUpdates, setPendingPackageUpdates] =
+    useState<IEditPackageFormData>({
+      software: null,
+      installScript: "",
+      selfService: false,
+      automaticInstall: false,
+      targetType: "",
+      customTarget: "",
+      labelTargets: {},
+      categories: [],
+    });
+  const [pendingVppUpdates, setPendingVppUpdates] =
+    useState<ISoftwareVppFormData>({
+      selfService: false,
+      automaticInstall: false,
+      targetType: "",
+      customTarget: "",
+      labelTargets: {},
+      categories: [],
+    });
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showFileProgressModal, setShowFileProgressModal] = useState(false);
 
@@ -132,7 +125,7 @@ const EditSoftwareModal = ({
     () => labelsAPI.summary(teamId).then((res) => getCustomLabels(res.labels)),
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   // Work around to not lose Edit Software modal data when Save changes modal opens
@@ -144,7 +137,7 @@ const EditSoftwareModal = ({
           showConfirmSaveChangesModal ||
           showPreviewEndUserExperienceModal ||
           (!!pendingPackageUpdates.software && isUpdatingSoftware),
-      })
+      }),
     );
   }, [
     showConfirmSaveChangesModal,
@@ -238,7 +231,7 @@ const EditSoftwareModal = ({
             {formData.selfService
               ? " The end user can install from Fleet Desktop."
               : ""}
-          </>
+          </>,
         );
       }
       refetchSoftwareTitle();
@@ -246,7 +239,7 @@ const EditSoftwareModal = ({
     } catch (e) {
       renderFlash(
         "error",
-        getErrorMessage(e, softwareInstaller as IAppStoreApp)
+        getErrorMessage(e, softwareInstaller as IAppStoreApp),
       );
     }
     setIsUpdatingSoftware(false);
@@ -304,14 +297,14 @@ const EditSoftwareModal = ({
           {formData.selfService
             ? " The end user can install from Fleet Desktop."
             : ""}
-        </>
+        </>,
       );
       onExit();
       refetchSoftwareTitle();
     } catch (e) {
       renderFlash(
         "error",
-        getErrorMessage(e, softwareInstaller as IAppStoreApp)
+        getErrorMessage(e, softwareInstaller as IAppStoreApp),
       );
     }
     setIsUpdatingSoftware(false);

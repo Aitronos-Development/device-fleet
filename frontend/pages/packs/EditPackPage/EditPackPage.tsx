@@ -65,7 +65,7 @@ const EditPacksPage = ({
     ({ queryKey }) => queriesAPI.loadAll(queryKey[0]),
     {
       select: (data) => data.queries,
-    }
+    },
   );
 
   const { data: storedPack } = useQuery<IStoredPackResponse, Error, IPack>(
@@ -73,7 +73,7 @@ const EditPacksPage = ({
     () => packsAPI.load(packId),
     {
       select: (data: IStoredPackResponse) => data.pack,
-    }
+    },
   );
 
   const {
@@ -85,16 +85,14 @@ const EditPacksPage = ({
     () => scheduledQueriesAPI.loadAll(packId),
     {
       select: (data: IStoredScheduledQueriesResponse) => data.scheduled,
-    }
+    },
   );
 
   const [targetsCount, setTargetsCount] = useState(0);
-  const [showPackQueryEditorModal, setShowPackQueryEditorModal] = useState(
-    false
-  );
-  const [showRemovePackQueryModal, setShowRemovePackQueryModal] = useState(
-    false
-  );
+  const [showPackQueryEditorModal, setShowPackQueryEditorModal] =
+    useState(false);
+  const [showRemovePackQueryModal, setShowRemovePackQueryModal] =
+    useState(false);
   const [selectedPackQuery, setSelectedPackQuery] = useState<IScheduledQuery>();
   const [selectedPackQueryIds, setSelectedPackQueryIds] = useState<
     number[] | never[]
@@ -129,7 +127,7 @@ const EditPacksPage = ({
 
       return false;
     },
-    []
+    [],
   );
 
   const togglePackQueryEditorModal = () => {
@@ -168,7 +166,7 @@ const EditPacksPage = ({
         ) {
           renderFlash(
             "error",
-            "Unable to update pack. Pack names must be unique."
+            "Unable to update pack. Pack names must be unique.",
           );
         } else {
           renderFlash("error", `Could not update pack. Please try again.`);
@@ -181,7 +179,7 @@ const EditPacksPage = ({
 
   const onPackQueryEditorSubmit = (
     formData: IPackQueryFormData,
-    editQuery: IScheduledQuery | undefined
+    editQuery: IScheduledQuery | undefined,
   ) => {
     setIsUpdatingPack(true);
     const request = editQuery
@@ -215,13 +213,13 @@ const EditPacksPage = ({
       .then(() => {
         renderFlash(
           "success",
-          `Successfully removed ${queryOrQueries} from this pack.`
+          `Successfully removed ${queryOrQueries} from this pack.`,
         );
       })
       .catch(() => {
         renderFlash(
           "error",
-          `Unable to remove ${queryOrQueries} from this pack. Please try again.`
+          `Unable to remove ${queryOrQueries} from this pack. Please try again.`,
         );
       })
       .finally(() => {

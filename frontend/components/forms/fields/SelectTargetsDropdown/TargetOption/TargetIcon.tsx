@@ -30,9 +30,8 @@ const TargetIcon = ({ target }: ITargetIconProps): JSX.Element => {
   };
 
   const targetClasses = classnames(`${baseClass}__icon`, {
-    [`${baseClass}__icon--${
-      isTargetHost(target) && target.status
-    }`]: isTargetHost(target),
+    [`${baseClass}__icon--${isTargetHost(target) && target.status}`]:
+      isTargetHost(target),
   });
 
   return <FleetIcon name={iconName()} className={targetClasses} />;

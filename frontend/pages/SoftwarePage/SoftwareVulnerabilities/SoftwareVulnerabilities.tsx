@@ -49,10 +49,8 @@ const SoftwareVulnerabilities = ({
   showExploitedVulnerabilitiesOnly,
 }: ISoftwareVulnerabilitiesProps) => {
   const [tableData, setTableData] = useState<IVulnerabilitiesResponse>();
-  const [
-    emptyStateReason,
-    setEmptyStateReason,
-  ] = useState<IVulnerabilitiesEmptyStateReason>();
+  const [emptyStateReason, setEmptyStateReason] =
+    useState<IVulnerabilitiesEmptyStateReason>();
 
   const queryParams = {
     page: currentPage,
@@ -101,7 +99,7 @@ const SoftwareVulnerabilities = ({
           }
         }
       },
-    }
+    },
   );
 
   // Calling software/vulnerabilities/:CVE endpoint when user searches with quotation marks
@@ -182,7 +180,7 @@ const SoftwareVulnerabilities = ({
           if (
             error?.data?.errors &&
             error.data.errors[0].reason.includes(
-              "That vulnerability (CVE) is not valid."
+              "That vulnerability (CVE) is not valid.",
             )
           ) {
             setTableData({
@@ -203,7 +201,7 @@ const SoftwareVulnerabilities = ({
             error?.data?.errors &&
             (error.data.errors[0].reason.includes("This is not a known CVE.") ||
               error.data.errors[0].reason.includes(
-                "was not found in the datastore"
+                "was not found in the datastore",
               ))
           ) {
             // FE validatation for CVE string
@@ -225,7 +223,7 @@ const SoftwareVulnerabilities = ({
         }
       },
       enabled: isExactMatchQuery && isSoftwareEnabled,
-    }
+    },
   );
 
   // If a user toggles between exact exploit and non-exploit,

@@ -162,7 +162,7 @@ const InstallSoftwareModal = ({
           };
         }),
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   const onUpdateInstallSoftware = useCallback(() => {
@@ -175,12 +175,12 @@ const InstallSoftwareModal = ({
 
   const onSelectPolicySoftware = (
     item: IFormPolicy,
-    { value }: ISwDropdownField
+    { value }: ISwDropdownField,
   ) => {
     // Software name needed for error message rendering
     const findSwNameById = () => {
       const foundTitle = titlesAvailableForInstall?.find(
-        (title) => title.id === value
+        (title) => title.id === value,
       );
       return foundTitle
         ? getDisplayedSoftwareName(foundTitle.name, foundTitle.display_name)
@@ -201,7 +201,7 @@ const InstallSoftwareModal = ({
       const policyPlatforms = policy.platform.split(",");
       return titlesAvailableForInstall
         ?.filter(
-          (title) => title.platform && policyPlatforms.includes(title.platform)
+          (title) => title.platform && policyPlatforms.includes(title.platform),
         )
         .map((title) => {
           return {
@@ -211,7 +211,7 @@ const InstallSoftwareModal = ({
           };
         });
     },
-    [titlesAvailableForInstall]
+    [titlesAvailableForInstall],
   );
 
   // Cache availableSoftwareOptions for each unique platform
@@ -234,14 +234,14 @@ const InstallSoftwareModal = ({
         // due to user-created a platform mismatch
         if (installOptionsByPlatformMismatchSelectedInstaller) {
           const currentSoftware = titlesAvailableForInstall?.find(
-            (title) => title.id === policy.swIdToInstall
+            (title) => title.id === policy.swIdToInstall,
           );
           if (currentSoftware) {
             options = [
               {
                 label: getDisplayedSoftwareName(
                   currentSoftware.name,
-                  currentSoftware.display_name
+                  currentSoftware.display_name,
                 ),
                 value: currentSoftware.id,
                 helpText: generateSoftwareOptionHelpText(currentSoftware),
@@ -291,7 +291,7 @@ const InstallSoftwareModal = ({
               isSelected="installSoftwareEnabled"
               disableSave={(changedItems) => {
                 return changedItems.some(
-                  (item) => item.installSoftwareEnabled && !item.swIdToInstall
+                  (item) => item.installSoftwareEnabled && !item.swIdToInstall,
                 )
                   ? "Add software to all selected policies to save."
                   : false;
@@ -322,7 +322,7 @@ const InstallSoftwareModal = ({
                           onSelectPolicySoftware(item, {
                             name: formPolicy.name,
                             value,
-                          })
+                          }),
                         )
                       }
                       placeholder="Select software"

@@ -14,7 +14,10 @@ describe("Status indicator", () => {
   it("renders optional tooltip on hover", async () => {
     const TOOLTIP_TEXT = "Online hosts will respond to a live query.";
     const { user } = renderWithSetup(
-      <StatusIndicator value="online" tooltip={{ tooltipText: TOOLTIP_TEXT }} />
+      <StatusIndicator
+        value="online"
+        tooltip={{ tooltipText: TOOLTIP_TEXT }}
+      />,
     );
 
     await user.hover(screen.getByText("Online"));

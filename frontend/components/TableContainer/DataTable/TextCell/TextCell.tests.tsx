@@ -20,7 +20,7 @@ describe("TextCell", () => {
 
   it("renders a default value when `value` is null, undefined, or an empty string after formatting", () => {
     const { rerender } = render(
-      <TextCell value="foo" formatter={() => null} />
+      <TextCell value="foo" formatter={() => null} />,
     );
     expect(screen.getByText(DEFAULT_EMPTY_CELL_VALUE)).toBeInTheDocument();
     rerender(<TextCell value="foo" formatter={() => undefined} />);

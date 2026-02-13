@@ -69,7 +69,7 @@ const BootstrapPackageListItem = ({
           </span>
           <span className={`${baseClass}__list-item-uploaded`}>
             {`Uploaded ${formatDistanceToNow(
-              new Date(bootstrapPackage.created_at)
+              new Date(bootstrapPackage.created_at),
             )} ago`}
           </span>
         </div>

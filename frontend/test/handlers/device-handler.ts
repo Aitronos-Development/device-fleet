@@ -42,7 +42,7 @@ export const customDeviceHandler = (overrides?: Partial<IDeviceUserResponse>) =>
           mdm: { enabled_and_configured: false },
         },
       },
-      overrides
+      overrides,
     );
     return HttpResponse.json(response);
   });
@@ -53,11 +53,11 @@ export const defaultMacAdminsHandler = http.get(
     return HttpResponse.json({
       macadmins: createMockMacAdmins(),
     });
-  }
+  },
 );
 
 export const customDeviceSoftwareHandler = (
-  overrides?: Partial<IGetDeviceSoftwareResponse>
+  overrides?: Partial<IGetDeviceSoftwareResponse>,
 ) =>
   http.get(baseUrl("/device/:token/software"), () => {
     return HttpResponse.json(createMockDeviceSoftwareResponse(overrides));
@@ -74,15 +74,15 @@ export const defaultDeviceCertificatesHandler = http.get(
       },
       count: 1,
     });
-  }
+  },
 );
 
 export const deviceSetupExperienceHandler = (
-  overrides?: Partial<IGetSetupExperienceStatusesResponse>
+  overrides?: Partial<IGetSetupExperienceStatusesResponse>,
 ) =>
   http.post(baseUrl("/device/:token/setup_experience/status"), () => {
     return HttpResponse.json(
-      createMockSetupSoftwareStatusesResponse(overrides)
+      createMockSetupSoftwareStatusesResponse(overrides),
     );
   });
 
@@ -115,5 +115,5 @@ export const getDeviceVppCommandResultHandler = http.get(
     return HttpResponse.json({
       results: [mdmCommand],
     });
-  }
+  },
 );

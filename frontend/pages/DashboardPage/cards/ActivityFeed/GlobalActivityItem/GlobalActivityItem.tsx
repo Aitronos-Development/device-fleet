@@ -43,7 +43,7 @@ const ACTIVITIES_WITH_DETAILS = new Set([
 ]);
 
 const getProfilesPlatformDisplayName = (
-  platform: "apple" | "windows" | "android"
+  platform: "apple" | "windows" | "android",
 ) => {
   switch (platform) {
     case "apple":
@@ -61,7 +61,7 @@ const getProfilesPlatformDisplayName = (
 const getProfileMessageSuffix = (
   isPremiumTier: boolean,
   platform: "apple" | "windows" | "android",
-  teamName?: string | null
+  teamName?: string | null,
 ) => {
   const platformDisplayName = getProfilesPlatformDisplayName(platform);
   let messageSuffix = <>all {platformDisplayName} hosts</>;
@@ -91,7 +91,7 @@ const getDiskEncryptionMessageSuffix = (teamName?: string | null) => {
 const getMacOSSetupAssistantMessage = (
   action: "added" | "deleted",
   name?: string,
-  teamName?: string | null
+  teamName?: string | null,
 ) => {
   const suffix = teamName ? (
     <>
@@ -113,8 +113,11 @@ const getMacOSSetupAssistantMessage = (
 
 const TAGGED_TEMPLATES = {
   liveQueryActivityTemplate: (activity: IActivity) => {
-    const { targets_count: count, query_name: queryName, stats } =
-      activity.details || {};
+    const {
+      targets_count: count,
+      query_name: queryName,
+      stats,
+    } = activity.details || {};
 
     const impactDescription = stats
       ? getPerformanceImpactDescription(stats)
@@ -136,7 +139,7 @@ const TAGGED_TEMPLATES = {
       );
     const hostCountCopy =
       count !== undefined
-        ? ` on ${count} ${count === 1 ? "host" : "hosts"}`
+        ? ` on ${count} ${count === 1 ? "device" : "devices"}`
         : "";
 
     return (
@@ -324,8 +327,12 @@ const TAGGED_TEMPLATES = {
   },
 
   mdmEnrolled: (activity: IActivity) => {
-    const { mdm_platform, platform = "", host_display_name, host_serial } =
-      activity.details || {};
+    const {
+      mdm_platform,
+      platform = "",
+      host_display_name,
+      host_serial,
+    } = activity.details || {};
 
     if (mdm_platform === "microsoft") {
       return (
@@ -404,7 +411,7 @@ const TAGGED_TEMPLATES = {
 
   editedAppleosMinVersion: (
     applePlatform: AppleDisplayPlatform,
-    activity: IActivity
+    activity: IActivity,
   ) => {
     const editedActivity =
       activity.details?.minimum_version === "" ? "removed" : "updated";
@@ -437,7 +444,7 @@ const TAGGED_TEMPLATES = {
 
   enabledAppleosUpdateNewHosts: (
     applePlatform: AppleDisplayPlatform,
-    activity: IActivity
+    activity: IActivity,
   ) => {
     const teamSection = activity.details?.team_id ? (
       <>
@@ -458,7 +465,7 @@ const TAGGED_TEMPLATES = {
 
   disabledAppleosUpdateNewHosts: (
     applePlatform: AppleDisplayPlatform,
-    activity: IActivity
+    activity: IActivity,
   ) => {
     const teamSection = activity.details?.team_id ? (
       <>
@@ -501,7 +508,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -524,7 +531,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -538,7 +545,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}{" "}
         via fleetctl.
       </>
@@ -561,7 +568,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "android",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -584,7 +591,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "android",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -598,7 +605,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "android",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}{" "}
         via fleetctl.
       </>
@@ -612,7 +619,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "android",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}{" "}
         via fleetctl.
       </>
@@ -665,7 +672,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "windows",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -688,7 +695,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "windows",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -702,7 +709,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "windows",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}{" "}
         via fleetctl.
       </>
@@ -720,19 +727,19 @@ const TAGGED_TEMPLATES = {
     return getMacOSSetupAssistantMessage(
       "added",
       activity.details?.name,
-      activity.details?.team_name
+      activity.details?.team_name,
     );
   },
   deletedMacOSSetupAssistant: (activity: IActivity) => {
     return getMacOSSetupAssistantMessage(
       "deleted",
       activity.details?.name,
-      activity.details?.team_name
+      activity.details?.team_name,
     );
   },
   defaultActivityTemplate: (activity: IActivity) => {
     const entityName = find(activity.details, (_, key) =>
-      key.includes("_name")
+      key.includes("_name"),
     );
 
     const activityType = lowerCase(activity.type).replace(" saved", "");
@@ -1110,7 +1117,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -1125,7 +1132,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}
         .
       </>
@@ -1140,7 +1147,7 @@ const TAGGED_TEMPLATES = {
         {getProfileMessageSuffix(
           isPremiumTier,
           "apple",
-          activity.details?.team_name
+          activity.details?.team_name,
         )}{" "}
         via fleetctl.
       </>
@@ -1859,7 +1866,7 @@ const getDetail = (activity: IActivity, isPremiumTier: boolean) => {
     case ActivityType.DeletedCustomESTProxy:
     case ActivityType.DeletedSmallstep: {
       return TAGGED_TEMPLATES.deletedCertificateAuthority(
-        activity.details?.name
+        activity.details?.name,
       );
     }
     case ActivityType.EditedCustomScepProxy:
@@ -1868,7 +1875,7 @@ const getDetail = (activity: IActivity, isPremiumTier: boolean) => {
     case ActivityType.EditedCustomESTProxy:
     case ActivityType.EditedSmallstep: {
       return TAGGED_TEMPLATES.editedCertificateAuthority(
-        activity.details?.name
+        activity.details?.name,
       );
     }
     case ActivityType.CreatedWindowsProfile: {
@@ -1973,13 +1980,13 @@ const getDetail = (activity: IActivity, isPremiumTier: boolean) => {
     case ActivityType.CreatedDeclarationProfile: {
       return TAGGED_TEMPLATES.createdDeclarationProfile(
         activity,
-        isPremiumTier
+        isPremiumTier,
       );
     }
     case ActivityType.DeletedDeclarationProfile: {
       return TAGGED_TEMPLATES.deletedDeclarationProfile(
         activity,
-        isPremiumTier
+        isPremiumTier,
       );
     }
     case ActivityType.EditedDeclarationProfile: {

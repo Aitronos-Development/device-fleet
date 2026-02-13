@@ -8,7 +8,7 @@ const DEFAULT_RESULTS_NAME = "results";
 export const generateResultsCountText = (
   name: string = DEFAULT_RESULTS_NAME,
   resultsCount?: number,
-  singularName?: string
+  singularName?: string,
 ): string => {
   if (!resultsCount || resultsCount === 0) return `0 ${name}`;
 

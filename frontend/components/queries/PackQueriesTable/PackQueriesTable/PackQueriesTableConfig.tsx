@@ -80,7 +80,10 @@ interface IPackQueriesTableData extends IScheduledQuery {
 // NOTE: cellProps come from react-table
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 const generateTableHeaders = (
-  actionSelectHandler: (value: string, scheduled_query: IScheduledQuery) => void
+  actionSelectHandler: (
+    value: string,
+    scheduled_query: IScheduledQuery,
+  ) => void,
 ): IDataColumn[] => {
   return [
     {
@@ -198,7 +201,7 @@ const generateTableHeaders = (
 
 const generateLoggingTypeString = (
   snapshot: boolean,
-  removed: boolean
+  removed: boolean,
 ): string => {
   if (snapshot) {
     return "Snapshot";
@@ -267,7 +270,7 @@ const generateActionDropdownOptions = (): IDropdownOption[] => {
 };
 
 const enhancePackQueriesData = (
-  packQueries: IScheduledQuery[]
+  packQueries: IScheduledQuery[],
 ): IPackQueriesTableData[] => {
   return packQueries.map((query) => {
     const scheduledQueryPerformance = {
@@ -304,7 +307,7 @@ const enhancePackQueriesData = (
 };
 
 const generateDataSet = (
-  queries: IScheduledQuery[]
+  queries: IScheduledQuery[],
 ): IPackQueriesTableData[] => {
   // Cannot pass undefined to enhancePackQueriesData
   if (!queries) {

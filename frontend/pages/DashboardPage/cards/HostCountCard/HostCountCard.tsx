@@ -53,7 +53,7 @@ const HostCountCard = ({
     ) : (
       <div
         className={`${baseClass}__count ${baseClass}__count--${kebabCase(
-          title
+          title,
         )}`}
       >
         {internationalNumberFormat(count)}

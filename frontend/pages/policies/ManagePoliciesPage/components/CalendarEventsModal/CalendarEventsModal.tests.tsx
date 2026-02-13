@@ -51,18 +51,18 @@ describe("CalendarEventsModal - component", () => {
         enabled
         url="https://server.com/example"
         teamId={2}
-      />
+      />,
     );
 
     expect(screen.queryByText(/Resolution webhook URL/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Save/i })).toBeInTheDocument();
     await user.click(
-      screen.getByRole("button", { name: /Preview calendar event/i })
+      screen.getByRole("button", { name: /Preview calendar event/i }),
     );
     expect(
       screen.getByText(
-        /reserved this time to make some changes to your work computer/i
-      )
+        /reserved this time to make some changes to your work computer/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -88,21 +88,21 @@ describe("CalendarEventsModal - component", () => {
         enabled
         url="https://server.com/example"
         teamId={2}
-      />
+      />,
     );
 
     expect(screen.queryByText(/enabled/i)).not.toBeInTheDocument(); // Admin only
     expect(
-      screen.queryByText(/Resolution webhook URL/i)
+      screen.queryByText(/Resolution webhook URL/i),
     ).not.toBeInTheDocument(); // Admin only
     expect(screen.queryByRole("button", { name: /Save/i })).toBeInTheDocument();
     await user.click(
-      screen.getByRole("button", { name: /Preview calendar event/i })
+      screen.getByRole("button", { name: /Preview calendar event/i }),
     );
     expect(
       screen.getByText(
-        /reserved this time to make some changes to your work computer/i
-      )
+        /reserved this time to make some changes to your work computer/i,
+      ),
     ).toBeInTheDocument();
   });
 });

@@ -115,7 +115,7 @@ const SaveAsNewQueryModal = ({
 
       setFormErrors(errsToSet);
     },
-    [formData, formErrors]
+    [formData, formErrors],
   );
 
   const onInputBlur = () => {
@@ -133,7 +133,7 @@ const SaveAsNewQueryModal = ({
         },
       }));
     },
-    [userTeams]
+    [userTeams],
   );
 
   // take all existing data for query from parent, allow editing name and team
@@ -164,7 +164,7 @@ const SaveAsNewQueryModal = ({
         getPathWithQueryParams(PATHS.QUERY_DETAILS(newQuery.id), {
           team_id: newQuery.team_id,
           host_id: hostId,
-        })
+        }),
       );
     } catch (createError: unknown) {
       let errFlash = "Could not create query. Please try again.";

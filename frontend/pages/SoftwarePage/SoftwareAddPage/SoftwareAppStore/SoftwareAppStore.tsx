@@ -37,13 +37,13 @@ const SoftwareAppStore = ({
   const platform = location.query.platform || "apple";
 
   const onDestinationChange = (
-    selectedPlatform: SingleValue<CustomOptionType>
+    selectedPlatform: SingleValue<CustomOptionType>,
   ) => {
     router.push(
       getPathWithQueryParams(PATHS.SOFTWARE_ADD_APP_STORE, {
         team_id: currentTeamId,
         platform: selectedPlatform?.value,
-      })
+      }),
     );
   };
 

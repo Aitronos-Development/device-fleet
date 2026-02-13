@@ -14,7 +14,7 @@ import { generateTableHeaders } from "./LabelHostTargetTableConfig";
 
 const baseClass = "ManualLabelForm";
 
-export const LABEL_TARGET_HOSTS_INPUT_LABEL = "Select hosts";
+export const LABEL_TARGET_HOSTS_INPUT_LABEL = "Select devices";
 const LABEL_TARGET_HOSTS_INPUT_PLACEHOLDER =
   "Search name, hostname, or serial number";
 const DEBOUNCE_DELAY = 500;
@@ -51,9 +51,8 @@ const ManualLabelForm = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [isDebouncing, setIsDebouncing] = useState(false);
-  const [targetedHosts, setTargetedHosts] = useState<IHost[]>(
-    defaultTargetedHosts
-  );
+  const [targetedHosts, setTargetedHosts] =
+    useState<IHost[]>(defaultTargetedHosts);
 
   const targetdHostsIds = targetedHosts.map((host) => host.id);
 
@@ -63,7 +62,7 @@ const ManualLabelForm = ({
       setIsDebouncing(false);
     },
     DEBOUNCE_DELAY,
-    { trailing: true }
+    { trailing: true },
   );
 
   // TODO: find a better way to debounce search requests
@@ -94,7 +93,7 @@ const ManualLabelForm = ({
     {
       select: (data) => data.hosts,
       enabled: searchQuery !== "",
-    }
+    },
   );
 
   const onHostSelect = (row: Row<IHost>) => {
@@ -104,13 +103,13 @@ const ManualLabelForm = ({
 
   const onHostRemove = (row: Row<IHost>) => {
     setTargetedHosts((prevHosts) =>
-      prevHosts.filter((h) => h.id !== row.original.id)
+      prevHosts.filter((h) => h.id !== row.original.id),
     );
   };
 
   const onSaveNewLabel = (
     labelFormData: ILabelFormData,
-    labelFormDataValid: boolean
+    labelFormDataValid: boolean,
   ) => {
     if (labelFormDataValid) {
       // values from LabelForm component must be valid too

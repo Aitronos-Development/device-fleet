@@ -15,7 +15,7 @@ describe("InstallerStatusTable", () => {
         softwareId={123}
         teamId={5}
         status={{ installed: 0, pending: 1, failed: 3 }}
-      />
+      />,
     );
 
     // Check cell values (always "hosts", even for 1)
@@ -37,7 +37,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isScriptPackage={false}
-      />
+      />,
     );
 
     let headers = screen.getAllByRole("columnheader");
@@ -51,7 +51,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isScriptPackage
-      />
+      />,
     );
 
     headers = screen.getAllByRole("columnheader");
@@ -68,7 +68,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp={false}
-      />
+      />,
     );
 
     let pendingHeader = screen.getByText(/pending/i);
@@ -77,7 +77,7 @@ describe("InstallerStatusTable", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet is installing\/uninstalling or will/i)
+        screen.getByText(/Fleet is installing\/uninstalling or will/i),
       ).toBeInTheDocument();
     });
 
@@ -88,7 +88,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp
-      />
+      />,
     );
 
     pendingHeader = screen.getByText(/pending/i);
@@ -97,7 +97,7 @@ describe("InstallerStatusTable", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Software will be installed or configuration will/i)
+        screen.getByText(/Software will be installed or configuration will/i),
       ).toBeInTheDocument();
     });
   });
@@ -109,7 +109,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp={false}
-      />
+      />,
     );
 
     let installedHeader = screen.getByText(/installed/i);
@@ -118,7 +118,7 @@ describe("InstallerStatusTable", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Software is installed on these hosts/i)
+        screen.getByText(/Software is installed on these hosts/i),
       ).toBeInTheDocument();
     });
 
@@ -128,7 +128,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp
-      />
+      />,
     );
 
     installedHeader = screen.getByText(/installed/i);
@@ -138,7 +138,7 @@ describe("InstallerStatusTable", () => {
     // Installed tooltip returns null for Android Play Store
     await waitFor(() => {
       expect(
-        screen.queryByText(/Software is installed on these hosts/i)
+        screen.queryByText(/Software is installed on these hosts/i),
       ).not.toBeInTheDocument();
     });
   });
@@ -150,7 +150,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp={false}
-      />
+      />,
     );
 
     let failedHeader = screen.getByText(/failed/i);
@@ -159,7 +159,7 @@ describe("InstallerStatusTable", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/These hosts failed to install\/uninstall software/i)
+        screen.getByText(/These hosts failed to install\/uninstall software/i),
       ).toBeInTheDocument();
     });
 
@@ -169,7 +169,7 @@ describe("InstallerStatusTable", () => {
         teamId={1}
         status={{ installed: 0, pending: 0, failed: 0 }}
         isAndroidPlayStoreApp
-      />
+      />,
     );
 
     failedHeader = screen.getByText(/failed/i);
@@ -179,8 +179,8 @@ describe("InstallerStatusTable", () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          /Software failed to install or configuration failed to apply/i
-        )
+          /Software failed to install or configuration failed to apply/i,
+        ),
       ).toBeInTheDocument();
     });
   });

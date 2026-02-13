@@ -503,7 +503,7 @@ export default {
   },
   loadHostDetailsExtension: (
     hostID: number,
-    extension: ILoadHostDetailsExtension
+    extension: ILoadHostDetailsExtension,
   ) => {
     const { HOSTS } = endpoints;
     const path = `${HOSTS}/${hostID}/${extension}`;
@@ -631,7 +631,7 @@ export default {
   },
 
   getHostSoftware: (
-    params: IHostSoftwareQueryKey
+    params: IHostSoftwareQueryKey,
   ): Promise<IGetHostSoftwareResponse> => {
     const { HOST_SOFTWARE } = endpoints;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -645,7 +645,7 @@ export default {
     const { HOST_SOFTWARE_PACKAGE_INSTALL } = endpoints;
     return sendRequest(
       "POST",
-      HOST_SOFTWARE_PACKAGE_INSTALL(hostId, softwareId)
+      HOST_SOFTWARE_PACKAGE_INSTALL(hostId, softwareId),
     );
   },
 
@@ -653,7 +653,7 @@ export default {
     const { HOST_SOFTWARE_PACKAGE_UNINSTALL } = endpoints;
     return sendRequest(
       "POST",
-      HOST_SOFTWARE_PACKAGE_UNINSTALL(hostId, softwareId)
+      HOST_SOFTWARE_PACKAGE_UNINSTALL(hostId, softwareId),
     );
   },
 

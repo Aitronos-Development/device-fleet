@@ -17,7 +17,7 @@ const DEFAULT_ACTIVITY_MOCK: IActivity = {
 };
 
 export const createMockActivity = (
-  overrides?: Partial<IActivity>
+  overrides?: Partial<IActivity>,
 ): IActivity => {
   return { ...DEFAULT_ACTIVITY_MOCK, ...overrides };
 };
@@ -29,7 +29,7 @@ const DEFAULT_HOST_PAST_ACTIVITY_MOCK: IHostPastActivity = {
 };
 
 export const createMockHostPastActivity = (
-  overrides?: Partial<IHostPastActivity>
+  overrides?: Partial<IHostPastActivity>,
 ): IHostPastActivity => {
   return { ...DEFAULT_HOST_PAST_ACTIVITY_MOCK, ...overrides };
 };

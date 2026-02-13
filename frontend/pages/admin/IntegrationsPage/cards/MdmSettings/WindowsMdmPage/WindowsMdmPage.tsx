@@ -44,7 +44,7 @@ const useSetWindowsMdm = ({
           windows_enabled_and_configured: enableMdm,
           windows_migration_enabled: enableAutoMigration,
         },
-        true
+        true,
       );
       setConfig(updatedConfig);
       renderFlash("success", "Windows MDM settings successfully updated.", {
@@ -71,10 +71,10 @@ const WindowsMdmPage = ({ router }: IWindowsMdmPageProps) => {
   const gitOpsModeEnabled = config?.gitops.gitops_mode_enabled;
 
   const [mdmOn, setMdmOn] = useState(
-    config?.mdm?.windows_enabled_and_configured ?? false
+    config?.mdm?.windows_enabled_and_configured ?? false,
   );
   const [autoMigration, setAutoMigration] = useState(
-    config?.mdm?.windows_migration_enabled ?? false
+    config?.mdm?.windows_migration_enabled ?? false,
   );
   const [enrollmentType, setEnrollmentType] = useState<
     "automatic" | "manual" | null
@@ -158,7 +158,7 @@ const WindowsMdmPage = ({ router }: IWindowsMdmPageProps) => {
                 checked={enrollmentType === "automatic"}
                 onChange={onChangeEnrollmentType}
                 disabled={!mdmOn}
-                helpText="MDM is turned on when Fleet's agent is installed on Windows hosts (excluding servers)."
+                helpText="MDM is turned on when Fleet's agent is installed on Windows devices (excluding servers)."
               />
               <Radio
                 id="manual-enrollment"

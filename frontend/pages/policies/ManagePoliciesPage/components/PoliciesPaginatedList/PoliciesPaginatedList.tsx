@@ -43,7 +43,7 @@ interface IPoliciesPaginatedListProps {
   isSelected: string | ((item: IFormPolicy) => boolean);
   renderItemRow?: (
     item: IFormPolicy,
-    onChange: (item: IFormPolicy) => void
+    onChange: (item: IFormPolicy) => void,
   ) => ReactElement | false | null | undefined;
   onToggleItem: (item: IFormPolicy) => IFormPolicy;
   /** A function defining the conditions under which to disable a policy. */
@@ -75,7 +75,7 @@ function PoliciesPaginatedList(
     teamId,
     helpText,
   }: IPoliciesPaginatedListProps,
-  ref: Ref<IPaginatedListHandle<IFormPolicy>>
+  ref: Ref<IPaginatedListHandle<IFormPolicy>>,
 ) {
   const { config } = useContext(AppContext);
 
@@ -117,7 +117,7 @@ function PoliciesPaginatedList(
       }
       setSaveDisabled(disableSave(changedItems));
     },
-    [disableSave]
+    [disableSave],
   );
 
   // Fetch a single page of policies.
@@ -158,7 +158,7 @@ function PoliciesPaginatedList(
   }
 
   const marshallApiResponse = (
-    policiesResponse: ILoadAllPoliciesResponse | ILoadTeamPoliciesResponse
+    policiesResponse: ILoadAllPoliciesResponse | ILoadTeamPoliciesResponse,
   ): IFormPolicy[] => {
     return (policiesResponse.policies || []).map((policy) => {
       return {

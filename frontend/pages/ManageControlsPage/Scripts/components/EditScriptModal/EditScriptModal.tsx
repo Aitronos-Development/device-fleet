@@ -109,7 +109,7 @@ const EditScriptModal = ({
       onSuccess: (curScriptContent_) => {
         setScriptFormData(curScriptContent_);
       },
-    }
+    },
   );
 
   const onChange = (value: string) => {
@@ -178,9 +178,9 @@ const EditScriptModal = ({
             value={scriptFormData}
           />
           <div className="form-field__help-text">
-            To run this script on a host, go to the{" "}
+            To run this script on a device, go to the{" "}
             <CustomLink
-              text="Hosts"
+              text="Devices"
               url={getPathWithQueryParams(paths.MANAGE_HOSTS, {
                 team_id: currentTeam?.id,
               })}

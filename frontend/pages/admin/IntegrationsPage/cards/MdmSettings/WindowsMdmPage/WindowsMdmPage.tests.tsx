@@ -23,8 +23,8 @@ describe("WindowsMdmPage", () => {
     expect(screen.getByRole("switch")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Turns on MDM for Windows hosts that enroll to Fleet (excluding servers)."
-      )
+        "Turns on MDM for Windows hosts that enroll to Fleet (excluding servers).",
+      ),
     ).toBeInTheDocument();
 
     // no end user experience form

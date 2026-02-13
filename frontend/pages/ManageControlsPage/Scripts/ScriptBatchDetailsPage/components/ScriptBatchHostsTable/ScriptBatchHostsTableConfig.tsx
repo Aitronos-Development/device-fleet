@@ -41,7 +41,7 @@ const ScriptOutputCell = (cellProps: CellProps<IScriptBatchHostResult>) => {
 };
 
 const generateColumnConfigs = (
-  hostStatus: ScriptBatchHostStatus
+  hostStatus: ScriptBatchHostStatus,
 ): IScriptBatchHostsTableConfig[] => {
   let columns: IScriptBatchHostsTableConfig[] = [
     {

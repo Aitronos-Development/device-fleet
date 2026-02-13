@@ -33,7 +33,7 @@ const DEFAULT_HOST_CERTIFICATE_MOCK: IHostCertificate = {
 };
 
 export const createMockHostCertificate = (
-  overrides?: Partial<IHostCertificate>
+  overrides?: Partial<IHostCertificate>,
 ): IHostCertificate => {
   return { ...DEFAULT_HOST_CERTIFICATE_MOCK, ...overrides };
 };
@@ -48,7 +48,7 @@ const DEFAULT_HOST_CERTIFICATES_RESPONSE_MOCK: IGetHostCertificatesResponse = {
 };
 
 export const createMockGetHostCertificatesResponse = (
-  overrides?: Partial<IGetHostCertificatesResponse>
+  overrides?: Partial<IGetHostCertificatesResponse>,
 ): IGetHostCertificatesResponse => {
   return { ...DEFAULT_HOST_CERTIFICATES_RESPONSE_MOCK, ...overrides };
 };
@@ -60,7 +60,7 @@ const DEFAULT_CERT_AUTHORITY_PARTIAL_MOCK: ICertificateAuthorityPartial = {
 };
 
 export const createMockCertificateAuthorityPartial = (
-  overrides?: Partial<ICertificateAuthorityPartial>
+  overrides?: Partial<ICertificateAuthorityPartial>,
 ): ICertificateAuthorityPartial => {
   return { ...DEFAULT_CERT_AUTHORITY_PARTIAL_MOCK, ...overrides };
 };
@@ -74,7 +74,7 @@ const DEFAULT_ANDROID_CERT_MOCK: ICertificate = {
 };
 
 export const createMockAndroidCert = (
-  overrides?: Partial<ICertificate>
+  overrides?: Partial<ICertificate>,
 ): ICertificate => {
   return { ...DEFAULT_ANDROID_CERT_MOCK, ...overrides };
 };

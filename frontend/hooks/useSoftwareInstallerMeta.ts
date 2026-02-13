@@ -41,7 +41,7 @@ export interface UseSoftwareInstallerResult {
  * (FMA, VPP, Google Playstore Apps, custom packages)
  * from ISoftwareTitleDetails to be used in the UI  */
 export const useSoftwareInstaller = (
-  softwareTitle: ISoftwareTitleDetails
+  softwareTitle: ISoftwareTitleDetails,
 ): UseSoftwareInstallerResult | undefined => {
   const appContext = useContext(AppContext);
 
@@ -78,9 +78,8 @@ export const useSoftwareInstaller = (
         ? softwareInstaller?.app_store_id
         : undefined;
 
-    const {
-      automatic_install_policies: automaticInstallPolicies,
-    } = softwareInstaller;
+    const { automatic_install_policies: automaticInstallPolicies } =
+      softwareInstaller;
 
     const {
       isGlobalAdmin,

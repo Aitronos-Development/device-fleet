@@ -17,7 +17,7 @@ const Tag = ({ icon, text, className, onClick }: ITagProps) => {
   const classNames = classnames(
     baseClass,
     className,
-    onClick && `${baseClass}__clickable-tag`
+    onClick && `${baseClass}__clickable-tag`,
   );
 
   const content = (

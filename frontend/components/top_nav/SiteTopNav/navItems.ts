@@ -27,7 +27,7 @@ export default (
   isAnyTeamAdmin = false,
   isAnyTeamMaintainer = false,
   isGlobalMaintainer = false,
-  isNoAccess = false
+  isNoAccess = false,
 ): INavItem[] => {
   if (!user) {
     return [];
@@ -53,7 +53,7 @@ export default (
 
   const navItems: INavItem[] = [
     {
-      name: "Hosts",
+      name: "Devices",
       location: {
         regex: new RegExp(`^${URL_PREFIX}/hosts/`),
         pathname: PATHS.MANAGE_HOSTS,

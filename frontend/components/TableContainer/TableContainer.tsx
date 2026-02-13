@@ -192,7 +192,7 @@ const TableContainer = <T,>({
   const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
   const [sortHeader, setSortHeader] = useState(defaultSortHeader || "");
   const [sortDirection, setSortDirection] = useState(
-    defaultSortDirection || ""
+    defaultSortDirection || "",
   );
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(pageIndex);
   const [clientFilterCount, setClientFilterCount] = useState<number>();
@@ -241,7 +241,7 @@ const TableContainer = <T,>({
         setSortDirection(direction);
       }
     },
-    [defaultSortHeader, defaultSortDirection, setSortHeader, setSortDirection]
+    [defaultSortHeader, defaultSortDirection, setSortHeader, setSortDirection],
   );
 
   const onSearchQueryChange = (value: string) => {
@@ -254,7 +254,7 @@ const TableContainer = <T,>({
         setCurrentPageIndex(newPage);
       }
     },
-    [isClientSidePagination]
+    [isClientSidePagination],
   );
 
   useDeepEffect(() => {

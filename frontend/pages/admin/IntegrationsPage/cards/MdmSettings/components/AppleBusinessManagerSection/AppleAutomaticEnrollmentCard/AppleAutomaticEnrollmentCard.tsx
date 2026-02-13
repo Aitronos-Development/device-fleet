@@ -17,7 +17,7 @@ const AppleAutomaticEnrollmentCard = ({
   configured,
 }: IAppleAutomaticEnrollmentCardProps) => {
   const AppleMdmDisabledCard = (
-    <SectionCard header="Automatic enrollment for Apple (macOS, iOS, iPadOS) hosts.">
+    <SectionCard header="Automatic enrollment for Apple (macOS, iOS, iPadOS) devices.">
       To enable automatic enrollment for macOS, iOS, and iPadOS hosts, first
       turn on Apple MDM.
     </SectionCard>
@@ -40,7 +40,7 @@ const AppleAutomaticEnrollmentCard = ({
 
   const AbmNotConfiguredCard = (
     <SectionCard
-      header="Apple (macOS, iOS, iPadOS) company-owned and personal hosts enrollment"
+      header="Apple (macOS, iOS, iPadOS) company-owned and personal devices enrollment"
       cta={
         <Button className="add-abm-button" onClick={viewDetails}>
           Add ABM

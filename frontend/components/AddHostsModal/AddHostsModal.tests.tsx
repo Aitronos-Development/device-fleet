@@ -21,7 +21,7 @@ describe("AddHostsModal", () => {
     });
 
     render(
-      <AddHostsModal isAnyTeamSelected={false} isLoading onCancel={noop} />
+      <AddHostsModal isAnyTeamSelected={false} isLoading onCancel={noop} />,
     );
     const loadingSpinner = screen.getByTestId("spinner");
     expect(loadingSpinner).toBeVisible();
@@ -44,7 +44,7 @@ describe("AddHostsModal", () => {
         enrollSecret={ENROLL_SECRET}
         isLoading={false}
         onCancel={noop}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("tab", { name: "macOS" }));
@@ -65,7 +65,7 @@ describe("AddHostsModal", () => {
 
     await user.click(screen.getByRole("tab", { name: "ChromeOS" }));
     const extensionId = screen.getByDisplayValue(
-      /fleeedmmihkfkeemmipgmhhjemlljidg/i
+      /fleeedmmihkfkeemmipgmhhjemlljidg/i,
     );
     expect(extensionId).toBeInTheDocument();
     expect(screen.queryByText(/--enable-scripts/i)).not.toBeInTheDocument();
@@ -83,11 +83,11 @@ describe("AddHostsModal", () => {
 
     await user.click(screen.getByText(/Plain osquery/i));
     const downloadEnrollSecret = screen.getByText(
-      /Download your enroll secret/i
+      /Download your enroll secret/i,
     );
     expect(downloadEnrollSecret).toBeInTheDocument();
     const osquerydCommand = screen.getByDisplayValue(
-      /osqueryd --flagfile=flagfile.txt --verbose/i
+      /osqueryd --flagfile=flagfile.txt --verbose/i,
     );
     expect(osquerydCommand).toBeInTheDocument();
     expect(screen.queryByText(/--enable-scripts/i)).not.toBeInTheDocument();
@@ -111,12 +111,12 @@ describe("AddHostsModal", () => {
         enrollSecret={ENROLL_SECRET}
         isLoading={false}
         onCancel={noop}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("tab", { name: "iOS & iPadOS" }));
     expect(
-      screen.queryByText(/Send this to your end users:/i)
+      screen.queryByText(/Send this to your end users:/i),
     ).toBeInTheDocument();
   });
 
@@ -138,7 +138,7 @@ describe("AddHostsModal", () => {
         enrollSecret={ENROLL_SECRET}
         isLoading={false}
         onCancel={noop}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("tab", { name: "Android" }));
@@ -162,7 +162,7 @@ describe("AddHostsModal", () => {
         enrollSecret={ENROLL_SECRET}
         isLoading={false}
         onCancel={noop}
-      />
+      />,
     );
 
     const regex = new RegExp(`${ENROLL_SECRET}`);
@@ -188,7 +188,7 @@ describe("AddHostsModal", () => {
         isLoading={false}
         onCancel={noop}
         openEnrollSecretModal={noop}
-      />
+      />,
     );
 
     const text = screen.getByText("Something's gone wrong.");
@@ -220,7 +220,7 @@ describe("AddHostsModal", () => {
         enrollSecret={ENROLL_SECRET}
         isLoading={false}
         onCancel={noop}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("tab", { name: "macOS" }));
@@ -240,7 +240,7 @@ describe("AddHostsModal", () => {
 
     await user.click(screen.getByRole("tab", { name: "ChromeOS" }));
     const extensionId = screen.getByDisplayValue(
-      /fleeedmmihkfkeemmipgmhhjemlljidg/i
+      /fleeedmmihkfkeemmipgmhhjemlljidg/i,
     );
     expect(extensionId).toBeInTheDocument();
     expect(screen.queryByText(/--enable-scripts/i)).not.toBeInTheDocument();
@@ -252,11 +252,11 @@ describe("AddHostsModal", () => {
 
     await user.click(screen.getByText(/Plain osquery/i));
     const downloadEnrollSecret = screen.getByText(
-      /Download your enroll secret/i
+      /Download your enroll secret/i,
     );
     expect(downloadEnrollSecret).toBeInTheDocument();
     const osquerydCommand = screen.getByDisplayValue(
-      /osqueryd --flagfile=flagfile.txt --verbose/i
+      /osqueryd --flagfile=flagfile.txt --verbose/i,
     );
     expect(osquerydCommand).toBeInTheDocument();
     expect(screen.queryByText(/--enable-scripts/i)).not.toBeInTheDocument();

@@ -41,7 +41,7 @@ const ActivityFeedAutomationsModal = ({
   });
 
   const [formErrors, setFormErrors] = useState<Record<string, string | null>>(
-    {}
+    {},
   );
   const [showExamplePayload, setShowExamplePayload] = useState(false);
 

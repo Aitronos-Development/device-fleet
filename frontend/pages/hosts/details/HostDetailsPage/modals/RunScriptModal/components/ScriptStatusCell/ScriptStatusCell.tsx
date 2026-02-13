@@ -46,13 +46,12 @@ const ScriptStatusCell = ({ lastExecution }: IScriptStatusCellProps) => {
     return <TextCell value={null} />;
   }
 
-  const { displayText, iconStatus, tooltip } = STATUS_DISPLAY_CONFIG[
-    lastExecution.status
-  ];
+  const { displayText, iconStatus, tooltip } =
+    STATUS_DISPLAY_CONFIG[lastExecution.status];
 
   const humanizedExecutedAt = formatDistanceToNow(
     new Date(lastExecution.executed_at),
-    { includeSeconds: true }
+    { includeSeconds: true },
   );
 
   return (

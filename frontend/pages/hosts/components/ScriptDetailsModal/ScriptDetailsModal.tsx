@@ -115,7 +115,7 @@ const ScriptDetailsModal = ({
     {
       refetchOnWindowFocus: false,
       enabled: !selectedScriptContent && !!scriptId,
-    }
+    },
   );
 
   // For scrollable modal
@@ -168,7 +168,7 @@ const ScriptDetailsModal = ({
         default: // do nothing
       }
     },
-    [onClickRunDetails, onClickRun]
+    [onClickRunDetails, onClickRun],
   );
 
   const shouldShowFooter =
@@ -214,7 +214,7 @@ const ScriptDetailsModal = ({
                     onChange={(value) =>
                       onSelectMoreActions(
                         value,
-                        selectedScriptDetails as IHostScript
+                        selectedScriptDetails as IHostScript,
                       )
                     }
                     placeholder="More actions"
@@ -222,7 +222,7 @@ const ScriptDetailsModal = ({
                     options={generateActionDropdownOptions(
                       currentUser,
                       hostTeamId || null,
-                      selectedScriptDetails as IHostScript
+                      selectedScriptDetails as IHostScript,
                     )}
                     menuPlacement="top"
                   />
@@ -255,9 +255,9 @@ const ScriptDetailsModal = ({
         </Textarea>
         {runScriptHelpText && (
           <div className="form-field__help-text">
-            To run this script on a host, go to the{" "}
+            To run this script on a device, go to the{" "}
             <CustomLink
-              text="Hosts"
+              text="Devices"
               url={getPathWithQueryParams(paths.MANAGE_HOSTS, {
                 team_id: teamIdForApi,
               })}

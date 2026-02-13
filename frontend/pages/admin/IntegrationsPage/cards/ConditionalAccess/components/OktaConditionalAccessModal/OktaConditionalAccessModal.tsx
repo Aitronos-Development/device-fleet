@@ -63,9 +63,8 @@ const validate = (formData: IFormData) => {
   if (!formData[OKTA_ACS_URL] || !formData[OKTA_ACS_URL].trim()) {
     errs[OKTA_ACS_URL] = "Assertion consumer service URL must be present";
   } else if (formData[OKTA_ACS_URL].length > maxURLLength) {
-    errs[
-      OKTA_ACS_URL
-    ] = `Assertion consumer service URL must be ${maxURLLength} characters or less`;
+    errs[OKTA_ACS_URL] =
+      `Assertion consumer service URL must be ${maxURLLength} characters or less`;
   } else if (
     !valid_url({ url: formData[OKTA_ACS_URL], protocols: ["http", "https"] })
   ) {
@@ -77,18 +76,16 @@ const validate = (formData: IFormData) => {
   if (!formData[OKTA_AUDIENCE_URI] || !formData[OKTA_AUDIENCE_URI].trim()) {
     errs[OKTA_AUDIENCE_URI] = "Audience URI must be present";
   } else if (formData[OKTA_AUDIENCE_URI].length > maxURLLength) {
-    errs[
-      OKTA_AUDIENCE_URI
-    ] = `Audience URI must be ${maxURLLength} characters or less`;
+    errs[OKTA_AUDIENCE_URI] =
+      `Audience URI must be ${maxURLLength} characters or less`;
   }
 
   // Certificate validation
   if (!formData[OKTA_CERTIFICATE] || !formData[OKTA_CERTIFICATE].trim()) {
     errs[OKTA_CERTIFICATE] = "Certificate must be present";
   } else if (formData[OKTA_CERTIFICATE].length > maxCertLength) {
-    errs[
-      OKTA_CERTIFICATE
-    ] = `Certificate must be ${maxCertLength} characters or less`;
+    errs[OKTA_CERTIFICATE] =
+      `Certificate must be ${maxCertLength} characters or less`;
   }
 
   return errs;
@@ -142,7 +139,7 @@ const OktaConditionalAccessModal = ({
           : "Failed to load Apple profile.";
         renderFlash("error", message);
       },
-    }
+    },
   );
 
   const [isDownloadingCert, setIsDownloadingCert] = useState(false);
@@ -195,7 +192,7 @@ const OktaConditionalAccessModal = ({
     } catch (e) {
       renderFlash(
         "error",
-        "Could not update conditional access integration settings."
+        "Could not update conditional access integration settings.",
       );
       setIsUpdating(false);
     }
@@ -240,7 +237,7 @@ const OktaConditionalAccessModal = ({
       if (!file.name.match(/\.(pem|crt|cer|cert)$/i)) {
         renderFlash(
           "error",
-          "Invalid file type. Please upload a .pem, .crt, .cer, or .cert file."
+          "Invalid file type. Please upload a .pem, .crt, .cer, or .cert file.",
         );
         return;
       }
@@ -258,7 +255,7 @@ const OktaConditionalAccessModal = ({
         ) {
           renderFlash(
             "error",
-            "Invalid certificate format. The file must be a valid PEM-encoded certificate."
+            "Invalid certificate format. The file must be a valid PEM-encoded certificate.",
           );
           return;
         }
@@ -277,7 +274,7 @@ const OktaConditionalAccessModal = ({
         renderFlash("error", "Failed to read the certificate file.");
       });
     },
-    [formData, renderFlash]
+    [formData, renderFlash],
   );
 
   return (

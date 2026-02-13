@@ -72,16 +72,12 @@ export const generateDropdownOptions = (hasNDESCert: boolean) => {
 // eslint-disable-next-line import/prefer-default-export
 export const generateAddCertAuthorityData = (
   certAuthorityType: ICertificateAuthorityType,
-  formData: ICertFormData
+  formData: ICertFormData,
 ): IAddCertAuthorityBody | undefined => {
   switch (certAuthorityType) {
     case "ndes_scep_proxy": {
-      const {
-        scepURL,
-        adminURL,
-        username,
-        password,
-      } = formData as INDESFormData;
+      const { scepURL, adminURL, username, password } =
+        formData as INDESFormData;
       return {
         ndes_scep_proxy: {
           url: scepURL,
@@ -179,7 +175,7 @@ export const generateAddCertAuthorityData = (
     }
     default:
       throw new Error(
-        `Unknown certificate authority type: ${certAuthorityType}`
+        `Unknown certificate authority type: ${certAuthorityType}`,
       );
   }
 };

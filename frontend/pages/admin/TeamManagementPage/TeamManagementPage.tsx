@@ -72,7 +72,7 @@ const TeamManagementPage = (): JSX.Element => {
     {
       select: (data: ILoadTeamsResponse) => data.teams,
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   // TODO: Cleanup useCallbacks, add missing dependencies, use state setter functions, e.g.,
@@ -89,7 +89,7 @@ const TeamManagementPage = (): JSX.Element => {
       setShowDeleteTeamModal(!showDeleteTeamModal);
       team ? setTeamEditing(team) : setTeamEditing(undefined);
     },
-    [showDeleteTeamModal, setShowDeleteTeamModal, setTeamEditing]
+    [showDeleteTeamModal, setShowDeleteTeamModal, setTeamEditing],
   );
 
   const toggleRenameTeamModal = useCallback(
@@ -103,7 +103,7 @@ const TeamManagementPage = (): JSX.Element => {
       setShowRenameTeamModal,
       setTeamEditing,
       setBackendValidators,
-    ]
+    ],
   );
 
   const onCreateSubmit = useCallback(
@@ -140,7 +140,7 @@ const TeamManagementPage = (): JSX.Element => {
           setIsUpdatingTeams(false);
         });
     },
-    [toggleCreateTeamModal, refetchMe, refetchTeams, renderFlash]
+    [toggleCreateTeamModal, refetchMe, refetchTeams, renderFlash],
   );
 
   const onDeleteSubmit = useCallback(() => {
@@ -157,7 +157,7 @@ const TeamManagementPage = (): JSX.Element => {
         .catch(() => {
           renderFlash(
             "error",
-            `Could not delete ${teamEditing.name}. Please try again.`
+            `Could not delete ${teamEditing.name}. Please try again.`,
           );
         })
         .finally(() => {
@@ -188,7 +188,7 @@ const TeamManagementPage = (): JSX.Element => {
           .then(() => {
             renderFlash(
               "success",
-              `Successfully updated team name to ${formData.name}.`
+              `Successfully updated team name to ${formData.name}.`,
             );
             setBackendValidators({});
             toggleRenameTeamModal();
@@ -213,7 +213,7 @@ const TeamManagementPage = (): JSX.Element => {
             } else {
               renderFlash(
                 "error",
-                `Could not rename ${teamEditing.name}. Please try again.`
+                `Could not rename ${teamEditing.name}. Please try again.`,
               );
             }
           })
@@ -222,7 +222,7 @@ const TeamManagementPage = (): JSX.Element => {
           });
       }
     },
-    [teamEditing, toggleRenameTeamModal, refetchTeams, renderFlash]
+    [teamEditing, toggleRenameTeamModal, refetchTeams, renderFlash],
   );
 
   const onActionSelection = useCallback(
@@ -237,15 +237,17 @@ const TeamManagementPage = (): JSX.Element => {
         default:
       }
     },
-    [toggleRenameTeamModal, toggleDeleteTeamModal]
+    [toggleRenameTeamModal, toggleDeleteTeamModal],
   );
 
-  const tableHeaders = useMemo(() => generateTableHeaders(onActionSelection), [
-    onActionSelection,
-  ]);
-  const tableData = useMemo(() => (teams ? generateDataSet(teams) : []), [
-    teams,
-  ]);
+  const tableHeaders = useMemo(
+    () => generateTableHeaders(onActionSelection),
+    [onActionSelection],
+  );
+  const tableData = useMemo(
+    () => (teams ? generateDataSet(teams) : []),
+    [teams],
+  );
 
   const renderTeamCount = useCallback(() => {
     if (teams?.length === 0) {

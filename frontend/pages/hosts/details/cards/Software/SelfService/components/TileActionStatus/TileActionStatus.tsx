@@ -44,7 +44,7 @@ const getTileActionLabel = (uiStatus: IHostSoftwareUiStatus): string | null => {
 };
 
 const getPendingOrRunningLabel = (
-  uiStatus: IHostSoftwareUiStatus
+  uiStatus: IHostSoftwareUiStatus,
 ): string | null => {
   switch (uiStatus) {
     case "updating":

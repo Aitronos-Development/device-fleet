@@ -37,7 +37,7 @@ const OSSettingsModal = ({
 
   const memoizedTableData = useMemo(
     () => generateTableData(hostMDMData, platform),
-    [hostMDMData, platform]
+    [hostMDMData, platform],
   );
 
   return (

@@ -30,7 +30,7 @@ export interface ITargetsQueryKey {
 }
 
 const getTargets = async (
-  queryKey: ITargetsQueryKey
+  queryKey: ITargetsQueryKey,
 ): Promise<ITargetsQueryResponse> => {
   const { query, queryId, selected, includeLabels } = queryKey;
 
@@ -51,18 +51,18 @@ const getTargets = async (
 
       const all = filter(
         labels,
-        ({ display_text: text }) => text === "All Hosts"
+        ({ display_text: text }) => text === "All Hosts",
       ).map((label) => ({ ...label, uuid: uniqueId() }));
 
       const platforms = filter(
         labels,
         ({ display_text: text }) =>
-          text === "macOS" || text === "MS Windows" || text === "All Linux"
+          text === "macOS" || text === "MS Windows" || text === "All Linux",
       ).map((label) => ({ ...label, uuid: uniqueId() }));
 
       const other = filter(
         labels,
-        ({ label_type: type }) => type === "regular"
+        ({ label_type: type }) => type === "regular",
       ).map((label) => ({ ...label, uuid: uniqueId() }));
 
       const teams = targets.teams.map((team) => ({
@@ -103,7 +103,7 @@ export const useQueryTargets = (
   options: {
     onSuccess: (data: ITargetsQueryResponse) => void;
     staleTime: number;
-  }
+  },
 ): UseQueryResult<ITargetsQueryResponse, Error> => {
   return useQuery<
     ITargetsQueryResponse,
@@ -120,7 +120,7 @@ export const useQueryTargets = (
       refetchOnWindowFocus: false,
       refetchOnMount: "always",
       staleTime: options.staleTime,
-    }
+    },
   );
 };
 

@@ -58,7 +58,7 @@ const availableCriteria: {
 
 const baseClass = "new-label-page";
 
-export const LABEL_TARGET_HOSTS_INPUT_LABEL = "Select hosts";
+export const LABEL_TARGET_HOSTS_INPUT_LABEL = "Select devices";
 const LABEL_TARGET_HOSTS_INPUT_PLACEHOLDER =
   "Search name, hostname, or serial number";
 const DEBOUNCE_DELAY = 500;
@@ -116,9 +116,8 @@ const NewLabelPage = ({
   location,
 }: RouteComponentProps<never, never>) => {
   // page-level state
-  const { selectedOsqueryTable, setSelectedOsqueryTable } = useContext(
-    QueryContext
-  );
+  const { selectedOsqueryTable, setSelectedOsqueryTable } =
+    useContext(QueryContext);
   const { isPremiumTier } = useContext(AppContext);
   const { renderFlash } = useContext(NotificationContext);
 
@@ -169,13 +168,10 @@ const NewLabelPage = ({
   const [formErrors, setFormErrors] = useState<INewLabelFormErrors>({});
 
   const [targetsSearchQuery, setTargetsSearchQuery] = useState("");
-  const [
-    debouncedTargetsSearchQuery,
-    setDebouncedTargetsSearchQuery,
-  ] = useState("");
-  const [isDebouncingTargetsSearch, setIsDebouncingTargetsSearch] = useState(
-    false
-  );
+  const [debouncedTargetsSearchQuery, setDebouncedTargetsSearchQuery] =
+    useState("");
+  const [isDebouncingTargetsSearch, setIsDebouncingTargetsSearch] =
+    useState(false);
 
   // "manual" label target search logic
   const debounceSearch = useDebouncedCallback(
@@ -184,7 +180,7 @@ const NewLabelPage = ({
       setIsDebouncingTargetsSearch(false);
     },
     DEBOUNCE_DELAY,
-    { trailing: true }
+    { trailing: true },
   );
 
   useEffect(() => {
@@ -214,7 +210,7 @@ const NewLabelPage = ({
     {
       select: (data) => data.hosts,
       enabled: type === "manual" && !!targetsSearchQuery,
-    }
+    },
   );
 
   const { data: scimIdPDetails } = useQuery(
@@ -223,7 +219,7 @@ const NewLabelPage = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       enabled: isPremiumTier,
-    }
+    },
   );
   const idpConfigured = !!scimIdPDetails?.last_request?.requested_at;
 
@@ -531,7 +527,7 @@ const NewLabelPage = ({
         />
         <Radio
           className={`${baseClass}__radio-input`}
-          label="Host vitals"
+          label="Device vitals"
           id="host_vitals"
           checked={type === "host_vitals"}
           value="host_vitals"

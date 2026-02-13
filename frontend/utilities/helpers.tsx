@@ -72,10 +72,10 @@ export const addGravatarUrlToResource = (resource: any): any => {
 
   if (gravatarAvailable) {
     gravatar_url = `https://www.gravatar.com/avatar/${emailHash}?d=${encodeURIComponent(
-      DEFAULT_GRAVATAR_LINK
+      DEFAULT_GRAVATAR_LINK,
     )}&size=200`;
     gravatar_url_dark = `https://www.gravatar.com/avatar/${emailHash}?d=${encodeURIComponent(
-      DEFAULT_GRAVATAR_LINK_DARK
+      DEFAULT_GRAVATAR_LINK_DARK,
     )}&size=200`;
   } else {
     gravatar_url = DEFAULT_GRAVATAR_LINK_FALLBACK;
@@ -188,7 +188,7 @@ const formatLabelResponse = (response: any): ILabel[] => {
 };
 
 export const formatSelectedTargetsForApi = (
-  selectedTargets: ISelectTargetsEntity[]
+  selectedTargets: ISelectTargetsEntity[],
 ): ISelectedTargetsForApi => {
   const targets = selectedTargets || [];
   // TODO: can flatMap be removed?
@@ -204,14 +204,14 @@ export const formatSelectedTargetsForApi = (
 };
 
 export const formatPackTargetsForApi = (
-  targets: ISelectTargetsEntity[]
+  targets: ISelectTargetsEntity[],
 ): IPackTargets => {
   const { hosts, labels, teams } = formatSelectedTargetsForApi(targets);
   return { host_ids: hosts, label_ids: labels, team_ids: teams };
 };
 
 export const formatScheduledQueryForServer = (
-  scheduledQuery: IPackQueryFormData
+  scheduledQuery: IPackQueryFormData,
 ) => {
   const {
     interval,
@@ -252,7 +252,7 @@ export const formatScheduledQueryForServer = (
 };
 
 export const formatScheduledQueryForClient = (
-  scheduledQuery: IScheduledQuery
+  scheduledQuery: IScheduledQuery,
 ): IScheduledQuery => {
   if (scheduledQuery.platform === "") {
     scheduledQuery.platform = "all";
@@ -278,7 +278,7 @@ export const formatScheduledQueryForClient = (
 };
 
 export const formatGlobalScheduledQueryForServer = (
-  scheduledQuery: IScheduledQuery
+  scheduledQuery: IScheduledQuery,
 ): IScheduledQuery => {
   const {
     interval,
@@ -314,7 +314,7 @@ export const formatGlobalScheduledQueryForServer = (
 };
 
 export const formatGlobalScheduledQueryForClient = (
-  scheduledQuery: IScheduledQuery
+  scheduledQuery: IScheduledQuery,
 ): IScheduledQuery => {
   if (scheduledQuery.platform === "") {
     scheduledQuery.platform = "all";
@@ -340,7 +340,7 @@ export const formatGlobalScheduledQueryForClient = (
 };
 
 export const formatTeamScheduledQueryForServer = (
-  scheduledQuery: IScheduledQuery
+  scheduledQuery: IScheduledQuery,
 ) => {
   const {
     interval,
@@ -381,7 +381,7 @@ export const formatTeamScheduledQueryForServer = (
 };
 
 export const formatTeamScheduledQueryForClient = (
-  scheduledQuery: IScheduledQuery
+  scheduledQuery: IScheduledQuery,
 ): IScheduledQuery => {
   if (scheduledQuery.platform === "") {
     scheduledQuery.platform = "all";
@@ -451,7 +451,7 @@ export const formatScriptNameForActivityItem = (name: string | undefined) => {
 
 export const generateRole = (
   teams: ITeam[],
-  globalRole: UserRole | null
+  globalRole: UserRole | null,
 ): UserRole => {
   if (globalRole === null) {
     const listOfRoles = teams.map<UserRole | undefined>((team) => team.role);
@@ -485,7 +485,7 @@ export const generateRole = (
 
 export const generateTeam = (
   teams: ITeam[],
-  globalRole: UserRole | null
+  globalRole: UserRole | null,
 ): string => {
   if (globalRole === null) {
     if (teams.length === 0) {
@@ -597,7 +597,7 @@ export const internationalTimeFormat = (date: number | Date): string => {
       minute: "numeric",
       second: "numeric",
     },
-    { locale: window.navigator.languages[0] }
+    { locale: window.navigator.languages[0] },
   );
 };
 
@@ -661,7 +661,7 @@ export const readableDate = (date: string) => {
 };
 
 export const getPerformanceImpactDescription = (
-  scheduledQueryStats: ISchedulableQueryStats
+  scheduledQueryStats: ISchedulableQueryStats,
 ): PerformanceImpactIndicator => {
   if (
     !scheduledQueryStats.total_executions ||
@@ -690,7 +690,7 @@ export const getPerformanceImpactDescription = (
 
 export const getPerformanceImpactIndicatorTooltip = (
   indicator: PerformanceImpactIndicator,
-  isHostSpecific = false
+  isHostSpecific = false,
 ) => {
   switch (indicator) {
     case PerformanceImpactIndicatorValue.MINIMAL:
@@ -781,7 +781,7 @@ export const syntaxHighlight = (json: any): string => {
         cls = "null";
       }
       return `<span class="${cls}">${match}</span>`;
-    }
+    },
   );
   /* eslint-enable no-useless-escape */
 };
@@ -806,12 +806,12 @@ export const getSortedTeamOptions = memoize((teams: ITeam[]) =>
         value: team.id,
       };
     })
-    .sort((a, b) => sortUtils.caseInsensitiveAsc(a.label, b.label))
+    .sort((a, b) => sortUtils.caseInsensitiveAsc(a.label, b.label)),
 );
 
 // returns a mixture of props from host
 export const normalizeEmptyValues = (
-  hostData: Partial<IHost>
+  hostData: Partial<IHost>,
 ): Record<
   string,
   number | string | boolean | Record<string, number | string | boolean>
@@ -830,7 +830,7 @@ export const normalizeEmptyValues = (
       }
       return result;
     },
-    {}
+    {},
   );
 };
 
@@ -839,7 +839,7 @@ export const wait = (milliseconds: number) =>
 
 export const wrapFleetHelper = (
   helperFn: (value: any) => string, // TODO: replace any with unknown and improve type narrowing by callers
-  value: string
+  value: string,
 ): string => {
   return value === DEFAULT_EMPTY_CELL_VALUE ? value : helperFn(value);
 };
@@ -861,7 +861,7 @@ const createRouteString = (routeTemplate: string, routeParams: RouteParams) => {
       (string, value, key) => {
         return string.replace(`:${key}`, encodeURIComponent(value));
       },
-      routeTemplate
+      routeTemplate,
     );
   }
   return routeString;
@@ -878,7 +878,7 @@ export const getNextLocationPath = ({
 
   const nextLocation = trimEnd(
     union(trim(pathPrefix, "/").split("/"), routeString.split("/")).join("/"),
-    "/"
+    "/",
   );
 
   return queryString ? `/${nextLocation}?${queryString}` : `/${nextLocation}`;
@@ -895,7 +895,7 @@ export const getSoftwareBundleTooltipJSX = (bundle: string) => (
 export const internallyTruncateText = (
   original: string,
   prefixLength = 280,
-  suffixLength = 10
+  suffixLength = 10,
 ): JSX.Element => (
   <>
     {original.slice(0, prefixLength)}...
@@ -908,9 +908,9 @@ export const internallyTruncateText = (
  * config generator to determine both which unique columns are present, and whether to sort each of them as
  * alphanumeric (number type columns) or case-insensitive (everything else) */
 export const getUniqueColsAreNumTypeFromRows = <
-  T extends Record<keyof T, unknown>
+  T extends Record<keyof T, unknown>,
 >(
-  rows: T[]
+  rows: T[],
 ) => {
   const m = new Map<keyof T, boolean>();
   rows.forEach((row) => {
@@ -936,7 +936,7 @@ type DropdownOptionValue = IDropdownOption["value"];
 export function getCustomDropdownOptions(
   defaultOptions: IDropdownOption[],
   customValue: DropdownOptionValue,
-  labelFormatter: (value: DropdownOptionValue) => string
+  labelFormatter: (value: DropdownOptionValue) => string,
 ): IDropdownOption[] {
   return defaultOptions.some((option) => option.value === customValue)
     ? defaultOptions

@@ -111,13 +111,10 @@ const EditQueryPage = ({
 
   const [isLiveQueryRunnable, setIsLiveQueryRunnable] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [showOpenSchemaActionText, setShowOpenSchemaActionText] = useState(
-    false
-  );
-  const [
-    showConfirmSaveChangesModal,
-    setShowConfirmSaveChangesModal,
-  ] = useState(false);
+  const [showOpenSchemaActionText, setShowOpenSchemaActionText] =
+    useState(false);
+  const [showConfirmSaveChangesModal, setShowConfirmSaveChangesModal] =
+    useState(false);
 
   const { data: appConfig } = useQuery<IConfig, Error, IConfig>(
     ["config"],
@@ -127,7 +124,7 @@ const EditQueryPage = ({
       onSuccess: (data) => {
         setConfig(data);
       },
-    }
+    },
   );
 
   // disabled on page load so we can control the number of renders
@@ -157,7 +154,7 @@ const EditQueryPage = ({
         setLastEditedQueryDiscardData(returnedQuery.discard_data);
       },
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   /** Pesky bug affecting team level users:
@@ -177,7 +174,7 @@ const EditQueryPage = ({
       getPathWithQueryParams(location.pathname, {
         team_id: storedQuery?.team_id?.toString(),
         host_id: hostId,
-      })
+      }),
     );
   }
 
@@ -185,7 +182,7 @@ const EditQueryPage = ({
   useEffect(() => {
     if (storedQuery?.team_id) {
       const querysTeam = availableTeams?.find(
-        (team) => team.id === storedQuery.team_id
+        (team) => team.id === storedQuery.team_id,
       );
       setCurrentTeam(querysTeam);
     }
@@ -217,7 +214,7 @@ const EditQueryPage = ({
         getPathWithQueryParams(PATHS.QUERY_DETAILS(queryId), {
           host_id: location.query.host_id,
           team_id: location.query.team_id,
-        })
+        }),
       );
     }
   }, [queryId, isTeamMaintainerOrTeamAdmin, isStoredQueryLoading]);
@@ -268,7 +265,7 @@ const EditQueryPage = ({
           getPathWithQueryParams(PATHS.QUERY_DETAILS(query.id), {
             team_id: query.team_id,
             host_id: hostId,
-          })
+          }),
         );
         renderFlash("success", "Query created!");
         setBackendValidators({});
@@ -284,14 +281,14 @@ const EditQueryPage = ({
         } else {
           renderFlash(
             "error",
-            "Something went wrong creating your query. Please try again."
+            "Something went wrong creating your query. Please try again.",
           );
           setBackendValidators({});
         }
       } finally {
         setIsQuerySaving(false);
       }
-    }
+    },
   );
 
   const onUpdateQuery = async (formData: ICreateQueryRequestBody) => {
@@ -328,7 +325,7 @@ const EditQueryPage = ({
       } else {
         renderFlash(
           "error",
-          "Something went wrong updating your query. Please try again."
+          "Something went wrong updating your query. Please try again.",
         );
       }
     }

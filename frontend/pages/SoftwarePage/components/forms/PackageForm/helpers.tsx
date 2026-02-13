@@ -152,7 +152,7 @@ const FORM_VALIDATION_CONFIG: Record<
           // there must be at least one label target selected
           return (
             Object.keys(formData.labelTargets).find(
-              (key) => formData.labelTargets[key]
+              (key) => formData.labelTargets[key],
             ) !== undefined
           );
         },
@@ -163,7 +163,7 @@ const FORM_VALIDATION_CONFIG: Record<
 
 const getErrorMessage = (
   formData: IPackageFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -182,7 +182,7 @@ export const generateFormValidation = (formData: IPackageFormData) => {
   Object.keys(FORM_VALIDATION_CONFIG).forEach((key) => {
     const objKey = key as keyof typeof FORM_VALIDATION_CONFIG;
     const failedValidation = FORM_VALIDATION_CONFIG[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {
@@ -193,7 +193,7 @@ export const generateFormValidation = (formData: IPackageFormData) => {
         ...(objKey === "preInstallQuery" && {
           message: getErrorMessage(
             formData,
-            FORM_VALIDATION_CONFIG[objKey].validations[0].message
+            FORM_VALIDATION_CONFIG[objKey].validations[0].message,
           ),
         }),
       };
@@ -212,7 +212,7 @@ export const generateFormValidation = (formData: IPackageFormData) => {
 export const createTooltipContent = (
   formValidation: IPackageFormValidation,
   repoURL?: string,
-  disabledFieldsForGitOps?: boolean
+  disabledFieldsForGitOps?: boolean,
 ) => {
   if (disabledFieldsForGitOps && repoURL) {
     return getGitOpsModeTipContent(repoURL);

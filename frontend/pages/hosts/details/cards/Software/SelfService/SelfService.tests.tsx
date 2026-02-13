@@ -58,7 +58,7 @@ describe("SelfService", () => {
           createMockDeviceSoftware({ name: "test3" }),
         ],
         count: 3,
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -84,7 +84,7 @@ describe("SelfService", () => {
             installed_versions: [DEFAULT_INSTALLED_VERSION],
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -95,7 +95,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Installed");
 
     expect(screen.getByRole("button", { name: "Reinstall" })).toBeEnabled();
@@ -113,7 +113,7 @@ describe("SelfService", () => {
             installed_versions: [DEFAULT_INSTALLED_VERSION],
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -124,7 +124,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Installed");
 
     expect(screen.getByRole("button", { name: "Reinstall" })).toBeEnabled();
@@ -141,7 +141,7 @@ describe("SelfService", () => {
             status: "failed_install",
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -151,7 +151,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Failed");
 
     expect(screen.getByRole("button", { name: "Retry" })).toBeEnabled();
@@ -169,7 +169,7 @@ describe("SelfService", () => {
             installed_versions: [DEFAULT_INSTALLED_VERSION],
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -179,7 +179,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Installed");
 
     const moreDropdown = getMoreDropdown();
@@ -202,7 +202,7 @@ describe("SelfService", () => {
             status: null,
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -212,7 +212,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.queryByTestId("install-status-cell__status--test")
+      screen.queryByTestId("install-status-cell__status--test"),
     ).not.toBeInTheDocument();
 
     expect(screen.getByRole("button", { name: "Install" })).toBeEnabled();
@@ -229,7 +229,7 @@ describe("SelfService", () => {
             status: "pending_install",
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -239,7 +239,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Installing...");
 
     expect(screen.getByRole("button", { name: "Install" })).toBeDisabled();
@@ -257,7 +257,7 @@ describe("SelfService", () => {
             installed_versions: [DEFAULT_INSTALLED_VERSION], // Uninstall requires installed versions
           }),
         ],
-      })
+      }),
     );
 
     const render = createCustomRenderer({ withBackendMock: true });
@@ -267,7 +267,7 @@ describe("SelfService", () => {
     await screen.findAllByText("test-software");
 
     expect(
-      screen.getByTestId("install-status-cell__status--test")
+      screen.getByTestId("install-status-cell__status--test"),
     ).toHaveTextContent("Uninstalling...");
 
     expect(screen.getByRole("button", { name: "Reinstall" })).toBeDisabled(); // TODO: Should this say "Reinstall"?

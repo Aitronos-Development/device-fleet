@@ -44,11 +44,11 @@ const SelectSoftwareModal = ({
 
   const initalSelectedSoftware = useMemo(
     () => initializeSelectedSoftwareIds(softwareTitles),
-    [softwareTitles]
+    [softwareTitles],
   );
   const [isSaving, setIsSaving] = useState(false);
   const [selectedSoftwareIds, setSelectedSoftwareIds] = useState<number[]>(
-    initalSelectedSoftware
+    initalSelectedSoftware,
   );
 
   const onSaveSelectedSoftware = async () => {
@@ -57,7 +57,7 @@ const SelectSoftwareModal = ({
       await mdmAPI.updateSetupExperienceSoftware(
         platform,
         currentTeamId,
-        selectedSoftwareIds
+        selectedSoftwareIds,
       );
       renderFlash("success", "Updated software for install on setup.");
     } catch (e) {

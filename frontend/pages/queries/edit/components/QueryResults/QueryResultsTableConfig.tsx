@@ -17,13 +17,13 @@ import LinkCell from "components/TableContainer/DataTable/LinkCell";
 const _unshiftHostname = <T extends object>(columns: Column<T>[]) => {
   const newHeaders = [...columns];
   const displayNameIndex = columns.findIndex(
-    (h) => h.id === "host_display_name"
+    (h) => h.id === "host_display_name",
   );
   if (displayNameIndex >= 0) {
     // remove hostname header from headers
     const [displayNameHeader] = newHeaders.splice(displayNameIndex, 1);
     // reformat title and insert at start of headers array
-    newHeaders.unshift({ ...displayNameHeader, id: "Host" });
+    newHeaders.unshift({ ...displayNameHeader, id: "Device" });
   }
   // TODO: Remove after v5 when host_hostname is removed rom API response.
   const hostNameIndex = columns.findIndex((h) => h.id === "host_hostname");
@@ -35,7 +35,7 @@ const _unshiftHostname = <T extends object>(columns: Column<T>[]) => {
 };
 
 const generateColumnConfigsFromRows = <T extends Record<keyof T, unknown>>(
-  results: T[] // {col:val, ...} for each row of query results
+  results: T[], // {col:val, ...} for each row of query results
 ): Column<T>[] => {
   const colsAreNumTypes = getUniqueColsAreNumTypeFromRows(results) as Map<
     string,
@@ -58,7 +58,7 @@ const generateColumnConfigsFromRows = <T extends Record<keyof T, unknown>>(
         // generic for convenience, can assume keyof T is a string
         accessor: (data) => data[colName as keyof T],
         Cell: (cellProps: CellProps<T>) => {
-          if (cellProps?.cell?.column?.id === "Host") {
+          if (cellProps?.cell?.column?.id === "Device") {
             // @ts-ignore
             const hostID = cellProps.row.original.host_id;
             return (
@@ -72,7 +72,7 @@ const generateColumnConfigsFromRows = <T extends Record<keyof T, unknown>>(
           const val = cellProps?.cell?.value;
           return !!val?.length && val.length > 300
             ? internallyTruncateText(val)
-            : val ?? null;
+            : (val ?? null);
         },
         Filter: DefaultColumnFilter,
         disableSortBy: false,
@@ -80,7 +80,7 @@ const generateColumnConfigsFromRows = <T extends Record<keyof T, unknown>>(
           ? "alphanumeric"
           : "caseInsensitive",
       };
-    }
+    },
   );
   return _unshiftHostname(columnConfigs);
 };

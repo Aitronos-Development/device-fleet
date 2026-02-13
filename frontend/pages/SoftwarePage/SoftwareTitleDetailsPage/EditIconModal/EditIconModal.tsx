@@ -65,7 +65,7 @@ const getFilenameFromContentDisposition = (header: string | null) => {
 
 const makeFileDetails = (
   file: File,
-  dimensions: number | null
+  dimensions: number | null,
 ): IFileDetails => ({
   name: file.name,
   description: `Software icon • ${dimensions || "?"}x${dimensions || "?"} px`,
@@ -159,7 +159,7 @@ const EditIconModal = ({
 
   const isSoftwarePackage = installerType === "package";
   const isIosOrIpadosApp = isIpadOrIphoneSoftwareSource(
-    previewInfo?.source || ""
+    previewInfo?.source || "",
   );
 
   // Fetch current custom icon from API if applicable
@@ -178,7 +178,7 @@ const EditIconModal = ({
   const [isUpdatingSoftwareInfo, setIsUpdatingSoftwareInfo] = useState(false);
   /** Shows loading spinner only if a custom icon and its information is loading from API */
   const [isFirstLoadWithCustomIcon, setIsFirstLoadWithCustomIcon] = useState(
-    shouldFetchCustomIcon
+    shouldFetchCustomIcon,
   );
 
   const originalIsApiCustom =
@@ -213,7 +213,7 @@ const EditIconModal = ({
         fileDetails: makeFileDetails(file, width),
         status: "apiCustom",
       }),
-    [displayName]
+    [displayName],
   );
 
   // Sets state after a successful new custom file upload
@@ -255,12 +255,12 @@ const EditIconModal = ({
           ? {
               blob: response.data,
               filename: getFilenameFromContentDisposition(
-                response.headers["content-disposition"]
+                response.headers["content-disposition"],
               ),
               url: URL.createObjectURL(response.data),
             }
           : "",
-    }
+    },
   );
 
   const onExitEditIconModal = () => {
@@ -277,7 +277,7 @@ const EditIconModal = ({
             ...prev,
             formData: { ...prev.formData, display_name: value as string },
           }
-        : prev
+        : prev,
     );
   };
 
@@ -309,7 +309,7 @@ const EditIconModal = ({
           ) {
             renderFlash(
               "error",
-              `Couldn't edit. Icon must be square, between ${MIN_DIMENSION}x${MIN_DIMENSION}px and ${MAX_DIMENSION}x${MAX_DIMENSION}px.`
+              `Couldn't edit. Icon must be square, between ${MIN_DIMENSION}x${MIN_DIMENSION}px and ${MAX_DIMENSION}x${MAX_DIMENSION}px.`,
             );
             return;
           }
@@ -353,7 +353,7 @@ const EditIconModal = ({
             setCurrentApiCustomIcon(
               new File([blob], filename, { type: "image/png" }),
               img.width,
-              customIconData.url
+              customIconData.url,
             );
             setIsFirstLoadWithCustomIcon(false);
           });
@@ -393,14 +393,8 @@ const EditIconModal = ({
       : undefined;
 
   const renderPreviewFleetCard = () => {
-    const {
-      name,
-      type,
-      versions,
-      source,
-      currentIconUrl,
-      countsUpdatedAt,
-    } = previewInfo;
+    const { name, type, versions, source, currentIconUrl, countsUpdatedAt } =
+      previewInfo;
     return (
       <Card
         borderRadiusSize="medium"
@@ -632,7 +626,7 @@ const EditIconModal = ({
           await softwareAPI.editSoftwareIcon(
             softwareId,
             teamIdForApi,
-            iconState.formData
+            iconState.formData,
           );
           iconSucceeded = true;
           iconSuccessMessage = (
@@ -697,7 +691,7 @@ const EditIconModal = ({
           <>
             Successfully edited{" "}
             <b>{displayName === "" ? previewInfo.name : displayName}</b>.
-          </>
+          </>,
         );
         refetchSoftwareTitle();
         setIconUploadedAt(new Date().toISOString());

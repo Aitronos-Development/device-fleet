@@ -58,12 +58,12 @@ const HashCell = ({
 
   const allSignatureInformation = flatMap(
     installedVersion,
-    (v) => v.signature_information ?? []
+    (v) => v.signature_information ?? [],
   );
 
   const allHash = flatMap(
     allSignatureInformation,
-    (sigInfo) => sigInfo.hash_sha256 ?? []
+    (sigInfo) => sigInfo.hash_sha256 ?? [],
   );
   const uniqueHash = new Set(allHash);
   const uniqueHashCount = uniqueHash.size;

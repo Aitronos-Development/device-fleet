@@ -10,53 +10,53 @@ describe("OrgDetails - form", () => {
     render(<OrgDetails handleSubmit={handleSubmitSpy} />);
 
     expect(
-      screen.getByRole("textbox", { name: "Organization name" })
+      screen.getByRole("textbox", { name: "Organization name" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
   });
 
   it("validates presence of org_name field", async () => {
     const { user } = renderWithSetup(
-      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />
+      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
 
     await user.click(screen.getByRole("button", { name: "Next" }));
 
     expect(handleSubmitSpy).not.toHaveBeenCalled();
     expect(
-      screen.getByText("Organization name must be present")
+      screen.getByText("Organization name must be present"),
     ).toBeInTheDocument();
   });
 
   it("validates the logo url field starts with https://", async () => {
     const { user } = renderWithSetup(
-      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />
+      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
 
     await user.type(
       screen.getByRole("textbox", { name: "Organization logo URL (optional)" }),
-      "http://www.thegnar.co/logo.png"
+      "http://www.thegnar.co/logo.png",
     );
     await user.click(screen.getByRole("button", { name: "Next" }));
 
     expect(handleSubmitSpy).not.toHaveBeenCalled();
     expect(
-      screen.getByText("Organization logo URL must start with https://")
+      screen.getByText("Organization logo URL must start with https://"),
     ).toBeInTheDocument();
   });
 
   it("submits the form when valid", async () => {
     const { user } = renderWithSetup(
-      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />
+      <OrgDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
 
     await user.type(
       screen.getByRole("textbox", { name: "Organization logo URL (optional)" }),
-      "https://www.thegnar.co/logo.png"
+      "https://www.thegnar.co/logo.png",
     );
     await user.type(
       screen.getByRole("textbox", { name: "Organization name" }),
-      "The Gnar Co"
+      "The Gnar Co",
     );
     await user.click(screen.getByRole("button", { name: "Next" }));
 

@@ -115,14 +115,14 @@ const FailedEndUserInfoCard = ({
 const IdentityProviderSection = () => {
   const { isPremiumTier } = useContext(AppContext);
 
-  const { data: scimIdPDetails, isLoading, isError } = useQuery(
-    ["scim_details"],
-    () => idpAPI.getSCIMDetails(),
-    {
-      ...DEFAULT_USE_QUERY_OPTIONS,
-      enabled: isPremiumTier,
-    }
-  );
+  const {
+    data: scimIdPDetails,
+    isLoading,
+    isError,
+  } = useQuery(["scim_details"], () => idpAPI.getSCIMDetails(), {
+    ...DEFAULT_USE_QUERY_OPTIONS,
+    enabled: isPremiumTier,
+  });
   const renderContent = () => {
     if (!isPremiumTier) {
       return <PremiumFeatureMessage />;

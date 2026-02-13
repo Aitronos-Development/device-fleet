@@ -49,7 +49,7 @@ type ISocketData = IResult | IIncomingCampaignStatus | ITotals | IError;
 
 const updateCampaignStateFromTotals = (
   campaign: ICampaign,
-  { data: totals }: ITotals
+  { data: totals }: ITotals,
 ) => {
   return {
     campaign: { ...campaign, totals },
@@ -58,7 +58,7 @@ const updateCampaignStateFromTotals = (
 
 const updateCampaignStateFromResults = (
   campaign: ICampaign,
-  { data }: IResult
+  { data }: IResult,
 ) => {
   const {
     errors: prevErrors = [],
@@ -132,7 +132,7 @@ const updateCampaignStateFromStatus = (
       count_of_hosts_with_results: newCountOfHostsWithResults,
       count_of_hosts_with_no_results: newCountOfHostsWithNoResults,
     },
-  }: IIncomingCampaignStatus
+  }: IIncomingCampaignStatus,
 ) => {
   return {
     campaign: {
@@ -160,11 +160,11 @@ export const updateCampaignState = (socketData: ISocketData) => {
       case "error":
         if (socketData.data.includes("unexpected exit in receiveMessages")) {
           const campaignID = socketData.data.substring(
-            socketData.data.indexOf("=") + 1
+            socketData.data.indexOf("=") + 1,
           );
           renderFlash(
             "error",
-            `Fleet's connection to Redis failed (campaign ID ${campaignID}). If this issue persists, please contact your administrator.`
+            `Fleet's connection to Redis failed (campaign ID ${campaignID}). If this issue persists, please contact your administrator.`,
           );
         }
         return { campaign };

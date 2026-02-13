@@ -68,9 +68,8 @@ export const getErrorMessage = (err: unknown) => {
 
   // software is already available for install
   if (reason.toLowerCase().includes("already")) {
-    const alreadyAvailableMessage = formatAlreadyAvailableInstallMessage(
-      reason
-    );
+    const alreadyAvailableMessage =
+      formatAlreadyAvailableInstallMessage(reason);
     if (alreadyAvailableMessage) {
       return alreadyAvailableMessage;
     }

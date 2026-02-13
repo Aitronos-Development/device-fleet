@@ -7,9 +7,8 @@ interface IPassingColumnHeaderProps {
 }
 
 const PassingColumnHeader = ({ isPassing }: IPassingColumnHeaderProps) => {
-  const [indicatorStatus, displayText] = POLICY_STATUS_TO_INDICATOR_PARAMS[
-    isPassing ? "pass" : "fail"
-  ];
+  const [indicatorStatus, displayText] =
+    POLICY_STATUS_TO_INDICATOR_PARAMS[isPassing ? "pass" : "fail"];
   return (
     <StatusIndicatorWithIcon value={displayText} status={indicatorStatus} />
   );

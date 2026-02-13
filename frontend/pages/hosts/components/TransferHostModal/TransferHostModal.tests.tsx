@@ -12,7 +12,7 @@ const teams = [
 ];
 
 const setup = (
-  props: Partial<React.ComponentProps<typeof TransferHostModal>> = {}
+  props: Partial<React.ComponentProps<typeof TransferHostModal>> = {},
 ) => {
   const onSubmit = jest.fn();
   const onCancel = jest.fn();
@@ -29,7 +29,7 @@ const setup = (
       multipleHosts={false}
       hostsTeamId={1}
       {...props}
-    />
+    />,
   );
 
   return { user, onSubmit, onCancel };
@@ -40,7 +40,7 @@ describe("TransferHostModal", () => {
     setup();
 
     expect(
-      screen.getByText("Transfer host to:", { selector: "label" })
+      screen.getByText("Transfer host to:", { selector: "label" }),
     ).toBeInTheDocument();
   });
 
@@ -48,7 +48,7 @@ describe("TransferHostModal", () => {
     setup({ multipleHosts: true });
 
     expect(
-      screen.getByText("Transfer selected hosts to:", { selector: "label" })
+      screen.getByText("Transfer selected hosts to:", { selector: "label" }),
     ).toBeInTheDocument();
   });
 

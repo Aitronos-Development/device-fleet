@@ -6,9 +6,12 @@ import DeviceUserBanners from "./DeviceUserBanners";
 
 describe("Device User Banners", () => {
   const turnOnMdmExpcetedText = /Mobile device management \(MDM\) is off\./;
-  const resetNonLinuxDiskEncryptKeyExpectedText = /Disk encryption: Log out of your device or restart it to safeguard your data in case your device is lost or stolen\./;
-  const createNewLinuxDiskEncryptKeyExpectedText = /Disk encryption: Create a new disk encryption key\. This lets your organization help you unlock your device if you forget your passphrase\./;
-  const createPINExepectedText = /Disk encryption: Create a BitLocker PIN to safeguard your data/;
+  const resetNonLinuxDiskEncryptKeyExpectedText =
+    /Disk encryption: Log out of your device or restart it to safeguard your data in case your device is lost or stolen\./;
+  const createNewLinuxDiskEncryptKeyExpectedText =
+    /Disk encryption: Create a new disk encryption key\. This lets your organization help you unlock your device if you forget your passphrase\./;
+  const createPINExepectedText =
+    /Disk encryption: Create a BitLocker PIN to safeguard your data/;
 
   it("renders the turn on mdm banner correctly", () => {
     render(
@@ -22,7 +25,7 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
     expect(screen.getByText(turnOnMdmExpcetedText)).toBeInTheDocument();
   });
@@ -39,10 +42,10 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
     expect(
-      screen.getByText(resetNonLinuxDiskEncryptKeyExpectedText)
+      screen.getByText(resetNonLinuxDiskEncryptKeyExpectedText),
     ).toBeInTheDocument();
   });
   it("renders the create new linux disk encryption key banner correctly for Ubuntu", () => {
@@ -61,10 +64,10 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
     expect(
-      screen.getByText(createNewLinuxDiskEncryptKeyExpectedText)
+      screen.getByText(createNewLinuxDiskEncryptKeyExpectedText),
     ).toBeInTheDocument();
   });
   it("renders the create new linux disk encryption key banner correctly for Fedora", () => {
@@ -84,10 +87,10 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
     expect(
-      screen.getByText(createNewLinuxDiskEncryptKeyExpectedText)
+      screen.getByText(createNewLinuxDiskEncryptKeyExpectedText),
     ).toBeInTheDocument();
   });
 
@@ -107,7 +110,7 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
     expect(screen.getByText(createPINExepectedText)).toBeInTheDocument();
   });
@@ -125,15 +128,15 @@ describe("Device User Banners", () => {
         diskEncryptionOSSetting={{ status: "verifying", detail: "" }}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
 
     expect(screen.queryByText(turnOnMdmExpcetedText)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText)
+      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText)
+      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText),
     ).not.toBeInTheDocument();
   });
   it("renders no banner correctly for a mac without MDM set up", () => {
@@ -149,15 +152,15 @@ describe("Device User Banners", () => {
         onTriggerEscrowLinuxKey={noop}
         onClickCreatePIN={noop}
         onClickTurnOnMdm={noop}
-      />
+      />,
     );
 
     expect(screen.queryByText(turnOnMdmExpcetedText)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText)
+      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText)
+      screen.queryByText(resetNonLinuxDiskEncryptKeyExpectedText),
     ).not.toBeInTheDocument();
   });
 });

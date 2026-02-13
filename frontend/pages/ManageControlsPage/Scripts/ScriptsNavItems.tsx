@@ -21,7 +21,7 @@ export interface IScriptsCommonProps {
 type IScriptsCardProps = IScriptLibraryProps | IScriptBatchProgressProps;
 
 const useScriptNavItems = (
-  teamId: number | undefined
+  teamId: number | undefined,
 ): ISideNavItem<IScriptsCardProps>[] => {
   return useMemo(
     () => [
@@ -38,7 +38,7 @@ const useScriptNavItems = (
         Card: ScriptBatchProgress,
       },
     ],
-    [teamId]
+    [teamId],
   );
 };
 

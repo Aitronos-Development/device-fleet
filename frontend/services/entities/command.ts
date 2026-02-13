@@ -34,14 +34,13 @@ export interface IGetHostCommandResultsParams extends IGetCommandResultsParams {
   host_identifier: string;
 }
 
-export interface IGetHostCommandResultsQueryKey
-  extends IGetHostCommandResultsParams {
+export interface IGetHostCommandResultsQueryKey extends IGetHostCommandResultsParams {
   scope: "command_results";
 }
 
 export default {
   getCommands: (
-    requestParams: IGetCommandsRequest
+    requestParams: IGetCommandsRequest,
   ): Promise<IGetCommandsResponse> => {
     const { COMMANDS } = endpoints;
     const url = getPathWithQueryParams(COMMANDS, requestParams);
@@ -50,7 +49,7 @@ export default {
   },
 
   getCommandResults: (
-    command_uuid: string
+    command_uuid: string,
   ): Promise<IGetCommandResultsResponse> => {
     const { COMMANDS_RESULTS } = endpoints;
     const url = `${COMMANDS_RESULTS}?command_uuid=${command_uuid}`;

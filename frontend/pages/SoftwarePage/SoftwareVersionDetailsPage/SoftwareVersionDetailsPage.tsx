@@ -53,7 +53,7 @@ type ISoftwareTitleDetailsPageProps = RouteComponentProps<
 >;
 
 const getVulnUnsupportedSourceText = (
-  source: string
+  source: string,
 ): DisplayPlatform | undefined => {
   if (isAndroidSoftwareSource(source)) return "Android";
   if (isIpadOrIphoneSoftwareSource(source)) {
@@ -71,17 +71,13 @@ const SoftwareVersionDetailsPage = ({
 
   const versionId = parseInt(routeParams.id, 10);
 
-  const {
-    currentTeamId,
-    teamIdForApi,
-    userTeams,
-    handleTeamChange,
-  } = useTeamIdParam({
-    location,
-    router,
-    includeAllTeams: true,
-    includeNoTeam: true,
-  });
+  const { currentTeamId, teamIdForApi, userTeams, handleTeamChange } =
+    useTeamIdParam({
+      location,
+      router,
+      includeAllTeams: true,
+      includeNoTeam: true,
+    });
 
   const {
     data: softwareVersion,
@@ -104,7 +100,7 @@ const SoftwareVersionDetailsPage = ({
           handlePageError(error);
         }
       },
-    }
+    },
   );
 
   const { data: hostsCount } = useQuery<
@@ -119,19 +115,19 @@ const SoftwareVersionDetailsPage = ({
       keepPreviousData: true,
       staleTime: 10000, // stale time can be adjusted if fresher data is desired
       select: (data) => data.count,
-    }
+    },
   );
 
   const onTeamChange = useCallback(
     (teamId: number) => {
       handleTeamChange(teamId);
     },
-    [handleTeamChange]
+    [handleTeamChange],
   );
 
   const renderVulnTable = (swVersion: ISoftwareVersion) => {
     const vulnUnsupportedSource = getVulnUnsupportedSourceText(
-      swVersion.source
+      swVersion.source,
     );
 
     if (vulnUnsupportedSource) {
@@ -182,7 +178,7 @@ const SoftwareVersionDetailsPage = ({
               <SoftwareDetailsSummary
                 displayName={`${getDisplayedSoftwareName(
                   softwareVersion.name,
-                  softwareVersion.display_name
+                  softwareVersion.display_name,
                 )}, ${softwareVersion.version}`}
                 type={formatSoftwareType(softwareVersion)}
                 hostCount={hostsCount}

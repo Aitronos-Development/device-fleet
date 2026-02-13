@@ -35,7 +35,7 @@ type IFormValidations = Record<
 
 export const generateFormValidations = (
   certAuthorities: ICertificateAuthorityPartial[],
-  isEditing: boolean
+  isEditing: boolean,
 ) => {
   const FORM_VALIDATIONS: IFormValidations = {
     name: {
@@ -60,7 +60,8 @@ export const generateFormValidations = (
             return (
               isEditing ||
               certAuthorities.find(
-                (cert) => cert.type === "hydrant" && cert.name === formData.name
+                (cert) =>
+                  cert.type === "hydrant" && cert.name === formData.name,
               ) === undefined
             );
           },
@@ -111,7 +112,7 @@ export const generateFormValidations = (
 
 const getErrorMessage = (
   formData: IHydrantFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -121,7 +122,7 @@ const getErrorMessage = (
 
 export const validateFormData = (
   formData: IHydrantFormData,
-  validationConfig: IFormValidations
+  validationConfig: IFormValidations,
 ) => {
   const formValidation: IHydrantFormValidation = {
     isValid: true,
@@ -130,7 +131,7 @@ export const validateFormData = (
   Object.keys(validationConfig).forEach((key) => {
     const objKey = key as keyof typeof validationConfig;
     const failedValidation = validationConfig[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

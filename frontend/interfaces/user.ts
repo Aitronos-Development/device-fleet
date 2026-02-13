@@ -24,7 +24,7 @@ export const USERS_ROLES = [
   "observer",
   "observer_plus",
 ] as const;
-export type IUserRole = typeof USERS_ROLES[number];
+export type IUserRole = (typeof USERS_ROLES)[number];
 export type UserRole =
   | "admin"
   | "maintainer"

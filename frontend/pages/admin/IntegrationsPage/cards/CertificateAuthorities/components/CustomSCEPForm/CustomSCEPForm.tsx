@@ -46,14 +46,12 @@ const CustomSCEPForm = ({
 }: ICustomSCEPFormProps) => {
   const validations = useMemo(
     () => generateFormValidations(certAuthorities ?? [], isEditing),
-    [certAuthorities, isEditing]
+    [certAuthorities, isEditing],
   );
-  const [
-    formValidation,
-    setFormValidation,
-  ] = useState<ICustomSCEPFormValidation>(() =>
-    validateFormData(formData, validations)
-  );
+  const [formValidation, setFormValidation] =
+    useState<ICustomSCEPFormValidation>(() =>
+      validateFormData(formData, validations),
+    );
 
   const { name, scepURL, challenge } = formData;
 
@@ -66,8 +64,8 @@ const CustomSCEPForm = ({
     setFormValidation(
       validateFormData(
         { ...formData, [update.name]: update.value },
-        validations
-      )
+        validations,
+      ),
     );
     onChange(update);
   };

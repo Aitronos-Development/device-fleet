@@ -54,19 +54,13 @@ const CustomSettings = ({
     config?.mdm.android_enabled_and_configured;
 
   const [showAddProfileModal, setShowAddProfileModal] = useState(false);
-  const [
-    profileLabelsModalData,
-    setProfileLabelsModalData,
-  ] = useState<IMdmProfile | null>(null);
+  const [profileLabelsModalData, setProfileLabelsModalData] =
+    useState<IMdmProfile | null>(null);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
-  const [
-    showConfigProfileStatusModal,
-    setShowConfigProfileStatusModal,
-  ] = useState(false);
-  const [
-    showResendConfigProfileModal,
-    setShowResendConfigProfileModal,
-  ] = useState(false);
+  const [showConfigProfileStatusModal, setShowConfigProfileStatusModal] =
+    useState(false);
+  const [showResendConfigProfileModal, setShowResendConfigProfileModal] =
+    useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const selectedProfile = useRef<IMdmProfile | null>(null);
@@ -95,7 +89,7 @@ const CustomSettings = ({
     {
       enabled: mdmEnabled,
       refetchOnWindowFocus: false,
-    }
+    },
   );
   const profiles = profilesData?.profiles;
   const meta = profilesData?.meta;
@@ -224,7 +218,7 @@ const CustomSettings = ({
       />
       {!mdmEnabled ? (
         <GenericMsgWithNavButton
-          header="Manage your hosts"
+          header="Manage your devices"
           buttonText="Turn on"
           path={PATHS.ADMIN_INTEGRATIONS_MDM}
           router={router}

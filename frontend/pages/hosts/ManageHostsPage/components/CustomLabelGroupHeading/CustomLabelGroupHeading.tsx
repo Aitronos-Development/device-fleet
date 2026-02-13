@@ -14,7 +14,7 @@ import { IEmptyOption, IGroupOption } from "../LabelFilterSelect/helpers";
 const baseClass = "custom-label-group-heading";
 
 const CustomLabelGroupHeading = (
-  props: GroupHeadingProps<ILabel | IEmptyOption, false, IGroupOption>
+  props: GroupHeadingProps<ILabel | IEmptyOption, false, IGroupOption>,
 ) => {
   const { data, selectProps } = props;
   const {
@@ -28,7 +28,7 @@ const CustomLabelGroupHeading = (
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputClick = (
-    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
     onClickLabelSearchInput && onClickLabelSearchInput(event);
     inputRef.current?.focus();

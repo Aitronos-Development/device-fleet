@@ -29,7 +29,7 @@ const FOOTNOTES = {
  */
 const renderTooltip = (
   column: IQueryTableColumn,
-  selectedTableName: string
+  selectedTableName: string,
 ) => {
   const renderUserContextFootnote = () => {
     const queryString = buildQueryStringFromParams({
@@ -40,7 +40,7 @@ const renderTooltip = (
     const href = `https://fleetdm.com/guides/osquery-consider-joining-against-the-users-table?${queryString}`;
     const classNames = classnames(
       `${baseClass}__footnote`,
-      `${baseClass}__footnote-link`
+      `${baseClass}__footnote-link`,
     );
 
     return (

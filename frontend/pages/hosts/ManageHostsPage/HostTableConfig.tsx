@@ -114,7 +114,7 @@ const allHostTableHeaders: IHostTableColumnConfig[] = [
   },
   {
     Header: (cellProps: IHostTableHeaderProps) => (
-      <HeaderCell value="Host" isSortedDesc={cellProps.column.isSortedDesc} />
+      <HeaderCell value="Device" isSortedDesc={cellProps.column.isSortedDesc} />
     ),
     accessor: "display_name",
     id: "display_name",
@@ -161,7 +161,7 @@ const allHostTableHeaders: IHostTableColumnConfig[] = [
           path={PATHS.HOST_DETAILS(cellProps.row.original.id)}
           title={lastSeenTime(
             cellProps.row.original.status,
-            cellProps.row.original.seen_time
+            cellProps.row.original.seen_time,
           )}
         />
       );
@@ -169,7 +169,7 @@ const allHostTableHeaders: IHostTableColumnConfig[] = [
     disableHidden: true,
   },
   {
-    title: "Hostname",
+    title: "Device name",
     Header: (cellProps: IHostTableHeaderProps) => (
       <HeaderCell
         value="Hostname"
@@ -323,7 +323,7 @@ const allHostTableHeaders: IHostTableColumnConfig[] = [
     Cell: (cellProps: IHostTableStringCellProps) => {
       const os_version = cellProps.cell.value;
       const versionForRender = ROLLING_ARCH_LINUX_VERSIONS.includes(
-        os_version
+        os_version,
       ) ? (
         // wrap a tooltip around the "rolling" suffix
         <>
@@ -648,7 +648,7 @@ const allHostTableHeaders: IHostTableColumnConfig[] = [
       if (
         isAndroid(cellProps.row.original.platform) ||
         isBYODAccountDrivenUserEnrollment(
-          cellProps.row.original.mdm.enrollment_status
+          cellProps.row.original.mdm.enrollment_status,
         )
       ) {
         return NotSupported;
@@ -727,7 +727,7 @@ const generateAvailableTableHeaders = ({
       columns.push(currentColumn);
       return columns;
     },
-    []
+    [],
   );
 };
 
@@ -747,7 +747,7 @@ const generateVisibleTableColumns = ({
   return generateAvailableTableHeaders({ isFreeTier, isOnlyObserver }).filter(
     (column) => {
       return !hiddenColumns.includes(column.id as string);
-    }
+    },
   );
 };
 

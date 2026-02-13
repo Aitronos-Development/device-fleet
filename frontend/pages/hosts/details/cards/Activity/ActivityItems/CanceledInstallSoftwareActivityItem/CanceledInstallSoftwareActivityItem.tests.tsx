@@ -14,7 +14,10 @@ describe("CanceledInstallSoftwareActivityItem", () => {
 
   it("renders the activity content", () => {
     render(
-      <CanceledInstallSoftwareActivityItem tab="past" activity={mockActivity} />
+      <CanceledInstallSoftwareActivityItem
+        tab="past"
+        activity={mockActivity}
+      />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
@@ -25,7 +28,10 @@ describe("CanceledInstallSoftwareActivityItem", () => {
 
   it("does not render the cancel icon", () => {
     render(
-      <CanceledInstallSoftwareActivityItem tab="past" activity={mockActivity} />
+      <CanceledInstallSoftwareActivityItem
+        tab="past"
+        activity={mockActivity}
+      />,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -33,7 +39,10 @@ describe("CanceledInstallSoftwareActivityItem", () => {
 
   it("does not render the show details icon", () => {
     render(
-      <CanceledInstallSoftwareActivityItem tab="past" activity={mockActivity} />
+      <CanceledInstallSoftwareActivityItem
+        tab="past"
+        activity={mockActivity}
+      />,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();

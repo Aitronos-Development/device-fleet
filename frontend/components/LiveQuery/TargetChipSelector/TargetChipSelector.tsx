@@ -14,12 +14,12 @@ interface ITargetChipSelectorProps {
   entity: ISelectLabel | ISelectTeam;
   isSelected: boolean;
   onClick: (
-    value: ISelectLabel | ISelectTeam
+    value: ISelectLabel | ISelectTeam,
   ) => React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const isBuiltInLabel = (
-  entity: ISelectTargetsEntity
+  entity: ISelectTargetsEntity,
 ): entity is ISelectLabel & { label_type: "builtin" } => {
   return "label_type" in entity && entity.label_type === "builtin";
 };

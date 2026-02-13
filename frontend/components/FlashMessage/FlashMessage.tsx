@@ -28,20 +28,15 @@ const SingleFlashMessage = ({
   onRemoveFlash,
   pathname,
 }: ISingleFlashMessage) => {
-  const {
-    alertType,
-    isVisible,
-    message,
-    persistOnPageChange,
-    id,
-  } = notification;
+  const { alertType, isVisible, message, persistOnPageChange, id } =
+    notification;
   const baseClasses = classnames(
     baseClass,
     className,
     `${baseClass}--${alertType}`,
     {
       [`${baseClass}--full-width`]: fullWidth,
-    }
+    },
   );
 
   const [hide, setHide] = useState(false);

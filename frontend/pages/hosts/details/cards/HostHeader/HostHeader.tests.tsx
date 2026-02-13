@@ -22,7 +22,7 @@ describe("HostHeader", () => {
         showRefetchSpinner={false}
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
     expect(screen.getByText("Test Host")).toBeInTheDocument();
     expect(screen.getByText(/Last fetched/i)).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("HostHeader", () => {
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
         deviceUser
-      />
+      />,
     );
     expect(screen.getByText("My device")).toBeInTheDocument();
     expect(screen.getByText(/unavailable/i)).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("HostHeader", () => {
         showRefetchSpinner={false}
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
     expect(screen.queryByText("Refetch")).not.toBeInTheDocument();
   });
@@ -60,7 +60,7 @@ describe("HostHeader", () => {
         showRefetchSpinner={false}
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
     const refetchButton = screen.getByRole("button", { name: /refetch/i });
     expect(refetchButton).toBeDisabled();
@@ -73,7 +73,7 @@ describe("HostHeader", () => {
         showRefetchSpinner
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
     expect(screen.getByText(/Fetching fresh vitals/i)).toBeInTheDocument();
   });
@@ -86,7 +86,7 @@ describe("HostHeader", () => {
         showRefetchSpinner={false}
         onRefetchHost={onRefetchHost}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
     fireEvent.click(screen.getByText("Refetch"));
     expect(onRefetchHost).toHaveBeenCalled();
@@ -99,7 +99,7 @@ describe("HostHeader", () => {
         showRefetchSpinner={false}
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Refetch"));
@@ -115,7 +115,7 @@ describe("HostHeader", () => {
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
         hostMdmDeviceStatus={"locked" as HostMdmDeviceStatusUIState}
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Refetch"));
@@ -131,7 +131,7 @@ describe("HostHeader", () => {
         onRefetchHost={jest.fn()}
         renderActionsDropdown={renderActionDropdown}
         hostMdmDeviceStatus={"locked" as HostMdmDeviceStatusUIState}
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Locked"));

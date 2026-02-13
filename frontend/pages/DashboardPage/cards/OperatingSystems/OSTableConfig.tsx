@@ -55,7 +55,7 @@ interface IOSTableConfigOptions {
 const generateDefaultTableHeaders = (
   teamId?: number,
   router?: InjectedRouter,
-  configOptions?: IOSTableConfigOptions
+  configOptions?: IOSTableConfigOptions,
 ): ITableColumnConfig[] => [
   {
     Header: "Name",
@@ -75,7 +75,7 @@ const generateDefaultTableHeaders = (
 
       const softwareOsDetailsPath = getPathWithQueryParams(
         PATHS.SOFTWARE_OS_DETAILS(os_version_id),
-        { team_id: teamId }
+        { team_id: teamId },
       );
 
       const onClickSoftware = (e: React.MouseEvent) => {
@@ -154,7 +154,7 @@ const generateDefaultTableHeaders = (
   {
     Header: (cellProps: IHostHeaderProps) => (
       <HeaderCell
-        value="Hosts"
+        value="Devices"
         disableSortBy={false}
         isSortedDesc={cellProps.column.isSortedDesc}
       />
@@ -195,19 +195,19 @@ const generateDefaultTableHeaders = (
 const generateTableHeaders = (
   teamId?: number,
   router?: InjectedRouter,
-  configOptions?: IOSTableConfigOptions
+  configOptions?: IOSTableConfigOptions,
 ): ITableColumnConfig[] => {
   let tableConfig = generateDefaultTableHeaders(teamId, router, configOptions);
 
   if (!configOptions?.includeName) {
     tableConfig = tableConfig.filter(
-      (column) => column.accessor !== "name_only"
+      (column) => column.accessor !== "name_only",
     );
   }
 
   if (!configOptions?.includeVulnerabilities) {
     tableConfig = tableConfig.filter(
-      (column) => column.accessor !== "vulnerabilities"
+      (column) => column.accessor !== "vulnerabilities",
     );
   }
 

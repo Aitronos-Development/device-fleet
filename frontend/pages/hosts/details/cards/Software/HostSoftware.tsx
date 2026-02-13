@@ -43,8 +43,9 @@ export interface ITableSoftware extends Omit<ISoftware, "vulnerabilities"> {
   vulnerabilities: string[]; // for client-side search purposes, we only want an array of cve strings
 }
 
-interface HostSoftwareQueryParams
-  extends ReturnType<typeof parseHostSoftwareQueryParams> {
+interface HostSoftwareQueryParams extends ReturnType<
+  typeof parseHostSoftwareQueryParams
+> {
   include_available_for_install?: boolean;
 }
 
@@ -89,9 +90,8 @@ export const parseHostSoftwareQueryParams = (queryParams: {
     ? parseInt(queryParams.page, 10)
     : DEFAULT_PAGE;
   const pageSize = DEFAULT_PAGE_SIZE;
-  const softwareVulnFilters = getSoftwareVulnFiltersFromQueryParams(
-    queryParams
-  );
+  const softwareVulnFilters =
+    getSoftwareVulnFiltersFromQueryParams(queryParams);
   const categoryId = queryParams?.category_id
     ? parseInt(queryParams.category_id, 10)
     : undefined;
@@ -130,9 +130,8 @@ const HostSoftware = ({
 
   const isUnsupported = isIPadOrIPhone(platform) && queryParams.vulnerable; // no Android software and no vulnerable software for iOS
 
-  const [showSoftwareFiltersModal, setShowSoftwareFiltersModal] = useState(
-    false
-  );
+  const [showSoftwareFiltersModal, setShowSoftwareFiltersModal] =
+    useState(false);
 
   const {
     data: hostSoftwareRes,
@@ -161,7 +160,7 @@ const HostSoftware = ({
       enabled: isSoftwareEnabled && !isMyDevicePage && !isUnsupported,
       keepPreviousData: true,
       staleTime: 7000,
-    }
+    },
   );
 
   const {
@@ -189,7 +188,7 @@ const HostSoftware = ({
       enabled: isSoftwareEnabled && isMyDevicePage, // if disabled, we'll always show a generic "No software detected" message. No My Device Page for iPad/iPhone
       keepPreviousData: true,
       staleTime: 7000,
-    }
+    },
   );
 
   const toggleSoftwareFiltersModal = useCallback(() => {
@@ -218,7 +217,7 @@ const HostSoftware = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [queryParams]
+    [queryParams],
   );
 
   const onApplyVulnFilters = (vulnFilters: ISoftwareVulnFiltersParams) => {
@@ -242,7 +241,7 @@ const HostSoftware = ({
           pathPrefix: location.pathname,
           routeTemplate: "",
           queryParams: convertParamsToSnakeCase(newQueryParams),
-        })
+        }),
       );
     }
 

@@ -27,7 +27,10 @@ describe("HostSoftwareTableConfig - Last opened column", () => {
   describe("Cell", () => {
     it("renders the date when a valid date string is provided", () => {
       render(
-        <Cell cell={{ value: "2023-01-01T00:00:00Z" }} row={{ original: {} }} />
+        <Cell
+          cell={{ value: "2023-01-01T00:00:00Z" }}
+          row={{ original: {} }}
+        />,
       );
       // HumanTimeDiffWithDateTip will render something like "2 years ago" or similar depending on current date
       // but it definitely won't be "Never" or "Not supported"

@@ -80,7 +80,7 @@ const Certificates = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       enabled: isPremiumTier && androidMdmEnabled,
-    }
+    },
   );
 
   const certs = certsResp?.certificates || [];
@@ -112,7 +112,7 @@ const Certificates = ({
       return (
         <div className={`${baseClass}__mdm-disabled-message`}>
           <GenericMsgWithNavButton
-            header="Manage your hosts"
+            header="Manage your devices"
             buttonText="Turn on"
             path={PATHS.ADMIN_INTEGRATIONS_MDM}
             router={router}

@@ -54,7 +54,7 @@ interface IHostSWLibraryTableHeaders {
   onSetSelectedHostSWIpaInstallDetails: (details?: IHostSoftware) => void;
   onSetSelectedHostSWScriptDetails: (details?: IHostSoftware) => void;
   onSetSelectedHostSWUninstallDetails: (
-    details?: ISWUninstallDetailsParentState
+    details?: ISWUninstallDetailsParentState,
   ) => void;
   onSetSelectedVPPInstallDetails: (s: IVPPHostSoftware) => void;
   onClickInstallAction: (softwareId: number, isScriptPackage?: boolean) => void;
@@ -103,14 +103,14 @@ export const generateHostSWLibraryTableHeaders = ({
 
         const softwareTitleDetailsPath = getPathWithQueryParams(
           PATHS.SOFTWARE_TITLE_DETAILS(id.toString()),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         const hasInstaller = !!app_store_app || !!software_package;
         const isSelfService =
           app_store_app?.self_service || software_package?.self_service;
         const automaticInstallPoliciesCount = getAutomaticInstallPoliciesCount(
-          cellProps.row.original
+          cellProps.row.original,
         );
         const isAndroidPlayStoreApp =
           !!app_store_app && source === "android_apps";

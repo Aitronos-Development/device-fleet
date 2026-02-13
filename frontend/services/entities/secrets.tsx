@@ -19,7 +19,7 @@ export interface IListSecretsResponse {
 
 export default {
   getSecrets(
-    params: IListSecretsRequestApiParams
+    params: IListSecretsRequestApiParams,
   ): Promise<IListSecretsResponse> {
     const { SECRETS } = endpoints;
     const path = `${SECRETS}?${buildQueryStringFromParams({

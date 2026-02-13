@@ -16,7 +16,7 @@ describe("LabelForm", () => {
         onCancel={noop}
         immutableFields={[]}
         teamName={null}
-      />
+      />,
     );
 
     const nameInput = screen.getByLabelText("Name");
@@ -26,7 +26,7 @@ describe("LabelForm", () => {
 
     await user.type(nameInput, "Label name");
     expect(
-      screen.queryByText("Label name must be present")
+      screen.queryByText("Label name must be present"),
     ).not.toBeInTheDocument();
   });
 
@@ -38,7 +38,7 @@ describe("LabelForm", () => {
         teamName={null}
         immutableFields={[]}
         additionalFields={<InputField name="test field" label="test field" />}
-      />
+      />,
     );
 
     expect(screen.getByLabelText("test field")).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe("LabelForm", () => {
         onCancel={jest.fn()}
         teamName={null}
         immutableFields={[]}
-      />
+      />,
     );
 
     const nameValue = "Test Name";
@@ -63,7 +63,7 @@ describe("LabelForm", () => {
 
     expect(onSave).toHaveBeenCalledWith(
       { name: nameValue, description: descriptionValue },
-      true
+      true,
     );
   });
 
@@ -74,14 +74,14 @@ describe("LabelForm", () => {
         onCancel={noop}
         teamName={null}
         immutableFields={[]}
-      />
+      />,
     );
 
     // Help text container should not be in the document
     expect(
       screen.queryByText(
-        /are immutable\. To make changes, delete this label and create a new one\./
-      )
+        /are immutable\. To make changes, delete this label and create a new one\./,
+      ),
     ).not.toBeInTheDocument();
   });
 
@@ -92,13 +92,13 @@ describe("LabelForm", () => {
         onCancel={noop}
         teamName={"Example Team"}
         immutableFields={["teams"]}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        "Label teams are immutable. To make changes, delete this label and create a new one."
-      )
+        "Label teams are immutable. To make changes, delete this label and create a new one.",
+      ),
     ).toBeInTheDocument();
   });
 
@@ -111,13 +111,13 @@ describe("LabelForm", () => {
         onCancel={noop}
         teamName={null}
         immutableFields={immutableFields}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        "Label queries and platforms are immutable. To make changes, delete this label and create a new one."
-      )
+        "Label queries and platforms are immutable. To make changes, delete this label and create a new one.",
+      ),
     ).toBeInTheDocument();
 
     expect(immutableFields.length).toBe(2);
@@ -130,13 +130,13 @@ describe("LabelForm", () => {
         onCancel={noop}
         teamName={"Example Team"}
         immutableFields={["teams", "queries", "platforms"]}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        "Label teams, queries, and platforms are immutable. To make changes, delete this label and create a new one."
-      )
+        "Label teams, queries, and platforms are immutable. To make changes, delete this label and create a new one.",
+      ),
     ).toBeInTheDocument();
   });
 });

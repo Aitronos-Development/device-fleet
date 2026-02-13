@@ -39,7 +39,7 @@ const getPlatformLabel = (platform: SetupExperiencePlatform) => {
 
 const getAddSoftwareUrl = (
   platform: SetupExperiencePlatform,
-  teamId: number
+  teamId: number,
 ) => {
   let path = "";
   switch (platform) {
@@ -82,14 +82,13 @@ const AddInstallSoftware = ({
   savedRequireAllSoftwareMacOS,
 }: IAddInstallSoftwareProps) => {
   const noSoftwareUploaded = hasNoSoftwareUploaded(softwareTitles);
-  const installSoftwareDuringSetupCount = getInstallSoftwareDuringSetupCount(
-    softwareTitles
-  );
+  const installSoftwareDuringSetupCount =
+    getInstallSoftwareDuringSetupCount(softwareTitles);
   const { renderFlash } = useContext(NotificationContext);
   const { config } = useContext(AppContext);
   const [showMacOSOptions, setShowMacOSOptions] = useState(false);
   const [requireAllSoftwareMacOS, setRequireAllSoftwareMacOS] = useState(
-    savedRequireAllSoftwareMacOS || false
+    savedRequireAllSoftwareMacOS || false,
   );
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -99,7 +98,7 @@ const AddInstallSoftware = ({
     try {
       await mdmAPI.updateRequireAllSoftwareMacOS(
         currentTeamId,
-        requireAllSoftwareMacOS
+        requireAllSoftwareMacOS,
       );
       renderFlash("success", "Successfully updated!");
     } catch {

@@ -7,10 +7,10 @@ describe("validateEquality - validator", () => {
     expect(validateEquality(1.0, 1)).toEqual(true);
     expect(validateEquality(["thegnarco"], ["thegnarco"])).toEqual(true);
     expect(validateEquality({ hello: "world" }, { hello: "world" })).toEqual(
-      true
+      true,
     );
     expect(
-      validateEquality({ foo: { bar: "baz" } }, { foo: { bar: "baz" } })
+      validateEquality({ foo: { bar: "baz" } }, { foo: { bar: "baz" } }),
     ).toEqual(true);
   });
 
@@ -19,10 +19,10 @@ describe("validateEquality - validator", () => {
     expect(validateEquality(1, "thegnar")).toEqual(false);
     expect(validateEquality(["thegnarco"], [1])).toEqual(false);
     expect(validateEquality({ hello: "world" }, { hello: "foo" })).toEqual(
-      false
+      false,
     );
     expect(
-      validateEquality({ foo: { bar: "baz" } }, { foo: { bar: "foo" } })
+      validateEquality({ foo: { bar: "baz" } }, { foo: { bar: "foo" } }),
     ).toEqual(false);
   });
 });

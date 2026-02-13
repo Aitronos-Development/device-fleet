@@ -20,7 +20,7 @@ interface RenderYamlHelperText {
 
 // Helper to join items with commas and Oxford comma before "and"
 const joinWithCommasAnd = (
-  elements: { key: string; element: JSX.Element }[]
+  elements: { key: string; element: JSX.Element }[],
 ) => {
   return elements.map((item, idx) => {
     if (idx === 0) return item.element;

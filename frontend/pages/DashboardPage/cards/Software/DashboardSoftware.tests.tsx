@@ -73,7 +73,7 @@ describe("Dashboard software card", () => {
         teamId={-1}
         router={createMockRouter()}
         softwarePageIndex={0}
-      />
+      />,
     );
 
     expect(screen.getByText("Name")).toBeInTheDocument();
@@ -132,7 +132,7 @@ describe("Dashboard software card", () => {
         teamId={-1}
         router={createMockRouter()}
         softwarePageIndex={0}
-      />
+      />,
     );
 
     expect(screen.getByText("Name")).toBeInTheDocument();

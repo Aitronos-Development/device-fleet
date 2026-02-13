@@ -5,7 +5,7 @@ import { handleClickOutside } from "./helpers";
 
 export default (
   WrappedComponent,
-  { onOutsideClick = noop, getDOMNode = noop }
+  { onOutsideClick = noop, getDOMNode = noop },
 ) => {
   class ClickOutside extends Component {
     componentDidMount() {

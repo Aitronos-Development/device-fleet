@@ -22,7 +22,7 @@ describe("TargetLabelSelector component", () => {
           onSelectCustomTarget={noop}
           onSelectLabel={noop}
           onSelectTargetType={noop}
-        />
+        />,
       );
 
       // custom target selector is rendering
@@ -48,7 +48,7 @@ describe("TargetLabelSelector component", () => {
           onSelectCustomTarget={noop}
           onSelectLabel={noop}
           onSelectTargetType={noop}
-        />
+        />,
       );
 
       // custom target help text is visible
@@ -78,7 +78,7 @@ describe("TargetLabelSelector component", () => {
         onSelectCustomTarget={noop}
         onSelectLabel={noop}
         onSelectTargetType={noop}
-      />
+      />,
     );
 
     // custom target selector is not rendering
@@ -105,7 +105,7 @@ describe("TargetLabelSelector component", () => {
         onSelectCustomTarget={noop}
         onSelectLabel={noop}
         onSelectTargetType={noop}
-      />
+      />,
     );
 
     // lables are rendering
@@ -131,7 +131,7 @@ describe("TargetLabelSelector component", () => {
         onSelectLabel={noop}
         onSelectTargetType={noop}
         title={TITLE}
-      />
+      />,
     );
 
     expect(screen.getByText(TITLE)).toBeVisible();
@@ -155,7 +155,7 @@ describe("TargetLabelSelector component", () => {
         onSelectLabel={noop}
         onSelectTargetType={noop}
         title={TITLE}
-      />
+      />,
     );
 
     expect(screen.getByText(TITLE)).toBeVisible();
@@ -178,7 +178,7 @@ describe("TargetLabelSelector component", () => {
         onSelectLabel={noop}
         onSelectTargetType={noop}
         suppressTitle
-      />
+      />,
     );
 
     expect(screen.queryByText("Target")).not.toBeInTheDocument();
@@ -202,7 +202,7 @@ describe("TargetLabelSelector component", () => {
         onSelectLabel={noop}
         onSelectTargetType={noop}
         subTitle={SUBTITLE}
-      />
+      />,
     );
 
     expect(screen.getByText(SUBTITLE)).toBeVisible();

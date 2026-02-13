@@ -34,13 +34,13 @@ const LowDiskSpaceHosts = ({
 
   const tooltipText = notSupported
     ? "Disk space info is not available for Chromebooks."
-    : `Hosts that have ${lowDiskSpaceGb} GB or less disk space available.`;
+    : `Devices that have ${lowDiskSpaceGb} GB or less disk space available.`;
 
   return (
     <HostCountCard
       iconName="low-disk-space-hosts"
       count={lowDiskSpaceCount}
-      title="Low disk space hosts"
+      title="Low disk space devices"
       tooltip={tooltipText}
       path={path}
       notSupported={notSupported}

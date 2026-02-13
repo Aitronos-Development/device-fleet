@@ -49,7 +49,7 @@ const AppleMdmPage = ({ router }: { router: InjectedRouter }) => {
       staleTime: 5000,
       refetchOnWindowFocus: false,
       onSettled: () => setIsUpdating(false),
-    }
+    },
   );
 
   const toggleRenewCertModal = () => {

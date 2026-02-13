@@ -85,7 +85,7 @@ const DeleteConditionalAccessModal = ({
     } catch {
       renderFlash(
         "error",
-        `Could not disconnect from ${providerName}, please try again.`
+        `Could not disconnect from ${providerName}, please try again.`,
       );
     }
     setIsDeleting(false);
@@ -171,7 +171,7 @@ const ConditionalAccess = () => {
   const { isPremiumTier, setConfig, config } = useContext(AppContext);
 
   const [entraPhase, setEntraPhase] = useState<EntraPhase>(
-    EntraPhase.NotConfigured
+    EntraPhase.NotConfigured,
   );
 
   // Modal states
@@ -183,7 +183,7 @@ const ConditionalAccess = () => {
 
   // Bypass disabled state
   const [bypassDisabled, setBypassDisabled] = useState(
-    config?.conditional_access?.bypass_disabled || false
+    config?.conditional_access?.bypass_disabled || false,
   );
   const [isUpdatingBypass, setIsUpdatingBypass] = useState(false);
 
@@ -204,7 +204,7 @@ const ConditionalAccess = () => {
         setEntraPhase(EntraPhase.Configured);
         renderFlash(
           "success",
-          "Successfully verified Microsoft Entra conditional access integration"
+          "Successfully verified Microsoft Entra conditional access integration",
         );
       } else {
         setEntraPhase(EntraPhase.ConsentMissing);
@@ -213,21 +213,21 @@ const ConditionalAccess = () => {
           !setup_error ||
           // IT admin clicked "Cancel" in the consent dialog.
           setup_error.includes(
-            "A Microsoft Entra admin did not consent to the permissions requested by the conditional access integration"
+            "A Microsoft Entra admin did not consent to the permissions requested by the conditional access integration",
           )
         ) {
           renderFlash(
             "error",
-            "Couldn't update. Fleet didn't get permissions for Entra. Please try again and accept the permissions."
+            "Couldn't update. Fleet didn't get permissions for Entra. Please try again and accept the permissions.",
           );
         } else if (
           setup_error.includes(
-            'No "Fleet conditional access" Entra ID group was found'
+            'No "Fleet conditional access" Entra ID group was found',
           )
         ) {
           renderFlash(
             "error",
-            `Couldn't connect. The "Fleet conditional access" group doesn't exist in Entra. Please create the group and try again.`
+            `Couldn't connect. The "Fleet conditional access" group doesn't exist in Entra. Please create the group and try again.`,
           );
         } else {
           // For other kind of errors we just show a generic error.
@@ -240,7 +240,7 @@ const ConditionalAccess = () => {
           //  - The MS proxy stores the error in its database.
           renderFlash(
             "error",
-            "Couldn't connect. Please contact your Fleet administrator."
+            "Couldn't connect. Please contact your Fleet administrator.",
           );
         }
       }
@@ -367,7 +367,7 @@ const ConditionalAccess = () => {
       setConfig(updatedConfig);
       renderFlash(
         "success",
-        "Successfully updated conditional access settings."
+        "Successfully updated conditional access settings.",
       );
     } catch {
       renderFlash("error", "Could not update conditional access settings.");

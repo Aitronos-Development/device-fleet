@@ -157,17 +157,13 @@ const SoftwareOSDetailsPage = ({
 
   const osVersionIdFromURL = parseInt(routeParams.id, 10);
 
-  const {
-    currentTeamId,
-    teamIdForApi,
-    userTeams,
-    handleTeamChange,
-  } = useTeamIdParam({
-    location,
-    router,
-    includeAllTeams: true,
-    includeNoTeam: true,
-  });
+  const { currentTeamId, teamIdForApi, userTeams, handleTeamChange } =
+    useTeamIdParam({
+      location,
+      router,
+      includeAllTeams: true,
+      includeNoTeam: true,
+    });
 
   // Track whether we need to fetch all vulnerabilities
   const [maxVulnerabilities, setMaxVulnerabilities] = useState<
@@ -219,14 +215,14 @@ const SoftwareOSDetailsPage = ({
           setMaxVulnerabilities(undefined);
         }
       },
-    }
+    },
   );
 
   const onTeamChange = useCallback(
     (teamId: number) => {
       handleTeamChange(teamId);
     },
-    [handleTeamChange]
+    [handleTeamChange],
   );
 
   const renderContent = () => {

@@ -47,7 +47,7 @@ const EmptyFleetAppsTable = () => (
  * for Windows FMA and macOS FMA into table friendly format that combines
  * entries for the same app for different platforms */
 const combineAppsByPlatform = (
-  fmaList: IFleetMaintainedApp[]
+  fmaList: IFleetMaintainedApp[],
 ): ICombinedFMA[] => {
   const combinedApps: { [name: string]: ICombinedFMA } = {};
 
@@ -122,7 +122,7 @@ const FleetMaintainedAppsTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [currentPage, orderDirection, orderKey, query]
+    [currentPage, orderDirection, orderKey, query],
   );
 
   const generateNewQueryParams = useCallback(
@@ -130,7 +130,7 @@ const FleetMaintainedAppsTable = ({
       newTableQuery: ITableQueryData,
       changedParam: string,
       nextPlatform: FmaPlatformValue,
-      nextStatus: FmaStatusValue
+      nextStatus: FmaStatusValue,
     ) => {
       const newQueryParam: Record<string, string | number | undefined> = {
         query: newTableQuery.searchQuery,
@@ -144,7 +144,7 @@ const FleetMaintainedAppsTable = ({
 
       return newQueryParam;
     },
-    [teamId]
+    [teamId],
   );
 
   // NOTE: this is called once on initial render and every time the query changes
@@ -167,7 +167,7 @@ const FleetMaintainedAppsTable = ({
           newTableQuery,
           changedParam,
           platform,
-          status
+          status,
         ),
       });
 
@@ -179,7 +179,7 @@ const FleetMaintainedAppsTable = ({
       router,
       platform,
       status,
-    ]
+    ],
   );
 
   const tableHeadersConfig = useMemo(() => {
@@ -237,7 +237,7 @@ const FleetMaintainedAppsTable = ({
         },
         "status",
         platform,
-        newStatus
+        newStatus,
       ),
     });
 
@@ -260,7 +260,7 @@ const FleetMaintainedAppsTable = ({
         },
         "platform",
         newPlatform,
-        status
+        status,
       ),
     });
 

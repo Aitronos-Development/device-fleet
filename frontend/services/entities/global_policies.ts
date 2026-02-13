@@ -24,8 +24,10 @@ export interface IPoliciesQueryKey extends IPoliciesApiParams {
   scope: "globalPolicies";
 }
 
-export interface IPoliciesCountQueryKey
-  extends Pick<IPoliciesApiParams, "query"> {
+export interface IPoliciesCountQueryKey extends Pick<
+  IPoliciesApiParams,
+  "query"
+> {
   scope: "policiesCount";
 }
 

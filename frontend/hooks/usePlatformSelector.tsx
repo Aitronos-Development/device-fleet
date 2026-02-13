@@ -25,7 +25,7 @@ const usePlatformSelector = (
   baseClass = "",
   disabled = false,
   installSoftware: IPolicySoftwareToInstall | undefined,
-  currentTeamId: number | undefined
+  currentTeamId: number | undefined,
 ): IPlatformSelector => {
   const [checkDarwin, setCheckDarwin] = useState(false);
   const [checkWindows, setCheckWindows] = useState(false);

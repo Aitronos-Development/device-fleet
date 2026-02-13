@@ -20,5 +20,5 @@ export const defaultConfigProfileStatusHandler = http.get(
       pending: 2,
       failed: 3,
     });
-  }
+  },
 );

@@ -9,7 +9,7 @@ describe("Platform compatibility", () => {
       <PlatformCompatibility
         compatiblePlatforms={["darwin", "windows"]}
         error={null}
-      />
+      />,
     );
     const macCompatibility = screen.getByText("macOS").firstElementChild;
     const windowsCompatibility = screen.getByText("Windows").firstElementChild;
@@ -17,15 +17,15 @@ describe("Platform compatibility", () => {
 
     expect(macCompatibility).toHaveAttribute(
       "class",
-      "icon compatible-platform"
+      "icon compatible-platform",
     );
     expect(windowsCompatibility).toHaveAttribute(
       "class",
-      "icon compatible-platform"
+      "icon compatible-platform",
     );
     expect(linuxCompatibility).toHaveAttribute(
       "class",
-      "icon incompatible-platform"
+      "icon incompatible-platform",
     );
   });
   it("renders empty state", () => {
@@ -40,7 +40,7 @@ describe("Platform compatibility", () => {
       <PlatformCompatibility
         compatiblePlatforms={["macos"]}
         error={{ name: "Error", message: "The resource was not found." }}
-      />
+      />,
     );
 
     const text = screen.getByText(/possible syntax error/i);

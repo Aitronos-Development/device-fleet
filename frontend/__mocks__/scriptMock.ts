@@ -38,7 +38,7 @@ const DEFAULT_SCRIPT_RESULT_MOCK: IScriptResultResponse = {
 };
 
 export const createMockScriptResult = (
-  overrides?: Partial<IScriptResultResponse>
+  overrides?: Partial<IScriptResultResponse>,
 ): IScriptResultResponse => {
   return { ...DEFAULT_SCRIPT_RESULT_MOCK, ...overrides };
 };
@@ -54,7 +54,7 @@ const DEFAULT_HOST_SCRIPT_MOCK: IHostScript = {
 };
 
 export const createMockHostScript = (
-  overrides?: Partial<IHostScript>
+  overrides?: Partial<IHostScript>,
 ): IHostScript => {
   return { ...DEFAULT_HOST_SCRIPT_MOCK, ...overrides };
 };
@@ -79,7 +79,7 @@ const DEFAULT_SCRIPT_BATCH_SUMMARY_MOCK: IScriptBatchSummaryV2 = {
 };
 
 export const createMockBatchScriptSummary = (
-  overrides?: Partial<IScriptBatchSummaryV2>
+  overrides?: Partial<IScriptBatchSummaryV2>,
 ): IScriptBatchSummaryV2 => {
   return { ...DEFAULT_SCRIPT_BATCH_SUMMARY_MOCK, ...overrides };
 };
@@ -132,7 +132,7 @@ const SCRIPT_BATCH_HOST_RESULTS_BY_STATUS: Record<
 };
 
 export const createMockScriptBatchHostResults = (
-  status?: ScriptBatchHostStatus
+  status?: ScriptBatchHostStatus,
 ): IScriptBatchHostResultsResponse => {
   return {
     meta: {

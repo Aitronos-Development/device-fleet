@@ -14,10 +14,10 @@ describe("ConfirmInviteForm - component", () => {
       <ConfirmInviteForm
         defaultFormData={defaultFormData}
         handleSubmit={handleSubmitSpy}
-      />
+      />,
     );
     expect(
-      screen.getByRole("textbox", { name: "Full name" })
+      screen.getByRole("textbox", { name: "Full name" }),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();
     expect(screen.getByLabelText("Confirm password")).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("ConfirmInviteForm - component", () => {
       <ConfirmInviteForm
         ancestorError={baseError}
         handleSubmit={handleSubmitSpy}
-      />
+      />,
     );
 
     expect(screen.getByText(baseError)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("ConfirmInviteForm - component", () => {
       <ConfirmInviteForm
         defaultFormData={defaultFormData}
         handleSubmit={handleSubmitSpy}
-      />
+      />,
     );
 
     await user.type(screen.getByLabelText("Password"), "p@ssw0rd");
@@ -61,13 +61,13 @@ describe("ConfirmInviteForm - component", () => {
         <ConfirmInviteForm
           defaultFormData={{ ...defaultFormData, ...{ name: "" } }}
           handleSubmit={handleSubmitSpy}
-        />
+        />,
       );
 
       await user.click(screen.getByRole("button", { name: "Submit" }));
 
       expect(
-        await screen.findByText("Full name must be present")
+        await screen.findByText("Full name must be present"),
       ).toBeInTheDocument();
     });
   });
@@ -78,13 +78,13 @@ describe("ConfirmInviteForm - component", () => {
         <ConfirmInviteForm
           defaultFormData={defaultFormData}
           handleSubmit={handleSubmitSpy}
-        />
+        />,
       );
 
       await user.click(screen.getByRole("button", { name: "Submit" }));
 
       expect(
-        await screen.findByText("Password must be present")
+        await screen.findByText("Password must be present"),
       ).toBeInTheDocument();
     });
   });
@@ -95,18 +95,18 @@ describe("ConfirmInviteForm - component", () => {
         <ConfirmInviteForm
           defaultFormData={defaultFormData}
           handleSubmit={handleSubmitSpy}
-        />
+        />,
       );
 
       await user.type(screen.getByLabelText("Password"), "p@ssw0rd");
       await user.type(
         screen.getByLabelText("Confirm password"),
-        "another password"
+        "another password",
       );
       await user.click(screen.getByRole("button", { name: "Submit" }));
 
       const passwordError = screen.getByText(
-        "Password confirmation does not match password"
+        "Password confirmation does not match password",
       );
       expect(passwordError).toBeInTheDocument();
     });
@@ -116,13 +116,13 @@ describe("ConfirmInviteForm - component", () => {
         <ConfirmInviteForm
           defaultFormData={defaultFormData}
           handleSubmit={handleSubmitSpy}
-        />
+        />,
       );
 
       await user.click(screen.getByRole("button", { name: "Submit" }));
 
       const passwordError = screen.getByText(
-        "Password confirmation must be present"
+        "Password confirmation must be present",
       );
 
       expect(passwordError).toBeInTheDocument();

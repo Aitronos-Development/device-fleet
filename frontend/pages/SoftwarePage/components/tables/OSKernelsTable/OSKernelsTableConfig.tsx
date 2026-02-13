@@ -48,7 +48,7 @@ const generateTableConfig = ({
         const { id } = cellProps.row.original;
         const softwareVersionDetailsPath = getPathWithQueryParams(
           PATHS.SOFTWARE_VERSION_DETAILS(id.toString()),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         return (
@@ -70,20 +70,20 @@ const generateTableConfig = ({
       },
     },
     {
-      title: "Hosts",
+      title: "Devices",
       Header: () => {
         const titleWithToolTip = (
           <TooltipWrapper
             tipContent={
               <>
-                Linux hosts may have multiple kernels
+                Linux devices may have multiple kernels
                 <br /> installed. Containers do not have their
                 <br /> own kernel.
               </>
             }
             className="status-header"
           >
-            Hosts
+            Devices
           </TooltipWrapper>
         );
         return <HeaderCell value={titleWithToolTip} disableSortBy />;

@@ -27,12 +27,10 @@ const AddSecretModal = ({ onCancel, onSave }: AddSecretModalProps) => {
 
   const { renderFlash } = useContext(NotificationContext);
 
-  const [
-    formValidation,
-    setFormValidation,
-  ] = useState<IAddSecretModalFormValidation>(() =>
-    validateFormData({ name: secretName, value: secretValue })
-  );
+  const [formValidation, setFormValidation] =
+    useState<IAddSecretModalFormValidation>(() =>
+      validateFormData({ name: secretName, value: secretValue }),
+    );
 
   const onInputChange = (update: { name: string; value: string }) => {
     const name = update.name;
@@ -48,7 +46,7 @@ const AddSecretModal = ({ onCancel, onSave }: AddSecretModalProps) => {
         name: secretName,
         value: secretValue,
         [update.name]: value,
-      })
+      }),
     );
   };
 
@@ -70,7 +68,7 @@ const AddSecretModal = ({ onCancel, onSave }: AddSecretModalProps) => {
         } else {
           renderFlash(
             "error",
-            "An error occurred while saving the secret. Please try again."
+            "An error occurred while saving the secret. Please try again.",
           );
         }
       } finally {

@@ -21,7 +21,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     expect(screen.getByText(baseError)).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     expect(screen.queryByText(baseError)).not.toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     // enter a valid password
@@ -70,7 +70,7 @@ describe("LoginForm - component", () => {
     // try to log in
     await user.click(screen.getByRole("button", { name: "Log in" }));
     expect(
-      screen.getByText("Email field must be completed")
+      screen.getByText("Email field must be completed"),
     ).toBeInTheDocument();
     expect(submitSpy).not.toHaveBeenCalled();
 
@@ -80,7 +80,7 @@ describe("LoginForm - component", () => {
     // try to log in again
     await user.click(screen.getByRole("button", { name: "Log in" }));
     expect(
-      screen.getByText("Email must be a valid email address")
+      screen.getByText("Email must be a valid email address"),
     ).toBeInTheDocument();
     expect(submitSpy).not.toHaveBeenCalled();
   });
@@ -92,7 +92,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     await user.type(screen.getByPlaceholderText("Email"), validEmail);
@@ -101,7 +101,7 @@ describe("LoginForm - component", () => {
     await user.click(screen.getByRole("button", { name: "Log in" }));
 
     expect(
-      screen.getByText("Password field must be completed")
+      screen.getByText("Password field must be completed"),
     ).toBeInTheDocument();
     expect(submitSpy).not.toHaveBeenCalled();
   });
@@ -113,7 +113,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("button", { name: "Log in" }));
@@ -128,7 +128,7 @@ describe("LoginForm - component", () => {
         isSubmitting={false}
         pendingEmail={false}
         ssoSettings={settings}
-      />
+      />,
     );
 
     await user.type(screen.getByPlaceholderText("Email"), validEmail);
@@ -150,7 +150,7 @@ describe("LoginForm - component", () => {
           sso_enabled: true,
           idp_name: "Test IdP",
         }}
-      />
+      />,
     );
 
     expect(screen.getByPlaceholderText("Email")).toHaveFocus();
@@ -160,7 +160,7 @@ describe("LoginForm - component", () => {
     expect(screen.getByText("Log in").parentElement).toHaveFocus();
     await user.tab();
     expect(
-      screen.getByText("Sign in with Test IdP").parentElement
+      screen.getByText("Sign in with Test IdP").parentElement,
     ).toHaveFocus();
     await user.tab();
     expect(screen.getByText("Forgot password?")).toHaveFocus();

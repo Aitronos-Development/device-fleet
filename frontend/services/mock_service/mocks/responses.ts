@@ -374,8 +374,7 @@ const globalQueries = {
       created_at: "2022-11-03T17:22:14Z",
       updated_at: "2022-11-03T17:22:14Z",
       id: 1,
-      name:
-        "Test Query (every hour, 3 platforms, snapshot, no observer run, no min osversion)",
+      name: "Test Query (every hour, 3 platforms, snapshot, no observer run, no min osversion)",
       description: "A test query",
       query: "SELECT * FROM users;",
       team_id: null,
@@ -402,8 +401,7 @@ const globalQueries = {
       created_at: "2022-11-03T17:22:14Z",
       updated_at: "2022-11-03T17:22:14Z",
       id: 2,
-      name:
-        "Test Query 2 (every 12 hours, no platforms, observers can run, min version 5.8.1, differential)",
+      name: "Test Query 2 (every 12 hours, no platforms, observers can run, min version 5.8.1, differential)",
       description: "A second test query",
       query: "SELECT * FROM osquery_info",
       team_id: null,
@@ -10617,7 +10615,7 @@ const secrets = (url: string) => {
   const page = parseInt(params.get("page") || "0", 10);
   const perPage = parseInt(
     params.get("per_page") || `${SECRETS_PAGE_SIZE}`,
-    10
+    10,
   );
   const startIndex = (page || 0) * (perPage || SECRETS_PAGE_SIZE);
   const endIndex = startIndex + (perPage || SECRETS_PAGE_SIZE);

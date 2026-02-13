@@ -47,12 +47,13 @@ export const FREQUENCY_DROPDOWN_OPTIONS: IDropdownOption[] = [
   { value: 86400, label: "Every day" },
   { value: 604800, label: "Every week" },
 ];
-export const HOST_STATUS_WEBHOOK_HOST_PERCENTAGE_DROPDOWN_OPTIONS: IDropdownOption[] = [
-  { label: "1%", value: 1 },
-  { label: "5%", value: 5 },
-  { label: "10%", value: 10 },
-  { label: "25%", value: 25 },
-];
+export const HOST_STATUS_WEBHOOK_HOST_PERCENTAGE_DROPDOWN_OPTIONS: IDropdownOption[] =
+  [
+    { label: "1%", value: 1 },
+    { label: "5%", value: 5 },
+    { label: "10%", value: 10 },
+    { label: "25%", value: 25 },
+  ];
 
 export const HOST_STATUS_WEBHOOK_WINDOW_DROPDOWN_OPTIONS: IDropdownOption[] = [
   { label: "1 day", value: 1 },
@@ -239,10 +240,11 @@ const PLATFORM_LABEL_NAMES_FROM_API = [
   "Android",
 ] as const;
 
-export type PlatformLabelNameFromAPI = typeof PLATFORM_LABEL_NAMES_FROM_API[number];
+export type PlatformLabelNameFromAPI =
+  (typeof PLATFORM_LABEL_NAMES_FROM_API)[number];
 
 export const isPlatformLabelNameFromAPI = (
-  s: string
+  s: string,
 ): s is PlatformLabelNameFromAPI => {
   return PLATFORM_LABEL_NAMES_FROM_API.includes(s as PlatformLabelNameFromAPI);
 };
@@ -267,7 +269,7 @@ export const PLATFORM_LABEL_DISPLAY_NAMES: Record<
   PlatformLabelNameFromAPI,
   string
 > = {
-  "All Hosts": "All hosts",
+  "All Hosts": "All devices",
   "All Linux": "Linux",
   "CentOS Linux": "CentOS Linux",
   macOS: "macOS",
@@ -301,7 +303,7 @@ export const PLATFORM_LABEL_DISPLAY_TYPES: Record<
 export const LABEL_DISPLAY_MAP: Partial<
   Record<PlatformLabelNameFromAPI, string>
 > = {
-  "All Hosts": "All hosts",
+  "All Hosts": "All devices",
   "All Linux": "Linux",
   chrome: "ChromeOS",
   "MS Windows": "Windows",
@@ -318,7 +320,7 @@ export const PLATFORM_TYPE_ICONS = {
 } as const;
 
 export const hasPlatformTypeIcon = (
-  s: string
+  s: string,
 ): s is Extract<PlatformLabelNameFromAPI, keyof typeof PLATFORM_TYPE_ICONS> => {
   return !!PLATFORM_TYPE_ICONS[s as keyof typeof PLATFORM_TYPE_ICONS];
 };
@@ -339,41 +341,40 @@ export const HOSTS_SEARCH_BOX_PLACEHOLDER =
   "Search name, hostname, UUID, serial number, or private IP address";
 
 export const HOSTS_SEARCH_BOX_TOOLTIP =
-  "Search hosts by name, hostname, UUID, serial number, or private IP address";
+  "Search devices by name, hostname, UUID, serial number, or private IP address";
 
 export const VULNERABILITIES_SEARCH_BOX_TOOLTIP =
   'To search for an exact CVE, surround the string in double quotes (e.g. "CVE-2024-1234")';
 
 // Keys from API
-export const MDM_STATUS_TOOLTIP: Record<
-  MdmEnrollmentStatus,
-  React.ReactNode
-> = {
-  "On (automatic)": (
-    <span>
-      MDM was turned on automatically. IT admins can block end users from
-      turning MDM off.
-    </span>
-  ),
-  "On (manual)": (
-    <span>MDM was turned on manually. End users can turn MDM off.</span>
-  ),
-  "On (personal)": (
-    <span>
-      MDM was turned on by signing in with Managed Apple Account on iPhone/iPad,
-      or by creating a work profile on Android. End users can turn MDM off.
-    </span>
-  ),
-  "On (company-owned)": null,
-  Off: undefined, // no tooltip specified
-  Pending: (
-    <span>
-      Hosts ordered via Apple Business Manager <br /> (ABM). These will
-      automatically enroll to Fleet <br /> and turn on MDM when they&apos;re
-      unboxed.
-    </span>
-  ),
-};
+export const MDM_STATUS_TOOLTIP: Record<MdmEnrollmentStatus, React.ReactNode> =
+  {
+    "On (automatic)": (
+      <span>
+        MDM was turned on automatically. IT admins can block end users from
+        turning MDM off.
+      </span>
+    ),
+    "On (manual)": (
+      <span>MDM was turned on manually. End users can turn MDM off.</span>
+    ),
+    "On (personal)": (
+      <span>
+        MDM was turned on by signing in with Managed Apple Account on
+        iPhone/iPad, or by creating a work profile on Android. End users can
+        turn MDM off.
+      </span>
+    ),
+    "On (company-owned)": null,
+    Off: undefined, // no tooltip specified
+    Pending: (
+      <span>
+        Hosts ordered via Apple Business Manager <br /> (ABM). These will
+        automatically enroll to Fleet <br /> and turn on MDM when they&apos;re
+        unboxed.
+      </span>
+    ),
+  };
 
 export const BATTERY_TOOLTIP: Record<string, string | React.ReactNode> = {
   Normal: (

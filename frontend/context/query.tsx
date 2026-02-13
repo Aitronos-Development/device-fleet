@@ -221,7 +221,7 @@ const QueryProvider = ({ children }: Props) => {
       });
     },
     setLastEditedQueryObserverCanRun: (
-      lastEditedQueryObserverCanRun: boolean
+      lastEditedQueryObserverCanRun: boolean,
     ) => {
       dispatch({
         type: actions.SET_LAST_EDITED_QUERY_INFO,
@@ -235,7 +235,7 @@ const QueryProvider = ({ children }: Props) => {
       });
     },
     setLastEditedQueryAutomationsEnabled: (
-      lastEditedQueryAutomationsEnabled: boolean
+      lastEditedQueryAutomationsEnabled: boolean,
     ) => {
       dispatch({
         type: actions.SET_LAST_EDITED_QUERY_INFO,
@@ -249,7 +249,7 @@ const QueryProvider = ({ children }: Props) => {
       });
     },
     setLastEditedQueryMinOsqueryVersion: (
-      lastEditedQueryMinOsqueryVersion: string
+      lastEditedQueryMinOsqueryVersion: string,
     ) => {
       dispatch({
         type: actions.SET_LAST_EDITED_QUERY_INFO,
@@ -281,7 +281,7 @@ const QueryProvider = ({ children }: Props) => {
       });
     },
     setSelectedQueryTargetsByType: (
-      selectedQueryTargetsByType: ISelectedTargetsByType
+      selectedQueryTargetsByType: ISelectedTargetsByType,
     ) => {
       dispatch({
         type: actions.SET_SELECTED_QUERY_TARGETS_BY_TYPE,

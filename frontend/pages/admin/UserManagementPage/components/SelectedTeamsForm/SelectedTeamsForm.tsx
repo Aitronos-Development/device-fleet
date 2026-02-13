@@ -24,11 +24,11 @@ const baseClass = "selected-teams-form";
 
 const generateFormListItems = (
   allTeams: ITeam[],
-  currentTeams: ITeam[]
+  currentTeams: ITeam[],
 ): ITeamCheckboxListItem[] => {
   return allTeams.map((team) => {
     const foundTeam = currentTeams.find(
-      (currentTeam) => currentTeam.id === team.id
+      (currentTeam) => currentTeam.id === team.id,
     );
     return {
       ...team,
@@ -42,7 +42,7 @@ const generateFormListItems = (
 // so we only want to send the selected teams. The user can change the dropdown of an
 // unselected item, but the parent will not track it as it only cares about selected items.
 const generateSelectedTeamData = (
-  teamsFormList: ITeamCheckboxListItem[]
+  teamsFormList: ITeamCheckboxListItem[],
 ): ITeam[] => {
   return teamsFormList.reduce((selectedTeams: ITeam[], teamItem) => {
     if (teamItem.isChecked) {
@@ -64,7 +64,7 @@ const generateSelectedTeamData = (
 const updateFormState = (
   prevTeamItems: ITeamCheckboxListItem[],
   teamId: number,
-  newValue: SingleValue<CustomOptionType> | boolean | undefined
+  newValue: SingleValue<CustomOptionType> | boolean | undefined,
 ): ITeamCheckboxListItem[] => {
   const prevItemIndex = prevTeamItems.findIndex((item) => item.id === teamId);
   const prevItem = prevTeamItems[prevItemIndex];
@@ -81,7 +81,7 @@ const updateFormState = (
 const useSelectedTeamState = (
   allTeams: ITeam[],
   currentTeams: ITeam[],
-  formChange: (teams: ITeam[]) => void
+  formChange: (teams: ITeam[]) => void,
 ) => {
   const [teamsFormList, setTeamsFormList] = useState(() => {
     return generateFormListItems(allTeams, currentTeams);
@@ -89,7 +89,7 @@ const useSelectedTeamState = (
 
   const updateSelectedTeams = (
     teamId: number,
-    newValue: CustomOptionType | boolean
+    newValue: CustomOptionType | boolean,
   ) => {
     setTeamsFormList((prevState) => {
       const updatedTeamFormList = updateFormState(prevState, teamId, newValue);
@@ -112,7 +112,7 @@ const SelectedTeamsForm = ({
   const [teamsFormList, updateSelectedTeams] = useSelectedTeamState(
     availableTeams,
     usersCurrentTeams,
-    onFormChange
+    onFormChange,
   );
 
   return (

@@ -44,7 +44,7 @@ const generateSoftwareTitleVersionsTableConfig = ({
         const { id } = cellProps.row.original;
         const softwareVersionDetailsPath = getPathWithQueryParams(
           PATHS.SOFTWARE_VERSION_DETAILS(id.toString()),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         return (
@@ -76,8 +76,8 @@ const generateSoftwareTitleVersionsTableConfig = ({
       },
     },
     {
-      title: "Hosts",
-      Header: "Hosts",
+      title: "Devices",
+      Header: "Devices",
       disableSortBy: true,
       accessor: "hosts_count",
       Cell: (cellProps: IHostCountCellProps): JSX.Element => (

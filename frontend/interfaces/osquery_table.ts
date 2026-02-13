@@ -7,7 +7,7 @@ export default PropTypes.shape({
       description: PropTypes.string,
       name: PropTypes.string,
       type: PropTypes.string,
-    })
+    }),
   ),
   description: PropTypes.string,
   name: PropTypes.string,

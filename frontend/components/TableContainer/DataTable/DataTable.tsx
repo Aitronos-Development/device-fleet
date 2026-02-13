@@ -150,7 +150,7 @@ const DataTable = ({
   // Decide the page index value to pass to useTable
   const controlledPageIndex =
     isClientSidePagination && !!onClientSidePaginationChange
-      ? defaultPageIndex ?? 0
+      ? (defaultPageIndex ?? 0)
       : undefined; // undefined lets react-table manage internally (Keeps internal mode working)
 
   const {
@@ -208,7 +208,7 @@ const DataTable = ({
             // eslint-disable-next-line @typescript-eslint/no-shadow
             rows: Row[],
             columnIds: string[],
-            filterValue: boolean
+            filterValue: boolean,
           ) => {
             return !filterValue
               ? rows
@@ -217,7 +217,7 @@ const DataTable = ({
                 });
           },
         }),
-        []
+        [],
       ),
       autoResetFilters: false,
       // Expands the enumerated `sortTypes` for react-table
@@ -228,42 +228,42 @@ const DataTable = ({
           boolean: (
             a: { values: Record<string, unknown> },
             b: { values: Record<string, unknown> },
-            id: string
+            id: string,
           ) => sort.booleanAsc(a.values[id], b.values[id]),
 
           caseInsensitive: (
             a: { values: Record<string, unknown> },
             b: { values: Record<string, unknown> },
-            id: string
+            id: string,
           ) => sort.caseInsensitiveAsc(a.values[id], b.values[id]),
 
           dateStrings: (
             a: { values: Record<string, string> },
             b: { values: Record<string, string> },
-            id: string
+            id: string,
           ) => sort.dateStringsAsc(a.values[id], b.values[id]),
 
           hasLength: (
             a: { values: Record<string, unknown[]> },
             b: { values: Record<string, unknown[]> },
-            id: string
+            id: string,
           ) => {
             return sort.hasLength(a.values[id], b.values[id]);
           },
           hostPolicyStatus: (
             a: { values: Record<string, unknown[]> },
             b: { values: Record<string, unknown[]> },
-            id: string
+            id: string,
           ) => sort.hostPolicyStatus(a.values[id], b.values[id]),
         }),
-        []
+        [],
       ),
     },
     useGlobalFilter, // order of these hooks matters; here we first apply the global filter (if any); this could be reversed depending on where we want to target performance
     useFilters, // react-table applies column-level filters after first applying the global filter (if any)
     useSortBy,
     usePagination,
-    useRowSelect
+    useRowSelect,
   );
 
   const { sortBy, selectedRowIds, pageIndex } = tableState;
@@ -293,7 +293,7 @@ const DataTable = ({
     (column: string, query: string) => {
       setFilter(column, query);
     },
-    300
+    300,
   );
 
   useEffect(() => {
@@ -423,7 +423,7 @@ const DataTable = ({
         toggleAllRowsSelected(false);
       }
     },
-    [disableMultiRowSelect, onSelectSingleRow, toggleAllRowsSelected]
+    [disableMultiRowSelect, onSelectSingleRow, toggleAllRowsSelected],
   );
 
   const renderColumnHeader = (column: IHeaderGroup) => {
@@ -437,7 +437,7 @@ const DataTable = ({
 
   const renderSelectedCount = (): JSX.Element => {
     const selectedCount = Object.entries(selectedRowIds).filter(
-      ([, value]) => value
+      ([, value]) => value,
     ).length;
     return (
       <p>
@@ -462,7 +462,7 @@ const DataTable = ({
   };
 
   const renderActionButton = (
-    actionButtonProps: IActionButtonProps
+    actionButtonProps: IActionButtonProps,
   ): JSX.Element => {
     const key = kebabCase(actionButtonProps.name);
     return (
@@ -525,7 +525,7 @@ const DataTable = ({
           {...headerGroups[0].headers[0].getHeaderProps(
             headerGroups[0].headers[0].getSortByToggleProps({
               title: null,
-            })
+            }),
           )}
         >
           {headerGroups[0].headers[0].render("Header")}

@@ -117,59 +117,61 @@ type WindowsDiskEncryptionDisplayConfig = Pick<
   WindowsDiskEncryptionDisplayStatus
 >;
 
-export const WINDOWS_DISK_ENCRYPTION_DISPLAY_CONFIG: WindowsDiskEncryptionDisplayConfig = {
-  verified: {
-    statusText: "Verified",
-    iconName: "success",
-    tooltip: () =>
-      "The host turned disk encryption on and sent the key to Fleet. Fleet verified.",
-  },
-  verifying: {
-    statusText: "Verifying",
-    iconName: "success-outline",
-    tooltip: () =>
-      "The host acknowledged the MDM command to turn on disk encryption. Fleet is verifying with " +
-      "osquery and retrieving the disk encryption key. This may take up to one hour.",
-  },
-  pending: {
-    statusText: "Enforcing (pending)",
-    iconName: "pending-outline",
-    tooltip: () =>
-      "The host will receive the MDM command to turn on disk encryption when the host comes online.",
-  },
-  action_required: {
-    statusText: "Action required (pending)",
-    iconName: "pending-outline",
-    tooltip: () =>
-      "Disk encryption is on, but the user has not set a BitLocker PIN yet.",
-  },
-  failed: {
-    statusText: "Failed",
-    iconName: "error",
-    tooltip: null,
-  },
-};
+export const WINDOWS_DISK_ENCRYPTION_DISPLAY_CONFIG: WindowsDiskEncryptionDisplayConfig =
+  {
+    verified: {
+      statusText: "Verified",
+      iconName: "success",
+      tooltip: () =>
+        "The host turned disk encryption on and sent the key to Fleet. Fleet verified.",
+    },
+    verifying: {
+      statusText: "Verifying",
+      iconName: "success-outline",
+      tooltip: () =>
+        "The host acknowledged the MDM command to turn on disk encryption. Fleet is verifying with " +
+        "osquery and retrieving the disk encryption key. This may take up to one hour.",
+    },
+    pending: {
+      statusText: "Enforcing (pending)",
+      iconName: "pending-outline",
+      tooltip: () =>
+        "The host will receive the MDM command to turn on disk encryption when the host comes online.",
+    },
+    action_required: {
+      statusText: "Action required (pending)",
+      iconName: "pending-outline",
+      tooltip: () =>
+        "Disk encryption is on, but the user has not set a BitLocker PIN yet.",
+    },
+    failed: {
+      statusText: "Failed",
+      iconName: "error",
+      tooltip: null,
+    },
+  };
 
 type LinuxDiskEncryptionDisplayConfig = Omit<
   OperationTypeOption,
   MacProfileSpecificStatus | AndroidCertSpecificStatus | "pending" | "verifying"
 >;
 
-export const LINUX_DISK_ENCRYPTION_DISPLAY_CONFIG: LinuxDiskEncryptionDisplayConfig = {
-  verified: {
-    statusText: "Verified",
-    iconName: "success",
-    tooltip: () =>
-      "The host turned disk encryption on and sent the key to Fleet. Fleet verified.",
-  },
-  failed: {
-    statusText: "Failed",
-    iconName: "error",
-    tooltip: null,
-  },
-  action_required: {
-    statusText: "Action required (pending)",
-    iconName: "pending-outline",
-    tooltip: TooltipInnerContentActionRequired as TooltipInnerContentFunc,
-  },
-};
+export const LINUX_DISK_ENCRYPTION_DISPLAY_CONFIG: LinuxDiskEncryptionDisplayConfig =
+  {
+    verified: {
+      statusText: "Verified",
+      iconName: "success",
+      tooltip: () =>
+        "The host turned disk encryption on and sent the key to Fleet. Fleet verified.",
+    },
+    failed: {
+      statusText: "Failed",
+      iconName: "error",
+      tooltip: null,
+    },
+    action_required: {
+      statusText: "Action required (pending)",
+      iconName: "pending-outline",
+      tooltip: TooltipInnerContentActionRequired as TooltipInnerContentFunc,
+    },
+  };

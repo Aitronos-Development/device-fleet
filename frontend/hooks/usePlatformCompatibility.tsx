@@ -21,9 +21,8 @@ const usePlatformCompatibility = (): IPlatformCompatibility => {
   const [error, setError] = useState<Error | null>(null);
 
   const checkCompatibility = (sqlStr: string) => {
-    const { platforms, error: compatibilityError } = checkPlatformCompatibility(
-      sqlStr
-    );
+    const { platforms, error: compatibilityError } =
+      checkPlatformCompatibility(sqlStr);
     setCompatiblePlatforms(platforms || []);
     setError(compatibilityError);
   };
@@ -33,12 +32,12 @@ const usePlatformCompatibility = (): IPlatformCompatibility => {
       checkCompatibility(queryString);
     },
     DEBOUNCE_DELAY,
-    { leading: true, trailing: true }
+    { leading: true, trailing: true },
   );
 
   const getCompatiblePlatforms = useCallback(
     () => QUERYABLE_PLATFORMS.filter((p) => compatiblePlatforms?.includes(p)),
-    [compatiblePlatforms]
+    [compatiblePlatforms],
   );
 
   const render = useCallback(() => {

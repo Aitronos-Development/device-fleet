@@ -32,7 +32,7 @@ type IFormValidations = Record<
 
 export const generateFormValidations = (
   smallstepIntegrations: ICertificateAuthorityPartial[],
-  isEditing: boolean
+  isEditing: boolean,
 ) => {
   const FORM_VALIDATIONS: IFormValidations = {
     name: {
@@ -57,7 +57,7 @@ export const generateFormValidations = (
             return (
               isEditing ||
               smallstepIntegrations.find(
-                (cert) => cert.name === formData.name
+                (cert) => cert.name === formData.name,
               ) === undefined
             );
           },
@@ -126,7 +126,7 @@ export const generateFormValidations = (
 
 const getErrorMessage = (
   formData: ISmallstepFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -137,7 +137,7 @@ const getErrorMessage = (
 // eslint-disable-next-line import/prefer-default-export
 export const validateFormData = (
   formData: ISmallstepFormData,
-  validationConfig: IFormValidations
+  validationConfig: IFormValidations,
 ) => {
   const formValidation: ISmallstepFormValidation = {
     isValid: true,
@@ -146,7 +146,7 @@ export const validateFormData = (
   Object.keys(validationConfig).forEach((key) => {
     const objKey = key as keyof typeof validationConfig;
     const failedValidation = validationConfig[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

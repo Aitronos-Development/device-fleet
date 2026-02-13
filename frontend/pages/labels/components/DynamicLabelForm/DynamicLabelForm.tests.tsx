@@ -29,7 +29,7 @@ describe("DynamicLabelForm", () => {
         defaultQuery={query}
         defaultPlatform={platform}
         teamName={null}
-      />
+      />,
     );
 
     await user.type(screen.getByLabelText("Name"), name);

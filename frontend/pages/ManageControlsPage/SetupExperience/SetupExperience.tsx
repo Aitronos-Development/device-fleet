@@ -46,7 +46,7 @@ const SetupExperience = ({
     urlPlatformParam
   ) {
     router.replace(
-      currentFormSection.path + queryString // current card doesn't support platforms yet
+      currentFormSection.path + queryString, // current card doesn't support platforms yet
     );
   }
   const CurrentCard = currentFormSection.Card;

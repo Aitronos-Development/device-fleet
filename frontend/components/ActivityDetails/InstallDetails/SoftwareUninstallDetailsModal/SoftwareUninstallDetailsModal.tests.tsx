@@ -16,12 +16,12 @@ describe("SoftwareUninstallDetailsModal - StatusMessage component", () => {
         softwareName="CoolApp"
         softwarePackageName="com.cool.app"
         isMyDevicePage={false}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("pending-outline-icon")).toBeInTheDocument();
     expect(
-      screen.getByText(/is uninstalling or will uninstall/)
+      screen.getByText(/is uninstalling or will uninstall/),
     ).toBeInTheDocument();
     expect(screen.getByText(/\(com\.cool\.app\)/)).toBeInTheDocument(); // Show package name
     expect(screen.getByText(/Offline Host/)).toBeInTheDocument(); // Show host name
@@ -38,7 +38,7 @@ describe("SoftwareUninstallDetailsModal - StatusMessage component", () => {
         softwareName="CoolApp"
         isMyDevicePage
         contactUrl="http://support"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe("SoftwareUninstallDetailsModal - StatusMessage component", () => {
         softwareName="CoolApp"
         isMyDevicePage={false}
         contactUrl="http://support"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe("SoftwareUninstallDetailsModal - StatusMessage component", () => {
         softwarePackageName="com.cool.app"
         timestamp="2025-08-10T12:00:00Z"
         isMyDevicePage={false}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("success-icon")).toBeInTheDocument();
@@ -105,7 +105,7 @@ describe("SoftwareUninstallDetailsModal - ModalButtons component", () => {
         onCancel={onCancel}
         onRetry={onRetry}
         hostSoftware={hostSoftware}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Retry" })).toBeInTheDocument();
@@ -123,15 +123,15 @@ describe("SoftwareUninstallDetailsModal - ModalButtons component", () => {
     const onCancel = jest.fn();
 
     render(
-      <ModalButtons uninstallStatus="pending_uninstall" onCancel={onCancel} />
+      <ModalButtons uninstallStatus="pending_uninstall" onCancel={onCancel} />,
     );
 
     expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Retry" })
+      screen.queryByRole("button", { name: "Retry" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Cancel" })
+      screen.queryByRole("button", { name: "Cancel" }),
     ).not.toBeInTheDocument();
   });
 
@@ -145,7 +145,7 @@ describe("SoftwareUninstallDetailsModal - ModalButtons component", () => {
         uninstallStatus="uninstalled"
         deviceAuthToken="token123"
         onCancel={onCancel}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();

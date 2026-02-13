@@ -22,7 +22,7 @@ const CanceledUninstallSoftwareActivtyItem = ({
         <b>
           {getDisplayedSoftwareName(
             activity.details.software_title,
-            activity.details.software_display_name
+            activity.details.software_display_name,
           )}
         </b>{" "}
         uninstall on this host.

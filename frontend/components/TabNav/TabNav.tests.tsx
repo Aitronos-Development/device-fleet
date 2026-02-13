@@ -24,7 +24,7 @@ describe("TabNav", () => {
             <div>Content for Tab 2</div>
           </TabPanel>
         </Tabs>
-      </TabNav>
+      </TabNav>,
     );
 
     // Check if tabs are rendered
@@ -55,7 +55,7 @@ describe("TabNav", () => {
             <div>Content for Tab 2</div>
           </TabPanel>
         </Tabs>
-      </TabNav>
+      </TabNav>,
     );
 
     // Switch to the second tab

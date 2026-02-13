@@ -64,7 +64,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("ran a live query on 10 hosts.")
+      screen.getByText("ran a live query on 10 hosts."),
     ).toBeInTheDocument();
   });
 
@@ -101,7 +101,7 @@ describe("Activity Feed", () => {
     expect(screen.getByText(/ran the/)).toBeInTheDocument();
     expect(screen.getByText("Test Query")).toBeInTheDocument();
     expect(
-      screen.getByText(/with excessive performance impact on 10 hosts\./)
+      screen.getByText(/with excessive performance impact on 10 hosts\./),
     ).toBeInTheDocument();
   });
 
@@ -134,7 +134,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited a pack using fleetctl.")
+      screen.getByText("edited a pack using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -145,7 +145,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited policies using fleetctl.")
+      screen.getByText("edited policies using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -156,7 +156,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited a query using fleetctl.")
+      screen.getByText("edited a query using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -168,7 +168,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited queries using fleetctl.")
+      screen.getByText("edited queries using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -179,7 +179,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited software using fleetctl.")
+      screen.getByText("edited software using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -191,7 +191,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited the team using fleetctl.")
+      screen.getByText("edited the team using fleetctl."),
     ).toBeInTheDocument();
     expect(screen.getByText("Team 1")).toBeInTheDocument();
   });
@@ -206,7 +206,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited multiple teams using fleetctl.")
+      screen.getByText("edited multiple teams using fleetctl."),
     ).toBeInTheDocument();
   });
 
@@ -227,7 +227,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited agent options on team.")
+      screen.getByText("edited agent options on team."),
     ).toBeInTheDocument();
     expect(screen.getByText("Test Team 1")).toBeInTheDocument();
   });
@@ -250,7 +250,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("successfully logged in from public IP 192.168.0.1.")
+      screen.getByText("successfully logged in from public IP 192.168.0.1."),
     ).toBeInTheDocument();
   });
   it("renders a user_logged_in type activity without public IP", () => {
@@ -273,12 +273,12 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(" failed to log in from public IP 192.168.0.1.", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByText("foo@example.com", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -290,7 +290,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("Somebody failed", { exact: false })
+      screen.getByText("Somebody failed", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -306,7 +306,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("created a user", { exact: false })
+      screen.getByText("created a user", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("newuser@example.com")).toBeInTheDocument();
   });
@@ -337,7 +337,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted a user", { exact: false })
+      screen.getByText("deleted a user", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("newuser@example.com")).toBeInTheDocument();
   });
@@ -357,7 +357,7 @@ describe("Activity Feed", () => {
     expect(screen.getByText("newuser@example.com")).toBeInTheDocument();
     expect(screen.getByText("maintainer")).toBeInTheDocument();
     expect(
-      screen.getByText("for all teams.", { exact: false })
+      screen.getByText("for all teams.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -546,7 +546,7 @@ describe("Activity Feed", () => {
     expect(screen.getByText("newuser@example.com")).toBeInTheDocument();
     expect(screen.getByText("maintainer")).toBeInTheDocument();
     expect(
-      screen.getByText("for all teams.", { exact: false })
+      screen.getByText("for all teams.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -574,7 +574,7 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText("enforced disk encryption for hosts assigned to the", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -593,7 +593,7 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText("enforced disk encryption for hosts assigned to the", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -613,8 +613,8 @@ describe("Activity Feed", () => {
         "removed disk encryption enforcement for hosts assigned to the",
         {
           exact: false,
-        }
-      )
+        },
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -635,8 +635,8 @@ describe("Activity Feed", () => {
         "removed disk encryption enforcement for hosts assigned to the",
         {
           exact: false,
-        }
-      )
+        },
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -652,7 +652,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("enforced disk encryption for hosts with no team.")
+      screen.getByText("enforced disk encryption for hosts with no team."),
     ).toBeInTheDocument();
     expect(screen.queryByText("assigned to the")).toBeNull();
   });
@@ -666,7 +666,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("enforced disk encryption for hosts with no team.")
+      screen.getByText("enforced disk encryption for hosts with no team."),
     ).toBeInTheDocument();
     expect(screen.queryByText("assigned to the")).toBeNull();
   });
@@ -683,8 +683,8 @@ describe("Activity Feed", () => {
         "removed disk encryption enforcement for hosts with no team.",
         {
           exact: false,
-        }
-      )
+        },
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByText("assigned to the")).toBeNull();
   });
@@ -702,8 +702,8 @@ describe("Activity Feed", () => {
         "removed disk encryption enforcement for hosts with no team.",
         {
           exact: false,
-        }
-      )
+        },
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByText("assigned to the")).toBeNull();
   });
@@ -721,7 +721,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b> changed the macOS Setup Assistant (added <b>dep-profile.json</b>) for hosts that automatically enroll to no team."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -738,7 +738,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b> changed the macOS Setup Assistant (added <b>dep-profile.json</b>) for hosts  that automatically enroll to the <b>Workstations</b> team."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -755,7 +755,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b> changed the macOS Setup Assistant (deleted <b>dep-profile.json</b>) for hosts that automatically enroll to no team."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -772,7 +772,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b> changed the macOS Setup Assistant (deleted <b>dep-profile.json</b>) for hosts  that automatically enroll to the <b>Workstations</b> team."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -784,13 +784,13 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("added a bootstrap package (", { exact: false })
+      screen.getByText("added a bootstrap package (", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.pkg", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(") for macOS hosts that automatically enroll to the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -806,13 +806,13 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted a bootstrap package (", { exact: false })
+      screen.getByText("deleted a bootstrap package (", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.pkg", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(") for macOS hosts that automatically enroll to the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -828,14 +828,14 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("added a bootstrap package (", { exact: false })
+      screen.getByText("added a bootstrap package (", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.pkg", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(
         ") for macOS hosts that automatically enroll to no team.",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
   });
 
@@ -847,14 +847,14 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted a bootstrap package (", { exact: false })
+      screen.getByText("deleted a bootstrap package (", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.pkg", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(
         ") for macOS hosts that automatically enroll to no team.",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
   });
 
@@ -868,8 +868,8 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(
         "required end user authentication for macOS, iOS, iPadOS, and Android hosts that automatically enroll to",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     const withNoTeams = screen.queryByText("no team");
@@ -885,8 +885,8 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(
         "required end user authentication for macOS, iOS, iPadOS, and Android hosts that automatically enroll to no team.",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
   });
 
@@ -900,8 +900,8 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(
         "removed end user authentication requirement for macOS, iOS, iPadOS, and Android hosts that automatically enroll to",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     const withNoTeams = screen.queryByText("no team");
@@ -917,8 +917,8 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(
         "removed end user authentication requirement for macOS, iOS, iPadOS, and Android hosts that automatically enroll to no team.",
-        { exact: false }
-      )
+        { exact: false },
+      ),
     ).toBeInTheDocument();
   });
 
@@ -933,7 +933,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("transferred host", { exact: false })
+      screen.getByText("transferred host", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo", { exact: false })).toBeInTheDocument();
     expect(screen.getByText("no team", { exact: false })).toBeInTheDocument();
@@ -951,7 +951,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("transferred host", { exact: false })
+      screen.getByText("transferred host", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo", { exact: false })).toBeInTheDocument();
     expect(screen.getByText("Alphas", { exact: false })).toBeInTheDocument();
@@ -968,7 +968,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("transferred 3 hosts", { exact: false })
+      screen.getByText("transferred 3 hosts", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.queryByText("foo")).toBeNull();
     expect(screen.queryByText("bar")).toBeNull();
@@ -988,7 +988,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("transferred 3 hosts", { exact: false })
+      screen.getByText("transferred 3 hosts", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.queryByText("foo")).toBeNull();
     expect(screen.queryByText("bar")).toBeNull();
@@ -1011,7 +1011,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b>An end user turned on MDM features for a host with serial number <b>ABCD (manual)</b>."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -1032,7 +1032,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b>An end user turned on MDM features for a host with serial number <b>ABCD (automatic)</b>."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -1050,7 +1050,7 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText((content, node) => {
         return node?.innerHTML === "<b>Test Host</b> enrolled to Fleet.";
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -1070,7 +1070,7 @@ describe("Activity Feed", () => {
           node?.innerHTML ===
           "<b>Test User </b>Mobile device management (MDM) was turned on for <b>ABCD (manual)</b>."
         );
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -1082,13 +1082,13 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("added script ", { exact: false })
+      screen.getByText("added script ", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.sh", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(" to the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -1104,16 +1104,16 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited scripts", { exact: false })
+      screen.getByText("edited scripts", { exact: false }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(" for the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(
-      screen.getByText(" team via fleetctl.", { exact: false })
+      screen.getByText(" team via fleetctl.", { exact: false }),
     ).toBeInTheDocument();
     const withNoTeams = screen.queryByText("no team");
     expect(withNoTeams).toBeNull();
@@ -1127,13 +1127,13 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted script ", { exact: false })
+      screen.getByText("deleted script ", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.sh", { exact: false })).toBeInTheDocument();
     expect(
       screen.getByText(" from the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -1149,11 +1149,11 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("added script ", { exact: false })
+      screen.getByText("added script ", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.sh", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("to no team.", { exact: false })
+      screen.getByText("to no team.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1165,10 +1165,10 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("edited scripts", { exact: false })
+      screen.getByText("edited scripts", { exact: false }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("for no team via fleetctl.", { exact: false })
+      screen.getByText("for no team via fleetctl.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1180,11 +1180,11 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted script ", { exact: false })
+      screen.getByText("deleted script ", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("foo.sh", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("from no team.", { exact: false })
+      screen.getByText("from no team.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1201,12 +1201,12 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText("added", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("foobar.pkg", { exact: false })
+      screen.getByText("foobar.pkg", { exact: false }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(" to the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -1229,7 +1229,7 @@ describe("Activity Feed", () => {
     expect(
       screen.getByText(" on the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -1250,12 +1250,12 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText("deleted", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("foobar.pkg", { exact: false })
+      screen.getByText("foobar.pkg", { exact: false }),
     ).toBeInTheDocument();
     expect(
       screen.getByText(" from the ", {
         exact: false,
-      })
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("Alphas")).toBeInTheDocument();
     expect(screen.getByText(" team.", { exact: false })).toBeInTheDocument();
@@ -1272,10 +1272,10 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText("added", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("foobar.pkg", { exact: false })
+      screen.getByText("foobar.pkg", { exact: false }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("to no team.", { exact: false })
+      screen.getByText("to no team.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1291,7 +1291,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText("edited", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("on no team", { exact: false })
+      screen.getByText("on no team", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1304,10 +1304,10 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText("deleted", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("foobar.pkg", { exact: false })
+      screen.getByText("foobar.pkg", { exact: false }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("from no team.", { exact: false })
+      screen.getByText("from no team.", { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -1321,7 +1321,7 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted multiple queries", { exact: false })
+      screen.getByText("deleted multiple queries", { exact: false }),
     ).toBeInTheDocument();
   });
   // test for wipe activity
@@ -1349,11 +1349,11 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("deleted host", { exact: false })
+      screen.getByText("deleted host", { exact: false }),
     ).toBeInTheDocument();
     expect(screen.getByText("My Host", { exact: false })).toBeInTheDocument();
     expect(
-      screen.queryByText("automatically", { exact: false })
+      screen.queryByText("automatically", { exact: false }),
     ).not.toBeInTheDocument();
   });
 
@@ -1369,16 +1369,16 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
 
     expect(
-      screen.getByText("automatically deleted host", { exact: false })
+      screen.getByText("automatically deleted host", { exact: false }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Expired Host", { exact: false })
+      screen.getByText("Expired Host", { exact: false }),
     ).toBeInTheDocument();
 
     // Check for "30 days" and "of inactivity" separately since they're in different DOM elements
     expect(screen.getByText("30 days", { exact: false })).toBeInTheDocument();
     expect(
-      screen.getByText("of inactivity", { exact: false })
+      screen.getByText("of inactivity", { exact: false }),
     ).toBeInTheDocument();
 
     // Verify tooltip wrapper is present with correct data attributes
@@ -1511,7 +1511,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/added a certificate authority/)
+      screen.getByText(/added a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/NDES/)).toBeInTheDocument();
   });
@@ -1524,7 +1524,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/edited a certificate authority/)
+      screen.getByText(/edited a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/NDES/)).toBeInTheDocument();
   });
@@ -1537,7 +1537,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/deleted a certificate authority/)
+      screen.getByText(/deleted a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/NDES/)).toBeInTheDocument();
   });
@@ -1553,7 +1553,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/added a certificate authority/)
+      screen.getByText(/added a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/CUSTOM_SCEP_TEST/)).toBeInTheDocument();
   });
@@ -1569,7 +1569,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/edited a certificate authority/)
+      screen.getByText(/edited a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/CUSTOM_SCEP_TEST/)).toBeInTheDocument();
   });
@@ -1585,7 +1585,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/deleted a certificate authority/)
+      screen.getByText(/deleted a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/CUSTOM_SCEP_TEST/)).toBeInTheDocument();
   });
@@ -1601,7 +1601,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/added a certificate authority/)
+      screen.getByText(/added a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/DIGICERT_TEST/)).toBeInTheDocument();
   });
@@ -1617,7 +1617,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/edited a certificate authority/)
+      screen.getByText(/edited a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/DIGICERT_TEST/)).toBeInTheDocument();
   });
@@ -1633,7 +1633,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/deleted a certificate authority/)
+      screen.getByText(/deleted a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/DIGICERT_TEST/)).toBeInTheDocument();
   });
@@ -1649,7 +1649,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/added a certificate authority/)
+      screen.getByText(/added a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/HYDRANT_TEST/)).toBeInTheDocument();
   });
@@ -1665,7 +1665,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/edited a certificate authority/)
+      screen.getByText(/edited a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/HYDRANT_TEST/)).toBeInTheDocument();
   });
@@ -1681,7 +1681,7 @@ describe("Activity Feed", () => {
 
     expect(screen.getByText(/Test User/)).toBeInTheDocument();
     expect(
-      screen.getByText(/deleted a certificate authority/)
+      screen.getByText(/deleted a certificate authority/),
     ).toBeInTheDocument();
     expect(screen.getByText(/HYDRANT_TEST/)).toBeInTheDocument();
   });
@@ -1728,8 +1728,8 @@ describe("Activity Feed", () => {
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
     expect(
       screen.getByText(
-        /edited setup experience software for macOS hosts that enroll to the/i
-      )
+        /edited setup experience software for macOS hosts that enroll to the/i,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText(/Bears/i)).toBeInTheDocument();
     expect(screen.getByText(/team/i)).toBeInTheDocument();
@@ -1744,7 +1744,7 @@ describe("Activity Feed", () => {
     });
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
     expect(
-      screen.getByText(/enabled OS updates for all new/i)
+      screen.getByText(/enabled OS updates for all new/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/macOS/i)).toBeInTheDocument();
     expect(screen.getByText(/Lions/i)).toBeInTheDocument();
@@ -1760,7 +1760,7 @@ describe("Activity Feed", () => {
     });
     render(<GlobalActivityItem activity={activity} isPremiumTier />);
     expect(
-      screen.getByText(/disabled updates for all new/i)
+      screen.getByText(/disabled updates for all new/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/macOS/i)).toBeInTheDocument();
     expect(screen.getByText(/Lions/i)).toBeInTheDocument();

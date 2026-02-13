@@ -14,7 +14,7 @@ import SoftwareIpaInstallDetailsModal from "./SoftwareIpaInstallDetailsModal";
 const renderModal = (
   overrides?: Partial<
     React.ComponentProps<typeof SoftwareIpaInstallDetailsModal>
-  >
+  >,
 ) => {
   const render = createCustomRenderer({ withBackendMock: true });
   return render(
@@ -28,7 +28,7 @@ const renderModal = (
       }}
       onCancel={jest.fn()}
       {...overrides}
-    />
+    />,
   );
 };
 
@@ -36,7 +36,7 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
   beforeEach(() => {
     mockServer.use(
       getMdmCommandResultHandler,
-      getDeviceVppCommandResultHandler
+      getDeviceVppCommandResultHandler,
     );
   });
 
@@ -59,8 +59,8 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
     });
     expect(
       screen.getByText(
-        /because the host was locked or was running on battery power while in Power Nap/i
-      )
+        /because the host was locked or was running on battery power while in Power Nap/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -77,8 +77,8 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          /was acknowledged but the installation has not been verified/i
-        )
+          /was acknowledged but the installation has not been verified/i,
+        ),
       ).toBeInTheDocument();
     });
     expect(screen.getByText(/Refetch/i)).toBeInTheDocument();
@@ -163,7 +163,7 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
     // No failure wording when treated as installed
     expect(screen.queryByText(/failed to install/i)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Please re-attempt this installation/i)
+      screen.queryByText(/Please re-attempt this installation/i),
     ).not.toBeInTheDocument();
   });
 
@@ -184,11 +184,11 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/The MDM command \(request\) to install/i)
+        screen.getByText(/The MDM command \(request\) to install/i),
       ).toBeInTheDocument();
     });
     expect(
-      screen.getByText(/Please re-attempt this installation/i)
+      screen.getByText(/Please re-attempt this installation/i),
     ).toBeInTheDocument();
   });
 
@@ -257,8 +257,8 @@ describe("SoftwareIpaInstallDetailsModal component", () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          /acknowledged but the installation has not been verified/i
-        )
+          /acknowledged but the installation has not been verified/i,
+        ),
       ).toBeInTheDocument();
     });
   });

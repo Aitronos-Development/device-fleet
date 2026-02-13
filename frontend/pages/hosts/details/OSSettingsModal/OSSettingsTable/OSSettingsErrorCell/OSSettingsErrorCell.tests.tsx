@@ -17,16 +17,16 @@ describe("OSSettingsErrorCell", () => {
             "starting encryption: encrypt(C:): error code returned during encryption: -2147024809, error 2: This is another error",
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     const firstErrorKey = screen.getByText(
-      (content) => content === "starting encryption:"
+      (content) => content === "starting encryption:",
     );
     const firstErrorValue = screen.getByText(
       (content) =>
         content ===
-        "encrypt(C:): error code returned during encryption: -2147024809,"
+        "encrypt(C:): error code returned during encryption: -2147024809,",
     );
 
     // assert that the tooltip errors are rendered and the key is bolded
@@ -35,10 +35,10 @@ describe("OSSettingsErrorCell", () => {
     expect(firstErrorValue).toBeInTheDocument();
 
     const secondErrorKey = screen.getByText(
-      (content) => content === "error 2:"
+      (content) => content === "error 2:",
     );
     const secondErrorValue = screen.getByText(
-      (content) => content === "This is another error"
+      (content) => content === "This is another error",
     );
 
     // assert the second error is rendered with the key bolded
@@ -53,7 +53,7 @@ describe("OSSettingsErrorCell", () => {
         canResendProfiles
         profile={createMockHostMdmProfile({})}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(screen.getAllByText("---")[0]).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe("OSSettingsErrorCell", () => {
         canResendProfiles
         profile={createMockHostMdmProfile({ status: "failed" })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Resend" })).toBeInTheDocument();
@@ -77,7 +77,7 @@ describe("OSSettingsErrorCell", () => {
         canResendProfiles
         profile={createMockHostMdmProfile({ status: "verified" })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Resend" })).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe("OSSettingsErrorCell", () => {
           detail: "There is no IdP email for this host.",
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     // couldnt get getByRole to work for this link. Thinking it may be a jest issue
@@ -110,14 +110,14 @@ describe("OSSettingsErrorCell", () => {
           detail: `Fleet couldn't populate $FLEET_VAR_CUSTOM_SCEP_URL_SCEP_WIFI because SCEP_WIFI certificate authority doesn't exist.`,
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Settings > Integrations > Certificates")
+      screen.getByText("Settings > Integrations > Certificates"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/add it and resend the configuration profile/)
+      screen.getByText(/add it and resend the configuration profile/),
     ).toBeInTheDocument();
   });
 
@@ -130,11 +130,11 @@ describe("OSSettingsErrorCell", () => {
           detail: `Couldn't get certificate from DigiCert for WIFI_CERTIFICATE. unexpected DigiCert status code for POST request: 410, errors: Profile with id {test-id} was deleted`,
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Settings > Integrations > Certificates")
+      screen.getByText("Settings > Integrations > Certificates"),
     ).toBeInTheDocument();
     expect(screen.getByText(/correct it and resend/)).toBeInTheDocument();
     expect(screen.getByText("WIFI_CERTIFICATE")).toBeInTheDocument();
@@ -151,11 +151,11 @@ describe("OSSettingsErrorCell", () => {
           Please contact system Administrator.`,
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Settings > Integrations > Certificates")
+      screen.getByText("Settings > Integrations > Certificates"),
     ).toBeInTheDocument();
     expect(screen.getByText(/correct it and resend/)).toBeInTheDocument();
     expect(screen.getByText("WIFI_CERTIFICATE")).toBeInTheDocument();
@@ -171,11 +171,11 @@ describe("OSSettingsErrorCell", () => {
           detail: `Couldn’t get certificate from DigiCert. The API token configured in DIGICERT_TEST certificate authority is invalid.`,
         })}
         resendRequest={() => new Promise(() => undefined)}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Settings > Integrations > Certificates")
+      screen.getByText("Settings > Integrations > Certificates"),
     ).toBeInTheDocument();
     expect(screen.getByText(/correct it and resend/)).toBeInTheDocument();
     expect(screen.getByText("DIGICERT_TEST")).toBeInTheDocument();

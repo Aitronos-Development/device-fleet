@@ -49,7 +49,7 @@ interface IDataColumn {
 const generateTableConfig = (
   isPremiumTier: boolean,
   router: InjectedRouter,
-  teamId?: number
+  teamId?: number,
 ): IDataColumn[] => {
   const tableHeaders: IDataColumn[] = [
     {
@@ -62,7 +62,7 @@ const generateTableConfig = (
 
         const softwareVulnerabilityDetailsPath = getPathWithQueryParams(
           paths.SOFTWARE_VULNERABILITY_DETAILS(cveName),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         return (
@@ -235,7 +235,7 @@ const generateTableConfig = (
       (header) =>
         header.accessor !== "epss_probability" &&
         header.accessor !== "cve_published" &&
-        header.accessor !== "cvss_score"
+        header.accessor !== "cvss_score",
     );
   }
 

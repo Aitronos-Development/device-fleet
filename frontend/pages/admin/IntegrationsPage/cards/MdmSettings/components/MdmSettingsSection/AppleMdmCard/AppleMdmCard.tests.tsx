@@ -15,11 +15,11 @@ describe("AppleMdmCard", () => {
         errorData={null}
         turnOnAppleMdm={noop}
         viewDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Turn on Apple (macOS, iOS, iPadOS) MDM")
+      screen.getByText("Turn on Apple (macOS, iOS, iPadOS) MDM"),
     ).toBeInTheDocument();
   });
 
@@ -30,11 +30,11 @@ describe("AppleMdmCard", () => {
         errorData={null}
         turnOnAppleMdm={noop}
         viewDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("Apple (macOS, iOS, iPadOS) MDM turned on.")
+      screen.getByText("Apple (macOS, iOS, iPadOS) MDM turned on."),
     ).toBeInTheDocument();
   });
 
@@ -45,7 +45,7 @@ describe("AppleMdmCard", () => {
         errorData={createMockAxiosError({ status: 500 })}
         turnOnAppleMdm={noop}
         viewDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByText(/Something's gone wrong/)).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe("AppleMdmCard", () => {
         errorData={createMockAxiosError({ status: 404 })}
         turnOnAppleMdm={noop}
         viewDetails={noop}
-      />
+      />,
     );
   });
 });

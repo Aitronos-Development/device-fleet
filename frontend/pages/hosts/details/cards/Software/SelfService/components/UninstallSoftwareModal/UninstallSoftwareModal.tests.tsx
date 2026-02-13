@@ -12,13 +12,13 @@ describe("UninstallSoftwareModal", () => {
         token="abc"
         onExit={noop}
         onSuccess={noop}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /Uninstalling this software will remove it and may remove Slack data from your device/i
-      )
+        /Uninstalling this software will remove it and may remove Slack data from your device/i,
+      ),
     ).toBeVisible();
     expect(screen.getByRole("button", { name: /Uninstall/i })).toBeVisible();
     expect(screen.getByRole("button", { name: /Cancel/i })).toBeVisible();
@@ -31,11 +31,11 @@ describe("UninstallSoftwareModal", () => {
         token="abc"
         onExit={noop}
         onSuccess={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByText(/Uninstalling this software will remove it/i)
+      screen.getByText(/Uninstalling this software will remove it/i),
     ).toBeVisible();
   });
 });

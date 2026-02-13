@@ -41,7 +41,7 @@ interface IDataColumn {
 }
 
 export const generateSolutionsTableHeaders = (
-  teamId?: number
+  teamId?: number,
 ): IDataColumn[] => [
   {
     title: "Server URL",
@@ -67,8 +67,8 @@ export const generateSolutionsTableHeaders = (
     Cell: (cellProps: ICellProps) => <TextCell value={cellProps.cell.value} />,
   },
   {
-    title: "Hosts",
-    Header: "Hosts",
+    title: "Devices",
+    Header: "Devices",
     disableSortBy: true,
     accessor: "hosts_count",
     Cell: (cellProps: ICellProps) => (
@@ -87,7 +87,7 @@ export const generateSolutionsTableHeaders = (
 
 export const generateSolutionsDataSet = (
   solutions: IMdmSolution[] | null,
-  selectedPlatformLabelId?: number
+  selectedPlatformLabelId?: number,
 ): IMdmSolution[] => {
   if (!solutions) {
     return [];

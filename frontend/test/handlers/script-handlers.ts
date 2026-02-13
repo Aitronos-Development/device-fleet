@@ -7,15 +7,15 @@ import { createMockScript } from "__mocks__/scriptMock";
 // not supported for all teams
 const getTeamScriptsHandler = (
   teamId: number,
-  overrides: Partial<IScript>[]
+  overrides: Partial<IScript>[],
 ) => {
   const scripts = overrides.map((scriptOverride) =>
-    createMockScript(scriptOverride)
+    createMockScript(scriptOverride),
   );
   return http.get(baseUrl(`/scripts?team_id=${teamId}`), () =>
     HttpResponse.json({
       scripts,
-    })
+    }),
   );
 };
 

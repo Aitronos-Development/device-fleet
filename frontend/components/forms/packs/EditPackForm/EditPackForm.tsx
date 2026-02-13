@@ -20,7 +20,7 @@ interface IEditPackForm {
   onCancelEditPack: () => void;
   onFetchTargets?: (
     query: IQuery,
-    targetsResponse: ITargetsAPIResponse
+    targetsResponse: ITargetsAPIResponse,
   ) => boolean;
   onAddPackQuery: () => void;
   onEditPackQuery: (selectedQuery: IScheduledQuery) => void;
@@ -58,7 +58,7 @@ const EditPackForm = ({
   const [packName, setPackName] = useState(formData.name);
   const [packDescription, setPackDescription] = useState(formData.description);
   const [packFormTargets, setPackFormTargets] = useState<ITarget[]>(
-    formData.targets
+    formData.targets,
   );
 
   useDeepEffect(() => {

@@ -65,9 +65,8 @@ const SoftwareAddPage = ({
   location,
   router,
 }: ISoftwareAddPageProps) => {
-  const { selectedOsqueryTable, setSelectedOsqueryTable } = useContext(
-    QueryContext
-  );
+  const { selectedOsqueryTable, setSelectedOsqueryTable } =
+    useContext(QueryContext);
   const { isSidePanelOpen, setSidePanelOpen } = useToggleSidePanel(false);
 
   const navigateToNav = useCallback(
@@ -79,7 +78,7 @@ const SoftwareAddPage = ({
       });
       router.replace(navPath);
     },
-    [location.query.team_id, router, setSidePanelOpen]
+    [location.query.team_id, router, setSidePanelOpen],
   );
 
   // Quick exit if no team_id param. This page must have a team id to function
@@ -89,7 +88,7 @@ const SoftwareAddPage = ({
     router.replace(
       getPathWithQueryParams(location.pathname, {
         team_id: APP_CONTEXT_NO_TEAM_ID,
-      })
+      }),
     );
     return null;
   }

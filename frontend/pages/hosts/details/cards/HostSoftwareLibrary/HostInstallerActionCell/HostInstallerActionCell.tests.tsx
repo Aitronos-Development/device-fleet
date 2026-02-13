@@ -97,7 +97,7 @@ describe("getButtonActionState helper function", () => {
 
     expect(result.installDisabled).toBe(true);
     expect(result.installTooltip).toBe(
-      "To install, turn on MDM for this host."
+      "To install, turn on MDM for this host.",
     );
     expect(result.uninstallDisabled).toBe(true);
   });
@@ -168,7 +168,7 @@ describe("getButtonActionState helper function", () => {
     expect(result.installDisabled).toBe(true);
     expect(result.uninstallDisabled).toBe(true);
     expect(result.installTooltip).toBe(
-      "To install, turn on MDM for this host."
+      "To install, turn on MDM for this host.",
     );
   });
 
@@ -219,7 +219,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     // Install button
@@ -230,7 +230,7 @@ describe("HostInstallerActionCell component", () => {
 
     // Uninstall button
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -246,7 +246,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled={false}
         hostMDMEnrolled={false}
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -267,11 +267,11 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     expect(
-      screen.queryByTestId(`${baseClass}__uninstall-button--test`)
+      screen.queryByTestId(`${baseClass}__uninstall-button--test`),
     ).toBeNull();
     expect(screen.queryByTestId("trash-icon")).not.toBeInTheDocument();
   });
@@ -289,11 +289,11 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     expect(
-      screen.queryByTestId(`${baseClass}__uninstall-button--test`)
+      screen.queryByTestId(`${baseClass}__uninstall-button--test`),
     ).toBeNull();
     expect(screen.queryByTestId("trash-icon")).not.toBeInTheDocument();
   });
@@ -311,17 +311,17 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     // Should show initial text
     expect(
-      screen.getByTestId(`${baseClass}__install-button--test`)
+      screen.getByTestId(`${baseClass}__install-button--test`),
     ).toHaveTextContent("Install");
     expect(screen.getByTestId("install-icon")).toBeInTheDocument();
 
     expect(
-      screen.queryByTestId(`${baseClass}__uninstall-button--test`)
+      screen.queryByTestId(`${baseClass}__uninstall-button--test`),
     ).toBeNull();
     expect(screen.queryByTestId("trash-icon")).not.toBeInTheDocument();
 
@@ -338,17 +338,17 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     // Should update text
     expect(
-      screen.getByTestId(`${baseClass}__install-button--test`)
+      screen.getByTestId(`${baseClass}__install-button--test`),
     ).toHaveTextContent("Reinstall");
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
 
     expect(
-      screen.getByTestId(`${baseClass}__uninstall-button--test`)
+      screen.getByTestId(`${baseClass}__uninstall-button--test`),
     ).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
   });
@@ -366,13 +366,13 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled={false}
-      />
+      />,
     );
     const btn = screen.getByTestId(`${baseClass}__install-button--test`);
     await user.hover(btn);
     await waitFor(() => {
       expect(
-        screen.getByText(/To install, turn on MDM for this host/)
+        screen.getByText(/To install, turn on MDM for this host/),
       ).toBeInTheDocument();
     });
   });
@@ -390,14 +390,14 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
     expect(installBtn).toHaveTextContent("Retry");
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
     expect(uninstallBtn).toHaveTextContent("Uninstall");
@@ -417,14 +417,14 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
     expect(installBtn).toHaveTextContent("Retry");
     // Uninstall does not exist
     expect(
-      screen.queryByTestId(`${baseClass}__uninstall-button--test`)
+      screen.queryByTestId(`${baseClass}__uninstall-button--test`),
     ).toBeNull();
     expect(screen.queryByTestId("trash-icon")).toBeNull();
   });
@@ -442,13 +442,13 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
     expect(installBtn).toHaveTextContent("Retry");
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
     expect(uninstallBtn).toHaveTextContent("Uninstall");
@@ -467,7 +467,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     // Both reinstall and retry uninstall have the same icon
     const refreshIcons = screen.getAllByTestId("refresh-icon");
@@ -476,7 +476,7 @@ describe("HostInstallerActionCell component", () => {
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(installBtn).toHaveTextContent("Reinstall");
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Retry uninstall");
   });
@@ -495,14 +495,14 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
     expect(installBtn).toHaveTextContent("Reinstall");
 
     expect(
-      screen.queryByTestId(`${baseClass}__uninstall-button--test`)
+      screen.queryByTestId(`${baseClass}__uninstall-button--test`),
     ).toBeNull();
   });
 
@@ -519,7 +519,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     // Both reinstall and retry uninstall have the same icon
     const refreshIcons = screen.getAllByTestId("refresh-icon");
@@ -528,7 +528,7 @@ describe("HostInstallerActionCell component", () => {
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(installBtn).toHaveTextContent("Update");
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Retry uninstall");
   });
@@ -546,7 +546,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
@@ -554,7 +554,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
     expect(uninstallBtn).toHaveTextContent("Uninstall");
@@ -574,7 +574,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
     expect(screen.getByTestId("refresh-icon")).toBeInTheDocument();
@@ -582,7 +582,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
     expect(uninstallBtn).toHaveTextContent("Uninstall");
@@ -602,7 +602,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -611,7 +611,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).not.toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -631,7 +631,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -640,7 +640,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -660,7 +660,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -669,7 +669,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -692,7 +692,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -701,7 +701,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeEnabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -724,7 +724,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -733,7 +733,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeDisabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Uninstall");
     expect(screen.getByTestId("trash-icon")).toBeInTheDocument();
@@ -756,7 +756,7 @@ describe("HostInstallerActionCell component", () => {
         baseClass={baseClass}
         hostScriptsEnabled
         hostMDMEnrolled
-      />
+      />,
     );
 
     const installBtn = screen.getByTestId(`${baseClass}__install-button--test`);
@@ -764,7 +764,7 @@ describe("HostInstallerActionCell component", () => {
     expect(installBtn.closest("button")).toBeEnabled();
 
     const uninstallBtn = screen.getByTestId(
-      `${baseClass}__uninstall-button--test`
+      `${baseClass}__uninstall-button--test`,
     );
     expect(uninstallBtn).toHaveTextContent("Retry uninstall");
     expect(uninstallBtn.closest("button")).toBeEnabled();
@@ -789,11 +789,11 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     expect(
-      screen.getByTestId(`${baseClass}__install-button--test`)
+      screen.getByTestId(`${baseClass}__install-button--test`),
     ).toBeInTheDocument(); // Install button is always rendered
     const moreDropdown = screen.getByText("More");
     await user.click(moreDropdown);
@@ -815,7 +815,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     const moreDropdown = screen.getByText("More");
@@ -842,7 +842,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     expect(screen.queryByText("More")).not.toBeInTheDocument();
@@ -862,7 +862,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     const moreDropdown = screen.getByText("More");
@@ -888,7 +888,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     const moreDropdown = screen.getByText("More");
@@ -913,7 +913,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     const moreDropdown = screen.getByRole("combobox");
@@ -934,7 +934,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     expect(screen.queryByText("Uninstall")).toBeInTheDocument();
@@ -957,7 +957,7 @@ describe("HostInstallerActionCell dropdown on My Device page", () => {
         hostScriptsEnabled
         hostMDMEnrolled
         isMyDevicePage
-      />
+      />,
     );
 
     expect(screen.queryByText("Uninstall")).not.toBeInTheDocument();

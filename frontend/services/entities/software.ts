@@ -100,8 +100,10 @@ export interface ISoftwareQueryKey extends ISoftwareApiParams {
   scope: "software";
 }
 
-export interface ISoftwareCountQueryKey
-  extends Pick<ISoftwareApiParams, "query" | "vulnerable" | "teamId"> {
+export interface ISoftwareCountQueryKey extends Pick<
+  ISoftwareApiParams,
+  "query" | "vulnerable" | "teamId"
+> {
   scope: "softwareCount";
 }
 
@@ -110,8 +112,7 @@ export interface IGetSoftwareTitleQueryParams {
   teamId?: number;
 }
 
-export interface IGetSoftwareTitleQueryKey
-  extends IGetSoftwareTitleQueryParams {
+export interface IGetSoftwareTitleQueryKey extends IGetSoftwareTitleQueryParams {
   scope: "softwareById";
 }
 
@@ -120,8 +121,7 @@ export interface IGetSoftwareVersionQueryParams {
   teamId?: number;
 }
 
-export interface IGetSoftwareVersionQueryKey
-  extends IGetSoftwareVersionQueryParams {
+export interface IGetSoftwareVersionQueryKey extends IGetSoftwareVersionQueryParams {
   scope: "softwareVersion";
 }
 
@@ -199,7 +199,7 @@ const ORDER_DIRECTION = "asc";
 
 const handleAndroidForm = (
   teamId: number,
-  formData: ISoftwareAndroidFormData
+  formData: ISoftwareAndroidFormData,
 ) => {
   const { SOFTWARE_APP_STORE_APPS } = endpoints;
 
@@ -260,7 +260,7 @@ const handleVppAppForm = (teamId: number, formData: ISoftwareVppFormData) => {
 
 const handleDisplayNameForm = (
   data: ISoftwareDisplayNameFormData,
-  formData: FormData
+  formData: FormData,
 ) => {
   formData.append("display_name", data.displayName || "");
 };
@@ -268,26 +268,26 @@ const handleDisplayNameForm = (
 const handleEditPackageForm = (
   data: IEditPackageFormData,
   formData: FormData,
-  orignalPackage: ISoftwarePackage
+  orignalPackage: ISoftwarePackage,
 ) => {
   data.software && formData.append("software", data.software);
   formData.append("self_service", data.selfService.toString());
   // Base64 encode script fields to bypass WAF rules that block script patterns
   formData.append(
     "install_script",
-    encodeScriptBase64(data.installScript) || ""
+    encodeScriptBase64(data.installScript) || "",
   );
   formData.append(
     "pre_install_query",
-    encodeScriptBase64(data.preInstallQuery || "") || ""
+    encodeScriptBase64(data.preInstallQuery || "") || "",
   );
   formData.append(
     "post_install_script",
-    encodeScriptBase64(data.postInstallScript || "") || ""
+    encodeScriptBase64(data.postInstallScript || "") || "",
   );
   formData.append(
     "uninstall_script",
-    encodeScriptBase64(data.uninstallScript || "") || ""
+    encodeScriptBase64(data.uninstallScript || "") || "",
   );
   if (data.categories) {
     data.categories.forEach((category) => {
@@ -321,21 +321,21 @@ const handleEditPackageForm = (
 
 const handleDisplayNameAppStoreAppForm = (
   formData: ISoftwareDisplayNameFormData,
-  body: IEditAppStoreAppPostBody
+  body: IEditAppStoreAppPostBody,
 ) => {
   body.display_name = formData.displayName || "";
 };
 
 const handleConfigurationAppStoreAppForm = (
   formData: ISoftwareConfigurationFormData,
-  body: IEditAppStoreAppPostBody
+  body: IEditAppStoreAppPostBody,
 ) => {
   body.configuration = formData.configuration || "{}";
 };
 
 const handleAutoUpdateConfigAppStoreAppForm = (
   formData: ISoftwareAutoUpdateConfigFormData,
-  body: IEditAppStoreAppPostBody
+  body: IEditAppStoreAppPostBody,
 ) => {
   body.auto_update_enabled = formData.autoUpdateEnabled;
   if (formData.autoUpdateEnabled) {
@@ -357,7 +357,7 @@ const handleAutoUpdateConfigAppStoreAppForm = (
 
 const handleEditAppStoreAppForm = (
   formData: ISoftwareVppFormData,
-  body: IEditAppStoreAppPostBody
+  body: IEditAppStoreAppPostBody,
 ) => {
   body.self_service = formData.selfService;
 
@@ -439,7 +439,7 @@ export default {
   },
 
   getSoftwareTitles: (
-    params: ISoftwareApiParams
+    params: ISoftwareApiParams,
   ): Promise<ISoftwareTitlesResponse> => {
     const { SOFTWARE_TITLES } = endpoints;
     const snakeCaseParams = convertParamsToSnakeCase(params);
@@ -505,22 +505,22 @@ export default {
     data.installScript &&
       formData.append(
         "install_script",
-        encodeScriptBase64(data.installScript) || ""
+        encodeScriptBase64(data.installScript) || "",
       );
     data.uninstallScript &&
       formData.append(
         "uninstall_script",
-        encodeScriptBase64(data.uninstallScript) || ""
+        encodeScriptBase64(data.uninstallScript) || "",
       );
     data.preInstallQuery &&
       formData.append(
         "pre_install_query",
-        encodeScriptBase64(data.preInstallQuery) || ""
+        encodeScriptBase64(data.preInstallQuery) || "",
       );
     data.postInstallScript &&
       formData.append(
         "post_install_script",
-        encodeScriptBase64(data.postInstallScript) || ""
+        encodeScriptBase64(data.postInstallScript) || "",
       );
     data.automaticInstall &&
       formData.append("automatic_install", data.automaticInstall.toString());
@@ -589,7 +589,7 @@ export default {
       handleEditPackageForm(
         data as IEditPackageFormData,
         formData,
-        orignalPackage
+        orignalPackage,
       );
     }
 
@@ -607,7 +607,7 @@ export default {
 
   addAppStoreApp: (
     teamId: number,
-    formData: ISoftwareVppFormData | ISoftwareAndroidFormData
+    formData: ISoftwareVppFormData | ISoftwareAndroidFormData,
   ) => {
     if ("platform" in formData) {
       // Android form data
@@ -626,7 +626,7 @@ export default {
       | ISoftwareAndroidFormData
       | ISoftwareDisplayNameFormData
       | ISoftwareConfigurationFormData
-      | ISoftwareAutoUpdateConfigFormData
+      | ISoftwareAutoUpdateConfigFormData,
   ) => {
     const { EDIT_SOFTWARE_APP_STORE_APP } = endpoints;
 
@@ -636,19 +636,19 @@ export default {
       // Handles Edit display name form only
       handleDisplayNameAppStoreAppForm(
         formData as ISoftwareDisplayNameFormData,
-        body
+        body,
       );
     } else if ("configuration" in formData) {
       // Handles Edit configuration form only
       handleConfigurationAppStoreAppForm(
         formData as ISoftwareConfigurationFormData,
-        body
+        body,
       );
     } else if ("autoUpdateEnabled" in formData) {
       // Handles Edit auto update configuration form only
       handleAutoUpdateConfigAppStoreAppForm(
         formData as ISoftwareAutoUpdateConfigFormData,
-        body
+        body,
       );
     } else {
       // Handles primary Edit AppStoreApp form
@@ -671,7 +671,7 @@ export default {
       "blob",
       undefined,
       undefined,
-      true
+      true,
     ); // returnRaw is true to get headers
   },
 
@@ -697,7 +697,7 @@ export default {
   editSoftwareIcon: (
     softwareId: number,
     teamId: number,
-    fileObject: { icon: File }
+    fileObject: { icon: File },
   ) => {
     const { SOFTWARE_ICON } = endpoints;
     const path = getPathWithQueryParams(SOFTWARE_ICON(softwareId), {
@@ -714,17 +714,17 @@ export default {
   deleteSoftwareInstaller: (softwareId: number, teamId: number) => {
     const { SOFTWARE_AVAILABLE_FOR_INSTALL } = endpoints;
     const path = `${SOFTWARE_AVAILABLE_FOR_INSTALL(
-      softwareId
+      softwareId,
     )}?team_id=${teamId}`;
     return sendRequest("DELETE", path);
   },
 
   getSoftwarePackageToken: (
     softwareTitleId: number,
-    teamId: number
+    teamId: number,
   ): Promise<ISoftwareInstallTokenResponse> => {
     const path = `${endpoints.SOFTWARE_PACKAGE_TOKEN(
-      softwareTitleId
+      softwareTitleId,
     )}?${buildQueryStringFromParams({ alt: "media", team_id: teamId })}`;
 
     return sendRequest("POST", path);
@@ -737,7 +737,7 @@ export default {
   },
 
   getFleetMaintainedApps: (
-    params: ISoftwareFleetMaintainedAppsQueryParams
+    params: ISoftwareFleetMaintainedAppsQueryParams,
   ): Promise<ISoftwareFleetMaintainedAppsResponse> => {
     const { SOFTWARE_FLEET_MAINTAINED_APPS } = endpoints;
     const queryStr = buildQueryStringFromParams(params);
@@ -747,7 +747,7 @@ export default {
 
   getFleetMaintainedApp: (
     id: number,
-    teamId?: string
+    teamId?: string,
   ): Promise<IFleetMaintainedAppResponse> => {
     const { SOFTWARE_FLEET_MAINTAINED_APP } = endpoints;
     const path = getPathWithQueryParams(SOFTWARE_FLEET_MAINTAINED_APP(id), {
@@ -758,7 +758,7 @@ export default {
 
   addFleetMaintainedApp: (
     teamId: number,
-    formData: IAddFleetMaintainedData
+    formData: IAddFleetMaintainedData,
   ) => {
     const { SOFTWARE_FLEET_MAINTAINED_APPS } = endpoints;
 
@@ -790,7 +790,7 @@ export default {
       body,
       {
         [SCRIPTS_ENCODED_HEADER]: "base64",
-      }
+      },
     );
   },
 };

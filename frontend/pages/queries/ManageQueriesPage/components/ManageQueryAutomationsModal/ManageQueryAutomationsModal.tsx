@@ -53,8 +53,8 @@ const ManageQueryAutomationsModal = ({
   webhookDestination,
   filesystemDestination,
 }: IManageQueryAutomationsModalProps): JSX.Element => {
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   // Fetch team-scoped queries (mergeInherited: false) so we only show
   // queries that belong to this team, not inherited global queries.
@@ -76,28 +76,29 @@ const ManageQueryAutomationsModal = ({
     ({ queryKey }) => queriesAPI.loadAll(queryKey[0]),
     {
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
-  const availableQueries = useMemo(() => queriesResponse?.queries ?? [], [
-    queriesResponse,
-  ]);
+  const availableQueries = useMemo(
+    () => queriesResponse?.queries ?? [],
+    [queriesResponse],
+  );
 
   const automatedQueryIds = useMemo(
     () =>
       availableQueries
         .filter((query) => query.automations_enabled)
         .map((query) => query.id),
-    [availableQueries]
+    [availableQueries],
   );
 
   // Client side sort queries alphabetically
   const sortedAvailableQueries = useMemo(
     () =>
       [...availableQueries].sort((a, b) =>
-        a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
       ),
-    [availableQueries]
+    [availableQueries],
   );
 
   const [queryItems, setQueryItems] = useState<ICheckedQuery[]>([]);
@@ -111,7 +112,7 @@ const ManageQueryAutomationsModal = ({
           id,
           isChecked: !!automatedQueryIds?.includes(id),
           interval,
-        }))
+        })),
       );
     }
   }, [sortedAvailableQueries, automatedQueryIds]);
@@ -119,13 +120,15 @@ const ManageQueryAutomationsModal = ({
   const updateQueryItems = (queryId: number) => {
     setQueryItems((prevItems) =>
       prevItems.map((query) =>
-        query.id !== queryId ? query : { ...query, isChecked: !query.isChecked }
-      )
+        query.id !== queryId
+          ? query
+          : { ...query, isChecked: !query.isChecked },
+      ),
     );
   };
 
   const onSubmitQueryAutomations = (
-    evt: React.MouseEvent<HTMLFormElement> | KeyboardEvent
+    evt: React.MouseEvent<HTMLFormElement> | KeyboardEvent,
   ) => {
     evt.preventDefault();
 

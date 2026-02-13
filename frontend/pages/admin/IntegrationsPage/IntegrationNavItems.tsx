@@ -56,7 +56,7 @@ const getIntegrationSettingsNavItems = (): ISideNavItem<any>[] => {
       Card: IdentityProviders,
     },
     {
-      title: "Host status webhook",
+      title: "Device status webhook",
       urlSection: "host-status-webhook",
       path: PATHS.ADMIN_INTEGRATIONS_HOST_STATUS_WEBHOOK,
       Card: GlobalHostStatusWebhook,

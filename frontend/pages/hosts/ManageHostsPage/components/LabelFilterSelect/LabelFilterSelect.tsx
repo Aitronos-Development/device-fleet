@@ -22,7 +22,7 @@ declare module "react-select-5/dist/declarations/src/Select" {
   export interface Props<
     Option,
     IsMulti extends boolean,
-    Group extends GroupBase<Option>
+    Group extends GroupBase<Option>,
   > {
     labelQuery?: string;
     canAddNewLabels?: boolean;
@@ -90,14 +90,13 @@ const LabelFilterSelect = ({
   // we want the menu to render open or closed.
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const isLabelSearchInputFocusedRef = useRef(false);
-  const selectRef = useRef<
-    SelectInstance<ILabel | IEmptyOption, false, IGroupOption>
-  >(null);
+  const selectRef =
+    useRef<SelectInstance<ILabel | IEmptyOption, false, IGroupOption>>(null);
 
-  const options = useMemo(() => createDropdownOptions(labels, labelQuery), [
-    labels,
-    labelQuery,
-  ]);
+  const options = useMemo(
+    () => createDropdownOptions(labels, labelQuery),
+    [labels, labelQuery],
+  );
 
   const handleChange = (option: ILabel | IEmptyOption | null) => {
     if (option === null) return;

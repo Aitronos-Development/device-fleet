@@ -26,7 +26,7 @@ const DEFAULT_GET_COMMANDS_RESPONSE_MOCK: IGetCommandsResponse = {
 };
 
 export const createMockGetCommandsResponse = (
-  overrides?: Partial<IGetCommandsResponse>
+  overrides?: Partial<IGetCommandsResponse>,
 ): IGetCommandsResponse => ({
   ...DEFAULT_GET_COMMANDS_RESPONSE_MOCK,
   ...overrides,
@@ -54,7 +54,7 @@ const DEFAULT_COMMAND_RESULT_MOCK: ICommandResult = {
  */
 
 export const createMockAppleMdmCommandResult = (
-  overrides?: Partial<ICommandResult>
+  overrides?: Partial<ICommandResult>,
 ): ICommandResult => {
   return {
     ...DEFAULT_COMMAND_RESULT_MOCK,

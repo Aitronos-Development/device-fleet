@@ -28,13 +28,13 @@ export interface IActionButtonProps {
 }
 
 function useActionCallback(
-  callbackFn: (targetIds: number[]) => void | undefined
+  callbackFn: (targetIds: number[]) => void | undefined,
 ) {
   return useCallback(
     (targetIds: any) => {
       callbackFn(targetIds);
     },
-    [callbackFn]
+    [callbackFn],
   );
 }
 
@@ -58,7 +58,7 @@ const ActionButton = (buttonProps: IActionButtonProps): JSX.Element | null => {
   // hideButton is intended to provide a flexible way to specify show/hide conditions via a boolean or a function that evaluates to a boolean
   // currently it is typed to accept an array of targetIds but this typing could easily be expanded to include other use cases
   const isHidden = (
-    hideButtonProp: boolean | ((ids: number[]) => boolean) | undefined
+    hideButtonProp: boolean | ((ids: number[]) => boolean) | undefined,
   ) => {
     if (typeof hideButtonProp === "function") {
       return hideButtonProp(targetIds);
@@ -73,7 +73,7 @@ const ActionButton = (buttonProps: IActionButtonProps): JSX.Element | null => {
   const buttonClasses = classnames(
     baseClass,
     `${baseClass}__${kebabCase(name)}`,
-    { [`${baseClass}__disabled`]: isDisabled }
+    { [`${baseClass}__disabled`]: isDisabled },
   );
 
   const renderButton = () => (

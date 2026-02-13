@@ -69,7 +69,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       // Verify that "Enable auto updates" checkbox is not checked.
       const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
@@ -78,10 +78,10 @@ describe("Edit Auto Update Config Modal", () => {
       expect(enableAutoUpdatesCheckbox).not.toBeChecked();
       // Verify that the maintenance window fields are not shown.
       expect(
-        screen.queryByLabelText("Earliest start time")
+        screen.queryByLabelText("Earliest start time"),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByLabelText("Latest start time")
+        screen.queryByLabelText("Latest start time"),
       ).not.toBeInTheDocument();
     });
 
@@ -96,7 +96,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       // Verify that "Enable auto updates" checkbox is checked.
       const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
@@ -119,7 +119,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
         name: "Enable auto updates",
@@ -150,7 +150,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
         name: "Enable auto updates",
@@ -176,7 +176,7 @@ describe("Edit Auto Update Config Modal", () => {
             teamId={1}
             refetchSoftwareTitle={jest.fn()}
             onExit={jest.fn()}
-          />
+          />,
         );
         const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
           name: "Enable auto updates",
@@ -198,7 +198,7 @@ describe("Edit Auto Update Config Modal", () => {
         await user.type(endTimeField, "12:00");
         // Verify that validation message is shown
         const errorField = screen.getByLabelText(
-          "Use HH:MM format (24-hour clock)"
+          "Use HH:MM format (24-hour clock)",
         );
         expect(errorField).toBeInTheDocument();
         expect(errorField).toHaveValue("19:99");
@@ -218,7 +218,7 @@ describe("Edit Auto Update Config Modal", () => {
             teamId={1}
             refetchSoftwareTitle={jest.fn()}
             onExit={jest.fn()}
-          />
+          />,
         );
         const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
           name: "Enable auto updates",
@@ -239,7 +239,7 @@ describe("Edit Auto Update Config Modal", () => {
         await user.type(startTimeField, "12:00");
         // Verify that validation message is shown.
         const errorField = screen.getByLabelText(
-          "Use HH:MM format (24-hour clock)"
+          "Use HH:MM format (24-hour clock)",
         );
         expect(errorField).toBeInTheDocument();
         expect(errorField).toHaveValue("19:99");
@@ -261,7 +261,7 @@ describe("Edit Auto Update Config Modal", () => {
             teamId={1}
             refetchSoftwareTitle={jest.fn()}
             onExit={jest.fn()}
-          />
+          />,
         );
         const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
           name: "Enable auto updates",
@@ -283,7 +283,7 @@ describe("Edit Auto Update Config Modal", () => {
         await user.click(saveButton);
         // Verify that validation message is shown for end time.
         expect(
-          screen.getByLabelText("Latest start time is required")
+          screen.getByLabelText("Latest start time is required"),
         ).toBeInTheDocument();
         // Now enter only end time.
         await user.clear(startTimeField);
@@ -293,10 +293,10 @@ describe("Edit Auto Update Config Modal", () => {
         // Verify that validation message is shown for start time
         // but the end-time validation message is cleared.
         expect(
-          screen.getByLabelText("Earliest start time is required")
+          screen.getByLabelText("Earliest start time is required"),
         ).toBeInTheDocument();
         expect(
-          screen.queryByText("Latest start time is required")
+          screen.queryByText("Latest start time is required"),
         ).not.toBeInTheDocument();
         expect(saveButton).toBeDisabled();
 
@@ -307,10 +307,10 @@ describe("Edit Auto Update Config Modal", () => {
         await user.click(saveButton);
         // Verify that validation message is shown for both times.
         expect(
-          screen.getByLabelText("Earliest start time is required")
+          screen.getByLabelText("Earliest start time is required"),
         ).toBeInTheDocument();
         expect(
-          screen.getByLabelText("Latest start time is required")
+          screen.getByLabelText("Latest start time is required"),
         ).toBeInTheDocument();
         expect(saveButton).toBeDisabled();
         // Fill both with valid values.
@@ -319,10 +319,10 @@ describe("Edit Auto Update Config Modal", () => {
         await user.click(endTimeField);
         // Verify that no validation messages are shown.
         expect(
-          screen.queryByLabelText("Earliest start time is required")
+          screen.queryByLabelText("Earliest start time is required"),
         ).not.toBeInTheDocument();
         expect(
-          screen.queryByLabelText("Latest start time is required")
+          screen.queryByLabelText("Latest start time is required"),
         ).not.toBeInTheDocument();
         expect(saveButton).toBeEnabled();
       });
@@ -334,7 +334,7 @@ describe("Edit Auto Update Config Modal", () => {
             teamId={1}
             refetchSoftwareTitle={jest.fn()}
             onExit={jest.fn()}
-          />
+          />,
         );
         const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
           name: "Enable auto updates",
@@ -355,7 +355,7 @@ describe("Edit Auto Update Config Modal", () => {
         await user.click(startTimeField);
         // Verify that validation message is shown.
         const error = screen.getByText(
-          "Update window must be at least 60 minutes long"
+          "Update window must be at least 60 minutes long",
         );
         expect(error).toBeInTheDocument();
         const saveButton = screen.getByRole("button", {
@@ -374,7 +374,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       expect(screen.getByLabelText("All hosts")).toBeInTheDocument();
       expect(screen.getByLabelText("Custom")).toBeInTheDocument();
@@ -394,7 +394,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       expect(screen.getByLabelText("All hosts")).toBeInTheDocument();
       expect(screen.getByLabelText("Custom")).toBeInTheDocument();
@@ -423,7 +423,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const customOption = screen.getByLabelText("Custom");
       expect(customOption).toBeChecked();
@@ -443,10 +443,11 @@ describe("Edit Auto Update Config Modal", () => {
     const submitHandler = http.patch(
       baseUrl("/software/titles/*/app_store_app"),
       async ({ request }) => {
-        const requestData = (await request.json()) as ISoftwareAutoUpdateConfigFormData;
+        const requestData =
+          (await request.json()) as ISoftwareAutoUpdateConfigFormData;
         requestSpy(requestData);
         return HttpResponse.json({});
-      }
+      },
     );
     beforeEach(() => {
       mockServer.use(submitHandler);
@@ -459,7 +460,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const saveButton = screen.getByRole("button", {
         name: "Save",
@@ -485,7 +486,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const enableAutoUpdatesCheckbox = screen.getByRole("checkbox", {
         name: "Enable auto updates",
@@ -532,7 +533,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const allHostsRadio = screen.getByLabelText("All hosts");
       expect(allHostsRadio).toBeInTheDocument();
@@ -565,7 +566,7 @@ describe("Edit Auto Update Config Modal", () => {
           teamId={1}
           refetchSoftwareTitle={jest.fn()}
           onExit={jest.fn()}
-        />
+        />,
       );
       const saveButton = screen.getByRole("button", {
         name: "Save",

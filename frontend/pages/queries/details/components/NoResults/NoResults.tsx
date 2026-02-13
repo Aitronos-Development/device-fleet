@@ -40,7 +40,7 @@ const NoResults = ({
   // Converts seconds takes to update to human readable format
   const readableCheckbackTime = formatDistance(
     add(new Date(), { seconds: secondsCheckbackTime() }),
-    new Date()
+    new Date(),
   );
 
   // Collecting results state only shows if caching is enabled

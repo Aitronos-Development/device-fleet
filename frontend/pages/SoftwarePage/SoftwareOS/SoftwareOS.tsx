@@ -64,7 +64,7 @@ const SoftwareOS = ({
     {
       keepPreviousData: true,
       staleTime: 30000,
-    }
+    },
   );
 
   if (isLoading) {

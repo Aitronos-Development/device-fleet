@@ -40,17 +40,15 @@ const DiskEncryptionTable = ({
   currentTeamId,
   router,
 }: IDiskEncryptionTableProps) => {
-  const {
-    data: diskEncryptionStatusData,
-    error: diskEncryptionStatusError,
-  } = useQuery<IDiskEncryptionSummaryResponse, Error>(
-    ["disk-encryption-summary", currentTeamId],
-    () => diskEncryptionAPI.getDiskEncryptionSummary(currentTeamId),
-    {
-      refetchOnWindowFocus: false,
-      retry: false,
-    }
-  );
+  const { data: diskEncryptionStatusData, error: diskEncryptionStatusError } =
+    useQuery<IDiskEncryptionSummaryResponse, Error>(
+      ["disk-encryption-summary", currentTeamId],
+      () => diskEncryptionAPI.getDiskEncryptionSummary(currentTeamId),
+      {
+        refetchOnWindowFocus: false,
+        retry: false,
+      },
+    );
 
   const onSelectSingleRow = useCallback(
     (row: IDiskEncryptionRowProps) => {
@@ -64,7 +62,7 @@ const DiskEncryptionTable = ({
 
       router.push(path);
     },
-    [router]
+    [router],
   );
 
   const tableHeaders = generateTableHeaders();

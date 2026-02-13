@@ -22,7 +22,7 @@ export interface IEmptySoftwareTableProps {
 const generateTypeText = (
   tableName: string,
   softwareFilter?: ISoftwareDropdownFilterVal,
-  vulnFilters?: ISoftwareVulnFiltersParams
+  vulnFilters?: ISoftwareVulnFiltersParams,
 ) => {
   if (softwareFilter === "installableSoftware") {
     return "installable software";
@@ -45,12 +45,11 @@ const EmptySoftwareTable = ({
   const softwareTypeText = generateTypeText(
     tableName,
     softwareFilter,
-    vulnFilters
+    vulnFilters,
   );
 
-  const { filterCount: vulnFiltersCount } = getVulnFilterRenderDetails(
-    vulnFilters
-  );
+  const { filterCount: vulnFiltersCount } =
+    getVulnFilterRenderDetails(vulnFilters);
 
   const isFiltered =
     vulnFiltersCount > 0 || !noSearchQuery || softwareFilter !== "allSoftware";

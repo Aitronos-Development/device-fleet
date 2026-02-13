@@ -68,7 +68,7 @@ const Card = ({
       [`${baseClass}__shadow`]: includeShadow,
       [`${baseClass}__large-padding`]: largePadding,
     },
-    className
+    className,
   );
 
   if (path) {

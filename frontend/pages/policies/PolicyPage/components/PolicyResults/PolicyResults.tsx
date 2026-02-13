@@ -58,8 +58,12 @@ const PolicyResults = ({
 }: IPolicyResultsProps): JSX.Element => {
   const { lastEditedQueryBody } = useContext(PolicyContext);
 
-  const { hosts: hostResponses, uiHostCounts, serverHostCounts, errors } =
-    campaign || {};
+  const {
+    hosts: hostResponses,
+    uiHostCounts,
+    serverHostCounts,
+    errors,
+  } = campaign || {};
 
   const totalRowsCount = get(campaign, ["hosts_count", "successful"], 0);
 
@@ -81,8 +85,8 @@ const PolicyResults = ({
       FileSaver.saveAs(
         generateCSVPolicyResults(
           hostsExport,
-          generateCSVFilename(`${policyName || CSV_TITLE} - Results`)
-        )
+          generateCSVFilename(`${policyName || CSV_TITLE} - Results`),
+        ),
       );
     }
   };
@@ -94,8 +98,8 @@ const PolicyResults = ({
       FileSaver.saveAs(
         generateCSVPolicyErrors(
           errors,
-          generateCSVFilename(`${policyName || CSV_TITLE} - Errors`)
-        )
+          generateCSVFilename(`${policyName || CSV_TITLE} - Errors`),
+        ),
       );
     }
   };

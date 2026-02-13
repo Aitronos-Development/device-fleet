@@ -13,7 +13,7 @@ describe("DropdownButton - component", () => {
     ];
 
     render(
-      <DropdownButton options={dropdownOptions}>New Button</DropdownButton>
+      <DropdownButton options={dropdownOptions}>New Button</DropdownButton>,
     );
 
     fireEvent.click(screen.getByText("New Button"));

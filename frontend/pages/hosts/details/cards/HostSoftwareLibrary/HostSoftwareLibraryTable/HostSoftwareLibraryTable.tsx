@@ -75,7 +75,7 @@ const HostSoftwareLibraryTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [page, searchQuery, sortDirection, sortHeader]
+    [page, searchQuery, sortDirection, sortHeader],
   );
 
   const generateNewQueryParams = useCallback(
@@ -90,7 +90,7 @@ const HostSoftwareLibraryTable = ({
 
       return newQueryParam;
     },
-    [selfService]
+    [selfService],
   );
 
   // TODO: Look into useDebounceCallback with dependencies
@@ -114,11 +114,11 @@ const HostSoftwareLibraryTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, pagePath, generateNewQueryParams, router]
+    [determineQueryParamChange, pagePath, generateNewQueryParams, router],
   );
 
   const handleCustomFilterDropdownChange = (
-    value: IHostSWLibraryDropdownFilterVal
+    value: IHostSWLibraryDropdownFilterVal,
   ) => {
     const queryParams: QueryParams = {
       query: searchQuery,
@@ -133,7 +133,7 @@ const HostSoftwareLibraryTable = ({
         pathPrefix: pagePath,
         routeTemplate: "",
         queryParams: convertParamsToSnakeCase(queryParams),
-      })
+      }),
     );
   };
 
@@ -183,7 +183,7 @@ const HostSoftwareLibraryTable = ({
           onChange={(newValue: SingleValue<CustomOptionType>) =>
             newValue &&
             handleCustomFilterDropdownChange(
-              newValue.value as IHostSWLibraryDropdownFilterVal
+              newValue.value as IHostSWLibraryDropdownFilterVal,
             )
           }
           variant="table-filter"

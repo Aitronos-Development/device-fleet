@@ -35,7 +35,7 @@ export interface IButtonProps {
     | ((
         evt:
           | React.MouseEvent<HTMLButtonElement>
-          | React.KeyboardEvent<HTMLButtonElement>
+          | React.KeyboardEvent<HTMLButtonElement>,
       ) => void);
   isLoading?: boolean;
   customOnKeyDown?: (e: React.KeyboardEvent) => void;
@@ -138,7 +138,7 @@ class Button extends React.Component<IButtonProps, IButtonState> {
         [`${baseClass}--${variant}__small`]: size === "small",
         [`${baseClass}--disabled`]: disabled,
         [`${baseClass}--icon-stroke`]: iconStroke,
-      }
+      },
     );
     const onWhite =
       variant === "text-link" ||

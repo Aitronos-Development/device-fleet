@@ -24,7 +24,7 @@ const OSSettingsTable = ({
   const tableConfig = useMemo(
     () =>
       generateTableHeaders(canResendProfiles, resendRequest, onProfileResent),
-    [canResendProfiles, resendRequest, onProfileResent]
+    [canResendProfiles, resendRequest, onProfileResent],
   );
 
   return (

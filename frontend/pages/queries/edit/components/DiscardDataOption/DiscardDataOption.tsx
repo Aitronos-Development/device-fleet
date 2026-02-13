@@ -69,7 +69,7 @@ const DiscardDataOption = ({
   return (
     <div className={baseClass}>
       {["differential", "differential_ignore_removals"].includes(
-        selectedLoggingType
+        selectedLoggingType,
       ) && (
         <>
           <InfoBanner color="purple">

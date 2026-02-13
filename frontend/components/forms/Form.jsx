@@ -42,10 +42,8 @@ export default (WrappedComponent, { fields, validate = defaultValidate }) => {
     }
 
     componentWillReceiveProps({ formData, serverErrors }) {
-      const {
-        formData: oldFormDataProp,
-        serverErrors: oldServerErrors,
-      } = this.props;
+      const { formData: oldFormDataProp, serverErrors: oldServerErrors } =
+        this.props;
 
       if (!isEqual(formData, oldFormDataProp)) {
         const { formData: currentFormData } = this.state;

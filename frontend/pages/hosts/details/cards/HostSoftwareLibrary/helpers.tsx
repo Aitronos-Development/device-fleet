@@ -16,7 +16,7 @@ export const DROPDOWN_OPTIONS = [
     disabled: false,
     label: "All available",
     value: "available",
-    helpText: "Software that can be installed on this host.",
+    helpText: "Software that can be installed on this device.",
   },
   {
     disabled: false,
@@ -82,7 +82,7 @@ export const getUninstallErrorMessage = (e: unknown) => {
   } else if (reason.startsWith("Couldn't uninstall software.")) {
     return reason.replace(
       "Couldn't uninstall software.",
-      "Couldn't uninstall."
+      "Couldn't uninstall.",
     );
   } else if (reason.startsWith("No uninstall script exists")) {
     return `${UNINSTALL_SOFTWARE_ERROR_PREFIX}. An uninstall script does not exist for this package.`;

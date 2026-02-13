@@ -33,8 +33,8 @@ const AgentOptionsPage = ({
   router,
 }: ITeamSubnavProps): JSX.Element => {
   const { renderFlash } = useContext(NotificationContext);
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const { isRouteOk, teamIdForApi } = useTeamIdParam({
     location,
@@ -58,25 +58,23 @@ const AgentOptionsPage = ({
 
   const handlePageError = useErrorHandler();
 
-  const {
-    isFetching: isFetchingTeamOptions,
-    refetch: refetchTeamOptions,
-  } = useQuery<ILoadTeamResponse, Error, ITeam>(
-    ["team_details", teamIdForApi],
-    () => teamsAPI.load(teamIdForApi),
-    {
-      enabled: isRouteOk && !!teamIdForApi,
-      select: (data: ILoadTeamResponse) => data.team,
-      onSuccess: (data) => {
-        setFormData({
-          agentOptions: agentOptionsToYaml(data.agent_options),
-        });
-        setTeamName(data.name);
+  const { isFetching: isFetchingTeamOptions, refetch: refetchTeamOptions } =
+    useQuery<ILoadTeamResponse, Error, ITeam>(
+      ["team_details", teamIdForApi],
+      () => teamsAPI.load(teamIdForApi),
+      {
+        enabled: isRouteOk && !!teamIdForApi,
+        select: (data: ILoadTeamResponse) => data.team,
+        onSuccess: (data) => {
+          setFormData({
+            agentOptions: agentOptionsToYaml(data.agent_options),
+          });
+          setTeamName(data.name);
+        },
+        onError: (error) => handlePageError(error),
+        refetchOnWindowFocus: false,
       },
-      onError: (error) => handlePageError(error),
-      refetchOnWindowFocus: false,
-    }
-  );
+    );
 
   const validateForm = () => {
     const errors: any = {};
@@ -111,7 +109,7 @@ const AgentOptionsPage = ({
       .then(() => {
         renderFlash(
           "success",
-          `Successfully updated ${teamName} team agent options.`
+          `Successfully updated ${teamName} team agent options.`,
         );
         refetchTeamOptions();
       })
@@ -134,7 +132,7 @@ const AgentOptionsPage = ({
                 apply --force command to override validation.
               </>
             )}
-          </>
+          </>,
         );
       })
       .finally(() => {

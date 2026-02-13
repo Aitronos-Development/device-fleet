@@ -14,7 +14,7 @@ describe("ForgotPasswordForm - component", () => {
 
     expect(screen.getByRole("textbox", { name: /email/i })).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "Get instructions" })
+      screen.getByRole("button", { name: "Get instructions" }),
     ).toBeInTheDocument();
   });
 
@@ -25,17 +25,17 @@ describe("ForgotPasswordForm - component", () => {
       <ForgotPasswordForm
         handleSubmit={handleSubmit}
         serverErrors={{ base: baseError }}
-      />
+      />,
     );
     // then
     expect(
-      screen.getByText("Can't find the specified user")
+      screen.getByText("Can't find the specified user"),
     ).toBeInTheDocument();
   });
 
   it("correctly validates the email field", async () => {
     const { user } = renderWithSetup(
-      <ForgotPasswordForm handleSubmit={handleSubmit} />
+      <ForgotPasswordForm handleSubmit={handleSubmit} />,
     );
 
     await user.click(screen.getByRole("button", { name: "Get instructions" }));
@@ -53,7 +53,7 @@ describe("ForgotPasswordForm - component", () => {
 
   it("submits the form data when the form is submitted", async () => {
     const { user } = renderWithSetup(
-      <ForgotPasswordForm handleSubmit={handleSubmit} />
+      <ForgotPasswordForm handleSubmit={handleSubmit} />,
     );
 
     await user.type(screen.getByPlaceholderText("Email"), validEmail);

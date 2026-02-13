@@ -25,10 +25,10 @@ const meta: Meta<typeof IconWrapper> = {
       control: "select",
       options: [
         ...Object.keys(SOFTWARE_NAME_TO_ICON_MAP).map(
-          (name) => `${name} (name)`
+          (name) => `${name} (name)`,
         ),
         ...Object.keys(SOFTWARE_SOURCE_TO_ICON_MAP).map(
-          (source) => `${source} (source)`
+          (source) => `${source} (source)`,
         ),
       ],
     },

@@ -30,7 +30,7 @@ type IFormValidations = Record<
 
 export const generateFormValidations = (
   certAuthorities: ICertificateAuthorityPartial[],
-  isEditing: boolean
+  isEditing: boolean,
 ) => {
   const FORM_VALIDATIONS: IFormValidations = {
     name: {
@@ -57,7 +57,7 @@ export const generateFormValidations = (
               certAuthorities.find(
                 (cert) =>
                   cert.type === "custom_scep_proxy" &&
-                  cert.name === formData.name
+                  cert.name === formData.name,
               ) === undefined
             );
           },
@@ -99,7 +99,7 @@ export const generateFormValidations = (
 
 const getErrorMessage = (
   formData: ICustomSCEPFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -110,7 +110,7 @@ const getErrorMessage = (
 // eslint-disable-next-line import/prefer-default-export
 export const validateFormData = (
   formData: ICustomSCEPFormData,
-  validationConfig: IFormValidations
+  validationConfig: IFormValidations,
 ) => {
   const formValidation: ICustomSCEPFormValidation = {
     isValid: true,
@@ -119,7 +119,7 @@ export const validateFormData = (
   Object.keys(validationConfig).forEach((key) => {
     const objKey = key as keyof typeof validationConfig;
     const failedValidation = validationConfig[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

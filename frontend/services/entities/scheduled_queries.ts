@@ -28,7 +28,7 @@ export default {
   },
   update: (
     scheduledQuery: IScheduledQuery,
-    updatedAttributes: IPackQueryFormData
+    updatedAttributes: IPackQueryFormData,
   ) => {
     const { SCHEDULE_QUERY } = endpoints;
     const path = `${SCHEDULE_QUERY}/${scheduledQuery.id}`;

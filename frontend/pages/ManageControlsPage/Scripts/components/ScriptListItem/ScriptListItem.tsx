@@ -24,7 +24,7 @@ interface IScriptListItemProps {
 
 // TODO - useful to have a 'platform' field from API, for use elsewhere in app as well?
 const getFileRenderDetails = (
-  fileName: string
+  fileName: string,
 ): { graphicName: ISupportedGraphicNames; platform: string | null } => {
   const fileExtension = fileName.split(".").pop();
 

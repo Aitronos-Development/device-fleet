@@ -31,7 +31,7 @@ describe("DataTable - component", () => {
         resultsTitle="users"
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
-      />
+      />,
     );
 
     const nameHeader = screen.getByText("Name");
@@ -73,7 +73,7 @@ describe("DataTable - component", () => {
         resultsTitle="users"
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
-      />
+      />,
     );
 
     let dataCells = screen.getAllByRole("cell");
@@ -99,7 +99,7 @@ describe("DataTable - component", () => {
         resultsTitle="users"
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
-      />
+      />,
     );
 
     dataCells = screen.getAllByRole("cell");
@@ -133,7 +133,7 @@ describe("DataTable - component", () => {
         resultsTitle="users"
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
-      />
+      />,
     );
 
     let dataCells = screen.getAllByRole("cell");
@@ -156,7 +156,7 @@ describe("DataTable - component", () => {
         resultsTitle="users"
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
-      />
+      />,
     );
 
     dataCells = screen.getAllByRole("cell");
@@ -192,7 +192,7 @@ describe("DataTable - component", () => {
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
         renderTableHelpText={() => <div>Help text</div>}
-      />
+      />,
     );
 
     const helpText = screen.queryByText("Help text");
@@ -224,7 +224,7 @@ describe("DataTable - component", () => {
         defaultPageSize={DEFAULT_PAGE_SIZE}
         disableMultiRowSelect={false}
         renderTableHelpText={() => <div>Help text</div>}
-      />
+      />,
     );
 
     const helpText = screen.getByText("Help text");

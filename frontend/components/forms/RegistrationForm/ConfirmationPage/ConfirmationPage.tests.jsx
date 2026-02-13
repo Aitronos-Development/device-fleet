@@ -14,7 +14,7 @@ describe("ConfirmationPage - form", () => {
 
   it("renders the user information", () => {
     render(
-      <ConfirmationPage formData={formData} handleSubmit={handleSubmitSpy} />
+      <ConfirmationPage formData={formData} handleSubmit={handleSubmitSpy} />,
     );
 
     expect(screen.getByText(formData.name)).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("ConfirmationPage - form", () => {
         formData={formData}
         handleSubmit={handleSubmitSpy}
         currentPage
-      />
+      />,
     );
 
     fireEvent.click(screen.getByText("Confirm"));

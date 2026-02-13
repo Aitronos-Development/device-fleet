@@ -57,7 +57,7 @@ const EditLabelPage = ({ routeParams, router }: IEditLabelPageProps) => {
         if (data.label_membership_type === "host_vitals") {
           renderFlash(
             "error",
-            "Host vitals labels are not editable. Delete the label and re-add it to make changes."
+            "Host vitals labels are not editable. Delete the label and re-add it to make changes.",
           );
           router.replace(PATHS.MANAGE_LABELS);
         }
@@ -65,12 +65,12 @@ const EditLabelPage = ({ routeParams, router }: IEditLabelPageProps) => {
         if (currentUser && !hasEditPermission(currentUser, data)) {
           renderFlash(
             "error",
-            "You do not have permission to edit this label."
+            "You do not have permission to edit this label.",
           );
           router.replace(PATHS.MANAGE_LABELS);
         }
       },
-    }
+    },
   );
 
   const {
@@ -86,7 +86,7 @@ const EditLabelPage = ({ routeParams, router }: IEditLabelPageProps) => {
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (data) => data.hosts,
       enabled: label?.label_membership_type === "manual",
-    }
+    },
   );
 
   const onCancelEdit = () => {
@@ -94,7 +94,7 @@ const EditLabelPage = ({ routeParams, router }: IEditLabelPageProps) => {
   };
 
   const onUpdateLabel = async (
-    formData: IDynamicLabelFormData | IManualLabelFormData
+    formData: IDynamicLabelFormData | IManualLabelFormData,
   ) => {
     try {
       await labelsAPI.update(labelId, formData);

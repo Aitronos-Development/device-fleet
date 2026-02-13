@@ -22,7 +22,7 @@ describe("HostQueries card", () => {
         router={createMockRouter()}
         canAddQuery
         onClickAddQuery={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Queries")).toBeInTheDocument();
@@ -41,15 +41,15 @@ describe("HostQueries card", () => {
         router={createMockRouter()}
         canAddQuery={false}
         onClickAddQuery={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Queries")).toBeInTheDocument();
     expect(
-      screen.getByText("Queries not supported for this host")
+      screen.getByText("Queries not supported for this host"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Interested in collecting data from your Chromebooks/)
+      screen.getByText(/Interested in collecting data from your Chromebooks/),
     ).toBeInTheDocument();
     expect(screen.queryByText("Add query")).not.toBeInTheDocument();
   });
@@ -63,14 +63,14 @@ describe("HostQueries card", () => {
         router={createMockRouter()}
         canAddQuery
         onClickAddQuery={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Queries")).toBeInTheDocument();
     expect(screen.getByText("Add query")).toBeInTheDocument();
     expect(screen.getByText("No queries")).toBeInTheDocument();
     expect(
-      screen.getByText("Add a query to view custom vitals.")
+      screen.getByText("Add a query to view custom vitals."),
     ).toBeInTheDocument();
   });
 });

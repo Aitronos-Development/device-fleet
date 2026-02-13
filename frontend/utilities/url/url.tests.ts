@@ -13,7 +13,7 @@ describe("url utilites > buildQueryStringFromParams", () => {
       isNew: true,
     };
     expect(buildQueryStringFromParams(params)).toBe(
-      "query=test&page=1&order=asc&isNew=true"
+      "query=test&page=1&order=asc&isNew=true",
     );
   });
 
@@ -58,7 +58,7 @@ describe("url utilities > getPathWithQueryParams", () => {
       order_key: "issues",
     };
     expect(getPathWithQueryParams(endpoint, queryParams)).toBe(
-      "/hosts/manage?software_id=25&team_id=10&order_key=issues"
+      "/hosts/manage?software_id=25&team_id=10&order_key=issues",
     );
   });
 
@@ -71,7 +71,7 @@ describe("url utilities > getPathWithQueryParams", () => {
       policy_id: 4,
     };
     expect(getPathWithQueryParams(endpoint, queryParams)).toBe(
-      "/hosts/manage?policy_id=4"
+      "/hosts/manage?policy_id=4",
     );
   });
 
@@ -90,7 +90,7 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
   it("leaves macSettingsStatus and teamId unchanged when both are present", () => {
     const [macSettingsStatus, teamId] = ["pending" as const, 1];
     expect(
-      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId })
+      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId }),
     ).toEqual({
       macos_settings: "pending",
       team_id: 1,
@@ -103,7 +103,7 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
       reconcileMutuallyInclusiveHostParams({
         macSettingsStatus,
         teamId,
-      })
+      }),
     ).toEqual({
       macos_settings: "pending",
       team_id: 0,
@@ -116,14 +116,14 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
       reconcileMutuallyInclusiveHostParams({
         macSettingsStatus,
         teamId,
-      })
+      }),
     ).toEqual({ macos_settings: "pending", team_id: 0 });
   });
 
   it("does not add macos_settings when teamId is present and macSettingsStatus is not", () => {
     const [macSettingsStatus, teamId] = [undefined, 1];
     expect(
-      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId })
+      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId }),
     ).toEqual({
       team_id: 1,
     });
@@ -132,7 +132,7 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
   it("adds nothing when neither macSettingsStatus nor teamId are present", () => {
     const [macSettingsStatus, teamId] = [undefined, undefined];
     expect(
-      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId })
+      reconcileMutuallyInclusiveHostParams({ macSettingsStatus, teamId }),
     ).toEqual({});
   });
 
@@ -143,7 +143,7 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
         label: "labels/7",
         macSettingsStatus: "pending",
         osSettings: "pending",
-      })
+      }),
     ).toEqual({
       team_id: 1,
     });
@@ -152,7 +152,7 @@ describe("url utilities > reconcileMutuallyInclusiveHostParams", () => {
         label: "labels/7",
         macSettingsStatus: "pending",
         osSettings: "pending",
-      })
+      }),
     ).toEqual({
       team_id: undefined,
     });

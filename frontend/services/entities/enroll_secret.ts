@@ -21,21 +21,21 @@ export default {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     return teamsAPI.getEnrollSecrets(teamId);
   },
   modifyTeamEnrollSecrets: (
     teamId: number | undefined,
-    secrets: IEnrollSecret[]
+    secrets: IEnrollSecret[],
   ): Promise<IEnrollSecretsResponse> => {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     return teamsAPI.modifyEnrollSecrets(teamId, secrets);

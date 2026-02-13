@@ -63,7 +63,7 @@ describe("createPackageYaml", () => {
     });
 
     expect(yaml).toBe(
-      "# Falcon Sensor Test Package (TestPackage-1.2.3.pkg) version 1.2.3"
+      "# Falcon Sensor Test Package (TestPackage-1.2.3.pkg) version 1.2.3",
     );
   });
 
@@ -219,15 +219,15 @@ describe("renderYamlHelperText", () => {
   it("renders correctly with one item", () => {
     // Only install_script present
     render(
-      renderDownloadFilesText({ installScript, onClickInstallScript: noop })
+      renderDownloadFilesText({ installScript, onClickInstallScript: noop }),
     );
     expect(
-      screen.getByRole("button", { name: "install script" })
+      screen.getByRole("button", { name: "install script" }),
     ).toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes("add it to your repository using the path above.")
-      )
+        content.includes("add it to your repository using the path above."),
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByText("and")).not.toBeInTheDocument();
   });
@@ -239,13 +239,13 @@ describe("renderYamlHelperText", () => {
         uninstallScript,
         onClickInstallScript: noop,
         onClickUninstallScript: noop,
-      })
+      }),
     );
     expect(
-      screen.getByRole("button", { name: "install script" })
+      screen.getByRole("button", { name: "install script" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "uninstall script" })
+      screen.getByRole("button", { name: "uninstall script" }),
     ).toBeInTheDocument();
 
     // In "Next," and "Advanced options," only
@@ -255,12 +255,12 @@ describe("renderYamlHelperText", () => {
 
     // No oxford comma for two items
     expect(
-      screen.queryByText((content) => content.includes(", and"))
+      screen.queryByText((content) => content.includes(", and")),
     ).not.toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes("add them to your repository using the paths above.")
-      )
+        content.includes("add them to your repository using the paths above."),
+      ),
     ).toBeInTheDocument();
   });
 
@@ -276,19 +276,19 @@ describe("renderYamlHelperText", () => {
         onClickInstallScript: noop,
         onClickUninstallScript: noop,
         onClickPostInstallScript: noop,
-      })
+      }),
     );
     expect(
-      screen.getByRole("button", { name: "pre-install query" })
+      screen.getByRole("button", { name: "pre-install query" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "install script" })
+      screen.getByRole("button", { name: "install script" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "post-install script" })
+      screen.getByRole("button", { name: "post-install script" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "uninstall script" })
+      screen.getByRole("button", { name: "uninstall script" }),
     ).toBeInTheDocument();
 
     // In "Next," "Advanced options," and 3 more commas
@@ -298,12 +298,12 @@ describe("renderYamlHelperText", () => {
 
     // Oxford comma for four items
     expect(
-      screen.queryByText((content) => content.includes(", and"))
+      screen.queryByText((content) => content.includes(", and")),
     ).toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes("add them to your repository using the paths above.")
-      )
+        content.includes("add them to your repository using the paths above."),
+      ),
     ).toBeInTheDocument();
   });
 
@@ -317,17 +317,17 @@ describe("renderYamlHelperText", () => {
         onClickPreInstallQuery: noop,
         onClickInstallScript: noop,
         onClickUninstallScript: noop,
-      })
+      }),
     );
 
     expect(
-      screen.getByRole("button", { name: "pre-install query" })
+      screen.getByRole("button", { name: "pre-install query" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "install script" })
+      screen.getByRole("button", { name: "install script" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: "uninstall script" })
+      screen.getByRole("button", { name: "uninstall script" }),
     ).toBeInTheDocument();
 
     // In "Next," "Advanced options," and 2 more commas
@@ -337,12 +337,12 @@ describe("renderYamlHelperText", () => {
 
     // Oxford comma for three items
     expect(
-      screen.getByText((content) => content.includes(", and"))
+      screen.getByText((content) => content.includes(", and")),
     ).toBeInTheDocument();
     expect(
       screen.getByText((content) =>
-        content.includes("add them to your repository using the paths above.")
-      )
+        content.includes("add them to your repository using the paths above."),
+      ),
     ).toBeInTheDocument();
   });
 
@@ -352,7 +352,7 @@ describe("renderYamlHelperText", () => {
         installScript: "echo install",
         onClickInstallScript: noop,
         hasAdvancedOptionsAvailable: false,
-      })
+      }),
     );
 
     // Should not show the "Advanced options" instructional text
@@ -374,21 +374,21 @@ describe("renderYamlHelperText", () => {
         onClickPostInstallScript: noop,
         onClickUninstallScript: noop,
         isScriptPackage: true,
-      })
+      }),
     );
 
     // Should not render any download buttons for script-only fields
     expect(
-      screen.queryByRole("button", { name: "pre-install query" })
+      screen.queryByRole("button", { name: "pre-install query" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "install script" })
+      screen.queryByRole("button", { name: "install script" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "post-install script" })
+      screen.queryByRole("button", { name: "post-install script" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "uninstall script" })
+      screen.queryByRole("button", { name: "uninstall script" }),
     ).not.toBeInTheDocument();
 
     // Container should be empty since no items should be rendered

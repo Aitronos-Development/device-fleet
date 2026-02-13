@@ -87,7 +87,7 @@ export const renderApiUserIndicator = () => {
 // NOTE: cellProps come from react-table
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 const generateColumnConfigs = (
-  actionSelectHandler: (value: string, user: IUser) => void
+  actionSelectHandler: (value: string, user: IUser) => void,
 ): IDataColumn[] => {
   return [
     {
@@ -202,7 +202,7 @@ const generateRole = (teamId: number, teams: ITeam[]): UserRole => {
 
 const enhanceUsersData = (
   teamId: number,
-  users: IUser[]
+  users: IUser[],
 ): ITeamUsersTableData[] => {
   return Object.values(users).map((user) => {
     return {
@@ -222,7 +222,7 @@ const enhanceUsersData = (
 
 const generateDataSet = (
   teamId: number,
-  users: IUser[]
+  users: IUser[],
 ): ITeamUsersTableData[] => {
   return [...enhanceUsersData(teamId, users)];
 };

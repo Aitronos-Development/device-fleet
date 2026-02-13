@@ -18,13 +18,13 @@ interface ISelectRoleFormProps {
 
 const generateSelectedTeamData = (
   allTeams: ITeam[],
-  updatedTeam?: Partial<ITeam>
+  updatedTeam?: Partial<ITeam>,
 ): ITeam[] => {
   return allTeams.map(
     (teamItem): ITeam => ({
       ...teamItem,
       role: teamItem.id === updatedTeam?.id ? updatedTeam.role! : teamItem.role,
-    })
+    }),
   );
 };
 

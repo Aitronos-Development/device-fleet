@@ -94,7 +94,7 @@ const validate = (
   canUseSso: boolean,
   isNewUser: boolean,
   isSsoEnabled: boolean,
-  initiallyPasswordAuth: boolean
+  initiallyPasswordAuth: boolean,
 ) => {
   const newErrors: IUserFormErrors = {};
 
@@ -228,7 +228,7 @@ const UserForm = ({
       canUseSso,
       isNewUser,
       !!isSsoEnabled,
-      initiallyPasswordAuth
+      initiallyPasswordAuth,
     );
     // only set errors that are updates of existing errors
     // new errors are only set onBlur or submit
@@ -250,8 +250,8 @@ const UserForm = ({
         canUseSso,
         isNewUser,
         !!isSsoEnabled,
-        initiallyPasswordAuth
-      )
+        initiallyPasswordAuth,
+      ),
     );
   };
 
@@ -307,8 +307,8 @@ const UserForm = ({
           canUseSso,
           isNewUser,
           !!isSsoEnabled,
-          initiallyPasswordAuth
-        )
+          initiallyPasswordAuth,
+        ),
       );
     }
   };
@@ -369,7 +369,7 @@ const UserForm = ({
       canUseSso,
       isNewUser,
       !!isSsoEnabled,
-      initiallyPasswordAuth
+      initiallyPasswordAuth,
     );
     if (Object.keys(errs).length > 0) {
       setFormErrors(errs);
@@ -478,7 +478,7 @@ const UserForm = ({
   if (!isPremiumTier && !isGlobalUser) {
     console.log(
       `Note: Fleet Free UI does not have teams options.\n
-        User ${formData.name} is already assigned to a team and cannot be reassigned without access to Fleet Premium UI.`
+        User ${formData.name} is already assigned to a team and cannot be reassigned without access to Fleet Premium UI.`,
     );
   }
 

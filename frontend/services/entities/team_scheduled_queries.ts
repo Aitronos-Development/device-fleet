@@ -54,8 +54,8 @@ export default {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAM_SCHEDULE } = endpoints;
@@ -67,8 +67,8 @@ export default {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAM_SCHEDULE } = endpoints;
@@ -78,7 +78,7 @@ export default {
   },
   update: (
     teamScheduledQuery: IScheduledQuery,
-    updatedAttributes: IUpdateTeamScheduledQuery
+    updatedAttributes: IUpdateTeamScheduledQuery,
   ) => {
     const { team_id } = updatedAttributes;
     const { TEAM_SCHEDULE } = endpoints;

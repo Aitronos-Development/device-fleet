@@ -37,7 +37,7 @@ interface IPackQueryEditorModalProps {
   onCancel: () => void;
   onPackQueryFormSubmit: (
     formData: IFormData,
-    editQuery: IScheduledQuery | undefined
+    editQuery: IScheduledQuery | undefined,
   ) => void;
   editQuery?: IScheduledQuery;
   packId: number;
@@ -70,27 +70,27 @@ const PackQueryEditorModal = ({
     IScheduledQuery | INoQueryOption
   >();
   const [selectedFrequency, setSelectedFrequency] = useState(
-    editQuery?.interval.toString() || ""
+    editQuery?.interval.toString() || "",
   );
   const [errorFrequency, setErrorFrequency] = useState("");
   const [selectedPlatformOptions, setSelectedPlatformOptions] = useState(
-    editQuery?.platform || ""
+    editQuery?.platform || "",
   );
   const [selectedLoggingType, setSelectedLoggingType] = useState(
-    editQuery ? generateLoggingType(editQuery) : "snapshot"
+    editQuery ? generateLoggingType(editQuery) : "snapshot",
   );
   const [selectedSnapshot, setSelectedSnapshot] = useState(
-    selectedLoggingType === "snapshot"
+    selectedLoggingType === "snapshot",
   );
   const [selectedRemoved, setSelectedRemoved] = useState(
-    selectedLoggingType === "differential"
+    selectedLoggingType === "differential",
   );
   const [
     selectedMinOsqueryVersionOptions,
     setSelectedMinOsqueryVersionOptions,
   ] = useState(editQuery?.version || "");
   const [selectedShard, setSelectedShard] = useState(
-    editQuery?.shard ? editQuery?.shard.toString() : ""
+    editQuery?.shard ? editQuery?.shard.toString() : "",
   );
 
   const createQueryDropdownOptions = () => {
@@ -105,7 +105,7 @@ const PackQueryEditorModal = ({
 
   const onChangeSelectQuery = (queryId: string) => {
     const queryWithId: IQuery | undefined = allQueries.find(
-      (query: IQuery) => query.id === parseInt(queryId, 10)
+      (query: IQuery) => query.id === parseInt(queryId, 10),
     );
     setSelectedQuery(queryWithId);
   };
@@ -161,7 +161,7 @@ const PackQueryEditorModal = ({
     }
     if (frequency > MAX_OSQUERY_SCHEDULED_QUERY_INTERVAL) {
       setErrorFrequency(
-        "Frequency must be an integer that does not exceed 604,800 (i.e. 7 days)"
+        "Frequency must be an integer that does not exceed 604,800 (i.e. 7 days)",
       );
       return;
     }
@@ -178,7 +178,7 @@ const PackQueryEditorModal = ({
         shard: parseInt(selectedShard, 10),
         version: selectedMinOsqueryVersionOptions,
       },
-      editQuery
+      editQuery,
     );
   };
 

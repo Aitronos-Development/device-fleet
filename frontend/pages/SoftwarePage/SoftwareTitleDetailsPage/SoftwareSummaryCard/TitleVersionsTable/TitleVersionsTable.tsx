@@ -100,7 +100,7 @@ const TitleVersionsTable = ({
 
       const softwareVersionDetailsPath = getPathWithQueryParams(
         PATHS.SOFTWARE_VERSION_DETAILS(softwareVersionId.toString()),
-        { team_id: teamIdForApi }
+        { team_id: teamIdForApi },
       );
 
       router.push(softwareVersionDetailsPath);
@@ -113,7 +113,7 @@ const TitleVersionsTable = ({
         teamId: teamIdForApi,
         isIPadOSOrIOSApp,
       }),
-    [teamIdForApi, isIPadOSOrIOSApp]
+    [teamIdForApi, isIPadOSOrIOSApp],
   );
 
   const renderVersionsCount = () => (

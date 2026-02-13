@@ -59,8 +59,8 @@ export interface IIntegrationTableData extends IIntegrationCompleteData {
 const generateTableHeaders = (
   actionSelectHandler: (
     value: string,
-    integration: IIntegrationTableData
-  ) => void
+    integration: IIntegrationTableData,
+  ) => void,
 ): IDataColumn[] => {
   return [
     {
@@ -124,7 +124,7 @@ const generateActionDropdownOptions = (): IDropdownOption[] => {
 };
 
 const enhanceJiraData = (
-  jiraIntegrations: IJiraIntegration[]
+  jiraIntegrations: IJiraIntegration[],
 ): IIntegrationTableData[] => {
   return jiraIntegrations.map((integration, index) => {
     return {
@@ -143,7 +143,7 @@ const enhanceJiraData = (
 };
 
 const enhanceZendeskData = (
-  zendeskIntegrations: IZendeskIntegration[]
+  zendeskIntegrations: IZendeskIntegration[],
 ): IIntegrationTableData[] => {
   return zendeskIntegrations.map((integration, index) => {
     return {
@@ -163,7 +163,7 @@ const enhanceZendeskData = (
 
 const combineDataSets = (
   jiraIntegrations: IJiraIntegration[],
-  zendeskIntegrations: IZendeskIntegration[]
+  zendeskIntegrations: IZendeskIntegration[],
 ): IIntegrationTableData[] => {
   const combine = [
     ...enhanceJiraData(jiraIntegrations),

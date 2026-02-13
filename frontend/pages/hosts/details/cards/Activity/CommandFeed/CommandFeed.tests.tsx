@@ -26,7 +26,7 @@ describe("CommandFeed", () => {
 
     expect(screen.getByText("No MDM commands")).toBeInTheDocument();
     expect(
-      screen.getByText("Completed MDM commands will appear here.")
+      screen.getByText("Completed MDM commands will appear here."),
     ).toBeInTheDocument();
   });
 
@@ -39,7 +39,7 @@ describe("CommandFeed", () => {
 
     expect(screen.getByText("No MDM commands")).toBeInTheDocument();
     expect(
-      screen.getByText("Completed MDM commands will appear here.")
+      screen.getByText("Completed MDM commands will appear here."),
     ).toBeInTheDocument();
   });
 

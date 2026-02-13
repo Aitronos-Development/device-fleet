@@ -17,7 +17,7 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
   const apiReason = err.data.errors[0].reason;
 
   const error = Object.values(UPLOAD_ERROR_MESSAGES).find((errType) =>
-    errType.condition(apiReason)
+    errType.condition(apiReason),
   );
 
   if (!error) {

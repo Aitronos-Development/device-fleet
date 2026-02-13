@@ -28,7 +28,7 @@ const LogDestinationIndicator = ({
   const statusClassName = classnames(
     "log-destination-indicator",
     `log-destination-indicator--${classTag}`,
-    `log-destination--${classTag}`
+    `log-destination--${classTag}`,
   );
   const readableLogDestination = () => {
     switch (logDestination) {

@@ -50,7 +50,7 @@ export default {
     `/${API_VERSION}/fleet/device/${token}/software/uninstall/${softwareTitleId}`,
   DEVICE_SOFTWARE_UNINSTALL_RESULTS: (
     token: string,
-    scriptExecutionId: string
+    scriptExecutionId: string,
   ) =>
     `/${API_VERSION}/fleet/device/${token}/software/uninstall/${scriptExecutionId}/results`,
   DEVICE_VPP_COMMAND_RESULTS: (token: string, uuid: string) =>
@@ -165,7 +165,7 @@ export default {
   MDM_APPLE_ENROLLMENT_PROFILE: (
     token: string,
     ref?: string,
-    deviceinfo?: string
+    deviceinfo?: string,
   ) => {
     const query = new URLSearchParams({ token });
     ref && query.append("enrollment_reference", ref);

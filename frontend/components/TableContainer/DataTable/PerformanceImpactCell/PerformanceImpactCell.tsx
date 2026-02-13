@@ -36,7 +36,7 @@ const PerformanceImpactCell = ({
   const pillClassName = classnames(
     "data-table__pill",
     `data-table__pill--${generateClassTag(indicator || "")}`,
-    "tooltip"
+    "tooltip",
   );
 
   const disableTooltip = ![
@@ -70,7 +70,7 @@ const PerformanceImpactCell = ({
       >
         <span
           className={`tooltip ${generateClassTag(
-            indicatorValue || ""
+            indicatorValue || "",
           )}__tooltip-text`}
         >
           {getPerformanceImpactIndicatorTooltip(indicatorValue, isHostSpecific)}

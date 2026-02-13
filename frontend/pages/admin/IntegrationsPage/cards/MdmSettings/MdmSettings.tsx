@@ -50,7 +50,7 @@ const MdmSettings = ({ router }: IMdmSettingsProps) => {
       // means that MDM is not enabled and we'll show the "Turn on MDM" button.
       staleTime: 5000,
       enabled: isMdmEnabled,
-    }
+    },
   );
 
   // get the vpp info
@@ -65,7 +65,7 @@ const MdmSettings = ({ router }: IMdmSettingsProps) => {
       ...DEFAULT_USE_QUERY_OPTIONS,
       retry: false,
       enabled: isPremiumTier && isMdmEnabled,
-    }
+    },
   );
 
   // get the eula metadata
@@ -82,7 +82,7 @@ const MdmSettings = ({ router }: IMdmSettingsProps) => {
       ...DEFAULT_USE_QUERY_OPTIONS,
       retry: false,
       enabled: isPremiumTier && isMdmEnabled,
-    }
+    },
   );
 
   // we use this to determine if we any of the request are still in progress

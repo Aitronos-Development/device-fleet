@@ -14,7 +14,7 @@ describe("HostCountCard - component", () => {
         iconName="windows" // tested
         tooltip="Hosts on any Windows device"
         path={paths.MANAGE_HOSTS_LABEL(10)}
-      />
+      />,
     );
 
     const title = screen.getByText("Windows hosts");
@@ -33,7 +33,7 @@ describe("HostCountCard - component", () => {
         title="Windows hosts"
         iconName="windows"
         path={paths.MANAGE_HOSTS_LABEL(10)}
-      />
+      />,
     );
 
     const icon = screen.queryByRole("svg");
@@ -49,7 +49,7 @@ describe("HostCountCard - component", () => {
         iconName="windows"
         tooltip="Hosts on any Windows device" // tested
         path={paths.MANAGE_HOSTS_LABEL(10)}
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Windows hosts"));

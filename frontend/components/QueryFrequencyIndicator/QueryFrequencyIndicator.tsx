@@ -24,7 +24,7 @@ const QueryFrequencyIndicator = ({
   const frequencyClassName = classnames(
     "query-frequency-indicator",
     `query-frequency-indicator--${classTag}`,
-    `frequency--${classTag}`
+    `frequency--${classTag}`,
   );
   const readableQueryFrequency = () => {
     switch (frequency) {

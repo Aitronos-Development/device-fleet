@@ -22,7 +22,7 @@ describe("InputField Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     expect(screen.getByText(/test input/i)).toBeInTheDocument();
@@ -37,12 +37,12 @@ describe("InputField Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     await userEvent.type(
       screen.getByPlaceholderText(/enter text/i),
-      "New Value"
+      "New Value",
     );
     expect(mockOnChange).toHaveBeenCalledTimes(9); // 'New Value' has 9 characters
   });
@@ -56,7 +56,7 @@ describe("InputField Component", () => {
         placeholder="Enter text"
         name="test-input"
         helpText="This is a help text."
-      />
+      />,
     );
 
     expect(screen.getByText(/this is a help text/i)).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("InputField Component", () => {
         placeholder="Enter text"
         name="test-input"
         error="This is an error message."
-      />
+      />,
     );
 
     expect(screen.getByText(/this is an error message/i)).toBeInTheDocument();
@@ -86,12 +86,12 @@ describe("InputField Component", () => {
         placeholder="Enter text"
         name="test-textarea"
         type="textarea"
-      />
+      />,
     );
 
     expect(screen.getByRole("textbox")).toHaveAttribute(
       "name",
-      "test-textarea"
+      "test-textarea",
     );
   });
 
@@ -104,7 +104,7 @@ describe("InputField Component", () => {
         placeholder="Enter text"
         name="test-input"
         enableCopy
-      />
+      />,
     );
 
     expect(screen.getByTestId("copy-icon")).toBeInTheDocument();
@@ -119,7 +119,7 @@ describe("InputField Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     const input = screen.getByPlaceholderText(/enter text/i);
@@ -138,7 +138,7 @@ describe("InputField Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     const input = screen.getByPlaceholderText(/enter text/i);
@@ -156,7 +156,7 @@ describe("InputField Component", () => {
         placeholder="Enter text"
         name="test-input"
         disabled
-      />
+      />,
     );
 
     expect(screen.getByPlaceholderText(/enter text/i)).toBeDisabled();

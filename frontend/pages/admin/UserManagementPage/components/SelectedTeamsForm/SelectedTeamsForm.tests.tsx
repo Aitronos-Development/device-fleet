@@ -15,7 +15,7 @@ describe("SelectedTeamsForm - component", () => {
         availableTeams={[currentTeam, teamNotOn]}
         usersCurrentTeams={[currentTeam]}
         onFormChange={noop}
-      />
+      />,
     );
 
     const checkbox = screen.getByRole("checkbox", { name: "Test Team" });
@@ -35,7 +35,7 @@ describe("SelectedTeamsForm - component", () => {
         availableTeams={[currentTeam, teamNotOn]}
         usersCurrentTeams={[currentTeam]}
         onFormChange={onChangeStub}
-      />
+      />,
     );
 
     // checking an unselected team.

@@ -99,7 +99,7 @@ const SoftwareVulnerabilitiesTable = ({
       orderKey,
       query,
       showExploitedVulnerabilitiesOnly,
-    ]
+    ],
   );
 
   const generateNewQueryParams = useCallback(
@@ -113,7 +113,7 @@ const SoftwareVulnerabilitiesTable = ({
         page: changedParam === "pageIndex" ? newTableQuery.pageIndex : 0,
       };
     },
-    [teamId, showExploitedVulnerabilitiesOnly]
+    [teamId, showExploitedVulnerabilitiesOnly],
   );
 
   const onQueryChange = useCallback(
@@ -139,7 +139,7 @@ const SoftwareVulnerabilitiesTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, generateNewQueryParams, router]
+    [determineQueryParamChange, generateNewQueryParams, router],
   );
 
   // determines if a user be able to search in the table
@@ -159,12 +159,12 @@ const SoftwareVulnerabilitiesTable = ({
         includeVulnerabilities: true,
         includeIcon: true,
       },
-      teamId
+      teamId,
     );
   }, [data, router, teamId]);
 
   const handleExploitedVulnFilterDropdownChange = (
-    isFilterExploited: string
+    isFilterExploited: string,
   ) => {
     router.replace(
       getNextLocationPath({
@@ -178,7 +178,7 @@ const SoftwareVulnerabilitiesTable = ({
           exploit: isFilterExploited,
           page: 0, // resets page index
         },
-      })
+      }),
     );
   };
 
@@ -190,7 +190,7 @@ const SoftwareVulnerabilitiesTable = ({
         PATHS.SOFTWARE_VULNERABILITY_DETAILS(cveName),
         {
           team_id: teamId,
-        }
+        },
       );
 
       router.push(softwareVulnerabilityDetailsPath);

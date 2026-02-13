@@ -54,7 +54,7 @@ export const generateTableConfig = (
   teamId: number,
   uuid: string,
   profileStatus: IGetConfigProfileStatusResponse,
-  onClickResend: (hostCount: number, status: string) => void
+  onClickResend: (hostCount: number, status: string) => void,
 ): IConfigProfileStatusColumnConfig[] => {
   return [
     {
@@ -73,7 +73,7 @@ export const generateTableConfig = (
       },
     },
     {
-      Header: "Hosts",
+      Header: "Devices",
       accessor: "hosts",
       disableSortBy: true,
       Cell: ({ cell }: IHostCellProps) => {
@@ -94,7 +94,7 @@ export const generateTableConfig = (
 };
 
 export const generateTableData = (
-  profileStatus: IGetConfigProfileStatusResponse
+  profileStatus: IGetConfigProfileStatusResponse,
 ): IConfigProfileRowData[] => {
   const tableData = STATUS_ORDER.map((status) => ({
     status,

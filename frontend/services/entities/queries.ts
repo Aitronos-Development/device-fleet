@@ -44,7 +44,7 @@ export interface IQueriesResponse {
 
 export default {
   create: (
-    createQueryRequestBody: ICreateQueryRequestBody
+    createQueryRequestBody: ICreateQueryRequestBody,
   ): Promise<ICreateQueryResponse> => {
     const { QUERIES } = endpoints;
     if (createQueryRequestBody.name) {
@@ -104,7 +104,7 @@ export default {
 
     return sendRequest(
       "GET",
-      queryString ? QUERIES.concat(`?${queryString}`) : QUERIES
+      queryString ? QUERIES.concat(`?${queryString}`) : QUERIES,
     );
   },
   run: async ({
@@ -127,7 +127,7 @@ export default {
       return campaign;
     } catch (e) {
       throw new Error(
-        getErrorReason(e) || `run query: parse server error ${e}`
+        getErrorReason(e) || `run query: parse server error ${e}`,
       );
     }
   },

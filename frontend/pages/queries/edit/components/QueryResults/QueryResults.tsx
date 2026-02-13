@@ -69,14 +69,13 @@ const QueryResults = ({
   const [filteredResults, setFilteredResults] = useState<Row[]>([]);
   const [filteredErrors, setFilteredErrors] = useState<Row[]>([]);
   const [resultsColumnConfigs, setResultsColumnConfigs] = useState<Column[]>(
-    []
+    [],
   );
   const [errorColumnConfigs, setErrorColumnConfigs] = useState<
     Column<ICampaignError>[]
   >([]);
-  const [queryResultsForTableRender, setQueryResultsForTableRender] = useState(
-    queryResults
-  );
+  const [queryResultsForTableRender, setQueryResultsForTableRender] =
+    useState(queryResults);
 
   // immediately reset results
   const onRunAgain = useCallback(() => {
@@ -87,7 +86,7 @@ const QueryResults = ({
   const debounceQueryResults = useDebouncedCallback(
     setQueryResultsForTableRender,
     1000,
-    { maxWait: 2000 }
+    { maxWait: 2000 },
   );
 
   // This is throwing an error not to use hook within a useEffect
@@ -97,9 +96,8 @@ const QueryResults = ({
 
   useEffect(() => {
     if (queryResults && queryResults.length > 0) {
-      const newResultsColumnConfigs = generateColumnConfigsFromRows(
-        queryResults
-      );
+      const newResultsColumnConfigs =
+        generateColumnConfigsFromRows(queryResults);
       // Update tableHeaders if new headers are found
       if (newResultsColumnConfigs !== resultsColumnConfigs) {
         setResultsColumnConfigs(newResultsColumnConfigs);
@@ -128,8 +126,8 @@ const QueryResults = ({
       generateCSVQueryResults(
         filteredResults,
         generateCSVFilename(`${queryName || CSV_TITLE} - Results`),
-        resultsColumnConfigs
-      )
+        resultsColumnConfigs,
+      ),
     );
   };
 
@@ -140,8 +138,8 @@ const QueryResults = ({
       generateCSVQueryResults(
         filteredErrors,
         generateCSVFilename(`${queryName || CSV_TITLE} - Errors`),
-        errorColumnConfigs
-      )
+        errorColumnConfigs,
+      ),
     );
   };
 
@@ -176,7 +174,7 @@ const QueryResults = ({
 
       return <TableCount name={tableType} count={count} />;
     },
-    [filteredResults.length, filteredErrors.length]
+    [filteredResults.length, filteredErrors.length],
   );
 
   const renderTableButtons = (tableType: "results" | "errors") => {
@@ -211,7 +209,7 @@ const QueryResults = ({
 
   const renderTable = (
     tableData: unknown[],
-    tableType: "errors" | "results"
+    tableType: "errors" | "results",
   ) => {
     return (
       <div className={`${baseClass}__results-table-container`}>

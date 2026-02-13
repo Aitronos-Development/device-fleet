@@ -99,7 +99,7 @@ const SoftwareVulnerabilitiesTable = ({
         PATHS.SOFTWARE_VULNERABILITY_DETAILS(cveName),
         {
           team_id: teamIdForApi,
-        }
+        },
       );
 
       router.push(softwareVulnerabilityDetailsPath);
@@ -108,7 +108,7 @@ const SoftwareVulnerabilitiesTable = ({
 
   const tableHeaders = useMemo(
     () => generateTableConfig(Boolean(isPremiumTier), router, teamIdForApi),
-    [isPremiumTier]
+    [isPremiumTier],
   );
 
   const renderVulnerabilitiesCount = () => (

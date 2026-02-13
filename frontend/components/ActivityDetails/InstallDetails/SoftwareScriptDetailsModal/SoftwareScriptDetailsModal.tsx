@@ -86,7 +86,7 @@ export const StatusMessage = ({
   );
 
   const displayTimeStamp = ["failed_install", "installed"].includes(
-    status || ""
+    status || "",
   )
     ? ` (${formatDistanceToNow(new Date(updated_at || created_at), {
         includeSeconds: true,
@@ -209,11 +209,12 @@ export const SoftwareScriptDetailsModal = ({
     setShowInstallDetails((prev) => !prev);
   };
 
-  const { data: swInstallResult, isLoading, isError, error } = useQuery<
-    ISoftwareInstallResults,
-    AxiosError,
-    ISoftwareScriptResult
-  >(
+  const {
+    data: swInstallResult,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<ISoftwareInstallResults, AxiosError, ISoftwareScriptResult>(
     ["softwareInstallResults", installUUID],
     () => {
       return deviceAuthToken
@@ -224,7 +225,7 @@ export const SoftwareScriptDetailsModal = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       staleTime: 3000,
       select: (data) => data.results as ISoftwareScriptResult,
-    }
+    },
   );
 
   const renderScriptDetailsSection = () => {
@@ -298,7 +299,7 @@ export const SoftwareScriptDetailsModal = ({
 
     if (
       !["installed", "pending_install", "failed_install"].includes(
-        installResultWithHostDisplayName.status
+        installResultWithHostDisplayName.status,
       )
     ) {
       return (

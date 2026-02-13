@@ -59,9 +59,8 @@ const ScriptBatchProgress = ({
 }: IScriptBatchProgressProps) => {
   const [pageNumber, setPageNumber] = useState(0);
 
-  const paginatedListRef = useRef<IPaginatedListHandle<IScriptBatchSummaryV2>>(
-    null
-  );
+  const paginatedListRef =
+    useRef<IPaginatedListHandle<IScriptBatchSummaryV2>>(null);
 
   const statusParam = location?.query.status;
 
@@ -94,12 +93,12 @@ const ScriptBatchProgress = ({
 
       router.push(
         PATHS.CONTROLS_SCRIPTS_BATCH_PROGRESS.concat(
-          newQuery ? `?${newQuery}` : ""
-        )
+          newQuery ? `?${newQuery}` : "",
+        ),
       );
       setPageNumber(0);
     },
-    [location?.search, router]
+    [location?.search, router],
   );
 
   const onClickRow = (r: IScriptBatchSummaryV2) => {
@@ -107,8 +106,8 @@ const ScriptBatchProgress = ({
     // which would add it automatically, muddying browser history and preventing smooth forward/back navigation
     router.push(
       PATHS.CONTROLS_SCRIPTS_BATCH_DETAILS(r.batch_execution_id).concat(
-        "?status=ran"
-      )
+        "?status=ran",
+      ),
     );
     return r;
   };

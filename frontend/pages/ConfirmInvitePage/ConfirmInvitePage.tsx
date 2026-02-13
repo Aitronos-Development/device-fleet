@@ -42,7 +42,7 @@ const ConfirmInvitePage = ({ router, params }: IConfirmInvitePageProps) => {
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (resp: IValidateInviteResp) => resp.invite,
-    }
+    },
   );
 
   const onSubmit = useCallback(
@@ -60,7 +60,7 @@ const ConfirmInvitePage = ({ router, params }: IConfirmInvitePageProps) => {
         router.push(paths.LOGIN);
         renderFlash(
           "success",
-          "Registration successful! For security purposes, please log in."
+          "Registration successful! For security purposes, please log in.",
         );
       } catch (error) {
         const reason = getErrorReason(error);
@@ -68,7 +68,7 @@ const ConfirmInvitePage = ({ router, params }: IConfirmInvitePageProps) => {
         renderFlash("error", reason);
       }
     },
-    [invite_token, renderFlash, router, validInvite?.email]
+    [invite_token, renderFlash, router, validInvite?.email],
   );
 
   if (currentUser) {

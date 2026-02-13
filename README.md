@@ -77,6 +77,24 @@ Contributions are welcome, whether you answer questions on [Slack](https://fleet
 - Some of the most valuable contributions might not touch any code at all.
 - Small, iterative, simple (boring) changes are the easiest to merge. -->
 
+## macOS Enrollment
+
+The recommended way to enroll macOS devices is through the **Aitronos Hub** app's Device Manager. It provides:
+
+- One-click enrollment with a native macOS admin password prompt
+- Real-time orbit agent status monitoring
+- Easy uninstall and re-enrollment
+
+Download Aitronos Hub and navigate to **Device Manager** to get started.
+
+#### CLI Alternative
+
+For automated or headless deployments, use the standard `fleetctl` package command:
+
+```bash
+fleetctl package --type=pkg --fleet-url=https://fleet.example.com --enroll-secret=<secret>
+```
+
 ## What's next?
 To see what Fleet can do, head over to [fleetdm.com](https://fleetdm.com) and try it out for yourself, grab time with one of the maintainers to discuss, or visit the docs and roll it out to your organization.
 

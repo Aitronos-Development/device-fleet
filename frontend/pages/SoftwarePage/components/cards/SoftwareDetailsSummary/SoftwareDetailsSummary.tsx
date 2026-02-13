@@ -42,7 +42,7 @@ const buildActionOptions = (
   repoURL: string | undefined,
   source: string | undefined,
   androidSoftwareAvailableForInstall: boolean,
-  canConfigureAutoUpdate: boolean
+  canConfigureAutoUpdate: boolean,
 ): CustomOptionType[] => {
   let disableEditAppearanceTooltipContent: TooltipContent | undefined;
   let disableEditSoftwareTooltipContent: TooltipContent | undefined;
@@ -216,7 +216,7 @@ const SoftwareDetailsSummary = ({
     repoURL,
     source,
     !!onClickEditConfiguration,
-    !!onClickEditAutoUpdateConfig
+    !!onClickEditAutoUpdateConfig,
   );
 
   return (
@@ -260,11 +260,11 @@ const SoftwareDetailsSummary = ({
             {!!versions && <DataSet title="Versions" value={versions} />}
             {showHostCount && (
               <DataSet
-                title="Hosts"
+                title="Devices"
                 value={
                   <LastUpdatedHostCount
                     hostCount={
-                      <TooltipWrapper tipContent="View all hosts">
+                      <TooltipWrapper tipContent="View all devices">
                         <CustomLink
                           url={hostCountPath}
                           text={hostCount.toString()}

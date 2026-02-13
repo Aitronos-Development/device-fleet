@@ -89,7 +89,7 @@ const createAppleOSUpdatesData = (
   applePlatform: ApplePlatform,
   minOsVersion: string,
   deadline: string,
-  updateNewHosts?: boolean
+  updateNewHosts?: boolean,
 ): IAppleUpdatesMdmConfigData => {
   return {
     mdm: {
@@ -125,8 +125,8 @@ const AppleOSTargetForm = ({
   refetchTeamConfig,
 }: IAppleOSTargetFormProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [isSaving, setIsSaving] = useState(false);
   const [minOsVersion, setMinOsVersion] = useState(defaultMinOsVersion);
@@ -135,7 +135,7 @@ const AppleOSTargetForm = ({
     string | undefined
   >();
   const [updateNewHosts, setUpdateNewHosts] = useState<boolean>(
-    defaultUpdateNewHosts || false
+    defaultUpdateNewHosts || false,
   );
   const [deadlineError, setDeadlineError] = useState<string | undefined>();
 
@@ -157,7 +157,7 @@ const AppleOSTargetForm = ({
         applePlatform,
         minOsVersion,
         deadline,
-        updateNewHosts
+        updateNewHosts,
       );
       try {
         currentTeamId === APP_CONTEXT_NO_TEAM_ID
@@ -212,7 +212,7 @@ const AppleOSTargetForm = ({
         disabled={gitOpsModeEnabled}
         name="deadline"
         label="Deadline"
-        tooltip="The end user can't dismiss the OS update once they reach this deadline. Deadline is 19:00 (7PM), the host's local time."
+        tooltip="The end user can't dismiss the OS update once they reach this deadline. Deadline is 19:00 (7PM), the device's local time."
         helpText="YYYY-MM-DD format only (e.g., “2024-07-01”)."
         value={deadline}
         error={deadlineError}

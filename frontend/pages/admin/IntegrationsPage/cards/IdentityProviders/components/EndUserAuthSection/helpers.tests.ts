@@ -14,7 +14,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "metadataUrl",
-        })
+        }),
       ).toBe(false); // all fields present
 
       expect(
@@ -23,7 +23,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "metadataUrl",
-        })
+        }),
       ).toBe(true); // entity_id is missing
 
       expect(
@@ -32,7 +32,7 @@ describe("IdPSection helpers", () => {
           idp_name: "",
           metadata: "metadata",
           metadata_url: "metadataUrl",
-        })
+        }),
       ).toBe(true); // idp_name is missing
 
       expect(
@@ -41,7 +41,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "",
           metadata_url: "",
-        })
+        }),
       ).toBe(true); // metadata or metadata_url must be present
     });
 
@@ -51,7 +51,7 @@ describe("IdPSection helpers", () => {
         idp_name: "idpImageUrl",
         metadata: "",
         metadata_url: "metadataUrl",
-      })
+      }),
     ).toBe(false); // metadata is not required if metadata_url is present
 
     expect(
@@ -60,7 +60,7 @@ describe("IdPSection helpers", () => {
         idp_name: "idpImageUrl",
         metadata: "metadata",
         metadata_url: "",
-      })
+      }),
     ).toBe(false); // metadata_url is not required if metadata is present
   });
 
@@ -72,7 +72,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "https://metadataUrl.com",
-        })
+        }),
       ).toEqual(null); // all fields valid
 
       expect(
@@ -81,7 +81,7 @@ describe("IdPSection helpers", () => {
           idp_name: "",
           metadata: "",
           metadata_url: "",
-        })
+        }),
       ).toEqual({
         entity_id: "Entity ID must be present.",
         idp_name: "Identity provider name must be present.",
@@ -95,7 +95,7 @@ describe("IdPSection helpers", () => {
           idp_name: "",
           metadata: "metadata",
           metadata_url: "https://metadataUrl.com",
-        })
+        }),
       ).toEqual({
         idp_name: "Identity provider name must be present.",
       });
@@ -106,7 +106,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "https://metadataUrl.com",
-        })
+        }),
       ).toEqual({
         entity_id: "Entity ID must be present.",
       });
@@ -117,7 +117,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "",
           metadata_url: "",
-        })
+        }),
       ).toEqual({
         metadata: "Metadata or Metadata URL must be present.",
         metadata_url: "Metadata or Metadata URL must be present.",
@@ -129,7 +129,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "metadataUrl",
-        })
+        }),
       ).toEqual({
         metadata_url: "Metadata URL is not a valid URL.",
       });
@@ -140,7 +140,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "metadataUrl.com",
-        })
+        }),
       ).toEqual({
         metadata_url:
           "Metadata URL must start with a supported protocol (https:// or http://).",
@@ -152,7 +152,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "metadata",
           metadata_url: "",
-        })
+        }),
       ).toEqual(null); // metadata is not required if metadata_url is present
 
       expect(
@@ -161,7 +161,7 @@ describe("IdPSection helpers", () => {
           idp_name: "idpImageUrl",
           metadata: "",
           metadata_url: "https://metadataUrl.com",
-        })
+        }),
       ).toEqual(null); // metadata is not required if metadata_url is present
     });
   });
@@ -175,7 +175,7 @@ describe("IdPSection helpers", () => {
           issuer_uri: "issuerUri",
           metadata: "metadata",
           metadata_url: "https://metadataUrl.com",
-        })
+        }),
       ).toEqual({
         entity_id: "entityId",
         idp_name: "idpImageUrl",
@@ -191,7 +191,7 @@ describe("IdPSection helpers", () => {
         issuer_uri: "issuerUri",
         metadata: "metadata",
         metadata_url: "   https://metadataUrl.com   ",
-      })
+      }),
     ).toEqual({
       entity_id: "entityId",
       idp_name: "idpImageUrl",
@@ -209,7 +209,7 @@ describe("IdPSection helpers", () => {
     expect(
       newFormDataIdp({
         entity_id: "entityId",
-      } as IEndUserAuthentication)
+      } as IEndUserAuthentication),
     ).toEqual({
       entity_id: "entityId",
       idp_name: "",

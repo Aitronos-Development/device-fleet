@@ -95,7 +95,7 @@ const SoftwareTitles = ({
     {
       ...QUERY_OPTIONS,
       enabled: location.pathname === PATHS.SOFTWARE_TITLES,
-    }
+    },
   );
 
   // For Versions view, request software versions data. If empty, request titles available for
@@ -131,7 +131,7 @@ const SoftwareTitles = ({
     {
       ...QUERY_OPTIONS,
       enabled: location.pathname === PATHS.SOFTWARE_VERSIONS,
-    }
+    },
   );
 
   // This query checks if there are any installable software titles (VPP apps or Fleet-managed
@@ -177,7 +177,7 @@ const SoftwareTitles = ({
         !isVersionsFetching &&
         versionsData !== undefined &&
         versionsData.count === 0,
-    }
+    },
   );
 
   if (isTitlesLoading || isVersionsLoading || isTitlesAFILoading) {

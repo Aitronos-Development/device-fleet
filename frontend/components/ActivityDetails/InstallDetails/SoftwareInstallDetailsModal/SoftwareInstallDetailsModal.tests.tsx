@@ -34,12 +34,12 @@ describe("SoftwareInstallDetailsModal", () => {
             status: "pending_install",
           })}
           isMyDevicePage={false}
-        />
+        />,
       );
 
       expect(screen.queryByTestId("pending-outline-icon")).toBeInTheDocument();
       expect(
-        screen.getByText(/is installing or will install/)
+        screen.getByText(/is installing or will install/),
       ).toBeInTheDocument();
       expect(screen.getByText(/\(com\.cool\.app\)/)).toBeInTheDocument();
       expect(screen.getByText(/Test Host/)).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe("SoftwareInstallDetailsModal", () => {
           })}
           isMyDevicePage
           contactUrl="http://support"
-        />
+        />,
       );
 
       expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -67,7 +67,7 @@ describe("SoftwareInstallDetailsModal", () => {
       expect(screen.getByText(/\d+.*ago/)).toBeInTheDocument();
       expect(screen.getByText(/You can retry/)).toBeInTheDocument();
       expect(
-        screen.getByRole("link", { name: /contact your IT admin/ })
+        screen.getByRole("link", { name: /contact your IT admin/ }),
       ).toHaveAttribute("href", "http://support");
     });
 
@@ -79,7 +79,7 @@ describe("SoftwareInstallDetailsModal", () => {
             status: "failed_install",
           })}
           isMyDevicePage
-        />
+        />,
       );
 
       expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -91,7 +91,7 @@ describe("SoftwareInstallDetailsModal", () => {
       expect(screen.getByText(/You can retry/)).toBeInTheDocument();
       // Don't show link of not provided
       expect(
-        screen.queryByRole("link", { name: /contact your IT admin/ })
+        screen.queryByRole("link", { name: /contact your IT admin/ }),
       ).not.toBeInTheDocument();
     });
 
@@ -104,7 +104,7 @@ describe("SoftwareInstallDetailsModal", () => {
           })}
           isMyDevicePage={false}
           hasInstalledVersions
-        />
+        />,
       );
 
       expect(screen.getByText(/CoolApp/)).toBeInTheDocument();
@@ -121,7 +121,7 @@ describe("SoftwareInstallDetailsModal", () => {
           })}
           isMyDevicePage={false}
           contactUrl="http://support"
-        />
+        />,
       );
 
       expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -139,7 +139,7 @@ describe("SoftwareInstallDetailsModal", () => {
             status: "installed",
           })}
           isMyDevicePage={false}
-        />
+        />,
       );
 
       expect(screen.queryByTestId("success-icon")).toBeInTheDocument();
@@ -163,11 +163,11 @@ describe("SoftwareInstallDetailsModal", () => {
           hostSoftwareId={99}
           onCancel={onCancel}
           onRetry={onRetry}
-        />
+        />,
       );
       expect(screen.getByRole("button", { name: "Retry" })).toBeInTheDocument();
       expect(
-        screen.getByRole("button", { name: "Cancel" })
+        screen.getByRole("button", { name: "Cancel" }),
       ).toBeInTheDocument();
 
       await user.click(screen.getByRole("button", { name: "Retry" }));
@@ -183,7 +183,7 @@ describe("SoftwareInstallDetailsModal", () => {
       render(<ModalButtons status="pending_install" onCancel={onCancel} />);
       expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();
       expect(
-        screen.queryByRole("button", { name: "Retry" })
+        screen.queryByRole("button", { name: "Retry" }),
       ).not.toBeInTheDocument();
     });
 
@@ -194,7 +194,7 @@ describe("SoftwareInstallDetailsModal", () => {
           deviceAuthToken="token123"
           status="installed"
           onCancel={onCancel}
-        />
+        />,
       );
       expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();
     });
@@ -225,7 +225,7 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       // waiting for the button to render
@@ -235,13 +235,13 @@ describe("SoftwareInstallDetailsModal", () => {
 
       expect(detailsButton).toBeInTheDocument();
       expect(
-        screen.queryByText("Pre-install query output:")
+        screen.queryByText("Pre-install query output:"),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByText("Install script output:")
+        screen.queryByText("Install script output:"),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByText(/Post-install script output:/i)
+        screen.queryByText(/Post-install script output:/i),
       ).not.toBeInTheDocument();
     });
 
@@ -253,7 +253,7 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       const detailsBtn = await screen.findByRole("button", {
@@ -263,7 +263,7 @@ describe("SoftwareInstallDetailsModal", () => {
 
       // Pre-install output
       expect(
-        await screen.getByText("Pre-install query output:")
+        await screen.getByText("Pre-install query output:"),
       ).toBeInTheDocument();
       expect(screen.getByText("Pre-install check passed")).toBeInTheDocument();
 
@@ -273,7 +273,7 @@ describe("SoftwareInstallDetailsModal", () => {
 
       // Post-install output
       expect(
-        screen.getByText("Post-install script output:")
+        screen.getByText("Post-install script output:"),
       ).toBeInTheDocument();
       expect(screen.getByText("Post-install success")).toBeInTheDocument();
     });
@@ -286,7 +286,7 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       const detailsBtn = await screen.findByRole("button", {
@@ -295,14 +295,14 @@ describe("SoftwareInstallDetailsModal", () => {
       await user.click(detailsBtn);
 
       expect(
-        await screen.getByText("Pre-install query output:")
+        await screen.getByText("Pre-install query output:"),
       ).toBeInTheDocument();
       expect(screen.getByText(/pre-install only/i)).toBeInTheDocument();
       expect(
-        screen.queryByText("Install script output:")
+        screen.queryByText("Install script output:"),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByText(/Post-install script output:/i)
+        screen.queryByText(/Post-install script output:/i),
       ).not.toBeInTheDocument();
     });
 
@@ -314,7 +314,7 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       const detailsBtn = await screen.findByRole("button", {
@@ -323,15 +323,15 @@ describe("SoftwareInstallDetailsModal", () => {
       await user.click(detailsBtn);
 
       expect(
-        await screen.getByText("Install script output:")
+        await screen.getByText("Install script output:"),
       ).toBeInTheDocument();
       expect(screen.getByText("Install script ran")).toBeInTheDocument();
       expect(
-        screen.getByText(/Post-install script output:/i)
+        screen.getByText(/Post-install script output:/i),
       ).toBeInTheDocument();
       expect(screen.getByText("Post-install success")).toBeInTheDocument();
       expect(
-        screen.queryByText("Pre-install query output:")
+        screen.queryByText("Pre-install query output:"),
       ).not.toBeInTheDocument();
     });
 
@@ -343,7 +343,7 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       const detailsBtn = await screen.findByRole("button", {
@@ -352,14 +352,14 @@ describe("SoftwareInstallDetailsModal", () => {
       await user.click(detailsBtn);
 
       expect(
-        await screen.getByText("Install script output:")
+        await screen.getByText("Install script output:"),
       ).toBeInTheDocument();
       expect(screen.getByText(/install only/i)).toBeInTheDocument();
       expect(
-        screen.queryByText("Pre-install query output:")
+        screen.queryByText("Pre-install query output:"),
       ).not.toBeInTheDocument();
       expect(
-        screen.queryByText(/Post-install script output:/i)
+        screen.queryByText(/Post-install script output:/i),
       ).not.toBeInTheDocument();
     });
 
@@ -371,13 +371,13 @@ describe("SoftwareInstallDetailsModal", () => {
           details={baseDetails}
           hostSoftware={baseHostSoftware}
           onCancel={noop}
-        />
+        />,
       );
 
       expect(
         screen.queryByRole("button", {
           name: /Details/i,
-        })
+        }),
       ).not.toBeInTheDocument();
     });
   });

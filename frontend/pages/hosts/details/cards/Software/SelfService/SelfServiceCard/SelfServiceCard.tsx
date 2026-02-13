@@ -75,7 +75,7 @@ const SelfServiceCard = ({
           order_key: initialSortHeader,
           order_direction: initialSortDirection,
           page,
-        })
+        }),
       );
     },
     [
@@ -85,7 +85,7 @@ const SelfServiceCard = ({
       initialSortDirection,
       initialSortHeader,
       router,
-    ]
+    ],
   );
 
   const onSearchQueryChange = (value: string) => {
@@ -96,7 +96,7 @@ const SelfServiceCard = ({
         order_key: initialSortHeader,
         order_direction: initialSortDirection,
         page: 0, // Always reset to page 0 when searching
-      })
+      }),
     );
   };
 
@@ -112,12 +112,12 @@ const SelfServiceCard = ({
             ? queryParams.category_id
             : undefined,
         page: 0, // Always reset to page 0 when sorting
-      })
+      }),
     );
   };
 
   const onCategoriesDropdownChange = (
-    option: SingleValue<CustomOptionType>
+    option: SingleValue<CustomOptionType>,
   ) => {
     router.push(
       getPathWithQueryParams(pathname, {
@@ -126,7 +126,7 @@ const SelfServiceCard = ({
         order_key: initialSortHeader,
         order_direction: initialSortDirection,
         page: 0, // Always reset to page 0 when searching
-      })
+      }),
     );
   };
 
@@ -152,10 +152,8 @@ const SelfServiceCard = ({
     );
   }
 
-  const filteredSoftwareByCategory: IDeviceSoftwareWithUiStatus[] = filterSoftwareByCategory(
-    enhancedSoftware || [],
-    queryParams.category_id
-  );
+  const filteredSoftwareByCategory: IDeviceSoftwareWithUiStatus[] =
+    filterSoftwareByCategory(enhancedSoftware || [], queryParams.category_id);
 
   // Search query filter required for mobile view only ( desktop view has filter built into TableContainer)
   const filteredSoftware = isMobileView

@@ -25,13 +25,13 @@ type ITableCellProps = CellProps<IWebSocketData, string | unknown>;
 const _unshiftHostname = (headers: IQueryReportTableColumnConfig[]) => {
   const newHeaders = [...headers];
   const displayNameIndex = headers.findIndex(
-    (h) => h.id === "host_display_name"
+    (h) => h.id === "host_display_name",
   );
   if (displayNameIndex >= 0) {
     // remove hostname header from headers
     const [displayNameHeader] = newHeaders.splice(displayNameIndex, 1);
     // reformat title and insert at start of headers array
-    newHeaders.unshift({ ...displayNameHeader, id: "Host" });
+    newHeaders.unshift({ ...displayNameHeader, id: "Device" });
   }
   // TODO: Remove after v5 when host_hostname is removed rom API response.
   const hostNameIndex = headers.findIndex((h) => h.id === "host_hostname");
@@ -44,7 +44,7 @@ const _unshiftHostname = (headers: IQueryReportTableColumnConfig[]) => {
 
 const generateReportColumnConfigsFromResults = (
   results: IWebSocketData[],
-  queryId: number | null
+  queryId: number | null,
 ): IQueryReportTableColumnConfig[] => {
   const colsAreNumTypes = getUniqueColsAreNumTypeFromRows(results) as Map<
     string,
@@ -68,7 +68,7 @@ const generateReportColumnConfigsFromResults = (
       accessor: (data) => data[colName],
       Cell: (cellProps: ITableCellProps) => {
         if (typeof cellProps.cell.value !== "string") return null;
-        if (cellProps.column.id === "Host") {
+        if (cellProps.column.id === "Device") {
           const hostID = cellProps.row.original.host_id as number;
           if (queryId === null) {
             return <>cellProps.cell.value</>;

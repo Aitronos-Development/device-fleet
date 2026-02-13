@@ -25,7 +25,7 @@ interface IIntegrationFormProps {
   onCancel: () => void;
   onSubmit: (
     untegrationSubmitData: IIntegration[],
-    integrationDestination: string
+    integrationDestination: string,
   ) => void;
   integrationEditing?: IIntegrationTableData;
   integrations: IZendeskJiraIntegrations;
@@ -71,7 +71,7 @@ const IntegrationForm = ({
       integrationEnableSoftwareVulnerabilities || false,
   });
   const [integrationDestination, setIntegrationDestination] = useState(
-    integrationEditingType || destination || "jira"
+    integrationEditingType || destination || "jira",
   );
   const [urlError, setUrlError] = useState<string | null>(null);
 

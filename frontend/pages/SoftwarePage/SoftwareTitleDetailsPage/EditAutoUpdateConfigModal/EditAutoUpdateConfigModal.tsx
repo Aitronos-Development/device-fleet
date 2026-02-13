@@ -82,7 +82,7 @@ const EditAutoUpdateConfigModal = ({
     targetType: getTargetType(softwareTitle.app_store_app as IAppStoreApp),
     customTarget: getCustomTarget(softwareTitle.app_store_app as IAppStoreApp),
     labelTargets: generateSelectedLabels(
-      softwareTitle.app_store_app as IAppStoreApp
+      softwareTitle.app_store_app as IAppStoreApp,
     ),
   });
 
@@ -92,15 +92,13 @@ const EditAutoUpdateConfigModal = ({
     () => labelsAPI.summary(teamId).then((res) => getCustomLabels(res.labels)),
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
-  const [
-    formValidation,
-    setFormValidation,
-  ] = useState<ISoftwareAutoUpdateConfigFormValidation>(() =>
-    validateFormData(formData)
-  );
+  const [formValidation, setFormValidation] =
+    useState<ISoftwareAutoUpdateConfigFormValidation>(() =>
+      validateFormData(formData),
+    );
 
   // Currently calls the "edit app store app" API.
   // FUTURE: switch endpoint based on software title type?
@@ -123,7 +121,7 @@ const EditAutoUpdateConfigModal = ({
         "success",
         <>
           <strong>{softwareTitle.name}</strong> configuration updated.
-        </>
+        </>,
       );
 
       refetchSoftwareTitle();
@@ -131,7 +129,7 @@ const EditAutoUpdateConfigModal = ({
     } catch (e) {
       renderFlash(
         "error",
-        "An error occurred while updating the configuration. Please try again."
+        "An error occurred while updating the configuration. Please try again.",
       );
     }
     setIsUpdatingConfiguration(false);
@@ -151,7 +149,8 @@ const EditAutoUpdateConfigModal = ({
     setFormData(newFormData);
     const newValidation = validateFormData(newFormData);
     // Can be "autoUpdateStartTime" or "autoUpdateEndTime".
-    const fieldName = update.name as keyof ISoftwareAutoUpdateConfigFormValidation;
+    const fieldName =
+      update.name as keyof ISoftwareAutoUpdateConfigFormValidation;
     const fieldValidation = newValidation[
       fieldName
     ] as ISoftwareAutoUpdateConfigInputValidation;

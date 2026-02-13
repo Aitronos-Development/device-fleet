@@ -15,11 +15,11 @@ describe("SelfServicePreview", () => {
         displayName="Display name"
         versionLabel="1.2.3"
         renderIcon={() => <MockIcon />}
-      />
+      />,
     );
 
     expect(
-      screen.getByAltText("Preview icon on Fleet Desktop > Self-service")
+      screen.getByAltText("Preview icon on Fleet Desktop > Self-service"),
     ).toBeVisible();
 
     expect(screen.getByText("Mock icon")).toBeVisible();
@@ -36,7 +36,7 @@ describe("SelfServicePreview", () => {
         displayName=""
         versionLabel="1.2.3"
         renderIcon={() => <div>Icon</div>}
-      />
+      />,
     );
 
     expect(screen.getByText("Fallback name")).toBeVisible();
@@ -54,7 +54,7 @@ describe("SelfServicePreview", () => {
         versionLabel="1.2.3"
         renderIcon={() => <div>Icon</div>}
         renderTable={() => <MockTable />}
-      />
+      />,
     );
 
     expect(screen.getByText(/Self-service/i)).toBeInTheDocument();

@@ -84,7 +84,7 @@ const AppleBusinessManagerPage = ({ router }: { router: InjectedRouter }) => {
         }
       },
       enabled: isPremiumTier,
-    }
+    },
   );
 
   const onEditTokenTeam = (abmToken: IMdmAbmToken) => {

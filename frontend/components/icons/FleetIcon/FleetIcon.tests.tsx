@@ -7,7 +7,7 @@ describe("FleetIcon - component", () => {
   it("renders", () => {
     const { container } = render(<FleetIcon name="success-check" />);
     expect(
-      container.querySelector(".fleeticon-success-check")
+      container.querySelector(".fleeticon-success-check"),
     ).toBeInTheDocument();
   });
 });

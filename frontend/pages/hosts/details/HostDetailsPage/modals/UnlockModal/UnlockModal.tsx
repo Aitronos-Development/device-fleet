@@ -44,7 +44,7 @@ const UnlockModal = ({
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
       retry: false,
-    }
+    },
   );
 
   const onUnlock = async () => {
@@ -54,7 +54,7 @@ const UnlockModal = ({
       onSuccess();
       renderFlash(
         "success",
-        "Unlocking host or will unlock when it comes online."
+        "Unlocking host or will unlock when it comes online.",
       );
     } catch (e) {
       renderFlash("error", getErrorReason(e));

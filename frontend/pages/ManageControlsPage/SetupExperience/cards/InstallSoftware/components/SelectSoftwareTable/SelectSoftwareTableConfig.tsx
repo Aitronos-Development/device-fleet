@@ -31,7 +31,7 @@ const getSetupExperienceLinuxPackageCopy = (source: SoftwareSource) => {
 
 const generateTableConfig = (
   platform: SetupExperiencePlatform,
-  onSelectSoftware: (select: boolean, id: number) => void
+  onSelectSoftware: (select: boolean, id: number) => void,
 ): ISelectSoftwareTableConfig[] => {
   const headerConfigs: ISelectSoftwareTableConfig[] = [
     {
@@ -101,7 +101,7 @@ const generateTableConfig = (
 
         if (platform === "linux") {
           const packageTypeCopy = getSetupExperienceLinuxPackageCopy(
-            title.source
+            title.source,
           );
           if (packageTypeCopy) {
             displayedVersion = (

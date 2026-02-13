@@ -70,7 +70,7 @@ const VppPage = ({ router }: IVppPageProps) => {
         error.status !== 404 && error.status !== 400 && tries <= 3,
       select: (data) => data.vpp_tokens,
       enabled: isPremiumTier,
-    }
+    },
   );
 
   const onEditTokenTeams = (token: IMdmVppToken) => {

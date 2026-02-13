@@ -28,9 +28,8 @@ const OrgSettingsPage = ({ params, router }: IOrgSettingsPageProps) => {
   const DEFAULT_SETTINGS_SECTION = ORG_SETTINGS_NAV_ITEMS[0];
 
   const [isUpdatingSettings, setIsUpdatingSettings] = useState(false);
-  const { isFreeTier, isPremiumTier, setConfig, isSandboxMode } = useContext(
-    AppContext
-  );
+  const { isFreeTier, isPremiumTier, setConfig, isSandboxMode } =
+    useContext(AppContext);
 
   if (isSandboxMode) {
     // redirect to Integrations page in sandbox mode
@@ -73,7 +72,7 @@ const OrgSettingsPage = ({ params, router }: IOrgSettingsPageProps) => {
         if (resp?.data.errors[0].reason.includes("could not dial smtp host")) {
           renderFlash(
             "error",
-            "Could not connect to SMTP server. Please try again."
+            "Could not connect to SMTP server. Please try again.",
           );
         } else if (resp?.data.errors) {
           const reason = resp?.data.errors[0].reason;
@@ -95,7 +94,7 @@ const OrgSettingsPage = ({ params, router }: IOrgSettingsPageProps) => {
                   apply --force command to override validation.
                 </>
               )}
-            </>
+            </>,
           );
         }
         return false;
@@ -103,14 +102,14 @@ const OrgSettingsPage = ({ params, router }: IOrgSettingsPageProps) => {
         setIsUpdatingSettings(false);
       }
     },
-    [appConfig, refetchConfig, renderFlash]
+    [appConfig, refetchConfig, renderFlash],
   );
 
   // filter out non-premium options
   let navItems = ORG_SETTINGS_NAV_ITEMS;
   if (!isPremiumTier) {
     navItems = ORG_SETTINGS_NAV_ITEMS.filter(
-      (item) => item.urlSection !== "fleet-desktop"
+      (item) => item.urlSection !== "fleet-desktop",
     );
   }
 

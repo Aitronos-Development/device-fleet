@@ -21,7 +21,7 @@ const CanceledInstallSoftwareActivityItem = ({
         <b>
           {getDisplayedSoftwareName(
             activity.details.software_title,
-            activity.details.software_display_name
+            activity.details.software_display_name,
           )}
         </b>{" "}
         install on this host.

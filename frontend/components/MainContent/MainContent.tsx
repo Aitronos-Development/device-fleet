@@ -50,7 +50,7 @@ const MainContent = ({
 
   const renderAppWideBanner = () => {
     const isFleetLicenseExpired = hasLicenseExpired(
-      config?.license.expiration || ""
+      config?.license.expiration || "",
     );
 
     let banner: JSX.Element | null = null;

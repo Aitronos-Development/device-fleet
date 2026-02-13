@@ -13,7 +13,7 @@ const DEFAULT_MDM_SOLUTION_MOCK: IMdmSolution = {
 };
 
 export const createMockMdmSolution = (
-  overrides?: Partial<IMdmSolution>
+  overrides?: Partial<IMdmSolution>,
 ): IMdmSolution => {
   return { ...DEFAULT_MDM_SOLUTION_MOCK, ...overrides };
 };
@@ -26,7 +26,7 @@ const DEFAULT_HOST_SUMMARY_MDM_SOLUTION_MOCK: IMdmSummaryMdmSolution = {
 };
 
 export const createMockMdmSummaryMdmSolution = (
-  overrides?: Partial<IMdmSummaryMdmSolution>
+  overrides?: Partial<IMdmSummaryMdmSolution>,
 ): IMdmSummaryMdmSolution => {
   return { ...DEFAULT_HOST_SUMMARY_MDM_SOLUTION_MOCK, ...overrides };
 };
@@ -43,7 +43,7 @@ const DEFAULT_MDM_PROFILE_DATA: IMdmProfile = {
 };
 
 export const createMockMdmProfile = (
-  overrides?: Partial<IMdmProfile>
+  overrides?: Partial<IMdmProfile>,
 ): IMdmProfile => {
   return { ...DEFAULT_MDM_PROFILE_DATA, ...overrides };
 };
@@ -76,7 +76,7 @@ const DEFAULT_HOST_MDM_DATA: IHostMdmData = {
 };
 
 export const createMockHostMdmData = (
-  overrides?: Partial<IHostMdmData>
+  overrides?: Partial<IHostMdmData>,
 ): IHostMdmData => {
   return { ...DEFAULT_HOST_MDM_DATA, ...overrides };
 };

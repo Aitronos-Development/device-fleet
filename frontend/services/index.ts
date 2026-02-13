@@ -62,7 +62,7 @@ export const sendRequestWithProgress = async ({
       reason = error.response || error.message || error.code;
     }
     return Promise.reject(
-      reason || `send request: parse server error: ${error}`
+      reason || `send request: parse server error: ${error}`,
     );
   }
 };
@@ -74,7 +74,7 @@ export const sendRequest = async (
   responseType: AxiosResponseType = "json",
   timeout?: number,
   skipParseError?: boolean,
-  returnRaw?: boolean
+  returnRaw?: boolean,
 ) => {
   const { origin } = global.window.location;
 
@@ -106,7 +106,7 @@ export const sendRequest = async (
       reason = error.response || error.message || error.code;
     }
     return Promise.reject(
-      reason || `send request: parse server error: ${error}`
+      reason || `send request: parse server error: ${error}`,
     );
   }
 };
@@ -123,7 +123,7 @@ export const sendRequestWithHeaders = async (
   responseType: AxiosResponseType = "json",
   timeout?: number,
   skipParseError?: boolean,
-  returnRaw?: boolean
+  returnRaw?: boolean,
 ) => {
   const { origin } = global.window.location;
 
@@ -156,7 +156,7 @@ export const sendRequestWithHeaders = async (
       reason = error.response || error.message || error.code;
     }
     return Promise.reject(
-      reason || `send request: parse server error: ${error}`
+      reason || `send request: parse server error: ${error}`,
     );
   }
 };
@@ -224,7 +224,7 @@ export const sendRequestWithProgressAndHeaders = async ({
       reason = error.response || error.message || error.code;
     }
     return Promise.reject(
-      reason || `send request: parse server error: ${error}`
+      reason || `send request: parse server error: ${error}`,
     );
   }
 };

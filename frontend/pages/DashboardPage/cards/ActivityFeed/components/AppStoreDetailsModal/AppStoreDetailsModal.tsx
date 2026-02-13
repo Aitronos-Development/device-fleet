@@ -42,7 +42,7 @@ const AppStoreDetailsModal = ({
             title="Name"
             value={getDisplayedSoftwareName(
               details.software_title,
-              details.software_display_name
+              details.software_display_name,
             )}
           />
           <DataSet

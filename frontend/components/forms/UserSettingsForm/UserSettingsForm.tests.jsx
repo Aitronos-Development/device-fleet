@@ -15,10 +15,10 @@ describe("UserSettingsForm - component", () => {
     render(<UserSettingsForm {...defaultProps} />);
 
     expect(
-      screen.getByRole("textbox", { name: /email \(required\)/i })
+      screen.getByRole("textbox", { name: /email \(required\)/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("textbox", { name: /full name \(required\)/i })
+      screen.getByRole("textbox", { name: /full name \(required\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Update" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
@@ -32,21 +32,21 @@ describe("UserSettingsForm - component", () => {
     // then
     expect(defaultProps.handleSubmit).not.toHaveBeenCalled();
     expect(
-      await screen.findByText("Email field must be completed")
+      await screen.findByText("Email field must be completed"),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText("Full name field must be completed")
+      await screen.findByText("Full name field must be completed"),
     ).toBeInTheDocument();
   });
 
   it("should throw validation error when invalid email is entered", async () => {
     const { user } = renderWithSetup(
-      <UserSettingsForm {...{ ...defaultProps, smtpConfigured: true }} />
+      <UserSettingsForm {...{ ...defaultProps, smtpConfigured: true }} />,
     );
 
     await user.type(
       screen.getByRole("textbox", { name: /email \(required\)/i }),
-      "invalid-email"
+      "invalid-email",
     );
     await user.click(screen.getByRole("button", { name: "Update" }));
 
@@ -63,16 +63,16 @@ describe("UserSettingsForm - component", () => {
     };
 
     const { user } = renderWithSetup(
-      <UserSettingsForm {...{ ...defaultProps, smtpConfigured: true }} />
+      <UserSettingsForm {...{ ...defaultProps, smtpConfigured: true }} />,
     );
 
     await user.type(
       screen.getByRole("textbox", { name: /email \(required\)/i }),
-      expectedFormData.email
+      expectedFormData.email,
     );
     await user.type(
       screen.getByRole("textbox", { name: /full name \(required\)/i }),
-      expectedFormData.name
+      expectedFormData.name,
     );
     await user.click(screen.getByRole("button", { name: "Update" }));
 
@@ -89,10 +89,10 @@ describe("UserSettingsForm - component", () => {
     render(<UserSettingsForm {...props} />);
 
     expect(
-      screen.getByRole("textbox", { name: /email \(required\)/i })
+      screen.getByRole("textbox", { name: /email \(required\)/i }),
     ).toHaveValue(user.email);
     expect(
-      screen.getByRole("textbox", { name: /full name \(required\)/i })
+      screen.getByRole("textbox", { name: /full name \(required\)/i }),
     ).toHaveValue(user.name);
   });
 });

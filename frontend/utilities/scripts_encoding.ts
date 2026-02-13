@@ -8,7 +8,7 @@ export const SCRIPTS_ENCODED_HEADER = "X-Fleet-Scripts-Encoded";
  * which allows callers to pass through empty/unset script fields without modification.
  */
 export const encodeScriptBase64 = (
-  script: string | undefined
+  script: string | undefined,
 ): string | undefined => {
   if (script === undefined) {
     return undefined;

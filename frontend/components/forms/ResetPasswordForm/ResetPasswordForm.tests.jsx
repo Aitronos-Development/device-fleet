@@ -15,22 +15,22 @@ describe("ResetPasswordForm - component", () => {
     expect(screen.getByPlaceholderText("Confirm password")).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Reset password" })
+      screen.getByRole("button", { name: "Reset password" }),
     ).toBeInTheDocument();
   });
 
   it("it does not submit the form when the new form fields have not been filled out", async () => {
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.click(screen.getByRole("button", { name: "Reset password" }));
 
     const passwordError = screen.getByText(
-      "New password field must be completed"
+      "New password field must be completed",
     );
     const passwordConfirmError = screen.getByText(
-      "New password confirmation field must be completed"
+      "New password confirmation field must be completed",
     );
     expect(passwordError).toBeInTheDocument();
     expect(passwordConfirmError).toBeInTheDocument();
@@ -39,14 +39,14 @@ describe("ResetPasswordForm - component", () => {
 
   it("it does not submit the form when only the new password field has been filled out", async () => {
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.type(screen.getByPlaceholderText("New password"), newPassword);
     await user.click(screen.getByRole("button", { name: "Reset password" }));
 
     const passwordError = screen.getByText(
-      "New password confirmation field must be completed"
+      "New password confirmation field must be completed",
     );
 
     expect(passwordError).toBeInTheDocument();
@@ -55,17 +55,17 @@ describe("ResetPasswordForm - component", () => {
 
   it("it does not submit the form when only the new confirmation password field has been filled out", async () => {
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.type(
       screen.getByPlaceholderText("Confirm password"),
-      newPassword
+      newPassword,
     );
     await user.click(screen.getByRole("button", { name: "Reset password" }));
 
     const passwordError = screen.getByText(
-      "New password field must be completed"
+      "New password field must be completed",
     );
     expect(passwordError).toBeInTheDocument();
     expect(submitSpy).not.toHaveBeenCalled();
@@ -73,13 +73,13 @@ describe("ResetPasswordForm - component", () => {
 
   it("does not submit the form if the new password confirmation does not match", async () => {
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.type(screen.getByPlaceholderText("New password"), newPassword);
     await user.type(
       screen.getByPlaceholderText("Confirm password"),
-      "not my new password"
+      "not my new password",
     );
     await user.click(screen.getByRole("button", { name: "Reset password" }));
     const passwordError = screen.getByText("Passwords do not match");
@@ -91,21 +91,21 @@ describe("ResetPasswordForm - component", () => {
   it("does not submit the form if the password is invalid", async () => {
     const invalidPassword = "invalidpassword";
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.type(
       screen.getByPlaceholderText("New password"),
-      invalidPassword
+      invalidPassword,
     );
     await user.type(
       screen.getByPlaceholderText("Confirm password"),
-      invalidPassword
+      invalidPassword,
     );
     await user.click(screen.getByRole("button", { name: "Reset password" }));
 
     const passwordError = screen.getByText(
-      "Password must meet the criteria below"
+      "Password must meet the criteria below",
     );
     expect(passwordError).toBeInTheDocument();
     expect(submitSpy).not.toHaveBeenCalled();
@@ -113,13 +113,13 @@ describe("ResetPasswordForm - component", () => {
 
   it("submits the form data when the form is submitted", async () => {
     const { user } = renderWithSetup(
-      <ResetPasswordForm handleSubmit={submitSpy} />
+      <ResetPasswordForm handleSubmit={submitSpy} />,
     );
 
     await user.type(screen.getByPlaceholderText("New password"), newPassword);
     await user.type(
       screen.getByPlaceholderText("Confirm password"),
-      newPassword
+      newPassword,
     );
     await user.click(screen.getByRole("button", { name: "Reset password" }));
 

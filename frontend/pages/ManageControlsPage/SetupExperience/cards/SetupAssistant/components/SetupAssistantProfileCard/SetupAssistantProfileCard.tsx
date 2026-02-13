@@ -26,7 +26,7 @@ const SetupAssistantProfileCard = ({
     }`;
     const file = new global.window.File(
       [JSON.stringify(profile.enrollment_profile)],
-      filename
+      filename,
     );
 
     FileSaver.saveAs(file);

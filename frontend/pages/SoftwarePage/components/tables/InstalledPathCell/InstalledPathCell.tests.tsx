@@ -12,7 +12,7 @@ describe("InstalledPathCell component", () => {
       <InstalledPathCell
         installedVersion={null}
         onClickMultiplePaths={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByText(DEFAULT_EMPTY_CELL_VALUE)).toBeInTheDocument();
   });
@@ -34,7 +34,7 @@ describe("InstalledPathCell component", () => {
           },
         ]}
         onClickMultiplePaths={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByText(DEFAULT_EMPTY_CELL_VALUE)).toBeInTheDocument();
   });
@@ -56,7 +56,7 @@ describe("InstalledPathCell component", () => {
           },
         ]}
         onClickMultiplePaths={jest.fn()}
-      />
+      />,
     );
     expect(screen.getAllByText(path).length).toBeGreaterThan(0);
   });
@@ -83,7 +83,7 @@ describe("InstalledPathCell component", () => {
           },
         ]}
         onClickMultiplePaths={onClickMultiplePaths}
-      />
+      />,
     );
 
     // Should show "2 paths" (unique)

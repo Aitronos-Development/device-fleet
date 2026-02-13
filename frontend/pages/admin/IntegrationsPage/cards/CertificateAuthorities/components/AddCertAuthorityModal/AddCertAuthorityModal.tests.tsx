@@ -21,7 +21,7 @@ describe("AddCertAuthorityModal", () => {
 
   it("shows the correct form when the corresponding value in the dropdown is selected.", async () => {
     const { user } = renderWithSetup(
-      <AddCertAuthorityModal certAuthorities={[]} onExit={noop} />
+      <AddCertAuthorityModal certAuthorities={[]} onExit={noop} />,
     );
 
     // this is selecting the custom scep option from the dropdown
@@ -29,7 +29,7 @@ describe("AddCertAuthorityModal", () => {
     await user.click(
       screen.getByRole("option", {
         name: CA_LABEL_BY_TYPE.custom_scep_proxy,
-      })
+      }),
     );
 
     expect(screen.getByLabelText("Name")).toBeVisible();
@@ -44,7 +44,7 @@ describe("AddCertAuthorityModal", () => {
           createMockCertificateAuthorityPartial({ type: "ndes_scep_proxy" }),
         ]}
         onExit={noop}
-      />
+      />,
     );
 
     // testing library does not see options when it is disabled
@@ -53,7 +53,7 @@ describe("AddCertAuthorityModal", () => {
     expect(
       screen.queryByRole("option", {
         name: CA_LABEL_BY_TYPE.ndes_scep_proxy,
-      })
+      }),
     ).toBeNull();
   });
 });

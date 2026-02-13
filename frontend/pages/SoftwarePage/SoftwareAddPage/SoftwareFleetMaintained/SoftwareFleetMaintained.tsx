@@ -86,7 +86,7 @@ const SoftwareFleetMaintained = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       ...QUERY_OPTIONS,
-    }
+    },
   );
 
   if (!isPremiumTier) {

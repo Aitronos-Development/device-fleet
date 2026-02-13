@@ -81,7 +81,7 @@ export default {
   DEPRECATED_loadAll: (
     query = "",
     queryId = null,
-    selected = DEPRECATED_defaultSelected
+    selected = DEPRECATED_defaultSelected,
   ) => {
     const { TARGETS } = endpoints;
     return sendRequest("POST", TARGETS, {

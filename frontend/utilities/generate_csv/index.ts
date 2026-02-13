@@ -19,7 +19,7 @@ export const generateCSVQueryResults = <T extends object>(
   rows: Row[],
   filename: string,
   tableHeaders: Column<T>[] | string[],
-  omitHostDisplayName?: boolean
+  omitHostDisplayName?: boolean,
 ) => {
   return new global.window.File(
     [
@@ -32,14 +32,14 @@ export const generateCSVQueryResults = <T extends object>(
     filename,
     {
       type: "text/csv",
-    }
+    },
   );
 };
 
 // Live policy results only
 export const generateCSVPolicyResults = (
   rows: { host: string; status: string }[],
-  filename: string
+  filename: string,
 ) => {
   return new global.window.File([convertToCSV({ objArray: rows })], filename, {
     type: "text/csv",
@@ -49,7 +49,7 @@ export const generateCSVPolicyResults = (
 // Live policy errors only
 export const generateCSVPolicyErrors = (
   rows: ICampaignError[],
-  filename: string
+  filename: string,
 ) => {
   return new global.window.File([convertToCSV({ objArray: rows })], filename, {
     type: "text/csv",

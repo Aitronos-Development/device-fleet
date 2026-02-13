@@ -24,7 +24,7 @@ interface IValidation {
   name: string;
   isValid: (
     formData: ISoftwareAutoUpdateConfigFormData,
-    validations?: ISoftwareAutoUpdateConfigFormValidation
+    validations?: ISoftwareAutoUpdateConfigFormValidation,
   ) => boolean;
   message?: IValidationMessage;
 }
@@ -47,7 +47,7 @@ const validateTimeFormat = (time: string): boolean => {
 
 const validateWindowLength = (
   formData: ISoftwareAutoUpdateConfigFormData,
-  validations?: ISoftwareAutoUpdateConfigFormValidation
+  validations?: ISoftwareAutoUpdateConfigFormValidation,
 ) => {
   if (
     formData.autoUpdateStartTime.length === 0 ||
@@ -143,7 +143,7 @@ const FORM_VALIDATIONS: IFormValidations = {
 
 const getErrorMessage = (
   formData: ISoftwareAutoUpdateConfigFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -153,7 +153,7 @@ const getErrorMessage = (
 
 export const validateFormData = (
   formData: ISoftwareAutoUpdateConfigFormData,
-  isSaving = false
+  isSaving = false,
 ) => {
   const formValidation: ISoftwareAutoUpdateConfigFormValidation = {
     isValid: true,
@@ -170,7 +170,7 @@ export const validateFormData = (
           return false; // Skip this validation if not saving
         }
         return !validation.isValid(formData, formValidation);
-      }
+      },
     );
 
     if (!failedValidation) {

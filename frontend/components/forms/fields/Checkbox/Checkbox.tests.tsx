@@ -13,7 +13,7 @@ describe("Checkbox - component", () => {
     const onUncheckedComponentChangeSpy = jest.fn();
 
     const { rerender } = render(
-      <Checkbox name="checkbox" onChange={onCheckedComponentChangeSpy} value />
+      <Checkbox name="checkbox" onChange={onCheckedComponentChangeSpy} value />,
     );
 
     fireEvent.click(screen.getByRole("checkbox"));
@@ -25,7 +25,7 @@ describe("Checkbox - component", () => {
         name="checkbox"
         onChange={onUncheckedComponentChangeSpy}
         value={false}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole("checkbox"));
@@ -37,7 +37,7 @@ describe("Checkbox - component", () => {
     render(
       <Checkbox name="test" value={false} disabled>
         Test checkbox
-      </Checkbox>
+      </Checkbox>,
     );
     expect(screen.getByLabelText("Test checkbox")).toBeDisabled();
   });

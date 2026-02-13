@@ -27,7 +27,7 @@ export const listNamesFromSelectedLabels = (dict: Record<string, boolean>) => {
 export const generateLabelKey = (
   target: string,
   customTargetOption: string,
-  selectedLabels: Record<string, boolean>
+  selectedLabels: Record<string, boolean>,
 ) => {
   if (target !== "Custom") {
     return {};
@@ -59,7 +59,7 @@ const TargetChooser = ({
       {subTitle && <div className="form-field__subtitle">{subTitle}</div>}
       <Radio
         className={`${baseClass}__radio-input`}
-        label="All hosts"
+        label="All devices"
         id="all-hosts-target-radio-btn"
         checked={!disableOptions && selectedTarget === "All hosts"}
         value="All hosts"

@@ -35,7 +35,7 @@ const DEPSSOLoginPage = ({
       onSuccess: ({ url }) => {
         window.location.href = url;
       },
-    }
+    },
   );
 
   if (query.initiator === "setup_experience") {

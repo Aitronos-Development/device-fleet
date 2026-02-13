@@ -61,22 +61,18 @@ const SoftwareTitleDetailsPage = ({
   const autoOpenGitOpsYamlModal =
     location.query.gitops_yaml === "true" && config?.gitops.gitops_mode_enabled;
 
-  const {
-    currentTeamId,
-    teamIdForApi,
-    userTeams,
-    handleTeamChange,
-  } = useTeamIdParam({
-    location,
-    router,
-    includeAllTeams: true,
-    includeNoTeam: true,
-  });
+  const { currentTeamId, teamIdForApi, userTeams, handleTeamChange } =
+    useTeamIdParam({
+      location,
+      router,
+      includeAllTeams: true,
+      includeNoTeam: true,
+    });
 
   // gitOpsYamlParam URL Param controls whether the View Yaml modal is opened on page load
   // as it automatically opens from adding flow of custom software in gitOps mode
   const [showViewYamlModal, setShowViewYamlModal] = useState(
-    autoOpenGitOpsYamlModal || false
+    autoOpenGitOpsYamlModal || false,
   );
 
   const {
@@ -101,7 +97,7 @@ const SoftwareTitleDetailsPage = ({
           handlePageError(error);
         }
       },
-    }
+    },
   );
 
   const isAvailableForInstall =
@@ -121,7 +117,7 @@ const SoftwareTitleDetailsPage = ({
     router.push(
       getPathWithQueryParams(paths.SOFTWARE_TITLES, {
         team_id: teamIdForApi,
-      })
+      }),
     );
   }, [refetchSoftwareTitle, router, softwareTitle, teamIdForApi]);
 
@@ -129,12 +125,12 @@ const SoftwareTitleDetailsPage = ({
     (teamId: number) => {
       handleTeamChange(teamId);
     },
-    [handleTeamChange]
+    [handleTeamChange],
   );
 
   const renderSoftwareInstallerCard = (title: ISoftwareTitleDetails) => {
     const hasPermission = Boolean(
-      isOnGlobalTeam || isTeamAdmin || isTeamMaintainer || isTeamObserver
+      isOnGlobalTeam || isTeamAdmin || isTeamMaintainer || isTeamObserver,
     );
 
     const showInstallerCard =

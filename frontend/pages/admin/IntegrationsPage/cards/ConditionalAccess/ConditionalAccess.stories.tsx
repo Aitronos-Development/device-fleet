@@ -23,8 +23,10 @@ const queryClient = new QueryClient({
 
 // Workaround for React Query v3 with React 18 - explicitly add children prop
 // See frontend/router/index.tsx for the same pattern
-type CustomQueryClientProviderProps = React.PropsWithChildren<QueryClientProviderProps>;
-const CustomQueryClientProvider: React.FC<CustomQueryClientProviderProps> = QueryClientProvider;
+type CustomQueryClientProviderProps =
+  React.PropsWithChildren<QueryClientProviderProps>;
+const CustomQueryClientProvider: React.FC<CustomQueryClientProviderProps> =
+  QueryClientProvider;
 
 const mockNotificationContext = {
   renderFlash: () => {

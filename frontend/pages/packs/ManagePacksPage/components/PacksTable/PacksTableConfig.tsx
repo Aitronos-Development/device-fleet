@@ -118,7 +118,7 @@ const generateTableHeaders = (): IDataColumn[] => {
       ),
     },
     {
-      title: "Hosts",
+      title: "Devices",
       Header: (cellProps) => (
         <HeaderCell
           value={cellProps.column.title}

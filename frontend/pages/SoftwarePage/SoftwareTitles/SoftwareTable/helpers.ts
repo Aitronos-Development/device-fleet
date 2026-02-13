@@ -12,13 +12,13 @@ export const SOFTWARE_TITLES_DROPDOWN_OPTIONS = [
     disabled: false,
     label: "All software",
     value: "allSoftware",
-    helpText: "All software installed on your hosts.",
+    helpText: "All software installed on your devices.",
   },
   {
     disabled: false,
     label: "Available for install",
     value: "installableSoftware",
-    helpText: "Software that can be installed on your hosts.",
+    helpText: "Software that can be installed on your devices.",
   },
   {
     disabled: false,
@@ -84,7 +84,7 @@ export const SEVERITY_DROPDOWN_OPTIONS = [
 ];
 
 export const buildSoftwareFilterQueryParams = (
-  val: ISoftwareDropdownFilterVal
+  val: ISoftwareDropdownFilterVal,
 ) => {
   switch (val) {
     case "installableSoftware":
@@ -110,7 +110,7 @@ export const getSoftwareFilterFromQueryParams = (queryParams: QueryParams) => {
 };
 
 export const getSoftwareVulnFiltersFromQueryParams = (
-  queryParams: QueryParams
+  queryParams: QueryParams,
 ) => {
   const { vulnerable, exploit, min_cvss_score, max_cvss_score } = queryParams;
 
@@ -139,7 +139,7 @@ export type ISoftwareVulnFiltersParams = {
 export const isValidNumber = (
   value: any,
   min?: number,
-  max?: number
+  max?: number,
 ): value is number => {
   // Check if the value is a number and not NaN
   const isNumber = typeof value === "number" && !isNaN(value);
@@ -152,7 +152,7 @@ export const isValidNumber = (
 };
 
 export const buildSoftwareVulnFiltersQueryParams = (
-  vulnFilters: ISoftwareVulnFiltersParams
+  vulnFilters: ISoftwareVulnFiltersParams,
 ) => {
   const { vulnerable, exploit, minCvssScore, maxCvssScore } = vulnFilters;
 
@@ -174,7 +174,7 @@ export const buildSoftwareVulnFiltersQueryParams = (
 
 export const findOptionBySeverityRange = (
   minSeverityValue: number | undefined,
-  maxSeverityValue: number | undefined
+  maxSeverityValue: number | undefined,
 ) => {
   // Check for "empty" (undefined/null) min and max, treat as "Any severity"
   if (
@@ -187,7 +187,7 @@ export const findOptionBySeverityRange = (
   const severityOption = SEVERITY_DROPDOWN_OPTIONS.find(
     (option) =>
       option.minSeverity === minSeverityValue &&
-      option.maxSeverity === maxSeverityValue
+      option.maxSeverity === maxSeverityValue,
   ) || {
     disabled: true,
     label: "Custom severity",
@@ -201,7 +201,7 @@ export const findOptionBySeverityRange = (
 };
 
 export const getVulnFilterRenderDetails = (
-  vulnFilters?: ISoftwareVulnFiltersParams
+  vulnFilters?: ISoftwareVulnFiltersParams,
 ) => {
   let filterCount = 0;
   const tooltipText = [];
@@ -215,7 +215,7 @@ export const getVulnFilterRenderDetails = (
         filterCount += 1;
         const severityOption = findOptionBySeverityRange(
           vulnFilters.minCvssScore,
-          vulnFilters.maxCvssScore
+          vulnFilters.maxCvssScore,
         );
         const severityText = stringUtils.capitalize(severityOption?.value);
         tooltipText.push(`Severity: ${severityText}`);
@@ -241,9 +241,9 @@ export const getVulnFilterRenderDetails = (
 };
 
 export const getVulnerabilities = <
-  T extends { vulnerabilities: string[] | null }
+  T extends { vulnerabilities: string[] | null },
 >(
-  versions: T[]
+  versions: T[],
 ): string[] => {
   if (!versions) {
     return [];

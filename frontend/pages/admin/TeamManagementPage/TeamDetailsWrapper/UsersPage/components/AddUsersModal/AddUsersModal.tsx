@@ -30,14 +30,14 @@ const AddUsersModal = ({
     (values: any) => {
       setSelectedUsers(values);
     },
-    [setSelectedUsers]
+    [setSelectedUsers],
   );
 
   const onFormSubmit = useCallback(() => {
     const newUsers: INewTeamUser[] = selectedUsers.map(
       (user: IDropdownOption) => {
         return { id: user.value as number, role: "observer" };
-      }
+      },
     );
     onSubmit({ users: newUsers });
   }, [selectedUsers, onSubmit]);

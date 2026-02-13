@@ -36,7 +36,7 @@ const WipeModal = ({
       onSuccess();
       renderFlash(
         "success",
-        "Wiping host or will wipe when the host comes online."
+        "Wiping host or will wipe when the host comes online.",
       );
     } catch (e) {
       renderFlash("error", getErrorReason(e));

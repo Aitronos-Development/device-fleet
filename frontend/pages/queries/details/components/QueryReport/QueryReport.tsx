@@ -49,7 +49,7 @@ const QueryReport = ({
   const { lastEditedQueryName } = useContext(QueryContext);
 
   const [filteredResults, setFilteredResults] = useState<Row[]>(
-    flattenResults(queryReport?.results || [])
+    flattenResults(queryReport?.results || []),
   );
   const [columnConfigs, setColumnConfigs] = useState<Column[]>([]);
 
@@ -57,7 +57,7 @@ const QueryReport = ({
     if (queryReport && queryReport.results && queryReport.results.length > 0) {
       const newColumnConfigs = generateReportColumnConfigsFromResults(
         flattenResults(queryReport.results),
-        queryReport.query_id
+        queryReport.query_id,
       );
 
       // Update tableHeaders if new headers are found
@@ -73,10 +73,10 @@ const QueryReport = ({
       generateCSVQueryResults(
         filteredResults,
         generateCSVFilename(
-          `${lastEditedQueryName || CSV_TITLE} - Query Report`
+          `${lastEditedQueryName || CSV_TITLE} - Query Report`,
         ),
-        columnConfigs
-      )
+        columnConfigs,
+      ),
     );
   };
 

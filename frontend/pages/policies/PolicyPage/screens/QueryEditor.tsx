@@ -50,9 +50,8 @@ const QueryEditor = ({
   renderLiveQueryWarning,
   teamIdForApi,
 }: IQueryEditorProps): JSX.Element | null => {
-  const { currentUser, isPremiumTier, filteredPoliciesPath } = useContext(
-    AppContext
-  );
+  const { currentUser, isPremiumTier, filteredPoliciesPath } =
+    useContext(AppContext);
   const { renderFlash } = useContext(NotificationContext);
 
   // Note: The PolicyContext values should always be used for any mutable policy data such as query name
@@ -73,7 +72,7 @@ const QueryEditor = ({
     if (storedPolicyError) {
       renderFlash(
         "error",
-        "Something went wrong retrieving your policy. Please try again."
+        "Something went wrong retrieving your policy. Please try again.",
       );
     }
   }, []);
@@ -82,18 +81,12 @@ const QueryEditor = ({
   const [backendValidators, setBackendValidators] = useState<{
     [key: string]: string;
   }>({});
-  const [
-    policyAutofillData,
-    setPolicyAutofillData,
-  ] = useState<IAutofillPolicy | null>(null);
-  const [
-    isFetchingAutofillDescription,
-    setIsFetchingAutofillDescription,
-  ] = useState(false);
-  const [
-    isFetchingAutofillResolution,
-    setIsFetchingAutofillResolution,
-  ] = useState(false);
+  const [policyAutofillData, setPolicyAutofillData] =
+    useState<IAutofillPolicy | null>(null);
+  const [isFetchingAutofillDescription, setIsFetchingAutofillDescription] =
+    useState(false);
+  const [isFetchingAutofillResolution, setIsFetchingAutofillResolution] =
+    useState(false);
 
   const onClickAutofillDescription = async () => {
     // When AI autofill data exists already, fill out section clicked with data
@@ -104,9 +97,8 @@ const QueryEditor = ({
       setIsFetchingAutofillDescription(true);
 
       try {
-        const autofillResponse = await autofillAPI.getPolicyInterpretationFromSQL(
-          lastEditedQueryBody
-        );
+        const autofillResponse =
+          await autofillAPI.getPolicyInterpretationFromSQL(lastEditedQueryBody);
 
         setPolicyAutofillData(autofillResponse);
         // Only fill out section that was clicked to be fetched
@@ -128,9 +120,8 @@ const QueryEditor = ({
       setIsFetchingAutofillResolution(true);
 
       try {
-        const autofillResponse = await autofillAPI.getPolicyInterpretationFromSQL(
-          lastEditedQueryBody
-        );
+        const autofillResponse =
+          await autofillAPI.getPolicyInterpretationFromSQL(lastEditedQueryBody);
         setPolicyAutofillData(autofillResponse);
         // Only fill out section that was clicked to be fetched
         setLastEditedQueryResolution(autofillResponse.resolution);
@@ -163,13 +154,13 @@ const QueryEditor = ({
 
     try {
       const policy: IPolicy = await createPolicy(payload).then(
-        (data) => data.policy
+        (data) => data.policy,
       );
       setIsUpdatingPolicy(false);
       router.push(
         getPathWithQueryParams(PATHS.EDIT_POLICY(policy.id), {
           team_id: policy.team_id,
-        })
+        }),
       );
       renderFlash("success", "Policy created!");
     } catch (createError: any) {
@@ -181,7 +172,7 @@ const QueryEditor = ({
       } else {
         renderFlash(
           "error",
-          "Something went wrong creating your policy. Please try again."
+          "Something went wrong creating your policy. Please try again.",
         );
       }
     } finally {
@@ -227,7 +218,7 @@ const QueryEditor = ({
       } else {
         renderFlash(
           "error",
-          "Something went wrong updating your policy. Please try again."
+          "Something went wrong updating your policy. Please try again.",
         );
       }
     } finally {

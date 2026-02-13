@@ -63,7 +63,7 @@ const SetupAssistant = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       retry: false,
-    }
+    },
   );
 
   const getReleaseDeviceSetting = () => {

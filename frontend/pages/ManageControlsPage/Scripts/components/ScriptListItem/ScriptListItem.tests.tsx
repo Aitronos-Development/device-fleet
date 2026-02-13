@@ -36,7 +36,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     expect(screen.getByText(/macOS & Linux/)).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     expect(screen.getByText(/Windows/)).toBeInTheDocument();
@@ -62,7 +62,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     await user.click(screen.getByText("test_mac_script.sh"));
@@ -76,7 +76,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     await user.click(screen.getByText(/years ago/));
@@ -92,7 +92,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     await user.click(screen.getByTestId("trash-icon"));
@@ -108,7 +108,7 @@ describe("ScriptListItem", () => {
         onDelete={onDelete}
         onEdit={onEdit}
         onClickScript={onClickScript}
-      />
+      />,
     );
 
     await user.click(screen.getByTestId("pencil-icon"));

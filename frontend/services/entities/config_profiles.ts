@@ -18,7 +18,7 @@ export default {
   },
 
   getConfigProfileStatus: (
-    uuid: string
+    uuid: string,
   ): Promise<IGetConfigProfileStatusResponse> => {
     const { CONFIG_PROFILE_STATUS } = endpoints;
     return sendRequest("GET", CONFIG_PROFILE_STATUS(uuid));

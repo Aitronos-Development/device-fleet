@@ -24,7 +24,7 @@ describe("Software operating systems table", () => {
         currentPage={0}
         teamId={1}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("Software inventory disabled")).toBeInTheDocument();
@@ -45,11 +45,11 @@ describe("Software operating systems table", () => {
         currentPage={0}
         teamId={1}
         isLoading={false}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("No operating systems detected")
+      screen.getByText("No operating systems detected"),
     ).toBeInTheDocument();
     expect(screen.getByText("0 items")).toBeInTheDocument();
     expect(screen.getByText("All platforms")).toBeInTheDocument();

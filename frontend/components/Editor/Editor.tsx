@@ -98,7 +98,7 @@ const Editor = ({
         }, 2000);
       });
     },
-    [value]
+    [value],
   );
 
   const renderCopyButton = () => {
@@ -106,7 +106,7 @@ const Editor = ({
     const wrapperClasses = classnames(`${baseClass}__copy-wrapper`);
 
     const copiedConfirmationClasses = classnames(
-      `${baseClass}__copied-confirmation`
+      `${baseClass}__copied-confirmation`,
     );
 
     return (

@@ -44,7 +44,7 @@ const RunScript = ({ currentTeamId, router }: ISetupExperienceCardProps) => {
   } = useQuery<IGetSetupExperienceScriptResponse, AxiosError>(
     ["setup-experience-script", currentTeamId],
     () => mdmAPI.getSetupExperienceScript(currentTeamId),
-    { ...DEFAULT_USE_QUERY_OPTIONS, retry: false }
+    { ...DEFAULT_USE_QUERY_OPTIONS, retry: false },
   );
 
   const { data: globalConfig, isLoading: isLoadingGlobalConfig } = useQuery<
@@ -77,7 +77,7 @@ const RunScript = ({ currentTeamId, router }: ISetupExperienceCardProps) => {
   const hasManualAgentInstall = getManualAgentInstallSetting(
     currentTeamId,
     globalConfig,
-    teamConfig
+    teamConfig,
   );
 
   const renderContent = () => {

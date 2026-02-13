@@ -22,16 +22,16 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={noop}
-      />
+      />,
     );
     // Name, version, and image alt attribute/assertions:
     expect(screen.getAllByText("mock software 1.app").length).toBeGreaterThan(
-      0
+      0,
     ); // Tooltip has text showing twice so can't use getByText
     expect(screen.getByText("1.0.0")).toBeInTheDocument();
     // Software icon
     expect(
-      container.querySelector("svg.software-icon.software-icon__large")
+      container.querySelector("svg.software-icon.software-icon__large"),
     ).toBeInTheDocument();
   });
 
@@ -45,12 +45,12 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={noop}
-      />
+      />,
     );
     expect(screen.getByRole("button", { name: "Update" })).toBeEnabled();
     // Should not show error or spinner status parts
     expect(
-      screen.queryByTestId("update-software-item__status--test")
+      screen.queryByTestId("update-software-item__status--test"),
     ).not.toBeInTheDocument();
   });
 
@@ -64,14 +64,14 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={noop}
-      />
+      />,
     );
 
     const loadingSpinner = screen.getByTestId("spinner");
     expect(loadingSpinner).toBeVisible();
     expect(screen.getByText(/Updating.../)).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Update" })
+      screen.queryByRole("button", { name: "Update" }),
     ).not.toBeInTheDocument();
     // Spinner should exist (by role or other query, depending on how your Spinner renders)
   });
@@ -91,7 +91,7 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={handleShowDetails}
-      />
+      />,
     );
     // Button should exist ("Failed" text is rendered as button)
     const failedButton = screen.getByRole("button", { name: "Failed" });
@@ -111,13 +111,13 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={noop}
-      />
+      />,
     );
 
     // Updated icon/text instead of Update button
     expect(screen.getByText("Updated")).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Update" })
+      screen.queryByRole("button", { name: "Update" }),
     ).not.toBeInTheDocument();
     expect(screen.getByTestId("success-icon")).toBeInTheDocument();
   });
@@ -134,7 +134,7 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={handleUpdate}
         onShowInstallerDetails={noop}
-      />
+      />,
     );
 
     const updateButton = screen.getByRole("button", { name: "Update" });
@@ -155,7 +155,7 @@ describe("Self-service - UpdateSoftwareItem component", () => {
         software={software}
         onClickUpdateAction={noop}
         onShowInstallerDetails={handleShowDetails}
-      />
+      />,
     );
 
     const failedButton = screen.getByRole("button", { name: "Failed" });

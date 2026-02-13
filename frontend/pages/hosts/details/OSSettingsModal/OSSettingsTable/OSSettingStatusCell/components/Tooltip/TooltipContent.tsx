@@ -3,7 +3,7 @@ import React from "react";
 export type TooltipInnerContentOption = string | TooltipInnerContentFunc;
 
 export type TooltipInnerContentFunc = (
-  innerProps: TooltipInnerContentProps
+  innerProps: TooltipInnerContentProps,
 ) => string | JSX.Element;
 
 export type TooltipInnerContentProps = Record<

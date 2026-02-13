@@ -33,7 +33,7 @@ interface IUserProps {
   onClickUpdateUser?: (
     e:
       | React.MouseEvent<HTMLButtonElement>
-      | React.KeyboardEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLButtonElement>,
   ) => void;
 }
 

@@ -35,8 +35,7 @@ export interface IHostActivityItemComponentProps {
 }
 
 /** Used for activity items component that need a show details handler */
-export interface IHostActivityItemComponentPropsWithShowDetails
-  extends IHostActivityItemComponentProps {
+export interface IHostActivityItemComponentPropsWithShowDetails extends IHostActivityItemComponentProps {
   onShowDetails: ShowActivityDetailsHandler;
   onCancel?: () => void;
 }
@@ -49,15 +48,18 @@ export const pastActivityComponentMap: Record<
   [ActivityType.RanScript]: RanScriptActivityItem,
   [ActivityType.LockedHost]: LockedHostActivityItem,
   [ActivityType.WipedHost]: WipedHostActivityItem,
-  [ActivityType.ReadHostDiskEncryptionKey]: ReadHostDiskEncryptionKeyActivityItem,
+  [ActivityType.ReadHostDiskEncryptionKey]:
+    ReadHostDiskEncryptionKeyActivityItem,
   [ActivityType.UnlockedHost]: UnlockedHostActivityItem,
   [ActivityType.InstalledSoftware]: InstalledSoftwareActivityItem,
   [ActivityType.UninstalledSoftware]: InstalledSoftwareActivityItem,
   [ActivityType.InstalledAppStoreApp]: InstalledSoftwareActivityItem,
   [ActivityType.CanceledRunScript]: CanceledRunScriptActivityItem,
   [ActivityType.CanceledInstallSoftware]: CanceledInstallSoftwareActivityItem,
-  [ActivityType.CanceledInstallAppStoreApp]: CanceledInstallSoftwareActivityItem,
-  [ActivityType.CanceledUninstallSoftware]: CanceledUninstallSoftwareActivtyItem,
+  [ActivityType.CanceledInstallAppStoreApp]:
+    CanceledInstallSoftwareActivityItem,
+  [ActivityType.CanceledUninstallSoftware]:
+    CanceledUninstallSoftwareActivtyItem,
 };
 
 export const upcomingActivityComponentMap: Record<

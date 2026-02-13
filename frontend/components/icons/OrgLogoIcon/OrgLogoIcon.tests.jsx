@@ -17,7 +17,7 @@ describe("OrgLogoIcon - component", () => {
 
     expect(screen.getByRole("img")).toHaveAttribute(
       "src",
-      "/assets/images/avatar.svg"
+      "/assets/images/avatar.svg",
     );
   });
 });

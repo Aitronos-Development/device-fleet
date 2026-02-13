@@ -41,7 +41,7 @@ const STATUS_DISPLAY_OPTIONS: StatusDisplayOptions = {
 };
 
 const countHostProfilesByStatus = (
-  hostSettings: IHostMdmProfile[]
+  hostSettings: IHostMdmProfile[],
 ): Record<MdmProfileStatus, number> => {
   return hostSettings.reduce(
     (acc, { status }) => {
@@ -49,7 +49,7 @@ const countHostProfilesByStatus = (
         acc.failed += 1;
       } else if (
         ["pending", "action_required", "delivering", "delivered"].includes(
-          status
+          status,
         )
       ) {
         acc.pending += 1;
@@ -66,7 +66,7 @@ const countHostProfilesByStatus = (
       pending: 0,
       verifying: 0,
       verified: 0,
-    }
+    },
   );
 };
 
@@ -81,7 +81,7 @@ const countHostProfilesByStatus = (
  * https://fleetdm.com/handbook/company/why-this-way#why-make-it-obvious-when-stuff-breaks
  */
 const getHostProfilesStatusForDisplay = (
-  hostProfiles: IHostMdmProfile[]
+  hostProfiles: IHostMdmProfile[],
 ): MdmProfileStatusForDisplay => {
   const counts = countHostProfilesByStatus(hostProfiles);
   switch (true) {

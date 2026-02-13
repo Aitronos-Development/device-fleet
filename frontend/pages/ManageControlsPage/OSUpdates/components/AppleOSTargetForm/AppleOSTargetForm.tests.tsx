@@ -22,7 +22,7 @@ describe("AppleOSTargetForm", () => {
     async ({ request }) => {
       requestBody = await request.json();
       return HttpResponse.json({});
-    }
+    },
   );
 
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
 
     const minVersionInput = screen.getByLabelText(/Minimum version/i);
@@ -56,7 +56,7 @@ describe("AppleOSTargetForm", () => {
     expect((deadlineInput as HTMLInputElement).value).toBe("2024-12-31");
 
     const updateNewHostsCheckbox = screen.getByLabelText(
-      /Update new hosts to latest/i
+      /Update new hosts to latest/i,
     );
     expect(updateNewHostsCheckbox).toBeInTheDocument();
     expect((updateNewHostsCheckbox as HTMLInputElement).checked).toBe(true);
@@ -72,7 +72,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
     const saveButton = screen.getByRole("button", { name: /Save/i });
     expect(saveButton).toBeInTheDocument();
@@ -110,7 +110,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
 
     const minVersionInput = screen.getByLabelText(/Minimum version/i);
@@ -122,7 +122,7 @@ describe("AppleOSTargetForm", () => {
     expect((deadlineInput as HTMLInputElement).value).toBe("2024-12-31");
 
     const updateNewHostsCheckbox = screen.queryByLabelText(
-      /Update new hosts to latest/i
+      /Update new hosts to latest/i,
     );
     expect(updateNewHostsCheckbox).not.toBeInTheDocument();
   });
@@ -137,7 +137,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
     const saveButton = screen.getByRole("button", { name: /Save/i });
     expect(saveButton).toBeInTheDocument();
@@ -160,7 +160,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
 
     const minVersionInput = screen.getByLabelText(/Minimum version/i);
@@ -172,7 +172,7 @@ describe("AppleOSTargetForm", () => {
     expect((deadlineInput as HTMLInputElement).value).toBe("2024-12-31");
 
     const updateNewHostsCheckbox = screen.queryByLabelText(
-      /Update new hosts to latest/i
+      /Update new hosts to latest/i,
     );
     expect(updateNewHostsCheckbox).not.toBeInTheDocument();
   });
@@ -187,7 +187,7 @@ describe("AppleOSTargetForm", () => {
         defaultUpdateNewHosts
         refetchAppConfig={jest.fn()}
         refetchTeamConfig={jest.fn()}
-      />
+      />,
     );
     const saveButton = screen.getByRole("button", { name: /Save/i });
     expect(saveButton).toBeInTheDocument();
@@ -195,7 +195,7 @@ describe("AppleOSTargetForm", () => {
     await waitFor(() => {
       expect(requestBody).toBeDefined();
       expect(
-        requestBody?.mdm?.ipados_updates?.update_new_hosts
+        requestBody?.mdm?.ipados_updates?.update_new_hosts,
       ).not.toBeDefined();
       expect(requestBody?.mdm?.ipados_updates?.minimum_version).toBe("13.0");
       expect(requestBody?.mdm?.ipados_updates?.deadline).toBe("2026-12-31");

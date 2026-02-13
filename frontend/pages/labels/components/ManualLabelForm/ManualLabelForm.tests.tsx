@@ -16,7 +16,7 @@ describe("ManualLabelForm", () => {
     render(<ManualLabelForm onSave={noop} onCancel={noop} teamName={null} />);
 
     expect(
-      screen.getByText(LABEL_TARGET_HOSTS_INPUT_LABEL)
+      screen.getByText(LABEL_TARGET_HOSTS_INPUT_LABEL),
     ).toBeInTheDocument();
   });
 
@@ -34,7 +34,7 @@ describe("ManualLabelForm", () => {
         onCancel={noop}
         defaultTargetedHosts={targetedHosts}
         teamName={null}
-      />
+      />,
     );
 
     await user.type(screen.getByLabelText("Name"), name);

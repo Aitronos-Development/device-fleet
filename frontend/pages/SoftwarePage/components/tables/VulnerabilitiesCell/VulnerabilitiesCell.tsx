@@ -11,7 +11,7 @@ const baseClass = "vulnerabilities-cell";
 
 const generateCell = (
   vulnerabilities: ISoftwareVulnerability[] | string[] | null,
-  vulnerabilitiesCount?: number
+  vulnerabilitiesCount?: number,
 ) => {
   if (vulnerabilities === null || vulnerabilities.length === 0) {
     return <TextCell value="---" grey />;
@@ -40,7 +40,7 @@ const getName = (vulnerabiltiy: ISoftwareVulnerability | string) => {
 
 const condenseVulnerabilities = (
   vulnerabilities: ISoftwareVulnerability[] | string[],
-  totalCount?: number
+  totalCount?: number,
 ) => {
   const condensed =
     (vulnerabilities?.length &&
@@ -60,7 +60,7 @@ const condenseVulnerabilities = (
 const generateTooltip = (
   vulnerabilities: ISoftwareVulnerability[] | string[],
   tooltipId: string,
-  totalCount?: number
+  totalCount?: number,
 ) => {
   const count = totalCount ?? vulnerabilities.length;
   if (count <= 1) {
@@ -69,7 +69,7 @@ const generateTooltip = (
 
   const condensedVulnerabilities = condenseVulnerabilities(
     vulnerabilities,
-    totalCount
+    totalCount,
   );
 
   return (
@@ -110,7 +110,7 @@ const VulnerabilitiesCell = ({
   const vulnerabilityTooltip = generateTooltip(
     vulnerabilities,
     tooltipId,
-    vulnerabilitiesCount
+    vulnerabilitiesCount,
   );
 
   return (

@@ -103,7 +103,8 @@ const ConditionalAccessModal = ({
             getPolicyDisabled={getPolicyDisabled}
             getPolicyTooltipContent={getPolicyTooltipContent}
             onToggleItem={(item: IFormPolicy) => {
-              item.conditional_access_enabled = !item.conditional_access_enabled;
+              item.conditional_access_enabled =
+                !item.conditional_access_enabled;
               return item;
             }}
             helpText={

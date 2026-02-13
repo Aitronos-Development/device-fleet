@@ -21,7 +21,7 @@ interface IRefetchButtonProps {
   isFetching: boolean;
   tooltip?: React.ReactNode;
   onRefetchHost: (
-    evt: React.MouseEvent<HTMLButtonElement, React.MouseEvent>
+    evt: React.MouseEvent<HTMLButtonElement, React.MouseEvent>,
   ) => void;
 }
 
@@ -69,7 +69,7 @@ interface IHostSummaryProps {
   summaryData: any; // TODO: create interfaces for this and use consistently across host pages and related helpers
   showRefetchSpinner: boolean;
   onRefetchHost: (
-    evt: React.MouseEvent<HTMLButtonElement, React.MouseEvent>
+    evt: React.MouseEvent<HTMLButtonElement, React.MouseEvent>,
   ) => void;
   renderActionsDropdown: () => JSX.Element | null;
   deviceUser?: boolean;
@@ -160,7 +160,7 @@ const HostHeader = ({
 
     const classNames = classnames(
       `${baseClass}__device-status-tag`,
-      tag.tagType
+      tag.tagType,
     );
 
     return (

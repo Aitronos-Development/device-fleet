@@ -14,10 +14,10 @@ type EnrollmentType = "workProfile" | "fullyManaged";
 const generateUrl = (
   serverUrl: string,
   enrollSecret: string,
-  enrollType: EnrollmentType
+  enrollType: EnrollmentType,
 ) => {
   const url = `${serverUrl}/enroll?enroll_secret=${encodeURIComponent(
-    enrollSecret
+    enrollSecret,
   )}`;
 
   if (enrollType === "fullyManaged") {
@@ -36,9 +36,8 @@ interface IAndroidPanelProps {
 const AndroidPanel = ({ enrollSecret }: IAndroidPanelProps) => {
   const { config, isAndroidMdmEnabledAndConfigured } = useContext(AppContext);
 
-  const [enrollmentType, setEnrollmentType] = React.useState<EnrollmentType>(
-    "workProfile"
-  );
+  const [enrollmentType, setEnrollmentType] =
+    React.useState<EnrollmentType>("workProfile");
 
   if (!config) return null;
 
@@ -57,7 +56,7 @@ const AndroidPanel = ({ enrollSecret }: IAndroidPanelProps) => {
   const url = generateUrl(
     config.server_settings.server_url,
     enrollSecret,
-    enrollmentType
+    enrollmentType,
   );
 
   return (

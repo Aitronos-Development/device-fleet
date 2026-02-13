@@ -145,9 +145,8 @@ const DeviceUserPage = ({
   const isMobileView = useIsMobileWidth();
   const isMobileDevice = isIPhone(navigator) || isIPad(navigator);
 
-  const { renderFlash, notification, hideFlash } = useContext(
-    NotificationContext
-  );
+  const { renderFlash, notification, hideFlash } =
+    useContext(NotificationContext);
 
   const [showBypassModal, setShowBypassModal] = useState(false);
   const [showBitLockerPINModal, setShowBitLockerPINModal] = useState(false);
@@ -155,36 +154,29 @@ const DeviceUserPage = ({
   const [showEnrollMdmModal, setShowEnrollMdmModal] = useState(false);
   const [enrollUrlError, setEnrollUrlError] = useState<string | null>(null);
   const [selectedPolicy, setSelectedPolicy] = useState<IHostPolicy | null>(
-    null
+    null,
   );
   const [showPolicyDetailsModal, setShowPolicyDetailsModal] = useState(false);
   const [showOSSettingsModal, setShowOSSettingsModal] = useState(false);
-  const [showBootstrapPackageModal, setShowBootstrapPackageModal] = useState(
-    false
-  );
+  const [showBootstrapPackageModal, setShowBootstrapPackageModal] =
+    useState(false);
   const [showCreateLinuxKeyModal, setShowCreateLinuxKeyModal] = useState(false);
-  const [isTriggeringCreateLinuxKey, setIsTriggeringCreateLinuxKey] = useState(
-    false
-  );
-  const [
-    hostSWForInventoryVersions,
-    setHostSWForInventoryVersions,
-  ] = useState<IHostSoftware | null>(null);
+  const [isTriggeringCreateLinuxKey, setIsTriggeringCreateLinuxKey] =
+    useState(false);
+  const [hostSWForInventoryVersions, setHostSWForInventoryVersions] =
+    useState<IHostSoftware | null>(null);
 
   // certificates states
-  const [
-    selectedCertificate,
-    setSelectedCertificate,
-  ] = useState<IHostCertificate | null>(null);
+  const [selectedCertificate, setSelectedCertificate] =
+    useState<IHostCertificate | null>(null);
   const [certificatePage, setCertificatePage] = useState(
-    DEFAULT_CERTIFICATES_PAGE
+    DEFAULT_CERTIFICATES_PAGE,
   );
   const [sortCerts, setSortCerts] = useState<IListSort>({
     ...CERTIFICATES_DEFAULT_SORT,
   });
-  const [queuedSelfServiceRefetch, setQueuedSelfServiceRefetch] = useState(
-    false
-  );
+  const [queuedSelfServiceRefetch, setQueuedSelfServiceRefetch] =
+    useState(false);
   const [refetchStartTime, setRefetchStartTime] = useState<number | null>(null);
   const [showRefetchSpinner, setShowRefetchSpinner] = useState(false);
 
@@ -198,7 +190,7 @@ const DeviceUserPage = ({
       refetchOnWindowFocus: false,
       retry: false,
       select: (data: IMacadminsResponse) => data.macadmins,
-    }
+    },
   );
 
   const {
@@ -231,7 +223,7 @@ const DeviceUserPage = ({
       enabled: !!deviceUserAPI,
       keepPreviousData: true,
       staleTime: 15000,
-    }
+    },
   );
 
   const refetchExtensions = () => {
@@ -307,7 +299,7 @@ const DeviceUserPage = ({
               resetHostRefetchStates();
               renderFlash(
                 "error",
-                `This host is offline. Please try refetching host vitals later.`
+                `This host is offline. Please try refetching host vitals later.`,
               );
             }
           } else {
@@ -325,7 +317,7 @@ const DeviceUserPage = ({
                 resetHostRefetchStates();
                 renderFlash(
                   "error",
-                  `This host is offline. Please try refetching host vitals later.`
+                  `This host is offline. Please try refetching host vitals later.`,
                 );
               }
             } else {
@@ -337,7 +329,7 @@ const DeviceUserPage = ({
               if (!isIOSOrIPadOS) {
                 renderFlash(
                   "error",
-                  "We're having trouble fetching fresh vitals for this host. Please try again later."
+                  "We're having trouble fetching fresh vitals for this host. Please try again later.",
                 );
               }
             }
@@ -347,7 +339,7 @@ const DeviceUserPage = ({
           resetHostRefetchStates();
         }
       },
-    }
+    },
   );
 
   const isAuthenticationError =
@@ -416,7 +408,7 @@ const DeviceUserPage = ({
           })),
         ];
       },
-    }
+    },
   );
 
   const {
@@ -433,7 +425,7 @@ const DeviceUserPage = ({
       refetchOnWindowFocus: false,
       retry: false,
       select: (data) => data.enroll_url,
-    }
+    },
   );
 
   const { bypassConditionalAccess } = deviceUserAPI;
@@ -464,7 +456,7 @@ const DeviceUserPage = ({
     // before the URL was fetched), we fallback to showing the Button and we'll display an error if
     // the user tries to click when we don't have an enroll URL.
     setEnrollUrlError(
-      `Failed to get enrollment URL. ${mdmManualEnrollUrlError}`
+      `Failed to get enrollment URL. ${mdmManualEnrollUrlError}`,
     );
   }, [host?.dep_assigned_to_fleet, mdmManualEnrollUrlError]);
 
@@ -473,7 +465,7 @@ const DeviceUserPage = ({
       setShowPolicyDetailsModal(!showPolicyDetailsModal);
       setSelectedPolicy(policy);
     },
-    [showPolicyDetailsModal, setShowPolicyDetailsModal, setSelectedPolicy]
+    [showPolicyDetailsModal, setShowPolicyDetailsModal, setSelectedPolicy],
   );
 
   const bootstrapPackageData = {
@@ -552,7 +544,7 @@ const DeviceUserPage = ({
     setShowCreateLinuxKeyModal(true);
     try {
       await diskEncryptionAPI.triggerLinuxDiskEncryptionKeyEscrow(
-        deviceAuthToken
+        deviceAuthToken,
       );
     } catch (e) {
       renderFlash("error", "Failed to trigger key creation.");
@@ -570,7 +562,7 @@ const DeviceUserPage = ({
     (profileUUID: string): Promise<void> => {
       return deviceUserAPI.resendProfile(deviceAuthToken, profileUUID);
     },
-    [deviceAuthToken]
+    [deviceAuthToken],
   );
 
   const renderDeviceUserPage = () => {
@@ -579,10 +571,9 @@ const DeviceUserPage = ({
     // TODO: We should probably have a standard way to handle this on all pages. Do we want to show
     // a premium-only message in the case that a user tries direct navigation to a premium-only page
     // or silently redirect as below?
-    let tabPaths = (isPremiumTier
-      ? PREMIUM_TAB_PATHS
-      : FREE_TAB_PATHS
-    ).map((t) => t(deviceAuthToken));
+    let tabPaths = (isPremiumTier ? PREMIUM_TAB_PATHS : FREE_TAB_PATHS).map(
+      (t) => t(deviceAuthToken),
+    );
     if (!hasSelfService) {
       tabPaths = tabPaths.filter((path) => !path.includes("self-service"));
     }
@@ -600,7 +591,7 @@ const DeviceUserPage = ({
 
       // Return the index of the longest matching prefix
       return matchingIndices.reduce((best, current) =>
-        current.tabPath.length > best.tabPath.length ? current : best
+        current.tabPath.length > best.tabPath.length ? current : best,
       ).idx;
     };
 
@@ -610,8 +601,8 @@ const DeviceUserPage = ({
 
     // Note: API response global_config is misnamed because the backend actually returns the global
     // or team config (as applicable)
-    const isSoftwareEnabled = !!globalConfig?.features
-      ?.enable_software_inventory;
+    const isSoftwareEnabled =
+      !!globalConfig?.features?.enable_software_inventory;
 
     const showUsersCard =
       isMacOS(host?.platform || "") ||
@@ -970,13 +961,13 @@ const DeviceUserPage = ({
               await bypassConditionalAccess(deviceAuthToken);
               renderFlash(
                 "success",
-                "Access has been temporarily restored. You may now attempt to sign in again."
+                "Access has been temporarily restored. You may now attempt to sign in again.",
               );
               refetchHostDetails();
             } catch {
               renderFlash(
                 "error",
-                `Couldn't restore access. Please click "Refetch" and try again.`
+                `Couldn't restore access. Please click "Refetch" and try again.`,
               );
             } finally {
               setIsLoadingBypass(false);

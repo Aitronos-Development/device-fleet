@@ -29,7 +29,7 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={0}
-      />
+      />,
     );
 
     expect(screen.getByText("You don't have any policies")).toBeInTheDocument();
@@ -59,11 +59,11 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={0}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("You don't have any policies that apply to all teams")
+      screen.getByText("You don't have any policies that apply to all teams"),
     ).toBeInTheDocument();
     expect(screen.queryByText("Name")).toBeNull();
     expect(screen.queryByPlaceholderText("Search by name")).toBeNull();
@@ -91,11 +91,11 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={0}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("You don't have any policies that apply to this team")
+      screen.getByText("You don't have any policies that apply to this team"),
     ).toBeInTheDocument();
     expect(screen.queryByText("Name")).toBeNull();
   });
@@ -122,7 +122,7 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={0}
-      />
+      />,
     );
 
     expect(screen.getByText("No matching policies")).toBeInTheDocument();
@@ -154,7 +154,7 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={[testCriticalPolicy].length}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -163,7 +163,7 @@ describe("Policies table", () => {
       });
 
       expect(
-        screen.getByText("This policy has been marked as critical.")
+        screen.getByText("This policy has been marked as critical."),
       ).toBeInTheDocument();
     });
   });
@@ -192,7 +192,7 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={[testInheritedPolicy].length}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -201,7 +201,7 @@ describe("Policies table", () => {
       });
 
       expect(
-        screen.getByText("This policy runs on all hosts.")
+        screen.getByText("This policy runs on all hosts."),
       ).toBeInTheDocument();
     });
   });
@@ -230,7 +230,7 @@ describe("Policies table", () => {
         onQueryChange={noop}
         renderPoliciesCount={() => null}
         count={[testGlobalPolicy].length}
-      />
+      />,
     );
 
     expect(screen.queryByText("Inherited")).not.toBeInTheDocument();
@@ -273,13 +273,13 @@ describe("Policies table", () => {
         canAddOrDeletePolicies
         hasPoliciesToDelete
         count={policiesList.length}
-      />
+      />,
     );
 
     const numberOfCheckboxes = screen.queryAllByRole("checkbox").length;
 
     expect(numberOfCheckboxes).toBe(
-      testTeamPolicies.length + 1 // +1 for Select all checkbox
+      testTeamPolicies.length + 1, // +1 for Select all checkbox
     );
 
     const checkbox = screen.queryAllByRole("checkbox")[0];

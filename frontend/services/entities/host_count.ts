@@ -62,7 +62,7 @@ export interface IHostCountLoadOptions {
 
 export default {
   load: (
-    options: IHostCountLoadOptions | undefined
+    options: IHostCountLoadOptions | undefined,
   ): Promise<IHostsCountResponse> => {
     const selectedLabels = options?.selectedLabels || [];
     const policyId = options?.policyId;

@@ -30,7 +30,7 @@ type InitialStateType = {
   renderFlash: (
     alertType: "success" | "error" | "warning-filled" | null,
     message: JSX.Element | string | null,
-    options?: FlashOptions
+    options?: FlashOptions,
   ) => void;
   renderMultiFlash: (options?: MultiFlashOptions) => void;
   hideFlash: (id?: string) => void;
@@ -96,7 +96,7 @@ const reducer = (state: State, action: Action) => {
         return {
           ...state,
           notification: state.notification.filter(
-            (n: INotification) => n.id !== action.id
+            (n: INotification) => n.id !== action.id,
           ),
         };
       }
@@ -106,9 +106,8 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-export const NotificationContext = createContext<InitialStateType>(
-  initialState
-);
+export const NotificationContext =
+  createContext<InitialStateType>(initialState);
 
 const NotificationProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -118,7 +117,7 @@ const NotificationProvider = ({ children }: Props) => {
       message: JSX.Element | string | null,
       options?: {
         persistOnPageChange?: boolean;
-      }
+      },
     ) => {
       // wrapping the dispatch in a timeout ensures it is evaluated on the next event loop,
       // preventing bugs related to the FlashMessage's self-hiding behavior on URL changes.
@@ -132,7 +131,7 @@ const NotificationProvider = ({ children }: Props) => {
         });
       });
     },
-    []
+    [],
   );
 
   const renderMultiFlash = useCallback((options?: MultiFlashOptions) => {
@@ -157,7 +156,7 @@ const NotificationProvider = ({ children }: Props) => {
       renderMultiFlash,
       hideFlash,
     }),
-    [state.notification, renderFlash, renderMultiFlash, hideFlash]
+    [state.notification, renderFlash, renderMultiFlash, hideFlash],
   );
 
   return (

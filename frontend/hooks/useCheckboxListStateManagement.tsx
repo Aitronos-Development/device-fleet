@@ -10,7 +10,7 @@ interface ICheckedPolicy {
 
 const useCheckboxListStateManagement = (
   allPolicies: IPolicy[],
-  automatedPolicies: number[] | undefined
+  automatedPolicies: number[] | undefined,
 ) => {
   const [policyItems, setPolicyItems] = useState<ICheckedPolicy[]>(() => {
     return allPolicies.map(({ name, id }) => ({
@@ -25,8 +25,8 @@ const useCheckboxListStateManagement = (
       prevItems.map((policy) =>
         policy.id !== policyId
           ? policy
-          : { ...policy, isChecked: !policy.isChecked }
-      )
+          : { ...policy, isChecked: !policy.isChecked },
+      ),
     );
   };
 

@@ -13,9 +13,8 @@ const AuthGlobalAdminMaintainerRoutes = ({
   children,
 }: IAuthGlobalAdminMaintainerRoutesProps) => {
   const handlePageError = useErrorHandler();
-  const { currentUser, isGlobalAdmin, isGlobalMaintainer } = useContext(
-    AppContext
-  );
+  const { currentUser, isGlobalAdmin, isGlobalMaintainer } =
+    useContext(AppContext);
 
   if (!currentUser) {
     return null;

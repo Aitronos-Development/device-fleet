@@ -22,7 +22,7 @@ const baseClass = "end-user-authentication";
 const getEnabledEndUserAuth = (
   currentTeamId: number,
   globalConfig?: IConfig,
-  teamConfig?: ITeamConfig
+  teamConfig?: ITeamConfig,
 ) => {
   if (globalConfig === undefined && teamConfig === undefined) {
     return false;
@@ -72,7 +72,7 @@ const EndUserAuthentication = ({
   const defaultIsEndUserAuthEnabled = getEnabledEndUserAuth(
     currentTeamId,
     globalConfig,
-    teamConfig
+    teamConfig,
   );
 
   const renderContent = () => {

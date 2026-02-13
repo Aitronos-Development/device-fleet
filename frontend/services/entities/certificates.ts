@@ -73,10 +73,11 @@ export interface IAddCert {
 }
 
 export default {
-  getCertificateAuthoritiesList: (): Promise<IGetCertAuthoritiesListResponse> => {
-    const { CERTIFICATE_AUTHORITIES } = endpoints;
-    return sendRequest("GET", CERTIFICATE_AUTHORITIES);
-  },
+  getCertificateAuthoritiesList:
+    (): Promise<IGetCertAuthoritiesListResponse> => {
+      const { CERTIFICATE_AUTHORITIES } = endpoints;
+      return sendRequest("GET", CERTIFICATE_AUTHORITIES);
+    },
 
   getCertificateAuthority: (id: number): Promise<IGetCertAuthorityResponse> => {
     const { CERTIFICATE_AUTHORITY } = endpoints;
@@ -84,7 +85,7 @@ export default {
   },
 
   addCertificateAuthority: (
-    certData: IAddCertAuthorityBody
+    certData: IAddCertAuthorityBody,
   ): Promise<IAddCertAuthorityResponse> => {
     const { CERTIFICATE_AUTHORITIES } = endpoints;
     return sendRequest("POST", CERTIFICATE_AUTHORITIES, certData);
@@ -92,7 +93,7 @@ export default {
 
   editCertificateAuthority: (
     id: number,
-    updateData: IEditCertAuthorityBody
+    updateData: IEditCertAuthorityBody,
   ): Promise<void> => {
     const { CERTIFICATE_AUTHORITY } = endpoints;
     return sendRequest("PATCH", CERTIFICATE_AUTHORITY(id), updateData);
@@ -118,7 +119,7 @@ export default {
 
     return sendRequest(
       "GET",
-      queryString ? CERTIFICATES.concat(`?${queryString}`) : CERTIFICATES
+      queryString ? CERTIFICATES.concat(`?${queryString}`) : CERTIFICATES,
     );
   },
   addCert: ({ name, certAuthorityId, subjectName, teamId }: IAddCert) => {

@@ -29,7 +29,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -56,7 +56,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -83,7 +83,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -109,13 +109,13 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.getByText("Query").parentElement?.parentElement?.parentElement
+        screen.getByText("Query").parentElement?.parentElement?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
 
       await waitFor(() => {
@@ -124,7 +124,7 @@ describe("Host Actions Dropdown", () => {
         });
 
         expect(
-          screen.getByText(/You can't query an offline host./i)
+          screen.getByText(/You can't query an offline host./i),
         ).toBeInTheDocument();
       });
     });
@@ -147,12 +147,12 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
       expect(
-        screen.getByText("Query").parentElement?.parentElement?.parentElement
+        screen.getByText("Query").parentElement?.parentElement?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
     });
 
@@ -174,13 +174,13 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="locking"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(screen.getByText("Query").parentElement).toHaveClass(
-        "actions-dropdown-select__option--is-disabled"
+        "actions-dropdown-select__option--is-disabled",
       );
     });
   });
@@ -208,13 +208,13 @@ describe("Host Actions Dropdown", () => {
           hostScriptsEnabled
           isConnectedToFleetMdm={false}
           hostPlatform="darwin"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
 
@@ -240,13 +240,13 @@ describe("Host Actions Dropdown", () => {
           hostScriptsEnabled
           isConnectedToFleetMdm
           hostPlatform="ios"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
 
@@ -272,13 +272,13 @@ describe("Host Actions Dropdown", () => {
           hostScriptsEnabled
           isConnectedToFleetMdm
           hostPlatform="android"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
 
@@ -303,7 +303,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
           isConnectedToFleetMdm
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -332,7 +332,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
           hostPlatform="debian"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -361,7 +361,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
           hostPlatform="windows"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -392,7 +392,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -421,7 +421,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -451,7 +451,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -481,7 +481,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -509,7 +509,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -538,13 +538,13 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(screen.getByText("Turn off MDM").parentElement).toHaveClass(
-        "actions-dropdown-select__option--is-disabled"
+        "actions-dropdown-select__option--is-disabled",
       );
     });
 
@@ -569,7 +569,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="windows"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -597,7 +597,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus="On (automatic)"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -623,7 +623,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus="On (automatic)"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -650,7 +650,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus="On (automatic)"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -677,7 +677,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus="On (automatic)"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -709,7 +709,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -739,13 +739,13 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="debian"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.getByText("Lock").parentElement?.parentElement?.parentElement
+        screen.getByText("Lock").parentElement?.parentElement?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
 
       await waitFor(() => {
@@ -754,7 +754,7 @@ describe("Host Actions Dropdown", () => {
         });
 
         expect(
-          screen.getByText(/fleetd agent with --enable-scripts/i)
+          screen.getByText(/fleetd agent with --enable-scripts/i),
         ).toBeInTheDocument();
       });
     });
@@ -781,7 +781,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -811,7 +811,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -843,7 +843,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -873,7 +873,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocking"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -903,7 +903,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -933,7 +933,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -964,7 +964,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -994,13 +994,13 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="windows"
           hostMdmDeviceStatus="locked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.getByText("Unlock").parentElement?.parentElement?.parentElement
+        screen.getByText("Unlock").parentElement?.parentElement?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
 
       await waitFor(() => {
@@ -1009,7 +1009,7 @@ describe("Host Actions Dropdown", () => {
         });
 
         expect(
-          screen.getByText(/fleetd agent with --enable-scripts/i)
+          screen.getByText(/fleetd agent with --enable-scripts/i),
         ).toBeInTheDocument();
       });
     });
@@ -1038,7 +1038,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1069,7 +1069,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="windows"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1100,7 +1100,7 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="darwin"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1130,13 +1130,13 @@ describe("Host Actions Dropdown", () => {
           hostPlatform="debian"
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
-        screen.getByText("Wipe").parentElement?.parentElement?.parentElement
+        screen.getByText("Wipe").parentElement?.parentElement?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
 
       await waitFor(() => {
@@ -1145,7 +1145,7 @@ describe("Host Actions Dropdown", () => {
         });
 
         expect(
-          screen.getByText(/fleetd agent with --enable-scripts/i)
+          screen.getByText(/fleetd agent with --enable-scripts/i),
         ).toBeInTheDocument();
       });
     });
@@ -1177,7 +1177,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1209,7 +1209,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={null}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1220,8 +1220,8 @@ describe("Host Actions Dropdown", () => {
         screen
           .getByText("Run script")
           .parentElement?.parentElement?.parentElement?.classList.contains(
-            "actions-dropdown-select__option--is-disabled"
-          )
+            "actions-dropdown-select__option--is-disabled",
+          ),
       ).toBeFalsy();
 
       await waitFor(() => {
@@ -1230,7 +1230,7 @@ describe("Host Actions Dropdown", () => {
         });
 
         expect(
-          screen.queryByText(/fleetd agent with --enable-scripts/i)
+          screen.queryByText(/fleetd agent with --enable-scripts/i),
         ).toBeNull();
       });
     });
@@ -1260,19 +1260,19 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
 
       expect(
         screen.getByText("Run script").parentElement?.parentElement
-          ?.parentElement
+          ?.parentElement,
       ).toHaveClass("actions-dropdown-select__option--is-disabled");
 
       await waitFor(() => user.hover(screen.getByText("Run script")));
       expect(
-        screen.getByText(/fleetd agent with --enable-scripts/i)
+        screen.getByText(/fleetd agent with --enable-scripts/i),
       ).toBeInTheDocument();
     });
 
@@ -1301,7 +1301,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1313,8 +1313,8 @@ describe("Host Actions Dropdown", () => {
 
         expect(
           screen.getByText(
-            /Running scripts is disabled in organization settings./i
-          )
+            /Running scripts is disabled in organization settings./i,
+          ),
         ).toBeInTheDocument();
       });
     });
@@ -1338,7 +1338,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1365,7 +1365,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1392,7 +1392,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmEnrollmentStatus={null}
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1424,7 +1424,7 @@ describe("Host Actions Dropdown", () => {
           isConnectedToFleetMdm
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1436,7 +1436,7 @@ describe("Host Actions Dropdown", () => {
       expect(screen.queryByText("Query")).not.toBeInTheDocument();
       expect(screen.queryByText("Run script")).not.toBeInTheDocument();
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
 
@@ -1462,7 +1462,7 @@ describe("Host Actions Dropdown", () => {
           isConnectedToFleetMdm
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled={false}
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1474,7 +1474,7 @@ describe("Host Actions Dropdown", () => {
       expect(screen.queryByText("Query")).not.toBeInTheDocument();
       expect(screen.queryByText("Run script")).not.toBeInTheDocument();
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
   });
@@ -1502,7 +1502,7 @@ describe("Host Actions Dropdown", () => {
           isConnectedToFleetMdm
           hostScriptsEnabled
           hostPlatform="ios"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1516,7 +1516,7 @@ describe("Host Actions Dropdown", () => {
       expect(screen.queryByText("Unlock")).not.toBeInTheDocument();
       expect(screen.queryByText("Turn off MDM")).not.toBeInTheDocument();
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
 
@@ -1541,7 +1541,7 @@ describe("Host Actions Dropdown", () => {
           hostMdmDeviceStatus="unlocked"
           hostScriptsEnabled
           hostPlatform="ipados"
-        />
+        />,
       );
 
       await user.click(screen.getByText("Actions"));
@@ -1555,7 +1555,7 @@ describe("Host Actions Dropdown", () => {
       expect(screen.queryByText("Unlock")).not.toBeInTheDocument();
       expect(screen.queryByText("Turn off MDM")).not.toBeInTheDocument();
       expect(
-        screen.queryByText("Show disk encryption key")
+        screen.queryByText("Show disk encryption key"),
       ).not.toBeInTheDocument();
     });
   });

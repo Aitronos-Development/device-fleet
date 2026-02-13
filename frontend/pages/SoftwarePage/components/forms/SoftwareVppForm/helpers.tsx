@@ -24,7 +24,7 @@ const FORM_VALIDATION_CONFIG: Record<
           // there must be at least one label target selected
           return (
             Object.keys(formData.labelTargets).find(
-              (key) => formData.labelTargets[key]
+              (key) => formData.labelTargets[key],
             ) !== undefined
           );
         },
@@ -44,7 +44,7 @@ export const generateFormValidation = (formData: ISoftwareVppFormData) => {
   Object.keys(FORM_VALIDATION_CONFIG).forEach((key) => {
     const objKey = key as IFormValidationKey;
     const failedValidation = FORM_VALIDATION_CONFIG[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

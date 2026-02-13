@@ -19,7 +19,7 @@ const MOCK_POLICY_SOFTWARE = {
 };
 
 const createMockPolicyForInstallSoftware = (
-  overrides: Partial<IFormPolicy> = {}
+  overrides: Partial<IFormPolicy> = {},
 ): IFormPolicy =>
   ({
     id: 1,
@@ -28,16 +28,15 @@ const createMockPolicyForInstallSoftware = (
     installSoftwareEnabled: false,
     swIdToInstall: undefined,
     ...overrides,
-  } as IFormPolicy);
+  }) as IFormPolicy;
 
 describe("getOriginalSoftwareState", () => {
   it("extracts original software id when present", () => {
     const policy = createMockPolicyForInstallSoftware({
       install_software: MOCK_POLICY_SOFTWARE,
     });
-    const { originallyEnabled, originalSwId } = getOriginalSoftwareState(
-      policy
-    );
+    const { originallyEnabled, originalSwId } =
+      getOriginalSoftwareState(policy);
 
     expect(originallyEnabled).toBe(true);
     expect(originalSwId).toBe(20);

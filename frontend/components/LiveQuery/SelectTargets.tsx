@@ -46,7 +46,7 @@ interface ISelectTargetsProps {
   goToQueryEditor: () => void;
   goToRunQuery: () => void;
   setSelectedTargets: // TODO: Refactor policy targets to streamline selectedTargets/selectedTargetsByType
-  | React.Dispatch<React.SetStateAction<ITarget[]>> // Used for policies page level useState hook
+    | React.Dispatch<React.SetStateAction<ITarget[]>> // Used for policies page level useState hook
     | ((value: ITarget[]) => void); // Used for queries app level QueryContext
   setTargetedHosts: React.Dispatch<React.SetStateAction<IHost[]>>;
   setTargetedLabels: React.Dispatch<React.SetStateAction<ILabel[]>>;
@@ -87,7 +87,7 @@ const parseLabels = (list?: ILabelSummary[]) => {
         l.name === "macOS" ||
         l.name === "MS Windows" ||
         l.name === "All Linux" ||
-        l.name === "chrome"
+        l.name === "chrome",
     ) || [];
   const other = list?.filter((l) => l.label_type === "regular") || [];
 
@@ -97,7 +97,7 @@ const parseLabels = (list?: ILabelSummary[]) => {
 /** Returns the index at which the sum of the names in the list exceed the maximum character length */
 const getTruncatedEntityCount = (
   list: ISelectLabel[] | ISelectTeam[],
-  maxLength: number
+  maxLength: number,
 ): number => {
   let totalLength = 0;
   let index = 0;
@@ -143,7 +143,7 @@ const SelectTargets = ({
       setIsDebouncing(false);
     },
     DEBOUNCE_DELAY,
-    { trailing: true }
+    { trailing: true },
   );
 
   const {
@@ -157,7 +157,7 @@ const SelectTargets = ({
       select: (data) => data.teams,
       enabled: isPremiumTier,
       staleTime: STALE_TIME, // TODO: confirm
-    }
+    },
   );
 
   const {
@@ -171,7 +171,7 @@ const SelectTargets = ({
     {
       select: (data) => data.labels,
       staleTime: STALE_TIME, // TODO: confirm
-    }
+    },
   );
 
   const {
@@ -199,7 +199,7 @@ const SelectTargets = ({
       select: (data) => data.hosts,
       enabled: !!debouncedSearchText,
       // staleTime: 5000, // TODO: try stale time if further performance optimizations are needed
-    }
+    },
   );
 
   const {
@@ -229,13 +229,13 @@ const SelectTargets = ({
         setTargetsTotalCount(data.targets_count || 0);
       },
       staleTime: STALE_TIME, // TODO: confirm
-    }
+    },
   );
 
   // Ensure that the team or label list is expanded on the first load only if a hidden entity is already selected
   const shouldExpandList = (
     targetedList: ISelectLabel[] | ISelectTeam[],
-    truncatedList: ISelectLabel[] | ISelectTeam[]
+    truncatedList: ISelectLabel[] | ISelectTeam[],
   ) => {
     // Set used to improve lookup time
     const truncatedIds = new Set(truncatedList.map((entity) => entity.id));
@@ -249,12 +249,12 @@ const SelectTargets = ({
       const truncatedLabels =
         labels?.other?.slice(
           0,
-          getTruncatedEntityCount(labels?.other, SECTION_CHARACTER_LIMIT)
+          getTruncatedEntityCount(labels?.other, SECTION_CHARACTER_LIMIT),
         ) || [];
       const truncatedTeams =
         teams?.slice(
           0,
-          getTruncatedEntityCount(teams, SECTION_CHARACTER_LIMIT)
+          getTruncatedEntityCount(teams, SECTION_CHARACTER_LIMIT),
         ) || [];
 
       if (shouldExpandList(targetedLabels, truncatedLabels)) {
@@ -295,45 +295,46 @@ const SelectTargets = ({
     goToQueryEditor();
   };
 
-  const handleButtonSelect = (selectedEntity: ISelectTargetsEntity) => (
-    e: React.MouseEvent<HTMLButtonElement>
-  ): void => {
-    e.preventDefault();
+  const handleButtonSelect =
+    (selectedEntity: ISelectTargetsEntity) =>
+    (e: React.MouseEvent<HTMLButtonElement>): void => {
+      e.preventDefault();
 
-    const prevTargets: ISelectTargetsEntity[] = isLabel(selectedEntity)
-      ? targetedLabels
-      : targetedTeams;
+      const prevTargets: ISelectTargetsEntity[] = isLabel(selectedEntity)
+        ? targetedLabels
+        : targetedTeams;
 
-    // if the target was previously selected, we want to remove it now
-    let newTargets = prevTargets.filter((t) => t.id !== selectedEntity.id);
-    // if the length remains the same, the target was not previously selected so we want to add it now
-    prevTargets.length === newTargets.length && newTargets.push(selectedEntity);
+      // if the target was previously selected, we want to remove it now
+      let newTargets = prevTargets.filter((t) => t.id !== selectedEntity.id);
+      // if the length remains the same, the target was not previously selected so we want to add it now
+      prevTargets.length === newTargets.length &&
+        newTargets.push(selectedEntity);
 
-    // Logic when to deselect/select "all hosts" when using more granulated filters
-    // If "all hosts" is selected
-    if (isAllHosts(selectedEntity)) {
-      // and "all hosts" is already selected, deselect it
-      if (targetedLabels.some((t) => isAllHosts(t))) {
-        newTargets = [];
-      } // else deselect everything but "all hosts"
+      // Logic when to deselect/select "all hosts" when using more granulated filters
+      // If "all hosts" is selected
+      if (isAllHosts(selectedEntity)) {
+        // and "all hosts" is already selected, deselect it
+        if (targetedLabels.some((t) => isAllHosts(t))) {
+          newTargets = [];
+        } // else deselect everything but "all hosts"
+        else {
+          newTargets = [selectedEntity];
+        }
+        setTargetedTeams([]);
+        setTargetedHosts([]);
+      }
+      // else deselect "all hosts"
       else {
-        newTargets = [selectedEntity];
+        if (targetedLabels.some((t) => isAllHosts(t))) {
+          setTargetedLabels([]);
+        }
+        newTargets = newTargets.filter((t) => !isAllHosts(t));
       }
-      setTargetedTeams([]);
-      setTargetedHosts([]);
-    }
-    // else deselect "all hosts"
-    else {
-      if (targetedLabels.some((t) => isAllHosts(t))) {
-        setTargetedLabels([]);
-      }
-      newTargets = newTargets.filter((t) => !isAllHosts(t));
-    }
 
-    isLabel(selectedEntity)
-      ? setTargetedLabels(newTargets as ILabel[])
-      : setTargetedTeams(newTargets as ITeam[]);
-  };
+      isLabel(selectedEntity)
+        ? setTargetedLabels(newTargets as ILabel[])
+        : setTargetedTeams(newTargets as ITeam[]);
+    };
 
   const handleRowSelect = (row: Row<IHost>) => {
     setTargetedHosts((prevHosts) => prevHosts.concat(row.original));
@@ -348,7 +349,7 @@ const SelectTargets = ({
   const handleRowRemove = (row: Row<IHost>) => {
     const removedHost = row.original;
     setTargetedHosts((prevHosts) =>
-      prevHosts.filter((h) => h.id !== removedHost.id)
+      prevHosts.filter((h) => h.id !== removedHost.id),
     );
   };
 
@@ -359,13 +360,13 @@ const SelectTargets = ({
 
   const renderTargetEntitySection = (
     entityType: string,
-    entityList: ISelectLabel[] | ISelectTeam[]
+    entityList: ISelectLabel[] | ISelectTeam[],
   ): JSX.Element => {
     const isSearchEnabled = entityType === "teams" || entityType === "labels";
     const searchTerm = (
       (entityType === "teams" ? searchTextTeams : searchTextLabels) || ""
     ).toLowerCase();
-    const arrFixed = entityList as Array<typeof entityList[number]>;
+    const arrFixed = entityList as Array<(typeof entityList)[number]>;
     const filteredEntities = isSearchEnabled
       ? arrFixed.filter((entity: ISelectLabel | ISelectTeam) => {
           if (isSearchEnabled) {
@@ -381,7 +382,7 @@ const SelectTargets = ({
       entityType === "teams" ? isTeamListExpanded : isLabelsListExpanded;
     const truncatedEntities = filteredEntities.slice(
       0,
-      getTruncatedEntityCount(filteredEntities, SECTION_CHARACTER_LIMIT)
+      getTruncatedEntityCount(filteredEntities, SECTION_CHARACTER_LIMIT),
     );
     const hiddenEntityCount =
       filteredEntities.length - truncatedEntities.length;
@@ -536,7 +537,7 @@ const SelectTargets = ({
         teams?.filter(
           (team) =>
             !permissions.isTeamObserver(currentUser, team.id) ||
-            permissions.isTeamObserverPlus(currentUser, team.id)
+            permissions.isTeamObserverPlus(currentUser, team.id),
         ) || []
       );
     }
@@ -548,7 +549,7 @@ const SelectTargets = ({
         (team) =>
           !permissions.isTeamObserver(currentUser, team.id) ||
           permissions.isTeamObserverPlus(currentUser, team.id) ||
-          isObserverCanRunQuery
+          isObserverCanRunQuery,
       ) || []
     );
   };

@@ -55,7 +55,7 @@ const PackQueriesTable = ({
 
   const onActionSelection = (
     action: string,
-    selectedQuery: IScheduledQuery
+    selectedQuery: IScheduledQuery,
   ) => {
     switch (action) {
       case "edit":

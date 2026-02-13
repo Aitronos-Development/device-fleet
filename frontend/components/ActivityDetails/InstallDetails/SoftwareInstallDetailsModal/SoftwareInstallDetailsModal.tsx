@@ -127,7 +127,7 @@ export const StatusMessage = ({
   );
 
   const displayTimeStamp = ["failed_install", "installed"].includes(
-    status || ""
+    status || "",
   )
     ? ` (${formatDistanceToNow(new Date(updated_at || created_at), {
         includeSeconds: true,
@@ -258,11 +258,12 @@ export const SoftwareInstallDetailsModal = ({
     ? !!hostSoftware.software_package?.last_install
     : true; // if no hostSoftware passed in, can assume this is the activity feed, meaning this can only refer to a Fleet-handled install
 
-  const { data: swInstallResult, isLoading, isError, error } = useQuery<
-    ISoftwareInstallResults,
-    AxiosError,
-    ISoftwareInstallResult
-  >(
+  const {
+    data: swInstallResult,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<ISoftwareInstallResults, AxiosError, ISoftwareInstallResult>(
     ["softwareInstallResults", installUUID],
     () => {
       return deviceAuthToken
@@ -274,7 +275,7 @@ export const SoftwareInstallDetailsModal = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       staleTime: 3000,
       select: (data) => data.results,
-    }
+    },
   );
 
   const renderInventoryVersionsSection = () => {
@@ -325,7 +326,7 @@ export const SoftwareInstallDetailsModal = ({
                 <Textarea key={label} label={label} variant="code">
                   {value}
                 </Textarea>
-              )
+              ),
           )}
       </>
     );
@@ -333,7 +334,7 @@ export const SoftwareInstallDetailsModal = ({
 
   // Hide version section for pending installs only
   const excludeVersions = ["pending_install"].includes(
-    swInstallResult?.status || ""
+    swInstallResult?.status || "",
   );
 
   const hasInstalledVersions = !!hostSoftware?.installed_versions?.length;
@@ -342,7 +343,7 @@ export const SoftwareInstallDetailsModal = ({
   const excludeInstallDetails =
     hasInstalledVersions &&
     ["failed_install", "failed_uninstall"].includes(
-      swInstallResult?.status || ""
+      swInstallResult?.status || "",
     );
 
   const hostDisplayname =
@@ -392,7 +393,7 @@ export const SoftwareInstallDetailsModal = ({
 
       if (
         !["installed", "pending_install", "failed_install"].includes(
-          swInstallResult.status
+          swInstallResult.status,
         )
       ) {
         return (
@@ -409,7 +410,7 @@ export const SoftwareInstallDetailsModal = ({
           installResult={installResultWithHostDisplayName}
           softwareName={getDisplayedSoftwareName(
             hostSoftware?.name,
-            hostSoftware?.display_name
+            hostSoftware?.display_name,
           )}
           isMyDevicePage={!!deviceAuthToken}
           contactUrl={contactUrl}

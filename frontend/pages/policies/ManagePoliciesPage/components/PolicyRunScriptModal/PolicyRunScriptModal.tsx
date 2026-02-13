@@ -84,7 +84,7 @@ const PolicyRunScriptModal = ({
     {
       select: (data) => data.scripts || [],
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   const onUpdate = useCallback(() => {
@@ -96,12 +96,12 @@ const PolicyRunScriptModal = ({
 
   const onSelectPolicyScript = (
     item: IFormPolicy,
-    { value }: IScriptDropdownField
+    { value }: IScriptDropdownField,
   ) => {
     // Script name needed for error message rendering
     const findScriptNameById = () => {
       const foundScript = availableScripts?.find(
-        (script) => script.id === value
+        (script) => script.id === value,
       );
       return foundScript ? foundScript.name : "";
     };
@@ -160,7 +160,7 @@ const PolicyRunScriptModal = ({
               isSelected="runScriptEnabled"
               disableSave={(changedItems) => {
                 return changedItems.some(
-                  (item) => item.runScriptEnabled && !item.scriptIdToRun
+                  (item) => item.runScriptEnabled && !item.scriptIdToRun,
                 )
                   ? "Add scripts to all selected policies to save."
                   : false;
@@ -191,7 +191,7 @@ const PolicyRunScriptModal = ({
                           onSelectPolicyScript(item, {
                             name: formPolicy.name,
                             value,
-                          })
+                          }),
                         )
                       }
                       placeholder="Select script"

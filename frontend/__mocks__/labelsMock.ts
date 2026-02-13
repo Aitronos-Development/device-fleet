@@ -30,7 +30,7 @@ const DEFAULT_GET_LABEL_RESPONSE_MOCK: IGetLabelResponse = {
 };
 
 export const createMockGetLabelResponse = (
-  overrides?: Partial<IGetLabelResponse>
+  overrides?: Partial<IGetLabelResponse>,
 ): IGetLabelResponse => {
   return { ...DEFAULT_GET_LABEL_RESPONSE_MOCK, ...overrides };
 };

@@ -47,12 +47,12 @@ const SoftwareIcon = ({
       enabled: isApiUrl,
       retry: false,
       select: (blob) => (blob ? URL.createObjectURL(blob) : ""),
-    }
+    },
   );
 
   const imgClasses = classnames(
     `${baseClass}__software-img`,
-    `${baseClass}__software-img-${size}`
+    `${baseClass}__software-img-${size}`,
   );
 
   let iconSrc: string | null = null;

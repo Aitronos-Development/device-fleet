@@ -40,7 +40,7 @@ const DEFAULT_QUERY_PARAMS: SelfServiceQueryParams = {
 };
 
 const createTestProps = (
-  overrides: Partial<ISelfServiceCardProps> = {}
+  overrides: Partial<ISelfServiceCardProps> = {},
 ): ISelfServiceCardProps => ({
   contactUrl: "http://example.com/contact",
   queryParams: DEFAULT_QUERY_PARAMS,
@@ -103,12 +103,12 @@ describe("SelfServiceCard", () => {
     render(<SelfServiceCard {...props} />);
 
     expect(
-      screen.getByText("No self-service software available yet")
+      screen.getByText("No self-service software available yet"),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Your organization didn’t add any self-service software./i
-      )
+        /Your organization didn’t add any self-service software./i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -121,8 +121,8 @@ describe("SelfServiceCard", () => {
     expect(screen.getByText("Self-service")).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Install organization-approved apps provided by your IT department/
-      )
+        /Install organization-approved apps provided by your IT department/,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -144,7 +144,7 @@ describe("SelfServiceCard", () => {
     render(<SelfServiceCard {...props} />);
 
     expect(
-      screen.queryByRole("link", { name: /reach out to IT/i })
+      screen.queryByRole("link", { name: /reach out to IT/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -188,7 +188,7 @@ describe("SelfServiceCard", () => {
 
     expect(screen.getByText("No items match your search")).toBeInTheDocument();
     expect(
-      screen.getByText(/Not finding what you're looking for/)
+      screen.getByText(/Not finding what you're looking for/),
     ).toBeInTheDocument();
 
     const contactLink = screen.getAllByRole("link", {

@@ -55,7 +55,7 @@ interface IMutuallyExclusiveHostParams {
 export const parseQueryValueToNumberOrUndefined = (
   value: QueryValues,
   min?: number,
-  max?: number
+  max?: number,
 ): number | undefined => {
   const isWithinRange = (num: number) => {
     if (min !== undefined && max !== undefined) {
@@ -79,7 +79,7 @@ export const parseQueryValueToNumberOrUndefined = (
 const reduceQueryParams = (
   params: string[],
   value: FilteredQueryValues,
-  key: string
+  key: string,
 ) => {
   key && params.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
   return params;
@@ -88,7 +88,7 @@ const reduceQueryParams = (
 const filterEmptyParams = (queryParams: QueryParams) => {
   return omitBy(
     queryParams,
-    (value) => value === undefined || value === "" || value === null
+    (value) => value === undefined || value === "" || value === null,
   ) as Dictionary<FilteredQueryValues>;
 };
 
@@ -106,7 +106,7 @@ export const buildQueryStringFromParams = <T>(queryParams: QueryParams2<T>) => {
     queryString = reduce<FilteredQueryParams, string[]>(
       filteredParams,
       reduceQueryParams,
-      []
+      [],
     ).join("&");
   }
   return queryString;
@@ -120,7 +120,7 @@ export const buildQueryStringFromParams = <T>(queryParams: QueryParams2<T>) => {
  */
 export const getPathWithQueryParams = <T>(
   endpoint: string,
-  queryParams?: QueryParams2<T>
+  queryParams?: QueryParams2<T>,
 ) => {
   if (!queryParams) {
     return endpoint;
@@ -294,7 +294,8 @@ export const reconcileMutuallyExclusiveHostParams = ({
       };
     case !!scriptBatchExecutionId:
       return {
-        [HOSTS_QUERY_PARAMS.SCRIPT_BATCH_EXECUTION_STATUS]: scriptBatchExecutionStatus,
+        [HOSTS_QUERY_PARAMS.SCRIPT_BATCH_EXECUTION_STATUS]:
+          scriptBatchExecutionStatus,
         [HOSTS_QUERY_PARAMS.SCRIPT_BATCH_EXECUTION_ID]: scriptBatchExecutionId,
       };
     default:
@@ -330,7 +331,7 @@ type QueryParamish<T> = keyof T extends string
   : never;
 
 export const convertParamsToSnakeCase = <T extends QueryParamish<T>>(
-  params: T
+  params: T,
 ) => {
   return reduce<typeof params, QueryParams>(
     params,
@@ -338,6 +339,6 @@ export const convertParamsToSnakeCase = <T extends QueryParamish<T>>(
       result[snakeCase(key)] = val;
       return result;
     },
-    {}
+    {},
   );
 };

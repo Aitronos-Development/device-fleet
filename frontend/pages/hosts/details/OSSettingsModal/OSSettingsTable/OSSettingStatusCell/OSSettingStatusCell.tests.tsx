@@ -17,7 +17,7 @@ describe("OS setting status cell", () => {
         profileName="Test Profile"
         status={status}
         operationType={operationType}
-      />
+      />,
     );
 
     expect(screen.getByText("Verifying")).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe("OS setting status cell", () => {
         profileName="Test Profile"
         status={status}
         operationType={operationType}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Verifying");
@@ -55,7 +55,7 @@ describe("OS setting status cell", () => {
         operationType="install"
         hostPlatform="android"
         profileUUID={FLEET_ANDROID_CERTIFICATE_TEMPLATE_PROFILE_ID}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Enforcing (pending)");
@@ -63,7 +63,7 @@ describe("OS setting status cell", () => {
 
     await user.hover(statusText);
     expect(
-      screen.getByText(/The host is running the command/)
+      screen.getByText(/The host is running the command/),
     ).toBeInTheDocument();
   });
   it("Displays Pending UI for 'delivering' status with optype 'install'", async () => {
@@ -76,7 +76,7 @@ describe("OS setting status cell", () => {
         operationType="install"
         hostPlatform="android"
         profileUUID={FLEET_ANDROID_CERTIFICATE_TEMPLATE_PROFILE_ID}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Enforcing (pending)");
@@ -84,7 +84,7 @@ describe("OS setting status cell", () => {
 
     await user.hover(statusText);
     expect(
-      screen.getByText(/The host is running the command/)
+      screen.getByText(/The host is running the command/),
     ).toBeInTheDocument();
   });
   it("Displays Pending UI for 'delivered' status with optype 'install'", async () => {
@@ -97,7 +97,7 @@ describe("OS setting status cell", () => {
         operationType="install"
         hostPlatform="android"
         profileUUID={FLEET_ANDROID_CERTIFICATE_TEMPLATE_PROFILE_ID}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Enforcing (pending)");
@@ -105,7 +105,7 @@ describe("OS setting status cell", () => {
 
     await user.hover(statusText);
     expect(
-      screen.getByText(/The host is running the command/)
+      screen.getByText(/The host is running the command/),
     ).toBeInTheDocument();
   });
   it("Displays Pending UI for 'delivering' status with optype 'remove'", async () => {
@@ -118,7 +118,7 @@ describe("OS setting status cell", () => {
         operationType="remove"
         hostPlatform="android"
         profileUUID={FLEET_ANDROID_CERTIFICATE_TEMPLATE_PROFILE_ID}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Removing enforcement (pending)");
@@ -126,7 +126,7 @@ describe("OS setting status cell", () => {
 
     await user.hover(statusText);
     expect(
-      screen.getByText(/The host is running the command/)
+      screen.getByText(/The host is running the command/),
     ).toBeInTheDocument();
   });
   it("Displays Pending UI for 'delivered' status with optype 'remove'", async () => {
@@ -139,7 +139,7 @@ describe("OS setting status cell", () => {
         operationType="remove"
         hostPlatform="android"
         profileUUID={FLEET_ANDROID_CERTIFICATE_TEMPLATE_PROFILE_ID}
-      />
+      />,
     );
 
     const statusText = screen.getByText("Removing enforcement (pending)");
@@ -147,7 +147,7 @@ describe("OS setting status cell", () => {
 
     await user.hover(statusText);
     expect(
-      screen.getByText(/The host is running the command/)
+      screen.getByText(/The host is running the command/),
     ).toBeInTheDocument();
   });
 });

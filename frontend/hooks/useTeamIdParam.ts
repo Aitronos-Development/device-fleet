@@ -18,16 +18,16 @@ import permissions from "utilities/permissions";
 import sort from "utilities/sort";
 
 type OnTeamChangeFuncShouldStripParam = (
-  teamIdForApi: number | undefined
+  teamIdForApi: number | undefined,
 ) => boolean;
 
 type OnTeamChangeFuncShouldStripParamConsiderCurTeam = (
   newTeamid: number | undefined,
-  curTeamId: number | undefined
+  curTeamId: number | undefined,
 ) => boolean;
 
 type OnTeamChangeFuncShouldReplaceParam = (
-  teamIdForApi: number | undefined
+  teamIdForApi: number | undefined,
 ) => [boolean, string];
 
 type ChangeTeamOverrideParamFn =
@@ -36,7 +36,7 @@ type ChangeTeamOverrideParamFn =
   | OnTeamChangeFuncShouldStripParamConsiderCurTeam;
 
 const considersCurTeam = (
-  fn: ChangeTeamOverrideParamFn
+  fn: ChangeTeamOverrideParamFn,
 ): fn is OnTeamChangeFuncShouldStripParamConsiderCurTeam => fn.length === 2;
 
 /**
@@ -66,7 +66,7 @@ const rebuildQueryStringWithTeamId = (
   queryString: string,
   newTeamId: number,
   curTeamId: number | undefined,
-  configAdditionalParams?: IConfigOverrideParamsOnTeamChange
+  configAdditionalParams?: IConfigOverrideParamsOnTeamChange,
 ) => {
   const parts = splitQueryStringParts(queryString);
 
@@ -84,13 +84,13 @@ const rebuildQueryStringWithTeamId = (
   if (teamIndex === -1) {
     // nothing to remove/replace so add the new part (if any) and rejoin
     return joinQueryStringParts(
-      newTeamPart ? parts.concat(newTeamPart) : parts
+      newTeamPart ? parts.concat(newTeamPart) : parts,
     );
   }
 
   if (teamIndex !== findLastIndex(parts, (p) => p.startsWith("team_id="))) {
     console.warn(
-      `URL contains more than one team_id parameter: ${queryString}`
+      `URL contains more than one team_id parameter: ${queryString}`,
     );
   }
 
@@ -120,7 +120,7 @@ const rebuildQueryStringWithTeamId = (
 
       if (shouldStrip || shouldReplace) {
         const paramIndex = parts.findIndex((p) =>
-          p.startsWith(`${paramName}=`)
+          p.startsWith(`${paramName}=`),
         );
 
         if (shouldStrip && paramIndex !== -1) {
@@ -145,7 +145,7 @@ const rebuildQueryStringWithTeamId = (
 
 const filterUserTeamsByRole = (
   userTeams: ITeam[],
-  permittedAccessByUserRole?: Record<IUserRole, boolean>
+  permittedAccessByUserRole?: Record<IUserRole, boolean>,
 ) => {
   if (!permittedAccessByUserRole) {
     return userTeams;
@@ -153,7 +153,7 @@ const filterUserTeamsByRole = (
 
   return userTeams
     .filter(
-      ({ role }) => role && !!permittedAccessByUserRole[role as IUserRole]
+      ({ role }) => role && !!permittedAccessByUserRole[role as IUserRole],
     )
     .sort((a, b) => sort.caseInsensitiveAsc(a.name, b.name));
 };
@@ -367,7 +367,7 @@ export const useTeamIdParam = ({
   const userTeams = useMemo(
     () =>
       getUserTeams({ currentUser, availableTeams, permittedAccessByTeamRole }),
-    [availableTeams, currentUser, permittedAccessByTeamRole]
+    [availableTeams, currentUser, permittedAccessByTeamRole],
   );
 
   const defaultTeam = useMemo(
@@ -379,13 +379,13 @@ export const useTeamIdParam = ({
         userTeams,
         isPrimoMode,
       }),
-    [currentUser, includeAllTeams, includeNoTeam, isPrimoMode, userTeams]
+    [currentUser, includeAllTeams, includeNoTeam, isPrimoMode, userTeams],
   );
 
   const currentTeam = useMemo(
     () =>
       userTeams?.find((t) => t.id === coerceAllTeamsId(query?.team_id || "")),
-    [query?.team_id, userTeams]
+    [query?.team_id, userTeams],
   );
 
   const handleTeamChange = useCallback(
@@ -406,10 +406,10 @@ export const useTeamIdParam = ({
               search,
               newTeamId,
               currentTeam?.id,
-              overrideParamsOnTeamChange
-            )
+              overrideParamsOnTeamChange,
+            ),
           )
-          .concat(hash || "")
+          .concat(hash || ""),
       );
     },
     [
@@ -421,7 +421,7 @@ export const useTeamIdParam = ({
       overrideParamsOnTeamChange,
       hash,
       setResetSelectedRows,
-    ]
+    ],
   );
 
   // reconcile router location and redirect to default team as applicable

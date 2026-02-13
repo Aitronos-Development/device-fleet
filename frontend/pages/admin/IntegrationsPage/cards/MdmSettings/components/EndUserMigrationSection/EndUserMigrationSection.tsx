@@ -152,7 +152,7 @@ const EndUserMigrationSection = ({ router }: IEndUserMigrationSectionProps) => {
         <SectionHeader title="End user migration workflow" />
         <EmptyTable
           className={`${baseClass}__abm-connect-message`}
-          header="Migration workflow for macOS hosts"
+          header="Migration workflow for macOS devices"
           info="Connect to Apple Business Manager to get started."
           primaryButton={<Button onClick={onClickConnect}>Connect</Button>}
         />

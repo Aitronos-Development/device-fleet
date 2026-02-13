@@ -324,7 +324,7 @@ const DEFAULT_QUERY_REPORT_MOCK: IQueryReport = {
 };
 
 const createMockQueryReport = (
-  overrides?: Partial<IQueryReport>
+  overrides?: Partial<IQueryReport>,
 ): IQueryReport => {
   return { ...DEFAULT_QUERY_REPORT_MOCK, ...overrides };
 };

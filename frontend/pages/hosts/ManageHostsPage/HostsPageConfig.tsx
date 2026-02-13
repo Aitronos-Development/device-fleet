@@ -47,7 +47,7 @@ export type ManageHostsPageQueryParams = Record<
   | "page"
   | "order_key"
   | "order_direction"
-  | typeof MANAGE_HOSTS_PAGE_FILTER_KEYS[number],
+  | (typeof MANAGE_HOSTS_PAGE_FILTER_KEYS)[number],
   string
 >;
 
@@ -61,33 +61,33 @@ export const DEFAULT_PAGE_INDEX = 0;
 export const hostSelectStatuses = [
   {
     disabled: false,
-    label: "All hosts",
+    label: "All devices",
     value: "",
-    helpText: "All hosts added to Fleet.",
+    helpText: "All devices added to Fleet.",
   },
   {
     disabled: false,
-    label: "Online hosts",
+    label: "Online devices",
     value: "online",
-    helpText: "Hosts that will respond to a live query.",
+    helpText: "Devices that will respond to a live query.",
   },
   {
     disabled: false,
-    label: "Offline hosts",
+    label: "Offline devices",
     value: "offline",
-    helpText: "Hosts that won’t respond to a live query.",
+    helpText: "Devices that won't respond to a live query.",
   },
   {
     disabled: false,
-    label: "Missing hosts",
+    label: "Missing devices",
     value: "missing",
-    helpText: "Hosts that have been offline for 30 days or more.",
+    helpText: "Devices that have been offline for 30 days or more.",
   },
   {
     disabled: false,
-    label: "New hosts",
+    label: "New devices",
     value: "new",
-    helpText: "Hosts added to Fleet in the last 24 hours.",
+    helpText: "Devices added to Fleet in the last 24 hours.",
   },
 ];
 

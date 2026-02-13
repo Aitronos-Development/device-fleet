@@ -26,7 +26,7 @@ describe("SummaryCard", () => {
         osVersion={createMockOSVersion({ hosts_count: 123 })}
         countsUpdatedAt={twoDaysAgo}
         teamIdForApi={7}
-      />
+      />,
     );
 
     expect(screen.getByText("Mac OS X")).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe("VulnerabilitiesCard", () => {
         isLoading={false}
         router={mockRouter}
         teamIdForApi={1}
-      />
+      />,
     );
 
     expect(screen.getByText("Vulnerabilities")).toBeInTheDocument();
@@ -63,13 +63,13 @@ describe("VulnerabilitiesCard", () => {
         })}
         isLoading={false}
         router={mockRouter}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /Vulnerabilities are not supported for this type of host/i
-      )
+        /Vulnerabilities are not supported for this type of host/i,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText(/iPadOS/i)).toBeInTheDocument();
   });
@@ -83,13 +83,13 @@ describe("KernelsCard", () => {
         isLoading={false}
         router={mockRouter}
         teamIdForApi={2}
-      />
+      />,
     );
 
     expect(screen.getByText("Kernels")).toBeInTheDocument();
     expect(screen.getByText("35 items")).toBeInTheDocument();
     expect(screen.getAllByText("6.11.0-26.26~24.04.1").length).toBeGreaterThan(
-      0
+      0,
     );
     expect(screen.getByText("14 vulnerabilities")).toBeInTheDocument();
   });
@@ -101,7 +101,7 @@ describe("KernelsCard", () => {
         isLoading={false}
         router={mockRouter}
         teamIdForApi={2}
-      />
+      />,
     );
 
     expect(screen.getByText("Kernels")).toBeInTheDocument();

@@ -19,7 +19,7 @@ interface IValidation {
   name: string;
   isValid: (
     formData: IAddSecretModalScheduleFormData,
-    validations?: IAddSecretModalFormValidation
+    validations?: IAddSecretModalFormValidation,
   ) => boolean;
   message?: IValidationMessage;
 }
@@ -81,7 +81,7 @@ const FORM_VALIDATIONS: IFormValidations = {
 
 const getErrorMessage = (
   formData: IAddSecretModalScheduleFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -91,7 +91,7 @@ const getErrorMessage = (
 
 export const validateFormData = (
   formData: IAddSecretModalScheduleFormData,
-  isSaving = false
+  isSaving = false,
 ) => {
   const formValidation: IAddSecretModalFormValidation = {
     isValid: true,
@@ -104,7 +104,7 @@ export const validateFormData = (
           return false; // Skip this validation if not saving
         }
         return !validation.isValid(formData, formValidation);
-      }
+      },
     );
 
     if (!failedValidation) {

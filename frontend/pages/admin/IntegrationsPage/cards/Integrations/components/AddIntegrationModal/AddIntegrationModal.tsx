@@ -17,7 +17,7 @@ interface IAddIntegrationModalProps {
   onCancel: () => void;
   onSubmit: (
     integrationSubmitData: IIntegration[],
-    integrationDestination: string
+    integrationDestination: string,
   ) => void;
   integrations: IZendeskJiraIntegrations;
   testingConnection: boolean;
@@ -34,13 +34,13 @@ const AddIntegrationModal = ({
   integrations,
   testingConnection,
 }: IAddIntegrationModalProps): JSX.Element => {
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [destination, setDestination] = useState("jira");
 
   const onDestinationChange = (
-    selectedDestination: SingleValue<CustomOptionType>
+    selectedDestination: SingleValue<CustomOptionType>,
   ) => {
     setDestination(selectedDestination?.value || "jira");
   };

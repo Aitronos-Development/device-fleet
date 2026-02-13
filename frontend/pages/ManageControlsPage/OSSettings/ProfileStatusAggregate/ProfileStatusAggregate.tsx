@@ -29,7 +29,7 @@ const ProfileStatusCount = ({
   hostCount,
   tooltipText,
 }: IProfileStatusCountProps) => {
-  const countText = hostCount === 1 ? "host" : "hosts";
+  const countText = hostCount === 1 ? "device" : "devices";
 
   return (
     <div className={`${baseClass}__profile-status-count`}>
@@ -85,7 +85,7 @@ const ProfileStatusAggregate = ({
 
     const path = getPathWithQueryParams(
       paths.MANAGE_HOSTS,
-      hostsByStatusParams
+      hostsByStatusParams,
     );
 
     return (

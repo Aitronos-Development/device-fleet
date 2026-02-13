@@ -43,7 +43,7 @@ const generateInstallerPoliciesTableConfig = ({
             PATHS.EDIT_POLICY(cellProps.row.original.id),
             {
               team_id: teamId,
-            }
+            },
           )}
         />
       ),

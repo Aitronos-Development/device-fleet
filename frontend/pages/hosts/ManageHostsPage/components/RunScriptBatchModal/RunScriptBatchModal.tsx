@@ -83,16 +83,14 @@ const RunScriptBatchModal = ({
 
   const [batchRunDate, setBatchRunDate] = useState<string>("");
   const [batchRunTime, setBatchRunTime] = useState<string>("");
-  const [
-    formValidation,
-    setFormValidation,
-  ] = useState<IRunScriptBatchModalFormValidation>(() =>
-    validateFormData({ date: batchRunDate, time: batchRunTime })
-  );
+  const [formValidation, setFormValidation] =
+    useState<IRunScriptBatchModalFormValidation>(() =>
+      validateFormData({ date: batchRunDate, time: batchRunTime }),
+    );
 
   const [runMode, setRunMode] = useState<"run_now" | "schedule">("run_now");
   const [selectedScript, setSelectedScript] = useState<IScript | undefined>(
-    undefined
+    undefined,
   );
   const [isUpdating, setIsUpdating] = useState(false);
   const [scriptForDetails, setScriptForDetails] = useState<
@@ -115,14 +113,14 @@ const RunScriptBatchModal = ({
       select: (data) => {
         return data.scripts || [];
       },
-    }
+    },
   );
 
   // Handle switching between "run now" and "schedule" modes.
   const onChangeRunMode = (mode: "run_now" | "schedule") => {
     setRunMode(mode);
     setFormValidation(
-      validateFormData({ date: batchRunDate, time: batchRunTime }, mode)
+      validateFormData({ date: batchRunDate, time: batchRunTime }, mode),
     );
   };
 
@@ -140,8 +138,8 @@ const RunScriptBatchModal = ({
           time: batchRunTime,
           [update.name]: update.value,
         },
-        runMode
-      )
+        runMode,
+      ),
     );
   };
 
@@ -181,7 +179,7 @@ const RunScriptBatchModal = ({
               >
                 Show schedule
               </Link>
-            </>
+            </>,
           );
         } else {
           renderFlash(
@@ -193,7 +191,7 @@ const RunScriptBatchModal = ({
               >
                 Show script activity
               </Link>
-            </>
+            </>,
           );
         }
         onCancel();
@@ -210,7 +208,7 @@ const RunScriptBatchModal = ({
         setIsUpdating(false);
       }
     },
-    [renderFlash, selectedHostIds, runMode, batchRunDate, batchRunTime]
+    [renderFlash, selectedHostIds, runMode, batchRunDate, batchRunTime],
   );
 
   const renderModalContent = () => {

@@ -21,7 +21,7 @@ describe("AddInstallSoftware", () => {
         onAddSoftware={noop}
         hasManualAgentInstall={false}
         platform="macos"
-      />
+      />,
     );
 
     expect(screen.getByText(/you can add software on the/i)).toBeVisible();
@@ -36,7 +36,7 @@ describe("AddInstallSoftware", () => {
         onAddSoftware={noop}
         hasManualAgentInstall={false}
         platform="macos"
-      />
+      />,
     );
 
     expect(screen.getByText(/No software selected/)).toBeVisible();
@@ -59,32 +59,32 @@ describe("AddInstallSoftware", () => {
               software_package: createMockSoftwarePackage({
                 install_during_setup: true,
               }),
-            })
+            }),
           ),
           createMockSoftwareTitle(),
         ]}
         onAddSoftware={noop}
         hasManualAgentInstall={false}
         platform="macos"
-      />
+      />,
     );
 
     expect(
       screen.getByText(
         (_, element) =>
           element?.textContent ===
-          "2 software items will be installed during setup."
-      )
+          "2 software items will be installed during setup.",
+      ),
     ).toBeVisible();
     expect(
-      screen.getByRole("button", { name: "Select software" })
+      screen.getByRole("button", { name: "Select software" }),
     ).toBeVisible();
 
     await user.hover(screen.getByText("installed during setup"));
 
     await waitFor(() => {
       const tooltip = screen.getByText(
-        /Installation order will depend on software name, starting with 0-9 then A-Z./i
+        /Installation order will depend on software name, starting with 0-9 then A-Z./i,
       );
       expect(tooltip).toBeInTheDocument();
     });
@@ -106,25 +106,25 @@ describe("AddInstallSoftware", () => {
               software_package: createMockSoftwarePackage({
                 install_during_setup: true,
               }),
-            })
+            }),
           ),
           createMockSoftwareTitle(),
         ]}
         onAddSoftware={noop}
         hasManualAgentInstall={false}
         platform="android"
-      />
+      />,
     );
 
     expect(
       screen.getByText(
         (_, element) =>
           element?.textContent ===
-          "2 software items will be installed during setup."
-      )
+          "2 software items will be installed during setup.",
+      ),
     ).toBeVisible();
     expect(
-      screen.getByRole("button", { name: "Select software" })
+      screen.getByRole("button", { name: "Select software" }),
     ).toBeVisible();
 
     await user.hover(screen.getByText("installed during setup"));
@@ -151,14 +151,14 @@ describe("AddInstallSoftware", () => {
               software_package: createMockSoftwarePackage({
                 install_during_setup: true,
               }),
-            })
+            }),
           ),
           createMockSoftwareTitle(),
         ]}
         onAddSoftware={noop}
         hasManualAgentInstall={false}
         platform="macos"
-      />
+      />,
     );
 
     const showAdvancedOptionsButton = screen.getByRole("button", {
@@ -184,7 +184,7 @@ describe("AddInstallSoftware", () => {
         onAddSoftware={noop}
         hasManualAgentInstall
         platform="macos"
-      />
+      />,
     );
 
     const addSoftwareButton = screen.getByRole("button", {
@@ -208,7 +208,7 @@ describe("AddInstallSoftware", () => {
           onAddSoftware={noop}
           hasManualAgentInstall
           platform={platform}
-        />
+        />,
       );
 
       const addSoftwareButton = screen.getByRole("button", {
@@ -216,6 +216,6 @@ describe("AddInstallSoftware", () => {
       });
       expect(addSoftwareButton).toBeVisible();
       expect(addSoftwareButton).not.toBeDisabled();
-    }
+    },
   );
 });

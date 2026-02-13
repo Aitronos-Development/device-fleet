@@ -19,14 +19,14 @@ describe("string utilities", () => {
     it("fixes a title cased string while ignoring special words in various places ", () => {
       expect(enforceFleetSentenceCasing("macOS")).toEqual("macOS");
       expect(enforceFleetSentenceCasing("macOS Settings")).toEqual(
-        "macOS settings"
+        "macOS settings",
       );
       expect(
-        enforceFleetSentenceCasing("osquery shouldn't be Capitalized")
+        enforceFleetSentenceCasing("osquery shouldn't be Capitalized"),
       ).toEqual("osquery shouldn't be capitalized");
     });
     expect(enforceFleetSentenceCasing("fleet uses MySQL")).toEqual(
-      "Fleet uses MySQL"
+      "Fleet uses MySQL",
     );
   });
 
@@ -100,13 +100,13 @@ describe("string utilities", () => {
 
     it("trims leading and trailing spaces", () => {
       expect(hyphenateString("   Leading and trailing   ")).toBe(
-        "leading-and-trailing"
+        "leading-and-trailing",
       );
     });
 
     it("collapses multiple spaces into one hyphen", () => {
       expect(hyphenateString("Multiple    spaces here")).toBe(
-        "multiple-spaces-here"
+        "multiple-spaces-here",
       );
     });
 
@@ -116,7 +116,7 @@ describe("string utilities", () => {
 
     it("handles already hyphenated and lowercase input", () => {
       expect(hyphenateString("already-hyphenated-title")).toBe(
-        "already-hyphenated-title"
+        "already-hyphenated-title",
       );
     });
 
@@ -138,7 +138,7 @@ describe("string utilities", () => {
 
     it("handles numbers attached to words", () => {
       expect(hyphenateString("Attached Numbered App3")).toBe(
-        "attached-numbered-app3"
+        "attached-numbered-app3",
       );
     });
   });

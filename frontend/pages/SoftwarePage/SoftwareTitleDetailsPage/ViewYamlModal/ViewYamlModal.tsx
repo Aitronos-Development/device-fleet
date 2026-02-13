@@ -181,7 +181,7 @@ const ViewYamlModal = ({
     } catch (err) {
       renderFlash(
         "error",
-        "Your icon could not be downloaded. Please download the image manually."
+        "Your icon could not be downloaded. Please download the image manually.",
       );
     }
   };

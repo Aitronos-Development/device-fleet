@@ -21,7 +21,7 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={0}
         platform="android"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     const notSupportedElement = container.querySelector(".not-supported");
@@ -37,11 +37,11 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={0}
         platform="android"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     const emptyElement = zeroContainer.querySelector(
-      ".disk-space-indicator__empty"
+      ".disk-space-indicator__empty",
     );
     expect(emptyElement).toBeInTheDocument();
     expect(emptyElement).toHaveTextContent("No data available");
@@ -56,7 +56,7 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={0}
         platform="android"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     expect(screen.getByText("Not supported")).toBeInTheDocument();
@@ -73,7 +73,7 @@ describe("Disk space Indicator", () => {
           percentDiskSpaceAvailable={0}
           platform="android"
           tooltipPosition="bottom"
-        />
+        />,
       );
 
       const notSupportedElement = container.querySelector(".not-supported");
@@ -88,7 +88,7 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={10}
         platform="darwin"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     const section = screen.getByTestId("section-0");
@@ -97,7 +97,7 @@ describe("Disk space Indicator", () => {
     await user.hover(section);
     await waitFor(() => {
       const tooltip = screen.getByText(
-        "Not enough disk space available to install most large operating systems updates."
+        "Not enough disk space available to install most large operating systems updates.",
       );
       expect(tooltip).toBeInTheDocument();
     });
@@ -110,7 +110,7 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={2}
         platform="windows"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     const section = screen.getByTestId("section-0");
@@ -120,7 +120,7 @@ describe("Disk space Indicator", () => {
 
     await waitFor(() => {
       const tooltip = screen.getByText(
-        "Not enough disk space available to install most small operating systems updates."
+        "Not enough disk space available to install most small operating systems updates.",
       );
       expect(tooltip).toBeInTheDocument();
     });
@@ -133,7 +133,7 @@ describe("Disk space Indicator", () => {
         percentDiskSpaceAvailable={15}
         platform="windows"
         tooltipPosition="bottom"
-      />
+      />,
     );
 
     const section = screen.getByTestId("section-0");
@@ -143,7 +143,7 @@ describe("Disk space Indicator", () => {
 
     await waitFor(() => {
       const tooltip = screen.getByText(
-        "Enough disk space available to install most operating systems updates."
+        "Enough disk space available to install most operating systems updates.",
       );
       expect(tooltip).toBeInTheDocument();
     });
@@ -156,7 +156,7 @@ describe("Disk space Indicator", () => {
         gigsTotalDiskSpace={100}
         gigsAllDiskSpace={120}
         platform="linux"
-      />
+      />,
     );
 
     await user.hover(screen.getByText(/GB/));

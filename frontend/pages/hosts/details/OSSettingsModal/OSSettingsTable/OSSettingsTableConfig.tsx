@@ -23,8 +23,10 @@ import {
   generateWinDiskEncryptionSetting,
 } from "../../helpers";
 
-export interface IHostMdmProfileWithAddedStatus
-  extends Omit<IHostMdmProfile, "status"> {
+export interface IHostMdmProfileWithAddedStatus extends Omit<
+  IHostMdmProfile,
+  "status"
+> {
   status: OsSettingsTableStatusValue;
 }
 
@@ -44,7 +46,7 @@ export type OsSettingsTableStatusValue =
 const generateTableConfig = (
   canResendProfiles: boolean,
   resendRequest: (profileUUID: string) => Promise<void>,
-  onProfileResent: () => void
+  onProfileResent: () => void,
 ): ITableColumnConfig[] => {
   return [
     {
@@ -124,8 +126,8 @@ const makeWindowsRows = ({ profiles, os_settings }: IHostMdmData) => {
     rows.push(
       generateWinDiskEncryptionSetting(
         os_settings.disk_encryption.status,
-        os_settings.disk_encryption.detail
-      )
+        os_settings.disk_encryption.detail,
+      ),
     );
   }
 
@@ -150,8 +152,8 @@ const makeLinuxRows = ({ profiles, os_settings }: IHostMdmData) => {
     rows.push(
       generateLinuxDiskEncryptionSetting(
         os_settings.disk_encryption.status,
-        os_settings.disk_encryption.detail
-      )
+        os_settings.disk_encryption.detail,
+      ),
     );
   }
 
@@ -185,7 +187,7 @@ const makeDarwinRows = ({ profiles, macos_settings }: IHostMdmData) => {
 
 export const generateTableData = (
   hostMDMData: IHostMdmData,
-  platform: string
+  platform: string,
 ) => {
   switch (platform) {
     case "windows":

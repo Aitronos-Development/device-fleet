@@ -61,7 +61,7 @@ const CertificatesTable = ({
           return undefined; // noop
       }
     },
-    [onNextPage, onPreviousPage, onSortChange, page, sortDirection, sortHeader]
+    [onNextPage, onPreviousPage, onSortChange, page, sortDirection, sortHeader],
   );
 
   const helpText = showHelpText ? (

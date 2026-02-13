@@ -11,7 +11,7 @@ describe("Last updated text", () => {
     const twoDaysAgo = currentDate.toISOString();
 
     render(
-      <LastUpdatedText whatToRetrieve="software" lastUpdatedAt={twoDaysAgo} />
+      <LastUpdatedText whatToRetrieve="software" lastUpdatedAt={twoDaysAgo} />,
     );
 
     const text = screen.getByText("Updated 2 days ago");
@@ -28,7 +28,7 @@ describe("Last updated text", () => {
 
   it("renders tooltip on hover", async () => {
     const { user } = renderWithSetup(
-      <LastUpdatedText whatToRetrieve="software" />
+      <LastUpdatedText whatToRetrieve="software" />,
     );
 
     const updatedNeverText = screen.getByText("Updated never");

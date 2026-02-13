@@ -15,7 +15,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
           }) as ISoftwareScriptResult
         }
         isMyDevicePage={false}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("pending-outline-icon")).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
         }
         isMyDevicePage
         contactUrl="http://support"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
     expect(screen.queryByText(/Test Host/)).not.toBeInTheDocument();
     expect(screen.getByText(/You can rerun/)).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /contact your IT admin/ })
+      screen.getByRole("link", { name: /contact your IT admin/ }),
     ).toHaveAttribute("href", "http://support");
   });
 
@@ -58,7 +58,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
           }) as ISoftwareScriptResult
         }
         isMyDevicePage
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
     expect(screen.getByText(/You can rerun/)).toBeInTheDocument();
     // Don't show link of not provided
     expect(
-      screen.queryByRole("link", { name: /contact your IT admin/ })
+      screen.queryByRole("link", { name: /contact your IT admin/ }),
     ).not.toBeInTheDocument();
   });
 
@@ -83,7 +83,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
         }
         isMyDevicePage={false}
         contactUrl="http://support"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-icon")).toBeInTheDocument();
@@ -101,7 +101,7 @@ describe("SoftwareScriptDetailsModal - StatusMessage component", () => {
           }) as ISoftwareScriptResult
         }
         isMyDevicePage={false}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("success-icon")).toBeInTheDocument();
@@ -125,7 +125,7 @@ describe("SoftwareScriptDetailsModal - ModalButtons component", () => {
         hostSoftwareId={99}
         onCancel={onCancel}
         onRerun={onRerun}
-      />
+      />,
     );
     expect(screen.getByRole("button", { name: "Rerun" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
@@ -141,11 +141,11 @@ describe("SoftwareScriptDetailsModal - ModalButtons component", () => {
   it("shows Done button for pending run", () => {
     const onCancel = jest.fn();
     render(
-      <ModalButtons installResultStatus="pending_script" onCancel={onCancel} />
+      <ModalButtons installResultStatus="pending_script" onCancel={onCancel} />,
     );
     expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Rerun" })
+      screen.queryByRole("button", { name: "Rerun" }),
     ).not.toBeInTheDocument();
   });
 
@@ -156,7 +156,7 @@ describe("SoftwareScriptDetailsModal - ModalButtons component", () => {
         deviceAuthToken="token123"
         installResultStatus="installed"
         onCancel={onCancel}
-      />
+      />,
     );
     expect(screen.getByRole("button", { name: "Done" })).toBeInTheDocument();
   });

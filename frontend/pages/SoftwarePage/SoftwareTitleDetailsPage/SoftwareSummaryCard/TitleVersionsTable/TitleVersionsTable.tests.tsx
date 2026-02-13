@@ -26,7 +26,7 @@ describe("TitleVersionsTable", () => {
         teamIdForApi={42}
         isIPadOSOrIOSApp={false}
         countsUpdatedAt="2024-05-08T12:00:00Z"
-      />
+      />,
     );
 
     // There should be one cell with a link for the version
@@ -54,7 +54,7 @@ describe("TitleVersionsTable", () => {
         teamIdForApi={42}
         isIPadOSOrIOSApp={false}
         countsUpdatedAt="2024-05-08T12:00:00Z"
-      />
+      />,
     );
 
     const cells = screen.queryAllByRole("cell");

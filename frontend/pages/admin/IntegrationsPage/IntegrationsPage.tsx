@@ -47,7 +47,7 @@ const IntegrationsPage = ({
   } = useQuery<IConfig, Error, IConfig>(
     ["config"],
     () => configAPI.loadAll(),
-    {}
+    {},
   );
 
   /** The common submission logic for settings that are rendered on the Integrations page, but use
@@ -84,7 +84,7 @@ const IntegrationsPage = ({
         setIsUpdatingSettings(false);
       }
     },
-    [appConfig, refetchConfig, renderFlash]
+    [appConfig, refetchConfig, renderFlash],
   );
 
   if (!appConfig) return <></>;

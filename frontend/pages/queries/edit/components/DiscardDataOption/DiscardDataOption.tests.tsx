@@ -13,14 +13,14 @@ describe("DiscardDataOption component", () => {
       <DiscardDataOption
         queryReportsDisabled={false}
         {...{ selectedLoggingType, discardData, setDiscardData }}
-      />
+      />,
     );
 
     expect(screen.getByText(/Discard data/)).toBeInTheDocument();
     expect(
       screen.getByText(
-        /The most recent results for each host will not be available in Fleet./
-      )
+        /The most recent results for each host will not be available in Fleet./,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -29,7 +29,7 @@ describe("DiscardDataOption component", () => {
       <DiscardDataOption
         queryReportsDisabled
         {...{ selectedLoggingType, discardData, setDiscardData }}
-      />
+      />,
     );
 
     expect(screen.getByText(/Discard data/)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("DiscardDataOption component", () => {
       <DiscardDataOption
         queryReportsDisabled
         {...{ selectedLoggingType, discardData, setDiscardData }}
-      />
+      />,
     );
 
     // disabled
@@ -54,8 +54,8 @@ describe("DiscardDataOption component", () => {
     // normal text
     expect(
       screen.getByText(
-        /The most recent results for each host will not be available in Fleet./
-      )
+        /The most recent results for each host will not be available in Fleet./,
+      ),
     ).toBeInTheDocument();
   });
   it('Renders the info banner when  "Differential"  logging option is selected', () => {
@@ -64,13 +64,13 @@ describe("DiscardDataOption component", () => {
         selectedLoggingType="differential"
         queryReportsDisabled={false}
         {...{ discardData, setDiscardData }}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /setting is ignored when differential logging is enabled. This/
-      )
+        /setting is ignored when differential logging is enabled. This/,
+      ),
     ).toBeInTheDocument();
   });
   it('Renders the info banner when  "Differential (ignore removals)" logging option is selected', () => {
@@ -79,12 +79,12 @@ describe("DiscardDataOption component", () => {
         selectedLoggingType="differential_ignore_removals"
         queryReportsDisabled={false}
         {...{ discardData, setDiscardData }}
-      />
+      />,
     );
     expect(
       screen.getByText(
-        /setting is ignored when differential logging is enabled. This/
-      )
+        /setting is ignored when differential logging is enabled. This/,
+      ),
     ).toBeInTheDocument();
   });
 });

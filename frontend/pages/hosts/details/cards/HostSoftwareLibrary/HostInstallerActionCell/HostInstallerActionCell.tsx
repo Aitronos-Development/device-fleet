@@ -58,7 +58,7 @@ interface IHostInstallerActionCellProps {
   software: IHostSoftwareWithUiStatus;
   onClickInstallAction: (
     softwareId: number,
-    isSoftwarePackage?: boolean
+    isSoftwarePackage?: boolean,
   ) => void;
   onClickUninstallAction: () => void;
   onClickOpenInstructionsAction?: () => void;
@@ -84,7 +84,7 @@ export const getActionButtonState = ({
 
   // Pending states take priority
   const isPending = ["pending_install", "pending_uninstall"].includes(
-    status || ""
+    status || "",
   );
 
   if (isPending) {
@@ -147,7 +147,7 @@ const getMoreActionsDropdownOptions = (
   canUninstallSoftware: boolean,
   isUninstallDisabled: boolean,
   uninstallTooltip: ReactNode,
-  uninstallText: string
+  uninstallText: string,
 ) => {
   const options: IDropdownOption[] = [];
 
@@ -225,19 +225,15 @@ export const HostInstallerActionCell = ({
   } = software;
 
   // buttonDisplayConfig is used to track the display text and icons of the install and uninstall button
-  const [
-    buttonDisplayConfig,
-    setButtonDisplayConfig,
-  ] = useState<IButtonDisplayConfig>({
-    install: getInstallerActionButtonConfig("install", ui_status),
-    uninstall: getInstallerActionButtonConfig("uninstall", ui_status),
-  });
+  const [buttonDisplayConfig, setButtonDisplayConfig] =
+    useState<IButtonDisplayConfig>({
+      install: getInstallerActionButtonConfig("install", ui_status),
+      uninstall: getInstallerActionButtonConfig("uninstall", ui_status),
+    });
 
   // Local “clicked” state so the button disables immediately
-  const [
-    isInstallUninstallPendingLocal,
-    setIsInstallUninstallPendingLocal,
-  ] = useState(false);
+  const [isInstallUninstallPendingLocal, setIsInstallUninstallPendingLocal] =
+    useState(false);
 
   useEffect(() => {
     // reset local pending state when status leaves pending (API round‑trip finished)
@@ -371,7 +367,7 @@ export const HostInstallerActionCell = ({
               canUninstallSoftware,
               uninstallDisabled || isInstallUninstallPendingLocal,
               uninstallTooltip,
-              buttonDisplayConfig.uninstall.text
+              buttonDisplayConfig.uninstall.text,
             )}
             variant="small-button"
             disabled={moreDisabled}

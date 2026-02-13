@@ -72,13 +72,13 @@ const RunQueryPage = ({
   const [queryParamHostsAdded, setQueryParamHostsAdded] = useState(false);
   const [step, setStep] = useState(LIVE_QUERY_STEPS[1]);
   const [targetedHosts, setTargetedHosts] = useState<IHost[]>(
-    selectedQueryTargetsByType.hosts
+    selectedQueryTargetsByType.hosts,
   );
   const [targetedLabels, setTargetedLabels] = useState<ILabel[]>(
-    selectedQueryTargetsByType.labels
+    selectedQueryTargetsByType.labels,
   );
   const [targetedTeams, setTargetedTeams] = useState<ITeam[]>(
-    selectedQueryTargetsByType.teams
+    selectedQueryTargetsByType.teams,
   );
   const [targetsTotalCount, setTargetsTotalCount] = useState(0);
 
@@ -91,7 +91,7 @@ const RunQueryPage = ({
     router.push(
       getPathWithQueryParams(path, {
         team_id: currentTeamId,
-      })
+      }),
     );
   }
 
@@ -128,7 +128,7 @@ const RunQueryPage = ({
       select: (data: IHostResponse) => data.host,
       onSuccess: (host) => {
         setTargetedHosts((prevHosts) =>
-          prevHosts.filter((h) => h.id !== host.id).concat(host)
+          prevHosts.filter((h) => h.id !== host.id).concat(host),
         );
         const targets = selectedQueryTargets;
         host.target_type = "hosts";
@@ -139,7 +139,7 @@ const RunQueryPage = ({
         }
         router.replace(location.pathname);
       },
-    }
+    },
   );
 
   useEffect(() => {

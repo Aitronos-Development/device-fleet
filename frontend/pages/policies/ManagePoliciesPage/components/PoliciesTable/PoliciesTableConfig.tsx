@@ -92,7 +92,7 @@ const generateTableHeaders = (
     tableType?: string;
   },
   isPremiumTier?: boolean,
-  isPrimoMode?: boolean
+  isPrimoMode?: boolean,
 ): IDataColumn[] => {
   const { selectedTeamId, hasPermissionAndPoliciesToDelete } = options;
   const viewingTeamPolicies = selectedTeamId !== -1;
@@ -143,7 +143,7 @@ const generateTableHeaders = (
                   </div>
                 )}
                 {viewingTeamPolicies && team_id === null && (
-                  <InheritedBadge tooltipContent="This policy runs on all hosts." />
+                  <InheritedBadge tooltipContent="This policy runs on all devices." />
                 )}
               </>
             }
@@ -259,10 +259,8 @@ const generateTableHeaders = (
         });
 
         // Regular table selection logic
-        const {
-          getToggleAllRowsSelectedProps,
-          toggleAllRowsSelected,
-        } = headerProps;
+        const { getToggleAllRowsSelectedProps, toggleAllRowsSelected } =
+          headerProps;
         const { checked, indeterminate } = getToggleAllRowsSelectedProps();
 
         const regularCheckboxProps = {
@@ -331,14 +329,15 @@ const nextPolicyUpdateMs = (
   policyItemUpdatedAtMs: Date,
   nextHostCountUpdateMs: number,
   hostCountUpdateIntervalMs: number,
-  osqueryPolicyMs: number
+  osqueryPolicyMs: number,
 ) => {
   let timeFromPolicyItemUpdateToNextHostCountUpdateMs =
     Date.now() - policyItemUpdatedAtMs.getTime() + nextHostCountUpdateMs;
   let additionalUpdateTimeMs = 0;
   while (timeFromPolicyItemUpdateToNextHostCountUpdateMs <= osqueryPolicyMs) {
     additionalUpdateTimeMs += hostCountUpdateIntervalMs;
-    timeFromPolicyItemUpdateToNextHostCountUpdateMs += hostCountUpdateIntervalMs;
+    timeFromPolicyItemUpdateToNextHostCountUpdateMs +=
+      hostCountUpdateIntervalMs;
   }
   return nextHostCountUpdateMs + additionalUpdateTimeMs;
 };
@@ -346,10 +345,10 @@ const nextPolicyUpdateMs = (
 const generateDataSet = (
   policiesList: IPolicyStats[] = [],
   currentAutomatedPolicies?: number[],
-  osquery_policy?: number
+  osquery_policy?: number,
 ): IPolicyStats[] => {
   policiesList = policiesList.sort((a, b) =>
-    sortUtils.caseInsensitiveAsc(a.name, b.name)
+    sortUtils.caseInsensitiveAsc(a.name, b.name),
   );
   // To figure out if the policy has run for all the targeted hosts, we need to do the following calculation:
   // Each host asynchronously updates its own policy result every `osquery_policy` nanoseconds.
@@ -371,7 +370,7 @@ const generateDataSet = (
     // Convert from nanosecond to milliseconds
     osqueryPolicyMs = osquery_policy / 1000000;
     policiesLastRun = new Date(
-      hostCountUpdatedAtDate.getTime() - osqueryPolicyMs
+      hostCountUpdatedAtDate.getTime() - osqueryPolicyMs,
     );
   } else {
     // temporarily unused - will restore use with upcoming DB update
@@ -409,7 +408,7 @@ const generateDataSet = (
         policyItemUpdatedAt,
         nextHostCountUpdateMs,
         hostCountUpdateIntervalMs,
-        osqueryPolicyMs
+        osqueryPolicyMs,
       );
     }
   });

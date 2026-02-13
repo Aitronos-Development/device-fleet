@@ -95,12 +95,8 @@ interface IHostActionConfigOptions {
 }
 
 const canTransferTeam = (config: IHostActionConfigOptions) => {
-  const {
-    isPremiumTier,
-    isGlobalAdmin,
-    isGlobalMaintainer,
-    isPrimoMode,
-  } = config;
+  const { isPremiumTier, isGlobalAdmin, isGlobalMaintainer, isPrimoMode } =
+    config;
   return isPremiumTier && (isGlobalAdmin || isGlobalMaintainer) && !isPrimoMode;
 };
 
@@ -248,12 +244,8 @@ const canUnlock = ({
 };
 
 const canDeleteHost = (config: IHostActionConfigOptions) => {
-  const {
-    isGlobalAdmin,
-    isGlobalMaintainer,
-    isTeamAdmin,
-    isTeamMaintainer,
-  } = config;
+  const { isGlobalAdmin, isGlobalMaintainer, isTeamAdmin, isTeamMaintainer } =
+    config;
   return isGlobalAdmin || isGlobalMaintainer || isTeamAdmin || isTeamMaintainer;
 };
 
@@ -294,7 +286,7 @@ const canRunScript = ({
 
 const removeUnavailableOptions = (
   options: IDropdownOption[],
-  config: IHostActionConfigOptions
+  config: IHostActionConfigOptions,
 ) => {
   if (!canTransferTeam(config)) {
     options = options.filter((option) => option.value !== "transfer");
@@ -343,7 +335,7 @@ const removeUnavailableOptions = (
 export const getDropdownOptionTooltipContent = (
   value: string | number,
   isHostOnline?: boolean,
-  scriptsGloballyDisabled?: boolean
+  scriptsGloballyDisabled?: boolean,
 ) => {
   if (value === "runScript" && scriptsGloballyDisabled) {
     return <>Running scripts is disabled in organization settings.</>;
@@ -377,7 +369,7 @@ export const getDropdownOptionTooltipContent = (
  */
 const formatTurnOffOptionLabel = (
   options: IDropdownOption[],
-  hostPlatform: string
+  hostPlatform: string,
 ) => {
   const option = options.find((opt) => opt.value === "mdmOff");
   if (option && (isIPadOrIPhone(hostPlatform) || isAndroid(hostPlatform))) {
@@ -393,7 +385,7 @@ const modifyOptions = (
     hostScriptsEnabled,
     hostPlatform,
     scriptsGloballyDisabled,
-  }: IHostActionConfigOptions
+  }: IHostActionConfigOptions,
 ) => {
   const disableOptions = (optionsToDisable: IDropdownOption[]) => {
     optionsToDisable.forEach((option) => {
@@ -401,7 +393,7 @@ const modifyOptions = (
       option.tooltipContent = getDropdownOptionTooltipContent(
         option.value,
         isHostOnline,
-        scriptsGloballyDisabled
+        scriptsGloballyDisabled,
       );
     });
   };
@@ -410,13 +402,13 @@ const modifyOptions = (
   // When the host is offline, always disable Query, but allow Unenroll for iOS/iPadOS and Android.
   if (!isHostOnline) {
     optionsToDisable = optionsToDisable.concat(
-      options.filter((option) => option.value === "query")
+      options.filter((option) => option.value === "query"),
     );
 
     // Disable "Turn off MDM" (Unenroll) when offline for all platforms except iOS/iPadOS and Android
     if (!isIPadOrIPhone(hostPlatform) && !isAndroid(hostPlatform)) {
       optionsToDisable = optionsToDisable.concat(
-        options.filter((option) => option.value === "mdmOff")
+        options.filter((option) => option.value === "mdmOff"),
       );
     }
   }
@@ -429,15 +421,15 @@ const modifyOptions = (
   ) {
     optionsToDisable = optionsToDisable.concat(
       options.filter(
-        (option) => option.value === "query" || option.value === "mdmOff"
-      )
+        (option) => option.value === "query" || option.value === "mdmOff",
+      ),
     );
   }
 
   // Disable run script feature if scripts are globally disabled
   if (scriptsGloballyDisabled) {
     optionsToDisable = optionsToDisable.concat(
-      options.filter((option) => option.value === "runScript")
+      options.filter((option) => option.value === "runScript"),
     );
   }
 
@@ -447,7 +439,7 @@ const modifyOptions = (
   // in each of these cases, we maintain these options
   if (hostScriptsEnabled === false) {
     optionsToDisable = optionsToDisable.concat(
-      options.filter((option) => option.value === "runScript")
+      options.filter((option) => option.value === "runScript"),
     );
     if (isLinuxLike(hostPlatform)) {
       optionsToDisable = optionsToDisable.concat(
@@ -455,15 +447,15 @@ const modifyOptions = (
           (option) =>
             option.value === "lock" ||
             option.value === "unlock" ||
-            option.value === "wipe"
-        )
+            option.value === "wipe",
+        ),
       );
     }
     if (hostPlatform === "windows") {
       optionsToDisable = optionsToDisable.concat(
         options.filter(
-          (option) => option.value === "lock" || option.value === "unlock"
-        )
+          (option) => option.value === "lock" || option.value === "unlock",
+        ),
       );
     }
   }

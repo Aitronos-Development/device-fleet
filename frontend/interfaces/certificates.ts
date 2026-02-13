@@ -115,7 +115,7 @@ export type ICertificateAuthority =
   | ICertificatesCustomEST;
 
 export const isNDESCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesNDES => {
   return (
     "admin_url" in integration &&
@@ -125,7 +125,7 @@ export const isNDESCertAuthority = (
 };
 
 export const isDigicertCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesDigicert => {
   return (
     "profile_id" in integration &&
@@ -136,7 +136,7 @@ export const isDigicertCertAuthority = (
 };
 
 export const isHydrantCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesHydrant => {
   return (
     "name" in integration &&
@@ -147,7 +147,7 @@ export const isHydrantCertAuthority = (
 };
 
 export const isCustomSCEPCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesCustomSCEP => {
   return (
     "name" in integration && "url" in integration && "challenge" in integration
@@ -155,7 +155,7 @@ export const isCustomSCEPCertAuthority = (
 };
 
 export const isSmallstepCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesSmallstep => {
   return (
     "name" in integration &&
@@ -167,7 +167,7 @@ export const isSmallstepCertAuthority = (
 };
 
 export const isCustomESTCertAuthority = (
-  integration: ICertificateAuthority
+  integration: ICertificateAuthority,
 ): integration is ICertificatesCustomEST => {
   return (
     "name" in integration &&
@@ -179,37 +179,38 @@ export const isCustomESTCertAuthority = (
   );
 };
 
-export const createMockCertificateAuthorities = (): ICertificateAuthorityPartial[] => {
-  return [
-    {
-      id: 1,
-      name: "Test NDES SCEP Proxy",
-      type: "ndes_scep_proxy",
-    },
-    {
-      id: 2,
-      name: "Test DigiCert",
-      type: "digicert",
-    },
-    {
-      id: 3,
-      name: "Test Custom SCEP Proxy",
-      type: "custom_scep_proxy",
-    },
-    {
-      id: 4,
-      name: "Test Hydrant",
-      type: "hydrant",
-    },
-    {
-      id: 5,
-      name: "Test Smallstep",
-      type: "smallstep",
-    },
-    {
-      id: 6,
-      name: "Test Custom EST Proxy",
-      type: "custom_est_proxy",
-    },
-  ];
-};
+export const createMockCertificateAuthorities =
+  (): ICertificateAuthorityPartial[] => {
+    return [
+      {
+        id: 1,
+        name: "Test NDES SCEP Proxy",
+        type: "ndes_scep_proxy",
+      },
+      {
+        id: 2,
+        name: "Test DigiCert",
+        type: "digicert",
+      },
+      {
+        id: 3,
+        name: "Test Custom SCEP Proxy",
+        type: "custom_scep_proxy",
+      },
+      {
+        id: 4,
+        name: "Test Hydrant",
+        type: "hydrant",
+      },
+      {
+        id: 5,
+        name: "Test Smallstep",
+        type: "smallstep",
+      },
+      {
+        id: 6,
+        name: "Test Custom EST Proxy",
+        type: "custom_est_proxy",
+      },
+    ];
+  };

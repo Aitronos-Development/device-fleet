@@ -27,7 +27,7 @@ const DeleteCertificateAuthorityModal = ({
       await certificatesAPI.deleteCertificateAuthority(certAuthority.id);
       renderFlash(
         "success",
-        "Successfully deleted your certificate authority."
+        "Successfully deleted your certificate authority.",
       );
       setIsUpdating(false);
       onExit();
@@ -35,7 +35,7 @@ const DeleteCertificateAuthorityModal = ({
       setIsUpdating(false);
       renderFlash(
         "error",
-        "Couldn't delete certificate authority. Please try again."
+        "Couldn't delete certificate authority. Please try again.",
       );
     }
   };

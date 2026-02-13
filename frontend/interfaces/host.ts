@@ -59,7 +59,7 @@ export default PropTypes.shape({
       pack_id: PropTypes.number,
       pack_name: PropTypes.string,
       query_stats: PropTypes.arrayOf(queryStatsInterface),
-    })
+    }),
   ),
   team_name: PropTypes.string,
   additional: PropTypes.object, // eslint-disable-line react/forbid-prop-types
@@ -81,7 +81,7 @@ export default PropTypes.shape({
     PropTypes.shape({
       cycle_count: PropTypes.number,
       health: PropTypes.string,
-    })
+    }),
   ),
 });
 

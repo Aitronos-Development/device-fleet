@@ -105,7 +105,7 @@ describe("EditQueryForm - component", () => {
         backendValidators={{}}
         showConfirmSaveChangesModal={false}
         setShowConfirmSaveChangesModal={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
@@ -173,7 +173,7 @@ describe("EditQueryForm - component", () => {
         backendValidators={{}}
         showConfirmSaveChangesModal={false}
         setShowConfirmSaveChangesModal={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Live query" })).toBeDisabled();
@@ -182,8 +182,8 @@ describe("EditQueryForm - component", () => {
 
     expect(
       await screen.findByText(
-        /live queries are disabled in organization settings/i
-      )
+        /live queries are disabled in organization settings/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -244,7 +244,7 @@ describe("EditQueryForm - component", () => {
         backendValidators={{}}
         showConfirmSaveChangesModal={false}
         setShowConfirmSaveChangesModal={jest.fn()}
-      />
+      />,
     );
 
     // Find the interval dropdown
@@ -330,7 +330,7 @@ describe("EditQueryForm - component", () => {
         backendValidators={{}}
         showConfirmSaveChangesModal={false}
         setShowConfirmSaveChangesModal={jest.fn()}
-      />
+      />,
     );
 
     // Wait for any queries (that should not be happening) to finish.

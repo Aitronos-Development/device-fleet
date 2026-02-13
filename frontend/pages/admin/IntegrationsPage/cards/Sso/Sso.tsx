@@ -47,14 +47,8 @@ interface ISsoFormErrors {
 const validate = (formData: ISsoFormData) => {
   const errors: ISsoFormErrors = {};
 
-  const {
-    enableSso,
-    idpImageUrl,
-    metadata,
-    metadataUrl,
-    entityId,
-    idpName,
-  } = formData;
+  const { enableSso, idpImageUrl, metadata, metadataUrl, entityId, idpName } =
+    formData;
 
   if (enableSso) {
     if (idpImageUrl && !validUrl({ url: idpImageUrl })) {
@@ -182,7 +176,7 @@ const Sso = ({
   };
 
   const [endUserFormData, setEndUserFormData] = useState<IFormDataIdp>(
-    newFormDataIdp(appConfig?.mdm?.end_user_authentication)
+    newFormDataIdp(appConfig?.mdm?.end_user_authentication),
   );
   const originalEndUserFormData = useRef(endUserFormData);
 
@@ -203,10 +197,10 @@ const Sso = ({
       router.push(
         newSubsection === "end-users"
           ? PATHS.ADMIN_INTEGRATIONS_SSO_END_USERS
-          : PATHS.ADMIN_INTEGRATIONS_SSO_FLEET_USERS
+          : PATHS.ADMIN_INTEGRATIONS_SSO_FLEET_USERS,
       );
     },
-    [formDirty, router]
+    [formDirty, router],
   );
 
   const renderFleetSsoTab = () => {

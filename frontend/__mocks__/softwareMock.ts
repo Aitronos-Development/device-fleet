@@ -36,7 +36,7 @@ const DEFAULT_SOFTWARE_MOCK: ISoftware = {
 };
 
 export const createMockSoftware = (
-  overrides?: Partial<ISoftware>
+  overrides?: Partial<ISoftware>,
 ): ISoftware => {
   return { ...DEFAULT_SOFTWARE_MOCK, ...overrides };
 };
@@ -48,7 +48,7 @@ const DEFAULT_SOFTWARE_TITLE_VERSION_MOCK = {
 };
 
 export const createMockSoftwareTitleVersion = (
-  overrides?: Partial<ISoftwareTitleVersion>
+  overrides?: Partial<ISoftwareTitleVersion>,
 ): ISoftwareTitleVersion => {
   return { ...DEFAULT_SOFTWARE_TITLE_VERSION_MOCK, ...overrides };
 };
@@ -65,7 +65,7 @@ const DEFAULT_SOFTWARE_VULNERABILITY_MOCK = {
 };
 
 export const createMockSoftwareVulnerability = (
-  overrides?: Partial<ISoftwareVulnerability>
+  overrides?: Partial<ISoftwareVulnerability>,
 ): ISoftwareVulnerability => {
   return { ...DEFAULT_SOFTWARE_VULNERABILITY_MOCK, ...overrides };
 };
@@ -87,7 +87,7 @@ const DEFAULT_SOFTWARE_VERSION_MOCK: ISoftwareVersion = {
 };
 
 export const createMockSoftwareVersion = (
-  overrides?: Partial<ISoftwareVersion>
+  overrides?: Partial<ISoftwareVersion>,
 ): ISoftwareVersion => {
   return { ...DEFAULT_SOFTWARE_VERSION_MOCK, ...overrides };
 };
@@ -103,7 +103,7 @@ const DEFAULT_SOFTWARE_VERSIONS_RESPONSE_MOCK: ISoftwareVersionsResponse = {
 };
 
 export const createMockSoftwareVersionsResponse = (
-  overrides?: Partial<ISoftwareVersionsResponse>
+  overrides?: Partial<ISoftwareVersionsResponse>,
 ): ISoftwareVersionsResponse => {
   return { ...DEFAULT_SOFTWARE_VERSIONS_RESPONSE_MOCK, ...overrides };
 };
@@ -121,7 +121,7 @@ const DEFAULT_OS_VERSION_MOCK = {
 };
 
 export const createMockOSVersion = (
-  overrides?: Partial<IOperatingSystemVersion>
+  overrides?: Partial<IOperatingSystemVersion>,
 ): IOperatingSystemVersion => {
   return {
     ...DEFAULT_OS_VERSION_MOCK,
@@ -140,7 +140,7 @@ const DEFAULT_OS_VERSIONS_RESPONSE_MOCK: IOSVersionsResponse = {
 };
 
 export const createMockOSVersionsResponse = (
-  overrides?: Partial<IOSVersionsResponse>
+  overrides?: Partial<IOSVersionsResponse>,
 ): IOSVersionsResponse => {
   return { ...DEFAULT_OS_VERSIONS_RESPONSE_MOCK, ...overrides };
 };
@@ -187,7 +187,7 @@ const DEFAULT_APP_STORE_APP_ANDROID_MOCK: IAppStoreApp = {
 };
 
 export const createMockAppStoreAppAndroid = (
-  overrides?: Partial<IAppStoreApp>
+  overrides?: Partial<IAppStoreApp>,
 ) => {
   return { ...DEFAULT_APP_STORE_APP_ANDROID_MOCK, ...overrides };
 };
@@ -207,7 +207,7 @@ const DEFAULT_SOFTWARE_TITLE_DETAILS_MOCK: ISoftwareTitleDetails = {
 };
 
 export const createMockSoftwareTitleDetails = (
-  overrides?: Partial<ISoftwareTitleDetails>
+  overrides?: Partial<ISoftwareTitleDetails>,
 ) => {
   return { ...DEFAULT_SOFTWARE_TITLE_DETAILS_MOCK, ...overrides };
 };
@@ -217,7 +217,7 @@ const DEFAULT_SOFTWARE_TITLE_RESPONSE: ISoftwareTitleResponse = {
 };
 
 export const createMockSoftwareTitleResponse = (
-  overrides?: Partial<ISoftwareTitleResponse>
+  overrides?: Partial<ISoftwareTitleResponse>,
 ): ISoftwareTitleResponse => {
   return { ...DEFAULT_SOFTWARE_TITLE_RESPONSE, ...overrides };
 };
@@ -227,7 +227,7 @@ const DEFAULT_SOFTWARE_VERSION_RESPONSE = {
 };
 
 export const createMockSoftwareVersionResponse = (
-  overrides?: Partial<ISoftwareVersionResponse>
+  overrides?: Partial<ISoftwareVersionResponse>,
 ): ISoftwareVersionResponse => {
   return { ...DEFAULT_SOFTWARE_VERSION_RESPONSE, ...overrides };
 };
@@ -261,7 +261,7 @@ const DEFAULT_SOFTWARE_PACKAGE_MOCK: ISoftwarePackage = {
 };
 
 export const createMockSoftwarePackage = (
-  overrides?: Partial<ISoftwarePackage>
+  overrides?: Partial<ISoftwarePackage>,
 ) => {
   return { ...DEFAULT_SOFTWARE_PACKAGE_MOCK, ...overrides };
 };
@@ -280,7 +280,7 @@ const DEFAULT_SOFTWARE_TITLE_MOCK: ISoftwareTitle = {
 };
 
 export const createMockSoftwareTitle = (
-  overrides?: Partial<ISoftwareTitle>
+  overrides?: Partial<ISoftwareTitle>,
 ): ISoftwareTitle => {
   return {
     ...DEFAULT_SOFTWARE_TITLE_MOCK,
@@ -299,7 +299,7 @@ const DEFAULT_SOFTWARE_TITLES_RESPONSE_MOCK: ISoftwareTitlesResponse = {
 };
 
 export const createMockSoftwareTitlesResponse = (
-  overrides?: Partial<ISoftwareTitlesResponse>
+  overrides?: Partial<ISoftwareTitlesResponse>,
 ): ISoftwareTitlesResponse => {
   return { ...DEFAULT_SOFTWARE_TITLES_RESPONSE_MOCK, ...overrides };
 };
@@ -312,7 +312,7 @@ const DEFAULT_FLEET_MAINTAINED_APPS_MOCK: IFleetMaintainedApp = {
 };
 
 export const createMockFleetMaintainedApp = (
-  overrides?: Partial<IFleetMaintainedApp>
+  overrides?: Partial<IFleetMaintainedApp>,
 ): IFleetMaintainedApp => {
   return {
     ...DEFAULT_FLEET_MAINTAINED_APPS_MOCK,
@@ -336,7 +336,7 @@ const DEFAULT_FLEET_MAINTAINED_APP_DETAILS_MOCK: IFleetMaintainedAppDetails = {
 };
 
 export const createMockFleetMaintainedAppDetails = (
-  overrides?: Partial<IFleetMaintainedAppDetails>
+  overrides?: Partial<IFleetMaintainedAppDetails>,
 ) => {
   return { ...DEFAULT_FLEET_MAINTAINED_APP_DETAILS_MOCK, ...overrides };
 };
@@ -359,7 +359,7 @@ const DEFAULT_SOFTWARE_INSTALL_RESULT: ISoftwareInstallResult = {
 };
 
 export const createMockSoftwareInstallResult = (
-  overrides?: Partial<ISoftwareInstallResult>
+  overrides?: Partial<ISoftwareInstallResult>,
 ) => {
   return {
     ...DEFAULT_SOFTWARE_INSTALL_RESULT,
@@ -367,14 +367,15 @@ export const createMockSoftwareInstallResult = (
   };
 };
 
-const DEFAULT_SETUP_EXPERIENCE_SOFTWARE_MOCK: IGetSetupExperienceSoftwareResponse = {
-  ...createMockListEntitiesResponseCommon(),
-  counts_updated_at: null,
-  software_titles: [createMockSoftwareTitle()],
-};
+const DEFAULT_SETUP_EXPERIENCE_SOFTWARE_MOCK: IGetSetupExperienceSoftwareResponse =
+  {
+    ...createMockListEntitiesResponseCommon(),
+    counts_updated_at: null,
+    software_titles: [createMockSoftwareTitle()],
+  };
 
 export const createMockSetupExperienceSoftware = (
-  overrides?: Partial<IGetSetupExperienceSoftwareResponse>
+  overrides?: Partial<IGetSetupExperienceSoftwareResponse>,
 ): IGetSetupExperienceSoftwareResponse => {
   return { ...DEFAULT_SETUP_EXPERIENCE_SOFTWARE_MOCK, ...overrides };
 };

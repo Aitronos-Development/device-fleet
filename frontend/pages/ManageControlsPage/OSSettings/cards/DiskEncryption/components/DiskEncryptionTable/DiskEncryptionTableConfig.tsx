@@ -75,7 +75,7 @@ const defaultTableHeaders: IDataColumn[] = [
     },
   },
   {
-    title: "macOS hosts",
+    title: "macOS devices",
     Header: (cellProps: IHeaderProps) => (
       <HeaderCell
         value={cellProps.column.title}
@@ -94,7 +94,7 @@ const defaultTableHeaders: IDataColumn[] = [
     },
   },
   {
-    title: "Windows hosts",
+    title: "Windows devices",
     Header: (cellProps: IHeaderProps) => (
       <HeaderCell
         value={cellProps.column.title}
@@ -109,7 +109,7 @@ const defaultTableHeaders: IDataColumn[] = [
     },
   },
   {
-    title: "Linux hosts",
+    title: "Linux devices",
     Header: (cellProps: IHeaderProps) => (
       <HeaderCell
         value={cellProps.column.title}
@@ -204,13 +204,13 @@ const STATUS_ORDER = [
 
 export const generateTableData = (
   data?: IDiskEncryptionSummaryResponse,
-  currentTeamId?: number
+  currentTeamId?: number,
 ) => {
   if (!data) return [];
 
   const rowFromStatusEntry = (
     status: DiskEncryptionStatus,
-    statusAggregate: IDiskEncryptionStatusAggregate
+    statusAggregate: IDiskEncryptionStatusAggregate,
   ) => ({
     status: STATUS_CELL_VALUES[status],
     macosHosts: statusAggregate.macos,

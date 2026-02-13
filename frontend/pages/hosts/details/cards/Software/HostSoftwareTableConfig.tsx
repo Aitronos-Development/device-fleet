@@ -77,14 +77,14 @@ export const generateSoftwareTableHeaders = ({
 
         const softwareTitleDetailsPath = getPathWithQueryParams(
           PATHS.SOFTWARE_TITLE_DETAILS(id.toString()),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         const hasInstaller = !!app_store_app || !!software_package;
         const isSelfService =
           app_store_app?.self_service || software_package?.self_service;
         const automaticInstallPoliciesCount = getAutomaticInstallPoliciesCount(
-          cellProps.row.original
+          cellProps.row.original,
         );
         const isAndroidPlayStoreApp =
           !!app_store_app && source === "android_apps";
@@ -158,7 +158,7 @@ export const generateSoftwareTableHeaders = ({
         const versions = originalRow.installed_versions || [];
 
         const isSupported = versions.some(
-          (v) => v.last_opened_at !== undefined
+          (v) => v.last_opened_at !== undefined,
         );
 
         // Extract all last_opened_at values that are actual dates (not empty strings)
@@ -168,13 +168,13 @@ export const generateSoftwareTableHeaders = ({
             (date): date is string =>
               date !== undefined &&
               date !== "" &&
-              !isNaN(new Date(date).getTime())
+              !isNaN(new Date(date).getTime()),
           );
 
         // If we have actual dates, return the most recent one
         if (dateStrings.length > 0) {
           return dateStrings.reduce((a, b) =>
-            new Date(a).getTime() > new Date(b).getTime() ? a : b
+            new Date(a).getTime() > new Date(b).getTime() ? a : b,
           );
         }
 

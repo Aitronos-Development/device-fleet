@@ -52,12 +52,8 @@ const ProfileLabelsModal = ({
     return null;
   }
 
-  const {
-    name,
-    labels_include_all,
-    labels_include_any,
-    labels_exclude_any,
-  } = profile;
+  const { name, labels_include_all, labels_include_any, labels_exclude_any } =
+    profile;
   const labels = labels_include_all || labels_include_any || labels_exclude_any;
 
   if (!labels?.length) {

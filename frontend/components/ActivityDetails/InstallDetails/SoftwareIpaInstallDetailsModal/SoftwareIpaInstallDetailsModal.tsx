@@ -255,7 +255,7 @@ export const SoftwareIpaInstallDetailsModal = ({
   };
 
   const responseHandler = (
-    response: IGetVppInstallCommandResultsResponse | IGetCommandResultsResponse
+    response: IGetVppInstallCommandResultsResponse | IGetCommandResultsResponse,
   ) => {
     const results = response.results?.[0];
     if (!results) {
@@ -271,10 +271,12 @@ export const SoftwareIpaInstallDetailsModal = ({
     };
   };
 
-  const { data: swInstallResult, isLoading, isError, error } = useQuery<
-    ICommandResult,
-    AxiosError
-  >(
+  const {
+    data: swInstallResult,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<ICommandResult, AxiosError>(
     ["mdm_command_results", commandUuid],
     async () => {
       return deviceAuthToken
@@ -287,7 +289,7 @@ export const SoftwareIpaInstallDetailsModal = ({
       refetchOnWindowFocus: false,
       staleTime: 3000,
       enabled: !!commandUuid,
-    }
+    },
   );
 
   // Fallback to "installed" if no status is provided
@@ -298,7 +300,7 @@ export const SoftwareIpaInstallDetailsModal = ({
   // as some cases have command results not available for pending_installs
   // which we don't want to show a UI error state for
   const isPendingInstall = ["pending_install", "pending"].includes(
-    displayStatus
+    displayStatus,
   );
 
   // Note: We need to reconcile status values from two different sources. From props, we
@@ -311,7 +313,7 @@ export const SoftwareIpaInstallDetailsModal = ({
 
   // Hide version section for pending installs only
   const excludeVersions = ["pending_install", "pending"].includes(
-    swInstallResult?.status || ""
+    swInstallResult?.status || "",
   );
 
   const hasInstalledVersions = !!hostSoftware?.installed_versions?.length;
@@ -321,7 +323,7 @@ export const SoftwareIpaInstallDetailsModal = ({
   const excludeInstallDetails =
     hasInstalledVersions &&
     ["failed_install", "failed_uninstall"].includes(
-      swInstallResult?.status || ""
+      swInstallResult?.status || "",
     );
 
   const isInstalledByFleet = hostSoftware

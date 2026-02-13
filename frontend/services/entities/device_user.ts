@@ -77,7 +77,7 @@ export default {
   },
   loadHostDetailsExtension: (
     deviceAuthToken: string,
-    extension: ILoadHostDetailsExtension
+    extension: ILoadHostDetailsExtension,
   ) => {
     const { DEVICE_USER_DETAILS } = endpoints;
     const path = `${DEVICE_USER_DETAILS}/${deviceAuthToken}/${extension}`;
@@ -92,7 +92,7 @@ export default {
   },
 
   getDeviceSoftware: (
-    params: IDeviceSoftwareQueryKey
+    params: IDeviceSoftwareQueryKey,
   ): Promise<IGetDeviceSoftwareResponse> => {
     const { DEVICE_SOFTWARE } = endpoints;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -107,7 +107,7 @@ export default {
 
   installSelfServiceSoftware: (
     deviceToken: string,
-    softwareTitleId: number
+    softwareTitleId: number,
   ) => {
     const { DEVICE_SOFTWARE_INSTALL } = endpoints;
     const path = DEVICE_SOFTWARE_INSTALL(deviceToken, softwareTitleId);
@@ -117,12 +117,12 @@ export default {
 
   uninstallSelfServiceSoftware: (
     deviceToken: string,
-    softwareTitleId: number
+    softwareTitleId: number,
   ) => {
     const { DEVICE_SOFTWARE_UNINSTALL } = endpoints;
     return sendRequest(
       "POST",
-      DEVICE_SOFTWARE_UNINSTALL(deviceToken, softwareTitleId)
+      DEVICE_SOFTWARE_UNINSTALL(deviceToken, softwareTitleId),
     );
   },
 
@@ -137,12 +137,12 @@ export default {
   /** Gets more info on FMA/custom package uninstall for device user */
   getSoftwareUninstallResult: (
     deviceToken: string,
-    scriptExecutionId: string
+    scriptExecutionId: string,
   ) => {
     const { DEVICE_SOFTWARE_UNINSTALL_RESULTS } = endpoints;
     const path = DEVICE_SOFTWARE_UNINSTALL_RESULTS(
       deviceToken,
-      scriptExecutionId
+      scriptExecutionId,
     );
 
     return sendRequest("GET", path);
@@ -151,7 +151,7 @@ export default {
   /** Gets more info on VPP install for device user */
   getVppCommandResult: (
     deviceToken: string,
-    uuid: string
+    uuid: string,
   ): Promise<IGetVppInstallCommandResultsResponse> => {
     const { DEVICE_VPP_COMMAND_RESULTS } = endpoints;
     const path = DEVICE_VPP_COMMAND_RESULTS(deviceToken, uuid);

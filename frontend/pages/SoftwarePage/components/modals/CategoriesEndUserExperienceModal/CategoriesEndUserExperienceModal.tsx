@@ -53,7 +53,7 @@ const getData = (
   displayName: string,
   iconUrl: string | null,
   source?: string,
-  previewIcon?: JSX.Element
+  previewIcon?: JSX.Element,
 ): ISoftwareRow[] => {
   const currentSoftwareRow: ISoftwareRow = {
     name: (
@@ -71,7 +71,7 @@ const getData = (
 
   // Filters out the current software from the example rows to avoid duplication
   const exampleSoftwareRows: ISoftwareRow[] = EXAMPLE_SOFTWARE_ROWS.filter(
-    (item) => item.title !== name
+    (item) => item.title !== name,
   ).map((item) => ({
     name: (
       <SoftwareNameCell

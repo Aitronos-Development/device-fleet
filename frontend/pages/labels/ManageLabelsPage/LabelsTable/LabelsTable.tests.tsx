@@ -24,12 +24,12 @@ describe("LabelsTable", () => {
         labels={builtinLabels}
         onClickAction={noop}
         currentUser={mockUser}
-      />
+      />,
     );
 
     expect(screen.getByText("No labels")).toBeInTheDocument();
     expect(
-      screen.getByText("Labels you create will appear here.")
+      screen.getByText("Labels you create will appear here."),
     ).toBeInTheDocument();
     expect(screen.queryByText("All hosts")).not.toBeInTheDocument();
     expect(screen.queryByText("macOS")).not.toBeInTheDocument();
@@ -79,7 +79,7 @@ describe("LabelsTable", () => {
         labels={labels}
         onClickAction={noop}
         currentUser={mockUser}
-      />
+      />,
     );
 
     // Custom labels should be visible, each with the regular copy and the full name in a tooltip

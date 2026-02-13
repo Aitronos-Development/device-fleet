@@ -58,7 +58,7 @@ const HOST_EXPIRY_ERROR_TEXT = "Host expiry window must be a positive number.";
 const validateTeamSettingsFormData = (
   // will never be called if global setting is not loaded, default to satisfy typechecking
   curGlobalHostExpiryEnabled = false,
-  curFormData: ITeamSettingsFormData
+  curFormData: ITeamSettingsFormData,
 ) => {
   const errors: Record<string, string> = {};
 
@@ -101,16 +101,14 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
   });
   // stateful approach required since initial options come from team config api response
   const [isInitialTeamConfig, setIsInitialTeamConfig] = useState(true);
-  const [
-    percentageHostsDropdownOptions,
-    setPercentageHostsDropdownOptions,
-  ] = useState<IDropdownOption[]>([]);
+  const [percentageHostsDropdownOptions, setPercentageHostsDropdownOptions] =
+    useState<IDropdownOption[]>([]);
   const [windowDropdownOptions, setWindowDropdownOptions] = useState<
     IDropdownOption[]
   >([]);
   const [updatingTeamSettings, setUpdatingTeamSettings] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string | null>>(
-    {}
+    {},
   );
   const [
     showHostStatusWebhookPreviewModal,
@@ -143,7 +141,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
   } = useQuery<IConfig, Error, IConfig>(
     ["globalConfig"],
     () => configAPI.loadAll(),
-    { refetchOnWindowFocus: false }
+    { refetchOnWindowFocus: false },
   );
   const {
     host_expiry_settings: {
@@ -184,7 +182,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
             tC?.webhook_settings?.host_status_webhook?.days_count ?? 1,
         });
       },
-    }
+    },
   );
 
   useEffect(() => {
@@ -194,16 +192,16 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
           HOST_STATUS_WEBHOOK_HOST_PERCENTAGE_DROPDOWN_OPTIONS,
           teamConfig?.webhook_settings?.host_status_webhook?.host_percentage ??
             1,
-          (val) => `${val}%`
-        )
+          (val) => `${val}%`,
+        ),
       );
 
       setWindowDropdownOptions(
         getCustomDropdownOptions(
           HOST_STATUS_WEBHOOK_WINDOW_DROPDOWN_OPTIONS,
           teamConfig?.webhook_settings?.host_status_webhook?.days_count ?? 1,
-          (val) => `${val} day${val !== 1 ? "s" : ""}`
-        )
+          (val) => `${val} day${val !== 1 ? "s" : ""}`,
+        ),
       );
     }
     // no need for isInitialTeamConfig dependence, since this effect should only run on initial
@@ -216,10 +214,10 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
       const newFormData = { ...formData, [name]: value };
       setFormData(newFormData);
       setFormErrors(
-        validateTeamSettingsFormData(globalHostExpiryEnabled, newFormData)
+        validateTeamSettingsFormData(globalHostExpiryEnabled, newFormData),
       );
     },
-    [formData, globalHostExpiryEnabled]
+    [formData, globalHostExpiryEnabled],
   );
 
   const updateTeamSettings = useCallback(
@@ -255,7 +253,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
               },
             },
           },
-          teamIdForApi
+          teamIdForApi,
         )
         .then(() => {
           renderFlash("success", "Successfully updated settings.");
@@ -265,7 +263,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
         .catch((errorResponse: { data: IApiError }) => {
           renderFlash(
             "error",
-            `Could not update team settings. ${errorResponse.data.errors[0].reason}`
+            `Could not update team settings. ${errorResponse.data.errors[0].reason}`,
           );
         })
         .finally(() => {
@@ -278,7 +276,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
       refetchTeamConfig,
       renderFlash,
       teamIdForApi,
-    ]
+    ],
   );
 
   const renderForm = () => {
@@ -297,7 +295,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
           parseTarget
           value={formData.teamHostStatusWebhookEnabled}
           helpText="This will trigger webhooks specific to this team, separate from the global host status webhook."
-          labelTooltipContent="Send an alert if a portion of your hosts go offline."
+          labelTooltipContent="Send an alert if a portion of your devices go offline."
           disabled={gitopsModeEnabled}
         >
           Enable host status webhook
@@ -313,7 +311,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
           <>
             <InputField
               placeholder="https://server.com/example"
-              label="Host status webhook destination URL"
+              label="Device status webhook destination URL"
               onChange={onInputChange}
               name="teamHostStatusWebhookDestinationUrl"
               value={formData.teamHostStatusWebhookDestinationUrl}
@@ -328,7 +326,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
               }
             />
             <Dropdown
-              label="Host status webhook %"
+              label="Device status webhook %"
               options={percentageHostsDropdownOptions}
               onChange={onInputChange}
               name="teamHostStatusWebhookHostPercentage"
@@ -347,7 +345,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
               }
             />
             <Dropdown
-              label="Host status webhook window"
+              label="Device status webhook window"
               options={windowDropdownOptions}
               onChange={onInputChange}
               name="teamHostStatusWebhookWindow"
@@ -369,7 +367,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
             />
           </>
         )}
-        <SectionHeader title="Host expiry settings" />
+        <SectionHeader title="Device expiry settings" />
         {globalHostExpiryEnabled !== undefined && (
           <TeamHostExpiryToggle
             globalHostExpiryEnabled={globalHostExpiryEnabled}
@@ -383,7 +381,7 @@ const TeamSettings = ({ location, router }: ITeamSubnavProps) => {
         )}
         {formData.teamHostExpiryEnabled && (
           <InputField
-            label="Host expiry window"
+            label="Device expiry window"
             // type="text" allows `validate` to differentiate between
             // non-numerical input and an empty input
             type="text"

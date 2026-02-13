@@ -24,7 +24,7 @@ interface IIosOrIpadosDetails {
 
 const getLocationMessage = (
   iosOrIpadosDetails: IIosOrIpadosDetails | undefined,
-  hasLocation: boolean
+  hasLocation: boolean,
 ): JSX.Element | null => {
   const FETCH_LATEST_LOCATION_MESSAGE = (
     <div>

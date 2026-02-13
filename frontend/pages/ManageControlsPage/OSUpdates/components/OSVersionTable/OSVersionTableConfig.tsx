@@ -50,7 +50,7 @@ export const generateTableHeaders = (teamId: number) => {
       accessor: "version",
     },
     {
-      title: "Hosts",
+      title: "Devices",
       accessor: "hosts_count",
       disableSortBy: false,
       Header: (cellProps: IHeaderProps) => (

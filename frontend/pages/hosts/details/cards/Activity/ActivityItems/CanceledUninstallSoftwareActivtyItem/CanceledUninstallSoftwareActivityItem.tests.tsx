@@ -17,7 +17,7 @@ describe("CanceledUninstallSoftwareActivityItem", () => {
       <CanceledUninstallSoftwareActivtyItem
         tab="past"
         activity={mockActivity}
-      />
+      />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
@@ -31,7 +31,7 @@ describe("CanceledUninstallSoftwareActivityItem", () => {
       <CanceledUninstallSoftwareActivtyItem
         tab="past"
         activity={mockActivity}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -42,7 +42,7 @@ describe("CanceledUninstallSoftwareActivityItem", () => {
       <CanceledUninstallSoftwareActivtyItem
         tab="past"
         activity={mockActivity}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();

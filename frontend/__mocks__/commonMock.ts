@@ -9,7 +9,7 @@ const DEFAULT_PAGINATION_RESPONSE: ListEntitiesResponsePaginationCommon = {
 };
 
 export const createMockPaginationResponse = (
-  overrides?: Partial<ListEntitiesResponsePaginationCommon>
+  overrides?: Partial<ListEntitiesResponsePaginationCommon>,
 ): typeof DEFAULT_PAGINATION_RESPONSE => {
   return { ...DEFAULT_PAGINATION_RESPONSE, ...overrides };
 };
@@ -19,7 +19,7 @@ const DEFAULT_LIST_ENTITIES_RESPONSE_COMMON_MOCK: ListEntitiesResponseCommon = {
 };
 
 export const createMockListEntitiesResponseCommon = (
-  overrides?: Partial<ListEntitiesResponseCommon>
+  overrides?: Partial<ListEntitiesResponseCommon>,
 ): ListEntitiesResponseCommon => {
   return { ...DEFAULT_LIST_ENTITIES_RESPONSE_COMMON_MOCK, ...overrides };
 };

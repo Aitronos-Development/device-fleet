@@ -25,17 +25,17 @@ const DEFAULT_SORT_DIRECTION = "asc";
 const BootstrapPackageTable = ({
   currentTeamId,
 }: IBootstrapPackageTableProps) => {
-  const { data: bootstrapPackageAggregate, isLoading, isError } = useQuery<
-    IBootstrapPackageAggregate,
-    Error,
-    IBootstrapPackageAggregate
-  >(
+  const {
+    data: bootstrapPackageAggregate,
+    isLoading,
+    isError,
+  } = useQuery<IBootstrapPackageAggregate, Error, IBootstrapPackageAggregate>(
     ["bootstrap-package-summary", currentTeamId],
     () => mdmAPI.getBootstrapPackageAggregate(currentTeamId),
     {
       retry: false,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   const tableData = generateTableData(bootstrapPackageAggregate, currentTeamId);

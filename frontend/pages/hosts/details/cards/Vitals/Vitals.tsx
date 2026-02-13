@@ -83,7 +83,7 @@ const DISK_ENCRYPTION_MESSAGES = {
 
 const getHostDiskEncryptionTooltipMessage = (
   platform: DiskEncryptionSupportedPlatform, // TODO: improve this type
-  diskEncryptionEnabled = false
+  diskEncryptionEnabled = false,
 ) => {
   if (platform === "chrome") {
     return "Fleet does not check for disk encryption on Chromebooks, as they are encrypted by default.";
@@ -357,7 +357,7 @@ const Vitals = ({
     }
     const tooltipMessage = getHostDiskEncryptionTooltipMessage(
       platform,
-      diskEncryptionEnabled
+      diskEncryptionEnabled,
     );
 
     let statusText;
@@ -399,11 +399,8 @@ const Vitals = ({
       return null;
     }
 
-    const {
-      orbit_version,
-      osquery_version,
-      fleet_desktop_version,
-    } = vitalsData;
+    const { orbit_version, osquery_version, fleet_desktop_version } =
+      vitalsData;
 
     if (isChromeHost) {
       return <DataSet title="Agent" value={osquery_version} />;
@@ -464,7 +461,7 @@ const Vitals = ({
     const osVersionRequirementMet =
       compareVersions(
         osVersionWithoutPrefix,
-        osVersionRequirement.minimum_version
+        osVersionRequirement.minimum_version,
       ) >= 0;
 
     return (

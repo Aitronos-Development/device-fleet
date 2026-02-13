@@ -46,7 +46,7 @@ const generateOptionLabel = (user: IUser, team: ITeam): string => {
     // User is already in this team
   } else if (userTeamIds.includes(team.id)) {
     const teamName = user.teams.find(
-      (currentTeam) => currentTeam.id === team.id
+      (currentTeam) => currentTeam.id === team.id,
     )?.name;
     return `${user.name} - Already has access to ${teamName}`;
   }

@@ -50,7 +50,7 @@ export const listNamesFromSelectedLabels = (dict: Record<string, boolean>) => {
 export const generateLabelKey = (
   target: string,
   customTargetOption: string,
-  selectedLabels: Record<string, boolean>
+  selectedLabels: Record<string, boolean>,
 ) => {
   if (target !== "Custom") {
     return {};

@@ -34,10 +34,8 @@ const SoftwareAppStoreAndroid = ({
   const { isPremiumTier } = useContext(AppContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [
-    showPreviewEndUserExperience,
-    setShowPreviewEndUserExperience,
-  ] = useState(false);
+  const [showPreviewEndUserExperience, setShowPreviewEndUserExperience] =
+    useState(false);
 
   const goBackToSoftwareTitles = (showAvailableForInstallOnly = false) => {
     const queryParams = {
@@ -73,14 +71,14 @@ const SoftwareAppStoreAndroid = ({
           <strong>{softwareTitleName || "Android app"}</strong> successfully
           added.
         </>,
-        { persistOnPageChange: true }
+        { persistOnPageChange: true },
       );
 
       router.push(
         getPathWithQueryParams(
           PATHS.SOFTWARE_TITLE_DETAILS(softwareAppStoreTitleId.toString()),
-          { team_id: currentTeamId }
-        )
+          { team_id: currentTeamId },
+        ),
       );
     } catch (e) {
       renderFlash("error", getErrorMessage(e));

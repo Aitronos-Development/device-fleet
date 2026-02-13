@@ -86,7 +86,7 @@ const FORM_VALIDATIONS: Record<
 
 const getValifationErrorMessage = (
   formData: INDESFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -103,7 +103,7 @@ export const validateFormData = (formData: INDESFormData) => {
   Object.keys(FORM_VALIDATIONS).forEach((key) => {
     const objKey = key as keyof typeof FORM_VALIDATIONS;
     const failedValidation = FORM_VALIDATIONS[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

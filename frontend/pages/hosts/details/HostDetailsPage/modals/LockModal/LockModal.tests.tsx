@@ -23,11 +23,11 @@ describe("LockModal", () => {
 
     expect(
       screen.getByText(
-        /Lock a host when it needs to be returned to your organization./i
-      )
+        /Lock a host when it needs to be returned to your organization./i,
+      ),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Fleet will generate a six-digit unlock PIN./i)
+      screen.getByText(/Fleet will generate a six-digit unlock PIN./i),
     ).toBeInTheDocument();
     expect(screen.getByText(/I wish to lock/i)).toBeInTheDocument();
     expect(screen.getByText(/macos-host-1/i)).toBeInTheDocument();
@@ -38,12 +38,12 @@ describe("LockModal", () => {
     render(<LockModal {...MOCK_PROPS} platform="ios" hostName="iphone-1" />);
 
     expect(
-      screen.getByText(/This enables what Apple calls/i)
+      screen.getByText(/This enables what Apple calls/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/Lost Mode/i)).toBeInTheDocument();
     expect(screen.getByText(/End user experience/i)).toBeInTheDocument();
     expect(
-      screen.getByAltText(/iPhone with a lock screen message/i)
+      screen.getByAltText(/iPhone with a lock screen message/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/I wish to lock/i)).toBeInTheDocument();
     expect(screen.getByText(/iphone-1/i)).toBeInTheDocument();

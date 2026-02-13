@@ -20,7 +20,7 @@ describe("RunScript", () => {
     mockServer.use(
       createGetConfigHandler({
         mdm: createMockMdmConfig({ enabled_and_configured: false }),
-      })
+      }),
     );
     mockServer.use(createGetTeamHandler({}));
     const render = createCustomRenderer({
@@ -30,13 +30,13 @@ describe("RunScript", () => {
     render(<RunScript router={createMockRouter()} currentTeamId={1} />);
     expect(screen.getByTestId("spinner")).toBeVisible();
     expect(
-      screen.queryByText(/turn on automatic enrollment/)
+      screen.queryByText(/turn on automatic enrollment/),
     ).not.toBeInTheDocument();
     await waitFor(async () => {
       expect(screen.queryByTestId("spinner")).not.toBeInTheDocument();
     });
     expect(
-      screen.getByText(/turn on automatic enrollment/)
+      screen.getByText(/turn on automatic enrollment/),
     ).toBeInTheDocument();
   });
 
@@ -48,7 +48,7 @@ describe("RunScript", () => {
           enabled_and_configured: true,
           apple_bm_enabled_and_configured: false,
         }),
-      })
+      }),
     );
     mockServer.use(createGetTeamHandler({}));
     const render = createCustomRenderer({
@@ -59,13 +59,13 @@ describe("RunScript", () => {
 
     expect(screen.getByTestId("spinner")).toBeVisible();
     expect(
-      screen.queryByText(/turn on automatic enrollment/)
+      screen.queryByText(/turn on automatic enrollment/),
     ).not.toBeInTheDocument();
     await waitFor(async () => {
       expect(screen.queryByTestId("spinner")).not.toBeInTheDocument();
     });
     expect(
-      screen.getByText(/turn on automatic enrollment/)
+      screen.getByText(/turn on automatic enrollment/),
     ).toBeInTheDocument();
   });
 
@@ -98,13 +98,13 @@ describe("RunScript", () => {
 
     expect(screen.getByTestId("spinner")).toBeVisible();
     expect(
-      screen.queryByText("Script will run during setup:")
+      screen.queryByText("Script will run during setup:"),
     ).not.toBeInTheDocument();
     await waitFor(async () => {
       expect(screen.queryByTestId("spinner")).not.toBeInTheDocument();
     });
     expect(
-      await screen.findByText("Script will run during setup:")
+      await screen.findByText("Script will run during setup:"),
     ).toBeVisible();
     expect(await screen.findByText("Test Script.sh")).toBeVisible();
   });

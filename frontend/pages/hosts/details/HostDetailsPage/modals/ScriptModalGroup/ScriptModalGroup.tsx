@@ -42,11 +42,11 @@ const ScriptModalGroup = ({
 }: IScriptsProps) => {
   const { renderFlash } = useContext(NotificationContext);
   const [previousModal, setPreviousModal] = useState<ModalGroupOption | null>(
-    null
+    null,
   );
   // this should never actually be null - nullability satisfies TS when setting current modal to previous
   const [currentModal, setCurrentModal] = useState<ModalGroupOption | null>(
-    ModalGroupOption.Run
+    ModalGroupOption.Run,
   );
   const [runScriptTablePage, setRunScriptTablePage] = useState(0);
   const [selectedExecutionId, setSelectedExecutionId] = useState<
@@ -54,7 +54,7 @@ const ScriptModalGroup = ({
   >(undefined);
 
   const [selectedScript, setSelectedScript] = useState<IHostScript | null>(
-    null
+    null,
   );
   const [isRunningScript, setIsRunningScript] = useState(false);
 
@@ -85,7 +85,7 @@ const ScriptModalGroup = ({
       refetchOnWindowFocus: false,
       retry: false,
       staleTime: 3000,
-    }
+    },
   );
 
   // Note: Script metadata and script content require two separate API calls
@@ -106,7 +106,7 @@ const ScriptModalGroup = ({
       refetchOnWindowFocus: false,
       enabled:
         !!selectedScript && currentModal === ModalGroupOption.ViewScriptDetails,
-    }
+    },
   );
 
   const goBack = useCallback(() => {
@@ -126,7 +126,7 @@ const ScriptModalGroup = ({
         });
         renderFlash(
           "success",
-          "Script is running or will run when the host comes online."
+          "Script is running or will run when the host comes online.",
         );
         refetchHostScripts();
       } catch (e) {
@@ -145,7 +145,7 @@ const ScriptModalGroup = ({
       setCurrentModal(ModalGroupOption.ConfirmRun);
       setSelectedScript(script);
     },
-    [currentModal]
+    [currentModal],
   );
 
   return (

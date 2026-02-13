@@ -31,7 +31,7 @@ interface IStatusIndicatorProps {
 
 const generateIndicatorStateClassTag = (
   rawValue: string,
-  customIndicatorType?: string
+  customIndicatorType?: string,
 ): string => {
   if (rawValue === DEFAULT_EMPTY_CELL_VALUE) {
     return "indeterminate";
@@ -49,7 +49,7 @@ const StatusIndicator = ({
 }: IStatusIndicatorProps): JSX.Element => {
   const indicatorStateClassTag = generateIndicatorStateClassTag(
     value,
-    customIndicatorType
+    customIndicatorType,
   );
 
   const classes = classnames(
@@ -57,7 +57,7 @@ const StatusIndicator = ({
     className,
     `${baseClass}--${indicatorStateClassTag}`,
     `status--${indicatorStateClassTag}`,
-    indicator ? `${baseClass}--${indicator}` : null
+    indicator ? `${baseClass}--${indicator}` : null,
   );
 
   const capitalizedValue = capitalize(value);

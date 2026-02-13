@@ -40,7 +40,7 @@ describe("TargetsInput", () => {
         selectedHostsTableConifg={[]}
         setSearchText={noop}
         handleRowSelect={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Name")).toBeInTheDocument();
@@ -81,7 +81,7 @@ describe("TargetsInput", () => {
         selectedHostsTableConifg={testTableConfig}
         setSearchText={noop}
         handleRowSelect={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Name")).toBeInTheDocument();

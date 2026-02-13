@@ -35,7 +35,7 @@ const createMockPolicy = (overrides?: Partial<IPolicyStats>): IPolicyStats => {
 };
 
 export const createMockPoliciesResponse = (
-  overrides?: Partial<IPolicyStats>
+  overrides?: Partial<IPolicyStats>,
 ) => {
   const MOCK_POLICIES_RESPONSE: { policies: IPolicyStats[] } = {
     policies: [

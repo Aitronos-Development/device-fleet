@@ -35,9 +35,8 @@ const WelcomeHost = ({
   const [currentPolicyShown, setCurrentPolicyShown] = useState<IHostPolicy>();
   const [showPolicyModal, setShowPolicyModal] = useState(false);
   const [isPoliciesEmpty, setIsPoliciesEmpty] = useState(false);
-  const [showRefetchLoadingSpinner, setShowRefetchLoadingSpinner] = useState(
-    false
-  );
+  const [showRefetchLoadingSpinner, setShowRefetchLoadingSpinner] =
+    useState(false);
 
   const {
     isLoading: isLoadingHost,
@@ -54,7 +53,7 @@ const WelcomeHost = ({
         setShowRefetchLoadingSpinner(returnedHost.refetch_requested);
 
         const anyPassingOrFailingPolicy = returnedHost?.policies?.find(
-          (p) => p.response === POLICY_PASS || p.response === POLICY_FAIL
+          (p) => p.response === POLICY_PASS || p.response === POLICY_FAIL,
         );
         setIsPoliciesEmpty(typeof anyPassingOrFailingPolicy === "undefined");
 
@@ -79,14 +78,14 @@ const WelcomeHost = ({
               } else {
                 renderFlash(
                   "error",
-                  `This host is offline. Please try refetching host vitals later.`
+                  `This host is offline. Please try refetching host vitals later.`,
                 );
                 setShowRefetchLoadingSpinner(false);
               }
             } else {
               renderFlash(
                 "error",
-                `We're having trouble fetching fresh vitals for this host. Please try again later.`
+                `We're having trouble fetching fresh vitals for this host. Please try again later.`,
               );
               setShowRefetchLoadingSpinner(false);
             }
@@ -96,7 +95,7 @@ const WelcomeHost = ({
       onError: (error) => {
         console.error(error);
       },
-    }
+    },
   );
 
   const onRefetchHost = async () => {

@@ -104,38 +104,22 @@ const ActivityFeed = ({
   const [pageIndex, setPageIndex] = useState(0);
   const [showShowQueryModal, setShowShowQueryModal] = useState(false);
   const [showScriptDetailsModal, setShowScriptDetailsModal] = useState(false);
-  const [
-    packageInstallDetails,
-    setPackageInstallDetails,
-  ] = useState<IActivityDetails | null>(null); // Also includes Android Play Store installs
-  const [
-    scriptPackageDetails,
-    setScriptPackageDetails,
-  ] = useState<IActivityDetails | null>(null);
-  const [
-    ipaPackageInstallDetails,
-    setIpaPackageInstallDetails,
-  ] = useState<IActivityDetails | null>(null);
-  const [
-    packageUninstallDetails,
-    setPackageUninstallDetails,
-  ] = useState<ISWUninstallDetailsParentState | null>(null);
-  const [
-    vppInstallDetails,
-    setVppInstallDetails,
-  ] = useState<IActivityDetails | null>(null);
-  const [
-    activityAutomationDetails,
-    setActivityAutomationDetails,
-  ] = useState<IActivityDetails | null>(null);
-  const [
-    softwareDetails,
-    setSoftwareDetails,
-  ] = useState<IActivityDetails | null>(null);
-  const [
-    appStoreDetails,
-    setAppStoreDetails,
-  ] = useState<IActivityDetails | null>(null);
+  const [packageInstallDetails, setPackageInstallDetails] =
+    useState<IActivityDetails | null>(null); // Also includes Android Play Store installs
+  const [scriptPackageDetails, setScriptPackageDetails] =
+    useState<IActivityDetails | null>(null);
+  const [ipaPackageInstallDetails, setIpaPackageInstallDetails] =
+    useState<IActivityDetails | null>(null);
+  const [packageUninstallDetails, setPackageUninstallDetails] =
+    useState<ISWUninstallDetailsParentState | null>(null);
+  const [vppInstallDetails, setVppInstallDetails] =
+    useState<IActivityDetails | null>(null);
+  const [activityAutomationDetails, setActivityAutomationDetails] =
+    useState<IActivityDetails | null>(null);
+  const [softwareDetails, setSoftwareDetails] =
+    useState<IActivityDetails | null>(null);
+  const [appStoreDetails, setAppStoreDetails] =
+    useState<IActivityDetails | null>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [createdAtDirection, setCreatedAtDirection] = useState("desc");
@@ -146,9 +130,10 @@ const ActivityFeed = ({
   const queryImpact = useRef<PerformanceImpactIndicator | undefined>(undefined);
   const scriptExecutionId = useRef("");
 
-  const { startDate, endDate } = useMemo(() => generateDateFilter(dateFilter), [
-    dateFilter,
-  ]);
+  const { startDate, endDate } = useMemo(
+    () => generateDateFilter(dateFilter),
+    [dateFilter],
+  );
 
   const {
     data: activitiesData,
@@ -202,7 +187,7 @@ const ActivityFeed = ({
         orderDirection,
         queryStartDate,
         queryEndDate,
-        queryTypeFilter
+        queryTypeFilter,
       );
     },
     {
@@ -214,7 +199,7 @@ const ActivityFeed = ({
       onError: () => {
         setShowActivityFeedTitle(true);
       },
-    }
+    },
   );
 
   setRefetchActivities(refetch);
@@ -254,7 +239,7 @@ const ActivityFeed = ({
           ...details,
           softwareName: getDisplayedSoftwareName(
             details?.software_title,
-            details?.software_display_name
+            details?.software_display_name,
           ),
           uninstallStatus: resolveUninstallStatus(details?.status),
           scriptExecutionId: details?.script_execution_id || "",
@@ -282,8 +267,8 @@ const ActivityFeed = ({
       case ActivityType.CanceledScriptBatch:
         router.push(
           paths.CONTROLS_SCRIPTS_BATCH_DETAILS(
-            details?.batch_execution_id || ""
-          )
+            details?.batch_execution_id || "",
+          ),
         );
         break;
       default:
@@ -389,7 +374,7 @@ const ActivityFeed = ({
           details={{
             appName: getDisplayedSoftwareName(
               ipaPackageInstallDetails.software_title,
-              ipaPackageInstallDetails.software_display_name
+              ipaPackageInstallDetails.software_display_name,
             ),
             fleetInstallStatus: (ipaPackageInstallDetails.status ||
               "pending_install") as SoftwareInstallUninstallStatus,
@@ -411,7 +396,7 @@ const ActivityFeed = ({
           details={{
             appName: getDisplayedSoftwareName(
               vppInstallDetails.software_title,
-              vppInstallDetails.software_display_name
+              vppInstallDetails.software_display_name,
             ),
             fleetInstallStatus: (vppInstallDetails.status ||
               "pending_install") as SoftwareInstallUninstallStatus,

@@ -91,14 +91,14 @@ const HostQueries = ({
       }
       router.push(`${PATHS.HOST_QUERY_REPORT(hostId, queryId)}`);
     },
-    [hostId, queryReportsDisabled, router]
+    [hostId, queryReportsDisabled, router],
   );
 
   const tableData = useMemo(() => generateDataSet(schedule ?? []), [schedule]);
 
   const columnConfigs = useMemo(
     () => generateColumnConfigs(hostId, queryReportsDisabled),
-    [hostId, queryReportsDisabled]
+    [hostId, queryReportsDisabled],
   );
 
   const renderHostQueries = () => {

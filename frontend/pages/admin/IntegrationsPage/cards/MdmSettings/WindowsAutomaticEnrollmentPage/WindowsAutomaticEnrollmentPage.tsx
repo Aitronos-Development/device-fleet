@@ -64,7 +64,7 @@ const WindowsAutomaticEnrollmentPage = () => {
               before turning on MDM for their host. The terms of use text informs users about
               policies that will be enforced on the host."
               value={generateMdmTermsOfUseUrl(
-                config?.server_settings.server_url || ""
+                config?.server_settings.server_url || "",
               )}
               enableCopy
             />
@@ -72,9 +72,9 @@ const WindowsAutomaticEnrollmentPage = () => {
               inputWrapperClass={`${baseClass}__url-input`}
               label="MDM discovery URL"
               name="mdmDiscoveryUrl"
-              tooltip="The enrollment URL is used to connect hosts with the MDM service."
+              tooltip="The enrollment URL is used to connect devices with the MDM service."
               value={generateMdmDiscoveryUrl(
-                config?.server_settings.server_url || ""
+                config?.server_settings.server_url || "",
               )}
               enableCopy
             />

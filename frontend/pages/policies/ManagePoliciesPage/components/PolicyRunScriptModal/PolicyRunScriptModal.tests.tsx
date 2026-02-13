@@ -4,7 +4,7 @@ import { getTrulyDirtyItems } from "./PolicyRunScriptModal";
 
 describe("getTrulyDirtyItems", () => {
   const createMockPolicyForScriptAutomation = (
-    overrides: Partial<IFormPolicy> = {}
+    overrides: Partial<IFormPolicy> = {},
   ): IFormPolicy =>
     ({
       id: 1,
@@ -13,7 +13,7 @@ describe("getTrulyDirtyItems", () => {
       runScriptEnabled: false,
       scriptIdToRun: undefined,
       ...overrides,
-    } as IFormPolicy);
+    }) as IFormPolicy;
 
   it("returns only policies that changed enablement or script", () => {
     const originalScriptId = 10;

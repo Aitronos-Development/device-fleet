@@ -42,7 +42,7 @@ describe("Host Summary section", () => {
       const summaryData = createMockHostSummary({ team_name: "Engineering" });
       render(<HostSummary summaryData={summaryData} isPremiumTier />);
       expect(screen.getByText("Team").nextElementSibling).toHaveTextContent(
-        "Engineering"
+        "Engineering",
       );
     });
 
@@ -80,7 +80,7 @@ describe("Host Summary section", () => {
       render(<HostSummary summaryData={summaryData} isPremiumTier />);
 
       expect(screen.getByText("Team").nextElementSibling).toHaveTextContent(
-        teamName
+        teamName,
       );
     });
     it("for iPadOS, renders Team data only", async () => {
@@ -106,7 +106,7 @@ describe("Host Summary section", () => {
       render(<HostSummary summaryData={summaryData} isPremiumTier />);
 
       expect(screen.getByText("Team").nextElementSibling).toHaveTextContent(
-        teamName
+        teamName,
       );
     });
   });
@@ -159,7 +159,7 @@ describe("Host Summary section", () => {
           summaryData={summaryData}
           bootstrapPackageData={bootstrapPackageData}
           toggleBootstrapPackageModal={toggleBootstrapPackageModal}
-        />
+        />,
       );
       expect(screen.getByText("Bootstrap package")).toBeInTheDocument();
     });

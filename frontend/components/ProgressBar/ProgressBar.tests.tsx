@@ -28,7 +28,7 @@ describe("ProgressBar component", () => {
     // it seems to use the named color.
     try {
       expect(sectionElements[0]).toHaveStyle(
-        "background-color: rgb(0, 128, 0)"
+        "background-color: rgb(0, 128, 0)",
       );
     } catch (error) {
       expect(sectionElements[0]).toHaveStyle("background-color: green");
@@ -39,7 +39,7 @@ describe("ProgressBar component", () => {
     // Check second section
     try {
       expect(sectionElements[1]).toHaveStyle(
-        "background-color: rgb(255, 0, 0)"
+        "background-color: rgb(255, 0, 0)",
       );
     } catch (error) {
       expect(sectionElements[1]).toHaveStyle("background-color: red");

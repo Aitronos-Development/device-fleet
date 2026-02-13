@@ -41,7 +41,11 @@ const EditCertAuthorityModal = ({
   const [isDirty, setIsDirty] = useState(false);
   const [formData, setFormData] = useState<ICertFormData | undefined>();
 
-  const { data: fullCertAuthority, isLoading, isError } = useQuery(
+  const {
+    data: fullCertAuthority,
+    isLoading,
+    isError,
+  } = useQuery(
     ["cert-authority", certAuthority.id],
     () => certificatesAPI.getCertificateAuthority(certAuthority.id),
     {
@@ -49,7 +53,7 @@ const EditCertAuthorityModal = ({
       onSuccess: (data) => {
         setFormData(generateDefaultFormData(data));
       },
-    }
+    },
   );
 
   const onChangeForm = (update: { name: string; value: string }) => {
@@ -68,13 +72,13 @@ const EditCertAuthorityModal = ({
     }
     const editPatchData = generateEditCertAuthorityData(
       fullCertAuthority,
-      formData
+      formData,
     );
     setIsUpdating(true);
     try {
       await certificatesAPI.editCertificateAuthority(
         certAuthority.id,
-        editPatchData
+        editPatchData,
       );
       renderFlash("success", "Successfully edited certificate authority.");
       onExit();
@@ -100,7 +104,7 @@ const EditCertAuthorityModal = ({
         return CustomESTForm;
       default:
         throw new Error(
-          `Unknown certificate authority type: ${certAuthority.type}`
+          `Unknown certificate authority type: ${certAuthority.type}`,
         );
     }
   };

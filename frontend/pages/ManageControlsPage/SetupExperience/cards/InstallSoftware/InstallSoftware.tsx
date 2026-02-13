@@ -91,7 +91,7 @@ const InstallSoftware = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (res) => res.software_titles,
       enabled: isValidPlatform,
-    }
+    },
   );
 
   const { data: globalConfig, isLoading: isLoadingGlobalConfig } = useQuery<
@@ -117,16 +117,16 @@ const InstallSoftware = ({
       const newPlatform = PLATFORM_BY_INDEX[index];
       router.push(
         PATHS.CONTROLS_INSTALL_SOFTWARE(newPlatform).concat(
-          location?.search ?? ""
-        )
+          location?.search ?? "",
+        ),
       );
     },
-    [router]
+    [router],
   );
 
   if (!isValidPlatform) {
     router.replace(
-      PATHS.CONTROLS_INSTALL_SOFTWARE("macos").concat(location?.search ?? "")
+      PATHS.CONTROLS_INSTALL_SOFTWARE("macos").concat(location?.search ?? ""),
     );
   }
 
@@ -138,7 +138,7 @@ const InstallSoftware = ({
   const hasManualAgentInstall = getManualAgentInstallSetting(
     currentTeamId,
     globalConfig,
-    teamConfig
+    teamConfig,
   );
 
   const isAndroidMdmEnabled = globalConfig?.mdm.android_enabled_and_configured;

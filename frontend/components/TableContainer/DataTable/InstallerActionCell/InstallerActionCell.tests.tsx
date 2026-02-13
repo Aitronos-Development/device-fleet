@@ -18,7 +18,7 @@ describe("InstallerAction cell", () => {
     render(
       <InstallerActionCell
         value={{ id: 1, platform: "darwin", software_title_id: 1 }}
-      />
+      />,
     );
 
     expect(screen.getByTestId("success-icon")).toBeInTheDocument();

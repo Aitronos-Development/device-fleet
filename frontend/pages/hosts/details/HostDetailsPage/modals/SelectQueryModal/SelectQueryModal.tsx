@@ -68,7 +68,7 @@ const SelectQueryModal = ({
       refetchOnWindowFocus: false,
       retry: false,
       select: (data: IListQueriesResponse) => data.queries,
-    }
+    },
   );
 
   const onQueryHostCustom = () => {
@@ -77,7 +77,7 @@ const SelectQueryModal = ({
       getPathWithQueryParams(PATHS.NEW_QUERY, {
         host_id: hostId,
         team_id: currentTeamId,
-      })
+      }),
     );
   };
 
@@ -87,7 +87,7 @@ const SelectQueryModal = ({
       getPathWithQueryParams(PATHS.EDIT_QUERY(selectedQuery.id), {
         host_id: hostId,
         team_id: currentTeamId,
-      })
+      }),
     );
   };
 
@@ -130,7 +130,7 @@ const SelectQueryModal = ({
     (filterString: string): void => {
       setQueriesFilter(filterString);
     },
-    [setQueriesFilter]
+    [setQueriesFilter],
   );
 
   const queriesFiltered = getQueries();

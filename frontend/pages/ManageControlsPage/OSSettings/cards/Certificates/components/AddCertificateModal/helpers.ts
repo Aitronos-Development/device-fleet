@@ -29,7 +29,7 @@ type IFormValidations = Record<
 >;
 
 export const generateFormValidations = (
-  existingCerts: ICertificate[]
+  existingCerts: ICertificate[],
 ): IFormValidations => {
   const FORM_VALIDATIONS: IFormValidations = {
     name: {
@@ -53,7 +53,7 @@ export const generateFormValidations = (
             return (
               existingCerts.find(
                 (cert) =>
-                  cert.name.toLowerCase() === formData.name.toLowerCase()
+                  cert.name.toLowerCase() === formData.name.toLowerCase(),
               ) === undefined
             );
           },
@@ -96,7 +96,7 @@ export const generateFormValidations = (
 
 const getErrorMessage = (
   formData: IAddCertFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -106,7 +106,7 @@ const getErrorMessage = (
 
 export const validateFormData = (
   formData: IAddCertFormData,
-  validationConfig: IFormValidations
+  validationConfig: IFormValidations,
 ): IAddCertFormValidation => {
   const formValidation: IAddCertFormValidation = {
     isValid: true,
@@ -115,7 +115,7 @@ export const validateFormData = (
   Object.keys(validationConfig).forEach((key) => {
     const objKey = key as keyof typeof validationConfig;
     const failedValidation = validationConfig[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

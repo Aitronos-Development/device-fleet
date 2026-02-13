@@ -6,7 +6,7 @@ import { noop } from "lodash";
 import DeleteSoftwareModal from "./DeleteSoftwareModal";
 
 const renderModal = (
-  props: Partial<React.ComponentProps<typeof DeleteSoftwareModal>> = {}
+  props: Partial<React.ComponentProps<typeof DeleteSoftwareModal>> = {},
 ) => {
   return render(
     <DeleteSoftwareModal
@@ -15,7 +15,7 @@ const renderModal = (
       onExit={noop}
       onSuccess={noop}
       {...props}
-    />
+    />,
   );
 };
 
@@ -29,8 +29,8 @@ describe("DeleteSoftwareModal", () => {
 
     expect(
       screen.getByText(
-        "You are currently in GitOps mode. If the package is defined in GitOps, it will reappear when GitOps runs."
-      )
+        "You are currently in GitOps mode. If the package is defined in GitOps, it will reappear when GitOps runs.",
+      ),
     ).toBeVisible();
   });
 
@@ -39,7 +39,7 @@ describe("DeleteSoftwareModal", () => {
 
     expect(screen.getByText(/won't be uninstalled/i)).toBeVisible();
     expect(
-      screen.getByText(/Pending installs and uninstalls will be canceled\./i)
+      screen.getByText(/Pending installs and uninstalls will be canceled\./i),
     ).toBeVisible();
   });
 
@@ -49,8 +49,8 @@ describe("DeleteSoftwareModal", () => {
     expect(screen.getByText(/won't be uninstalled/i)).toBeVisible();
     expect(
       screen.getByText(
-        /Pending or already started installs and uninstalls won't be canceled/i
-      )
+        /Pending or already started installs and uninstalls won't be canceled/i,
+      ),
     ).toBeVisible();
   });
 
@@ -59,8 +59,8 @@ describe("DeleteSoftwareModal", () => {
 
     expect(
       screen.getByText(
-        /Currently, software won't be deleted from self-service \(managed Google Play\) and won't be uninstalled from the hosts\./i
-      )
+        /Currently, software won't be deleted from self-service \(managed Google Play\) and won't be uninstalled from the hosts\./i,
+      ),
     ).toBeVisible();
   });
 });

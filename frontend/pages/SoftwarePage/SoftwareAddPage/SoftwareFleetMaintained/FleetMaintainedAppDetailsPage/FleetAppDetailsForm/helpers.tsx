@@ -56,7 +56,7 @@ const FORM_VALIDATION_CONFIG: Record<
           // there must be at least one label target selected
           return (
             Object.keys(formData.labelTargets).find(
-              (key) => formData.labelTargets[key]
+              (key) => formData.labelTargets[key],
             ) !== undefined
           );
         },
@@ -67,7 +67,7 @@ const FORM_VALIDATION_CONFIG: Record<
 
 const getErrorMessage = (
   formData: IFleetMaintainedAppFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -77,7 +77,7 @@ const getErrorMessage = (
 
 // eslint-disable-next-line import/prefer-default-export
 export const generateFormValidation = (
-  formData: IFleetMaintainedAppFormData
+  formData: IFleetMaintainedAppFormData,
 ) => {
   const formValidation: IFormValidation = {
     isValid: true,
@@ -86,7 +86,7 @@ export const generateFormValidation = (
   (Object.keys(FORM_VALIDATION_CONFIG) as IFormValidationKey[]).forEach(
     (objKey) => {
       const failedValidation = FORM_VALIDATION_CONFIG[objKey].validations.find(
-        (validation) => !validation.isValid(formData)
+        (validation) => !validation.isValid(formData),
       );
 
       if (!failedValidation) {
@@ -100,7 +100,7 @@ export const generateFormValidation = (
           message: getErrorMessage(formData, failedValidation.message),
         };
       }
-    }
+    },
   );
 
   return formValidation;

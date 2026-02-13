@@ -51,7 +51,7 @@ describe("InstallerDetailsWidget", () => {
         {...defaultProps}
         version={undefined}
         isScriptPackage
-      />
+      />,
     );
     expect(screen.queryByText(/Version \(unknown\)/i)).not.toBeInTheDocument();
     expect(screen.getByText(/2 days ago/i)).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe("InstallerDetailsWidget", () => {
         {...defaultProps}
         version={undefined}
         isScriptPackage={false}
-      />
+      />,
     );
     expect(screen.getByText(/Version \(unknown\)/i)).toBeInTheDocument();
     expect(screen.getByText(/2 days ago/i)).toBeInTheDocument();
@@ -71,17 +71,17 @@ describe("InstallerDetailsWidget", () => {
 
   it("renders only version info when addedTimestamp is not present", () => {
     render(
-      <InstallerDetailsWidget {...defaultProps} addedTimestamp={undefined} />
+      <InstallerDetailsWidget {...defaultProps} addedTimestamp={undefined} />,
     );
     expect(screen.queryByText(/2 days ago/i)).not.toBeInTheDocument();
   });
 
   it("applies additional className if provided", () => {
     render(
-      <InstallerDetailsWidget {...defaultProps} className="extra-class" />
+      <InstallerDetailsWidget {...defaultProps} className="extra-class" />,
     );
     const rootDiv = document.querySelector(
-      ".installer-details-widget.extra-class"
+      ".installer-details-widget.extra-class",
     );
     expect(rootDiv).toBeInTheDocument();
   });
@@ -100,7 +100,7 @@ describe("InstallerDetailsWidget", () => {
 
   it("renders VPP label", () => {
     render(
-      <InstallerDetailsWidget {...defaultProps} installerType="app-store" />
+      <InstallerDetailsWidget {...defaultProps} installerType="app-store" />,
     );
 
     expect(screen.getByText(/App Store \(VPP\)/i)).toBeInTheDocument();
@@ -112,7 +112,7 @@ describe("InstallerDetailsWidget", () => {
         {...defaultProps}
         installerType="app-store"
         androidPlayStoreId="com.android.appname"
-      />
+      />,
     );
 
     expect(screen.getByText(/Google Play Store/i)).toBeInTheDocument();

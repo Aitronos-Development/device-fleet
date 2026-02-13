@@ -150,7 +150,7 @@ class InputField extends Component {
     const wrapperClasses = classnames(`${baseClass}__copy-wrapper`);
 
     const copiedConfirmationClasses = classnames(
-      `${baseClass}__copied-confirmation`
+      `${baseClass}__copied-confirmation`,
     );
 
     return (

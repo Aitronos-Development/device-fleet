@@ -50,17 +50,14 @@ const SoftwareSummaryCard = ({
   const [iconUploadedAt, setIconUploadedAt] = useState("");
   const [showEditIconModal, setShowEditIconModal] = useState(false);
   const [showEditSoftwareModal, setShowEditSoftwareModal] = useState(false);
-  const [showEditConfigurationModal, setShowEditConfigurationModal] = useState(
-    false
-  );
-  const [
-    showEditAutoUpdateConfigModal,
-    setShowEditAutoUpdateConfigModal,
-  ] = useState(false);
+  const [showEditConfigurationModal, setShowEditConfigurationModal] =
+    useState(false);
+  const [showEditAutoUpdateConfigModal, setShowEditAutoUpdateConfigModal] =
+    useState(false);
 
   const softwareDisplayName = getDisplayedSoftwareName(
     softwareTitle.name,
-    softwareTitle.display_name
+    softwareTitle.display_name,
   );
 
   // Hide versions table for tgz_packages, sh_packages, & ps1_packages and when no hosts have the
@@ -94,7 +91,7 @@ const SoftwareSummaryCard = ({
               isLoading={isLoading}
               teamIdForApi={teamId}
               isIPadOSOrIOSApp={isIpadOrIphoneSoftwareSource(
-                softwareTitle.source
+                softwareTitle.source,
               )}
               isAvailableForInstall={isAvailableForInstall}
               countsUpdatedAt={softwareTitle.counts_updated_at}

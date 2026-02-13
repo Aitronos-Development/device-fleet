@@ -65,7 +65,7 @@ export type IStatusDisplayConfig = {
 };
 
 export const RECENT_SUCCESS_ACTION_MESSAGE = (
-  action: "installed" | "uninstalled" | "updated"
+  action: "installed" | "uninstalled" | "updated",
 ) =>
   `Fleet successfully ${action} software and is fetching latest software inventory.`;
 
@@ -339,7 +339,7 @@ const getSoftwarePackageName = (software: IHostSoftware) =>
 const resolveDisplayText = (
   displayText: IStatusDisplayConfig["displayText"],
   isSelfService: boolean,
-  isHostOnline: boolean
+  isHostOnline: boolean,
 ) =>
   typeof displayText === "function"
     ? displayText({ isSelfService, isHostOnline })
@@ -349,7 +349,7 @@ const getEmptyCellTooltip = (
   isAppleAppStoreApp: boolean,
   isAndroidAppStoreApp: boolean,
   isScriptPackage: boolean,
-  softwareName?: string
+  softwareName?: string,
 ) => {
   if (isAppleAppStoreApp) {
     return (
@@ -409,7 +409,7 @@ const InstallStatusCell = ({
           isAppleAppStoreApp,
           isAndroidAppStoreApp,
           displayStatus === "never_ran_script",
-          softwarePackageName
+          softwarePackageName,
         )}
       />
     );
@@ -460,7 +460,7 @@ const InstallStatusCell = ({
         onShowUninstallDetails({
           softwareName: getDisplayedSoftwareName(
             software.name,
-            software.display_name
+            software.display_name,
           ),
           softwarePackageName,
           uninstallStatus: (software.status ||
@@ -482,7 +482,7 @@ const InstallStatusCell = ({
     const resolvedDisplayText = resolveDisplayText(
       displayConfig.displayText,
       isSelfService,
-      isHostOnline
+      isHostOnline,
     );
 
     // Software "installed" by Fleet (backend) and shows as "installed" (UI)
@@ -534,7 +534,7 @@ const InstallStatusCell = ({
     // Given the condition is met and the display text is in the statuses array
     const match = displayStatusConfig.find(
       ({ condition, statuses }) =>
-        condition && statuses.includes(resolvedDisplayText as string)
+        condition && statuses.includes(resolvedDisplayText as string),
     );
 
     if (match && !shouldOnClickBeDisabled) {

@@ -72,7 +72,7 @@ class SelectTargetsInput extends Component {
       const { onTargetSelectInputChange } = this.props;
       onTargetSelectInputChange(query);
     },
-    { leading: false, trailing: true }
+    { leading: false, trailing: true },
   );
 
   render() {

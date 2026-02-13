@@ -22,7 +22,7 @@ const useCheckboxListStateManagement = (allColumns, hiddenColumns) => {
   const updateColumnItems = (columnId) => {
     setColumnItems((prevState) => {
       const selectedColumn = columnItems.find(
-        (column) => column.id === columnId
+        (column) => column.id === columnId,
       );
       const updatedColumn = {
         ...selectedColumn,
@@ -54,7 +54,7 @@ const EditColumnsModal = ({
 }) => {
   const [columnItems, updateColumnItems] = useCheckboxListStateManagement(
     columns,
-    hiddenColumns
+    hiddenColumns,
   );
 
   return (

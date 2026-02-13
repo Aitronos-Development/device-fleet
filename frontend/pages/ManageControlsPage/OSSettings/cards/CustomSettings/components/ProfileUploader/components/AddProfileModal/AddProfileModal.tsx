@@ -115,11 +115,10 @@ const AddProfileModal = ({
   const [fileDetails, setFileDetails] = useState<IParseFileResult | null>(null);
   const [selectedTargetType, setSelectedTargetType] = useState("All hosts");
   const [selectedLabels, setSelectedLabels] = useState<Record<string, boolean>>(
-    {}
+    {},
   );
-  const [selectedCustomTarget, setSelectedCustomTarget] = useState(
-    "labelsIncludeAll"
-  );
+  const [selectedCustomTarget, setSelectedCustomTarget] =
+    useState("labelsIncludeAll");
 
   const fileRef = useRef<File | null>(null);
 
@@ -139,7 +138,7 @@ const AddProfileModal = ({
       refetchOnWindowFocus: false,
       retry: false,
       staleTime: 10000,
-    }
+    },
   );
 
   const onDone = useCallback(() => {
@@ -161,7 +160,7 @@ const AddProfileModal = ({
       const labelKey = generateLabelKey(
         selectedTargetType,
         selectedCustomTarget,
-        selectedLabels
+        selectedLabels,
       );
       await mdmAPI.uploadProfile({
         file,

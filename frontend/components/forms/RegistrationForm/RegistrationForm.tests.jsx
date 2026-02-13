@@ -8,7 +8,7 @@ describe("RegistrationForm - component", () => {
     const { container } = render(<RegistrationForm page={1} />);
 
     expect(
-      container.querySelectorAll(".user-registration__container--admin").length
+      container.querySelectorAll(".user-registration__container--admin").length,
     ).toEqual(1);
     // headers moved up to parent RegistrationPage.tsx
   });
@@ -17,7 +17,7 @@ describe("RegistrationForm - component", () => {
     const { container } = render(<RegistrationForm page={2} />);
 
     expect(
-      container.querySelectorAll(".user-registration__container--org").length
+      container.querySelectorAll(".user-registration__container--org").length,
     ).toEqual(1);
   });
 
@@ -25,7 +25,7 @@ describe("RegistrationForm - component", () => {
     const { container } = render(<RegistrationForm page={3} />);
 
     expect(
-      container.querySelectorAll(".user-registration__container--fleet").length
+      container.querySelectorAll(".user-registration__container--fleet").length,
     ).toEqual(1);
   });
 
@@ -34,7 +34,7 @@ describe("RegistrationForm - component", () => {
 
     expect(
       container.querySelectorAll(".user-registration__container--confirmation")
-        .length
+        .length,
     ).toEqual(1);
   });
 });

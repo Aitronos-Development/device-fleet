@@ -62,7 +62,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -74,8 +74,8 @@ describe("AddCertModal", () => {
     expect(screen.getByText("Certificate authority (CA)")).toBeInTheDocument();
     expect(
       screen.getByPlaceholderText(
-        "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization"
-      )
+        "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization",
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Add")).toBeInTheDocument();
     expect(screen.getByText("Cancel")).toBeInTheDocument();
@@ -90,7 +90,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -103,7 +103,7 @@ describe("AddCertModal", () => {
     await user.hover(addButton);
     await waitFor(() => {
       expect(
-        screen.getByText("Complete all fields to save.")
+        screen.getByText("Complete all fields to save."),
       ).toBeInTheDocument();
     });
   });
@@ -117,7 +117,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -144,7 +144,7 @@ describe("AddCertModal", () => {
         existingCerts={mockExistingCerts}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -171,7 +171,7 @@ describe("AddCertModal", () => {
         existingCerts={mockExistingCerts}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -199,7 +199,7 @@ describe("AddCertModal", () => {
         existingCerts={mockExistingCerts}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -210,7 +210,7 @@ describe("AddCertModal", () => {
     await user.type(nameInput, "Valid Name");
 
     const subjectNameInput = screen.getByPlaceholderText(
-      "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization"
+      "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization",
     );
     await user.type(subjectNameInput, "/CN=test/O=Org");
 
@@ -227,7 +227,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -261,7 +261,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -273,7 +273,7 @@ describe("AddCertModal", () => {
     await user.type(nameInput, "Valid Name");
 
     const subjectNameInput = screen.getByPlaceholderText(
-      "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization"
+      "CN=$FLEET_VAR_HOST_END_USER_IDP_USERNAME, O=Your Organization",
     );
     await user.type(subjectNameInput, "/CN=test/O=Org");
 
@@ -303,7 +303,7 @@ describe("AddCertModal", () => {
         existingCerts={[]}
         onExit={mockOnExit}
         onSuccess={mockOnSuccess}
-      />
+      />,
     );
 
     await waitFor(() => {

@@ -68,7 +68,7 @@ describe("Device User Page", () => {
         router={mockRouter}
         params={{ device_auth_token: "testToken" }}
         location={mockLocation}
-      />
+      />,
     );
 
     // waiting for the device data to render
@@ -91,7 +91,7 @@ describe("Device User Page", () => {
         router={mockRouter}
         params={{ device_auth_token: "testToken" }}
         location={mockLocation}
-      />
+      />,
     );
 
     // waiting for the device data to render
@@ -119,7 +119,7 @@ describe("Device User Page", () => {
         router={mockRouter}
         params={{ device_auth_token: "testToken" }}
         location={mockLocation}
-      />
+      />,
     );
 
     // waiting for the device data to render
@@ -146,7 +146,7 @@ describe("Device User Page", () => {
         router={mockRouter}
         params={{ device_auth_token: "testToken" }}
         location={mockLocation}
-      />
+      />,
     );
 
     // waiting for the device data to render
@@ -164,7 +164,7 @@ describe("Device User Page", () => {
     const setupTest = async (
       deviceUserResponseOverrides?: Partial<IDeviceUserResponse>,
       setupExperienceOverrides?: Partial<IGetSetupExperienceStatusesResponse>,
-      mockLocationOverrides = {}
+      mockLocationOverrides = {},
     ) => {
       mockServer.use(customDeviceHandler(deviceUserResponseOverrides));
       mockServer.use(defaultDeviceCertificatesHandler);
@@ -182,7 +182,7 @@ describe("Device User Page", () => {
             ...(mockLocation || {}),
             ...(mockLocationOverrides || {}),
           }}
-        />
+        />,
       );
 
       return user;
@@ -207,7 +207,7 @@ describe("Device User Page", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER)
+          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER),
         ).toBeInTheDocument();
         expect(screen.getAllByText(/Install/i).length).toBeGreaterThan(0);
         expect(screen.getAllByText(/Run/i).length).toBeGreaterThan(0);
@@ -221,7 +221,7 @@ describe("Device User Page", () => {
 
       await setupTest(
         { host },
-        { setup_experience_results: { software: [], scripts: [] } }
+        { setup_experience_results: { software: [], scripts: [] } },
       );
 
       await waitFor(() => {
@@ -237,7 +237,7 @@ describe("Device User Page", () => {
       await setupTest(
         { host },
         { setup_experience_results: { software: [], scripts: [] } },
-        { query: { setup_only: "1" } }
+        { query: { setup_only: "1" } },
       );
       await waitFor(() => {
         expect(screen.getByText(CONFIG_COMPLETE_MATCHER)).toBeInTheDocument();
@@ -261,7 +261,7 @@ describe("Device User Page", () => {
             ],
           },
         },
-        { query: { setup_only: "1" } }
+        { query: { setup_only: "1" } },
       );
       await waitFor(() => {
         expect(screen.getByText(CONFIG_COMPLETE_MATCHER)).toBeInTheDocument();
@@ -297,11 +297,11 @@ describe("Device User Page", () => {
             ],
             scripts: [],
           },
-        }
+        },
       );
       await waitFor(() => {
         expect(
-          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER)
+          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER),
         ).toBeInTheDocument();
       });
 
@@ -348,11 +348,11 @@ describe("Device User Page", () => {
             ],
             scripts: [],
           },
-        }
+        },
       );
       await waitFor(() => {
         expect(
-          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER)
+          screen.getByText(SETTING_UP_YOUR_DEVICE_MATCHER),
         ).toBeInTheDocument();
       });
 
@@ -399,7 +399,7 @@ describe("Device User Page", () => {
             ],
             scripts: [],
           },
-        }
+        },
       );
       await waitFor(() => {
         expect(screen.getByText(SETUP_FAILED_MATCHER)).toBeInTheDocument();
@@ -429,7 +429,7 @@ describe("Device User Page", () => {
           router={mockRouter}
           params={{ device_auth_token: "testToken" }}
           location={mockLocation}
-        />
+        />,
       );
 
       // waiting for the device data to render
@@ -565,11 +565,11 @@ describe("Device User Page", () => {
           onCancel={jest.fn()}
           policy={createFailingConditionalAccessPolicy()}
           onResolveLater={jest.fn()}
-        />
+        />,
       );
 
       expect(
-        screen.getByRole("button", { name: "Resolve later" })
+        screen.getByRole("button", { name: "Resolve later" }),
       ).toBeInTheDocument();
     });
 
@@ -578,11 +578,11 @@ describe("Device User Page", () => {
         <PolicyDetailsModal
           onCancel={jest.fn()}
           policy={createFailingConditionalAccessPolicy()}
-        />
+        />,
       );
 
       expect(
-        screen.queryByRole("button", { name: "Resolve later" })
+        screen.queryByRole("button", { name: "Resolve later" }),
       ).not.toBeInTheDocument();
     });
 
@@ -597,11 +597,11 @@ describe("Device User Page", () => {
           onCancel={jest.fn()}
           policy={passingPolicy}
           onResolveLater={jest.fn()}
-        />
+        />,
       );
 
       expect(
-        screen.queryByRole("button", { name: "Resolve later" })
+        screen.queryByRole("button", { name: "Resolve later" }),
       ).not.toBeInTheDocument();
     });
 
@@ -616,11 +616,11 @@ describe("Device User Page", () => {
           onCancel={jest.fn()}
           policy={nonConditionalPolicy}
           onResolveLater={jest.fn()}
-        />
+        />,
       );
 
       expect(
-        screen.queryByRole("button", { name: "Resolve later" })
+        screen.queryByRole("button", { name: "Resolve later" }),
       ).not.toBeInTheDocument();
     });
   });

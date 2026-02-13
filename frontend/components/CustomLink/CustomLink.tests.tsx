@@ -8,7 +8,7 @@ describe("CustomLink - component", () => {
       <CustomLink
         url="https://github.com/fleetdm/fleet/issues/new/choose"
         text="file an issue"
-      />
+      />,
     );
 
     const text = screen.getByText("file an issue");
@@ -18,7 +18,7 @@ describe("CustomLink - component", () => {
     expect(icon).toBeNull();
     expect(text.closest("a")).toHaveAttribute(
       "href",
-      "https://github.com/fleetdm/fleet/issues/new/choose"
+      "https://github.com/fleetdm/fleet/issues/new/choose",
     );
     expect(text.closest("a")).not.toHaveAttribute("target", "_blank");
   });
@@ -29,7 +29,7 @@ describe("CustomLink - component", () => {
         url="https://github.com/fleetdm/fleet/issues/new/choose"
         text="file an issue"
         newTab
-      />
+      />,
     );
 
     const icon = screen.getByTestId("external-link-icon");

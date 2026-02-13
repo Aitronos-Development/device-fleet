@@ -43,7 +43,7 @@ describe("Software Summary Card", () => {
         router={router}
         refetchSoftwareTitle={jest.fn()}
         onToggleViewYaml={jest.fn()}
-      />
+      />,
     );
     // Get the text with aria label "software display name"
     const displayNameElement = screen.getByLabelText("software display name");
@@ -95,7 +95,7 @@ describe("Software Summary Card", () => {
           router={router}
           refetchSoftwareTitle={jest.fn()}
           onToggleViewYaml={jest.fn()}
-        />
+        />,
       );
 
       const options = await getDropdownOptions(user);
@@ -118,7 +118,7 @@ describe("Software Summary Card", () => {
           router={router}
           refetchSoftwareTitle={jest.fn()}
           onToggleViewYaml={jest.fn()}
-        />
+        />,
       );
 
       const options = await getDropdownOptions(user);
@@ -142,7 +142,7 @@ describe("Software Summary Card", () => {
           router={router}
           refetchSoftwareTitle={jest.fn()}
           onToggleViewYaml={jest.fn()}
-        />
+        />,
       );
 
       const options = await getDropdownOptions(user);

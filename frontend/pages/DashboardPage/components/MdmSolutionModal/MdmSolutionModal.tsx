@@ -32,11 +32,11 @@ const MdmSolutionModal = ({
 }: IMdmSolutionModalProps) => {
   const solutionsTableHeaders = useMemo(
     () => generateSolutionsTableHeaders(selectedTeamId),
-    [selectedTeamId]
+    [selectedTeamId],
   );
   const solutionsDataSet = generateSolutionsDataSet(
     mdmSolutions,
-    selectedPlatformLabelId
+    selectedPlatformLabelId,
   );
 
   return (

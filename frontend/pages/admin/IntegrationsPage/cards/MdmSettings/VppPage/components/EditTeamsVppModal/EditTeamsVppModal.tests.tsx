@@ -85,7 +85,7 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         currentToken,
-        asArr(currentToken)
+        asArr(currentToken),
       );
       expect(options).toEqual([]);
     });
@@ -101,7 +101,7 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         currentToken,
-        asArr(currentToken)
+        asArr(currentToken),
       );
       expect(options).toEqual(allOptions);
     });
@@ -118,7 +118,7 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         currentToken,
-        asArr(currentToken)
+        asArr(currentToken),
       );
       expect(options).toEqual(allOptions);
     });
@@ -130,10 +130,10 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         currentToken,
-        asArr(currentToken)
+        asArr(currentToken),
       );
       expect(options).toEqual(
-        options.filter((o) => o.value !== APP_CONTEXT_ALL_TEAMS_ID)
+        options.filter((o) => o.value !== APP_CONTEXT_ALL_TEAMS_ID),
       );
     });
 
@@ -151,8 +151,8 @@ describe("EditTeamsVppModal", () => {
           availableTeams,
           tokens,
           unassignedToken,
-          asArr(unassignedToken)
-        )
+          asArr(unassignedToken),
+        ),
       ).toEqual([
         { label: "Penguins", value: 4 }, // only penguins is available
       ]);
@@ -168,10 +168,10 @@ describe("EditTeamsVppModal", () => {
           availableTeams,
           tokens,
           piratesAndNinjasToken,
-          asArr(piratesAndNinjasToken)
-        )
+          asArr(piratesAndNinjasToken),
+        ),
       ).toEqual(
-        allOptions.filter((o) => !unavailableTeamIds.includes(o.value))
+        allOptions.filter((o) => !unavailableTeamIds.includes(o.value)),
       );
 
       // test with pandasToken
@@ -182,9 +182,9 @@ describe("EditTeamsVppModal", () => {
         2, // already assigned to piratesAndNinjasToken
       ];
       expect(
-        getOptions(availableTeams, tokens, pandasToken, asArr(pandasToken))
+        getOptions(availableTeams, tokens, pandasToken, asArr(pandasToken)),
       ).toEqual(
-        allOptions.filter((o) => !unavailableTeamIds.includes(o.value))
+        allOptions.filter((o) => !unavailableTeamIds.includes(o.value)),
       );
 
       // test with noTeamToken
@@ -195,9 +195,9 @@ describe("EditTeamsVppModal", () => {
         3, // already assigned to pandasToken
       ];
       expect(
-        getOptions(availableTeams, tokens, noTeamToken, asArr(noTeamToken))
+        getOptions(availableTeams, tokens, noTeamToken, asArr(noTeamToken)),
       ).toEqual(
-        allOptions.filter((o) => !unavailableTeamIds.includes(o.value))
+        allOptions.filter((o) => !unavailableTeamIds.includes(o.value)),
       );
 
       // test with allTeamsToken
@@ -212,10 +212,10 @@ describe("EditTeamsVppModal", () => {
           availableTeams,
           [...tokens, allTeamsToken],
           allTeamsToken,
-          asArr(allTeamsToken)
-        )
+          asArr(allTeamsToken),
+        ),
       ).toEqual(
-        allOptions.filter((o) => !unavailableTeamIds.includes(o.value))
+        allOptions.filter((o) => !unavailableTeamIds.includes(o.value)),
       );
     });
   });
@@ -262,7 +262,7 @@ describe("EditTeamsVppModal", () => {
   describe("teamIdsFromSelectedValue", () => {
     it("returns empty array when value is all teams id", () => {
       expect(
-        teamIdsFromSelectedValue(APP_CONTEXT_ALL_TEAMS_ID.toString())
+        teamIdsFromSelectedValue(APP_CONTEXT_ALL_TEAMS_ID.toString()),
       ).toEqual([]);
     });
 
@@ -283,10 +283,10 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         piratesAndNinjasToken,
-        []
+        [],
       );
       expect(options.some((o) => o.value === APP_CONTEXT_ALL_TEAMS_ID)).toBe(
-        true
+        true,
       );
     });
 
@@ -296,10 +296,10 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         unassignedToken,
-        [APP_CONTEXT_ALL_TEAMS_ID.toString()] // user picks 'all teams'
+        [APP_CONTEXT_ALL_TEAMS_ID.toString()], // user picks 'all teams'
       );
       expect(options.some((o) => o.value === APP_CONTEXT_ALL_TEAMS_ID)).toBe(
-        true
+        true,
       );
     });
 
@@ -310,7 +310,7 @@ describe("EditTeamsVppModal", () => {
         availableTeams,
         tokens,
         unassignedToken,
-        ["4"] // 'Penguins'
+        ["4"], // 'Penguins'
       );
       expect(options.find((o) => o.value === 3)).toBeUndefined(); // Pandas not selectable
       expect(options.find((o) => o.value === 4)).not.toBeUndefined(); // Penguins selectable

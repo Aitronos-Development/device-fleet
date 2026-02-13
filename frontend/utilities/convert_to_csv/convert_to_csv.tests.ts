@@ -38,12 +38,12 @@ const tableHeaders = [
 describe("convertToCSV - utility", () => {
   it("converts an array of objects to CSV format", () => {
     expect(convertToCSV({ objArray })).toEqual(
-      '"first_name","last_name"\n"Mike","Stone"\n"Paul","Simon"'
+      '"first_name","last_name"\n"Mike","Stone"\n"Paul","Simon"',
     );
   });
   it("correctly creates table headers and fields including quotes and commas to CSV format", () => {
     expect(convertToCSV({ objArray: objArray2, tableHeaders })).toEqual(
-      '"host_display_name","last_fetched","uid","json_result","edge"",""case"\n"Rachel@Fleet","2024-06-25T13:11:18Z","145","{""AC Power:"":{""acwake"":""0"",""hibernatefile"":""/var/vm/sleepimage""}}","true"'
+      '"host_display_name","last_fetched","uid","json_result","edge"",""case"\n"Rachel@Fleet","2024-06-25T13:11:18Z","145","{""AC Power:"":{""acwake"":""0"",""hibernatefile"":""/var/vm/sleepimage""}}","true"',
     );
   });
 });

@@ -86,7 +86,7 @@ const DeviceUserBanners = ({
       hostPlatform &&
       isDiskEncryptionSupportedLinuxPlatform(
         hostPlatform,
-        hostOsVersion ?? ""
+        hostOsVersion ?? "",
       ) &&
       diskEncryptionOSSetting?.status
     ) {

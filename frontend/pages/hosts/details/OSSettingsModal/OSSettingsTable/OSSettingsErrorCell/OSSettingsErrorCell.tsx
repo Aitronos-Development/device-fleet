@@ -44,7 +44,7 @@ const RefetchButton = ({ isFetching, onClick }: IRefetchButtonProps) => {
 };
 
 const formatAndroidProfileNotAppliedError = (
-  detail: IHostMdmProfile["detail"]
+  detail: IHostMdmProfile["detail"],
 ) => {
   if (
     detail.includes("settings couldn't apply to a host") ||
@@ -78,7 +78,7 @@ const formatDetailCertificateError = (detail: IHostMdmProfile["detail"]) => {
   );
 
   const matchTokenErr = detail.match(
-    /get certificate from (?:DigiCert|Digicert|digicert).*token configured in (?<ca>.*) certificate authority is invalid/
+    /get certificate from (?:DigiCert|Digicert|digicert).*token configured in (?<ca>.*) certificate authority is invalid/,
   );
   if (matchTokenErr?.groups) {
     return (
@@ -92,10 +92,10 @@ const formatDetailCertificateError = (detail: IHostMdmProfile["detail"]) => {
   }
 
   const matchProfileIdErr = detail.match(
-    /get certificate from (?:DigiCert|Digicert|digicert) for (?<ca>.*)\..*POST request: 410.*Profile with id.*was deleted/
+    /get certificate from (?:DigiCert|Digicert|digicert) for (?<ca>.*)\..*POST request: 410.*Profile with id.*was deleted/,
   );
   const matchDeletedProfileErr = detail.match(
-    /get certificate from (?:DigiCert|Digicert|digicert) for (?<ca>.*)\..*POST request: 400.*deleted or suspended Profile/
+    /get certificate from (?:DigiCert|Digicert|digicert) for (?<ca>.*)\..*POST request: 400.*deleted or suspended Profile/,
   );
   if (matchProfileIdErr?.groups || matchDeletedProfileErr?.groups) {
     return (
@@ -112,7 +112,7 @@ const formatDetailCertificateError = (detail: IHostMdmProfile["detail"]) => {
   }
 
   const matchFleetVarErr = detail.match(
-    /populate (?<field>.*) because (?<ca>.*) certificate authority does(?:n.t| not) exist/
+    /populate (?<field>.*) because (?<ca>.*) certificate authority does(?:n.t| not) exist/,
   );
   if (matchFleetVarErr?.groups) {
     return (
@@ -188,7 +188,7 @@ const formatDetailWindowsProfile = (detail: string) => {
               ,<br />
             </>
           )}
-        </span>
+        </span>,
       );
     }
   });
@@ -202,7 +202,7 @@ const formatDetailWindowsProfile = (detail: string) => {
  */
 const generateErrorTooltip = (
   cellValue: string,
-  profile: IHostMdmProfileWithAddedStatus
+  profile: IHostMdmProfileWithAddedStatus,
 ) => {
   if (profile.status !== "failed") return null;
 
@@ -219,7 +219,7 @@ const generateErrorTooltip = (
   }
 
   const androidProfileNotAppliedError = formatAndroidProfileNotAppliedError(
-    profile.detail
+    profile.detail,
   );
   if (androidProfileNotAppliedError) {
     return androidProfileNotAppliedError;

@@ -74,7 +74,7 @@ export const getExtensionFromFileName = (fileName: string) => {
  */
 export const getPlatformDisplayName = (
   file: File,
-  isSoftwareInstaller = false
+  isSoftwareInstaller = false,
 ) => {
   const fileExt = getExtensionFromFileName(file.name);
   if (!fileExt) {

@@ -25,7 +25,7 @@ describe("<ChangeEmailForm />", () => {
     await user.click(screen.getByRole("button", { name: "Submit" }));
 
     expect(
-      await screen.findByText("Password must be present")
+      await screen.findByText("Password must be present"),
     ).toBeInTheDocument();
     expect(props.handleSubmit).not.toHaveBeenCalled();
   });

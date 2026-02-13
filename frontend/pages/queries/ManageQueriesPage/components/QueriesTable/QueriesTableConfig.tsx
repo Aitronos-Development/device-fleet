@@ -171,7 +171,7 @@ const generateColumnConfigs = ({
                 {viewingTeamScope &&
                   // inherited
                   team_id !== currentTeamId && (
-                    <InheritedBadge tooltipContent="This query runs on all hosts." />
+                    <InheritedBadge tooltipContent="This query runs on all devices." />
                   )}
               </>
             }
@@ -199,7 +199,7 @@ const generateColumnConfigs = ({
           // this casting is necessary because make generate for some reason doesn't recognize the
           // type guarding of `isQueryablePlatform` even though the language server in VSCode does
           .filter((s) =>
-            isScheduledQueryablePlatform(s)
+            isScheduledQueryablePlatform(s),
           ) as ScheduledQueryablePlatform[];
         return <PlatformCell platforms={platforms} />;
       },

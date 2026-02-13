@@ -74,7 +74,7 @@ export const COLUMN_CONFIGS: IColumnConfig[] = [
     },
   },
   {
-    title: "Hosts",
+    title: "Devices",
     Header: (cellProps: IHeaderProps) => (
       <HeaderCell
         value={cellProps.column.title}
@@ -122,25 +122,25 @@ const STATUS_CELL_VALUES: Record<StatusNames, IStatusCellValue> = {
     displayName: "Installed",
     statusName: "success",
     value: BootstrapPackageStatus.INSTALLED,
-    tooltip: "The host installed the package.",
+    tooltip: "The device installed the package.",
   },
   pending: {
     displayName: "Pending",
     statusName: "pendingPartial",
     value: BootstrapPackageStatus.PENDING,
-    tooltip: "The host will install the package when it enrolls.",
+    tooltip: "The device will install the package when it enrolls.",
   },
   failed: {
     displayName: "Failed",
     statusName: "error",
     value: BootstrapPackageStatus.FAILED,
-    tooltip: "The host failed to install the package when it enrolled.",
+    tooltip: "The device failed to install the package when it enrolled.",
   },
 };
 
 export const generateTableData = (
   data?: IBootstrapPackageAggregate,
-  currentTeamId?: number
+  currentTeamId?: number,
 ) => {
   if (!data) return [];
   const entries = Object.entries(data) as StatusEntry[];

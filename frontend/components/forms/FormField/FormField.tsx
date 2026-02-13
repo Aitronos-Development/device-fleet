@@ -78,7 +78,7 @@ const FormField = ({
     {
       [`${baseClass}--${type}`]: !isEmpty(type),
     },
-    className
+    className,
   );
 
   return (

@@ -20,7 +20,7 @@ interface INewPackForm {
   handleSubmit: (formData: IEditPackFormData) => void;
   onFetchTargets?: (
     query: IQuery,
-    targetsResponse: ITargetsAPIResponse
+    targetsResponse: ITargetsAPIResponse,
   ) => boolean;
   selectedTargetsCount?: number;
   isPremiumTier?: boolean;
@@ -39,7 +39,7 @@ const NewPackForm = ({
   const [packName, setPackName] = useState("");
   const [packDescription, setPackDescription] = useState("");
   const [newPackFormTargets, setNewPackFormTargets] = useState<ITarget[] | []>(
-    []
+    [],
   );
 
   const onChangePackName = (value: string) => {

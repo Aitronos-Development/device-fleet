@@ -65,16 +65,17 @@ const CurrentVersionSection = ({
   currentTeamId,
   queryParams,
 }: ICurrentVersionSectionProps) => {
-  const { data, isError, isLoading: isLoadingOsVersions } = useQuery<
-    IOSVersionsResponse,
-    AxiosError
-  >(
+  const {
+    data,
+    isError,
+    isLoading: isLoadingOsVersions,
+  } = useQuery<IOSVersionsResponse, AxiosError>(
     ["os_versions", currentTeamId, queryParams],
     () => getOSVersions({ teamId: currentTeamId, ...queryParams }),
     {
       retry: false,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   const generateSubTitleText = () => {

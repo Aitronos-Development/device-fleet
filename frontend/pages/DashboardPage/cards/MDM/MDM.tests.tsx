@@ -25,7 +25,7 @@ describe("MDM Card", () => {
           createMockMdmSummaryMdmSolution({ name: "", id: 8 }),
           createMockMdmSummaryMdmSolution({ name: "", id: 9 }),
         ]}
-      />
+      />,
     );
 
     expect(screen.getAllByText("MDM Solution").length).toBe(1);
@@ -48,7 +48,7 @@ describe("MDM Card", () => {
           { status: "Pending", hosts: 3 },
         ]}
         mdmSolutions={[]}
-      />
+      />,
     );
 
     await user.click(screen.getByRole("tab", { name: "Status" }));
@@ -56,28 +56,28 @@ describe("MDM Card", () => {
     expect(
       screen.getByRole("row", {
         name: /On \(company-owned\)(.*?)10 view all hosts/i,
-      })
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("row", {
         name: /On \(manual\)(.*?)5 view all hosts/i,
-      })
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("row", {
         name: /On \(personal\)(.*?)3 view all hosts/i,
-      })
+      }),
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole("row", {
         name: /Off(.*?)1 view all hosts/i,
-      })
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("row", {
         name: /Pending(.*?)3 view all hosts/i,
-      })
+      }),
     ).toBeInTheDocument();
   });
 });

@@ -34,9 +34,9 @@ const DeleteHostModal = ({
 }: IDeleteHostModalProps): JSX.Element => {
   const pluralizeHost = () => {
     if (!selectedHostIds) {
-      return "host";
+      return "device";
     }
-    return strUtils.pluralize(selectedHostIds.length, "host");
+    return strUtils.pluralize(selectedHostIds.length, "device");
   };
 
   const hostText = () => {

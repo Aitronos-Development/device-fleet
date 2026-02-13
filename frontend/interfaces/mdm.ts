@@ -213,7 +213,7 @@ export type WindowsDiskEncryptionStatus = Extract<
 >;
 
 export const isWindowsDiskEncryptionStatus = (
-  status: DiskEncryptionStatus
+  status: DiskEncryptionStatus,
 ): status is WindowsDiskEncryptionStatus => {
   switch (status) {
     case "verified":
@@ -233,7 +233,7 @@ export type LinuxDiskEncryptionStatus = Extract<
 >;
 
 export const isLinuxDiskEncryptionStatus = (
-  status: DiskEncryptionStatus
+  status: DiskEncryptionStatus,
 ): status is LinuxDiskEncryptionStatus =>
   ["verified", "failed", "action_required"].includes(status);
 
@@ -266,7 +266,7 @@ export enum BootstrapPackageStatus {
 }
 
 export const isEnrolledInMdm = (
-  hostMdmEnrollmentStatus: MdmEnrollmentStatus | null
+  hostMdmEnrollmentStatus: MdmEnrollmentStatus | null,
 ): hostMdmEnrollmentStatus is MdmEnrollmentStatus => {
   if (!hostMdmEnrollmentStatus) {
     return false;
@@ -280,7 +280,7 @@ export const isEnrolledInMdm = (
 };
 
 export const isBYODManualEnrollment = (
-  enrollmentStatus: MdmEnrollmentStatus | null
+  enrollmentStatus: MdmEnrollmentStatus | null,
 ) => {
   return enrollmentStatus === "On (manual)";
 };
@@ -288,7 +288,7 @@ export const isBYODManualEnrollment = (
 /** This checks if the device is enrolled via an Apple ID user enrollment.
  * We refer to that as "account driven user enrollment" */
 export const isBYODAccountDrivenUserEnrollment = (
-  enrollmentStatus: MdmEnrollmentStatus | null
+  enrollmentStatus: MdmEnrollmentStatus | null,
 ) => {
   return enrollmentStatus === "On (personal)";
 };
@@ -297,7 +297,7 @@ export const isBYODAccountDrivenUserEnrollment = (
  * This was previously known as automatic enrollment but was updatd to company owned. Here we check
  * for both to current and legacy enrollment status */
 export const isAutomaticDeviceEnrollment = (
-  enrollmentStatus: MdmEnrollmentStatus | null
+  enrollmentStatus: MdmEnrollmentStatus | null,
 ) => {
   return (
     enrollmentStatus === "On (company-owned)" ||

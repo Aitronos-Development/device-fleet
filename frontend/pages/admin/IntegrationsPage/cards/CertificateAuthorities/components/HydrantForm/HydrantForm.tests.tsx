@@ -23,7 +23,7 @@ describe("HydrantForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeVisible();
@@ -38,7 +38,7 @@ describe("HydrantForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     // data is valid, so submit should be enabled
@@ -58,7 +58,7 @@ describe("HydrantForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -74,7 +74,7 @@ describe("HydrantForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -90,7 +90,7 @@ describe("HydrantForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeEnabled();

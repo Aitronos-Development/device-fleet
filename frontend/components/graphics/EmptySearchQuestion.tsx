@@ -3,7 +3,7 @@ import React from "react";
 import { COLORS } from "styles/var/colors";
 
 export const renderEmptySearch = (
-  type: "exclamation" | "question" | "check"
+  type: "exclamation" | "question" | "check",
 ) => {
   const renderIconPath = () => {
     switch (type) {

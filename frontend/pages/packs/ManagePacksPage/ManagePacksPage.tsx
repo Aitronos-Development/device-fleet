@@ -30,7 +30,7 @@ const renderTable = (
   onCreatePackClick: React.MouseEventHandler<HTMLButtonElement>,
   packs: IPack[] | undefined,
   packsError: IFleetApiError | null,
-  isLoadingPacks: boolean
+  isLoadingPacks: boolean,
 ): JSX.Element => {
   if (packsError) {
     return <TableDataError />;
@@ -73,7 +73,7 @@ const ManagePacksPage = ({ router }: IManagePacksPageProps): JSX.Element => {
       // refetchOnReconnect: false,
       refetchOnWindowFocus: false,
       select: (data: IStoredPacksResponse) => data.packs,
-    }
+    },
   );
 
   const toggleDeletePackModal = useCallback(() => {
@@ -100,7 +100,7 @@ const ManagePacksPage = ({ router }: IManagePacksPageProps): JSX.Element => {
       .catch(() => {
         renderFlash(
           "error",
-          `Unable to delete ${packOrPacks}. Please try again.`
+          `Unable to delete ${packOrPacks}. Please try again.`,
         );
       })
       .finally(() => {
@@ -123,20 +123,20 @@ const ManagePacksPage = ({ router }: IManagePacksPageProps): JSX.Element => {
         .then(() => {
           renderFlash(
             "success",
-            `Successfully ${enableOrDisable} selected ${packOrPacks}.`
+            `Successfully ${enableOrDisable} selected ${packOrPacks}.`,
           );
         })
         .catch(() => {
           renderFlash(
             "error",
-            `Unable to ${enableOrDisable} selected ${packOrPacks}. Please try again.`
+            `Unable to ${enableOrDisable} selected ${packOrPacks}. Please try again.`,
           );
         })
         .finally(() => {
           refetchPacks();
         });
     },
-    [refetchPacks, selectedPackIds]
+    [refetchPacks, selectedPackIds],
   );
 
   const onEnablePackClick = (selectedTablePackIds: number[]) => {
@@ -188,7 +188,7 @@ const ManagePacksPage = ({ router }: IManagePacksPageProps): JSX.Element => {
               onCreatePackClick,
               packs,
               packsError,
-              isLoadingPacks
+              isLoadingPacks,
             )
           )}
         </div>

@@ -4,7 +4,7 @@ import { API_NO_TEAM_ID, ITeamConfig } from "interfaces/team";
 const getManualAgentInstallSetting = (
   currentTeamId: number,
   globalConfig?: IConfig,
-  teamConfig?: ITeamConfig
+  teamConfig?: ITeamConfig,
 ) => {
   if (currentTeamId === API_NO_TEAM_ID) {
     return globalConfig?.mdm.macos_setup.manual_agent_install || false;

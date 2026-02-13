@@ -26,7 +26,7 @@ describe("getSelfServiceTooltip", () => {
     render(tooltip as React.ReactElement);
 
     expect(
-      screen.getByText(/End users can install from the/i)
+      screen.getByText(/End users can install from the/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/Play Store/i)).toBeInTheDocument();
     expect(screen.getByText(/in their work profile\./i)).toBeInTheDocument();
@@ -38,16 +38,16 @@ describe("getSelfServiceTooltip", () => {
     render(tooltip as React.ReactElement);
 
     expect(
-      screen.getByText(/End users can install from self-service\./i)
+      screen.getByText(/End users can install from self-service\./i),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /Learn how to deploy self-service/i })
+      screen.getByRole("link", { name: /Learn how to deploy self-service/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /Learn how to deploy self-service/i })
+      screen.getByRole("link", { name: /Learn how to deploy self-service/i }),
     ).toHaveAttribute(
       "href",
-      expect.stringContaining("/deploy-self-service-to-ios")
+      expect.stringContaining("/deploy-self-service-to-ios"),
     );
   });
 
@@ -59,11 +59,11 @@ describe("getSelfServiceTooltip", () => {
     expect(screen.getByText(/End users can install from/i)).toBeInTheDocument();
     expect(screen.getByText(/Fleet Desktop/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: /Learn more/i })
+      screen.getByRole("link", { name: /Learn more/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Learn more/i })).toHaveAttribute(
       "href",
-      expect.stringContaining("/self-service-software")
+      expect.stringContaining("/self-service-software"),
     );
   });
 });
@@ -146,25 +146,25 @@ describe("getAutomaticInstallPoliciesCount", () => {
 describe("getDisplayedSoftwareName", () => {
   it("returns display_name when provided (custom name wins)", () => {
     expect(
-      getDisplayedSoftwareName("Microsoft.CompanyPortal", "My Custom Portal")
+      getDisplayedSoftwareName("Microsoft.CompanyPortal", "My Custom Portal"),
     ).toBe("My Custom Portal");
   });
 
   it("normalizes a known raw name when display_name is not provided", () => {
     expect(getDisplayedSoftwareName("Microsoft.CompanyPortal", null)).toBe(
-      "Company Portal"
+      "Company Portal",
     );
   });
 
   it("normalizes a known raw name case-insensitively", () => {
     expect(getDisplayedSoftwareName("microsoft.companyportal", undefined)).toBe(
-      "Company Portal"
+      "Company Portal",
     );
   });
 
   it("returns the raw name when it is not in WELL_KNOWN_SOFTWARE_TITLES", () => {
     expect(getDisplayedSoftwareName("Some Other App", null)).toBe(
-      "Some Other App"
+      "Some Other App",
     );
   });
 

@@ -1,7 +1,7 @@
 import url_prefix from "router/url_prefix";
 
 const deviceSelfServiceRegex = new RegExp(
-  `^${url_prefix}/device/[^/]+/self-service/?$`
+  `^${url_prefix}/device/[^/]+/self-service/?$`,
 );
 
 // iOS/iPadOS base device route should support low-width screens

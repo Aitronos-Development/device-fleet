@@ -21,7 +21,7 @@ const PremiumFeatureMessage = ({
     {
       [`${baseClass}__align-${alignment}`]: alignment !== undefined,
     },
-    className
+    className,
   );
 
   return (

@@ -43,11 +43,11 @@ type ITableHeaderProps = IHeaderProps<ISoftwareTitle>;
  */
 const getSoftwareNameCellData = (
   softwareTitle: ISoftwareTitle,
-  teamId?: number
+  teamId?: number,
 ) => {
   const softwareTitleDetailsPath = getPathWithQueryParams(
     PATHS.SOFTWARE_TITLE_DETAILS(softwareTitle.id.toString()),
-    { team_id: teamId }
+    { team_id: teamId },
   );
 
   const { software_package, app_store_app } = softwareTitle;
@@ -77,9 +77,8 @@ const getSoftwareNameCellData = (
     iconUrl = softwareTitle.icon_url;
   }
 
-  const automaticInstallPoliciesCount = getAutomaticInstallPoliciesCount(
-    softwareTitle
-  );
+  const automaticInstallPoliciesCount =
+    getAutomaticInstallPoliciesCount(softwareTitle);
 
   const isAllTeams = teamId === undefined;
 
@@ -98,7 +97,7 @@ const getSoftwareNameCellData = (
 
 const generateTableHeaders = (
   router: InjectedRouter,
-  teamId?: number
+  teamId?: number,
 ): ISoftwareTitlesTableConfig[] => {
   const softwareTableHeaders: ISoftwareTitlesTableConfig[] = [
     {
@@ -110,7 +109,7 @@ const generateTableHeaders = (
       Cell: (cellProps: ITableStringCellProps) => {
         const nameCellData = getSoftwareNameCellData(
           cellProps.row.original,
-          teamId
+          teamId,
         );
         const isAndroidPlayStoreApp =
           !!cellProps.row.original.app_store_app &&
@@ -170,7 +169,7 @@ const generateTableHeaders = (
           return <TextCell value="Not supported" grey />;
         }
         const vulnerabilities = getVulnerabilities(
-          cellProps.row.original.versions ?? []
+          cellProps.row.original.versions ?? [],
         );
         return <VulnerabilitiesCell vulnerabilities={vulnerabilities} />;
       },
@@ -178,7 +177,7 @@ const generateTableHeaders = (
     {
       Header: (cellProps: ITableHeaderProps) => (
         <HeaderCell
-          value="Hosts"
+          value="Devices"
           disableSortBy={false}
           isSortedDesc={cellProps.column.isSortedDesc}
         />
@@ -196,9 +195,8 @@ const generateTableHeaders = (
       Cell: (cellProps: IViewAllHostsLinkProps) => {
         const { source } = cellProps.row.original;
 
-        const hostCountNotSupported = NO_VERSION_OR_HOST_DATA_SOURCES.includes(
-          source
-        );
+        const hostCountNotSupported =
+          NO_VERSION_OR_HOST_DATA_SOURCES.includes(source);
 
         if (hostCountNotSupported) return null;
 

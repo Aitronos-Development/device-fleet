@@ -55,8 +55,8 @@ const SoftwareAndroidForm = ({
   onCancel,
   onClickPreviewEndUserExperience,
 }: ISoftwareAndroidFormProps) => {
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [formData, setFormData] = useState<ISoftwareAndroidFormData>(
     softwareAndroidForEdit
@@ -79,7 +79,7 @@ const SoftwareAndroidForm = ({
           labelTargets: {},
           categories: [],
           platform: "android",
-        }
+        },
   );
 
   const [formValidation, setFormValidation] = useState<IFormValidation>({

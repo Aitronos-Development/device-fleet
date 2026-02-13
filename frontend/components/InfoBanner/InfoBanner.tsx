@@ -39,7 +39,7 @@ const InfoBanner = ({
       [`${baseClass}__page-banner`]: !!pageLevel,
       [`${baseClass}__icon`]: !!icon,
     },
-    className
+    className,
   );
 
   const [hideBanner, setHideBanner] = useState(false);

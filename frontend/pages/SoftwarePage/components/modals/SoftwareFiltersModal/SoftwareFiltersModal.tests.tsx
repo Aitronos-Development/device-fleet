@@ -20,7 +20,7 @@ const renderModal = (props = {}) =>
       vulnFilters={vulnFiltersDefault}
       isPremiumTier
       {...props}
-    />
+    />,
   );
 
 describe("SoftwareFiltersModal component", () => {
@@ -53,7 +53,7 @@ describe("SoftwareFiltersModal component", () => {
         onSubmit={noop}
         vulnFilters={vulnFiltersDefault}
         isPremiumTier
-      />
+      />,
     );
     await user.click(screen.getByRole("switch"));
     expect(screen.getByRole("combobox")).toBeEnabled(); // Enabled dropdown
@@ -72,7 +72,7 @@ describe("SoftwareFiltersModal component", () => {
         onSubmit={noop}
         vulnFilters={vulnFiltersDefault}
         isPremiumTier
-      />
+      />,
     );
     await user.click(screen.getByRole("switch"));
     const minInput = screen.getByLabelText(/Min score/i);
@@ -101,7 +101,7 @@ describe("SoftwareFiltersModal component", () => {
     await user.hover(applyButton);
     await waitFor(() => {
       expect(
-        screen.getByText(/Minimum CVSS score cannot be greater/i)
+        screen.getByText(/Minimum CVSS score cannot be greater/i),
       ).toBeInTheDocument();
     });
     expect(screen.getByRole("button", { name: /Apply/i })).toBeDisabled();
@@ -115,7 +115,7 @@ describe("SoftwareFiltersModal component", () => {
         onSubmit={onSubmitSpy}
         vulnFilters={vulnFiltersDefault}
         isPremiumTier
-      />
+      />,
     );
     await user.click(screen.getByRole("switch"));
 
@@ -148,7 +148,7 @@ describe("SoftwareFiltersModal component", () => {
         onSubmit={noop}
         vulnFilters={vulnFiltersDefault}
         isPremiumTier
-      />
+      />,
     );
     await user.click(screen.getByRole("switch"));
 

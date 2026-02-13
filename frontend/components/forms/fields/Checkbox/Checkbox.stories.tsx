@@ -16,8 +16,7 @@ export const Basic: Story = {
   parameters: {
     design: {
       type: "figma",
-      url:
-        "https://www.figma.com/file/qbjRu8jf01BzEfdcge1dgu/Fleet-style-guide-2022-(WIP)?node-id=117-16951",
+      url: "https://www.figma.com/file/qbjRu8jf01BzEfdcge1dgu/Fleet-style-guide-2022-(WIP)?node-id=117-16951",
     },
   },
 };

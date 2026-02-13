@@ -171,7 +171,7 @@ describe("QueriesTable", () => {
     testData.forEach((tableProps) => {
       render(<QueriesTable {...tableProps} />);
       expect(
-        screen.getByText("You don't have any queries")
+        screen.getByText("You don't have any queries"),
       ).toBeInTheDocument();
       expect(screen.queryByText("Interval")).toBeNull();
       expect(screen.queryByPlaceholderText("Search by name")).toBeNull();
@@ -198,7 +198,7 @@ describe("QueriesTable", () => {
     testData.forEach((tableProps) => {
       renderAsPremiumGlobalAdmin(<QueriesTable {...tableProps} />);
       expect(
-        screen.getByText("You don't have any queries that apply to all teams")
+        screen.getByText("You don't have any queries that apply to all teams"),
       ).toBeInTheDocument();
       expect(screen.queryByText("Interval")).toBeNull();
       expect(screen.queryByPlaceholderText("Search by name")).toBeNull();
@@ -225,7 +225,7 @@ describe("QueriesTable", () => {
     testData.forEach((tableProps) => {
       renderAsPremiumGlobalAdmin(<QueriesTable {...tableProps} />);
       expect(
-        screen.getByText("You don't have any queries that apply to this team")
+        screen.getByText("You don't have any queries that apply to this team"),
       ).toBeInTheDocument();
       expect(screen.queryByText("Interval")).toBeNull();
       expect(screen.queryByPlaceholderText("Search by name")).toBeNull();
@@ -313,7 +313,7 @@ describe("QueriesTable", () => {
         isObserverPlus={false}
         isAnyTeamObserverPlus={false}
         currentTeamId={1}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -322,7 +322,7 @@ describe("QueriesTable", () => {
       });
 
       expect(
-        screen.getByText("Observers can run this query.")
+        screen.getByText("Observers can run this query."),
       ).toBeInTheDocument();
     });
   });
@@ -353,7 +353,7 @@ describe("QueriesTable", () => {
         isObserverPlus={false}
         isAnyTeamObserverPlus={false}
         currentTeamId={1}
-      />
+      />,
     );
 
     await waitFor(() => {
@@ -362,7 +362,7 @@ describe("QueriesTable", () => {
       });
 
       expect(
-        screen.getByText("This query runs on all hosts.")
+        screen.getByText("This query runs on all hosts."),
       ).toBeInTheDocument();
     });
   });
@@ -392,7 +392,7 @@ describe("QueriesTable", () => {
         isObserverPlus={false}
         isAnyTeamObserverPlus={false}
         currentTeamId={undefined}
-      />
+      />,
     );
 
     expect(screen.queryByText("Inherited")).not.toBeInTheDocument();
@@ -420,13 +420,13 @@ describe("QueriesTable", () => {
         isObserverPlus={false}
         isAnyTeamObserverPlus={false}
         currentTeamId={1}
-      />
+      />,
     );
 
     const numberOfCheckboxes = screen.queryAllByRole("checkbox").length;
 
     expect(numberOfCheckboxes).toBe(
-      testTeamQueries.length + 1 // +1 for Select all checkbox
+      testTeamQueries.length + 1, // +1 for Select all checkbox
     );
 
     const checkbox = screen.queryAllByRole("checkbox")[0];

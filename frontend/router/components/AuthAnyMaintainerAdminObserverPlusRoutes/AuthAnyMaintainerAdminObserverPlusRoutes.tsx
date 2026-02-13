@@ -13,9 +13,8 @@ const AuthAnyMaintainerAdminObserverPlusRoutes = ({
   children,
 }: IAuthAnyMaintainerAdminObserverPlusRoutesProps) => {
   const handlePageError = useErrorHandler();
-  const { currentUser, isAnyMaintainerAdminObserverPlus } = useContext(
-    AppContext
-  );
+  const { currentUser, isAnyMaintainerAdminObserverPlus } =
+    useContext(AppContext);
 
   if (!currentUser) {
     return null;

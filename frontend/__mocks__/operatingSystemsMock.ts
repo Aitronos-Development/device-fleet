@@ -15,7 +15,7 @@ const DEFAULT_OS_VERSION: IOperatingSystemVersion = {
 };
 
 export const createMockOSVersion = (
-  overrides?: Partial<IOperatingSystemVersion>
+  overrides?: Partial<IOperatingSystemVersion>,
 ): IOperatingSystemVersion => {
   return { ...DEFAULT_OS_VERSION, ...overrides };
 };
@@ -32,7 +32,7 @@ const DEFAULT_OS_VERSIONS_RESPONSE: IOSVersionsResponse = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const createMockOSVersionsResponse = (
-  overrides?: Partial<IOSVersionsResponse>
+  overrides?: Partial<IOSVersionsResponse>,
 ): IOSVersionsResponse => {
   return { ...DEFAULT_OS_VERSIONS_RESPONSE, ...overrides };
 };
@@ -369,7 +369,7 @@ const DEFAULT_LINUX_OS_VERSION: IOperatingSystemVersion = {
 };
 
 export const createMockLinuxOSVersion = (
-  overrides?: Partial<IOperatingSystemVersion>
+  overrides?: Partial<IOperatingSystemVersion>,
 ): IOperatingSystemVersion => {
   return { ...DEFAULT_LINUX_OS_VERSION, ...overrides };
 };
@@ -385,7 +385,7 @@ const DEFAULT_LINUX_OS_VERSIONS_RESPONSE: IOSVersionsResponse = {
 };
 
 export const createMockLinuxOSVersionsResponse = (
-  overrides?: Partial<IOSVersionsResponse>
+  overrides?: Partial<IOSVersionsResponse>,
 ): IOSVersionsResponse => {
   return { ...DEFAULT_LINUX_OS_VERSIONS_RESPONSE, ...overrides };
 };

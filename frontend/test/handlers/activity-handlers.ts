@@ -31,7 +31,7 @@ export const activityHandlerHasMoreActivities = http.get(
         has_previous_results: false,
       },
     });
-  }
+  },
 );
 
 export const activityHandlerHasPreviousActivities = http.get(
@@ -48,5 +48,5 @@ export const activityHandlerHasPreviousActivities = http.get(
         has_previous_results: true,
       },
     });
-  }
+  },
 );

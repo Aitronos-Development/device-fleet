@@ -58,11 +58,11 @@ const AddCertModal = ({
 
   const validations = useMemo(
     () => generateFormValidations(existingCTs || []),
-    [existingCTs]
+    [existingCTs],
   );
 
   const [formValidation, setFormValidation] = useState<IAddCertFormValidation>(
-    () => validateFormData(formData, validations)
+    () => validateFormData(formData, validations),
   );
 
   const {
@@ -77,7 +77,7 @@ const AddCertModal = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (data) => data.certificate_authorities,
-    }
+    },
   );
   const caPartials = cAResp ?? [];
 

@@ -65,7 +65,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
     {
       enabled: !!isPremiumTier,
       select: (data: ILoadTeamsResponse) => data.teams,
-    }
+    },
   );
 
   const {
@@ -78,7 +78,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
     () => usersAPI.loadAll({ globalFilter: querySearchText }),
     {
       select: (data: IUser[]) => data,
-    }
+    },
   );
 
   const {
@@ -93,7 +93,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       select: (data: IInvite[]) => {
         return data;
       },
-    }
+    },
   );
 
   // TODO: Cleanup useCallbacks, add missing dependencies, use state setter functions, e.g.,
@@ -116,7 +116,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       setShowDeleteUserModal(!showDeleteUserModal);
       setUserEditing(!showDeleteUserModal ? user : null);
     },
-    [showDeleteUserModal, setShowDeleteUserModal, setUserEditing]
+    [showDeleteUserModal, setShowDeleteUserModal, setUserEditing],
   );
 
   const toggleEditUserModal = useCallback(
@@ -125,7 +125,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       setUserEditing(!showEditUserModal ? user : null);
       setEditUserErrors({});
     },
-    [showEditUserModal, setShowEditUserModal, setUserEditing]
+    [showEditUserModal, setShowEditUserModal, setUserEditing],
   );
 
   const toggleResetPasswordUserModal = useCallback(
@@ -133,7 +133,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       setShowResetPasswordModal(!showResetPasswordModal);
       setUserEditing(!showResetPasswordModal ? user : null);
     },
-    [showResetPasswordModal, setShowResetPasswordModal, setUserEditing]
+    [showResetPasswordModal, setShowResetPasswordModal, setUserEditing],
   );
 
   const toggleResetSessionsUserModal = useCallback(
@@ -141,7 +141,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       setShowResetSessionsModal(!showResetSessionsModal);
       setUserEditing(!showResetSessionsModal ? user : null);
     },
-    [showResetSessionsModal, setShowResetSessionsModal, setUserEditing]
+    [showResetSessionsModal, setShowResetSessionsModal, setUserEditing],
   );
 
   // FUNCTIONS
@@ -180,7 +180,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       toggleResetPasswordUserModal,
       toggleResetSessionsUserModal,
       goToAccountPage,
-    ]
+    ],
   );
 
   const onTableQueryChange = useCallback(
@@ -192,7 +192,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       refetchUsers();
       refetchInvites();
     },
-    [refetchUsers, refetchInvites]
+    [refetchUsers, refetchInvites],
   );
 
   const getUser = (type: string, id: number) => {
@@ -380,7 +380,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
         .catch(() => {
           renderFlash(
             "error",
-            `Could not delete ${userEditing?.name}. Please try again.`
+            `Could not delete ${userEditing?.name}. Please try again.`,
           );
         })
         .finally(() => {
@@ -397,7 +397,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
         .catch(() => {
           renderFlash(
             "error",
-            `Could not delete ${userEditing?.name}. Please try again.`
+            `Could not delete ${userEditing?.name}. Please try again.`,
           );
         })
         .finally(() => {
@@ -440,7 +440,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       .catch(() => {
         renderFlash(
           "error",
-          "Could not require a password reset. Please try again."
+          "Could not require a password reset. Please try again.",
         );
       })
       .finally(() => {
@@ -527,7 +527,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
 
   const tableHeaders = useMemo(
     () => generateTableHeaders(onActionSelect, isPremiumTier || false),
-    [onActionSelect, isPremiumTier]
+    [onActionSelect, isPremiumTier],
   );
 
   const loadingTableData =
@@ -544,7 +544,7 @@ const UsersTable = ({ router }: IUsersTableProps): JSX.Element => {
       currentUser?.id
         ? combineDataSets(users, invites, currentUser.id)
         : [],
-    [loadingTableData, tableDataError, users, invites, currentUser?.id]
+    [loadingTableData, tableDataError, users, invites, currentUser?.id],
   );
 
   const renderUsersCount = useCallback(() => {

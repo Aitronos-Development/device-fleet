@@ -114,7 +114,7 @@ const SoftwareOSTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [platform, currentPage, orderDirection, orderKey]
+    [platform, currentPage, orderDirection, orderKey],
   );
 
   const generateNewQueryParams = useCallback(
@@ -127,7 +127,7 @@ const SoftwareOSTable = ({
         platform,
       };
     },
-    [teamId, platform]
+    [teamId, platform],
   );
 
   const onQueryChange = useCallback(
@@ -147,7 +147,7 @@ const SoftwareOSTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, generateNewQueryParams, router]
+    [determineQueryParamChange, generateNewQueryParams, router],
   );
 
   const softwareTableHeaders = useMemo(() => {
@@ -162,7 +162,7 @@ const SoftwareOSTable = ({
   const handleRowSelect = (row: IRowProps) => {
     const path = getPathWithQueryParams(
       PATHS.SOFTWARE_OS_DETAILS(Number(row.original.os_version_id)),
-      { team_id: teamId }
+      { team_id: teamId },
     );
 
     router.push(path);
@@ -210,7 +210,7 @@ const SoftwareOSTable = ({
   };
 
   const handlePlatformFilterDropdownChange = (
-    platformSelected: SingleValue<CustomOptionType>
+    platformSelected: SingleValue<CustomOptionType>,
   ) => {
     router?.replace(
       getNextLocationPath({
@@ -222,7 +222,7 @@ const SoftwareOSTable = ({
           page: 0,
           platform: platformSelected?.value,
         },
-      })
+      }),
     );
   };
 

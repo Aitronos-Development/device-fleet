@@ -60,21 +60,21 @@ const CertificateDetailsModal = ({
 
   const showSubjectSection = Boolean(
     subjectCountry ||
-      subjectOrganization ||
-      subjectOrganizationalUnit ||
-      subjectCommonName
+    subjectOrganization ||
+    subjectOrganizationalUnit ||
+    subjectCommonName,
   );
   const showIssuerNameSection = Boolean(
     issuerCommonName ||
-      issuerCountry ||
-      issuerOrganization ||
-      issuerOrganizationalUnit
+    issuerCountry ||
+    issuerOrganization ||
+    issuerOrganizationalUnit,
   );
   const showValidityPeriodSection = Boolean(
-    not_valid_before || not_valid_after
+    not_valid_before || not_valid_after,
   );
   const showKeyInfoSection = Boolean(
-    key_algorithm || key_strength || key_usage || serial
+    key_algorithm || key_strength || key_usage || serial,
   );
   const showSignatureSection = Boolean(signing_algorithm);
 

@@ -220,9 +220,8 @@ const HostDetailsPage = ({
   const [showOSSettingsModal, setShowOSSettingsModal] = useState(false);
   const [showUnenrollMdmModal, setShowUnenrollMdmModal] = useState(false);
   const [showDiskEncryptionModal, setShowDiskEncryptionModal] = useState(false);
-  const [showBootstrapPackageModal, setShowBootstrapPackageModal] = useState(
-    false
-  );
+  const [showBootstrapPackageModal, setShowBootstrapPackageModal] =
+    useState(false);
   const [showLockHostModal, setShowLockHostModal] = useState(false);
   const [showUnlockHostModal, setShowUnlockHostModal] = useState(false);
   const [showWipeModal, setShowWipeModal] = useState(false);
@@ -238,30 +237,20 @@ const HostDetailsPage = ({
   // Used in activities to show run script details modal
   const [scriptExecutionId, setScriptExecutiontId] = useState("");
   const [selectedPolicy, setSelectedPolicy] = useState<IHostPolicy | null>(
-    null
+    null,
   );
-  const [
-    packageInstallDetails,
-    setPackageInstallDetails,
-  ] = useState<IPackageInstallDetails | null>(null);
-  const [
-    scriptPackageDetails,
-    setScriptPackageDetails,
-  ] = useState<IPackageInstallDetails | null>(null);
-  const [
-    ipaPackageInstallDetails,
-    setIpaPackageInstallDetails,
-  ] = useState<ISoftwareIpaInstallDetails | null>(null);
-  const [
-    packageUninstallDetails,
-    setPackageUninstallDetails,
-  ] = useState<ISWUninstallDetailsParentState | null>(null);
-  const [
-    activityVPPInstallDetails,
-    setActivityVPPInstallDetails,
-  ] = useState<IVppInstallDetails | null>(null);
+  const [packageInstallDetails, setPackageInstallDetails] =
+    useState<IPackageInstallDetails | null>(null);
+  const [scriptPackageDetails, setScriptPackageDetails] =
+    useState<IPackageInstallDetails | null>(null);
+  const [ipaPackageInstallDetails, setIpaPackageInstallDetails] =
+    useState<ISoftwareIpaInstallDetails | null>(null);
+  const [packageUninstallDetails, setPackageUninstallDetails] =
+    useState<ISWUninstallDetailsParentState | null>(null);
+  const [activityVPPInstallDetails, setActivityVPPInstallDetails] =
+    useState<IVppInstallDetails | null>(null);
   const [mdmCommandDetails, setMdmCommandDetails] = useState<ICommand | null>(
-    null
+    null,
   );
 
   const [refetchStartTime, setRefetchStartTime] = useState<number | null>(null);
@@ -269,18 +258,14 @@ const HostDetailsPage = ({
   const [schedule, setSchedule] = useState<IQueryStats[]>();
   const [usersState, setUsersState] = useState<{ username: string }[]>([]);
   const [usersSearchString, setUsersSearchString] = useState("");
-  const [
-    hostMdmDeviceStatus,
-    setHostMdmDeviceState,
-  ] = useState<HostMdmDeviceStatusUIState>("unlocked");
+  const [hostMdmDeviceStatus, setHostMdmDeviceState] =
+    useState<HostMdmDeviceStatusUIState>("unlocked");
   const [
     selectedHostSWForInventoryVersions,
     setSelectedHostSWForInventoryVersions,
   ] = useState<IHostSoftware | null>(null);
-  const [
-    selectedCancelActivity,
-    setSelectedCancelActivity,
-  ] = useState<IHostUpcomingActivity | null>(null);
+  const [selectedCancelActivity, setSelectedCancelActivity] =
+    useState<IHostUpcomingActivity | null>(null);
 
   // activity states
   const [activeActivityTab, setActiveActivityTab] = useState<
@@ -290,12 +275,10 @@ const HostDetailsPage = ({
   const [showMDMCommands, setShowMDMCommands] = useState(false);
 
   // certificates states
-  const [
-    selectedCertificate,
-    setSelectedCertificate,
-  ] = useState<IHostCertificate | null>(null);
+  const [selectedCertificate, setSelectedCertificate] =
+    useState<IHostCertificate | null>(null);
   const [certificatePage, setCertificatePage] = useState(
-    DEFAULT_CERTIFICATES_PAGE
+    DEFAULT_CERTIFICATES_PAGE,
   );
   const [sortCerts, setSortCerts] = useState<IListSort>({
     ...CERTIFICATES_DEFAULT_SORT,
@@ -311,7 +294,7 @@ const HostDetailsPage = ({
       refetchOnWindowFocus: false,
       retry: false,
       select: (data: ILoadTeamsResponse) => data.teams,
-    }
+    },
   );
 
   const { data: mdm, refetch: refetchMdm } = useQuery<IHostMdmData>(
@@ -327,7 +310,7 @@ const HostDetailsPage = ({
         // no handling needed atm. data is simply not shown.
         console.error(err);
       },
-    }
+    },
   );
 
   const { data: macadmins, refetch: refetchMacadmins } = useQuery(
@@ -340,7 +323,7 @@ const HostDetailsPage = ({
       refetchOnWindowFocus: false,
       retry: false,
       select: (data: IMacadminsResponse) => data.macadmins,
-    }
+    },
   );
 
   const {
@@ -372,7 +355,7 @@ const HostDetailsPage = ({
       enabled: !!hostIdFromURL,
       keepPreviousData: true,
       staleTime: 15000,
-    }
+    },
   );
 
   const refetchExtensions = () => {
@@ -445,7 +428,7 @@ const HostDetailsPage = ({
               } else {
                 renderFlash(
                   "error",
-                  `This host is offline. Please try refetching host vitals later.`
+                  `This host is offline. Please try refetching host vitals later.`,
                 );
                 resetHostRefetchStates();
               }
@@ -453,7 +436,7 @@ const HostDetailsPage = ({
               // Total elapsed poll window exceeded (60s), stop and alert
               renderFlash(
                 "error",
-                `We're having trouble fetching fresh vitals for this host. Please try again later.`
+                `We're having trouble fetching fresh vitals for this host. Please try again later.`,
               );
               resetHostRefetchStates();
             }
@@ -466,8 +449,8 @@ const HostDetailsPage = ({
         setHostMdmDeviceState(
           getHostDeviceStatusUIState(
             returnedHost.mdm.device_status,
-            returnedHost.mdm.pending_action
-          )
+            returnedHost.mdm.pending_action,
+          ),
         );
         setUsersState(returnedHost.users || []);
         setSchedule(schedule);
@@ -478,7 +461,7 @@ const HostDetailsPage = ({
                 packs: IPackStats[];
                 schedule: IQueryStats[];
               },
-              pack: IPackStats
+              pack: IPackStats,
             ) => {
               if (pack.type === "pack") {
                 dictionary.packs.push(pack);
@@ -487,13 +470,13 @@ const HostDetailsPage = ({
               }
               return dictionary;
             },
-            { packs: [], schedule: [] }
+            { packs: [], schedule: [] },
           );
           setSchedule(packStatsByType.schedule);
         }
       },
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   // get activities data. This is at the host details level because we want to
@@ -527,14 +510,14 @@ const HostDetailsPage = ({
       return activitiesAPI.getHostPastActivities(
         hostIdFromURL,
         pageIndex,
-        perPage
+        perPage,
       );
     },
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       keepPreviousData: true,
       staleTime: ACTIVITY_CARD_DATA_STALE_TIME,
-    }
+    },
   );
 
   const {
@@ -566,14 +549,14 @@ const HostDetailsPage = ({
       return activitiesAPI.getHostUpcomingActivities(
         hostIdFromURL,
         pageIndex,
-        perPage
+        perPage,
       );
     },
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       keepPreviousData: true,
       staleTime: ACTIVITY_CARD_DATA_STALE_TIME,
-    }
+    },
   );
 
   const canGetMDMCommands =
@@ -608,7 +591,7 @@ const HostDetailsPage = ({
       enabled: canGetMDMCommands,
       keepPreviousData: true,
       staleTime: ACTIVITY_CARD_DATA_STALE_TIME,
-    }
+    },
   );
 
   const {
@@ -640,7 +623,7 @@ const HostDetailsPage = ({
       enabled: canGetMDMCommands,
       keepPreviousData: true,
       staleTime: ACTIVITY_CARD_DATA_STALE_TIME,
-    }
+    },
   );
 
   const featuresConfig = host?.team_id
@@ -680,9 +663,9 @@ const HostDetailsPage = ({
   useEffect(() => {
     if (host?.display_name) {
       // e.g., Rachel's Macbook Pro | Hosts | Fleet
-      document.title = `${host?.display_name} | Hosts | ${DOCUMENT_TITLE_SUFFIX}`;
+      document.title = `${host?.display_name} | Devices | ${DOCUMENT_TITLE_SUFFIX}`;
     } else {
-      document.title = `Hosts | ${DOCUMENT_TITLE_SUFFIX}`;
+      document.title = `Devices | ${DOCUMENT_TITLE_SUFFIX}`;
     }
   }, [location.pathname, host]);
 
@@ -697,7 +680,7 @@ const HostDetailsPage = ({
       setPolicyDetailsModal(!showPolicyDetailsModal);
       setSelectedPolicy(policy);
     },
-    [showPolicyDetailsModal, setPolicyDetailsModal, setSelectedPolicy]
+    [showPolicyDetailsModal, setPolicyDetailsModal, setSelectedPolicy],
   );
 
   const toggleOSSettingsModal = useCallback(() => {
@@ -729,13 +712,13 @@ const HostDetailsPage = ({
         router.push(PATHS.MANAGE_HOSTS);
         renderFlash(
           "success",
-          `Host "${host.display_name}" was successfully deleted.`
+          `Host "${host.display_name}" was successfully deleted.`,
         );
       } catch (error) {
         console.log(error);
         renderFlash(
           "error",
-          `Host "${host.display_name}" could not be deleted.`
+          `Host "${host.display_name}" could not be deleted.`,
         );
       } finally {
         setShowDeleteHostModal(false);
@@ -772,7 +755,7 @@ const HostDetailsPage = ({
       }
       return hostAPI.resendProfile(host.id, profileUUID);
     },
-    [host?.id]
+    [host?.id],
   );
 
   const onChangeActivityTab = (tabIndex: number) => {
@@ -789,12 +772,13 @@ const HostDetailsPage = ({
         case "installed_software":
           if (details?.command_uuid) {
             setIpaPackageInstallDetails({
-              fleetInstallStatus: details?.status as SoftwareInstallUninstallStatus,
+              fleetInstallStatus:
+                details?.status as SoftwareInstallUninstallStatus,
               hostDisplayName:
                 host?.display_name || details?.host_display_name || "",
               appName: getDisplayedSoftwareName(
                 details.software_title,
-                details.software_display_name
+                details.software_display_name,
               ),
               commandUuid: details?.command_uuid,
             });
@@ -823,7 +807,7 @@ const HostDetailsPage = ({
             ...details,
             softwareName: getDisplayedSoftwareName(
               details?.software_title,
-              details?.software_display_name
+              details?.software_display_name,
             ),
             uninstallStatus: resolveUninstallStatus(details?.status),
             scriptExecutionId: details?.script_execution_id || "",
@@ -834,7 +818,7 @@ const HostDetailsPage = ({
           setActivityVPPInstallDetails({
             appName: getDisplayedSoftwareName(
               details?.software_title,
-              details?.software_display_name
+              details?.software_display_name,
             ),
             fleetInstallStatus: (details?.status ||
               "pending_install") as SoftwareInstallUninstallStatus,
@@ -850,7 +834,7 @@ const HostDetailsPage = ({
         default: // do nothing
       }
     },
-    [host?.display_name]
+    [host?.display_name],
   );
 
   const onCancelActivity = (activity: IHostUpcomingActivity) => {
@@ -869,7 +853,7 @@ const HostDetailsPage = ({
         setSelectedHostSWForInventoryVersions(hostSW);
       }
     },
-    [setSelectedHostSWForInventoryVersions]
+    [setSelectedHostSWForInventoryVersions],
   );
 
   const onCancelRunScriptDetailsModal = useCallback(() => {
@@ -923,7 +907,7 @@ const HostDetailsPage = ({
       const { searchQuery } = queryData;
       setUsersSearchString(searchQuery);
     },
-    []
+    [],
   );
 
   const onCloseScriptModalGroup = useCallback(() => {
@@ -974,7 +958,7 @@ const HostDetailsPage = ({
       getPathWithQueryParams(PATHS.NEW_QUERY, {
         team_id: currentTeam?.id,
         host_id: hostIdFromURL,
-      })
+      }),
     );
   };
 
@@ -1107,7 +1091,7 @@ const HostDetailsPage = ({
   const isHostTeamAdmin = permissions.isTeamAdmin(currentUser, host?.team_id);
   const isHostTeamMaintainer = permissions.isTeamMaintainer(
     currentUser,
-    host?.team_id
+    host?.team_id,
   );
 
   const bootstrapPackageData = {
@@ -1326,7 +1310,7 @@ const HostDetailsPage = ({
                   munki={macadmins?.munki}
                   mdm={mdm}
                   osVersionRequirement={getOSVersionRequirementFromMDMConfig(
-                    host.platform
+                    host.platform,
                   )}
                   toggleLocationModal={toggleLocationModal}
                 />
@@ -1355,7 +1339,7 @@ const HostDetailsPage = ({
                   onClickUpdateUser={(
                     e:
                       | React.MouseEvent<HTMLButtonElement>
-                      | React.KeyboardEvent<HTMLButtonElement>
+                      | React.KeyboardEvent<HTMLButtonElement>,
                   ) => {
                     e.preventDefault();
                     setShowUpdateEndUserModal(true);
@@ -1586,8 +1570,9 @@ const HostDetailsPage = ({
             <SoftwareIpaInstallDetailsModal
               details={{
                 appName: ipaPackageInstallDetails.appName || "",
-                fleetInstallStatus: (ipaPackageInstallDetails.fleetInstallStatus ||
-                  "pending_install") as SoftwareInstallUninstallStatus,
+                fleetInstallStatus:
+                  (ipaPackageInstallDetails.fleetInstallStatus ||
+                    "pending_install") as SoftwareInstallUninstallStatus,
                 hostDisplayName: ipaPackageInstallDetails.hostDisplayName || "",
                 commandUuid: ipaPackageInstallDetails.commandUuid || "",
               }}

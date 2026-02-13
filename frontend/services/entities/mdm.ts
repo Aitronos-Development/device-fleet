@@ -108,7 +108,7 @@ const mdmService = {
       HOST_MDM(hostId),
       undefined,
       undefined,
-      timeout
+      timeout,
     );
   },
   requestCSR: () => {
@@ -118,7 +118,7 @@ const mdmService = {
   },
 
   getProfiles: (
-    params: IGetProfilesApiParams
+    params: IGetProfilesApiParams,
   ): Promise<IMdmProfilesResponse> => {
     const { MDM_PROFILES } = endpoints;
     const path = `${MDM_PROFILES}?${buildQueryStringFromParams({
@@ -193,7 +193,7 @@ const mdmService = {
   },
 
   getBootstrapPackageMetadata: (
-    teamId: number
+    teamId: number,
   ): Promise<IGetBootstrapPackageMetadataResponse> => {
     const { MDM_BOOTSTRAP_PACKAGE_METADATA } = endpoints;
 
@@ -219,7 +219,7 @@ const mdmService = {
   },
 
   getBootstrapPackageAggregate: (
-    teamId?: number
+    teamId?: number,
   ): Promise<IGetBootstrapPackageSummaryResponse> => {
     let { MDM_BOOTSTRAP_PACKAGE_SUMMARY: path } = endpoints;
 
@@ -304,7 +304,7 @@ const mdmService = {
     }
 
     const path = `${MDM_APPLE_SETUP_ENROLLMENT_PROFILE}?${buildQueryStringFromParams(
-      { team_id: teamId }
+      { team_id: teamId },
     )}`;
     return sendRequest("GET", path);
   },
@@ -326,7 +326,7 @@ const mdmService = {
             body.team_id = teamId;
           }
           resolve(
-            sendRequest("POST", MDM_APPLE_SETUP_ENROLLMENT_PROFILE, body)
+            sendRequest("POST", MDM_APPLE_SETUP_ENROLLMENT_PROFILE, body),
           );
         } catch {
           // catches invalid JSON
@@ -343,7 +343,7 @@ const mdmService = {
     }
 
     const path = `${MDM_APPLE_SETUP_ENROLLMENT_PROFILE}?${buildQueryStringFromParams(
-      { team_id: teamId }
+      { team_id: teamId },
     )}`;
     return sendRequest("DELETE", path);
   },
@@ -354,19 +354,19 @@ const mdmService = {
       "GET",
       DEVICE_USER_MDM_ENROLLMENT_PROFILE(token),
       undefined,
-      "blob"
+      "blob",
     );
   },
 
   getSetupExperienceSoftware: (
-    params: IGetSetupExperienceSoftwareParams
+    params: IGetSetupExperienceSoftwareParams,
   ): Promise<IGetSetupExperienceSoftwareResponse> => {
     const { MDM_SETUP_EXPERIENCE_SOFTWARE } = endpoints;
 
     const path = `${MDM_SETUP_EXPERIENCE_SOFTWARE}?${buildQueryStringFromParams(
       {
         ...params,
-      }
+      },
     )}`;
 
     return sendRequest("GET", path);
@@ -375,7 +375,7 @@ const mdmService = {
   updateSetupExperienceSoftware: (
     platform: SetupExperiencePlatform,
     teamId: number,
-    softwareTitlesIds: number[]
+    softwareTitlesIds: number[],
   ) => {
     return sendRequest("PUT", endpoints.MDM_SETUP_EXPERIENCE_SOFTWARE, {
       software_title_ids: softwareTitlesIds,
@@ -385,7 +385,7 @@ const mdmService = {
   },
 
   getSetupExperienceScript: (
-    teamId: number
+    teamId: number,
   ): Promise<IGetSetupExperienceScriptResponse> => {
     const { MDM_SETUP_EXPERIENCE_SCRIPT } = endpoints;
 

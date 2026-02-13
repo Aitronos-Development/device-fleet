@@ -104,7 +104,7 @@ const InventoryVersion = ({
         installedPaths.map((path) => {
           // Find the signature info for this path
           const sigInfo = signatureInformation?.find(
-            (info) => info.installed_path === path
+            (info) => info.installed_path === path,
           );
 
           return (

@@ -144,7 +144,7 @@ describe("PolicyForm - component", () => {
           isFetchingAutofillDescription={false}
           isFetchingAutofillResolution={false}
           resetAiAutofillData={jest.fn()}
-        />
+        />,
       );
 
       expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
@@ -206,7 +206,7 @@ describe("PolicyForm - component", () => {
           isFetchingAutofillDescription={false}
           isFetchingAutofillResolution={false}
           resetAiAutofillData={jest.fn()}
-        />
+        />,
       );
 
       expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
@@ -218,7 +218,7 @@ describe("PolicyForm - component", () => {
         });
 
         expect(
-          container.querySelector("#save-policy-button")
+          container.querySelector("#save-policy-button"),
         ).toHaveTextContent(/to save or run the policy/i);
       });
     });
@@ -284,7 +284,7 @@ describe("PolicyForm - component", () => {
           isFetchingAutofillDescription={false}
           isFetchingAutofillResolution={false}
           resetAiAutofillData={jest.fn()}
-        />
+        />,
       );
 
       expect(screen.getByRole("button", { name: "Run" })).toBeDisabled();
@@ -295,7 +295,7 @@ describe("PolicyForm - component", () => {
         });
 
         expect(
-          screen.getByText(/live queries are disabled/i)
+          screen.getByText(/live queries are disabled/i),
         ).toBeInTheDocument();
       });
     });

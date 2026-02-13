@@ -12,7 +12,7 @@ describe("DeleteHostModal", () => {
         onSubmit={noop}
         onCancel={noop}
         isUpdating={false}
-      />
+      />,
     );
     expect(screen.getByText("3 hosts")).toBeVisible();
   });
@@ -24,7 +24,7 @@ describe("DeleteHostModal", () => {
         onSubmit={noop}
         onCancel={noop}
         isUpdating={false}
-      />
+      />,
     );
     expect(screen.getByText("Host1")).toBeVisible();
   });
@@ -38,7 +38,7 @@ describe("DeleteHostModal", () => {
         onSubmit={noop}
         onCancel={noop}
         isUpdating={false}
-      />
+      />,
     );
     expect(screen.getByText("3+ hosts")).toBeVisible();
   });
@@ -52,13 +52,13 @@ describe("DeleteHostModal", () => {
         onSubmit={noop}
         onCancel={noop}
         isUpdating={false}
-      />
+      />,
     );
     expect(screen.getByText("3+ hosts")).toBeVisible();
     expect(
       screen.getByText(
-        "When deleting a large volume of hosts, it may take some time for this change to be reflected in the UI."
-      )
+        "When deleting a large volume of hosts, it may take some time for this change to be reflected in the UI.",
+      ),
     ).toBeVisible();
   });
 });

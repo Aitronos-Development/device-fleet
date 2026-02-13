@@ -10,7 +10,7 @@ import HashCell from "./HashCell";
 describe("HashCell component", () => {
   it("renders empty cell when installedVersion is null", () => {
     render(
-      <HashCell installedVersion={null} onClickMultipleHashes={jest.fn()} />
+      <HashCell installedVersion={null} onClickMultipleHashes={jest.fn()} />,
     );
     expect(screen.getByText(DEFAULT_EMPTY_CELL_VALUE)).toBeInTheDocument();
   });
@@ -31,7 +31,7 @@ describe("HashCell component", () => {
           },
         ]}
         onClickMultipleHashes={jest.fn()}
-      />
+      />,
     );
     expect(screen.getByText(DEFAULT_EMPTY_CELL_VALUE)).toBeInTheDocument();
   });
@@ -53,12 +53,12 @@ describe("HashCell component", () => {
           },
         ]}
         onClickMultipleHashes={jest.fn()}
-      />
+      />,
     );
 
     // Shows first 7 chars and ellipsis
     expect(
-      screen.getByText(hash.slice(0, 7), { exact: false })
+      screen.getByText(hash.slice(0, 7), { exact: false }),
     ).toBeInTheDocument();
   });
 
@@ -90,7 +90,7 @@ describe("HashCell component", () => {
           },
         ]}
         onClickMultipleHashes={onClickMultipleHashes}
-      />
+      />,
     );
 
     // Should show "3 hashes"

@@ -29,7 +29,7 @@ type IFormValidations = Record<
 
 export const generateFormValidations = (
   customESTIntegrations: ICertificateAuthorityPartial[],
-  isEditing: boolean
+  isEditing: boolean,
 ) => {
   const FORM_VALIDATIONS: IFormValidations = {
     name: {
@@ -56,7 +56,7 @@ export const generateFormValidations = (
               customESTIntegrations.find(
                 (cert) =>
                   cert.name === formData.name &&
-                  cert.type === "custom_est_proxy"
+                  cert.type === "custom_est_proxy",
               ) === undefined
             );
           },
@@ -108,7 +108,7 @@ export const generateFormValidations = (
 
 const getErrorMessage = (
   formData: ICustomESTFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -119,7 +119,7 @@ const getErrorMessage = (
 // eslint-disable-next-line import/prefer-default-export
 export const validateFormData = (
   formData: ICustomESTFormData,
-  validationConfig: IFormValidations
+  validationConfig: IFormValidations,
 ) => {
   const formValidation: ICustomESTFormValidation = {
     isValid: true,
@@ -128,7 +128,7 @@ export const validateFormData = (
   Object.keys(validationConfig).forEach((key) => {
     const objKey = key as keyof typeof validationConfig;
     const failedValidation = validationConfig[objKey].validations.find(
-      (validation) => !validation.isValid(formData)
+      (validation) => !validation.isValid(formData),
     );
 
     if (!failedValidation) {

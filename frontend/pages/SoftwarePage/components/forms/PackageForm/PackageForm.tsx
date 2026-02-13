@@ -207,7 +207,7 @@ const PackageForm = ({
       const newData = { ...formData, automaticInstall: value };
       setFormData(newData);
     },
-    [formData]
+    [formData],
   );
 
   const onToggleSelfServiceCheckbox = (value: boolean) => {
@@ -270,7 +270,7 @@ const PackageForm = ({
   const submitTooltipContent = createTooltipContent(
     formValidation,
     repoURL,
-    disableFieldsForGitOps
+    disableFieldsForGitOps,
   );
 
   const classNames = classnames(baseClass, className);
@@ -378,7 +378,7 @@ const PackageForm = ({
                     formData.targetType === "Custom" &&
                     generateHelpText(
                       formData.automaticInstall,
-                      formData.customTarget
+                      formData.customTarget,
                     )
                   }
                 />

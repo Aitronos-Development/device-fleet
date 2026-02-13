@@ -12,7 +12,7 @@ describe("Next policy update", () => {
   });
   it("on next host count update with recent policy", () => {
     expect(
-      nextPolicyUpdateMs(new Date(new Date().getTime() - 91), 10, 200, 100)
+      nextPolicyUpdateMs(new Date(new Date().getTime() - 91), 10, 200, 100),
     ).toBe(10);
   });
   it("on next host count update with old policy", () => {

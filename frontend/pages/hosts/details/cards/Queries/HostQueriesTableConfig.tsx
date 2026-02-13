@@ -55,7 +55,7 @@ interface IDataColumn {
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 const generateColumnConfigs = (
   hostId: number,
-  queryReportsDisabled?: boolean
+  queryReportsDisabled?: boolean,
 ): IDataColumn[] => {
   const cols: IDataColumn[] = [
     {
@@ -104,7 +104,7 @@ const generateColumnConfigs = (
 };
 
 const enhanceScheduleData = (
-  query_stats: IQueryStats[]
+  query_stats: IQueryStats[],
 ): IHostQueriesTableData[] => {
   return Object.values(query_stats).map((query) => {
     const {
@@ -128,7 +128,7 @@ const enhanceScheduleData = (
 };
 
 const generateDataSet = (
-  query_stats: IQueryStats[]
+  query_stats: IQueryStats[],
 ): IHostQueriesTableData[] => {
   return query_stats ? enhanceScheduleData(query_stats) : [];
 };

@@ -91,7 +91,7 @@ describe("EditIconModal", () => {
       expect(displayNameInput).toBeInTheDocument();
       expect(displayNameInput).toHaveValue("New Custom Name");
       const helpText = screen.getByText(
-        /Optional. If left blank, Fleet will use/
+        /Optional. If left blank, Fleet will use/,
       );
 
       expect(helpText).toHaveTextContent(MODIFIED_PROPS.previewInfo.titleName);
@@ -103,7 +103,7 @@ describe("EditIconModal", () => {
         .mockResolvedValue({} as any);
       const deleteSoftwareIconSpy = jest.spyOn(
         softwareAPI,
-        "deleteSoftwareIcon"
+        "deleteSoftwareIcon",
       );
       const editSoftwareIconSpy = jest.spyOn(softwareAPI, "editSoftwareIcon");
 
@@ -180,7 +180,7 @@ describe("EditIconModal", () => {
 
       expect(editSoftwarePackageSpy).toHaveBeenCalled();
       await expect(editSoftwarePackageSpy).rejects.toThrow(
-        "Name update failed"
+        "Name update failed",
       );
     });
   });

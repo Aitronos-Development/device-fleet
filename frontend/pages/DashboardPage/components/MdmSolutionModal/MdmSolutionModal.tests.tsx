@@ -18,7 +18,7 @@ describe("MdmSolutionModal table", () => {
       },
     ];
     render(
-      <MdmSolutionModal mdmSolutions={mdmSolutions} onCancel={() => null} />
+      <MdmSolutionModal mdmSolutions={mdmSolutions} onCancel={() => null} />,
     );
 
     expect(screen.getByText(server_url)).toBeInTheDocument();

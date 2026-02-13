@@ -17,7 +17,7 @@ const getWhen = (summary: IScriptBatchSummaryV2) => {
     case "started":
       if (!started_at || !isDateTimePast(started_at)) {
         console.warn(
-          `Batch run with execution id ${id} is marked as 'started' but has no past 'started_at'`
+          `Batch run with execution id ${id} is marked as 'started' but has no past 'started_at'`,
         );
         return null;
       }
@@ -34,7 +34,7 @@ const getWhen = (summary: IScriptBatchSummaryV2) => {
     case "scheduled":
       if (!not_before || isDateTimePast(not_before)) {
         console.warn(
-          `Batch run with execution id ${id} is marked as 'scheduled' but has no future scheduled start time`
+          `Batch run with execution id ${id} is marked as 'scheduled' but has no future scheduled start time`,
         );
         return null;
       }
@@ -51,7 +51,7 @@ const getWhen = (summary: IScriptBatchSummaryV2) => {
     case "finished":
       if (!finished_at || !isDateTimePast(finished_at)) {
         console.warn(
-          `Batch run with execution id ${id} is marked as 'finished' but has no past 'finished_at' data`
+          `Batch run with execution id ${id} is marked as 'finished' but has no past 'finished_at' data`,
         );
         return null;
       }

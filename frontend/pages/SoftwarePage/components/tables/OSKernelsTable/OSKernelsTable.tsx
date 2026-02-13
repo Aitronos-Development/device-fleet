@@ -73,7 +73,7 @@ const OSKernelsTable = ({
         PATHS.SOFTWARE_VULNERABILITY_DETAILS(cveName),
         {
           team_id: teamIdForApi,
-        }
+        },
       );
 
       router.push(softwareVulnerabilityDetailsPath);

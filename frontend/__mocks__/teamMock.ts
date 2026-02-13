@@ -10,7 +10,7 @@ const DEFAUT_TEAM_MOCK: ITeam = {
 };
 
 export const createMockTeamSummary = (
-  overrides?: Partial<ITeamSummary>
+  overrides?: Partial<ITeamSummary>,
 ): ITeamSummary => {
   return { ...DEFAULT_MOCK_TEAM_SUMMARY, ...overrides };
 };

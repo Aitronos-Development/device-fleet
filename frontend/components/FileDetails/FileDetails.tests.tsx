@@ -18,7 +18,7 @@ const setup = (props = {}) =>
       canEdit
       onFileSelect={jest.fn()}
       {...props}
-    />
+    />,
   );
 
 describe("FileDetails", () => {
@@ -26,19 +26,19 @@ describe("FileDetails", () => {
     const { user, container } = setup();
 
     expect(
-      container.querySelector(".file-details__name")?.textContent
+      container.querySelector(".file-details__name")?.textContent,
     ).toContain("config.yaml");
     expect(
-      container.querySelector(".file-details__description")?.textContent
+      container.querySelector(".file-details__description")?.textContent,
     ).toContain("File description");
 
     const fileInput = container.querySelector(
-      "input[type='file']"
+      "input[type='file']",
     ) as HTMLInputElement;
     const clickSpy = jest.spyOn(fileInput, "click");
 
     const editButton = container.querySelector(
-      ".file-details__edit-button"
+      ".file-details__edit-button",
     ) as HTMLButtonElement;
     await user.click(editButton);
 
@@ -53,7 +53,7 @@ describe("FileDetails", () => {
     });
 
     const fileInput = container.querySelector(
-      "input[type='file']"
+      "input[type='file']",
     ) as HTMLInputElement;
 
     fireEvent.change(fileInput, {
@@ -70,7 +70,7 @@ describe("FileDetails", () => {
     const { user, container } = setup({ onDeleteFile });
 
     const deleteButton = container.querySelector(
-      ".file-details__delete-button"
+      ".file-details__delete-button",
     ) as HTMLButtonElement;
     await user.click(deleteButton);
 
@@ -81,7 +81,7 @@ describe("FileDetails", () => {
     const { container } = setup({ progress: 0.5 });
 
     expect(
-      container.querySelector(".file-details__progress-bar--uploaded")
+      container.querySelector(".file-details__progress-bar--uploaded"),
     ).toBeInTheDocument();
     expect(container.querySelector(".file-details__edit-button")).toBeNull();
     expect(container.querySelector(".file-details__delete-button")).toBeNull();

@@ -43,7 +43,11 @@ const OperatingSystems = ({
   setTitleDetail,
   setTitleDescription,
 }: IOperatingSystemsCardProps): JSX.Element => {
-  const { data: osInfo, error, isLoading } = useQuery<
+  const {
+    data: osInfo,
+    error,
+    isLoading,
+  } = useQuery<
     IOSVersionsResponse,
     AxiosError,
     IOSVersionsResponse,
@@ -67,7 +71,7 @@ const OperatingSystems = ({
       staleTime: 10000,
       keepPreviousData: true,
       retry: 0,
-    }
+    },
   );
 
   const renderDescription = () => {

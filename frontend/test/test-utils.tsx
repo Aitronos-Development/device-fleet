@@ -34,12 +34,12 @@ type RenderOptionsWithProviderProps = RenderOptions & {
 // eslint-disable-next-line import/prefer-default-export
 export const renderWithAppContext = (
   component: React.ReactNode,
-  { contextValue, ...renderOptions }: RenderOptionsWithProviderProps
+  { contextValue, ...renderOptions }: RenderOptionsWithProviderProps,
 ) => {
   const value: IAppContext = { ...initialState, ...contextValue };
   return render(
     <AppContext.Provider value={value}>{component}</AppContext.Provider>,
-    renderOptions
+    renderOptions,
   );
 };
 
@@ -80,7 +80,7 @@ interface IWrapperComponentProps {
 const createWrapperComponent = (
   CurrentWrapper: React.FC<React.PropsWithChildren<any>>, // TODO: types
   WrapperComponent: React.FC<React.PropsWithChildren<any>>, // TODO: types
-  props: IWrapperComponentProps
+  props: IWrapperComponentProps,
 ) => {
   return ({ children }: IChildrenProp) => (
     <WrapperComponent {...props}>
@@ -96,13 +96,13 @@ interface IChildrenProp {
 type RenderResultWithUser = RenderResult & { user: UserEvent };
 
 const addQueryProviderWrapper = (
-  CustomWrapperComponent: ({ children }: IChildrenProp) => JSX.Element
+  CustomWrapperComponent: ({ children }: IChildrenProp) => JSX.Element,
 ) => {
   const client = new QueryClient();
   CustomWrapperComponent = createWrapperComponent(
     CustomWrapperComponent,
     QueryClientProvider,
-    { client }
+    { client },
   );
 
   return CustomWrapperComponent;
@@ -110,13 +110,13 @@ const addQueryProviderWrapper = (
 
 const addContextWrappers = (
   contextObj: IContextOptions,
-  CustomWrapperComponent: ({ children }: IChildrenProp) => JSX.Element
+  CustomWrapperComponent: ({ children }: IChildrenProp) => JSX.Element,
 ) => {
   Object.entries(contextObj).forEach(([key, value]) => {
     CustomWrapperComponent = createWrapperComponent(
       CustomWrapperComponent,
       CONTEXT_PROVIDER_MAP[key as ContextProviderKeys].Provider,
-      { value }
+      { value },
     );
   });
   return CustomWrapperComponent;
@@ -140,13 +140,13 @@ export const createCustomRenderer = (renderOptions?: ICustomRenderOptions) => {
   if (renderOptions?.context !== undefined) {
     CustomWrapperComponent = addContextWrappers(
       renderOptions.context,
-      CustomWrapperComponent
+      CustomWrapperComponent,
     );
   }
 
   return (
     component: React.ReactElement,
-    options?: Omit<RenderOptions, "wrapper">
+    options?: Omit<RenderOptions, "wrapper">,
   ): RenderResultWithUser => {
     const renderResults: RenderResultWithUser = {
       user: userEvent.setup(),
@@ -201,7 +201,7 @@ export const createMockLocation = (overrides?: Partial<Location>): Location => {
 };
 
 export const createMockLocationExperimental = (
-  overrides?: Partial<IRouterLocation>
+  overrides?: Partial<IRouterLocation>,
 ): IRouterLocation => {
   // Default values for the location object
   const defaultLocation: IRouterLocation = {

@@ -46,7 +46,7 @@ export const isOnGlobalTeam = (user: IUser): boolean => {
 // This checks against a specific team
 export const isTeamObserver = (
   user: IUser | null,
-  teamId: number | null
+  teamId: number | null,
 ): boolean => {
   const userTeamRole = user?.teams.find((team) => team.id === teamId)?.role;
   return userTeamRole === "observer" || userTeamRole === "observer_plus";
@@ -54,7 +54,7 @@ export const isTeamObserver = (
 
 export const isTeamMaintainer = (
   user: IUser | null,
-  teamId: number | null
+  teamId: number | null,
 ): boolean => {
   const userTeamRole = user?.teams.find((team) => team.id === teamId)?.role;
   return userTeamRole === "maintainer";
@@ -62,7 +62,7 @@ export const isTeamMaintainer = (
 
 export const isTeamAdmin = (
   user: IUser | null,
-  teamId: number | null
+  teamId: number | null,
 ): boolean => {
   const userTeamRole = user?.teams.find((team) => team.id === teamId)?.role;
   return userTeamRole === "admin";
@@ -70,7 +70,7 @@ export const isTeamAdmin = (
 
 const isTeamMaintainerOrTeamAdmin = (
   user: IUser | null,
-  teamId: number | null
+  teamId: number | null,
 ): boolean => {
   const userTeamRole = user?.teams.find((team) => team.id === teamId)?.role;
   return userTeamRole === "admin" || userTeamRole === "maintainer";
@@ -104,7 +104,7 @@ const isAnyTeamAdmin = (user: IUser): boolean => {
 export const isAnyTeamMaintainerOrTeamAdmin = (user: IUser): boolean => {
   if (!isOnGlobalTeam(user)) {
     return user.teams.some(
-      (team) => team?.role === "maintainer" || team?.role === "admin"
+      (team) => team?.role === "maintainer" || team?.role === "admin",
     );
   }
 
@@ -119,7 +119,7 @@ export const isOnlyObserver = (user: IUser): boolean => {
   // Return false if any role is team maintainer or team admin
   if (!isOnGlobalTeam(user)) {
     return !user.teams.some(
-      (team) => team?.role === "maintainer" || team?.role === "admin"
+      (team) => team?.role === "maintainer" || team?.role === "admin",
     );
   }
 
@@ -132,7 +132,7 @@ export const isGlobalObserverPlus = (user: IUser): boolean => {
 
 export const isTeamObserverPlus = (
   user: IUser | null,
-  teamId: number | null
+  teamId: number | null,
 ): boolean => {
   const userTeamRole = user?.teams.find((team) => team.id === teamId)?.role;
   return userTeamRole === "observer_plus";

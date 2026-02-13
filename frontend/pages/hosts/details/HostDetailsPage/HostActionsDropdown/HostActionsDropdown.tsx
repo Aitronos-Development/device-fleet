@@ -51,7 +51,7 @@ const HostActionsDropdown = ({
   const isTeamAdmin = permissions.isTeamAdmin(currentUser, hostTeamId);
   const isTeamMaintainer = permissions.isTeamMaintainer(
     currentUser,
-    hostTeamId
+    hostTeamId,
   );
   const isTeamObserver = permissions.isTeamObserver(currentUser, hostTeamId);
   const isGlobalObserver = permissions.isGlobalObserver(currentUser);

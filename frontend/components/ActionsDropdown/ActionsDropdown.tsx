@@ -58,7 +58,7 @@ const getRightMenuAlign = (menuAlign: "right" | "left" | "default") => {
 };
 
 const CustomDropdownIndicator = (
-  props: DropdownIndicatorProps<IDropdownOption, false>
+  props: DropdownIndicatorProps<IDropdownOption, false>,
 ) => {
   const { isFocused, selectProps } = props;
   const variant = (selectProps as { variant?: "button" }).variant;

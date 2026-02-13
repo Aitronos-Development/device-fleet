@@ -17,7 +17,7 @@ export const getDefaultSoftwareInstallHandler = http.get(
         post_install_script_output: "Post-install success",
       }),
     });
-  }
+  },
 );
 
 // Installed, no outputs
@@ -32,7 +32,7 @@ export const getSoftwareInstallHandlerNoOutputs = http.get(
         post_install_script_output: "",
       }),
     });
-  }
+  },
 );
 
 // Installed, only install output
@@ -47,7 +47,7 @@ export const getSoftwareInstallHandlerOnlyInstallOutput = http.get(
         post_install_script_output: "",
       }),
     });
-  }
+  },
 );
 
 export const getSoftwareInstallResultHandler = http.get(
@@ -61,7 +61,7 @@ export const getSoftwareInstallResultHandler = http.get(
         post_install_script_output: "Post-install success",
       }),
     });
-  }
+  },
 );
 
 // ---- Pre install query output ----
@@ -81,7 +81,7 @@ export const getSoftwareInstallHandlerWithPreInstall = http.get(
         }),
       },
     });
-  }
+  },
 );
 
 // Failed install, only pre-install output
@@ -99,7 +99,7 @@ export const getSoftwareInstallHandlerOnlyPreInstallOutput = http.get(
         }),
       },
     });
-  }
+  },
 );
 
 // ---- MDM Command Handlers ----
@@ -126,5 +126,5 @@ export const getMdmCommandResultHandler = http.get(
     return HttpResponse.json({
       results: [mdmCommand],
     });
-  }
+  },
 );

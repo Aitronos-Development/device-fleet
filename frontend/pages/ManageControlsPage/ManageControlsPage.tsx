@@ -66,7 +66,7 @@ interface IManageControlsPageProps {
 
 const getTabIndex = (
   permittedControlsSubNav: IControlsSubNavItem[],
-  path: string
+  path: string,
 ): number => {
   return permittedControlsSubNav.findIndex((navItem) => {
     // tab stays highlighted for paths that start with same pathname
@@ -86,31 +86,22 @@ const ManageControlsPage = ({
 }: IManageControlsPageProps): JSX.Element => {
   const page = parseInt(location?.query?.page || "", 10) || 0;
 
-  const {
-    config,
-    isOnGlobalTeam,
-    isPremiumTier,
-    isGlobalAdmin,
-    isTeamAdmin,
-  } = useContext(AppContext);
+  const { config, isOnGlobalTeam, isPremiumTier, isGlobalAdmin, isTeamAdmin } =
+    useContext(AppContext);
 
-  const {
-    currentTeamId,
-    userTeams,
-    teamIdForApi,
-    handleTeamChange,
-  } = useTeamIdParam({
-    location,
-    router,
-    includeAllTeams: false,
-    includeNoTeam: true,
-    permittedAccessByTeamRole: {
-      admin: true,
-      maintainer: true,
-      observer: false,
-      observer_plus: false,
-    },
-  });
+  const { currentTeamId, userTeams, teamIdForApi, handleTeamChange } =
+    useTeamIdParam({
+      location,
+      router,
+      includeAllTeams: false,
+      includeNoTeam: true,
+      permittedAccessByTeamRole: {
+        admin: true,
+        maintainer: true,
+        observer: false,
+        observer_plus: false,
+      },
+    });
 
   const permittedControlsSubNav = useMemo(() => {
     let renderedSubNav = controlsSubNav;
@@ -133,10 +124,10 @@ const ManageControlsPage = ({
       router.replace(
         navPath
           .concat(newQuery ? `?${newQuery}` : "")
-          .concat(location?.hash || "")
+          .concat(location?.hash || ""),
       );
     },
-    [location, router, permittedControlsSubNav]
+    [location, router, permittedControlsSubNav],
   );
 
   const renderBody = () => {
@@ -146,7 +137,7 @@ const ManageControlsPage = ({
           <Tabs
             selectedIndex={getTabIndex(
               permittedControlsSubNav,
-              location?.pathname || ""
+              location?.pathname || "",
             )}
             onSelect={navigateToNav}
           >

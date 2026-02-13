@@ -126,12 +126,8 @@ const HostSoftwareLibrary = ({
   isHostDetailsPolling,
 }: IHostSoftwareLibraryProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const {
-    isGlobalAdmin,
-    isGlobalMaintainer,
-    isTeamAdmin,
-    isTeamMaintainer,
-  } = useContext(AppContext);
+  const { isGlobalAdmin, isGlobalMaintainer, isTeamAdmin, isTeamMaintainer } =
+    useContext(AppContext);
 
   const isUnsupported = isAndroid(platform); // no Android software
   const isWindowsHost = platform === "windows";
@@ -142,34 +138,22 @@ const HostSoftwareLibrary = ({
   const [hostSoftwareLibraryRes, setHostSoftwareLibraryRes] = useState<
     IGetHostSoftwareResponse | undefined
   >(undefined);
-  const [
-    selectedSoftwareUpdates,
-    setSelectedSoftwareUpdates,
-  ] = useState<IHostSoftware | null>(null);
+  const [selectedSoftwareUpdates, setSelectedSoftwareUpdates] =
+    useState<IHostSoftware | null>(null);
   // these states and modal logic exist at this level instead of the page level to match the similar
   // pattern on
   // the device user page, which facilitates manipulating relevant UI states e.g.
   // "updating..." when the user clicks "Retry" in the SoftwareInstallDetailsModal
-  const [
-    selectedHostSWInstallDetails,
-    setSelectedHostSWInstallDetails,
-  ] = useState<IHostSoftware | null>(null);
-  const [
-    selectedHostSWIpaInstallDetails,
-    setSelectedHostSWIpaInstallDetails,
-  ] = useState<IHostSoftware | null>(null);
-  const [
-    selectedHostSWScriptDetails,
-    setSelectedHostSWScriptDetails,
-  ] = useState<IHostSoftware | null>(null);
-  const [
-    selectedHostSWUninstallDetails,
-    setSelectedHostSWUninstallDetails,
-  ] = useState<ISWUninstallDetailsParentState | null>(null);
-  const [
-    selectedVPPInstallDetails,
-    setSelectedVPPInstallDetails,
-  ] = useState<IVPPHostSoftware | null>(null);
+  const [selectedHostSWInstallDetails, setSelectedHostSWInstallDetails] =
+    useState<IHostSoftware | null>(null);
+  const [selectedHostSWIpaInstallDetails, setSelectedHostSWIpaInstallDetails] =
+    useState<IHostSoftware | null>(null);
+  const [selectedHostSWScriptDetails, setSelectedHostSWScriptDetails] =
+    useState<IHostSoftware | null>(null);
+  const [selectedHostSWUninstallDetails, setSelectedHostSWUninstallDetails] =
+    useState<ISWUninstallDetailsParentState | null>(null);
+  const [selectedVPPInstallDetails, setSelectedVPPInstallDetails] =
+    useState<IVPPHostSoftware | null>(null);
 
   const enhancedSoftware = useMemo(() => {
     if (!hostSoftwareLibraryRes) return [];
@@ -240,9 +224,9 @@ const HostSoftwareLibrary = ({
             .filter(
               (software) =>
                 software.status === "pending_install" ||
-                software.status === "pending_uninstall"
+                software.status === "pending_uninstall",
             )
-            .map((software) => String(software.id))
+            .map((software) => String(software.id)),
         );
 
         // Refresh host details if the number of pending installs or uninstalls has decreased
@@ -255,7 +239,7 @@ const HostSoftwareLibrary = ({
         const setsAreEqual =
           newPendingSet.size === pendingSoftwareSetRef.current.size &&
           [...newPendingSet].every((pendingId) =>
-            pendingSoftwareSetRef.current.has(pendingId)
+            pendingSoftwareSetRef.current.has(pendingId),
           );
 
         if (newPendingSet.size > 0) {
@@ -286,10 +270,10 @@ const HostSoftwareLibrary = ({
         pendingSoftwareSetRef.current = new Set();
         renderFlash(
           "error",
-          "We're having trouble checking pending installs. Please refresh the page."
+          "We're having trouble checking pending installs. Please refresh the page.",
         );
       },
-    }
+    },
   );
 
   // Stop polling if the host goes offline
@@ -311,7 +295,7 @@ const HostSoftwareLibrary = ({
         const setsAreEqual =
           newSet.size === pendingSoftwareSetRef.current.size &&
           [...newSet].every((pendingId) =>
-            pendingSoftwareSetRef.current.has(pendingId)
+            pendingSoftwareSetRef.current.has(pendingId),
           );
         if (!setsAreEqual) {
           pendingSoftwareSetRef.current = newSet;
@@ -325,7 +309,7 @@ const HostSoftwareLibrary = ({
         }
       }
     },
-    [refetchForPendingInstallsOrUninstalls, isHostOnline]
+    [refetchForPendingInstallsOrUninstalls, isHostOnline],
   );
 
   // Cleanup on unmount
@@ -344,7 +328,7 @@ const HostSoftwareLibrary = ({
     const pendingSoftware = hostSoftwareLibraryRes?.software.filter(
       (software) =>
         software.status === "pending_install" ||
-        software.status === "pending_uninstall"
+        software.status === "pending_uninstall",
     );
     const pendingIds = pendingSoftware?.map((s) => String(s.id)) ?? [];
     if (pendingIds.length > 0) {
@@ -369,7 +353,7 @@ const HostSoftwareLibrary = ({
     router.push(
       getPathWithQueryParams(addSoftwarePathForHostPlatform(), {
         team_id: hostTeamId,
-      })
+      }),
     );
   }, [
     hostTeamId,
@@ -386,7 +370,7 @@ const HostSoftwareLibrary = ({
         setSelectedSoftwareUpdates(software);
       }
     },
-    [setSelectedSoftwareUpdates]
+    [setSelectedSoftwareUpdates],
   );
 
   const onSetSelectedHostSWInstallDetails = useCallback(
@@ -395,7 +379,7 @@ const HostSoftwareLibrary = ({
         setSelectedHostSWInstallDetails(hostSW);
       }
     },
-    [setSelectedHostSWInstallDetails]
+    [setSelectedHostSWInstallDetails],
   );
 
   const onSetSelectedHostSWIpaInstallDetails = useCallback(
@@ -404,7 +388,7 @@ const HostSoftwareLibrary = ({
         setSelectedHostSWIpaInstallDetails(hostSW);
       }
     },
-    [setSelectedHostSWIpaInstallDetails]
+    [setSelectedHostSWIpaInstallDetails],
   );
 
   const onSetSelectedHostSWScriptDetails = useCallback(
@@ -413,7 +397,7 @@ const HostSoftwareLibrary = ({
         setSelectedHostSWScriptDetails(hostSW);
       }
     },
-    [setSelectedHostSWScriptDetails]
+    [setSelectedHostSWScriptDetails],
   );
 
   const onSetSelectedHostSWUninstallDetails = useCallback(
@@ -422,7 +406,7 @@ const HostSoftwareLibrary = ({
         setSelectedHostSWUninstallDetails(uninstallDetails);
       }
     },
-    [setSelectedHostSWUninstallDetails]
+    [setSelectedHostSWUninstallDetails],
   );
 
   const onSetSelectedVPPInstallDetails = useCallback(
@@ -431,7 +415,7 @@ const HostSoftwareLibrary = ({
         setSelectedVPPInstallDetails(s);
       }
     },
-    [setSelectedVPPInstallDetails]
+    [setSelectedVPPInstallDetails],
   );
 
   const onInstallOrUninstall = useCallback(() => {
@@ -447,7 +431,7 @@ const HostSoftwareLibrary = ({
   ]);
 
   const hasSWWriteRole = Boolean(
-    isGlobalAdmin || isGlobalMaintainer || isTeamAdmin || isTeamMaintainer
+    isGlobalAdmin || isGlobalMaintainer || isTeamAdmin || isTeamMaintainer,
   );
 
   // 4.77 Currently Android apps can only be installed via self-service by end user
@@ -486,13 +470,13 @@ const HostSoftwareLibrary = ({
           "success",
           <>
             {message()} To see details, go to <b>Details &gt; Activity</b>.
-          </>
+          </>,
         );
       } catch (e) {
         renderFlash("error", getInstallErrorMessage(e));
       }
     },
-    [id, renderFlash, onInstallOrUninstall, isHostOnline]
+    [id, renderFlash, onInstallOrUninstall, isHostOnline],
   );
 
   const onClickUninstallAction = useCallback(
@@ -510,13 +494,13 @@ const HostSoftwareLibrary = ({
               ? "is uninstalling"
               : "will uninstall when the host comes online"}
             . To see details, go to <b>Details &gt; Activity</b>.
-          </>
+          </>,
         );
       } catch (e) {
         renderFlash("error", getUninstallErrorMessage(e));
       }
     },
-    [id, renderFlash, onInstallOrUninstall, isHostOnline]
+    [id, renderFlash, onInstallOrUninstall, isHostOnline],
   );
 
   const tableConfig = useMemo(() => {
@@ -629,7 +613,7 @@ const HostSoftwareLibrary = ({
             fleetInstallStatus: selectedHostSWIpaInstallDetails.status,
             appName: getDisplayedSoftwareName(
               selectedHostSWIpaInstallDetails.name,
-              selectedHostSWIpaInstallDetails.display_name
+              selectedHostSWIpaInstallDetails.display_name,
             ),
             commandUuid:
               selectedHostSWIpaInstallDetails.software_package?.last_install
@@ -665,7 +649,7 @@ const HostSoftwareLibrary = ({
             hostDisplayName,
             appName: getDisplayedSoftwareName(
               selectedVPPInstallDetails.name,
-              selectedVPPInstallDetails.display_name
+              selectedVPPInstallDetails.display_name,
             ),
             commandUuid: selectedVPPInstallDetails.commandUuid,
             platform,

@@ -9,7 +9,7 @@ import EndUserMigrationSection from "./EndUserMigrationSection";
 
 const createTestMockData = (
   configOverrides: Partial<IConfig>,
-  isPremiumTier = true
+  isPremiumTier = true,
 ) => {
   return {
     context: {
@@ -40,7 +40,7 @@ describe("EndUserMigrationSection", () => {
             webhook_url: "",
           },
         }),
-      })
+      }),
     );
 
     const { user } = render(<EndUserMigrationSection router={mockRouter} />);
@@ -82,7 +82,7 @@ describe("EndUserMigrationSection", () => {
           gitops_mode_enabled: true,
           repository_url: "https://example.com/repo.git",
         },
-      })
+      }),
     );
 
     const { user } = render(<EndUserMigrationSection router={mockRouter} />);
@@ -115,13 +115,13 @@ describe("EndUserMigrationSection", () => {
         mdm: createMockMdmConfig({
           apple_bm_enabled_and_configured: false,
         }),
-      })
+      }),
     );
 
     render(<EndUserMigrationSection router={mockRouter} />);
 
     expect(
-      screen.getByText("Connect to Apple Business Manager to get started.")
+      screen.getByText("Connect to Apple Business Manager to get started."),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Connect" })).toBeInTheDocument();
   });
@@ -132,7 +132,7 @@ describe("EndUserMigrationSection", () => {
     render(<EndUserMigrationSection router={mockRouter} />);
 
     expect(
-      screen.getByText("This feature is included in Fleet Premium.")
+      screen.getByText("This feature is included in Fleet Premium."),
     ).toBeInTheDocument();
   });
 });

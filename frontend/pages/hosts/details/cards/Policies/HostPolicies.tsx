@@ -59,7 +59,7 @@ const Policies = ({
     (row: IHostPoliciesRowProps) => {
       togglePolicyDetailsModal(row.original);
     },
-    [router]
+    [router],
   );
 
   const renderBanner = () => {

@@ -58,7 +58,7 @@ describe("validPassword", () => {
     invalidPasswords.map((test) => {
       return expect(validPassword(test.password)).toEqual(
         { isValid: false, error: test.error, error_code: test.error_code },
-        `expected ${test.password} to not be valid`
+        `expected ${test.password} to not be valid`,
       );
     });
   });
@@ -74,7 +74,7 @@ describe("validPassword", () => {
     validPasswords.map((password) => {
       return expect(validPassword(password)).toEqual(
         { isValid: true, error: "", error_code: "" },
-        `expected ${password} to be valid`
+        `expected ${password} to be valid`,
       );
     });
   });

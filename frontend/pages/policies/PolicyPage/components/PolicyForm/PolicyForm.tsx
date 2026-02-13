@@ -106,18 +106,16 @@ const PolicyForm = ({
   resetAiAutofillData,
 }: IPolicyFormProps): JSX.Element => {
   const [errors, setErrors] = useState<{ [key: string]: any }>({}); // string | null | undefined or boolean | undefined
-  const [isSaveNewPolicyModalOpen, setIsSaveNewPolicyModalOpen] = useState(
-    false
-  );
+  const [isSaveNewPolicyModalOpen, setIsSaveNewPolicyModalOpen] =
+    useState(false);
   const [showQueryEditor, setShowQueryEditor] = useState(false);
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingDescription, setIsEditingDescription] = useState(false);
   const [isEditingResolution, setIsEditingResolution] = useState(false);
 
   const [selectedTargetType, setSelectedTargetType] = useState("All hosts");
-  const [selectedCustomTarget, setSelectedCustomTarget] = useState(
-    "labelsIncludeAny"
-  );
+  const [selectedCustomTarget, setSelectedCustomTarget] =
+    useState("labelsIncludeAny");
   const [selectedLabels, setSelectedLabels] = useState({});
 
   // Note: The PolicyContext values should always be used for any mutable policy data such as query name
@@ -183,7 +181,7 @@ const PolicyForm = ({
       enabled: isPremiumTier && !!currentTeam,
       staleTime: 10000,
       select: (res) => ({ labels: getCustomLabels(res.labels) }),
-    }
+    },
   );
 
   const disabledLiveQuery = config?.server_settings.live_query_disabled;
@@ -200,10 +198,8 @@ const PolicyForm = ({
   }, 500);
 
   const platformCompatibility = usePlatformCompatibility();
-  const {
-    getCompatiblePlatforms,
-    setCompatiblePlatforms,
-  } = platformCompatibility;
+  const { getCompatiblePlatforms, setCompatiblePlatforms } =
+    platformCompatibility;
 
   const platformSelectorDisabled =
     isFetchingAutofillDescription ||
@@ -215,14 +211,11 @@ const PolicyForm = ({
     baseClass,
     platformSelectorDisabled,
     storedPolicy?.install_software,
-    currentTeam?.id
+    currentTeam?.id,
   );
 
-  const {
-    getSelectedPlatforms,
-    setSelectedPlatforms,
-    isAnyPlatformSelected,
-  } = platformSelector;
+  const { getSelectedPlatforms, setSelectedPlatforms, isAnyPlatformSelected } =
+    platformSelector;
 
   policyIdForEdit = policyIdForEdit || 0;
 
@@ -237,12 +230,12 @@ const PolicyForm = ({
       !lastEditedQueryLabelsIncludeAny.length &&
         !lastEditedQueryLabelsExcludeAny.length
         ? "All hosts"
-        : "Custom"
+        : "Custom",
     );
     setSelectedCustomTarget(
       lastEditedQueryLabelsExcludeAny.length
         ? "labelsExcludeAny"
-        : "labelsIncludeAny"
+        : "labelsIncludeAny",
     );
     setSelectedLabels(
       lastEditedQueryLabelsIncludeAny
@@ -252,7 +245,7 @@ const PolicyForm = ({
             ...acc,
             [label.name]: true,
           };
-        }, {}) || {}
+        }, {}) || {},
     );
   }, [lastEditedQueryLabelsIncludeAny, lastEditedQueryLabelsExcludeAny]);
 
@@ -338,7 +331,7 @@ const PolicyForm = ({
     }
 
     const newPlatformString = selectedPlatforms.join(
-      ","
+      ",",
     ) as CommaSeparatedPlatformString;
 
     if (!defaultPolicy) {
@@ -455,7 +448,7 @@ const PolicyForm = ({
     policyDescriptionWrapperBase,
     {
       [`${baseClass}--editing`]: isEditingDescription,
-    }
+    },
   );
 
   const policyResolutionWrapperBase = `${baseClass}__policy-resolution-wrapper`;
@@ -463,7 +456,7 @@ const PolicyForm = ({
     policyResolutionWrapperBase,
     {
       [`${baseClass}--editing`]: isEditingResolution,
-    }
+    },
   );
 
   const renderName = () => {
@@ -474,7 +467,8 @@ const PolicyForm = ({
           tipOffset={16}
           renderChildren={(disableChildren) => {
             const classes = classnames(policyNameWrapperClasses, {
-              [`${policyNameWrapperBase}--disabled-by-gitops-mode`]: disableChildren,
+              [`${policyNameWrapperBase}--disabled-by-gitops-mode`]:
+                disableChildren,
             });
             return (
               <div
@@ -530,7 +524,8 @@ const PolicyForm = ({
           tipOffset={16}
           renderChildren={(disableChildren) => {
             const classes = classnames(policyDescriptionWrapperClasses, {
-              [`${policyDescriptionWrapperBase}--disabled-by-gitops-mode`]: disableChildren,
+              [`${policyDescriptionWrapperBase}--disabled-by-gitops-mode`]:
+                disableChildren,
             });
             return (
               <div
@@ -578,7 +573,8 @@ const PolicyForm = ({
             tipOffset={16}
             renderChildren={(disableChildren) => {
               const classes = classnames(policyResolutionWrapperClasses, {
-                [`${policyResolutionWrapperBase}--disabled-by-gitops-mode`]: disableChildren,
+                [`${policyResolutionWrapperBase}--disabled-by-gitops-mode`]:
+                  disableChildren,
               });
               return (
                 <div

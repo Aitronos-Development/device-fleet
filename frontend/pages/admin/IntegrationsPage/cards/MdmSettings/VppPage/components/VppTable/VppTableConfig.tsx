@@ -69,7 +69,7 @@ const RENEW_DATE_CELL_STATUS_CONFIG: IRenewDateCellStatusConfig = {
 export const generateTableConfig = (
   actionSelectHandler: (value: string, team: IMdmVppToken) => void,
   gitopsModeEnabled: boolean,
-  repoURL: string
+  repoURL: string,
 ): IAbmTableConfig[] => {
   return [
     {

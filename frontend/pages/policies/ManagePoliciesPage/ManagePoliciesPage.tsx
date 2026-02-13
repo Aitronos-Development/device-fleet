@@ -172,17 +172,14 @@ const ManagePolicyPage = ({
 
   const [selectedPolicyIds, setSelectedPolicyIds] = useState<number[]>([]);
   const [showDeletePoliciesModal, setShowDeletePoliciesModal] = useState(false);
-  const [showInstallSoftwareModal, setShowInstallSoftwareModal] = useState(
-    false
-  );
-  const [showPolicyRunScriptModal, setShowPolicyRunScriptModal] = useState(
-    false
-  );
+  const [showInstallSoftwareModal, setShowInstallSoftwareModal] =
+    useState(false);
+  const [showPolicyRunScriptModal, setShowPolicyRunScriptModal] =
+    useState(false);
   const [showCalendarEventsModal, setShowCalendarEventsModal] = useState(false);
   const [showOtherWorkflowsModal, setShowOtherWorkflowsModal] = useState(false);
-  const [showConditionalAccessModal, setShowConditionalAccessModal] = useState(
-    false
-  );
+  const [showConditionalAccessModal, setShowConditionalAccessModal] =
+    useState(false);
   // Functions to avoid race conditions
   const initialSearchQuery = (() => queryParams.query ?? "")();
   const initialSortHeader = (() =>
@@ -196,10 +193,8 @@ const ManagePolicyPage = ({
 
   // Needs update on location change or table state might not match URL
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
-  const [
-    tableQueryDataForApi,
-    setTableQueryDataForApi,
-  ] = useState<ITableQueryData>();
+  const [tableQueryDataForApi, setTableQueryDataForApi] =
+    useState<ITableQueryData>();
   const [sortHeader, setSortHeader] = useState(initialSortHeader);
   const [sortDirection, setSortDirection] = useState<
     "asc" | "desc" | undefined
@@ -269,7 +264,7 @@ const ManagePolicyPage = ({
       enabled: isRouteOk && isAllTeamsSelected,
       select: (data) => data.policies || [],
       staleTime: 5000,
-    }
+    },
   );
 
   const {
@@ -291,7 +286,7 @@ const ManagePolicyPage = ({
       refetchOnWindowFocus: false,
       retry: 1,
       select: (data) => data.count,
-    }
+    },
   );
 
   const {
@@ -325,7 +320,7 @@ const ManagePolicyPage = ({
     {
       enabled: isRouteOk && isPremiumTier && !isAllTeamsSelected,
       select: (data: ILoadTeamPoliciesResponse) => data.policies || [],
-    }
+    },
   );
 
   const {
@@ -352,7 +347,7 @@ const ManagePolicyPage = ({
       keepPreviousData: true,
       refetchOnWindowFocus: false,
       retry: 1,
-    }
+    },
   );
 
   const teamPoliciesCountMergeInherited = teamPoliciesCountResponse?.count;
@@ -376,7 +371,7 @@ const ManagePolicyPage = ({
         setConfig(data);
       },
       staleTime: 5000,
-    }
+    },
   );
 
   const {
@@ -391,7 +386,7 @@ const ManagePolicyPage = ({
       enabled:
         isRouteOk && teamIdForApi !== undefined && canAddOrDeletePolicies,
       select: (data) => data.team,
-    }
+    },
   );
 
   const refetchPolicies = (teamId?: number) => {
@@ -409,7 +404,7 @@ const ManagePolicyPage = ({
       setSelectedPolicyIds([]);
       handleTeamChange(teamId);
     },
-    [handleTeamChange]
+    [handleTeamChange],
   );
 
   // TODO: Look into useDebounceCallback with dependencies
@@ -465,7 +460,7 @@ const ManagePolicyPage = ({
       teamIdForApi,
       queryParams,
       router,
-    ] // Other dependencies can cause infinite re-renders as URL is source of truth
+    ], // Other dependencies can cause infinite re-renders as URL is source of truth
   );
 
   const toggleOtherWorkflowsModal = () =>
@@ -534,7 +529,7 @@ const ManagePolicyPage = ({
   };
 
   const onUpdatePolicySoftwareInstall = async (
-    formData: IInstallSoftwareFormData
+    formData: IInstallSoftwareFormData,
   ) => {
     try {
       setIsUpdatingPolicies(true);
@@ -563,10 +558,10 @@ const ManagePolicyPage = ({
       }, Promise.resolve());
 
       const successfulUpdates = results.filter(
-        (result) => result.status === "fulfilled"
+        (result) => result.status === "fulfilled",
       );
       const failedUpdates = results.filter(
-        (result) => result.status === "rejected"
+        (result) => result.status === "rejected",
       );
 
       // Renders API error reason for each error in a single message
@@ -576,7 +571,7 @@ const ManagePolicyPage = ({
             const message = getInstallSoftwareErrorMessage(
               result as PromiseRejectedResult,
               formData,
-              currentTeamName
+              currentTeamName,
             );
 
             return {
@@ -586,7 +581,7 @@ const ManagePolicyPage = ({
               message,
               persistOnPageChange: false,
             };
-          }
+          },
         );
 
         renderMultiFlash({
@@ -608,7 +603,7 @@ const ManagePolicyPage = ({
   };
 
   const onUpdatePolicyRunScript = async (
-    formData: IPolicyRunScriptFormData
+    formData: IPolicyRunScriptFormData,
   ) => {
     try {
       setIsUpdatingPolicies(true);
@@ -625,17 +620,17 @@ const ManagePolicyPage = ({
           // "script_id": X will sets script X to run when the policy fails
           script_id: changedPolicy.scriptIdToRun || null,
           team_id: teamIdForApi,
-        })
+        }),
       );
 
       // Allows for all API calls to settle even if there is an error on one
       const results = await Promise.allSettled(promises);
 
       const successfulUpdates = results.filter(
-        (result) => result.status === "fulfilled"
+        (result) => result.status === "fulfilled",
       );
       const failedUpdates = results.filter(
-        (result) => result.status === "rejected"
+        (result) => result.status === "rejected",
       );
 
       // Renders API error reason for each error in a single message
@@ -645,7 +640,7 @@ const ManagePolicyPage = ({
             const message = getRunScriptErrorMessage(
               result as PromiseRejectedResult,
               formData,
-              currentTeamName
+              currentTeamName,
             );
 
             return {
@@ -655,7 +650,7 @@ const ManagePolicyPage = ({
               message,
               persistOnPageChange: false,
             };
-          }
+          },
         );
 
         renderMultiFlash({
@@ -701,8 +696,8 @@ const ManagePolicyPage = ({
                 jira: teamConfig?.integrations.jira || [],
               },
             },
-            teamIdForApi
-          )
+            teamIdForApi,
+          ),
         );
       }
 
@@ -713,7 +708,7 @@ const ManagePolicyPage = ({
             calendar_events_enabled: changedPolicy.calendar_events_enabled,
             team_id: teamIdForApi,
           });
-        })
+        }),
       );
 
       await Promise.all(responses);
@@ -781,7 +776,7 @@ const ManagePolicyPage = ({
               changedPolicy.conditional_access_enabled,
             team_id: teamIdForApi,
           });
-        })
+        }),
       );
       await Promise.all(responses);
       await wait(100); // helps avoid refetch race conditions
@@ -790,7 +785,7 @@ const ManagePolicyPage = ({
       }
       renderFlash(
         "success",
-        "Successfully updated conditional access automations."
+        "Successfully updated conditional access automations.",
       );
     } catch {
       renderFlash("error", "Could not update conditional access automations.");
@@ -808,14 +803,14 @@ const ManagePolicyPage = ({
     setPolicyTeamId(
       currentTeamId === API_ALL_TEAMS_ID
         ? APP_CONTEXT_ALL_TEAMS_ID
-        : currentTeamId
+        : currentTeamId,
     );
     setLastEditedQueryBody(DEFAULT_POLICY.query);
     setLastEditedQueryId(null);
     router.push(
       currentTeamId === API_ALL_TEAMS_ID
         ? PATHS.NEW_POLICY
-        : `${PATHS.NEW_POLICY}?team_id=${currentTeamId}`
+        : `${PATHS.NEW_POLICY}?team_id=${currentTeamId}`,
     );
   };
 
@@ -847,7 +842,7 @@ const ManagePolicyPage = ({
             }
             return acc;
           },
-          [[], []] as [number[], number[]]
+          [[], []] as [number[], number[]],
         );
         // delete all team policies via global endpoint, No team via team endpoint
         if (globalPolicyIdsToDelete.length) {
@@ -855,7 +850,7 @@ const ManagePolicyPage = ({
         }
         if (teamPolicyIdsToDelete.length) {
           responses.push(
-            teamPoliciesAPI.destroy(teamIdForApi, teamPolicyIdsToDelete)
+            teamPoliciesAPI.destroy(teamIdForApi, teamPolicyIdsToDelete),
           );
         }
       } else {
@@ -863,7 +858,7 @@ const ManagePolicyPage = ({
         responses.push(
           !isAllTeamsSelected
             ? teamPoliciesAPI.destroy(teamIdForApi, selectedPolicyIds)
-            : globalPoliciesAPI.destroy(selectedPolicyIds)
+            : globalPoliciesAPI.destroy(selectedPolicyIds),
         );
       }
 
@@ -872,7 +867,7 @@ const ManagePolicyPage = ({
         "success",
         `Successfully deleted ${
           selectedPolicyIds?.length === 1 ? "policy" : "policies"
-        }.`
+        }.`,
       );
       setResetSelectedRows(true);
       refetchPolicies(teamIdForApi);
@@ -881,7 +876,7 @@ const ManagePolicyPage = ({
         "error",
         `Unable to delete ${
           selectedPolicyIds?.length === 1 ? "policy" : "policies"
-        }. Please try again.`
+        }. Please try again.`,
       );
     } finally {
       toggleDeletePoliciesModal();
@@ -955,7 +950,7 @@ const ManagePolicyPage = ({
 
   const renderPoliciesCountAndLastUpdated = (
     count?: number,
-    policies?: IPolicyStats[]
+    policies?: IPolicyStats[],
   ) => {
     // Hide count if fetching count || there are errors OR there are no policy results with no a search filter
     const isFetchingCount = !isAllTeamsSelected
@@ -1015,7 +1010,7 @@ const ManagePolicyPage = ({
           renderPoliciesCount={() =>
             renderPoliciesCountAndLastUpdated(
               globalPoliciesCount,
-              globalPolicies
+              globalPolicies,
             )
           }
           count={globalPoliciesCount || 0}
@@ -1049,7 +1044,7 @@ const ManagePolicyPage = ({
           renderPoliciesCount={() =>
             renderPoliciesCountAndLastUpdated(
               teamPoliciesCountMergeInherited,
-              teamPolicies
+              teamPolicies,
             )
           }
           isPremiumTier={isPremiumTier}
@@ -1157,7 +1152,7 @@ const ManagePolicyPage = ({
         label: "Conditional access",
         value: "conditional_access",
         isDisabled: !!disabledConditionalAccessTooltipContent,
-        helpText: "Block single sign-on for hosts failing policies.",
+        helpText: "Block single sign-on for devices failing policies.",
         tooltipContent: disabledConditionalAccessTooltipContent,
       },
     ];

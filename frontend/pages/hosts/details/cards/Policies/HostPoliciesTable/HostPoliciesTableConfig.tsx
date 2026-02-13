@@ -42,7 +42,7 @@ interface IDataColumn {
 
 const getPolicyStatus = (
   policy: IHostPolicy,
-  conditionalAccessEnabled: boolean
+  conditionalAccessEnabled: boolean,
 ): PolicyStatus | null => {
   if (policy.response === "pass") {
     return "pass";
@@ -99,10 +99,8 @@ const generatePolicyTableHeaders = (currentTeamId?: number): IDataColumn[] => {
         if (status === null) {
           return <>{DEFAULT_EMPTY_CELL_VALUE}</>;
         }
-        const [
-          indicatorStatus,
-          displayText,
-        ] = POLICY_STATUS_TO_INDICATOR_PARAMS[status];
+        const [indicatorStatus, displayText] =
+          POLICY_STATUS_TO_INDICATOR_PARAMS[status];
         return (
           <StatusIndicatorWithIcon
             value={displayText}
@@ -141,7 +139,7 @@ const generatePolicyTableHeaders = (currentTeamId?: number): IDataColumn[] => {
 
 const generatePolicyDataSet = (
   policies: IHostPolicy[],
-  conditionalAccessEnabled: boolean
+  conditionalAccessEnabled: boolean,
 ): IEnhancedHostPolicy[] => {
   return policies.map((policy) => ({
     ...policy,

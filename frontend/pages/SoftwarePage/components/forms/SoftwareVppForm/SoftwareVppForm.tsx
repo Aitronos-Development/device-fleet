@@ -129,8 +129,8 @@ const SoftwareVppForm = ({
   onCancel,
   onClickPreviewEndUserExperience,
 }: ISoftwareVppFormProps) => {
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [formData, setFormData] = useState<ISoftwareVppFormData>(
     softwareVppForEdit
@@ -150,7 +150,7 @@ const SoftwareVppForm = ({
           customTarget: "labelsIncludeAny",
           labelTargets: {},
           categories: [],
-        }
+        },
   );
 
   const [formValidation, setFormValidation] = useState<IFormValidation>({
@@ -327,7 +327,9 @@ const SoftwareVppForm = ({
                 onSelectCategory={onSelectCategory}
                 onClickPreviewEndUserExperience={() =>
                   onClickPreviewEndUserExperience(
-                    isIpadOrIphoneSoftware(formData.selectedApp?.platform || "")
+                    isIpadOrIphoneSoftware(
+                      formData.selectedApp?.platform || "",
+                    ),
                   )
                 }
               />

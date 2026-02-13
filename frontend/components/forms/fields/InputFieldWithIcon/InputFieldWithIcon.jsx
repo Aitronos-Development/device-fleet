@@ -97,7 +97,7 @@ class InputFieldWithIcon extends InputField {
       className,
       { "input-with-icon": !!iconSvg },
       { [`${baseClass}__input--error`]: error },
-      { [`${baseClass}__input--password`]: type === "password" && value }
+      { [`${baseClass}__input--password`]: type === "password" && value },
     );
 
     const inputWrapperClasses = classnames(`${baseClass}__input-wrapper`, {
@@ -107,7 +107,7 @@ class InputFieldWithIcon extends InputField {
     const iconClasses = classnames(
       `${baseClass}__icon`,
       { [`${baseClass}__icon--error`]: error },
-      { [`${baseClass}__icon--active`]: value }
+      { [`${baseClass}__icon--active`]: value },
     );
 
     const handleClear = () => {

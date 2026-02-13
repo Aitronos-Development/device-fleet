@@ -33,11 +33,11 @@ const EndUserAuthForm = ({
   defaultIsEndUserAuthEnabled,
 }: IEndUserAuthFormProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [isEndUserAuthEnabled, setEndUserAuthEnabled] = useState(
-    defaultIsEndUserAuthEnabled
+    defaultIsEndUserAuthEnabled,
   );
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -50,7 +50,7 @@ const EndUserAuthForm = ({
     try {
       await mdmAPI.updateEndUserAuthentication(
         currentTeamId,
-        isEndUserAuthEnabled
+        isEndUserAuthEnabled,
       );
       renderFlash("success", "Successfully updated!");
     } catch {

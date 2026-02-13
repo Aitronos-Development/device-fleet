@@ -163,7 +163,7 @@ const LoginPage = ({ router, location }: ILoginPageProps) => {
       setConfig,
       setCurrentTeam,
       setCurrentUser,
-    ]
+    ],
   );
 
   const ssoSignOn = useCallback(async () => {

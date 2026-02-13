@@ -54,7 +54,7 @@ const isObfuscatedApiKey = (apiKeyJson: Record<string, string>): boolean => {
   }
   // If all values are "********", the API key is obfuscated
   return Object.values(apiKeyJson).every(
-    (value) => value === UNCHANGED_PASSWORD_API_RESPONSE
+    (value) => value === UNCHANGED_PASSWORD_API_RESPONSE,
   );
 };
 
@@ -162,7 +162,7 @@ const Calendars = (): JSX.Element => {
       setFormData(newFormData);
       setFormErrors(validateForm(newFormData));
     },
-    [formData]
+    [formData],
   );
 
   if (!isPremiumTier)
@@ -216,7 +216,7 @@ const Calendars = (): JSX.Element => {
       await configAPI.update({ integrations: destination });
       renderFlash(
         "success",
-        "Successfully saved calendar integration settings."
+        "Successfully saved calendar integration settings.",
       );
       refetchConfig();
     } catch (e) {

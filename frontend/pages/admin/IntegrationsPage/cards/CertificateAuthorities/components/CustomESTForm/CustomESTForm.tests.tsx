@@ -22,7 +22,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeVisible();
@@ -38,7 +38,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     // data is valid, so submit should be enabled
@@ -57,7 +57,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
     // name is required, so submit should be disabled
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -72,7 +72,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -88,7 +88,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -104,7 +104,7 @@ describe("CustomESTForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeEnabled();

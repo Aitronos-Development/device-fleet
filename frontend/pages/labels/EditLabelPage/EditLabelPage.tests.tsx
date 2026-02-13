@@ -34,7 +34,7 @@ describe("EditLabelPage", () => {
 
     // waiting for the message to render
     const builtinMessage = await screen.findByText(
-      "Built in labels cannot be edited"
+      "Built in labels cannot be edited",
     );
 
     expect(builtinMessage).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe("EditLabelPage", () => {
     expect(queryLabel).toBeInTheDocument();
     expect(platformLabel).toBeInTheDocument();
     expect(
-      screen.getByText(/Label queries and platforms are immutable/)
+      screen.getByText(/Label queries and platforms are immutable/),
     ).toBeInTheDocument();
   });
 
@@ -82,7 +82,7 @@ describe("EditLabelPage", () => {
           os_version: "iOS 14.7.1",
           hardware_serial: "test-serial-2",
         },
-      ])
+      ]),
     );
     const render = createCustomRenderer({ withBackendMock: true });
 

@@ -57,12 +57,15 @@ type SelectedTeamIds = Parameters<typeof mdmAbmAPI.editTeams>[0]["teams"];
  */
 export const getSelectedTeamIds = (
   { ios_team, ipados_team, macos_team }: SelectedTeamNames,
-  availableTeams: ITeamSummary[] = []
+  availableTeams: ITeamSummary[] = [],
 ): SelectedTeamIds => {
-  const byName = availableTeams.reduce((acc, t) => {
-    acc[t.name] = t.id;
-    return acc;
-  }, {} as Record<string, number>);
+  const byName = availableTeams.reduce(
+    (acc, t) => {
+      acc[t.name] = t.id;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
   return {
     ios_team_id: byName[ios_team],
     ipados_team_id: byName[ipados_team],
@@ -85,7 +88,7 @@ const EditTeamsAbmModal = ({
       ios_team: token.ios_team.name,
       ipados_team: token.ipados_team.name,
       macos_team: token.macos_team.name,
-    }
+    },
   );
 
   const options = useMemo(() => {
@@ -121,7 +124,7 @@ const EditTeamsAbmModal = ({
       renderFlash,
       onSuccess,
       onCancel,
-    ]
+    ],
   );
 
   return (

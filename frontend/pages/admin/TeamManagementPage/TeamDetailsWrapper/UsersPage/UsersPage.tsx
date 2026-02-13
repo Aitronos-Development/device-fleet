@@ -41,9 +41,8 @@ const noUsersClass = "no-team-users";
 
 const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
   const { renderFlash } = useContext(NotificationContext);
-  const { config, currentUser, isGlobalAdmin, isPremiumTier } = useContext(
-    AppContext
-  );
+  const { config, currentUser, isGlobalAdmin, isPremiumTier } =
+    useContext(AppContext);
 
   const { isRouteOk, isTeamAdmin, teamIdForApi } = useTeamIdParam({
     location,
@@ -81,7 +80,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
       setShowRemoveUserModal(!showRemoveUserModal);
       user ? setUserEditing(user) : setUserEditing(undefined);
     },
-    [showRemoveUserModal, setShowRemoveUserModal, setUserEditing]
+    [showRemoveUserModal, setShowRemoveUserModal, setUserEditing],
   );
 
   // API CALLS
@@ -98,7 +97,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
     {
       enabled: isRouteOk && !!teamIdForApi,
       select: (data: IUser[]) => generateDataSet(teamIdForApi || 0, data), // Note: `enabled` condition ensures that teamIdForApi will be defined here but TypeScript can't infer type assertion
-    }
+    },
   );
 
   const {
@@ -111,12 +110,12 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
     {
       enabled: isRouteOk,
       select: (data: ILoadTeamsResponse) => data.teams,
-    }
+    },
   );
 
   const currentTeamDetails = useMemo(
     () => teams?.find((team) => team.id === teamIdForApi),
-    [teams, teamIdForApi]
+    [teams, teamIdForApi],
   );
 
   // TOGGLE MODALS
@@ -127,7 +126,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
       user ? setUserEditing(user) : setUserEditing(undefined);
       setEditUserErrors({});
     },
-    [showEditUserModal, setShowEditUserModal, setUserEditing]
+    [showEditUserModal, setShowEditUserModal, setUserEditing],
   );
 
   const toggleCreateUserModal = useCallback(() => {
@@ -145,7 +144,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
       .then(() => {
         renderFlash(
           "success",
-          `Successfully removed ${userEditing?.name || "user"}`
+          `Successfully removed ${userEditing?.name || "user"}`,
         );
         // If user removes self from team, redirect to home
         if (currentUser && currentUser.id === removedUsers.users[0].id) {
@@ -153,7 +152,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
         }
       })
       .catch(() =>
-        renderFlash("error", "Unable to remove users. Please try again.")
+        renderFlash("error", "Unable to remove users. Please try again."),
       )
       .finally(() => {
         setIsUpdatingUsers(false);
@@ -180,11 +179,11 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
             "success",
             `${count} ${count === 1 ? "user" : "users"} successfully added to ${
               currentTeamDetails?.name
-            }.`
+            }.`,
           );
         })
         .catch(() =>
-          renderFlash("error", "Could not add users. Please try again.")
+          renderFlash("error", "Could not add users. Please try again."),
         )
         .finally(() => {
           toggleAddUserModal();
@@ -197,7 +196,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
       renderFlash,
       toggleAddUserModal,
       refetchUsers,
-    ]
+    ],
   );
 
   const onCreateUserSubmit = (formData: IUserFormData) => {
@@ -219,7 +218,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
             : "";
           renderFlash(
             "success",
-            `An invitation email was sent${senderAddressMessage} to ${formData.email}.`
+            `An invitation email was sent${senderAddressMessage} to ${formData.email}.`,
           );
           refetchUsers();
           toggleCreateUserModal();
@@ -227,7 +226,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
         .catch((userErrors: { data: IApiError }) => {
           if (
             userErrors.data.errors?.[0].reason.includes(
-              "a user with this account already exists"
+              "a user with this account already exists",
             )
           ) {
             setAddUserErrors({
@@ -289,10 +288,11 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
 
   const onEditUserSubmit = useCallback(
     (formData: IUserFormData) => {
-      const updatedAttrs: IUpdateUserFormData = userManagementHelpers.generateUpdateData(
-        userEditing as IUser,
-        formData
-      );
+      const updatedAttrs: IUpdateUserFormData =
+        userManagementHelpers.generateUpdateData(
+          userEditing as IUser,
+          formData,
+        );
 
       setIsUpdatingUsers(true);
 
@@ -304,7 +304,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
           .then(() => {
             renderFlash(
               "success",
-              `Successfully edited ${userName || "user"}.`
+              `Successfully edited ${userName || "user"}.`,
             );
 
             if (
@@ -315,7 +315,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
               // If user edits self and removes "admin" role,
               // redirect to home
               const selectedTeam = formData.teams.filter(
-                (thisTeam) => thisTeam.id === teamIdForApi
+                (thisTeam) => thisTeam.id === teamIdForApi,
               );
               if (selectedTeam && selectedTeam[0].role !== "admin") {
                 window.location.href = "/";
@@ -333,7 +333,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
             } else {
               renderFlash(
                 "error",
-                `Could not edit ${userName || "user"}. Please try again.`
+                `Could not edit ${userName || "user"}. Please try again.`,
               );
             }
           })
@@ -348,7 +348,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
       toggleEditUserModal,
       teamIdForApi,
       refetchUsers,
-    ]
+    ],
   );
 
   const onActionSelection = useCallback(
@@ -363,7 +363,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
         default:
       }
     },
-    [toggleEditUserModal, toggleRemoveUserModal]
+    [toggleEditUserModal, toggleRemoveUserModal],
   );
 
   const renderUsersCount = useCallback(() => {
@@ -376,7 +376,7 @@ const UsersPage = ({ location, router }: ITeamSubnavProps): JSX.Element => {
 
   const columnConfigs = useMemo(
     () => generateColumnConfigs(onActionSelection),
-    [onActionSelection]
+    [onActionSelection],
   );
 
   if (!isRouteOk) {

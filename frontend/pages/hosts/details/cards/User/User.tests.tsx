@@ -40,7 +40,7 @@ describe("User card", () => {
     it("With write permission, renders the 'Edit user' button when there is an existing IdP username", () => {
       const endUsers = [createMockHostEndUser()];
       render(
-        <User endUsers={endUsers} canWriteEndUser onClickUpdateUser={noop} />
+        <User endUsers={endUsers} canWriteEndUser onClickUpdateUser={noop} />,
       );
       expect(screen.queryByText("Add user")).toBeNull();
       expect(screen.getByText("Edit user")).toBeInTheDocument();

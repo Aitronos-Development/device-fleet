@@ -63,7 +63,7 @@ const teamPoliciesCountHandler = http.get(
     return HttpResponse.json({
       count: teamPolicies.length,
     });
-  }
+  },
 );
 
 describe("PoliciesPaginatedList - component", () => {
@@ -85,7 +85,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={APP_CONTEXT_ALL_TEAMS_ID}
         helpText={null}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -111,7 +111,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={2}
         helpText={null}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -137,7 +137,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={2}
         helpText={<div>Hello World!</div>}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -162,7 +162,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={APP_CONTEXT_ALL_TEAMS_ID}
         helpText={null}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -178,11 +178,11 @@ describe("PoliciesPaginatedList - component", () => {
       const changedItems = onSubmit.mock.calls[0][0];
       expect(changedItems[0].id).toEqual(globalPolicies[0].id);
       expect(changedItems[0].name).toEqual(
-        `${globalPolicies[0].name} (changed)`
+        `${globalPolicies[0].name} (changed)`,
       );
       expect(changedItems[1].id).toEqual(globalPolicies[2].id);
       expect(changedItems[1].name).toEqual(
-        `${globalPolicies[2].name} (changed)`
+        `${globalPolicies[2].name} (changed)`,
       );
     });
   });
@@ -202,7 +202,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={APP_CONTEXT_ALL_TEAMS_ID}
         helpText={null}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -239,7 +239,7 @@ describe("PoliciesPaginatedList - component", () => {
         helpText={null}
         isUpdating={false}
         disableSave={disableSave}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -297,7 +297,7 @@ describe("PoliciesPaginatedList - component", () => {
         teamId={APP_CONTEXT_ALL_TEAMS_ID}
         helpText={null}
         isUpdating={false}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = container.querySelectorAll("input[type=checkbox]");

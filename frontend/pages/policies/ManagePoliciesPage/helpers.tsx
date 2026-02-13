@@ -7,18 +7,18 @@ import { IPolicyRunScriptFormData } from "./components/PolicyRunScriptModal/Poli
 export const getInstallSoftwareErrorMessage = (
   result: PromiseRejectedResult,
   formData: IInstallSoftwareFormData,
-  currentTeamName?: string
+  currentTeamName?: string,
 ): JSX.Element => {
   const apiErrorMessage = result.reason.data.errors[0].reason;
   const parts = apiErrorMessage.split(
-    /(Software title with ID \d+|team ID \d+)/i
+    /(Software title with ID \d+|team ID \d+)/i,
   );
 
   const jsxElement = parts.map((part: string) => {
     if (part.startsWith("Software title with ID")) {
       const swId = part.match(/\d+/)?.[0];
       const policy = formData.find(
-        (item) => item.swIdToInstall?.toString() === swId
+        (item) => item.swIdToInstall?.toString() === swId,
       );
       return policy ? (
         <React.Fragment key={part}>
@@ -39,7 +39,7 @@ export const getInstallSoftwareErrorMessage = (
 export const getRunScriptErrorMessage = (
   result: PromiseRejectedResult,
   formData: IPolicyRunScriptFormData,
-  currentTeamName?: string
+  currentTeamName?: string,
 ): JSX.Element => {
   const apiErrorMessage = result.reason.data.errors[0].reason;
   const parts = apiErrorMessage.split(/(Script with ID \d+|team ID \d+)/i);
@@ -48,7 +48,7 @@ export const getRunScriptErrorMessage = (
     if (part.startsWith("Script with ID")) {
       const scriptId = part.match(/\d+/)?.[0];
       const policy = formData.find(
-        (item) => item.scriptIdToRun?.toString() === scriptId
+        (item) => item.scriptIdToRun?.toString() === scriptId,
       );
 
       return policy ? (

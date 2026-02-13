@@ -33,8 +33,8 @@ const MissingHosts = ({
     <HostCountCard
       iconName="missing-hosts"
       count={missingCount}
-      title="Missing hosts"
-      tooltip="Hosts that have not been online in 30 days or more."
+      title="Missing devices"
+      tooltip="Devices that have not been online in 30 days or more."
       path={path}
       className={baseClass}
       iconPosition="left"

@@ -188,7 +188,7 @@ type InitialStateType = {
   isVppEnabled?: boolean;
   setAvailableTeams: (
     user: IUser | null,
-    availableTeams: ITeamSummary[]
+    availableTeams: ITeamSummary[],
   ) => void;
   setUserSettings: (userSettings: IUserSettings) => void;
   setCurrentUser: (user: IUser) => void;
@@ -278,7 +278,7 @@ const detectPreview = () => {
 const setPermissions = (
   user: IUser | null,
   config: IConfig | null,
-  teamId = APP_CONTEXT_NO_TEAM_ID
+  teamId = APP_CONTEXT_NO_TEAM_ID,
 ) => {
   if (!user || !config) {
     return {};
@@ -292,31 +292,27 @@ const setPermissions = (
     isSandboxMode: permissions.isSandboxMode(config),
     isFreeTier: permissions.isFreeTier(config),
     isPremiumTier: permissions.isPremiumTier(config),
-    isMacMdmEnabledAndConfigured: permissions.isMacMdmEnabledAndConfigured(
-      config
-    ),
-    isWindowsMdmEnabledAndConfigured: permissions.isWindowsMdmEnabledAndConfigured(
-      config
-    ),
-    isAndroidMdmEnabledAndConfigured: permissions.isAndroidMdmEnabledAndConfigured(
-      config
-    ),
+    isMacMdmEnabledAndConfigured:
+      permissions.isMacMdmEnabledAndConfigured(config),
+    isWindowsMdmEnabledAndConfigured:
+      permissions.isWindowsMdmEnabledAndConfigured(config),
+    isAndroidMdmEnabledAndConfigured:
+      permissions.isAndroidMdmEnabledAndConfigured(config),
     isGlobalAdmin: permissions.isGlobalAdmin(user),
     isGlobalMaintainer: permissions.isGlobalMaintainer(user),
     isGlobalObserver: permissions.isGlobalObserver(user),
     isOnGlobalTeam: permissions.isOnGlobalTeam(user),
     isAnyTeamObserverPlus: permissions.isAnyTeamObserverPlus(user),
     isAnyTeamMaintainer: permissions.isAnyTeamMaintainer(user),
-    isAnyTeamMaintainerOrTeamAdmin: permissions.isAnyTeamMaintainerOrTeamAdmin(
-      user
-    ),
+    isAnyTeamMaintainerOrTeamAdmin:
+      permissions.isAnyTeamMaintainerOrTeamAdmin(user),
     isAnyTeamAdmin: permissions.isAnyTeamAdmin(user),
     isTeamObserver: permissions.isTeamObserver(user, teamId),
     isTeamMaintainer: permissions.isTeamMaintainer(user, teamId),
     isTeamAdmin: permissions.isTeamAdmin(user, teamId),
     isTeamMaintainerOrTeamAdmin: permissions.isTeamMaintainerOrTeamAdmin(
       user,
-      teamId
+      teamId,
     ),
     isOnlyObserver: permissions.isOnlyObserver(user),
     isObserverPlus: permissions.isObserverPlus(user, teamId),
@@ -338,17 +334,17 @@ const reducer = (state: InitialStateType, action: IAction) => {
 
       let sortedTeams = availableTeams.sort(
         (a: ITeamSummary, b: ITeamSummary) =>
-          sort.caseInsensitiveAsc(a.name, b.name)
+          sort.caseInsensitiveAsc(a.name, b.name),
       );
       sortedTeams = sortedTeams.filter(
         (t) =>
           t.name !== APP_CONTEXT_ALL_TEAMS_SUMMARY.name &&
-          t.name !== APP_CONTEXT_NO_TEAM_SUMMARY.name
+          t.name !== APP_CONTEXT_NO_TEAM_SUMMARY.name,
       );
       if (user && permissions.isOnGlobalTeam(user)) {
         sortedTeams.unshift(
           APP_CONTEXT_ALL_TEAMS_SUMMARY,
-          APP_CONTEXT_NO_TEAM_SUMMARY
+          APP_CONTEXT_NO_TEAM_SUMMARY,
         );
       }
 
@@ -533,7 +529,7 @@ const AppProvider = ({ children }: Props): JSX.Element => {
         state.isAnyTeamObserverPlus,
       setAvailableTeams: (
         user: IUser | null,
-        availableTeams: ITeamSummary[]
+        availableTeams: ITeamSummary[],
       ) => {
         dispatch({
           type: ACTIONS.SET_AVAILABLE_TEAMS,
@@ -650,7 +646,7 @@ const AppProvider = ({ children }: Props): JSX.Element => {
       state.willAppleBmExpire,
       state.willApplePnsExpire,
       state.willVppExpire,
-    ]
+    ],
   );
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

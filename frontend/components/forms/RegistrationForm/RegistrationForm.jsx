@@ -69,42 +69,42 @@ class RegistrationForm extends Component {
 
     const adminDetailsContainerClass = classnames(
       `${baseClass}__container`,
-      `${baseClass}__container--admin`
+      `${baseClass}__container--admin`,
     );
 
     const adminDetailsClass = classnames(
       `${baseClass}__field-wrapper`,
-      `${baseClass}__field-wrapper--admin`
+      `${baseClass}__field-wrapper--admin`,
     );
 
     const orgDetailsContainerClass = classnames(
       `${baseClass}__container`,
-      `${baseClass}__container--org`
+      `${baseClass}__container--org`,
     );
 
     const orgDetailsClass = classnames(
       `${baseClass}__field-wrapper`,
-      `${baseClass}__field-wrapper--org`
+      `${baseClass}__field-wrapper--org`,
     );
 
     const fleetDetailsContainerClass = classnames(
       `${baseClass}__container`,
-      `${baseClass}__container--fleet`
+      `${baseClass}__container--fleet`,
     );
 
     const fleetDetailsClass = classnames(
       `${baseClass}__field-wrapper`,
-      `${baseClass}__field-wrapper--fleet`
+      `${baseClass}__field-wrapper--fleet`,
     );
 
     const confirmationContainerClass = classnames(
       `${baseClass}__container`,
-      `${baseClass}__container--confirmation`
+      `${baseClass}__container--confirmation`,
     );
 
     const confirmationClass = classnames(
       `${baseClass}__field-wrapper`,
-      `${baseClass}__field-wrapper--confirmation`
+      `${baseClass}__field-wrapper--confirmation`,
     );
 
     const formSectionClasses = classnames(`${baseClass}__form`, {

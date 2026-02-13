@@ -15,7 +15,7 @@ const triggerConditionalAccessHandler = http.post(
     return HttpResponse.json({
       microsoft_authentication_url: "https://example.com",
     });
-  }
+  },
 );
 
 const updateConfigHandler = http.patch(baseUrl("/config"), () => {
@@ -29,7 +29,7 @@ const updateConfigHandler = http.patch(baseUrl("/config"), () => {
         okta_audience_uri: "https://example.com",
         okta_certificate: "cert-data",
       },
-    })
+    }),
   );
 });
 
@@ -65,11 +65,11 @@ describe("Conditional access", () => {
 
       expect(screen.getByText("Okta")).toBeInTheDocument();
       expect(
-        screen.getByText("Connect Okta to enable conditional access.")
+        screen.getByText("Connect Okta to enable conditional access."),
       ).toBeInTheDocument();
       expect(screen.getByText("Microsoft Entra")).toBeInTheDocument();
       expect(
-        screen.getByText("Connect Entra to enable conditional access.")
+        screen.getByText("Connect Entra to enable conditional access."),
       ).toBeInTheDocument();
       // Should have two Connect buttons
       expect(screen.getAllByText("Connect")).toHaveLength(2);
@@ -96,7 +96,7 @@ describe("Conditional access", () => {
 
       // Modal should open
       expect(
-        screen.getByText("Microsoft Entra conditional access")
+        screen.getByText("Microsoft Entra conditional access"),
       ).toBeInTheDocument();
       expect(screen.getByText("Microsoft Entra tenant ID")).toBeInTheDocument();
     });
@@ -133,8 +133,8 @@ describe("Conditional access", () => {
       await waitFor(() => {
         expect(
           screen.getByText(
-            /To complete your integration, follow the instructions in the other tab/
-          )
+            /To complete your integration, follow the instructions in the other tab/,
+          ),
         ).toBeInTheDocument();
       });
     });
@@ -159,13 +159,13 @@ describe("Conditional access", () => {
       expect(screen.getByText("Okta conditional access")).toBeInTheDocument();
       // Check for new sections
       expect(
-        screen.getByText("Identity provider (IdP) signature certificate")
+        screen.getByText("Identity provider (IdP) signature certificate"),
       ).toBeInTheDocument();
       expect(screen.getByText("User scope profile")).toBeInTheDocument();
       // Check for input fields
       expect(screen.getByText("IdP ID")).toBeInTheDocument();
       expect(
-        screen.getByText("Assertion consumer service URL")
+        screen.getByText("Assertion consumer service URL"),
       ).toBeInTheDocument();
       expect(screen.getByText("Audience URI")).toBeInTheDocument();
       // Check for certificate upload section
@@ -215,7 +215,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       });
 
       const fileInput = document.querySelector(
-        'input[type="file"]'
+        'input[type="file"]',
       ) as HTMLInputElement;
       await user.upload(fileInput, file);
 
@@ -231,7 +231,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       // Should show success message and close modal
       await waitFor(() => {
         expect(
-          screen.queryByText("Okta conditional access")
+          screen.queryByText("Okta conditional access"),
         ).not.toBeInTheDocument();
       });
     });
@@ -292,7 +292,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       render(<ConditionalAccess />);
 
       expect(
-        screen.getByText("Microsoft Entra conditional access configured")
+        screen.getByText("Microsoft Entra conditional access configured"),
       ).toBeInTheDocument();
       // Should only have Delete button for Entra (no Edit button per Figma design)
       expect(screen.getByText("Delete")).toBeInTheDocument();
@@ -324,7 +324,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       render(<ConditionalAccess />);
 
       expect(
-        screen.getByText("Okta conditional access configured")
+        screen.getByText("Okta conditional access configured"),
       ).toBeInTheDocument();
     });
 
@@ -353,10 +353,10 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       render(<ConditionalAccess />);
 
       expect(
-        screen.getByText("Okta conditional access configured")
+        screen.getByText("Okta conditional access configured"),
       ).toBeInTheDocument();
       expect(
-        screen.getByText("Microsoft Entra conditional access configured")
+        screen.getByText("Microsoft Entra conditional access configured"),
       ).toBeInTheDocument();
     });
 
@@ -386,7 +386,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
 
       // Should show configured state
       expect(
-        screen.getByText("Okta conditional access configured")
+        screen.getByText("Okta conditional access configured"),
       ).toBeInTheDocument();
 
       // Click Delete button (first one is for Okta)
@@ -396,16 +396,16 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       // Should show delete confirmation modal
       await waitFor(() => {
         expect(
-          screen.getByText(/Before you delete, first unblock all end users/)
+          screen.getByText(/Before you delete, first unblock all end users/),
         ).toBeInTheDocument();
       });
 
       // Modal should have Delete and Cancel buttons
       expect(
-        screen.getAllByRole("button", { name: "Delete" }).length
+        screen.getAllByRole("button", { name: "Delete" }).length,
       ).toBeGreaterThan(0);
       expect(
-        screen.getByRole("button", { name: "Cancel" })
+        screen.getByRole("button", { name: "Cancel" }),
       ).toBeInTheDocument();
     });
   });
@@ -424,7 +424,7 @@ BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
       render(<ConditionalAccess />);
 
       expect(
-        screen.getByText(/This feature is included in Fleet Premium/i)
+        screen.getByText(/This feature is included in Fleet Premium/i),
       ).toBeInTheDocument();
     });
   });

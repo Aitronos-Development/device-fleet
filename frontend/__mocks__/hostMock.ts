@@ -23,7 +23,7 @@ const DEFAULT_HOST_PROFILE_MOCK: IHostMdmProfile = {
 };
 
 export const createMockHostMdmProfile = (
-  overrides?: Partial<IHostMdmProfile>
+  overrides?: Partial<IHostMdmProfile>,
 ): IHostMdmProfile => {
   return { ...DEFAULT_HOST_PROFILE_MOCK, ...overrides };
 };
@@ -123,7 +123,7 @@ const createMockHost = (overrides?: Partial<IHost>): IHost => {
 };
 
 export const createMockHostGeolocation = (
-  overrides: Partial<IGeoLocation> = {}
+  overrides: Partial<IGeoLocation> = {},
 ): IGeoLocation => {
   return {
     country_iso: "US",
@@ -167,7 +167,7 @@ export const createMockIosHostResponse = {
 
 export const createMockHostSummary = (overrides?: Partial<IHost>) => {
   return normalizeEmptyValues(
-    pick(createMockHost(overrides), HOST_SUMMARY_DATA)
+    pick(createMockHost(overrides), HOST_SUMMARY_DATA),
   );
 };
 
@@ -184,7 +184,7 @@ const DEFAULT_HOST_SOFTWARE_PACKAGE_MOCK: IHostSoftwarePackage = {
 };
 
 export const createMockHostSoftwarePackage = (
-  overrides?: Partial<IHostSoftwarePackage>
+  overrides?: Partial<IHostSoftwarePackage>,
 ): IHostSoftwarePackage => {
   return { ...DEFAULT_HOST_SOFTWARE_PACKAGE_MOCK, ...overrides };
 };
@@ -199,7 +199,7 @@ const DEFAULT_HOST_APP_STORE_APP_MOCK: IHostAppStoreApp = {
 };
 
 export const createMockHostAppStoreApp = (
-  overrides?: Partial<IHostAppStoreApp>
+  overrides?: Partial<IHostAppStoreApp>,
 ): IHostAppStoreApp => {
   return { ...DEFAULT_HOST_APP_STORE_APP_MOCK, ...overrides };
 };
@@ -232,7 +232,7 @@ const DEFAULT_HOST_SOFTWARE_MOCK: IHostSoftware = {
 };
 
 export const createMockHostSoftware = (
-  overrides?: Partial<IHostSoftware>
+  overrides?: Partial<IHostSoftware>,
 ): IHostSoftware => {
   return {
     ...DEFAULT_HOST_SOFTWARE_MOCK,
@@ -250,7 +250,7 @@ const DEFAULT_GET_HOST_SOFTWARE_RESPONSE_MOCK: IGetHostSoftwareResponse = {
 };
 
 export const createMockGetHostSoftwareResponse = (
-  overrides?: Partial<IGetHostSoftwareResponse>
+  overrides?: Partial<IGetHostSoftwareResponse>,
 ): IGetHostSoftwareResponse => {
   return {
     ...DEFAULT_GET_HOST_SOFTWARE_RESPONSE_MOCK,
@@ -268,7 +268,7 @@ export const DEFAULT_HOST_END_USER_MOCK: IHostEndUser = {
 };
 
 export const createMockHostEndUser = (
-  overrides?: Partial<IHostEndUser>
+  overrides?: Partial<IHostEndUser>,
 ): IHostEndUser => {
   return { ...DEFAULT_HOST_END_USER_MOCK, ...overrides };
 };

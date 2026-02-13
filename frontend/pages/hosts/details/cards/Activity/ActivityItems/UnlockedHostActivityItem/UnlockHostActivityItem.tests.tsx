@@ -13,12 +13,12 @@ describe("UnlockHostActivityItem", () => {
           details: { host_platform: "darwin" },
         })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
     expect(
-      screen.getByText("viewed the six-digit unlock PIN for this host.")
+      screen.getByText("viewed the six-digit unlock PIN for this host."),
     ).toBeVisible();
   });
 
@@ -27,7 +27,7 @@ describe("UnlockHostActivityItem", () => {
       <UnlockHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
@@ -39,7 +39,7 @@ describe("UnlockHostActivityItem", () => {
       <UnlockHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -50,7 +50,7 @@ describe("UnlockHostActivityItem", () => {
       <UnlockHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();

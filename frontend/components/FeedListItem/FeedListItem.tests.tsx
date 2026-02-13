@@ -15,7 +15,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowShowDetails>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     expect(screen.getByTestId("info-outline-icon")).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowShowDetails={false}>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("FeedListItem", () => {
         onClickFeedItem={onClickFeedItem}
       >
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     const detailsWrapper = screen.getByRole("button", {
@@ -57,7 +57,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} createdAt={createdAt}>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     // The dateAgo function will render something like "X days ago" or similar
@@ -70,7 +70,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowCancel>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     expect(screen.getByTestId("close-icon")).toBeInTheDocument();
@@ -80,7 +80,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowCancel={false}>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -92,7 +92,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowCancel onClickCancel={onClickCancel}>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     // there is some weirdness with userEvent.click on the cancel icon
@@ -109,7 +109,7 @@ describe("FeedListItem", () => {
     render(
       <FeedListItem {...defaultProps} allowCancel disableCancel>
         Test content
-      </FeedListItem>
+      </FeedListItem>,
     );
 
     const cancelIcon = screen.getByRole("button", { name: "cancel action" });

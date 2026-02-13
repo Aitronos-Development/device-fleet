@@ -113,16 +113,16 @@ const Mdm = ({
 
   const solutionsTableHeaders = useMemo(
     () => generateSolutionsTableHeaders(),
-    []
+    [],
   );
   const statusTableHeaders = useMemo(
     () => generateStatusTableHeaders(selectedTeamId),
-    [selectedTeamId]
+    [selectedTeamId],
   );
   const solutionsDataSet = generateSolutionsDataSet(rolledupMdmSolutionsData);
   const statusDataSet = generateStatusDataSet(
     mdmStatusData,
-    selectedPlatformLabelId
+    selectedPlatformLabelId,
   );
 
   // Renders opaque information as host information is loading

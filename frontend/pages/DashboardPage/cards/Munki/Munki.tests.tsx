@@ -61,7 +61,7 @@ describe("Munki card", () => {
         munkiIssuesData={munkiIssuesData}
         munkiVersionsData={munkiVersionsData}
         selectedTeamId={selectedTeamId}
-      />
+      />,
     );
 
     // Issues tab

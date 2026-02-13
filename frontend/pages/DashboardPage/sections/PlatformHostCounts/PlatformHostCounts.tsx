@@ -46,9 +46,9 @@ const PlatformHostCounts = ({
   const getBuiltinLabelId = useCallback(
     (platformName: keyof typeof PLATFORM_NAME_TO_LABEL_NAME) =>
       builtInLabels?.find(
-        (builtin) => builtin.name === PLATFORM_NAME_TO_LABEL_NAME[platformName]
+        (builtin) => builtin.name === PLATFORM_NAME_TO_LABEL_NAME[platformName],
       )?.id,
-    [builtInLabels]
+    [builtInLabels],
   );
 
   const renderMacCard = (teamId?: number) => {
@@ -204,7 +204,7 @@ const PlatformHostCounts = ({
         count={androidCount}
         title="Android"
         path={PATHS.MANAGE_HOSTS_LABEL(androidLabelId).concat(
-          teamId !== undefined ? `?team_id=${teamId}` : ""
+          teamId !== undefined ? `?team_id=${teamId}` : "",
         )}
       />
     );

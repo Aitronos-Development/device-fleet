@@ -29,8 +29,10 @@ export interface ITeamPoliciesQueryKey extends IPoliciesApiParams {
   scope: "teamPolicies";
 }
 
-export interface ITeamPoliciesCountQueryKey
-  extends Pick<IPoliciesApiParams, "query" | "teamId" | "mergeInherited"> {
+export interface ITeamPoliciesCountQueryKey extends Pick<
+  IPoliciesApiParams,
+  "query" | "teamId" | "mergeInherited"
+> {
   scope: "teamPoliciesCountMergeInherited" | "teamPoliciesCount";
 }
 
@@ -50,7 +52,7 @@ const convertParamsToSnakeCase = (params: IPoliciesApiQueryParams) => {
       result[snakeCase(key)] = val;
       return result;
     },
-    {}
+    {},
   );
 };
 
@@ -124,8 +126,8 @@ export default {
     if (teamId === undefined || teamId < API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAMS } = endpoints;

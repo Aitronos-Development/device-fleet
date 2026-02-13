@@ -14,7 +14,7 @@ export default (
     leading: true,
     trailing: false,
     timeout: DEFAULT_TIMEOUT,
-  }
+  },
 ) => {
   const { leading, trailing, timeout } = options;
 

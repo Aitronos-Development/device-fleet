@@ -20,7 +20,7 @@ describe("InputFieldWithIcon Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     expect(screen.getByText(/test input/i)).toBeInTheDocument();
@@ -35,13 +35,13 @@ describe("InputFieldWithIcon Component", () => {
         label="Test Input"
         placeholder="Enter text"
         name="test-input"
-      />
+      />,
     );
 
     // Change the input value
     await userEvent.type(
       screen.getByPlaceholderText(/enter text/i),
-      "New Value"
+      "New Value",
     );
 
     expect(mockOnChange).toHaveBeenCalledTimes(9); // 'New Value' has 9 characters
@@ -56,7 +56,7 @@ describe("InputFieldWithIcon Component", () => {
         placeholder="Enter text"
         name="test-input"
         helpText="This is a help text."
-      />
+      />,
     );
 
     expect(screen.getByText(/this is a help text/i)).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("InputFieldWithIcon Component", () => {
         placeholder="Enter text"
         name="test-input"
         error="This is an error message."
-      />
+      />,
     );
 
     expect(screen.getByText(/this is an error message/i)).toBeInTheDocument();
@@ -86,7 +86,7 @@ describe("InputFieldWithIcon Component", () => {
         placeholder="Enter text"
         name="test-input"
         clearButton
-      />
+      />,
     );
 
     expect(screen.getByRole("button")).toBeInTheDocument();
@@ -101,7 +101,7 @@ describe("InputFieldWithIcon Component", () => {
         placeholder="Enter text"
         name="test-input"
         clearButton
-      />
+      />,
     );
 
     // Click the clear button
@@ -120,7 +120,7 @@ describe("InputFieldWithIcon Component", () => {
         placeholder="Enter text"
         name="test-input"
         tooltip="This is a tooltip."
-      />
+      />,
     );
 
     await user.hover(screen.getByText(/test input/i));

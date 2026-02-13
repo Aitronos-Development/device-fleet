@@ -47,7 +47,7 @@ const OSSettings = ({
     {
       refetchOnWindowFocus: false,
       retry: false,
-    }
+    },
   );
 
   const DEFAULT_SETTINGS_SECTION = OS_SETTINGS_NAV_ITEMS[0];

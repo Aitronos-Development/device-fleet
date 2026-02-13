@@ -55,16 +55,14 @@ const AddCertAuthorityModal = ({
 
   const dropdownOptions = useMemo(() => {
     return generateDropdownOptions(
-      certAuthorities.some((cert) => cert.type === "ndes_scep_proxy")
+      certAuthorities.some((cert) => cert.type === "ndes_scep_proxy"),
     );
   }, [certAuthorities]);
 
-  const [
-    certAuthorityType,
-    setCertAuthorityType,
-  ] = useState<ICertificateAuthorityType>(
-    dropdownOptions[0].value as ICertificateAuthorityType
-  );
+  const [certAuthorityType, setCertAuthorityType] =
+    useState<ICertificateAuthorityType>(
+      dropdownOptions[0].value as ICertificateAuthorityType,
+    );
   const [isAdding, setIsAdding] = useState(false);
   const [digicertFormData, setDigicertFormData] = useState<IDigicertFormData>({
     name: "",
@@ -87,34 +85,28 @@ const AddCertAuthorityModal = ({
     username: "",
     password: "",
   });
-  const [
-    customSCEPFormData,
-    setCustomSCEPFormData,
-  ] = useState<ICustomSCEPFormData>({
-    name: "",
-    scepURL: "",
-    challenge: "",
-  });
-  const [
-    smallstepFormData,
-    setSmallstepFormData,
-  ] = useState<ISmallstepFormData>({
-    name: "",
-    scepURL: "",
-    challengeURL: "",
-    username: "",
-    password: "",
-  });
+  const [customSCEPFormData, setCustomSCEPFormData] =
+    useState<ICustomSCEPFormData>({
+      name: "",
+      scepURL: "",
+      challenge: "",
+    });
+  const [smallstepFormData, setSmallstepFormData] =
+    useState<ISmallstepFormData>({
+      name: "",
+      scepURL: "",
+      challengeURL: "",
+      username: "",
+      password: "",
+    });
 
-  const [
-    customESTFormData,
-    setCustomESTFormData,
-  ] = useState<ICustomESTFormData>({
-    name: "",
-    url: "",
-    username: "",
-    password: "",
-  });
+  const [customESTFormData, setCustomESTFormData] =
+    useState<ICustomESTFormData>({
+      name: "",
+      url: "",
+      username: "",
+      password: "",
+    });
 
   const onChangeDropdown = (value: ICertificateAuthorityType) => {
     setCertAuthorityType(value);
@@ -185,7 +177,7 @@ const AddCertAuthorityModal = ({
 
     const addCertAuthorityData = generateAddCertAuthorityData(
       certAuthorityType,
-      formData
+      formData,
     );
     if (!addCertAuthorityData) {
       return;

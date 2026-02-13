@@ -34,7 +34,7 @@ describe("GitOpsModeTooltipWrapper", () => {
             Save
           </Button>
         )}
-      />
+      />,
     );
 
     const btn = screen.getByText("Save");
@@ -73,7 +73,7 @@ describe("GitOpsModeTooltipWrapper", () => {
             Save
           </Button>
         )}
-      />
+      />,
     );
 
     const btn = screen.getByText("Save");

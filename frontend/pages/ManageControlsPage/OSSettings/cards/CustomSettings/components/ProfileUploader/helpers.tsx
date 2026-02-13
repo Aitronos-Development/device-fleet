@@ -70,7 +70,7 @@ const generateGenericLearnMoreErrMsg = (errMsg: string) => {
   if (errMsg.includes(" Learn more: https://")) {
     const message = errMsg.substring(
       0,
-      errMsg.indexOf(" Learn more: https://")
+      errMsg.indexOf(" Learn more: https://"),
     );
     const link = errMsg.substring(errMsg.indexOf("https://"));
     return (
@@ -131,7 +131,7 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
 
   if (
     apiReason.includes(
-      'Android configuration profile can\'t include "statusReportingSettings"'
+      'Android configuration profile can\'t include "statusReportingSettings"',
     )
   ) {
     return (
@@ -147,7 +147,7 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
 
   if (
     apiReason.includes(
-      "The configuration profile can't include BitLocker settings."
+      "The configuration profile can't include BitLocker settings.",
     )
   ) {
     return (
@@ -161,7 +161,7 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
 
   if (
     apiReason.includes(
-      "The configuration profile can't include FileVault settings."
+      "The configuration profile can't include FileVault settings.",
     )
   ) {
     return (
@@ -175,7 +175,7 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
 
   if (
     apiReason.includes(
-      "The configuration profile can't include Windows update settings."
+      "The configuration profile can't include Windows update settings.",
     )
   ) {
     return (
@@ -198,34 +198,34 @@ export const getErrorMessage = (err: AxiosResponse<IApiError>) => {
 
   if (
     apiReason.includes(
-      "can't be used if variables for SCEP URL and Challenge are not specified"
+      "can't be used if variables for SCEP URL and Challenge are not specified",
     )
   ) {
     return generateSCEPLearnMoreErrMsg(
       apiReason,
-      "https://fleetdm.com/learn-more-about/certificate-authorities"
+      "https://fleetdm.com/learn-more-about/certificate-authorities",
     );
   }
 
   if (
     apiReason.includes(
-      "SCEP profile for custom SCEP certificate authority requires"
+      "SCEP profile for custom SCEP certificate authority requires",
     )
   ) {
     return generateSCEPLearnMoreErrMsg(
       apiReason,
-      "https://fleetdm.com/learn-more-about/custom-scep-configuration-profile"
+      "https://fleetdm.com/learn-more-about/custom-scep-configuration-profile",
     );
   }
 
   if (
     apiReason.includes(
-      "SCEP profile for NDES certificate authority requires: $FLEET_VAR_NDES_SCEP_CHALLENGE"
+      "SCEP profile for NDES certificate authority requires: $FLEET_VAR_NDES_SCEP_CHALLENGE",
     )
   ) {
     return generateSCEPLearnMoreErrMsg(
       apiReason,
-      "https://fleetdm.com/learn-more-about/ndes-scep-configuration-profile"
+      "https://fleetdm.com/learn-more-about/ndes-scep-configuration-profile",
     );
   }
 

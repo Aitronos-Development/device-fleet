@@ -71,7 +71,7 @@ const ScriptLibrary = ({ router, teamId, location }: IScriptLibraryProps) => {
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       staleTime: 3000,
-    }
+    },
   );
 
   // pagination controls

@@ -44,7 +44,7 @@ import PreviewPayloadModal from "../PreviewPayloadModal";
 import PreviewTicketModal from "../PreviewTicketModal";
 
 export const isGlobalSWConfig = (
-  config: IConfig | ITeamConfig
+  config: IConfig | ITeamConfig,
 ): config is IConfig => "vulnerabilities" in config;
 
 interface ISoftwareAutomations {
@@ -96,42 +96,38 @@ const ManageAutomationsModal = ({
 }: IManageSoftwareAutomationsModalProps): JSX.Element => {
   const vulnWebhookSettings =
     softwareConfig?.webhook_settings?.vulnerabilities_webhook;
-  const softwareVulnerabilityWebhookEnabled = !!vulnWebhookSettings?.enable_vulnerabilities_webhook;
+  const softwareVulnerabilityWebhookEnabled =
+    !!vulnWebhookSettings?.enable_vulnerabilities_webhook;
   const currentDestinationUrl = vulnWebhookSettings?.destination_url || "";
   const isVulnIntegrationEnabled =
     !!softwareConfig?.integrations.jira?.some(
-      (j) => j.enable_software_vulnerabilities
+      (j) => j.enable_software_vulnerabilities,
     ) ||
     !!softwareConfig?.integrations.zendesk?.some(
-      (z) => z.enable_software_vulnerabilities
+      (z) => z.enable_software_vulnerabilities,
     );
 
   const softwareVulnerabilityAutomationEnabled =
     softwareVulnerabilityWebhookEnabled || isVulnIntegrationEnabled;
 
   const [destinationUrl, setDestinationUrl] = useState(
-    currentDestinationUrl || ""
+    currentDestinationUrl || "",
   );
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [softwareAutomationsEnabled, setSoftwareAutomationsEnabled] = useState(
-    softwareVulnerabilityAutomationEnabled || false
+    softwareVulnerabilityAutomationEnabled || false,
   );
   const [integrationEnabled, setIntegrationEnabled] = useState(
-    !softwareVulnerabilityWebhookEnabled
+    !softwareVulnerabilityWebhookEnabled,
   );
-  const [jiraIntegrationsIndexed, setJiraIntegrationsIndexed] = useState<
-    IIntegration[]
-  >();
-  const [zendeskIntegrationsIndexed, setZendeskIntegrationsIndexed] = useState<
-    IIntegration[]
-  >();
-  const [allIntegrationsIndexed, setAllIntegrationsIndexed] = useState<
-    IIntegration[]
-  >();
-  const [
-    selectedIntegration,
-    setSelectedIntegration,
-  ] = useState<IIntegration>();
+  const [jiraIntegrationsIndexed, setJiraIntegrationsIndexed] =
+    useState<IIntegration[]>();
+  const [zendeskIntegrationsIndexed, setZendeskIntegrationsIndexed] =
+    useState<IIntegration[]>();
+  const [allIntegrationsIndexed, setAllIntegrationsIndexed] =
+    useState<IIntegration[]>();
+  const [selectedIntegration, setSelectedIntegration] =
+    useState<IIntegration>();
 
   const { config: globalConfigFromContext } = useContext(AppContext);
   const gitOpsModeEnabled = globalConfigFromContext?.gitops.gitops_mode_enabled;
@@ -146,7 +142,7 @@ const ManageAutomationsModal = ({
 
   useDeepEffect(() => {
     setSoftwareAutomationsEnabled(
-      softwareVulnerabilityAutomationEnabled || false
+      softwareVulnerabilityAutomationEnabled || false,
     );
   }, [softwareVulnerabilityAutomationEnabled]);
 
@@ -186,18 +182,18 @@ const ManageAutomationsModal = ({
           : [];
         setZendeskIntegrationsIndexed(addZendeskIndexed);
       },
-    }
+    },
   );
 
   useEffect(() => {
     if (jiraIntegrationsIndexed && zendeskIntegrationsIndexed) {
       const combineDataSets = jiraIntegrationsIndexed.concat(
-        zendeskIntegrationsIndexed
+        zendeskIntegrationsIndexed,
       );
       setAllIntegrationsIndexed(
         combineDataSets?.map((integration, index) => {
           return { ...integration, dropdownIndex: index };
-        })
+        }),
       );
     }
   }, [
@@ -211,7 +207,7 @@ const ManageAutomationsModal = ({
       const currentSelectedIntegration = allIntegrationsIndexed.find(
         (integration) => {
           return integration.enable_software_vulnerabilities === true;
-        }
+        },
       );
       setSelectedIntegration(currentSelectedIntegration);
     }
@@ -228,10 +224,8 @@ const ManageAutomationsModal = ({
   const handleSaveAutomation = (evt: React.MouseEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    const {
-      valid: validWebhookUrl,
-      errors: errorsWebhookUrl,
-    } = validateWebhookURL(destinationUrl);
+    const { valid: validWebhookUrl, errors: errorsWebhookUrl } =
+      validateWebhookURL(destinationUrl);
     if (!validWebhookUrl) {
       setErrors((prevErrs) => ({ ...prevErrs, ...errorsWebhookUrl }));
     } else {
@@ -263,17 +257,16 @@ const ManageAutomationsModal = ({
         const disableAllJira = configSoftwareAutomations.integrations.jira.map(
           (integration) => {
             return { ...integration, enable_software_vulnerabilities: false };
-          }
+          },
         );
         configSoftwareAutomations.integrations.jira = disableAllJira;
-        const disableAllZendesk = configSoftwareAutomations.integrations.zendesk.map(
-          (integration) => {
+        const disableAllZendesk =
+          configSoftwareAutomations.integrations.zendesk.map((integration) => {
             return {
               ...integration,
               enable_software_vulnerabilities: false,
             };
-          }
-        );
+          });
         configSoftwareAutomations.integrations.zendesk = disableAllZendesk;
         return true;
       }
@@ -291,17 +284,16 @@ const ManageAutomationsModal = ({
               ...integration,
               enable_software_vulnerabilities: false,
             };
-          }
+          },
         );
         configSoftwareAutomations.integrations.jira = disableAllJira;
-        const disableAllZendesk = configSoftwareAutomations.integrations.zendesk.map(
-          (integration) => {
+        const disableAllZendesk =
+          configSoftwareAutomations.integrations.zendesk.map((integration) => {
             return {
               ...integration,
               enable_software_vulnerabilities: false,
             };
-          }
-        );
+          });
         configSoftwareAutomations.integrations.zendesk = disableAllZendesk;
         return true;
       }
@@ -310,30 +302,34 @@ const ManageAutomationsModal = ({
       // all zendesk.enable_software_vulnerabilities to false
       // except the one integration selected
       configSoftwareAutomations.webhook_settings.vulnerabilities_webhook.enable_vulnerabilities_webhook = false;
-      const enableSelectedJiraIntegrationOnly = configSoftwareAutomations.integrations.jira.map(
-        (integration, index) => {
-          return {
-            ...integration,
-            enable_software_vulnerabilities:
-              selectedIntegration?.type === "jira"
-                ? index === selectedIntegration?.originalIndex
-                : false,
-          };
-        }
-      );
-      configSoftwareAutomations.integrations.jira = enableSelectedJiraIntegrationOnly;
-      const enableSelectedZendeskIntegrationOnly = configSoftwareAutomations.integrations.zendesk.map(
-        (integration, index) => {
-          return {
-            ...integration,
-            enable_software_vulnerabilities:
-              selectedIntegration?.type === "zendesk"
-                ? index === selectedIntegration?.originalIndex
-                : false,
-          };
-        }
-      );
-      configSoftwareAutomations.integrations.zendesk = enableSelectedZendeskIntegrationOnly;
+      const enableSelectedJiraIntegrationOnly =
+        configSoftwareAutomations.integrations.jira.map(
+          (integration, index) => {
+            return {
+              ...integration,
+              enable_software_vulnerabilities:
+                selectedIntegration?.type === "jira"
+                  ? index === selectedIntegration?.originalIndex
+                  : false,
+            };
+          },
+        );
+      configSoftwareAutomations.integrations.jira =
+        enableSelectedJiraIntegrationOnly;
+      const enableSelectedZendeskIntegrationOnly =
+        configSoftwareAutomations.integrations.zendesk.map(
+          (integration, index) => {
+            return {
+              ...integration,
+              enable_software_vulnerabilities:
+                selectedIntegration?.type === "zendesk"
+                  ? index === selectedIntegration?.originalIndex
+                  : false,
+            };
+          },
+        );
+      configSoftwareAutomations.integrations.zendesk =
+        enableSelectedZendeskIntegrationOnly;
       return true;
     };
 
@@ -355,17 +351,16 @@ const ManageAutomationsModal = ({
   };
 
   const onChangeSelectIntegration = (selectIntegrationIndex: string) => {
-    const integrationWithIndex:
-      | IIntegration
-      | undefined = allIntegrationsIndexed?.find(
-      (integ: IIntegration) =>
-        integ.dropdownIndex === parseInt(selectIntegrationIndex, 10)
-    );
+    const integrationWithIndex: IIntegration | undefined =
+      allIntegrationsIndexed?.find(
+        (integ: IIntegration) =>
+          integ.dropdownIndex === parseInt(selectIntegrationIndex, 10),
+      );
     setSelectedIntegration(integrationWithIndex);
   };
 
   const onRadioChange = (
-    enableIntegration: boolean
+    enableIntegration: boolean,
   ): ((evt: string) => void) => {
     return () => {
       setIntegrationEnabled(enableIntegration);

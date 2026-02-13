@@ -25,7 +25,7 @@ const CreateTeamModal = ({
 }: ICreateTeamModalProps): JSX.Element => {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>(
-    backendValidators
+    backendValidators,
   );
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const CreateTeamModal = ({
       setName(value);
       setErrors({});
     },
-    [setName]
+    [setName],
   );
 
   const onFormSubmit = useCallback(
@@ -47,7 +47,7 @@ const CreateTeamModal = ({
         name: name.trim(),
       });
     },
-    [onSubmit, name]
+    [onSubmit, name],
   );
 
   return (

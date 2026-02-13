@@ -26,7 +26,7 @@ describe("DigicertForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeVisible();
@@ -41,7 +41,7 @@ describe("DigicertForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     // data is valid, so submit should be enabled
@@ -61,7 +61,7 @@ describe("DigicertForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -77,7 +77,7 @@ describe("DigicertForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
@@ -93,7 +93,7 @@ describe("DigicertForm", () => {
         onChange={noop}
         onSubmit={noop}
         onCancel={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeEnabled();

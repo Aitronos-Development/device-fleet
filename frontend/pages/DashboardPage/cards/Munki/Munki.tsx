@@ -41,7 +41,7 @@ const Munki = ({
 
   const tableHeaders = useMemo(
     () => generateMunkiIssuesTableHeaders(selectedTeamId),
-    [selectedTeamId]
+    [selectedTeamId],
   );
 
   const onTabChange = (index: number) => {

@@ -15,7 +15,7 @@ describe("Radio - component", () => {
         value="radioValue"
         id="test-radio"
         onChange={noop}
-      />
+      />,
     );
 
     const labelText = screen.getByText("Radio Label");
@@ -32,7 +32,7 @@ describe("Radio - component", () => {
         value="radioValue"
         id="test-radio"
         onChange={changeHandlerSpy}
-      />
+      />,
     );
 
     const radio = screen.getByRole("radio", { name: "Radio Label" });
@@ -50,7 +50,7 @@ describe("Radio - component", () => {
         value="radioValue"
         id="test-radio"
         onChange={noop}
-      />
+      />,
     );
 
     const radio = screen.getByRole("radio", { name: "Radio Label" });
@@ -66,7 +66,7 @@ describe("Radio - component", () => {
         id="test-radio"
         onChange={noop}
         testId="radio-input"
-      />
+      />,
     );
 
     const radio = screen.getByRole("radio", { name: "Radio Label" });
@@ -86,7 +86,7 @@ describe("Radio - component", () => {
         id="test-radio"
         onChange={noop}
         tooltip="A Test Radio Tooltip"
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Radio Label"));
@@ -106,7 +106,7 @@ describe("Radio - component", () => {
         onChange={noop}
         className="radio-button"
         testId="radio-input"
-      />
+      />,
     );
 
     const radioComponent = screen.getByTestId("radio-input");

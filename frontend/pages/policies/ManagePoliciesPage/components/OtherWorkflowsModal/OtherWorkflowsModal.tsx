@@ -90,23 +90,23 @@ const OtherWorkflowsModal = ({
     ({ group_id, project_key, url }) => ({
       value: group_id || project_key,
       label: `${url} - ${group_id || project_key}`,
-    })
+    }),
   );
 
   const serverEnabledIntegration = findEnabledIntegration(
-    automationsConfig.integrations
+    automationsConfig.integrations,
   );
 
   const [isPolicyAutomationsEnabled, setIsPolicyAutomationsEnabled] = useState(
-    !!webhook.enable_failing_policies_webhook || !!serverEnabledIntegration
+    !!webhook.enable_failing_policies_webhook || !!serverEnabledIntegration,
   );
 
   const [isWebhookEnabled, setIsWebhookEnabled] = useState(
-    !isPolicyAutomationsEnabled || webhook.enable_failing_policies_webhook
+    !isPolicyAutomationsEnabled || webhook.enable_failing_policies_webhook,
   );
 
   const [destinationUrl, setDestinationUrl] = useState(
-    webhook.destination_url || ""
+    webhook.destination_url || "",
   );
 
   const [selectedIntegration, setSelectedIntegration] = useState<
@@ -145,8 +145,8 @@ const OtherWorkflowsModal = ({
     setSelectedIntegration(
       allIntegrations.find(
         ({ group_id, project_key }) =>
-          group_id === selected || project_key === selected
-      )
+          group_id === selected || project_key === selected,
+      ),
     );
   };
 

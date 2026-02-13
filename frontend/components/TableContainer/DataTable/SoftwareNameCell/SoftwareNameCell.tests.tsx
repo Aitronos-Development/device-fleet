@@ -42,8 +42,8 @@ describe("SoftwareNameCell icon rendering", () => {
     await userEvent.hover(icon);
     expect(
       await screen.findByText(
-        /Software can be installed on the host details page/i
-      )
+        /Software can be installed on the host details page/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -54,7 +54,7 @@ describe("SoftwareNameCell icon rendering", () => {
         {...defaultProps}
         hasInstaller
         pageContext="hostDetails"
-      />
+      />,
     );
     const icon = screen.getByTestId("install-icon");
     await userEvent.hover(icon);
@@ -68,7 +68,7 @@ describe("SoftwareNameCell icon rendering", () => {
         {...defaultProps}
         hasInstaller
         pageContext="hostDetailsLibrary"
-      />
+      />,
     );
     expect(screen.queryByTestId("install-icon")).toBeNull();
   });
@@ -80,7 +80,7 @@ describe("SoftwareNameCell icon rendering", () => {
     const icon = screen.getByTestId("user-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/End users can install from/i)
+      await screen.findByText(/End users can install from/i),
     ).toBeInTheDocument();
   });
 
@@ -92,12 +92,12 @@ describe("SoftwareNameCell icon rendering", () => {
         hasInstaller
         isSelfService
         pageContext="hostDetails"
-      />
+      />,
     );
     const icon = screen.getByTestId("user-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/End users can install from/i)
+      await screen.findByText(/End users can install from/i),
     ).toBeInTheDocument();
   });
 
@@ -109,12 +109,12 @@ describe("SoftwareNameCell icon rendering", () => {
         hasInstaller
         isSelfService
         pageContext="hostDetailsLibrary"
-      />
+      />,
     );
     const icon = screen.getByTestId("user-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/End users can install from/i)
+      await screen.findByText(/End users can install from/i),
     ).toBeInTheDocument();
   });
 
@@ -126,12 +126,12 @@ describe("SoftwareNameCell icon rendering", () => {
         {...defaultProps}
         hasInstaller
         automaticInstallPoliciesCount={2}
-      />
+      />,
     );
     const icon = screen.getByTestId("refresh-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/2 policies trigger install./i)
+      await screen.findByText(/2 policies trigger install./i),
     ).toBeInTheDocument();
   });
 
@@ -143,12 +143,12 @@ describe("SoftwareNameCell icon rendering", () => {
         hasInstaller
         automaticInstallPoliciesCount={3}
         pageContext="hostDetails"
-      />
+      />,
     );
     const icon = screen.getByTestId("refresh-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/3 policies trigger install./i)
+      await screen.findByText(/3 policies trigger install./i),
     ).toBeInTheDocument();
   });
 
@@ -160,12 +160,12 @@ describe("SoftwareNameCell icon rendering", () => {
         hasInstaller
         automaticInstallPoliciesCount={1}
         pageContext="hostDetailsLibrary"
-      />
+      />,
     );
     const icon = screen.getByTestId("refresh-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/A policy triggers install./i)
+      await screen.findByText(/A policy triggers install./i),
     ).toBeInTheDocument();
   });
 
@@ -178,15 +178,15 @@ describe("SoftwareNameCell icon rendering", () => {
         hasInstaller
         isSelfService
         automaticInstallPoliciesCount={2}
-      />
+      />,
     );
     const icon = screen.getByTestId("automatic-self-service-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/2 policies trigger install./i)
+      await screen.findByText(/2 policies trigger install./i),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/End users can install/i)
+      await screen.findByText(/End users can install/i),
     ).toBeInTheDocument();
   });
 
@@ -199,15 +199,15 @@ describe("SoftwareNameCell icon rendering", () => {
         isSelfService
         automaticInstallPoliciesCount={2}
         pageContext="hostDetails"
-      />
+      />,
     );
     const icon = screen.getByTestId("automatic-self-service-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/2 policies trigger install./i)
+      await screen.findByText(/2 policies trigger install./i),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/End users can install/i)
+      await screen.findByText(/End users can install/i),
     ).toBeInTheDocument();
   });
 
@@ -220,15 +220,15 @@ describe("SoftwareNameCell icon rendering", () => {
         isSelfService
         automaticInstallPoliciesCount={2}
         pageContext="hostDetailsLibrary"
-      />
+      />,
     );
     const icon = screen.getByTestId("automatic-self-service-icon");
     await userEvent.hover(icon);
     expect(
-      await screen.findByText(/2 policies trigger install./i)
+      await screen.findByText(/2 policies trigger install./i),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/End users can install/i)
+      await screen.findByText(/End users can install/i),
     ).toBeInTheDocument();
   });
 });

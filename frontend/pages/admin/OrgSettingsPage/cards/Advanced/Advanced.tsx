@@ -131,11 +131,11 @@ const Advanced = ({
         ACTIVITY_EXPIRY_WINDOW_DROPDOWN_OPTIONS,
         activityExpiryWindow,
         // it's safe to assume that frequency is a number
-        (frequency: number | string) => `${frequency as number} days`
+        (frequency: number | string) => `${frequency as number} days`,
       ),
     // intentionally leave activityExpiryWindow out of the dependencies, so that the custom
     // options are maintained even if the user changes the frequency in the UI
-    [deleteActivities]
+    [deleteActivities],
   );
 
   const onInputChange = ({ name, value }: IInputFieldParseTarget) => {
@@ -243,7 +243,7 @@ const Advanced = ({
                     !disableChildren &&
                     "Update this URL if you're self-hosting Fleet and you want your hosts to talk to this URL for MDM features. If not configured, hosts will use the base URL of the Fleet instance."
                   }
-                  helpText="If this URL changes and hosts already have MDM turned on, the end users will have to turn MDM off and back on to use MDM features."
+                  helpText="If this URL changes and devices already have MDM turned on, the end users will have to turn MDM off and back on to use MDM features."
                 />
               )}
             />
@@ -342,7 +342,7 @@ const Advanced = ({
               renderChildren={(disableChildren) => (
                 <InputField
                   disabled={disableChildren}
-                  label="Host expiry window"
+                  label="Device expiry window"
                   type="number"
                   onChange={onInputChange}
                   name="hostExpiryWindow"

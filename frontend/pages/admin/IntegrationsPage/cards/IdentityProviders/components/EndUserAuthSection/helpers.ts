@@ -10,7 +10,7 @@ export interface IFormDataIdp {
 }
 
 export const newFormDataIdp = (
-  config?: IEndUserAuthentication
+  config?: IEndUserAuthentication,
 ): IFormDataIdp => {
   return {
     idp_name: config?.idp_name?.trim() || "",
@@ -80,7 +80,7 @@ const validators = {
 export type IFormErrorsIdp = Partial<Record<keyof IFormDataIdp, string>>;
 
 export const validateFormDataIdp = (
-  data: IFormDataIdp
+  data: IFormDataIdp,
 ): IFormErrorsIdp | null => {
   let formErrors: IFormErrorsIdp | null = null;
   // if (isEmptyFormData(data)) {

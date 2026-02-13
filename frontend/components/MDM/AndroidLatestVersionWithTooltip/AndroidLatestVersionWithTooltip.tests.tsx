@@ -11,12 +11,12 @@ describe("AndroidLatestVersionWithTooltip", () => {
 
   it('renders "Latest" text with tooltip with Play Store link', async () => {
     const { user } = renderWithSetup(
-      <AndroidLatestVersionWithTooltip androidPlayStoreId={playStoreAppId} />
+      <AndroidLatestVersionWithTooltip androidPlayStoreId={playStoreAppId} />,
     );
     user.hover(screen.getByText("Latest"));
     await waitFor(() => {
       expect(
-        screen.getByText(/See latest version on the/i)
+        screen.getByText(/See latest version on the/i),
       ).toBeInTheDocument();
       expect(screen.getByText(/Play Store/i)).toBeInTheDocument();
     });

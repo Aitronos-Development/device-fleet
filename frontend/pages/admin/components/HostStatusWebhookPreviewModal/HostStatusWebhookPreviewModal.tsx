@@ -20,8 +20,7 @@ const getHostStatusPreview = (teamScope?: boolean) => {
   }
 
   return {
-    text:
-      "More than X% of your hosts have not checked into Fleet for more than Y days. You’ve been sent this message because the Host status webhook is enabled in your Fleet instance.",
+    text: "More than X% of your hosts have not checked into Fleet for more than Y days. You’ve been sent this message because the Host status webhook is enabled in your Fleet instance.",
     data,
   };
 };
@@ -37,7 +36,7 @@ const HostStatusWebhookPreviewModal = ({
 }: IHostStatusWebhookPreviewModal) => {
   return (
     <Modal
-      title="Host status webhook"
+      title="Device status webhook"
       onExit={toggleModal}
       onEnter={toggleModal}
       className={baseClass}

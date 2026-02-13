@@ -184,16 +184,18 @@ const SoftwareUninstallDetailsModal = ({
 
   const toggleDetails = () => setShowDetails((prev) => !prev);
 
-  const { data: uninstallResult, isLoading, isError, error } = useQuery<
-    IScriptResultResponse,
-    AxiosError
-  >(
+  const {
+    data: uninstallResult,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<IScriptResultResponse, AxiosError>(
     ["uninstallResult", scriptExecutionId],
     () => {
       return deviceAuthToken
         ? deviceUserAPI.getSoftwareUninstallResult(
             deviceAuthToken,
-            scriptExecutionId
+            scriptExecutionId,
           )
         : scriptsAPI.getScriptResult(scriptExecutionId);
     },
@@ -203,7 +205,7 @@ const SoftwareUninstallDetailsModal = ({
       retry: (failureCount, err) => err?.status !== 404 && failureCount < 3,
       // Prevent any error UI with pending uninstall
       enabled: uninstallStatus !== "pending_uninstall",
-    }
+    },
   );
 
   const renderContent = () => {

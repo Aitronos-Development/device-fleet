@@ -34,7 +34,7 @@ describe("DropdownWrapper Component", () => {
         name="test-dropdown"
         label="Test Dropdown"
         helpText="This is a help text."
-      />
+      />,
     );
 
     expect(screen.getByText(/test dropdown/i)).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe("DropdownWrapper Component", () => {
         name="test-dropdown"
         label="Test Dropdown"
         placeholder="Choose option"
-      />
+      />,
     );
 
     // Open the dropdown
@@ -76,7 +76,7 @@ describe("DropdownWrapper Component", () => {
         name="test-dropdown"
         label="Test Dropdown"
         error="This is an error message."
-      />
+      />,
     );
 
     expect(screen.getByText(/this is an error message/i)).toBeInTheDocument();
@@ -91,7 +91,7 @@ describe("DropdownWrapper Component", () => {
         name="test-dropdown"
         label="Test Dropdown"
         placeholder="Choose option"
-      />
+      />,
     );
 
     // Open dropdown
@@ -111,7 +111,7 @@ describe("DropdownWrapper Component", () => {
         label="Test Dropdown"
         placeholder={buttonText}
         variant="button"
-      />
+      />,
     );
 
     // Check if the button text is rendered

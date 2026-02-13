@@ -45,7 +45,7 @@ const VppTable = ({
   const tableConfig = generateTableConfig(
     onSelectAction,
     gitOpsModeEnabled ?? false,
-    repoURL ?? ""
+    repoURL ?? "",
   );
 
   return (

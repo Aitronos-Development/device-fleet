@@ -13,7 +13,7 @@ interface ISetupScriptStatusCell {
 }
 
 const serverToUiStatus = (
-  status: SetupStepStatus
+  status: SetupStepStatus,
 ): { label: string; icon: IconNames | "spinner" } => {
   switch (status) {
     case "pending":

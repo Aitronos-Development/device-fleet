@@ -45,7 +45,7 @@ describe("Pagination", () => {
         {...defaultProps}
         onPrevPage={onPrevPageMock}
         onNextPage={onNextPageMock}
-      />
+      />,
     );
 
     const prevButton = screen.getByText("Previous");

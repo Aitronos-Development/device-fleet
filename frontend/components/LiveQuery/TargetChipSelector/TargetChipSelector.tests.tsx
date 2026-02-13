@@ -26,7 +26,7 @@ describe("TargetChipSelector", () => {
         entity={mockLabel}
         isSelected={false}
         onClick={mockOnClick}
-      />
+      />,
     );
 
     expect(screen.getByText("Example Label")).toBeInTheDocument();
@@ -38,7 +38,7 @@ describe("TargetChipSelector", () => {
         entity={mockTeam}
         isSelected={false}
         onClick={mockOnClick}
-      />
+      />,
     );
 
     expect(screen.getByText("Example Team")).toBeInTheDocument();
@@ -46,7 +46,11 @@ describe("TargetChipSelector", () => {
 
   it("renders the correct icon when selected", () => {
     render(
-      <TargetChipSelector entity={mockLabel} isSelected onClick={mockOnClick} />
+      <TargetChipSelector
+        entity={mockLabel}
+        isSelected
+        onClick={mockOnClick}
+      />,
     );
 
     expect(screen.getByLabelText("check")).toBeInTheDocument();
@@ -58,7 +62,7 @@ describe("TargetChipSelector", () => {
         entity={mockLabel}
         isSelected={false}
         onClick={mockOnClick}
-      />
+      />,
     );
 
     expect(screen.getByLabelText("plus")).toBeInTheDocument();
@@ -70,7 +74,7 @@ describe("TargetChipSelector", () => {
         entity={mockLabel}
         isSelected={false}
         onClick={(value) => (event) => mockOnClick(value, event)}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole("button"));
@@ -80,7 +84,11 @@ describe("TargetChipSelector", () => {
 
   it("applies the correct data-selected attribute when selected", () => {
     render(
-      <TargetChipSelector entity={mockLabel} isSelected onClick={mockOnClick} />
+      <TargetChipSelector
+        entity={mockLabel}
+        isSelected
+        onClick={mockOnClick}
+      />,
     );
 
     const button = screen.getByRole("button");
@@ -93,7 +101,7 @@ describe("TargetChipSelector", () => {
         entity={mockLabel}
         isSelected={false}
         onClick={mockOnClick}
-      />
+      />,
     );
 
     const button = screen.getByRole("button");

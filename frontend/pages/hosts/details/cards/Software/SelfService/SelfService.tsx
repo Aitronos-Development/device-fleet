@@ -163,32 +163,20 @@ const SoftwareSelfService = ({
   const [selectedUpdateDetails, setSelectedUpdateDetails] = useState<
     IDeviceSoftware | undefined
   >(undefined);
-  const [
-    selectedHostSWInstallDetails,
-    setSelectedHostSWInstallDetails,
-  ] = useState<IHostSoftware | undefined>(undefined);
-  const [
-    selectedHostSWIpaInstallDetails,
-    setSelectedHostSWIpaInstallDetails,
-  ] = useState<IHostSoftware | undefined>(undefined);
-  const [
-    selectedHostSWScriptDetails,
-    setSelectedHostSWScriptDetails,
-  ] = useState<IHostSoftware | undefined>(undefined);
-  const [
-    selectedVPPInstallDetails,
-    setSelectedVPPInstallDetails,
-  ] = useState<IVPPHostSoftware | null>(null);
-  const [
-    selectedHostSWUninstallDetails,
-    setSelectedHostSWUninstallDetails,
-  ] = useState<ISWUninstallDetailsParentState | undefined>(undefined);
-  const [showUninstallSoftwareModal, setShowUninstallSoftwareModal] = useState(
-    false
-  );
-  const [showOpenInstructionsModal, setShowOpenInstructionsModal] = useState(
-    false
-  );
+  const [selectedHostSWInstallDetails, setSelectedHostSWInstallDetails] =
+    useState<IHostSoftware | undefined>(undefined);
+  const [selectedHostSWIpaInstallDetails, setSelectedHostSWIpaInstallDetails] =
+    useState<IHostSoftware | undefined>(undefined);
+  const [selectedHostSWScriptDetails, setSelectedHostSWScriptDetails] =
+    useState<IHostSoftware | undefined>(undefined);
+  const [selectedVPPInstallDetails, setSelectedVPPInstallDetails] =
+    useState<IVPPHostSoftware | null>(null);
+  const [selectedHostSWUninstallDetails, setSelectedHostSWUninstallDetails] =
+    useState<ISWUninstallDetailsParentState | undefined>(undefined);
+  const [showUninstallSoftwareModal, setShowUninstallSoftwareModal] =
+    useState(false);
+  const [showOpenInstructionsModal, setShowOpenInstructionsModal] =
+    useState(false);
   const [recentlyUpdatedSoftwareIds, setRecentlyUpdatedSoftwareIds] = useState<
     Set<number>
   >(new Set());
@@ -240,7 +228,7 @@ const SoftwareSelfService = ({
         software,
         true,
         hostSoftwareUpdatedAt,
-        recentlyUpdatedSoftwareIds
+        recentlyUpdatedSoftwareIds,
       ),
     }));
   }, [selfServiceData, recentlyUpdatedSoftwareIds, hostSoftwareUpdatedAt]);
@@ -316,15 +304,15 @@ const SoftwareSelfService = ({
             .filter(
               (software) =>
                 software.status === "pending_install" ||
-                software.status === "pending_uninstall"
+                software.status === "pending_uninstall",
             )
-            .map((software) => String(software.id))
+            .map((software) => String(software.id)),
         );
 
         // Compare new set with the previous set
         const previouslyPending = [...pendingSoftwareIdsRef.current];
         const completedAppIds = previouslyPending.filter(
-          (id) => !newPendingSet.has(id)
+          (id) => !newPendingSet.has(id),
         );
         if (completedAppIds.length > 0) {
           // Some pending installs/uninstalls finished during the last refresh
@@ -355,7 +343,7 @@ const SoftwareSelfService = ({
         const setsAreEqual =
           newPendingSet.size === pendingSoftwareIdsRef.current.size &&
           [...newPendingSet].every((id) =>
-            pendingSoftwareIdsRef.current.has(id)
+            pendingSoftwareIdsRef.current.has(id),
           );
 
         if (newPendingSet.size > 0) {
@@ -386,10 +374,10 @@ const SoftwareSelfService = ({
         pendingSoftwareIdsRef.current = new Set();
         renderFlash(
           "error",
-          "We're having trouble checking pending installs. Please refresh the page."
+          "We're having trouble checking pending installs. Please refresh the page.",
         );
       },
-    }
+    },
   );
 
   const startPollingForPendingInstallsOrUninstalls = useCallback(
@@ -408,7 +396,7 @@ const SoftwareSelfService = ({
         refetchForPendingInstallsOrUninstalls(); // Starts polling for pending installs
       }
     },
-    [refetchForPendingInstallsOrUninstalls]
+    [refetchForPendingInstallsOrUninstalls],
   );
 
   // On initial load or data change, check for pending installs/uninstalls
@@ -416,7 +404,7 @@ const SoftwareSelfService = ({
     const pendingSoftware = selfServiceData?.software.filter(
       (software) =>
         software.status === "pending_install" ||
-        software.status === "pending_uninstall"
+        software.status === "pending_uninstall",
     );
     const pendingIds = pendingSoftware?.map((s) => String(s.id)) ?? [];
     if (pendingIds.length > 0) {
@@ -440,11 +428,16 @@ const SoftwareSelfService = ({
         // We only show toast message if API returns an error
         renderFlash(
           "error",
-          `Couldn't ${isScriptPackage ? "run" : "install"}. Please try again.`
+          `Couldn't ${isScriptPackage ? "run" : "install"}. Please try again.`,
         );
       }
     },
-    [deviceToken, onInstallOrUninstall, registerUserSoftwareAction, renderFlash]
+    [
+      deviceToken,
+      onInstallOrUninstall,
+      registerUserSoftwareAction,
+      renderFlash,
+    ],
   );
 
   const onClickUninstallAction = useCallback(
@@ -453,13 +446,13 @@ const SoftwareSelfService = ({
         softwareId: hostSW.id,
         softwareName: hostSW.name,
         softwareInstallerType: getExtensionFromFileName(
-          hostSW.software_package?.name || ""
+          hostSW.software_package?.name || "",
         ),
         version: hostSW.software_package?.version || "",
       };
       setShowUninstallSoftwareModal(true);
     },
-    []
+    [],
   );
 
   const onClickOpenInstructionsAction = useCallback(
@@ -470,7 +463,7 @@ const SoftwareSelfService = ({
       };
       setShowOpenInstructionsModal(true);
     },
-    []
+    [],
   );
 
   const onClickUpdateAction = useCallback(
@@ -484,7 +477,12 @@ const SoftwareSelfService = ({
         renderFlash("error", "Couldn't update software. Please try again.");
       }
     },
-    [deviceToken, registerUserSoftwareAction, onInstallOrUninstall, renderFlash]
+    [
+      deviceToken,
+      registerUserSoftwareAction,
+      onInstallOrUninstall,
+      renderFlash,
+    ],
   );
 
   const onClickUpdateAll = useCallback(async () => {
@@ -492,7 +490,7 @@ const SoftwareSelfService = ({
       (software) =>
         software.ui_status === "update_available" ||
         software.ui_status === "failed_install_update_available" ||
-        software.ui_status === "failed_uninstall_update_available"
+        software.ui_status === "failed_uninstall_update_available",
     );
 
     // This should not happen
@@ -503,7 +501,7 @@ const SoftwareSelfService = ({
 
     // Trigger updates
     const promises = updateAvailableSoftware.map((software) =>
-      deviceApi.installSelfServiceSoftware(deviceToken, software.id)
+      deviceApi.installSelfServiceSoftware(deviceToken, software.id),
     );
 
     const results = await Promise.allSettled(promises);
@@ -511,7 +509,7 @@ const SoftwareSelfService = ({
     // Only show toast message for updates that API returns an error
     const failedUpdates = results
       .map((result, idx) =>
-        result.status === "rejected" ? updateAvailableSoftware[idx] : null
+        result.status === "rejected" ? updateAvailableSoftware[idx] : null,
       )
       .filter(Boolean) as typeof updateAvailableSoftware;
 
@@ -523,7 +521,7 @@ const SoftwareSelfService = ({
           isVisible: true,
           message: `Couldn't update ${software.name}. Please try again.`,
           persistOnPageChange: false,
-        })
+        }),
       );
 
       renderMultiFlash({
@@ -552,42 +550,42 @@ const SoftwareSelfService = ({
     (software?: IDeviceSoftware) => {
       setSelectedUpdateDetails(software);
     },
-    [setSelectedUpdateDetails]
+    [setSelectedUpdateDetails],
   );
 
   const onShowInstallDetails = useCallback(
     (hostSoftware?: IHostSoftware) => {
       setSelectedHostSWInstallDetails(hostSoftware);
     },
-    [setSelectedHostSWInstallDetails]
+    [setSelectedHostSWInstallDetails],
   );
 
   const onShowIpaInstallDetails = useCallback(
     (hostSoftware?: IHostSoftware) => {
       setSelectedHostSWIpaInstallDetails(hostSoftware);
     },
-    [setSelectedHostSWIpaInstallDetails]
+    [setSelectedHostSWIpaInstallDetails],
   );
 
   const onShowScriptDetails = useCallback(
     (hostSoftware?: IHostSoftware) => {
       setSelectedHostSWScriptDetails(hostSoftware);
     },
-    [setSelectedHostSWScriptDetails]
+    [setSelectedHostSWScriptDetails],
   );
 
   const onShowVPPInstallDetails = useCallback(
     (s: IVPPHostSoftware) => {
       setSelectedVPPInstallDetails(s);
     },
-    [setSelectedVPPInstallDetails]
+    [setSelectedVPPInstallDetails],
   );
 
   const onShowUninstallDetails = useCallback(
     (uninstallModalDetails: ISWUninstallDetailsParentState) => {
       setSelectedHostSWUninstallDetails(uninstallModalDetails);
     },
-    [setSelectedHostSWUninstallDetails]
+    [setSelectedHostSWUninstallDetails],
   );
 
   const onClickFailedUpdateStatus = (hostSoftware: IHostSoftware) => {
@@ -746,7 +744,7 @@ const SoftwareSelfService = ({
             fleetInstallStatus: selectedHostSWIpaInstallDetails.status,
             appName: getDisplayedSoftwareName(
               selectedHostSWIpaInstallDetails.name,
-              selectedHostSWIpaInstallDetails.display_name
+              selectedHostSWIpaInstallDetails.display_name,
             ),
             commandUuid:
               selectedHostSWIpaInstallDetails.software_package?.last_install
@@ -780,7 +778,7 @@ const SoftwareSelfService = ({
             hostDisplayName,
             appName: getDisplayedSoftwareName(
               selectedVPPInstallDetails.name,
-              selectedVPPInstallDetails.display_name
+              selectedVPPInstallDetails.display_name,
             ),
             commandUuid: selectedVPPInstallDetails.commandUuid,
           }}

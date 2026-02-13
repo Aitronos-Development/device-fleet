@@ -56,13 +56,14 @@ export const PerformanceImpactIndicatorValue = {
   DENYLISTED: "Denylisted",
 } as const;
 
-export type PerformanceImpactIndicator = typeof PerformanceImpactIndicatorValue[keyof typeof PerformanceImpactIndicatorValue];
+export type PerformanceImpactIndicator =
+  (typeof PerformanceImpactIndicatorValue)[keyof typeof PerformanceImpactIndicatorValue];
 
 export const isPerformanceImpactIndicator = (
-  value: unknown
+  value: unknown,
 ): value is PerformanceImpactIndicator => {
   return Object.values(PerformanceImpactIndicatorValue).includes(
-    value as PerformanceImpactIndicator
+    value as PerformanceImpactIndicator,
   );
 };
 
@@ -121,8 +122,10 @@ export interface ICreateQueryRequestBody {
 
 // Modify a query by id
 /** PATCH /api/v1/fleet/queries/{id} */
-export interface IModifyQueryRequestBody
-  extends Omit<ICreateQueryRequestBody, "name" | "query" | "team_id"> {
+export interface IModifyQueryRequestBody extends Omit<
+  ICreateQueryRequestBody,
+  "name" | "query" | "team_id"
+> {
   id?: number;
   name?: string;
   query?: string;

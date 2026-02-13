@@ -9,14 +9,14 @@ describe("IconStatusMessage - component", () => {
         message="Test message"
         iconName="success"
         iconColor="core-fleet-green"
-      />
+      />,
     );
     expect(
-      container.querySelector(".icon-status-message__icon")
+      container.querySelector(".icon-status-message__icon"),
     ).toBeInTheDocument();
     expect(screen.getByTestId("success-icon")).toBeInTheDocument();
     expect(
-      container.querySelector(".icon-status-message__content")
+      container.querySelector(".icon-status-message__content"),
     ).toHaveTextContent("Test message");
   });
 
@@ -24,7 +24,7 @@ describe("IconStatusMessage - component", () => {
     const { container } = render(<IconStatusMessage message="No icon" />);
     expect(container.querySelector(".icon-status-message__icon")).toBeNull();
     expect(
-      container.querySelector(".icon-status-message__content")
+      container.querySelector(".icon-status-message__content"),
     ).toHaveTextContent("No icon");
   });
 
@@ -34,7 +34,7 @@ describe("IconStatusMessage - component", () => {
         message="Custom class"
         className="extra-style"
         testId="status-msg"
-      />
+      />,
     );
     expect(container.firstChild).toHaveClass("icon-status-message");
     expect(container.firstChild).toHaveClass("extra-style");

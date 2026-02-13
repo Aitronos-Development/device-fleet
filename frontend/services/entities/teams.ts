@@ -84,8 +84,8 @@ export default {
     if (teamId === undefined || teamId < API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than or equal to ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than or equal to ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAMS } = endpoints;
@@ -114,7 +114,7 @@ export default {
       mdm,
       host_expiry_settings,
     }: Partial<IUpdateTeamFormData>,
-    teamId?: number
+    teamId?: number,
   ): Promise<ITeamConfig> => {
     if (typeof teamId === "undefined") {
       return Promise.reject("Invalid usage: missing team id");
@@ -130,12 +130,8 @@ export default {
       requestBody.webhook_settings = webhook_settings;
     }
     if (integrations) {
-      const {
-        jira,
-        zendesk,
-        google_calendar,
-        conditional_access_enabled,
-      } = integrations;
+      const { jira, zendesk, google_calendar, conditional_access_enabled } =
+        integrations;
       const teamIntegrationProps = [
         "enable_failing_policies",
         "group_id",
@@ -172,8 +168,8 @@ export default {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAM_USERS } = endpoints;
@@ -183,13 +179,13 @@ export default {
   },
   removeUsers: (
     teamId: number | undefined,
-    removeUsers: IRemoveTeamUserBody
+    removeUsers: IRemoveTeamUserBody,
   ) => {
     if (!teamId || teamId <= API_NO_TEAM_ID) {
       return Promise.reject(
         new Error(
-          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`
-        )
+          `Invalid team id: ${teamId} must be greater than ${API_NO_TEAM_ID}`,
+        ),
       );
     }
     const { TEAM_USERS } = endpoints;

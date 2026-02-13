@@ -24,7 +24,7 @@ const Icon = ({ name, color, className, size }: IIconProps) => {
       return Object.assign(
         {},
         color === undefined ? undefined : { color },
-        size === undefined ? undefined : { size }
+        size === undefined ? undefined : { size },
       );
     };
 

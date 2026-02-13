@@ -68,7 +68,7 @@ const testDetailPage = (path: string, re: RegExp) => {
 
 const isDetailPage = (path: string) => {
   return Object.values(REGEX_DETAIL_PAGES).some((re) =>
-    testDetailPage(path, re)
+    testDetailPage(path, re),
   );
 };
 
@@ -231,7 +231,7 @@ const SiteTopNav = ({
     isAnyTeamAdmin,
     isAnyTeamMaintainer,
     isGlobalMaintainer,
-    isNoAccess
+    isNoAccess,
   );
 
   const renderNavItems = () => {

@@ -39,7 +39,7 @@ describe("FleetAppDetailsModal", () => {
     expect(screen.getByText("test-app/darwin")).toBeInTheDocument();
     expect(screen.getByText("URL")).toBeInTheDocument();
     expect(
-      screen.getAllByText("https://example.com/app").length
+      screen.getAllByText("https://example.com/app").length,
     ).toBeGreaterThan(0); // Tooltip renders text twice causing use of toBeInTheDocument to fail
   });
 

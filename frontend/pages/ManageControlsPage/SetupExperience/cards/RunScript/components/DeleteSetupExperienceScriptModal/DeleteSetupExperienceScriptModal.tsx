@@ -32,7 +32,7 @@ const DeleteSetupExperienceScriptModal = ({
     } catch (error) {
       renderFlash(
         "error",
-        "Couldn't delete the setup script. Please try again."
+        "Couldn't delete the setup script. Please try again.",
       );
       console.error(error);
     }

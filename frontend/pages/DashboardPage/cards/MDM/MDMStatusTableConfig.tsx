@@ -21,7 +21,7 @@ type IHostCountCellProps = INumberCellProps<IMdmStatusCardData>;
 type IViewAllHostsLinkProps = CellProps<IMdmStatusCardData>;
 
 export const generateStatusTableHeaders = (
-  teamId?: number
+  teamId?: number,
 ): IMdmStatusTableConfig[] => [
   {
     Header: "Status",
@@ -38,7 +38,7 @@ export const generateStatusTableHeaders = (
     sortType: "hasLength",
   },
   {
-    Header: "Hosts",
+    Header: "Devices",
     disableSortBy: true,
     accessor: "hosts",
     Cell: (cellProps: IHostCountCellProps) => (
@@ -70,7 +70,7 @@ export const generateStatusTableHeaders = (
 
 const enhanceStatusData = (
   statusData: IMdmStatusCardData[],
-  selectedPlatformLabelId?: number
+  selectedPlatformLabelId?: number,
 ): IMdmStatusCardData[] => {
   return Object.values(statusData).map((data) => {
     return {
@@ -82,7 +82,7 @@ const enhanceStatusData = (
 
 export const generateStatusDataSet = (
   statusData: IMdmStatusCardData[] | null,
-  selectedPlatformLabelId?: number
+  selectedPlatformLabelId?: number,
 ): IMdmStatusCardData[] => {
   if (!statusData) {
     return [];

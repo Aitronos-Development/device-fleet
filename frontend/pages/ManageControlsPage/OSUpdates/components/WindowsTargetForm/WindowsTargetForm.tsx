@@ -72,7 +72,7 @@ interface IWindowsMdmConfigData {
 
 const createMdmConfigData = (
   deadlineDays: string,
-  gracePeriodDays: string
+  gracePeriodDays: string,
 ): IWindowsMdmConfigData => {
   return {
     mdm: {
@@ -100,15 +100,15 @@ const WindowsTargetForm = ({
   refetchTeamConfig,
 }: IWindowsTargetFormProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [isSaving, setIsSaving] = useState(false);
   const [deadlineDays, setDeadlineDays] = useState(
-    defaultDeadlineDays.toString()
+    defaultDeadlineDays.toString(),
   );
   const [gracePeriodDays, setGracePeriodDays] = useState(
-    defaultGracePeriodDays.toString()
+    defaultGracePeriodDays.toString(),
   );
   const [deadlineDaysError, setDeadlineDaysError] = useState<
     string | undefined
@@ -138,7 +138,7 @@ const WindowsTargetForm = ({
           : await teamsAPI.update(updateData, currentTeamId);
         renderFlash(
           "success",
-          "Successfully updated Windows OS update options."
+          "Successfully updated Windows OS update options.",
         );
       } catch {
         renderFlash("error", "Couldn’t update. Please try again.");
@@ -164,7 +164,7 @@ const WindowsTargetForm = ({
       <InputField
         disabled={gitOpsModeEnabled}
         label="Deadline"
-        tooltip="Number of days the end user has before updates are installed and the host is forced to restart."
+        tooltip="Number of days the end user has before updates are installed and the device is forced to restart."
         helpText="Number of days from 0 to 30."
         value={deadlineDays}
         error={deadlineDaysError}
@@ -173,7 +173,7 @@ const WindowsTargetForm = ({
       <InputField
         disabled={gitOpsModeEnabled}
         label="Grace period"
-        tooltip="Number of days after the deadline the end user has before the host is forced to restart (only if end user was offline when deadline passed)."
+        tooltip="Number of days after the deadline the end user has before the device is forced to restart (only if end user was offline when deadline passed)."
         helpText="Number of days from 0 to 7."
         value={gracePeriodDays}
         error={gracePeriodDaysError}

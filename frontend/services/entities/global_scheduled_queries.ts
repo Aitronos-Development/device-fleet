@@ -47,7 +47,7 @@ export default {
   },
   update: (
     globalScheduledQuery: IEditScheduledQuery,
-    updatedAttributes: any
+    updatedAttributes: any,
   ) => {
     const { GLOBAL_SCHEDULE } = endpoints;
     const path = `${GLOBAL_SCHEDULE}/${globalScheduledQuery.id}`;

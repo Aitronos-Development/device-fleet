@@ -62,11 +62,10 @@ const CalendarEventsModal = ({
   });
 
   const [formErrors, setFormErrors] = useState<Record<string, string | null>>(
-    {}
+    {},
   );
-  const [showPreviewCalendarEvent, setShowPreviewCalendarEvent] = useState(
-    false
-  );
+  const [showPreviewCalendarEvent, setShowPreviewCalendarEvent] =
+    useState(false);
   const [showExamplePayload, setShowExamplePayload] = useState(false);
   const [selectedPolicyToPreview, setSelectedPolicyToPreview] = useState<
     IFormPolicy | undefined

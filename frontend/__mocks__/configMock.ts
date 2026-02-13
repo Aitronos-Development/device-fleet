@@ -55,7 +55,7 @@ const DEFAULT_CONFIG_MDM_MOCK: IMdmConfig = {
 };
 
 export const createMockMdmConfig = (
-  overrides?: Partial<IMdmConfig>
+  overrides?: Partial<IMdmConfig>,
 ): IMdmConfig => {
   return { ...DEFAULT_CONFIG_MDM_MOCK, ...overrides };
 };

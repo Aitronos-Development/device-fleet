@@ -27,14 +27,14 @@ const baseClass = "fleet-app-details-form";
 
 export const softwareAlreadyAddedTipContent = (
   softwareTitleId?: number,
-  teamId?: string
+  teamId?: string,
 ) => {
   const pathToSoftwareTitles = softwareTitleId
     ? getPathWithQueryParams(
         paths.SOFTWARE_TITLE_DETAILS(softwareTitleId.toString()),
         {
           team_id: teamId,
-        }
+        },
       )
     : "";
   return (
@@ -99,8 +99,8 @@ const FleetAppDetailsForm = ({
   onSubmit,
   softwareTitleId,
 }: IFleetAppDetailsFormProps) => {
-  const gitOpsModeEnabled = useContext(AppContext).config?.gitops
-    .gitops_mode_enabled;
+  const gitOpsModeEnabled =
+    useContext(AppContext).config?.gitops.gitops_mode_enabled;
 
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
 
@@ -290,7 +290,7 @@ const FleetAppDetailsForm = ({
             <TooltipWrapper
               tipContent={softwareAlreadyAddedTipContent(
                 softwareTitleId,
-                teamId
+                teamId,
               )}
               disableTooltip={!isSoftwareAlreadyAdded}
               position="left"

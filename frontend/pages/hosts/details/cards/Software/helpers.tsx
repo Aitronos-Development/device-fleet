@@ -17,7 +17,7 @@ import {
 
 // available_for_install string > boolean conversion in parseHostSoftwareQueryParams
 export const getHostSoftwareFilterFromQueryParams = (
-  queryParams: QueryParams
+  queryParams: QueryParams,
 ) => {
   const { available_for_install } = queryParams;
 
@@ -56,14 +56,14 @@ const splitVersion = (version: string): Array<string | number> => {
   if (typeof version !== "string" || !version.trim()) {
     // Defensive: handle null, undefined, or empty version strings
     console.warn(
-      `Warning: Invalid version used for version comparison: "${version}"`
+      `Warning: Invalid version used for version comparison: "${version}"`,
     );
     return [0]; // fallback to [0] as a safe default
   }
   // Normalize delimiters and strip build metadata
   return flatMap(
     stripBuildMetadata(version).replace(/[-_]/g, ".").split("."),
-    (part: string) => part.match(/\d+|[a-zA-Z]+/g) || []
+    (part: string) => part.match(/\d+|[a-zA-Z]+/g) || [],
   ).map((seg: string) => {
     if (/^\d+$/.test(seg)) {
       // numeric segment, convert to number
@@ -74,7 +74,7 @@ const splitVersion = (version: string): Array<string | number> => {
     }
     // unexpected, possibly malformed
     console.warn(
-      `Warning: Unexpected version segment "${seg}" found in version string "${version}"`
+      `Warning: Unexpected version segment "${seg}" found in version string "${version}"`,
     );
     // fallback: return as lowercase string anyway
     return seg.toLowerCase();
@@ -120,7 +120,7 @@ export const compareVersions = (v1: string, v2: string): number => {
     console.warn(
       "Warning: Version comparison received non-string input.",
       v1,
-      v2
+      v2,
     );
     return 0;
   }
@@ -186,7 +186,7 @@ export const getUiStatus = (
   software: IHostSoftware,
   isHostOnline: boolean,
   hostSoftwareUpdatedAt?: string | null,
-  recentlyUpdatedIds?: Set<number>
+  recentlyUpdatedIds?: Set<number>,
 ): IHostSoftwareUiStatus => {
   const { status, installed_versions, source } = software;
 
@@ -217,7 +217,7 @@ export const getUiStatus = (
     if (installerVersion && installed_versions) {
       if (
         installed_versions.some(
-          (iv) => compareVersions(iv.version, installerVersion) === -1
+          (iv) => compareVersions(iv.version, installerVersion) === -1,
         )
       ) {
         return "failed_install_update_available";
@@ -234,7 +234,7 @@ export const getUiStatus = (
     if (installerVersion && installed_versions) {
       if (
         installed_versions.some(
-          (iv) => compareVersions(iv.version, installerVersion) === -1
+          (iv) => compareVersions(iv.version, installerVersion) === -1,
         )
       ) {
         return "failed_uninstall_update_available";
@@ -254,7 +254,7 @@ export const getUiStatus = (
       installerVersion
     ) {
       const isUpdate = installed_versions.some(
-        (iv) => compareVersions(iv.version, installerVersion) === -1
+        (iv) => compareVersions(iv.version, installerVersion) === -1,
       );
       if (isUpdate) {
         return isHostOnline ? "updating" : "pending_update";
@@ -281,7 +281,7 @@ export const getUiStatus = (
     installerVersion &&
     installed_versions &&
     installed_versions.some(
-      (iv) => compareVersions(iv.version, installerVersion) === -1
+      (iv) => compareVersions(iv.version, installerVersion) === -1,
     )
   ) {
     if (!lastInstallDate) {
@@ -340,7 +340,7 @@ interface IButtonConfig {
  * host details > library action buttons */
 export const getInstallerActionButtonConfig = (
   type: ButtonType,
-  status: IHostSoftwareUiStatus
+  status: IHostSoftwareUiStatus,
 ): IButtonConfig => {
   if (type === "install") {
     switch (status) {
@@ -415,7 +415,7 @@ const INSTALL_STATUS_SORT_ORDER: IHostSoftwareUiStatus[] = [
 export const installStatusSortType = (
   rowA: Row<IHostSoftwareWithUiStatus>,
   rowB: Row<IHostSoftwareWithUiStatus>,
-  columnId: string
+  columnId: string,
 ) => {
   // Type assertion ensures only valid status strings or undefined
   const statusA = rowA.original[columnId as keyof IHostSoftwareWithUiStatus] as

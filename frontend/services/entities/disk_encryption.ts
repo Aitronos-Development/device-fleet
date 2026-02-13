@@ -30,13 +30,11 @@ const diskEncryptionService = {
   updateDiskEncryption: (
     enableDiskEncryption: boolean,
     requireBitLockerPIN: boolean,
-    teamId?: number
+    teamId?: number,
   ) => {
     // TODO - use same endpoint for both once issue with new endpoint for no team is resolved
-    const {
-      UPDATE_DISK_ENCRYPTION: teamsEndpoint,
-      CONFIG: noTeamsEndpoint,
-    } = endpoints;
+    const { UPDATE_DISK_ENCRYPTION: teamsEndpoint, CONFIG: noTeamsEndpoint } =
+      endpoints;
     if (teamId === 0) {
       return sendRequest("PATCH", noTeamsEndpoint, {
         mdm: {
@@ -58,7 +56,7 @@ const diskEncryptionService = {
     const { DEVICE_TRIGGER_LINUX_DISK_ENCRYPTION_KEY_ESCROW } = endpoints;
     return sendRequest(
       "POST",
-      DEVICE_TRIGGER_LINUX_DISK_ENCRYPTION_KEY_ESCROW(token)
+      DEVICE_TRIGGER_LINUX_DISK_ENCRYPTION_KEY_ESCROW(token),
     );
   },
 };

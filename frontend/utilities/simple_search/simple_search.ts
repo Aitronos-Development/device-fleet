@@ -6,7 +6,7 @@ interface IDictionary {
 
 const simpleSearch = (
   searchQuery = "",
-  dictionary: IDictionary | undefined
+  dictionary: IDictionary | undefined,
 ) => {
   const lowerSearchQuery = searchQuery.toLowerCase();
 

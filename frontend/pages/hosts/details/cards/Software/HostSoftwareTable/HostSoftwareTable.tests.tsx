@@ -64,7 +64,7 @@ describe("HostSoftwareTable", () => {
       }),
     });
     expect(
-      screen.getByText(/vulnerabilities are not supported/i)
+      screen.getByText(/vulnerabilities are not supported/i),
     ).toBeInTheDocument();
   });
 

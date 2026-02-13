@@ -33,7 +33,7 @@ const LastUpdatedText = ({
     lastUpdatedAt = abbreviateTimeUnits(
       formatDistanceToNowStrict(new Date(lastUpdatedAt), {
         addSuffix: true,
-      })
+      }),
     );
   }
 

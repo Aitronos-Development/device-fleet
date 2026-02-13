@@ -67,7 +67,7 @@ const DynamicLabelForm = ({
 
   const onSaveForm = (
     labelFormData: ILabelFormData,
-    labelFormDataValid: boolean
+    labelFormDataValid: boolean,
   ) => {
     const { error } = validateQuery(query);
     if (error) {

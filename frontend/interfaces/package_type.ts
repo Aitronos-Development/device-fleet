@@ -10,11 +10,12 @@ export const packageTypes = [
   ...iosIpadosPackageTypes,
 ] as const;
 
-export type WindowsPackageType = typeof windowsPackageTypes[number];
-export type UnixPackageType = typeof unixPackageTypes[number];
-export type FleetMaintainedPackageType = typeof fleetMaintainedPackageTypes[number];
-export type ScriptOnlyPackageType = typeof scriptOnlyPackageTypes[number];
-export type IosIpadosPackageType = typeof iosIpadosPackageTypes[number];
+export type WindowsPackageType = (typeof windowsPackageTypes)[number];
+export type UnixPackageType = (typeof unixPackageTypes)[number];
+export type FleetMaintainedPackageType =
+  (typeof fleetMaintainedPackageTypes)[number];
+export type ScriptOnlyPackageType = (typeof scriptOnlyPackageTypes)[number];
+export type IosIpadosPackageType = (typeof iosIpadosPackageTypes)[number];
 export type PackageType =
   | WindowsPackageType
   | UnixPackageType
@@ -31,7 +32,7 @@ export const isUnixPackageType = (s: any): s is UnixPackageType => {
 };
 
 export const isFleetMaintainedPackageType = (
-  s: any
+  s: any,
 ): s is FleetMaintainedPackageType => {
   return fleetMaintainedPackageTypes.includes(s);
 };

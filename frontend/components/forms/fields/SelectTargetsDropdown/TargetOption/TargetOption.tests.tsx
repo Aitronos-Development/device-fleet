@@ -20,7 +20,7 @@ describe("TargetOption - component", () => {
           target_type: "labels",
           count: 20,
         })}
-      />
+      />,
     );
     expect(container.querySelectorAll(".is-label").length).toEqual(1);
     expect(screen.getByText(`20 hosts`)).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe("TargetOption - component", () => {
         onSelect={noop}
         onMoreInfoClick={onMoreInfoClick}
         target={createMockHost({ target_type: "hosts", platform: "windows" })}
-      />
+      />,
     );
     expect(container.querySelectorAll(".is-host").length).toEqual(1);
     expect(container.querySelectorAll("i.fleeticon-windows").length).toEqual(1);
@@ -46,7 +46,7 @@ describe("TargetOption - component", () => {
         onMoreInfoClick={onMoreInfoClick}
         onSelect={onSelectSpy}
         target={createMockHost()}
-      />
+      />,
     );
 
     const addButton = container.querySelector(".target-option__add-btn");
@@ -65,7 +65,7 @@ describe("TargetOption - component", () => {
         onSelect={noop}
         onMoreInfoClick={onMoreInfoClick}
         target={createMockHost()}
-      />
+      />,
     );
 
     const moreInfo = container.querySelector(".target-option__target-content");

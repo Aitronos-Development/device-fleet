@@ -13,7 +13,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const tableDropdownText = screen.getByDisplayValue(/users/i);
@@ -26,7 +26,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const platformList = container.getElementsByClassName("platform-list-item");
@@ -45,7 +45,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const platformList = container.getElementsByClassName("column-list-item");
@@ -57,7 +57,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
     await user.hover(screen.getByText("type"));
 
@@ -72,7 +72,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
     await user.hover(screen.getByText("email"));
 
@@ -88,11 +88,11 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const exampleHeader = screen.getByText(
-      /List users that have interactive access via a shell that isn't false/i
+      /List users that have interactive access via a shell that isn't false/i,
     );
     const example = screen.getByText("Example");
 
@@ -107,7 +107,7 @@ describe("QuerySidePanel - component", () => {
         })}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const notesHeader = screen.getByText(/Notes/i);
@@ -122,7 +122,7 @@ describe("QuerySidePanel - component", () => {
         selectedOsqueryTable={createMockOsqueryTable()}
         onOsqueryTableSelect={() => noop}
         onClose={noop}
-      />
+      />,
     );
 
     const text = screen.getByText("Source");
@@ -132,7 +132,7 @@ describe("QuerySidePanel - component", () => {
     expect(icon).toBeNull();
     expect(text.closest("a")).toHaveAttribute(
       "href",
-      "https://www.fleetdm.com/tables/users"
+      "https://www.fleetdm.com/tables/users",
     );
     expect(text.closest("a")).toHaveAttribute("target", "_blank");
   });

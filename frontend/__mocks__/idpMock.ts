@@ -10,7 +10,7 @@ const DEFAULT_GET_SCIM_DETAILS_MOCK: IGetSCIMDetailsResponse = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const createMockGetSCIMDetailsResponse = (
-  overrides?: Partial<IGetSCIMDetailsResponse>
+  overrides?: Partial<IGetSCIMDetailsResponse>,
 ): IGetSCIMDetailsResponse => {
   return { ...DEFAULT_GET_SCIM_DETAILS_MOCK, ...overrides };
 };

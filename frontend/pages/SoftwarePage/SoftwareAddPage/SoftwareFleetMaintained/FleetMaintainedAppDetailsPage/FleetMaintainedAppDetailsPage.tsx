@@ -142,19 +142,14 @@ const FleetMaintainedAppDetailsPage = ({
   const handlePageError = useErrorHandler();
   const { isPremiumTier } = useContext(AppContext);
 
-  const { selectedOsqueryTable, setSelectedOsqueryTable } = useContext(
-    QueryContext
-  );
+  const { selectedOsqueryTable, setSelectedOsqueryTable } =
+    useContext(QueryContext);
   const { isSidePanelOpen, setSidePanelOpen } = useToggleSidePanel(false);
-  const [
-    showAddFleetAppSoftwareModal,
-    setShowAddFleetAppSoftwareModal,
-  ] = useState(false);
+  const [showAddFleetAppSoftwareModal, setShowAddFleetAppSoftwareModal] =
+    useState(false);
   const [showAppDetailsModal, setShowAppDetailsModal] = useState(false);
-  const [
-    showPreviewEndUserExperience,
-    setShowPreviewEndUserExperience,
-  ] = useState(false);
+  const [showPreviewEndUserExperience, setShowPreviewEndUserExperience] =
+    useState(false);
 
   const {
     data: fleetApp,
@@ -169,7 +164,7 @@ const FleetMaintainedAppDetailsPage = ({
       retry: false,
       select: (res) => res.fleet_maintained_app,
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   const {
@@ -187,7 +182,7 @@ const FleetMaintainedAppDetailsPage = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       enabled: isPremiumTier,
       staleTime: 10000,
-    }
+    },
   );
 
   const onOsqueryTableSelect = (tableName: string) => {
@@ -204,7 +199,7 @@ const FleetMaintainedAppDetailsPage = ({
 
   const backToAddSoftwareUrl = getPathWithQueryParams(
     PATHS.SOFTWARE_ADD_FLEET_MAINTAINED,
-    { team_id: teamId }
+    { team_id: teamId },
   );
 
   const onCancel = () => {
@@ -218,27 +213,26 @@ const FleetMaintainedAppDetailsPage = ({
     setShowAddFleetAppSoftwareModal(true);
 
     try {
-      const {
-        software_title_id: softwareFmaTitleId,
-      } = await softwareAPI.addFleetMaintainedApp(parseInt(teamId, 10), {
-        ...formData,
-        appId,
-      });
+      const { software_title_id: softwareFmaTitleId } =
+        await softwareAPI.addFleetMaintainedApp(parseInt(teamId, 10), {
+          ...formData,
+          appId,
+        });
 
       router.push(
         getPathWithQueryParams(
           PATHS.SOFTWARE_TITLE_DETAILS(softwareFmaTitleId.toString()),
           {
             team_id: teamId,
-          }
-        )
+          },
+        ),
       );
 
       renderFlash(
         "success",
         <>
           <b>{fleetApp?.name}</b> successfully added.
-        </>
+        </>,
       );
     } catch (error) {
       const ae = (typeof error === "object" ? error : {}) as AxiosResponse;

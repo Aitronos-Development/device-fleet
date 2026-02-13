@@ -50,11 +50,11 @@ const DigicertForm = ({
 }: IDigicertFormProps) => {
   const validations = useMemo(
     () => generateFormValidations(certAuthorities ?? [], isEditing),
-    [certAuthorities, isEditing]
+    [certAuthorities, isEditing],
   );
 
   const [formValidation, setFormValidation] = useState<IDigicertFormValidation>(
-    () => validateFormData(formData, validations)
+    () => validateFormData(formData, validations),
   );
 
   const {
@@ -76,8 +76,8 @@ const DigicertForm = ({
     setFormValidation(
       validateFormData(
         { ...formData, [update.name]: update.value },
-        validations
-      )
+        validations,
+      ),
     );
     onChange(update);
   };
@@ -135,7 +135,7 @@ const DigicertForm = ({
         value={commonName}
         onChange={onInputChange}
         parseTarget
-        helpText="Certificates delivered to your hosts will have this CN in the subject."
+        helpText="Certificates delivered to your devices will have this CN in the subject."
         placeholder="$FLEET_VAR_HOST_HARDWARE_SERIAL"
       />
       <InputField
@@ -144,7 +144,7 @@ const DigicertForm = ({
         value={userPrincipalName}
         onChange={onInputChange}
         parseTarget
-        helpText="Certificates delivered to your hosts will have this UPN attribute in Subject Alternative Name (SAN). (optional)"
+        helpText="Certificates delivered to your devices will have this UPN attribute in Subject Alternative Name (SAN). (optional)"
         placeholder="$FLEET_VAR_HOST_HARDWARE_SERIAL"
       />
       <InputField
@@ -153,7 +153,7 @@ const DigicertForm = ({
         value={certificateSeatId}
         onChange={onInputChange}
         parseTarget
-        helpText="Certificates delivered to your hosts will be assigned to this seat ID in DigiCert."
+        helpText="Certificates delivered to your devices will be assigned to this seat ID in DigiCert."
         placeholder="$FLEET_VAR_HOST_HARDWARE_SERIAL"
       />
       <div className="modal-cta-wrap">

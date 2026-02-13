@@ -188,13 +188,11 @@ export interface IScriptBatchSummariesParams {
   page: number;
   per_page: number;
 }
-export interface IScriptBatchSummariesQueryKey
-  extends IScriptBatchSummariesParams {
+export interface IScriptBatchSummariesQueryKey extends IScriptBatchSummariesParams {
   scope: "script_batch_summaries";
 }
 
-export interface IScriptBatchSummariesResponse
-  extends ListEntitiesResponseCommon {
+export interface IScriptBatchSummariesResponse extends ListEntitiesResponseCommon {
   batch_executions: IScriptBatchSummaryV2[] | null; // should not return `null`, but API currently does sometimes. Remove this option when it's fixed.
 }
 
@@ -206,8 +204,7 @@ export interface IScriptBatchHostResultsParams extends PaginationParams {
   order_direction: OrderDirection;
 }
 
-export interface IScriptBatchHostResultsQueryKey
-  extends IScriptBatchHostResultsParams {
+export interface IScriptBatchHostResultsQueryKey extends IScriptBatchHostResultsParams {
   scope: "script_batch_host_results";
 }
 
@@ -221,8 +218,7 @@ export interface IScriptBatchHostResult {
   /** `null` if pending, cancelled, or incompatible. */
   script_output_preview: string | null;
 }
-export interface IScriptBatchHostResultsResponse
-  extends ListEntitiesResponseCommon {
+export interface IScriptBatchHostResultsResponse extends ListEntitiesResponseCommon {
   hosts: IScriptBatchHostResult[];
 }
 
@@ -296,7 +292,7 @@ export default {
     return sendRequest("POST", SCRIPT_RUN, request);
   },
   runScriptBatch(
-    request: IRunScriptBatchRequest
+    request: IRunScriptBatchRequest,
   ): Promise<IRunScriptBatchResponse> {
     const { SCRIPT_RUN_BATCH } = endpoints;
     return sendRequest("POST", SCRIPT_RUN_BATCH, request);
@@ -311,7 +307,7 @@ export default {
   }: IScriptBatchSummaryParams): Promise<IScriptBatchSummaryV1> {
     return sendRequest(
       "GET",
-      `${endpoints.SCRIPT_RUN_BATCH_SUMMARY_V1(batch_execution_id)}`
+      `${endpoints.SCRIPT_RUN_BATCH_SUMMARY_V1(batch_execution_id)}`,
     );
   },
   getRunScriptBatchSummaryV2({
@@ -319,11 +315,11 @@ export default {
   }: IScriptBatchSummaryParams): Promise<IScriptBatchSummaryV2> {
     return sendRequest(
       "GET",
-      `${endpoints.SCRIPT_RUN_BATCH_SUMMARY_V2(batch_execution_id)}`
+      `${endpoints.SCRIPT_RUN_BATCH_SUMMARY_V2(batch_execution_id)}`,
     );
   },
   getRunScriptBatchSummaries(
-    params: IScriptBatchSummariesParams
+    params: IScriptBatchSummariesParams,
   ): Promise<IScriptBatchSummariesResponse> {
     const path = `${
       endpoints.SCRIPT_RUN_BATCH_SUMMARIES
@@ -331,7 +327,7 @@ export default {
     return sendRequest("GET", path);
   },
   getScriptBatchHostResults(
-    params: IScriptBatchHostResultsParams
+    params: IScriptBatchHostResultsParams,
   ): Promise<IScriptBatchHostResultsResponse> {
     const {
       batch_execution_id,
@@ -342,7 +338,7 @@ export default {
       order_direction,
     } = params;
     const path = `${endpoints.SCRIPT_BATCH_HOST_RESULTS(
-      batch_execution_id
+      batch_execution_id,
     )}?${buildQueryStringFromParams({
       status,
       page,

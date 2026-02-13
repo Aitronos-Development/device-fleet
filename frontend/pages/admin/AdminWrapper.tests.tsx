@@ -24,7 +24,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -68,7 +68,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -89,7 +89,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -110,7 +110,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -131,7 +131,7 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/organization settings/i)).toBeInTheDocument();
@@ -152,14 +152,14 @@ describe("AdminWrapper - component", () => {
     render(
       <AdminWrapper location={urlLocation} router={mockRouter}>
         <></>
-      </AdminWrapper>
+      </AdminWrapper>,
     );
 
     expect(screen.getByText(/integrations/i)).toBeInTheDocument();
     expect(screen.getByText(/teams/i)).toBeInTheDocument();
 
     expect(
-      screen.queryByText(/organization settings/i)
+      screen.queryByText(/organization settings/i),
     ).not.toBeInTheDocument();
     expect(screen.queryByText(/users/i)).not.toBeInTheDocument();
   });

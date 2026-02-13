@@ -7,7 +7,7 @@ interface IUseToggleSidePanelHook {
 }
 
 const useToggleSidePanel = (
-  initialIsOpened: boolean
+  initialIsOpened: boolean,
 ): IUseToggleSidePanelHook => {
   const [isSidePanelOpen, setIsOpen] = useState<boolean>(initialIsOpened);
 
@@ -19,7 +19,7 @@ const useToggleSidePanel = (
     (isOpen: boolean) => {
       setIsOpen(isOpen);
     },
-    [setIsOpen]
+    [setIsOpen],
   );
 
   return {

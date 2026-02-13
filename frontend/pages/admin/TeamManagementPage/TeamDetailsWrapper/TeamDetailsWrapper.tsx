@@ -71,7 +71,7 @@ interface ITeamDetailsPageProps {
 
 const generateUpdateData = (
   currentTeam: ITeamSummary,
-  formData: ITeamFormData
+  formData: ITeamFormData,
 ): ITeamFormData | null => {
   if (currentTeam.name !== formData.name) {
     return {
@@ -126,10 +126,8 @@ const TeamDetailsWrapper = ({
 
   const [selectedSecret, setSelectedSecret] = useState<IEnrollSecret>();
   const [showAddHostsModal, setShowAddHostsModal] = useState(false);
-  const [
-    showManageEnrollSecretsModal,
-    setShowManageEnrollSecretsModal,
-  ] = useState(false);
+  const [showManageEnrollSecretsModal, setShowManageEnrollSecretsModal] =
+    useState(false);
   const [showDeleteSecretModal, setShowDeleteSecretModal] = useState(false);
   const [showEnrollSecretModal, setShowEnrollSecretModal] = useState(false);
   const [showSecretEditorModal, setShowSecretEditorModal] = useState(false);
@@ -167,7 +165,7 @@ const TeamDetailsWrapper = ({
         }
       },
       onError: (error) => handlePageError(error),
-    }
+    },
   );
   const currentTeamDetails = teams?.find((team) => team.id === teamIdForApi);
 
@@ -183,7 +181,7 @@ const TeamDetailsWrapper = ({
     {
       enabled: isRouteOk,
       select: (data: IEnrollSecretsResponse) => data.secrets,
-    }
+    },
   );
 
   const navigateToNav = (i: number): void => {
@@ -238,7 +236,7 @@ const TeamDetailsWrapper = ({
     const currentSecrets = teamSecrets || [];
 
     const newSecrets = currentSecrets.filter(
-      (s) => s.secret !== selectedSecret?.secret
+      (s) => s.secret !== selectedSecret?.secret,
     );
 
     if (enrollSecretString) {
@@ -253,7 +251,7 @@ const TeamDetailsWrapper = ({
       isPremiumTier && refetchTeams();
       renderFlash(
         "success",
-        `Successfully ${selectedSecret ? "edited" : "added"} enroll secret.`
+        `Successfully ${selectedSecret ? "edited" : "added"} enroll secret.`,
       );
     } catch (error) {
       console.error(error);
@@ -261,7 +259,7 @@ const TeamDetailsWrapper = ({
         "error",
         `Could not ${
           selectedSecret ? "edit" : "add"
-        } enroll secret. Please try again.`
+        } enroll secret. Please try again.`,
       );
     } finally {
       setIsUpdatingSecret(false);
@@ -273,7 +271,7 @@ const TeamDetailsWrapper = ({
     const currentSecrets = teamSecrets || [];
 
     const newSecrets = currentSecrets.filter(
-      (s) => s.secret !== selectedSecret?.secret
+      (s) => s.secret !== selectedSecret?.secret,
     );
     setIsUpdatingSecret(true);
     try {
@@ -327,7 +325,7 @@ const TeamDetailsWrapper = ({
         await teamsAPI.update(updatedAttrs, teamIdForApi);
         renderFlash(
           "success",
-          `Successfully updated team name to ${updatedAttrs?.name}`
+          `Successfully updated team name to ${updatedAttrs?.name}`,
         );
         setBackendValidators({});
         refetchTeams();
@@ -362,7 +360,7 @@ const TeamDetailsWrapper = ({
       renderFlash,
       refetchTeams,
       refetchMe,
-    ]
+    ],
   );
 
   if (
@@ -420,7 +418,7 @@ const TeamDetailsWrapper = ({
             actions={[
               {
                 type: "primary",
-                label: "Add hosts",
+                label: "Add devices",
                 onClick: toggleAddHostsModal,
               },
               {
@@ -455,7 +453,7 @@ const TeamDetailsWrapper = ({
           <Tabs
             selectedIndex={getTabIndex(
               location.pathname,
-              currentTeamDetails.id
+              currentTeamDetails.id,
             )}
             onSelect={(i) => navigateToNav(i)}
           >

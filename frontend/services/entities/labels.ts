@@ -28,13 +28,13 @@ export interface IGetHostsInLabelResponse {
 }
 
 const isManualLabelFormData = (
-  formData: IDynamicLabelFormData | IManualLabelFormData
+  formData: IDynamicLabelFormData | IManualLabelFormData,
 ): formData is IManualLabelFormData => {
   return "targetedHosts" in formData;
 };
 
 const generateUpdateLabelBody = (
-  formData: IDynamicLabelFormData | IManualLabelFormData
+  formData: IDynamicLabelFormData | IManualLabelFormData,
 ) => {
   // we need to prepare the post body for only manual labels.
   if (isManualLabelFormData(formData)) {
@@ -80,7 +80,7 @@ const generateCreateLabelBody = (formData: INewLabelFormData) => {
  * ascending order by label name. (e.g. [A, B, C, a, b, c] => [A, a, B, b, C, c])
  */
 export const getCustomLabels = <T extends { label_type: string; name: string }>(
-  labels: T[]
+  labels: T[],
 ) => {
   if (labels.length === 0) {
     return [];
@@ -137,7 +137,7 @@ export default {
   },
   summary: (
     teamID: number | null = null,
-    treatAllTeamsAsGlobalOnly = false
+    treatAllTeamsAsGlobalOnly = false,
   ): Promise<ILabelsSummaryResponse> => {
     const { LABELS_SUMMARY } = endpoints;
 
@@ -154,13 +154,13 @@ export default {
 
     return sendRequest(
       "GET",
-      queryString ? `${LABELS_SUMMARY}?${queryString}` : LABELS_SUMMARY
+      queryString ? `${LABELS_SUMMARY}?${queryString}` : LABELS_SUMMARY,
     );
   },
 
   update: async (
     labelId: number,
-    formData: IDynamicLabelFormData | IManualLabelFormData
+    formData: IDynamicLabelFormData | IManualLabelFormData,
   ): Promise<IUpdateLabelResponse> => {
     const { LABEL } = endpoints;
     const updateAttrs = generateUpdateLabelBody(formData);

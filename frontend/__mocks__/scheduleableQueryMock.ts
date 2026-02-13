@@ -33,7 +33,7 @@ const DEFAULT_SCHEDULABLE_QUERY_MOCK: ISchedulableQuery = {
 };
 
 const createMockSchedulableQuery = (
-  overrides?: Partial<ISchedulableQuery>
+  overrides?: Partial<ISchedulableQuery>,
 ): ISchedulableQuery => {
   return { ...DEFAULT_SCHEDULABLE_QUERY_MOCK, ...overrides };
 };

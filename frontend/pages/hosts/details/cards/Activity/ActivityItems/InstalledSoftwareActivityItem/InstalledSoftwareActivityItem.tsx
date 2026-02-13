@@ -33,7 +33,7 @@ const InstalledSoftwareActivityItem = ({
 
   let installedSoftwarePrefix = getInstallUninstallStatusPredicate(
     status,
-    isScriptPackageSource
+    isScriptPackageSource,
   );
   if (tab !== "past" && activity.fleet_initiated) {
     installedSoftwarePrefix =

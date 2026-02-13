@@ -22,7 +22,7 @@ const ClickableUrls = ({ text, className }: IClickableUrls): JSX.Element => {
   // Regex to find case insensitive URLs and replace with link
   const textWithLinks = text.replaceAll(
     /(((https?)?(:\/\/))|((https?)?(:\/\/)?(www\.)))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g,
-    urlReplacer
+    urlReplacer,
   );
   const sanitizedTextWithLinks = DOMPurify.sanitize(textWithLinks, {
     ADD_ATTR: ["target"], // Allows opening in a new tab

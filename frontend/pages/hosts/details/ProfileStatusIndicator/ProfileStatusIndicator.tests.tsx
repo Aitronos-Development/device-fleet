@@ -9,7 +9,7 @@ describe("ProfileStatusIndicator component", () => {
       <ProfileStatusIndicator
         indicatorText={indicatorText}
         iconName="success"
-      />
+      />,
     );
     const renderedIndicatorText = screen.getByText(indicatorText);
     const renderedIcon = screen.getByTestId("success-icon");
@@ -26,7 +26,7 @@ describe("ProfileStatusIndicator component", () => {
         indicatorText={indicatorText}
         iconName="success"
         tooltip={{ tooltipText }}
-      />
+      />,
     );
     const renderedIndicatorText = screen.getByText(indicatorText);
     const renderedIcon = screen.getByTestId("success-icon");
@@ -51,7 +51,7 @@ describe("ProfileStatusIndicator component", () => {
         onClick={() => {
           onClick();
         }}
-      />
+      />,
     );
 
     const renderedIndicatorText = screen.getByText(indicatorText);

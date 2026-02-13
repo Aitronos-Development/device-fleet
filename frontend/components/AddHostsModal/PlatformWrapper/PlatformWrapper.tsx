@@ -80,7 +80,7 @@ const PlatformWrapper = ({
   const { renderFlash } = useContext(NotificationContext);
 
   const [hostType, setHostType] = useState<"workstation" | "server">(
-    "workstation"
+    "workstation",
   );
   const [showPlainOsquery, setShowPlainOsquery] = useState(false);
   const [selectedTabIndex, setSelectedTabIndex] = useState(0); // External link requires control in state
@@ -162,7 +162,7 @@ const PlatformWrapper = ({
     } else {
       renderFlash(
         "error",
-        "Your certificate could not be downloaded. Please check your Fleet configuration."
+        "Your certificate could not be downloaded. Please check your Fleet configuration.",
       );
     }
     return false;
@@ -360,7 +360,7 @@ const PlatformWrapper = ({
               label={renderLabel(packageType)}
               type="textarea"
               value={renderInstallerString(packageType)}
-              helpText="Distribute your package to add hosts to Fleet."
+              helpText="Distribute your package to add devices to Fleet."
             />
           </div>
           <div>

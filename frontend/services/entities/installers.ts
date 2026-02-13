@@ -18,7 +18,7 @@ export default {
     const path = `${
       ENDPOINTS.DOWNLOAD_INSTALLER
     }/${installerType}?desktop=${includeDesktop}&enroll_secret=${encodeURIComponent(
-      enrollSecret
+      enrollSecret,
     )}`;
 
     return sendRequest("HEAD", path, undefined);

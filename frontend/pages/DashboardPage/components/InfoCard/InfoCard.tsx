@@ -42,13 +42,13 @@ const useInfoCard = ({
   className,
 }: IInfoCardProps): JSX.Element => {
   const [actionLink, setActionURL] = useState<string | null>(
-    defaultActionUrl || null
+    defaultActionUrl || null,
   );
   const [titleDetail, setTitleDetail] = useState<JSX.Element | string | null>(
-    defaultTitleDetail || null
+    defaultTitleDetail || null,
   );
   const [description, setDescription] = useState<JSX.Element | string | null>(
-    defaultDescription || null
+    defaultDescription || null,
   );
 
   useEffect(() => {

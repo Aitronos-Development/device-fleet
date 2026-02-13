@@ -77,7 +77,7 @@ export const getStatusMessage = ({
 
   // Handles "pending" value prior to 4.57
   const isPendingInstall = ["pending_install", "pending"].includes(
-    displayStatus
+    displayStatus,
   );
 
   // Treat failed_install / failed_uninstall with installed versions as installed
@@ -299,7 +299,7 @@ export const VppInstallDetailsModal = ({
   };
 
   const responseHandler = (
-    response: IGetVppInstallCommandResultsResponse | IGetCommandResultsResponse
+    response: IGetVppInstallCommandResultsResponse | IGetCommandResultsResponse,
   ) => {
     const results = response.results?.[0];
     if (!results) {
@@ -333,7 +333,7 @@ export const VppInstallDetailsModal = ({
       refetchOnWindowFocus: false,
       staleTime: 3000,
       enabled: !!commandUuid,
-    }
+    },
   );
 
   // Fallback to "installed" if no status is provided
@@ -344,7 +344,7 @@ export const VppInstallDetailsModal = ({
   // as some cases have command results not available for pending_installs
   // which we don't want to show a UI error state for
   const isPendingInstall = ["pending_install", "pending"].includes(
-    displayStatus
+    displayStatus,
   );
 
   // Note: We need to reconcile status values from two different sources. From props, we

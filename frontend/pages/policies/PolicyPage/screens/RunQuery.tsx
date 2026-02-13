@@ -36,7 +36,7 @@ const RunQuery = ({
 
   const [isQueryFinished, setIsQueryFinished] = useState(false);
   const [campaignState, setCampaignState] = useState<ICampaignState>(
-    DEFAULT_CAMPAIGN_STATE
+    DEFAULT_CAMPAIGN_STATE,
   );
   const { lastEditedQueryBody } = useContext(PolicyContext);
 
@@ -103,13 +103,13 @@ const RunQuery = ({
         JSON.stringify({
           type: "auth",
           data: { token: authToken() },
-        })
+        }),
       );
       websocket?.send(
         JSON.stringify({
           type: "select_campaign",
           data: { campaign_id: returnedCampaign.id },
-        })
+        }),
       );
     };
 
@@ -141,7 +141,7 @@ const RunQuery = ({
     if (!lastEditedQueryBody) {
       renderFlash(
         "error",
-        "Something went wrong running your query. Please try again."
+        "Something went wrong running your query. Please try again.",
       );
       return false;
     }
@@ -166,7 +166,7 @@ const RunQuery = ({
       if (campaignError === "resource already created") {
         renderFlash(
           "error",
-          "A campaign with the provided query text has already been created"
+          "A campaign with the provided query text has already been created",
         );
       }
 
@@ -176,7 +176,7 @@ const RunQuery = ({
         if (message === "forbidden") {
           renderFlash(
             "error",
-            "It seems you do not have the rights to run this query. If you believe this is in error, please contact your administrator."
+            "It seems you do not have the rights to run this query. If you believe this is in error, please contact your administrator.",
           );
         } else {
           renderFlash("error", "Something has gone wrong. Please try again.");

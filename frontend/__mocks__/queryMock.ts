@@ -32,7 +32,7 @@ const DEFAULT_QUERY_MOCK: ISchedulableQuery = {
 };
 
 const createMockQuery = (
-  overrides?: Partial<ISchedulableQuery>
+  overrides?: Partial<ISchedulableQuery>,
 ): ISchedulableQuery => {
   return { ...DEFAULT_QUERY_MOCK, ...overrides };
 };
@@ -59,7 +59,7 @@ const DEFAULT_QUERY_STATS_MOCK: IQueryStats = {
 };
 
 export const createMockQueryStats = (
-  overrides?: Partial<IQueryStats>
+  overrides?: Partial<IQueryStats>,
 ): IQueryStats => {
   return { ...DEFAULT_QUERY_STATS_MOCK, ...overrides };
 };

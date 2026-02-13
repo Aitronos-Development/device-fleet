@@ -9,7 +9,7 @@ const DEFAULT_MDM_APPLE_MOCK: IMdmApple = {
 };
 
 export const createMockMdmApple = (
-  overrides?: Partial<IMdmApple>
+  overrides?: Partial<IMdmApple>,
 ): IMdmApple => {
   return { ...DEFAULT_MDM_APPLE_MOCK, ...overrides };
 };
@@ -21,7 +21,7 @@ const DEFAULT_MDM_APPLE_VPP_INFO_MOCK: IGetVppInfoResponse = {
 };
 
 export const createMockVppInfo = (
-  overrides?: Partial<IGetVppInfoResponse>
+  overrides?: Partial<IGetVppInfoResponse>,
 ): IGetVppInfoResponse => {
   return { ...DEFAULT_MDM_APPLE_VPP_INFO_MOCK, ...overrides };
 };

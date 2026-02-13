@@ -18,7 +18,7 @@ import { ISmallstepFormData } from "../SmallstepForm/SmallstepForm";
 import { ICustomESTFormData } from "../CustomESTForm/CustomESTForm";
 
 export const generateDefaultFormData = (
-  certAuthority: ICertificateAuthority
+  certAuthority: ICertificateAuthority,
 ): ICertFormData => {
   switch (certAuthority.type) {
     case "ndes_scep_proxy":
@@ -71,14 +71,14 @@ export const generateDefaultFormData = (
       };
     default:
       throw new Error(
-        `Unknown certificate authority type: ${certAuthority.type}`
+        `Unknown certificate authority type: ${certAuthority.type}`,
       );
   }
 };
 
 export const generateEditCertAuthorityData = (
   certAuthority: ICertificateAuthority,
-  formData: ICertFormData
+  formData: ICertFormData,
 ): IEditCertAuthorityBody => {
   const certAuthWithoutType = Object.assign({}, certAuthority);
   delete certAuthWithoutType.type;
@@ -86,12 +86,8 @@ export const generateEditCertAuthorityData = (
 
   switch (certAuthority.type) {
     case "ndes_scep_proxy": {
-      const {
-        scepURL,
-        adminURL,
-        username,
-        password,
-      } = formData as INDESFormData;
+      const { scepURL, adminURL, username, password } =
+        formData as INDESFormData;
       return {
         ndes_scep_proxy: deepDifference(
           {
@@ -100,7 +96,7 @@ export const generateEditCertAuthorityData = (
             username,
             password,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
     }
@@ -125,7 +121,7 @@ export const generateEditCertAuthorityData = (
             certificate_user_principal_names: [userPrincipalName],
             certificate_seat_id: certificateSeatId,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
     }
@@ -144,7 +140,7 @@ export const generateEditCertAuthorityData = (
             client_id: clientId,
             client_secret: clientSecret,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
     }
@@ -165,7 +161,7 @@ export const generateEditCertAuthorityData = (
             username: smallstepUsername,
             password: smallstepPassword,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
     }
@@ -182,7 +178,7 @@ export const generateEditCertAuthorityData = (
             url: customSCEPUrl,
             challenge,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
     }
@@ -201,7 +197,7 @@ export const generateEditCertAuthorityData = (
             username: customESTUsername,
             password: customESTPassword,
           },
-          certAuthWithoutType
+          certAuthWithoutType,
         ),
       };
       // Make sure credentials are included if we are modifying the url
@@ -217,7 +213,7 @@ export const generateEditCertAuthorityData = (
     }
     default:
       throw new Error(
-        `Unknown certificate authority type: ${certAuthority.type}`
+        `Unknown certificate authority type: ${certAuthority.type}`,
       );
   }
 };
@@ -225,7 +221,7 @@ export const generateEditCertAuthorityData = (
 export const updateFormData = (
   certAuthority: ICertificateAuthority,
   prevFormData: ICertFormData,
-  update: { name: string; value: string }
+  update: { name: string; value: string },
 ) => {
   const newData = { ...prevFormData, [update.name]: update.value };
 
@@ -334,7 +330,7 @@ export const updateFormData = (
     }
     default:
       throw new Error(
-        `Unknown certificate authority type: ${certAuthority.type}`
+        `Unknown certificate authority type: ${certAuthority.type}`,
       );
   }
   return newData;

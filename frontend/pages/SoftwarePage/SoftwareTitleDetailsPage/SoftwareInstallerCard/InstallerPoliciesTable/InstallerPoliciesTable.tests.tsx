@@ -14,7 +14,7 @@ describe("InstallerPoliciesTable", () => {
 
     // Each cell should contain a link with the policy name
     expect(cells[0].querySelector("a.link-cell")).toHaveTextContent(
-      /No Gatekeeper/i
+      /No Gatekeeper/i,
     );
     const POLICY_COUNT = /1 policy/i;
     expect(screen.getByText(POLICY_COUNT)).toBeInTheDocument();

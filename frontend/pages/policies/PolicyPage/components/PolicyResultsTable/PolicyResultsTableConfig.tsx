@@ -41,7 +41,7 @@ interface IDataColumn {
 const generateTableHeaders = (): IDataColumn[] => {
   const tableHeaders: IDataColumn[] = [
     {
-      title: "Host",
+      title: "Device",
       Header: (headerProps: IHeaderProps): JSX.Element => (
         <HeaderCell
           value={headerProps.column.title || headerProps.column.id}
@@ -89,10 +89,10 @@ const generateTableHeaders = (): IDataColumn[] => {
 const generateDataSet = memoize(
   (policyHostsList: IPolicyHostResponse[] = []): IPolicyHostResponse[] => {
     policyHostsList = policyHostsList.sort((a, b) =>
-      sortUtils.caseInsensitiveAsc(a.display_name, b.display_name)
+      sortUtils.caseInsensitiveAsc(a.display_name, b.display_name),
     );
     return policyHostsList;
-  }
+  },
 );
 
 export { generateTableHeaders, generateDataSet };

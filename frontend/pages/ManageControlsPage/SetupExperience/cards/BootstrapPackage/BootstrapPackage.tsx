@@ -45,14 +45,10 @@ const BootstrapPackage = ({
   router,
 }: ISetupExperienceCardProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const [
-    selectedManualAgentInstall,
-    setSelectedManualAgentInstall,
-  ] = useState<boolean>(false);
-  const [
-    showDeleteBootstrapPackageModal,
-    setShowDeleteBootstrapPackageModal,
-  ] = useState(false);
+  const [selectedManualAgentInstall, setSelectedManualAgentInstall] =
+    useState<boolean>(false);
+  const [showDeleteBootstrapPackageModal, setShowDeleteBootstrapPackageModal] =
+    useState(false);
 
   const { data: macSoftwareTitles, isLoading: isLoadingSoftware } = useQuery<
     IGetSetupExperienceSoftwareResponse,
@@ -69,7 +65,7 @@ const BootstrapPackage = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (res) => res.software_titles,
-    }
+    },
   );
 
   const { data: script, isLoading: isLoadingScript } = useQuery<
@@ -78,7 +74,7 @@ const BootstrapPackage = ({
   >(
     ["setup-experience-script", currentTeamId],
     () => mdmAPI.getSetupExperienceScript(currentTeamId),
-    { ...DEFAULT_USE_QUERY_OPTIONS }
+    { ...DEFAULT_USE_QUERY_OPTIONS },
   );
 
   const {
@@ -93,30 +89,28 @@ const BootstrapPackage = ({
       onSuccess: (data) => {
         if (currentTeamId === API_NO_TEAM_ID) {
           setSelectedManualAgentInstall(
-            getManualAgentInstallSetting(currentTeamId, data)
+            getManualAgentInstallSetting(currentTeamId, data),
           );
         }
       },
-    }
+    },
   );
 
-  const {
-    isLoading: isLoadingTeamConfig,
-    refetch: refetchTeamConfig,
-  } = useQuery<ILoadTeamResponse, Error, ITeamConfig>(
-    ["team", currentTeamId],
-    () => teamsAPI.load(currentTeamId),
-    {
-      ...DEFAULT_USE_QUERY_OPTIONS,
-      enabled: currentTeamId !== API_NO_TEAM_ID,
-      select: (res) => res.team,
-      onSuccess: (data) => {
-        setSelectedManualAgentInstall(
-          getManualAgentInstallSetting(currentTeamId, undefined, data)
-        );
+  const { isLoading: isLoadingTeamConfig, refetch: refetchTeamConfig } =
+    useQuery<ILoadTeamResponse, Error, ITeamConfig>(
+      ["team", currentTeamId],
+      () => teamsAPI.load(currentTeamId),
+      {
+        ...DEFAULT_USE_QUERY_OPTIONS,
+        enabled: currentTeamId !== API_NO_TEAM_ID,
+        select: (res) => res.team,
+        onSuccess: (data) => {
+          setSelectedManualAgentInstall(
+            getManualAgentInstallSetting(currentTeamId, undefined, data),
+          );
+        },
       },
-    }
-  );
+    );
 
   const {
     data: bootstrapMetadata,
@@ -129,7 +123,7 @@ const BootstrapPackage = ({
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       cacheTime: 0,
-    }
+    },
   );
 
   const onUpload = () => {

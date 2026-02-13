@@ -69,11 +69,11 @@ const hasEditPermission = (currentUser: IUser, label: ILabel): boolean => {
 
 const generateActionDropdownOptions = (
   currentUser: IUser,
-  label: ILabel
+  label: ILabel,
 ): IDropdownOption[] => {
   const options: IDropdownOption[] = [
     {
-      label: "View all hosts",
+      label: "View all devices",
       disabled: false,
       value: "view_hosts",
     },
@@ -100,7 +100,7 @@ const generateActionDropdownOptions = (
 
 const generateTableHeaders = (
   currentUser: IUser,
-  onClickAction: (action: string, label: ILabel) => void
+  onClickAction: (action: string, label: ILabel) => void,
 ): IDataColumn[] => {
   return [
     {
@@ -153,7 +153,7 @@ const generateTableHeaders = (
         const label = cellProps.row.original;
         const dropdownOptions = generateActionDropdownOptions(
           currentUser,
-          label
+          label,
         );
         return (
           <ViewAllHostsLink

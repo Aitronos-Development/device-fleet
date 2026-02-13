@@ -52,7 +52,11 @@ const ScriptBatchHostsTable = ({
   router,
 }: IScriptBatchHostsTableProps) => {
   const perPage = DEFAULT_PAGE_SIZE;
-  const { data: hostResults, isLoading, error } = useQuery<
+  const {
+    data: hostResults,
+    isLoading,
+    error,
+  } = useQuery<
     IScriptBatchHostResultsResponse,
     AxiosError,
     IScriptBatchHostResultsResponse,
@@ -72,7 +76,7 @@ const ScriptBatchHostsTable = ({
     ({ queryKey }) => scriptsAPI.getScriptBatchHostResults(queryKey[0]),
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   const handleRowClick = useCallback(
@@ -83,7 +87,7 @@ const ScriptBatchHostsTable = ({
         router.push(PATHS.HOST_DETAILS(row.original.id));
       }
     },
-    [router, selectedHostStatus, setHostScriptExecutionIdForModal]
+    [router, selectedHostStatus, setHostScriptExecutionIdForModal],
   );
 
   const handleQueryChange = useCallback(
@@ -111,11 +115,11 @@ const ScriptBatchHostsTable = ({
       // replace instead of push here keeps browser history clear and allows cleaner forward/back navigation
       router.replace(path);
     },
-    [selectedHostStatus, orderKey, orderDirection, batchExecutionId, router]
+    [selectedHostStatus, orderKey, orderDirection, batchExecutionId, router],
   );
 
   if (error) {
-    return <DataError description="Could not load host results." />;
+    return <DataError description="Could not load device results." />;
   }
 
   const columnConfigs = generateColumnConfigs(selectedHostStatus);

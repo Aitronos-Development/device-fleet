@@ -28,15 +28,8 @@ const QuerySidePanel = ({
   onOsqueryTableSelect,
   onClose,
 }: IQuerySidePanel): JSX.Element => {
-  const {
-    name,
-    description,
-    platforms,
-    columns,
-    examples,
-    notes,
-    evented,
-  } = selectedOsqueryTable;
+  const { name, description, platforms, columns, examples, notes, evented } =
+    selectedOsqueryTable;
 
   const mdmRequired = name === "managed_policies";
 

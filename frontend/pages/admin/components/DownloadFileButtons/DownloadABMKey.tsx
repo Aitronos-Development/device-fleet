@@ -49,7 +49,7 @@ const useDownloadABMKey = ({
         onError && onError(e);
       }
     },
-    [onError, onSuccess]
+    [onError, onSuccess],
   );
 
   const memoized = useMemo(
@@ -57,7 +57,7 @@ const useDownloadABMKey = ({
       downloadState,
       handleDownload,
     }),
-    [downloadState, handleDownload]
+    [downloadState, handleDownload],
   );
 
   return memoized;

@@ -33,7 +33,7 @@ type IActionCellProps = CellProps<
 const baseClass = "self-service-table";
 
 export const generateSoftwareTableData = (
-  software: IDeviceSoftwareWithUiStatus[]
+  software: IDeviceSoftwareWithUiStatus[],
 ): IDeviceSoftwareWithUiStatus[] => {
   return software;
 };
@@ -45,12 +45,12 @@ interface ISelfServiceTableHeaders {
   onShowScriptDetails: (hostSoftware: IHostSoftware) => void;
   onShowVPPInstallDetails: (hostSoftware: IVPPHostSoftware) => void;
   onShowUninstallDetails: (
-    uninstallDetails: ISWUninstallDetailsParentState
+    uninstallDetails: ISWUninstallDetailsParentState,
   ) => void;
   onClickInstallAction: (softwareId: number, isScriptPackage?: boolean) => void;
   onClickUninstallAction: (software: IDeviceSoftwareWithUiStatus) => void;
   onClickOpenInstructionsAction: (
-    software: IDeviceSoftwareWithUiStatus
+    software: IDeviceSoftwareWithUiStatus,
   ) => void;
 }
 

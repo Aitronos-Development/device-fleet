@@ -107,7 +107,7 @@ const HostSummary = ({
       // logically redundant. It's included here to allow use of date-fns-tz.formatInTimeZone instead of date-fns.format, which
       // allows us to format a UTC datetime without converting to the user-agent local time.
       timezone || "UTC",
-      DATE_FNS_FORMAT_STRINGS.dateAtTime
+      DATE_FNS_FORMAT_STRINGS.dateAtTime,
     );
 
     const tip =
@@ -143,10 +143,11 @@ const HostSummary = ({
     osSettings?.disk_encryption?.status &&
     isWindowsDiskEncryptionStatus(osSettings.disk_encryption.status)
   ) {
-    const winDiskEncryptionSetting: IHostMdmProfile = generateWinDiskEncryptionSetting(
-      osSettings.disk_encryption.status,
-      osSettings.disk_encryption.detail
-    );
+    const winDiskEncryptionSetting: IHostMdmProfile =
+      generateWinDiskEncryptionSetting(
+        osSettings.disk_encryption.status,
+        osSettings.disk_encryption.detail,
+      );
     hostSettings = hostSettings
       ? [...hostSettings, winDiskEncryptionSetting]
       : [winDiskEncryptionSetting];
@@ -157,10 +158,11 @@ const HostSummary = ({
     osSettings?.disk_encryption?.status &&
     isLinuxDiskEncryptionStatus(osSettings.disk_encryption.status)
   ) {
-    const linuxDiskEncryptionSetting: IHostMdmProfile = generateLinuxDiskEncryptionSetting(
-      osSettings.disk_encryption.status,
-      osSettings.disk_encryption.detail
-    );
+    const linuxDiskEncryptionSetting: IHostMdmProfile =
+      generateLinuxDiskEncryptionSetting(
+        osSettings.disk_encryption.status,
+        osSettings.disk_encryption.detail,
+      );
     hostSettings = hostSettings
       ? [...hostSettings, linuxDiskEncryptionSetting]
       : [linuxDiskEncryptionSetting];

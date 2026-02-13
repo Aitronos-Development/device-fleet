@@ -8,7 +8,7 @@ export const SETUP_STEP_STATUSES = [
   "cancelled", // server should be aggregating cancelled installs with failed, check here just in case
 ] as const;
 
-export type SetupStepStatus = typeof SETUP_STEP_STATUSES[number];
+export type SetupStepStatus = (typeof SETUP_STEP_STATUSES)[number];
 
 /** These type extends onto API returned software steps */
 export const SETUP_STEP_TYPES = [
@@ -17,7 +17,7 @@ export const SETUP_STEP_TYPES = [
   "script_run", // API key: scripts
 ];
 
-export type SetupStepType = typeof SETUP_STEP_TYPES[number];
+export type SetupStepType = (typeof SETUP_STEP_TYPES)[number];
 
 export interface ISetupStep {
   name: string | null;

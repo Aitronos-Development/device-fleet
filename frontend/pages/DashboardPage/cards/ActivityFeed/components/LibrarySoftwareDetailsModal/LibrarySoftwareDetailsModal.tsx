@@ -93,7 +93,7 @@ const LibrarySoftwareDetailsModal = ({
             title="Name"
             value={getDisplayedSoftwareName(
               details.software_title,
-              details.software_display_name
+              details.software_display_name,
             )}
           />
           <DataSet title="Package name" value={details.software_package} />

@@ -31,12 +31,12 @@ describe("Last updated host count", () => {
 
   it("renders tooltip on hover when 'Updated never'", async () => {
     const { user } = renderWithSetup(
-      <LastUpdatedHostCount hostCount={0} lastUpdatedAt={null} />
+      <LastUpdatedHostCount hostCount={0} lastUpdatedAt={null} />,
     );
     await user.hover(screen.getByText("Updated never"));
     await waitFor(() => {
       expect(
-        screen.getByText(/last time host data was updated/i)
+        screen.getByText(/last time host data was updated/i),
       ).toBeInTheDocument();
     });
   });

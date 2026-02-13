@@ -9,7 +9,7 @@ describe("TooltipWrapper", () => {
     const { user } = renderWithSetup(
       <TooltipWrapper tipContent="Tooltip text">
         <span>Hover me</span>
-      </TooltipWrapper>
+      </TooltipWrapper>,
     );
 
     const trigger = screen.getByText("Hover me");
@@ -24,7 +24,7 @@ describe("TooltipWrapper", () => {
     const { user } = renderWithSetup(
       <TooltipWrapper tipContent="Tooltip text" disableTooltip>
         <span>Hover me</span>
-      </TooltipWrapper>
+      </TooltipWrapper>,
     );
     const anchor = screen.getByText("Hover me");
     expect(anchor).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe("TooltipWrapper", () => {
     render(
       <TooltipWrapper tipContent="Tooltip text">
         <span>Hover me</span>
-      </TooltipWrapper>
+      </TooltipWrapper>,
     );
     const element = screen.getByText("Hover me").parentElement;
     expect(element).toHaveClass("component__tooltip-wrapper__element");
@@ -51,7 +51,7 @@ describe("TooltipWrapper", () => {
     render(
       <TooltipWrapper tipContent="Tooltip text" underline={false}>
         <span>Hover me</span>
-      </TooltipWrapper>
+      </TooltipWrapper>,
     );
     const element = screen.getByText("Hover me").parentElement;
     expect(element).not.toHaveClass("component__tooltip-wrapper__underline");

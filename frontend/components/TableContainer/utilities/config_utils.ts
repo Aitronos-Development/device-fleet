@@ -16,7 +16,7 @@ export const getConditionalSelectHeaderCheckboxProps = ({
   const checkIfAllSelectableRowsSelected = (rows: Row<any>[]) =>
     rows.filter(checkIfRowIsSelectable).every((row) => row.isSelected);
   const allSelectableRowsSelected = checkIfAllSelectableRowsSelected(
-    headerProps.rows
+    headerProps.rows,
   );
   const indeterminate =
     !allSelectableRowsSelected &&

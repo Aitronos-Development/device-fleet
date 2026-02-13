@@ -55,12 +55,8 @@ const Info = ({
       appConfig.org_info.contact_url || "https://fleetdm.com/company/contact",
   });
 
-  const {
-    orgName,
-    orgLogoURL,
-    orgLogoURLLightBackground,
-    orgSupportURL,
-  } = formData;
+  const { orgName, orgLogoURL, orgLogoURLLightBackground, orgSupportURL } =
+    formData;
 
   const [formErrors, setFormErrors] = useState<IOrgInfoFormErrors>({});
 

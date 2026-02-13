@@ -70,7 +70,7 @@ export const pluralize = (
   count: number,
   root: string,
   pluralSuffix = "s",
-  singularSuffix = ""
+  singularSuffix = "",
 ) => {
   return `${root}${count !== 1 ? pluralSuffix : singularSuffix}`;
 };

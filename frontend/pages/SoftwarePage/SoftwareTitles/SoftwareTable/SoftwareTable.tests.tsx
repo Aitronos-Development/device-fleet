@@ -49,7 +49,7 @@ describe("Software table", () => {
         teamId={1}
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Software inventory disabled")).toBeInTheDocument();
@@ -94,12 +94,12 @@ describe("Software table", () => {
         teamId={1}
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("No software detected")).toBeInTheDocument();
     expect(
-      screen.getByText("Expecting to see software? Check back later.")
+      screen.getByText("Expecting to see software? Check back later."),
     ).toBeInTheDocument();
     expect(screen.getByText("0 items")).toBeInTheDocument();
     expect(screen.queryByText("Search")).toBeNull();
@@ -143,12 +143,12 @@ describe("Software table", () => {
         teamId={1}
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("No software detected")).toBeInTheDocument();
     expect(
-      screen.getByText("Expecting to see software? Check back later.")
+      screen.getByText("Expecting to see software? Check back later."),
     ).toBeInTheDocument();
     expect(screen.queryByText("All software")).toBeNull();
     expect(screen.queryByText("Available for install")).toBeNull();
@@ -189,16 +189,16 @@ describe("Software table", () => {
         teamId={1}
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("No items match the current search criteria")
+      screen.getByText("No items match the current search criteria"),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Expecting to see installable software? Check back later."
-      )
+        "Expecting to see installable software? Check back later.",
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("Available for install")).toBeInTheDocument();
   });
@@ -238,16 +238,16 @@ describe("Software table", () => {
         teamId={1}
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("No items match the current search criteria")
+      screen.getByText("No items match the current search criteria"),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Expecting to see vulnerable software? Check back later."
-      )
+        "Expecting to see vulnerable software? Check back later.",
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText("All software")).toBeInTheDocument();
   });
@@ -287,7 +287,7 @@ describe("Software table", () => {
         teamId={undefined} // Undefined for Fleet Free or Fleet Premium "All teams"
         isLoading={false}
         onAddFiltersClick={noop}
-      />
+      />,
     );
 
     expect(screen.queryByText("All software")).toBeNull();

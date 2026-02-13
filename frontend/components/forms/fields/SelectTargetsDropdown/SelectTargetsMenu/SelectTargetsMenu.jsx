@@ -14,7 +14,7 @@ const SelectTargetsMenuWrapper = (
   onMoreInfoClick,
   moreInfoTarget,
   handleBackToResults,
-  isPremiumTier
+  isPremiumTier,
 ) => {
   const SelectTargetsMenu = ({
     focusedOption,
@@ -38,7 +38,7 @@ const SelectTargetsMenuWrapper = (
       targetsOutput.push(
         <p className={`${baseClass}__type`} key={`type-${targetType}-key`}>
           {targetTitle}
-        </p>
+        </p>,
       );
 
       if (targets.length === 0) {
@@ -52,7 +52,7 @@ const SelectTargetsMenuWrapper = (
             key={`${targetType}-notfound`}
           >
             Unable to find any matching {targetType}.
-          </span>
+          </span>,
         );
 
         return targetsOutput;
@@ -94,7 +94,7 @@ const SelectTargetsMenuWrapper = (
               />
             </Option>
           );
-        })
+        }),
       );
 
       return targetsOutput;

@@ -32,7 +32,7 @@ export interface InstallerCardInfo {
 
 // eslint-disable-next-line import/prefer-default-export
 export const getInstallerCardInfo = (
-  softwareTitle: ISoftwareTitleDetails
+  softwareTitle: ISoftwareTitleDetails,
 ): InstallerCardInfo => {
   const installerData = softwareTitle.software_package
     ? softwareTitle.software_package
@@ -44,7 +44,7 @@ export const getInstallerCardInfo = (
     softwareTitleName: softwareTitle.name,
     softwareDisplayName: getDisplayedSoftwareName(
       softwareTitle.name,
-      softwareTitle.display_name
+      softwareTitle.display_name,
     ),
     softwareInstaller: installerData,
     name: (isPackage && installerData.name) || softwareTitle.name,

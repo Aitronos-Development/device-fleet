@@ -16,8 +16,7 @@ export interface IGetVulnerabilitiesQueryParams {
   query?: string;
 }
 
-export interface IGetVulnerabilitiesQueryKey
-  extends IGetVulnerabilitiesQueryParams {
+export interface IGetVulnerabilitiesQueryKey extends IGetVulnerabilitiesQueryParams {
   scope: string;
 }
 

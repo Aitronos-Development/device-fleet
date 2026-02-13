@@ -62,14 +62,14 @@ export default {
     const { USERS } = endpoints;
 
     return sendRequest("POST", USERS, formData).then((response) =>
-      helpers.addGravatarUrlToResource(response.user)
+      helpers.addGravatarUrlToResource(response.user),
     );
   },
   createUserWithoutInvitation: (formData: ICreateUserFormData) => {
     const { USERS_ADMIN } = endpoints;
 
     return sendRequest("POST", USERS_ADMIN, formData).then((response) =>
-      helpers.addGravatarUrlToResource(response.user)
+      helpers.addGravatarUrlToResource(response.user),
     );
   },
   deleteSessions: (userId: number) => {
@@ -122,7 +122,7 @@ export default {
           available_teams,
           settings,
         };
-      }
+      },
     );
   },
   performRequiredPasswordReset: (new_password: string) => {
@@ -134,13 +134,13 @@ export default {
   },
   requirePasswordReset: (
     userId: number,
-    { require }: IRequirePasswordReset
+    { require }: IRequirePasswordReset,
   ) => {
     const { USERS } = endpoints;
     const path = `${USERS}/${userId}/require_password_reset`;
 
     return sendRequest("POST", path, { require }).then((response) =>
-      helpers.addGravatarUrlToResource(response.user)
+      helpers.addGravatarUrlToResource(response.user),
     );
   },
   resetPassword: (formData: any) => {
@@ -159,16 +159,14 @@ export default {
     const path = `${USERS}/${userId}`;
 
     return sendRequest("PATCH", path, formData).then((response) =>
-      helpers.addGravatarUrlToResource(response.user)
+      helpers.addGravatarUrlToResource(response.user),
     );
   },
   updateAdmin: (user: IUser, admin: boolean) => {
     const { UPDATE_USER_ADMIN } = endpoints;
 
-    return sendRequest(
-      "POST",
-      UPDATE_USER_ADMIN(user.id),
-      admin
-    ).then((response) => helpers.addGravatarUrlToResource(response.user));
+    return sendRequest("POST", UPDATE_USER_ADMIN(user.id), admin).then(
+      (response) => helpers.addGravatarUrlToResource(response.user),
+    );
   },
 };

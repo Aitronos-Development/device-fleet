@@ -43,7 +43,7 @@ const TargetDetails = ({
     const statusClassName = classnames(
       `${hostBaseClass}__status`,
       { [`${hostBaseClass}__status--is-online`]: isOnline },
-      { [`${hostBaseClass}__status--is-offline`]: isOffline }
+      { [`${hostBaseClass}__status--is-offline`]: isOffline },
     );
 
     return (
@@ -139,7 +139,7 @@ const TargetDetails = ({
         </p>
 
         <p className={`${labelBaseClass}__hosts`}>
-          <TableCount count={count} name="hosts" />
+          <TableCount count={count} name="devices" />
         </p>
 
         <p className={`${labelBaseClass}__description`}>
@@ -180,7 +180,7 @@ const TargetDetails = ({
         </p>
 
         <p className={`${labelBaseClass}__hosts`}>
-          <TableCount count={count} name="hosts" />
+          <TableCount count={count} name="devices" />
         </p>
       </div>
     );

@@ -13,8 +13,7 @@ const meta: Meta<typeof Avatar> = {
   parameters: {
     design: {
       type: "figma",
-      url:
-        "https://www.figma.com/file/qbjRu8jf01BzEfdcge1dgu/Fleet-style-guide-2022-(WIP)?node-id=210-11078",
+      url: "https://www.figma.com/file/qbjRu8jf01BzEfdcge1dgu/Fleet-style-guide-2022-(WIP)?node-id=210-11078",
     },
   },
 };

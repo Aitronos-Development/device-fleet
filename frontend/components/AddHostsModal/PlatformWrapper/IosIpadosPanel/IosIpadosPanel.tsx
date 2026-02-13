@@ -9,7 +9,7 @@ import InputField from "components/forms/fields/InputField";
 
 const generateUrl = (serverUrl: string, enrollSecret: string) => {
   return `${serverUrl}/enroll?enroll_secret=${encodeURIComponent(
-    enrollSecret
+    enrollSecret,
   )}`;
 };
 

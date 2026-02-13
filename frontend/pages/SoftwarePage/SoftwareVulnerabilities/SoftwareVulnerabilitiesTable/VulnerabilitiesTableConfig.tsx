@@ -58,7 +58,7 @@ const generateTableHeaders = (
   isPremiumTier?: boolean,
   router?: InjectedRouter,
   configOptions?: IVulnerabilitiesTableConfigOptions,
-  teamId?: number
+  teamId?: number,
 ): IDataColumn[] => {
   const tableHeaders: IDataColumn[] = [
     {
@@ -80,7 +80,7 @@ const generateTableHeaders = (
 
         const softwareVulnerabilitiesDetailsPath = getPathWithQueryParams(
           PATHS.SOFTWARE_VULNERABILITY_DETAILS(cve),
-          { team_id: teamId }
+          { team_id: teamId },
         );
 
         const onClickVulnerability = (e: React.MouseEvent) => {
@@ -236,10 +236,10 @@ const generateTableHeaders = (
       },
     },
     {
-      title: "Hosts",
+      title: "Devices",
       Header: (cellProps: IHeaderProps): JSX.Element => (
         <HeaderCell
-          value="Hosts"
+          value="Devices"
           disableSortBy={false}
           isSortedDesc={cellProps.column.isSortedDesc}
         />
@@ -280,7 +280,7 @@ const generateTableHeaders = (
       (header) =>
         header.accessor !== "epss_probability" &&
         header.accessor !== "cve_published" &&
-        header.accessor !== "cvss_score"
+        header.accessor !== "cvss_score",
     );
   }
 

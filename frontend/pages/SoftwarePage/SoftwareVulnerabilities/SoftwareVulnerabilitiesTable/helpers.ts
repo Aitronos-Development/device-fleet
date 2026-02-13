@@ -1,5 +1,5 @@
 export const getExploitedVulnerabilitiesDropdownOptions = (
-  isPremiumTier = false
+  isPremiumTier = false,
 ) => {
   const disabledTooltipContent = "Available in Fleet Premium.";
 
@@ -8,7 +8,7 @@ export const getExploitedVulnerabilitiesDropdownOptions = (
       isDisabled: false,
       label: "All vulnerabilities",
       value: "false",
-      helpText: "All vulnerabilities detected on your hosts.",
+      helpText: "All vulnerabilities detected on your devices.",
     },
     {
       isDisabled: !isPremiumTier,

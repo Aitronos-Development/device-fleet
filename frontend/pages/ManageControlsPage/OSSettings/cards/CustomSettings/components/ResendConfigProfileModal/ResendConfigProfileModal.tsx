@@ -24,7 +24,7 @@ const ResendConfigProfileModal = ({
   const { renderFlash } = useContext(NotificationContext);
   const [isResending, setIsResending] = React.useState(false);
 
-  const countText = `${count} ${count === 1 ? "host" : "hosts"}`;
+  const countText = `${count} ${count === 1 ? "device" : "devices"}`;
 
   const onClickResend = async () => {
     setIsResending(true);
@@ -34,13 +34,13 @@ const ResendConfigProfileModal = ({
         "success",
         <>
           Resent the <b>{name}</b> configuration profile.
-        </>
+        </>,
       );
       onExit();
     } catch (error) {
       renderFlash(
         "error",
-        "Couldn't resend the configuration profile. Please try again."
+        "Couldn't resend the configuration profile. Please try again.",
       );
     }
     setIsResending(false);

@@ -44,7 +44,7 @@ describe("Dashboard OS table", () => {
         ]}
         selectedPlatform="windows"
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("Version")).toBeInTheDocument();

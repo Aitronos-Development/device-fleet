@@ -163,7 +163,7 @@ const generateSoftwareTitleDetailsTableConfig = ({
       Cell: (cellProps: ICellProps) => {
         return (
           <LinkCell
-            value={generateResultsCountText("hosts", cellProps.cell.value)}
+            value={generateResultsCountText("devices", cellProps.cell.value)}
             path={getPathWithQueryParams(PATHS.MANAGE_HOSTS, {
               software_title_id: softwareId,
               software_status: "installed",
@@ -199,7 +199,7 @@ const generateSoftwareTitleDetailsTableConfig = ({
       Cell: (cellProps: ICellProps) => {
         return (
           <LinkCell
-            value={generateResultsCountText("hosts", cellProps.cell.value)}
+            value={generateResultsCountText("devices", cellProps.cell.value)}
             path={getPathWithQueryParams(PATHS.MANAGE_HOSTS, {
               software_title_id: softwareId,
               software_status: "pending",
@@ -235,7 +235,7 @@ const generateSoftwareTitleDetailsTableConfig = ({
       Cell: (cellProps: ICellProps) => {
         return (
           <LinkCell
-            value={generateResultsCountText("hosts", cellProps.cell.value)}
+            value={generateResultsCountText("devices", cellProps.cell.value)}
             path={getPathWithQueryParams(PATHS.MANAGE_HOSTS, {
               software_title_id: softwareId,
               software_status: "failed",

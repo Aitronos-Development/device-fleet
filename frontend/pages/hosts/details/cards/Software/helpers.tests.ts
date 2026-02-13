@@ -98,10 +98,10 @@ describe("compareVersions", () => {
 
   it("handles mixed +build and parenthesized build metadata", () => {
     expect(compareVersions("1.0.0+20130313144700", "1.0.0 (build 1234)")).toBe(
-      0
+      0,
     );
     expect(
-      compareVersions("2.3.4-beta+exp.sha", "2.3.4-beta (build 9999)")
+      compareVersions("2.3.4-beta+exp.sha", "2.3.4-beta (build 9999)"),
     ).toBe(0);
   });
 
@@ -210,7 +210,7 @@ describe("getUiStatus", () => {
   it("returns 'update_available' if inventory refresh is newer than last install (host software inventory is up to date, but there's still updates available)", () => {
     const now = new Date();
     const hostSoftwareUpdatedAt = new Date(
-      now.getTime() + 60 * 1000
+      now.getTime() + 60 * 1000,
     ).toISOString(); // 1 min after install
     const lastInstallDate = now.toISOString();
     const sw = createMockHostSoftware({
@@ -222,7 +222,7 @@ describe("getUiStatus", () => {
     });
     // Simulate inventory updated after install
     expect(getUiStatus(sw, true, hostSoftwareUpdatedAt)).toBe(
-      "update_available"
+      "update_available",
     );
   });
 
@@ -242,7 +242,7 @@ describe("getUiStatus", () => {
       installed_versions: [],
     });
     expect(getUiStatus(sw, true, hostSoftwareUpdatedAt)).toBe(
-      "recently_installed"
+      "recently_installed",
     );
   });
 
@@ -261,7 +261,7 @@ describe("getUiStatus", () => {
       // installed_versions might still show lower version since inventory hasn't updated yet
     });
     expect(getUiStatus(sw, true, hostSoftwareUpdatedAt)).toBe(
-      "recently_updated"
+      "recently_updated",
     );
   });
 
@@ -282,7 +282,7 @@ describe("getUiStatus", () => {
       // installed_versions might still exist if inventory hasn't updated yet
     });
     expect(getUiStatus(sw, true, hostSoftwareUpdatedAt)).toBe(
-      "recently_uninstalled"
+      "recently_uninstalled",
     );
   });
 
@@ -304,7 +304,7 @@ describe("getUiStatus", () => {
       }),
     });
     expect(getUiStatus(sw, true, hostSoftwareUpdatedAt)).toBe(
-      "recently_uninstalled"
+      "recently_uninstalled",
     );
   });
 
@@ -313,7 +313,7 @@ describe("getUiStatus", () => {
     const now = new Date();
     const lastUninstallDate = now.toISOString();
     const hostSoftwareUpdatedAt = new Date(
-      now.getTime() + 60 * 1000
+      now.getTime() + 60 * 1000,
     ).toISOString(); // Inventory more recent
 
     const sw = createMockHostSoftware({
@@ -420,7 +420,7 @@ describe("getSoftwareSubheader", () => {
       isMyDevicePage: true,
     });
     expect(result).toBe(
-      "Software installed on your work profile (Managed Apple Account)."
+      "Software installed on your work profile (Managed Apple Account).",
     );
   });
 
@@ -431,7 +431,7 @@ describe("getSoftwareSubheader", () => {
       isMyDevicePage: false,
     });
     expect(result).toBe(
-      "Software installed on work profile (Managed Apple Account)."
+      "Software installed on work profile (Managed Apple Account).",
     );
   });
 
@@ -442,7 +442,7 @@ describe("getSoftwareSubheader", () => {
       isMyDevicePage: true,
     });
     expect(result).toBe(
-      "Software installed by Fleet. Built-in apps (e.g. Calculator) and apps installed by the end user aren't included."
+      "Software installed by Fleet. Built-in apps (e.g. Calculator) and apps installed by the end user aren't included.",
     );
   });
 
@@ -453,7 +453,7 @@ describe("getSoftwareSubheader", () => {
       isMyDevicePage: false,
     });
     expect(result).toBe(
-      "Software installed by Fleet. Built-in apps (e.g. Calculator) and apps installed by the end user aren't included."
+      "Software installed by Fleet. Built-in apps (e.g. Calculator) and apps installed by the end user aren't included.",
     );
   });
 

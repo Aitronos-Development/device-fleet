@@ -69,7 +69,7 @@ type InitialStateType = {
   setLastEditedQueryResolution: (value: string) => void;
   setLastEditedQueryCritical: (value: boolean) => void;
   setLastEditedQueryPlatform: (
-    value: CommaSeparatedPlatformString | null
+    value: CommaSeparatedPlatformString | null,
   ) => void;
   setLastEditedQueryLabelsIncludeAny: (value: ILabelPolicy[]) => void;
   setLastEditedQueryLabelsExcludeAny: (value: ILabelPolicy[]) => void;
@@ -193,7 +193,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryId,
       });
     },
-    []
+    [],
   );
 
   const setLastEditedQueryName = useCallback((lastEditedQueryName: string) => {
@@ -210,7 +210,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryDescription,
       });
     },
-    []
+    [],
   );
   const setLastEditedQueryBody = useCallback((lastEditedQueryBody: string) => {
     dispatch({
@@ -225,7 +225,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryResolution,
       });
     },
-    []
+    [],
   );
   const setLastEditedQueryCritical = useCallback(
     (lastEditedQueryCritical: boolean) => {
@@ -234,18 +234,18 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryCritical,
       });
     },
-    []
+    [],
   );
   const setLastEditedQueryPlatform = useCallback(
     (
-      lastEditedQueryPlatform: CommaSeparatedPlatformString | null | undefined
+      lastEditedQueryPlatform: CommaSeparatedPlatformString | null | undefined,
     ) => {
       dispatch({
         type: ACTIONS.SET_LAST_EDITED_QUERY_INFO,
         lastEditedQueryPlatform,
       });
     },
-    []
+    [],
   );
   const setLastEditedQueryLabelsIncludeAny = useCallback(
     (lastEditedQueryLabelsIncludeAny: ILabelPolicy[]) => {
@@ -254,7 +254,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryLabelsIncludeAny,
       });
     },
-    []
+    [],
   );
   const setLastEditedQueryLabelsExcludeAny = useCallback(
     (lastEditedQueryLabelsExcludeAny: ILabelPolicy[]) => {
@@ -263,7 +263,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
         lastEditedQueryLabelsExcludeAny,
       });
     },
-    []
+    [],
   );
   const setDefaultPolicy = useCallback((defaultPolicy: boolean) => {
     dispatch({
@@ -328,7 +328,7 @@ const PolicyProvider = ({ children }: Props): JSX.Element => {
       state.lastEditedQueryResolution,
       state.policyTeamId,
       state.selectedOsqueryTable,
-    ]
+    ],
   );
 
   return (

@@ -84,12 +84,12 @@ describe("getInstallSoftwareErrorMessage", () => {
     const result = getInstallSoftwareErrorMessage(
       mockResult,
       mockFormData,
-      currentTeamName
+      currentTeamName,
     );
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Keynote.app (ID: 178) on 1a - Workstations (canary) does not have associated package"
+      "Could not update policy. Keynote.app (ID: 178) on 1a - Workstations (canary) does not have associated package",
     );
   });
 
@@ -111,7 +111,7 @@ describe("getInstallSoftwareErrorMessage", () => {
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Error with software title with ID 999"
+      "Could not update policy. Error with software title with ID 999",
     );
   });
 
@@ -133,7 +133,7 @@ describe("getInstallSoftwareErrorMessage", () => {
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Error with team ID 789"
+      "Could not update policy. Error with team ID 789",
     );
   });
 });
@@ -215,12 +215,12 @@ describe("getRunScriptErrorMessage", () => {
     const result = getRunScriptErrorMessage(
       mockResult,
       mockFormData,
-      currentTeamName
+      currentTeamName,
     );
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Test Script (ID: 123) does not belong to 1a - Workstations (canary)"
+      "Could not update policy. Test Script (ID: 123) does not belong to 1a - Workstations (canary)",
     );
   });
 
@@ -242,7 +242,7 @@ describe("getRunScriptErrorMessage", () => {
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Error with script with ID 999"
+      "Could not update policy. Error with script with ID 999",
     );
   });
 
@@ -264,7 +264,7 @@ describe("getRunScriptErrorMessage", () => {
     const resultString = renderToString(result);
 
     expect(resultString).toBe(
-      "Could not update policy. Error with team ID 789"
+      "Could not update policy. Error with team ID 789",
     );
   });
 });

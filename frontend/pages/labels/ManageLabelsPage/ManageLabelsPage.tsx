@@ -38,13 +38,18 @@ const ManageLabelsPage = ({ router }: IManageLabelsPageProps): JSX.Element => {
   const [labelToDelete, setLabelToDelete] = useState<ILabel | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const { data: labels, isLoading, error, refetch } = useQuery<
-    ILabelsResponse,
-    Error,
-    ILabel[]
-  >(["labels"], () => labelsAPI.loadAll(), {
-    select: (data: ILabelsResponse) => data.labels,
-  });
+  const {
+    data: labels,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<ILabelsResponse, Error, ILabel[]>(
+    ["labels"],
+    () => labelsAPI.loadAll(),
+    {
+      select: (data: ILabelsResponse) => data.labels,
+    },
+  );
 
   const onCreateLabelClick = useCallback(() => {
     router.push(PATHS.NEW_LABEL);
@@ -61,7 +66,7 @@ const ManageLabelsPage = ({ router }: IManageLabelsPageProps): JSX.Element => {
       } catch {
         renderFlash(
           "error",
-          `Could not delete ${labelToDelete.name}. Please try again.`
+          `Could not delete ${labelToDelete.name}. Please try again.`,
         );
       } finally {
         setLabelToDelete(null);
@@ -85,7 +90,7 @@ const ManageLabelsPage = ({ router }: IManageLabelsPageProps): JSX.Element => {
         default:
       }
     },
-    [router]
+    [router],
   );
 
   const canAddLabel =
@@ -127,7 +132,7 @@ const ManageLabelsPage = ({ router }: IManageLabelsPageProps): JSX.Element => {
             </div>
           )}
         </div>
-        <PageDescription content="Group hosts for targeting and filtering." />
+        <PageDescription content="Group devices for targeting and filtering." />
       </div>
       {renderTable()}
       {labelToDelete && (

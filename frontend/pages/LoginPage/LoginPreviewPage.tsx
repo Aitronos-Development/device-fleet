@@ -21,20 +21,15 @@ interface ILoginData {
 }
 
 const LoginPreviewPage = ({ router }: ILoginPreviewPageProps): JSX.Element => {
-  const {
-    isPreviewMode,
-    setAvailableTeams,
-    setCurrentUser,
-    setCurrentTeam,
-  } = useContext(AppContext);
+  const { isPreviewMode, setAvailableTeams, setCurrentUser, setCurrentTeam } =
+    useContext(AppContext);
 
   const onSubmit = async (formData: ILoginData) => {
     const { DASHBOARD } = paths;
 
     try {
-      const { user, available_teams, token } = await sessionsAPI.login(
-        formData
-      );
+      const { user, available_teams, token } =
+        await sessionsAPI.login(formData);
       local.setItem("auth_token", token);
 
       setCurrentUser(user);

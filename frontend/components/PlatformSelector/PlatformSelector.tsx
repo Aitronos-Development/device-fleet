@@ -50,12 +50,12 @@ export const PlatformSelector = ({
     }
     const softwareName = getDisplayedSoftwareName(
       installSoftware.name,
-      installSoftware.display_name
+      installSoftware.display_name,
     );
     const softwareId = installSoftware.software_title_id.toString();
     const softwareLink = getPathWithQueryParams(
       paths.SOFTWARE_TITLE_DETAILS(softwareId),
-      { team_id: currentTeamId }
+      { team_id: currentTeamId },
     );
 
     return (

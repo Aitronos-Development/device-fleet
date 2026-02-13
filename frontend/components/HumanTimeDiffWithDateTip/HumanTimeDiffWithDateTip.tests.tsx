@@ -13,7 +13,7 @@ const INVALID_STRING = "Invalid date";
 describe("HumanTimeDiffWithDateTip - component", () => {
   it("renders tooltip on hover", async () => {
     const { user } = renderWithSetup(
-      <HumanTimeDiffWithDateTip timeString="2015-12-06T10:30:00Z" />
+      <HumanTimeDiffWithDateTip timeString="2015-12-06T10:30:00Z" />,
     );
 
     // Note: number of years varies over time
@@ -39,7 +39,7 @@ describe("HumanTimeDiffWithDateTip - component", () => {
 
   it("returns never if configured to cutoff dates before Fleet was created", async () => {
     render(
-      <HumanTimeDiffWithFleetLaunchCutoff timeString="1970-01-02T00:00:00Z" />
+      <HumanTimeDiffWithFleetLaunchCutoff timeString="1970-01-02T00:00:00Z" />,
     );
 
     expect(screen.getByText(/never/i)).toBeInTheDocument();

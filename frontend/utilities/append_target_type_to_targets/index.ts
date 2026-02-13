@@ -14,7 +14,7 @@ export const parseEntityFunc = (host: IHost) => {
       // Some CPU brand strings do not fit this format and we can't parse the
       // clock speed. Leave it set to 'Unknown'.
       console.log(
-        `Unable to parse clock speed from cpu_brand: ${host.cpu_brand}`
+        `Unable to parse clock speed from cpu_brand: ${host.cpu_brand}`,
       );
     }
     if (host.cpu_physical_cores || clockSpeedOutput) {

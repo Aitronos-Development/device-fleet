@@ -46,8 +46,10 @@ const isRecordWithErrors = (r: unknown): r is IRecordWithErrors => {
   return true;
 };
 
-interface IRecordWithDataErrors
-  extends Record<string | number | symbol, unknown> {
+interface IRecordWithDataErrors extends Record<
+  string | number | symbol,
+  unknown
+> {
   data: IRecordWithErrors;
 }
 
@@ -66,13 +68,15 @@ const isRecordWithDataErrors = (r: unknown): r is IRecordWithDataErrors => {
   return true;
 };
 
-interface IRecordWithResponseDataErrors
-  extends Record<string | number | symbol, unknown> {
+interface IRecordWithResponseDataErrors extends Record<
+  string | number | symbol,
+  unknown
+> {
   response: IRecordWithDataErrors;
 }
 
 const isRecordWithResponseDataErrors = (
-  r: unknown
+  r: unknown,
 ): r is IRecordWithResponseDataErrors => {
   if (!r || typeof r !== "object" || !("response" in r)) {
     return false;
@@ -141,14 +145,14 @@ const getReasonFromErrors = (errors: unknown[], filter?: IFilterFleetError) => {
 
 const getReasonFromRecordWithDataErrors = (
   r: IRecordWithDataErrors,
-  filter?: IFilterFleetError
+  filter?: IFilterFleetError,
 ): string => {
   return getReasonFromErrors(r.data.errors, filter);
 };
 
 const getReasonFromAxiosError = (
   ae: AxiosError,
-  filter?: IFilterFleetError
+  filter?: IFilterFleetError,
 ): string => {
   return isRecordWithDataErrors(ae.response)
     ? getReasonFromRecordWithDataErrors(ae.response, filter)
@@ -172,7 +176,7 @@ const getReasonFromAxiosError = (
  */
 export const getErrorReason = (
   payload: unknown | undefined,
-  filter?: IFilterFleetError
+  filter?: IFilterFleetError,
 ): string => {
   if (isAxiosError(payload)) {
     return getReasonFromAxiosError(payload, filter);
@@ -212,7 +216,7 @@ export const ignoreAxiosError = (err: AxiosError, ignoreStatuses: number[]) => {
 export const expandErrorReasonRequired = (err: unknown) => {
   if (isRecordWithDataErrors(err)) {
     const found = err.data.errors.find(
-      (e) => isFleetApiError(e) && e.reason === "required"
+      (e) => isFleetApiError(e) && e.reason === "required",
     );
     if (found) {
       return `${(found as IFleetApiError).name} required`;

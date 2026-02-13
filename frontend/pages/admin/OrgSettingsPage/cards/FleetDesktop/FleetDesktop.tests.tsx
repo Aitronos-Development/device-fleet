@@ -26,7 +26,7 @@ describe("FleetDesktop", () => {
           isPremiumTier={false}
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       expect(container.firstChild).toBeNull();
@@ -42,12 +42,12 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       expect(screen.getByText("Fleet Desktop")).toBeInTheDocument();
       expect(
-        screen.getByLabelText(/custom transparency url/i)
+        screen.getByLabelText(/custom transparency url/i),
       ).toBeInTheDocument();
     });
 
@@ -66,14 +66,14 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       expect(
-        screen.getByDisplayValue("https://custom.example.com/transparency")
+        screen.getByDisplayValue("https://custom.example.com/transparency"),
       ).toBeInTheDocument();
       expect(
-        screen.getByDisplayValue("browser.example.com")
+        screen.getByDisplayValue("browser.example.com"),
       ).toBeInTheDocument();
     });
 
@@ -92,11 +92,11 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       expect(
-        screen.getByDisplayValue(DEFAULT_TRANSPARENCY_URL)
+        screen.getByDisplayValue(DEFAULT_TRANSPARENCY_URL),
       ).toBeInTheDocument();
     });
   });
@@ -114,7 +114,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       expect(screen.getByLabelText(/custom transparency url/i)).toBeDisabled();
@@ -132,7 +132,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/custom transparency url/i);
@@ -142,7 +142,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(/custom transparency url must include protocol/i)
+          screen.getByText(/custom transparency url must include protocol/i),
         ).toBeInTheDocument();
       });
     });
@@ -157,7 +157,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/custom transparency url/i);
@@ -167,7 +167,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByText(/custom transparency url must include protocol/i)
+          screen.queryByText(/custom transparency url must include protocol/i),
         ).not.toBeInTheDocument();
       });
     });
@@ -182,7 +182,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/browser host/i);
@@ -191,7 +191,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(/browser host must be a valid hostname/i)
+          screen.getByText(/browser host must be a valid hostname/i),
         ).toBeInTheDocument();
       });
     });
@@ -206,7 +206,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/browser host/i);
@@ -215,7 +215,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByText(/browser host must be a valid hostname/i)
+          screen.queryByText(/browser host must be a valid hostname/i),
         ).not.toBeInTheDocument();
       });
     });
@@ -230,7 +230,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/browser host/i);
@@ -239,7 +239,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByText(/browser host must be a valid hostname/i)
+          screen.queryByText(/browser host must be a valid hostname/i),
         ).not.toBeInTheDocument();
       });
     });
@@ -254,7 +254,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/browser host/i);
@@ -263,7 +263,7 @@ describe("FleetDesktop", () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByText(/browser host must be a valid hostname/i)
+          screen.queryByText(/browser host must be a valid hostname/i),
         ).not.toBeInTheDocument();
       });
     });
@@ -285,11 +285,11 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const transparencyInput = screen.getByLabelText(
-        /custom transparency url/i
+        /custom transparency url/i,
       );
       const browserHostInput = screen.getByLabelText(/browser host/i);
 
@@ -318,7 +318,7 @@ describe("FleetDesktop", () => {
           isPremiumTier
           isUpdatingSettings={false}
           router={createMockRouter()}
-        />
+        />,
       );
 
       const input = screen.getByLabelText(/custom transparency url/i);

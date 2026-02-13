@@ -44,7 +44,7 @@ const RunScriptBatchPaginatedList = ({
       per_page: SCRIPT_BATCH_PAGE_SIZE,
     },
     teamId,
-    isFreeTier
+    isFreeTier,
   );
 
   const { data, isFetching } = useQuery<
@@ -58,13 +58,13 @@ const RunScriptBatchPaginatedList = ({
   const onRunScript = useCallback(
     (
       script: IPaginatedListScript,
-      onChange: (script: IPaginatedListScript) => void
+      onChange: (script: IPaginatedListScript) => void,
     ) => {
       _onRunScript(script);
       onChange({ hasRun: true, ...script });
       return script;
     },
-    [_onRunScript]
+    [_onRunScript],
   );
 
   const onClickScriptRow = useCallback((script: IPaginatedListScript) => {
@@ -74,7 +74,7 @@ const RunScriptBatchPaginatedList = ({
 
   const renderScriptRow = (
     script: IPaginatedListScript,
-    onChange: (script: IPaginatedListScript) => void
+    onChange: (script: IPaginatedListScript) => void,
   ) => (
     <>
       <a>{script.name}</a>

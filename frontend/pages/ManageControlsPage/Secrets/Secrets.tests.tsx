@@ -56,10 +56,10 @@ describe("Custom variables", () => {
       render(<Secrets />);
       await waitFor(() => {
         expect(
-          screen.getByText("No custom variables created yet")
+          screen.getByText("No custom variables created yet"),
         ).toBeInTheDocument();
         expect(
-          screen.getByRole("button", { name: "Add custom variable" })
+          screen.getByRole("button", { name: "Add custom variable" }),
         ).toBeInTheDocument();
       });
     });
@@ -108,7 +108,7 @@ describe("Custom variables", () => {
         } as ISecret;
         secretsResponse.secrets.push(newSecret);
         return HttpResponse.json(newSecret);
-      }
+      },
     );
     const deleteSecretHandler = http.delete(
       baseUrl("/custom_variables/:id"),
@@ -118,10 +118,10 @@ describe("Custom variables", () => {
           throw new Error("Secret ID not found in request URL");
         }
         secretsResponse.secrets = secretsResponse.secrets.filter(
-          (secret) => secret.id !== parseInt(id, 10)
+          (secret) => secret.id !== parseInt(id, 10),
         );
         return HttpResponse.json({ success: true });
-      }
+      },
     );
     beforeEach(async () => {
       // Wait for the query stale timer to expire.
@@ -141,7 +141,7 @@ describe("Custom variables", () => {
         },
         {
           timeout: 3000,
-        }
+        },
       );
     });
 
@@ -183,7 +183,7 @@ describe("Custom variables", () => {
         }
         // Find the element with .paginated-list__row class that is ancestor to that element.
         const secretUnoRow = (secretUno as HTMLElement).closest(
-          ".paginated-list__row"
+          ".paginated-list__row",
         );
         expect(secretUnoRow).toBeInTheDocument();
         if (!secretUnoRow) {
@@ -191,7 +191,7 @@ describe("Custom variables", () => {
         }
         // Find the element with data-id="trash-icon"
         const trashIcon = secretUnoRow.querySelector(
-          "[data-testid='trash-icon']"
+          "[data-testid='trash-icon']",
         );
         expect(trashIcon).toBeInTheDocument();
         if (!trashIcon) {
@@ -202,7 +202,7 @@ describe("Custom variables", () => {
         // Confirm the deletion.
         await waitFor(() => {
           expect(
-            screen.getByText(/Delete custom variable\?/)
+            screen.getByText(/Delete custom variable\?/),
           ).toBeInTheDocument();
           expect(screen.getByText(/This will delete the/)).toBeInTheDocument();
         });
@@ -210,7 +210,7 @@ describe("Custom variables", () => {
         await user.click(screen.getByRole("button", { name: "Delete" }));
         await waitFor(() => {
           expect(
-            screen.queryByText(/Delete custom variable\?/)
+            screen.queryByText(/Delete custom variable\?/),
           ).not.toBeInTheDocument();
           expect(screen.queryByText("SECRET_UNO")).not.toBeInTheDocument();
           expect(screen.queryByText("SECRET_DOS")).toBeInTheDocument();
@@ -289,8 +289,8 @@ describe("Custom variables", () => {
         await waitFor(() => {
           expect(
             screen.getByText(
-              "Name may only include uppercase letters, numbers, and underscores"
-            )
+              "Name may only include uppercase letters, numbers, and underscores",
+            ),
           ).toBeInTheDocument();
           expect(saveButton).toBeDisabled();
         });
@@ -302,7 +302,7 @@ describe("Custom variables", () => {
         await user.click(saveButton);
         await waitFor(() => {
           expect(
-            screen.getByText("Name may not exceed 255 characters")
+            screen.getByText("Name may not exceed 255 characters"),
           ).toBeInTheDocument();
           expect(saveButton).toBeDisabled();
         });
@@ -325,7 +325,7 @@ describe("Custom variables", () => {
       }
       // Find the element with .paginated-list__row class that is ancestor to that element.
       const secretUnoRow = (secretUno as HTMLElement).closest(
-        ".paginated-list__row"
+        ".paginated-list__row",
       );
       expect(secretUnoRow).toBeInTheDocument();
       if (!secretUnoRow) {
@@ -333,7 +333,7 @@ describe("Custom variables", () => {
       }
       // Find the element with data-id="trash-icon"
       const trashIcon = secretUnoRow.querySelector(
-        "[data-testid='trash-icon']"
+        "[data-testid='trash-icon']",
       );
       expect(trashIcon).toBeInTheDocument();
       if (!trashIcon) {
@@ -344,7 +344,7 @@ describe("Custom variables", () => {
       // Confirm the deletion.
       await waitFor(() => {
         expect(
-          screen.getByText(/Delete custom variable\?/)
+          screen.getByText(/Delete custom variable\?/),
         ).toBeInTheDocument();
         expect(screen.getByText(/This will delete the/)).toBeInTheDocument();
       });
@@ -352,7 +352,7 @@ describe("Custom variables", () => {
       await user.click(screen.getByRole("button", { name: "Delete" }));
       await waitFor(() => {
         expect(
-          screen.queryByText(/Delete custom variable\?/)
+          screen.queryByText(/Delete custom variable\?/),
         ).not.toBeInTheDocument();
         expect(screen.queryByText("SECRET_UNO")).not.toBeInTheDocument();
         expect(screen.queryByText("SECRET_DOS")).toBeInTheDocument();

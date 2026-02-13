@@ -64,10 +64,8 @@ const GlobalHostStatusWebhook = ({
     hostStatusWebhookWindow,
   } = formData;
 
-  const [
-    formErrors,
-    setFormErrors,
-  ] = useState<IGlobalHostStatusWebhookFormErrors>({});
+  const [formErrors, setFormErrors] =
+    useState<IGlobalHostStatusWebhookFormErrors>({});
 
   const onInputChange = ({ name, value }: IInputFieldParseTarget) => {
     setFormData({ ...formData, [name]: value });
@@ -124,10 +122,10 @@ const GlobalHostStatusWebhook = ({
       getCustomDropdownOptions(
         HOST_STATUS_WEBHOOK_HOST_PERCENTAGE_DROPDOWN_OPTIONS,
         hostStatusWebhookHostPercentage,
-        (val) => `${val}%`
+        (val) => `${val}%`,
       ),
     // intentionally omit dependency so options only computed initially
-    []
+    [],
   );
 
   const windowOptions = useMemo(
@@ -135,17 +133,17 @@ const GlobalHostStatusWebhook = ({
       getCustomDropdownOptions(
         HOST_STATUS_WEBHOOK_WINDOW_DROPDOWN_OPTIONS,
         hostStatusWebhookWindow,
-        (val) => `${val} day${val !== 1 ? "s" : ""}`
+        (val) => `${val} day${val !== 1 ? "s" : ""}`,
       ),
     // intentionally omit dependency so options only computed initially
-    []
+    [],
   );
   return (
     <div className={baseClass}>
-      <SettingsSection title="Host status webhook">
+      <SettingsSection title="Device status webhook">
         <PageDescription
           variant="right-panel"
-          content={<>Send an alert if a portion of your hosts go offline.</>}
+          content={<>Send an alert if a portion of your devices go offline.</>}
         />
         <form className={baseClass} onSubmit={onFormSubmit} autoComplete="off">
           <div
@@ -192,7 +190,7 @@ const GlobalHostStatusWebhook = ({
                   }
                 />
                 <Dropdown
-                  label="Percentage of hosts"
+                  label="Percentage of devices"
                   options={percentageHostsOptions}
                   onChange={onInputChange}
                   name="hostStatusWebhookHostPercentage"

@@ -15,14 +15,14 @@ describe("GenericMsgWithNavButton", () => {
         path={PATHS.ADMIN_INTEGRATIONS_MDM}
         buttonText="Turn on"
         router={createMockRouter()}
-      />
+      />,
     );
 
     expect(screen.getByText("Manage your hosts")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "MDM must be turned on to change settings on your hosts."
-      )
+        "MDM must be turned on to change settings on your hosts.",
+      ),
     ).toBeInTheDocument();
   });
 
@@ -42,13 +42,13 @@ describe("GenericMsgWithNavButton", () => {
         buttonText="Turn on"
         path={PATHS.ADMIN_INTEGRATIONS_MDM}
         router={createMockRouter()}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Turn on" }));
 
     expect(createMockRouter().push).toHaveBeenCalledWith(
-      PATHS.ADMIN_INTEGRATIONS_MDM
+      PATHS.ADMIN_INTEGRATIONS_MDM,
     );
   });
 
@@ -68,7 +68,7 @@ describe("GenericMsgWithNavButton", () => {
         path={"test"}
         buttonText="Turn on"
         router={createMockRouter()}
-      />
+      />,
     );
 
     expect(screen.queryByText("Turn on")).not.toBeInTheDocument();

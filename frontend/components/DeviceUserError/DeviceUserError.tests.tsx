@@ -8,7 +8,7 @@ describe("DeviceUserError", () => {
     expect(screen.getByTestId("error-icon")).toBeInTheDocument();
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
     expect(
-      screen.getByText("Please contact your IT admin.")
+      screen.getByText("Please contact your IT admin."),
     ).toBeInTheDocument();
   });
 
@@ -20,22 +20,22 @@ describe("DeviceUserError", () => {
   it("renders authentication error message on desktop device", () => {
     render(<DeviceUserError isAuthenticationError />);
     expect(
-      screen.getByText("This URL is invalid or expired.")
+      screen.getByText("This URL is invalid or expired."),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/To access your device information, please click/i)
+      screen.getByText(/To access your device information, please click/i),
     ).toBeInTheDocument();
   });
 
   it("renders authentication error message on mobile device", () => {
     render(<DeviceUserError isAuthenticationError isMobileDevice />);
     expect(
-      screen.getByText("Invalid or missing certificate")
+      screen.getByText("Invalid or missing certificate"),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Couldn't authenticate this device. Please contact your IT admin."
-      )
+        "Couldn't authenticate this device. Please contact your IT admin.",
+      ),
     ).toBeInTheDocument();
   });
 });

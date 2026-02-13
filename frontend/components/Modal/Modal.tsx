@@ -96,7 +96,7 @@ const Modal = ({
     `${baseClass}__modal_container__${width}`,
     {
       [`${className}__loading`]: isLoading,
-    }
+    },
   );
 
   const contentWrapperClasses = classnames(`${baseClass}__content-wrapper`, {

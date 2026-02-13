@@ -9,7 +9,7 @@ import { IEmptyOption, IGroupOption } from "../LabelFilterSelect/helpers";
 const baseClass = "custom-dropdown-indicator";
 
 const CustomDropdownIndicator = (
-  props: DropdownIndicatorProps<ILabel | IEmptyOption, false, IGroupOption>
+  props: DropdownIndicatorProps<ILabel | IEmptyOption, false, IGroupOption>,
 ) => {
   const { isFocused, selectProps } = props;
   // no access to hover state here from react-select so that is done in the scss

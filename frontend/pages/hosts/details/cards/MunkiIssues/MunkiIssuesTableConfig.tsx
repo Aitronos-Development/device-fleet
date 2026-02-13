@@ -109,7 +109,7 @@ export const munkiIssuesTableHeaders: IDataColumn[] = [
       const time = abbreviateTimeUnits(
         formatDistanceToNowStrict(new Date(cellProps.cell.value), {
           addSuffix: true,
-        })
+        }),
       );
       return <TextCell value={time} />;
     },

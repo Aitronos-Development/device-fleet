@@ -37,8 +37,7 @@ const emptyStateDetails: Record<
   "invalid-cve": {
     graphicName: "empty-search-exclamation",
     header: "That vulnerability (CVE) is not valid",
-    info:
-      'Try updating your search to use CVE format: "CVE-YYYY-<4 or more digits>"',
+    info: 'Try updating your search to use CVE format: "CVE-YYYY-<4 or more digits>"',
   },
   "unknown-cve": {
     graphicName: "empty-search-question",

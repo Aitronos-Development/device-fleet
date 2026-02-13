@@ -51,7 +51,7 @@ describe("formatAlreadyAvailableInstallMessage", () => {
     expect(container.textContent).toContain("Couldn't add.");
     expect(container.textContent).toContain("MyApp");
     expect(container.textContent).toContain(
-      "already has an installer available"
+      "already has an installer available",
     );
     expect(container.textContent).toContain("Marketing");
   });

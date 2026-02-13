@@ -59,11 +59,10 @@ const EntraConditionalAccessModal = ({
     }
     setIsUpdating(true);
     try {
-      const {
-        microsoft_authentication_url: msAuthURL,
-      } = await conditionalAccessAPI.triggerMicrosoftConditionalAccess(
-        formData[MSETID]
-      );
+      const { microsoft_authentication_url: msAuthURL } =
+        await conditionalAccessAPI.triggerMicrosoftConditionalAccess(
+          formData[MSETID],
+        );
       window.open(msAuthURL);
       setIsUpdating(false);
       // Close modal and show banner on main page
@@ -71,7 +70,7 @@ const EntraConditionalAccessModal = ({
     } catch (e) {
       renderFlash(
         "error",
-        "Could not update conditional access integration settings."
+        "Could not update conditional access integration settings.",
       );
       setIsUpdating(false);
     }

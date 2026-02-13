@@ -52,7 +52,7 @@ interface ITeamTableData extends ITeam {
 // NOTE: cellProps come from react-table
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 const generateTableHeaders = (
-  actionSelectHandler: (value: string, team: ITeam) => void
+  actionSelectHandler: (value: string, team: ITeam) => void,
 ): IDataColumn[] => {
   return [
     {
@@ -70,8 +70,8 @@ const generateTableHeaders = (
     },
     // TODO: need to add this info to API
     {
-      title: "Hosts",
-      Header: "Hosts",
+      title: "Devices",
+      Header: "Devices",
       disableSortBy: true,
       accessor: "host_count",
       Cell: (cellProps: ICellProps) => (

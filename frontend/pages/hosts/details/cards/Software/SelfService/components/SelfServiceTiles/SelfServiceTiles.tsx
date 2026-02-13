@@ -21,7 +21,7 @@ interface SelfServiceTilesProps {
   contactUrl: string;
   onClickInstallAction: (
     softwareId: number,
-    isSoftwarePackage?: boolean
+    isSoftwarePackage?: boolean,
   ) => void;
   isEmptySearch?: boolean;
   isFetching?: boolean;
@@ -72,7 +72,7 @@ const SelfServiceTiles = ({
                   isMobileView
                   value={getDisplayedSoftwareName(
                     software.name,
-                    software.display_name
+                    software.display_name,
                   )}
                 />
               </div>
@@ -87,7 +87,7 @@ const SelfServiceTiles = ({
             onActionClick={() =>
               onClickInstallAction(
                 software.id,
-                SCRIPT_PACKAGE_SOURCES.includes(software.source)
+                SCRIPT_PACKAGE_SOURCES.includes(software.source),
               )
             }
           />

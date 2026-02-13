@@ -13,7 +13,7 @@ interface ITotalHostsProps {
   currentTeamId?: number;
 }
 
-const TOOLTIP_TEXT = "Total number of hosts.";
+const TOOLTIP_TEXT = "Total number of devices.";
 
 const TotalHosts = ({
   totalCount,
@@ -33,7 +33,7 @@ const TotalHosts = ({
     <HostCountCard
       iconName="total-hosts"
       count={totalCount || 0}
-      title="Total hosts"
+      title="Total devices"
       tooltip={TOOLTIP_TEXT}
       path={path}
       className={baseClass}

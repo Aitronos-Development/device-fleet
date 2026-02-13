@@ -10,5 +10,5 @@ ace.define(
 
     var dom = acequire("../lib/dom");
     dom.importCssString(exports.cssText, exports.cssClass);
-  }
+  },
 );

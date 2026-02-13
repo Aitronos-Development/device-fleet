@@ -8,7 +8,7 @@ const baseClass = "software-instructions-modal";
 
 const getOpenSoftwareInstructions = (
   softwareName: string,
-  softwareSource: string
+  softwareSource: string,
 ): ReactNode => {
   if (softwareSource === "apps")
     return (

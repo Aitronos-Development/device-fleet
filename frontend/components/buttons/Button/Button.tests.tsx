@@ -10,7 +10,7 @@ describe("Button component", () => {
   it("applies correct class names", () => {
     const { container } = render(<Button disabled>Test</Button>);
     expect(container.firstChild).toHaveClass(
-      "button button--default button--disabled"
+      "button button--default button--disabled",
     );
   });
   it("calls onClick when clicked", () => {
@@ -30,7 +30,7 @@ describe("Button component", () => {
     render(
       <Button onClick={handleClick} disabled>
         Disabled
-      </Button>
+      </Button>,
     );
     fireEvent.click(screen.getByText("Disabled"));
     expect(handleClick).not.toHaveBeenCalled();
@@ -42,7 +42,7 @@ describe("Button component", () => {
   });
   it("applies custom className", () => {
     const { container } = render(
-      <Button className="custom-class">Custom</Button>
+      <Button className="custom-class">Custom</Button>,
     );
     expect(container.firstChild).toHaveClass("custom-class");
   });

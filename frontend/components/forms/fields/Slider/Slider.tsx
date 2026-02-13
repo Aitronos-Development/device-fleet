@@ -19,14 +19,8 @@ interface ISliderProps {
 const baseClass = "fleet-slider";
 
 const Slider = (props: ISliderProps): JSX.Element => {
-  const {
-    onChange,
-    value,
-    inactiveText,
-    activeText,
-    autoFocus,
-    disabled,
-  } = props;
+  const { onChange, value, inactiveText, activeText, autoFocus, disabled } =
+    props;
 
   const sliderRef = useRef<HTMLButtonElement>(null);
 

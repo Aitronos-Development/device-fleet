@@ -14,7 +14,7 @@ describe("SoftwareDetailsModal", () => {
   it("renders details including hash, vulnerabilities, and paths", () => {
     const mockSoftware = createMockHostSoftware();
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
 
     // Modal title
@@ -60,7 +60,7 @@ describe("SoftwareDetailsModal", () => {
       ],
     });
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
 
     expect(screen.queryByText("Hash:")).not.toBeInTheDocument();
@@ -70,7 +70,7 @@ describe("SoftwareDetailsModal", () => {
   it("renders only software type if there are no installed versions", () => {
     const mockSoftware = createMockHostSoftware({ installed_versions: [] });
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
     expect(screen.getByText("Type")).toBeVisible();
     expect(screen.getByText("Application (macOS)")).toBeVisible();
@@ -104,7 +104,7 @@ describe("SoftwareDetailsModal", () => {
     });
 
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
 
     // File paths
@@ -137,7 +137,7 @@ describe("SoftwareDetailsModal", () => {
     });
 
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
 
     expect(screen.getByText("Last opened")).toBeVisible();
@@ -159,7 +159,7 @@ describe("SoftwareDetailsModal", () => {
     });
 
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
 
     expect(screen.queryByText("Last opened")).not.toBeInTheDocument();
@@ -180,7 +180,7 @@ describe("SoftwareDetailsModal", () => {
       ],
     });
     render(
-      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />
+      <InventoryVersionsModal hostSoftware={mockSoftware} onExit={jest.fn()} />,
     );
     // dateAgo(now) should return something like "just now" or "1 minute ago"
     // but definitely not "Never" or "Not supported"

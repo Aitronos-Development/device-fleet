@@ -80,13 +80,12 @@ const SaveNewPolicyModal = ({
   } = useContext(PolicyContext);
 
   const [errors, setErrors] = useState<{ [key: string]: string }>(
-    backendValidators
+    backendValidators,
   );
 
   const [selectedTargetType, setSelectedTargetType] = useState("All hosts");
-  const [selectedCustomTarget, setSelectedCustomTarget] = useState(
-    "labelsIncludeAny"
-  );
+  const [selectedCustomTarget, setSelectedCustomTarget] =
+    useState("labelsIncludeAny");
   const [selectedLabels, setSelectedLabels] = useState({});
 
   const onSelectLabel = ({
@@ -130,9 +129,8 @@ const SaveNewPolicyModal = ({
       .join(",") as CommaSeparatedPlatformString;
     setLastEditedQueryPlatform(newPlatformString);
 
-    const { valid: validName, errors: newErrors } = validatePolicyName(
-      lastEditedQueryName
-    );
+    const { valid: validName, errors: newErrors } =
+      validatePolicyName(lastEditedQueryName);
     setErrors({
       ...errors,
       ...newErrors,
@@ -219,7 +217,7 @@ const SaveNewPolicyModal = ({
         </>
       );
     },
-    [isFetchingAutofillDescription, isFetchingAutofillResolution, disableForm]
+    [isFetchingAutofillDescription, isFetchingAutofillResolution, disableForm],
   );
 
   const renderAutofillLabel = useCallback(
@@ -235,7 +233,7 @@ const SaveNewPolicyModal = ({
         </div>
       );
     },
-    [renderAutofillButton]
+    [renderAutofillButton],
   );
 
   return (

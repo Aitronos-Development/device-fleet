@@ -60,7 +60,7 @@ const EmptyComponent = React.memo(
         platform={platform}
       />
     );
-  }
+  },
 );
 
 interface IHostSoftwareTableProps {
@@ -114,7 +114,7 @@ const HostSoftwareTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [page, searchQuery, sortDirection, sortHeader]
+    [page, searchQuery, sortDirection, sortHeader],
   );
 
   const generateNewQueryParams = useCallback(
@@ -128,7 +128,7 @@ const HostSoftwareTable = ({
       };
       return newQueryParam;
     },
-    [vulnFilters]
+    [vulnFilters],
   );
 
   // TODO: Look into useDebounceCallback with dependencies
@@ -152,7 +152,7 @@ const HostSoftwareTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, pagePath, generateNewQueryParams, router]
+    [determineQueryParamChange, pagePath, generateNewQueryParams, router],
   );
 
   const count = data?.count || data?.software?.length || 0;
@@ -178,7 +178,7 @@ const HostSoftwareTable = ({
     (row: IHostSoftwareRowProps) => {
       onShowInventoryVersions(row.original);
     },
-    [onShowInventoryVersions]
+    [onShowInventoryVersions],
   );
 
   const renderCustomFiltersButton = () => {

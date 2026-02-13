@@ -46,7 +46,7 @@ export default {
     orderDirection = ORDER_DIRECTION,
     startDate = "",
     endDate = "",
-    typeFilter = [""]
+    typeFilter = [""],
   ): Promise<IActivitiesResponse> => {
     const { ACTIVITIES } = endpoints;
 
@@ -71,7 +71,7 @@ export default {
   getHostPastActivities: (
     id: number,
     page = DEFAULT_PAGE,
-    perPage = DEFAULT_PAGE_SIZE
+    perPage = DEFAULT_PAGE_SIZE,
   ): Promise<IHostPastActivitiesResponse> => {
     const { HOST_PAST_ACTIVITIES } = endpoints;
 
@@ -90,7 +90,7 @@ export default {
   getHostUpcomingActivities: (
     id: number,
     page = DEFAULT_PAGE,
-    perPage = DEFAULT_PAGE_SIZE
+    perPage = DEFAULT_PAGE_SIZE,
   ): Promise<IHostUpcomingActivitiesResponse> => {
     const { HOST_UPCOMING_ACTIVITIES } = endpoints;
 

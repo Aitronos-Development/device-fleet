@@ -94,13 +94,13 @@ const SoftwareFiltersModal = ({
   isPremiumTier,
 }: ISoftwareFiltersModalProps) => {
   const [vulnSoftwareFilterEnabled, setVulnSoftwareFilterEnabled] = useState(
-    vulnFilters.vulnerable || false
+    vulnFilters.vulnerable || false,
   );
   const [severity, setSeverity] = useState(
     findOptionBySeverityRange(
       vulnFilters.minCvssScore,
-      vulnFilters.maxCvssScore
-    )
+      vulnFilters.maxCvssScore,
+    ),
   );
   // Unified form state:
   const [formData, setFormData] = useState<IFormData>({
@@ -111,10 +111,10 @@ const SoftwareFiltersModal = ({
   const [formErrors, setFormErrors] = useState<IFormErrors>({});
 
   const onChangeSeverity = (
-    selectedSeverity: SingleValue<CustomOptionType>
+    selectedSeverity: SingleValue<CustomOptionType>,
   ) => {
     const selectedOption = SEVERITY_DROPDOWN_OPTIONS.find(
-      (option) => option.value === selectedSeverity?.value
+      (option) => option.value === selectedSeverity?.value,
     );
     if (selectedOption) {
       setSeverity(selectedOption);
@@ -147,7 +147,8 @@ const SoftwareFiltersModal = ({
     const maxVal = parseFloat(newFormData.maxScore || "10");
 
     const selectedOption = SEVERITY_DROPDOWN_OPTIONS.find(
-      (option) => option.minSeverity === minVal && option.maxSeverity === maxVal
+      (option) =>
+        option.minSeverity === minVal && option.maxSeverity === maxVal,
     );
     setSeverity(selectedOption || CUSTOM_SEVERITY_OPTION);
     setFormData(newFormData);

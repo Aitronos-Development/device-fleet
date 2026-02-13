@@ -12,26 +12,26 @@ describe("Breadcrumbs - component", () => {
 
   it("renders page 1 Button as active when the current page prop is 1", () => {
     const { container } = render(
-      <Breadcrumbs onSetPage={noop} pageProgress={1} currentPage={1} />
+      <Breadcrumbs onSetPage={noop} pageProgress={1} currentPage={1} />,
     );
     const page1Btn = container.querySelector(
-      "button.registration-breadcrumbs__page--1"
+      "button.registration-breadcrumbs__page--1",
     );
     const page2Btn = container.querySelector(
-      "button.registration-breadcrumbs__page--2"
+      "button.registration-breadcrumbs__page--2",
     );
     const page3Btn = container.querySelector(
-      "button.registration-breadcrumbs__page--3"
+      "button.registration-breadcrumbs__page--3",
     );
 
     expect(page1Btn?.className).toContain(
-      "registration-breadcrumbs__page--active"
+      "registration-breadcrumbs__page--active",
     );
     expect(page2Btn?.className).not.toContain(
-      "registration-breadcrumbs__page--active"
+      "registration-breadcrumbs__page--active",
     );
     expect(page3Btn?.className).not.toContain(
-      "registration-breadcrumbs__page--active"
+      "registration-breadcrumbs__page--active",
     );
   });
 });

@@ -40,8 +40,8 @@ interface IDataColumn {
 const generateTableHeaders = (): IDataColumn[] => {
   const tableHeaders: IDataColumn[] = [
     {
-      title: "Host",
-      Header: "Host",
+      title: "Device",
+      Header: "Device",
       disableSortBy: true,
       accessor: "host_display_name",
       Cell: (cellProps: ICellProps): JSX.Element => (
@@ -73,10 +73,10 @@ const generateTableHeaders = (): IDataColumn[] => {
 const generateDataSet = memoize(
   (policyHostsErrorsList: ICampaignError[] = []): ICampaignError[] => {
     policyHostsErrorsList = policyHostsErrorsList.sort((a, b) =>
-      sortUtils.caseInsensitiveAsc(a.host_display_name, b.host_display_name)
+      sortUtils.caseInsensitiveAsc(a.host_display_name, b.host_display_name),
     );
     return policyHostsErrorsList;
-  }
+  },
 );
 
 export { generateTableHeaders, generateDataSet };

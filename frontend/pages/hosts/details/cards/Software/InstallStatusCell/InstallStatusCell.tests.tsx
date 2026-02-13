@@ -35,11 +35,11 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /installed/i })
+      screen.getByRole("button", { name: /installed/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("success-icon")).toBeInTheDocument();
 
@@ -47,12 +47,12 @@ describe("InstallStatusCell - component", () => {
 
     // No tooltip on install status
     expect(
-      screen.queryByText(/Software was installed/i)
+      screen.queryByText(/Software was installed/i),
     ).not.toBeInTheDocument();
 
     // There SHOULD be a button with this label
     expect(
-      screen.queryByRole("button", { name: /installed/i })
+      screen.queryByRole("button", { name: /installed/i }),
     ).toBeInTheDocument();
   });
 
@@ -74,18 +74,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /installed/i })
+      screen.getByRole("button", { name: /installed/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("success-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Installed"));
 
     expect(
-      screen.queryByRole("button", { name: /installed/i })
+      screen.queryByRole("button", { name: /installed/i }),
     ).toBeInTheDocument();
   });
 
@@ -106,7 +106,7 @@ describe("InstallStatusCell - component", () => {
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
         isHostOnline
-      />
+      />,
     );
 
     expect(screen.getByText("Installing...")).toBeInTheDocument();
@@ -115,13 +115,13 @@ describe("InstallStatusCell - component", () => {
     await user.hover(screen.getByText("Installing..."));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet is installing software./i)
+        screen.getByText(/Fleet is installing software./i),
       ).toBeInTheDocument();
     });
 
     // Not clickable
     expect(
-      screen.queryByRole("button", { name: /installing/i })
+      screen.queryByRole("button", { name: /installing/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -144,7 +144,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: /ran/i })).toBeInTheDocument();
@@ -175,18 +175,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /Install \(pending\)/i })
+      screen.getByRole("button", { name: /Install \(pending\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("pending-outline-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Install (pending)"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet will install software/i)
+        screen.getByText(/Fleet will install software/i),
       ).toBeInTheDocument();
     });
   });
@@ -214,7 +214,7 @@ describe("InstallStatusCell - component", () => {
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
         isHostOnline
-      />
+      />,
     );
 
     expect(screen.getByText("Running...")).toBeInTheDocument();
@@ -223,13 +223,13 @@ describe("InstallStatusCell - component", () => {
     await user.hover(screen.getByText("Running..."));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet is running the script./i)
+        screen.getByText(/Fleet is running the script./i),
       ).toBeInTheDocument();
     });
 
     // Not clickable
     expect(
-      screen.queryByRole("button", { name: /running/i })
+      screen.queryByRole("button", { name: /running/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -250,18 +250,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /Run \(pending\)/i })
+      screen.getByRole("button", { name: /Run \(pending\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("pending-outline-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Run (pending)"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet will run the script/i)
+        screen.getByText(/Fleet will run the script/i),
       ).toBeInTheDocument();
     });
   });
@@ -288,7 +288,7 @@ describe("InstallStatusCell - component", () => {
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
         isHostOnline
-      />
+      />,
     );
 
     expect(screen.getByText("Uninstalling...")).toBeInTheDocument();
@@ -297,13 +297,13 @@ describe("InstallStatusCell - component", () => {
     await user.hover(screen.getByText("Uninstalling..."));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet is uninstalling software./i)
+        screen.getByText(/Fleet is uninstalling software./i),
       ).toBeInTheDocument();
     });
 
     // Not clickable
     expect(
-      screen.queryByRole("button", { name: /uninstalling/i })
+      screen.queryByRole("button", { name: /uninstalling/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -328,18 +328,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /Uninstall \(pending\)/i })
+      screen.getByRole("button", { name: /Uninstall \(pending\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("pending-outline-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Uninstall (pending)"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet will uninstall software/i)
+        screen.getByText(/Fleet will uninstall software/i),
       ).toBeInTheDocument();
     });
   });
@@ -360,7 +360,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: /Failed/i })).toBeInTheDocument();
@@ -369,7 +369,7 @@ describe("InstallStatusCell - component", () => {
     await user.hover(screen.getByText("Failed"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Software failed to install/i)
+        screen.getByText(/Software failed to install/i),
       ).toBeInTheDocument();
     });
   });
@@ -391,7 +391,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: /Failed/i })).toBeInTheDocument();
@@ -424,18 +424,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /Failed \(uninstall\)/i })
+      screen.getByRole("button", { name: /Failed \(uninstall\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("error-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Failed (uninstall)"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Software failed to uninstall/i)
+        screen.getByText(/Software failed to uninstall/i),
       ).toBeInTheDocument();
     });
   });
@@ -456,10 +456,10 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
     expect(
-      screen.getByRole("button", { name: /Update available/i })
+      screen.getByRole("button", { name: /Update available/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("error-outline-icon")).toBeInTheDocument();
 
@@ -491,10 +491,10 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
     expect(
-      screen.getByRole("button", { name: /Update available/i })
+      screen.getByRole("button", { name: /Update available/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("error-outline-icon")).toBeInTheDocument();
 
@@ -520,17 +520,17 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
     expect(
-      screen.getByRole("button", { name: /Update available/i })
+      screen.getByRole("button", { name: /Update available/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("error-outline-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Update available"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet can update software/i)
+        screen.getByText(/Fleet can update software/i),
       ).toBeInTheDocument();
     });
   });
@@ -552,19 +552,19 @@ describe("InstallStatusCell - component", () => {
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
         isHostOnline
-      />
+      />,
     );
 
     await user.hover(screen.getByText("Updating..."));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet is updating software./i)
+        screen.getByText(/Fleet is updating software./i),
       ).toBeInTheDocument();
     });
 
     // Not clickable
     expect(
-      screen.queryByRole("button", { name: /updating/i })
+      screen.queryByRole("button", { name: /updating/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -584,18 +584,18 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(
-      screen.getByRole("button", { name: /Update \(pending\)/i })
+      screen.getByRole("button", { name: /Update \(pending\)/i }),
     ).toBeInTheDocument();
     expect(screen.getByTestId("pending-outline-icon")).toBeInTheDocument();
 
     await user.hover(screen.getByText("Update (pending)"));
     await waitFor(() => {
       expect(
-        screen.getByText(/Fleet will update software/i)
+        screen.getByText(/Fleet will update software/i),
       ).toBeInTheDocument();
     });
   });
@@ -616,7 +616,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("---")).toBeInTheDocument();
@@ -647,7 +647,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("---")).toBeInTheDocument();
@@ -679,7 +679,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("---")).toBeInTheDocument();
@@ -714,7 +714,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getAllByText("---").length).toBeGreaterThan(0);
@@ -745,7 +745,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getAllByText("---").length).toBeGreaterThan(0);
@@ -753,7 +753,7 @@ describe("InstallStatusCell - component", () => {
     await user.hover(screen.getAllByText("---")[0]);
     await waitFor(() => {
       expect(
-        screen.getByText(/App store app can be installed/i)
+        screen.getByText(/App store app can be installed/i),
       ).toBeInTheDocument();
     });
 
@@ -778,7 +778,7 @@ describe("InstallStatusCell - component", () => {
         onShowScriptDetails={noop}
         onShowUninstallDetails={noop}
         onShowVPPInstallDetails={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("---")).toBeInTheDocument();

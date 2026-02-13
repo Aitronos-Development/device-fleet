@@ -286,7 +286,7 @@ export interface IGitOpsModeConfig {
 
 /** Check if Okta conditional access is configured (all 4 fields must be present) */
 export const isOktaConditionalAccessConfigured = (
-  config: IConfig | null | undefined
+  config: IConfig | null | undefined,
 ): boolean => {
   const ca = config?.conditional_access;
   return !!(
@@ -299,7 +299,7 @@ export const isOktaConditionalAccessConfigured = (
 
 /** Check if Microsoft Entra conditional access is configured */
 export const isEntraConditionalAccessConfigured = (
-  config: IConfig | null | undefined
+  config: IConfig | null | undefined,
 ): boolean => {
   return (
     config?.conditional_access?.microsoft_entra_connection_configured ?? false
@@ -308,7 +308,7 @@ export const isEntraConditionalAccessConfigured = (
 
 /** Check if any conditional access provider is configured (Okta or Entra) */
 export const isConditionalAccessConfigured = (
-  config: IConfig | null | undefined
+  config: IConfig | null | undefined,
 ): boolean => {
   return (
     isOktaConditionalAccessConfigured(config) ||

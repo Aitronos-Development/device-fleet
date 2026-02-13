@@ -56,7 +56,7 @@ interface IRowProps extends Row {
 type ITableConfigGenerator = (router: InjectedRouter, teamId?: number) => void;
 
 const isSoftwareTitles = (
-  data?: ISoftwareTitlesResponse | ISoftwareVersionsResponse
+  data?: ISoftwareTitlesResponse | ISoftwareVersionsResponse,
 ): data is ISoftwareTitlesResponse => {
   if (!data) return false;
   return (data as ISoftwareTitlesResponse).software_titles !== undefined;
@@ -121,7 +121,7 @@ const SoftwareTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [currentPage, orderDirection, orderKey, query]
+    [currentPage, orderDirection, orderKey, query],
   );
 
   const generateNewQueryParams = useCallback(
@@ -146,7 +146,7 @@ const SoftwareTable = ({
 
       return newQueryParam;
     },
-    [softwareFilter, teamId, vulnFilters]
+    [softwareFilter, teamId, vulnFilters],
   );
 
   // NOTE: this is called once on initial render and every time the query changes
@@ -167,7 +167,7 @@ const SoftwareTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, generateNewQueryParams, router, currentPath]
+    [determineQueryParamChange, generateNewQueryParams, router, currentPath],
   );
 
   let tableData: ISoftwareTitle[] | ISoftwareVersion[] | undefined;
@@ -218,12 +218,12 @@ const SoftwareTable = ({
           : PATHS.SOFTWARE_VERSIONS,
         routeTemplate: "",
         queryParams,
-      })
+      }),
     );
   };
 
   const handleCustomFilterDropdownChange = (
-    value: ISoftwareDropdownFilterVal
+    value: ISoftwareDropdownFilterVal,
   ) => {
     const queryParams: ISoftwareApiParams = {
       query,
@@ -240,7 +240,7 @@ const SoftwareTable = ({
         pathPrefix: currentPath,
         routeTemplate: "",
         queryParams: convertParamsToSnakeCase(queryParams),
-      })
+      }),
     );
   };
 
@@ -297,7 +297,7 @@ const SoftwareTable = ({
           onChange={(newValue: SingleValue<CustomOptionType>) =>
             newValue &&
             handleCustomFilterDropdownChange(
-              newValue.value as ISoftwareDropdownFilterVal
+              newValue.value as ISoftwareDropdownFilterVal,
             )
           }
           variant="table-filter"

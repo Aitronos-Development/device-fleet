@@ -4,7 +4,8 @@ import { render, screen } from "@testing-library/react";
 
 import ReportUpdatedCell from "./ReportUpdatedCell";
 
-const HUMAN_READABLE_DATETIME_REGEX = /\d{1,2}\/\d{1,2}\/\d\d\d\d, \d{1,2}:\d{1,2}:\d{1,2}\s(A|P)M/;
+const HUMAN_READABLE_DATETIME_REGEX =
+  /\d{1,2}\/\d{1,2}\/\d\d\d\d, \d{1,2}:\d{1,2}:\d{1,2}\s(A|P)M/;
 
 describe("ReportUpdatedCell component", () => {
   it("Renders 'No report' with tooltip and no link when run on an interval with discard data and automations enabled", () => {
@@ -16,7 +17,7 @@ describe("ReportUpdatedCell component", () => {
         should_link_to_hqr={false}
         queryId={3}
         hostId={4}
-      />
+      />,
     );
 
     expect(screen.getByText(/No report/)).toBeInTheDocument();
@@ -33,12 +34,12 @@ describe("ReportUpdatedCell component", () => {
         should_link_to_hqr
         queryId={3}
         hostId={4}
-      />
+      />,
     );
 
     expect(screen.getByText(/---/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Fleet is collecting query results\./)
+      screen.getByText(/Fleet is collecting query results\./),
     ).toBeInTheDocument();
     expect(screen.getByText(/Check back later./)).toBeInTheDocument();
   });
@@ -55,7 +56,7 @@ describe("ReportUpdatedCell component", () => {
         last_fetched={tenDaysAgo.toISOString()}
         queryId={3}
         hostId={4}
-      />
+      />,
     );
 
     expect(screen.getByText(HUMAN_READABLE_DATETIME_REGEX)).toBeInTheDocument();
@@ -74,7 +75,7 @@ describe("ReportUpdatedCell component", () => {
         last_fetched={tenDaysAgo.toISOString()}
         queryId={3}
         hostId={4}
-      />
+      />,
     );
 
     expect(screen.getByText(HUMAN_READABLE_DATETIME_REGEX)).toBeInTheDocument();

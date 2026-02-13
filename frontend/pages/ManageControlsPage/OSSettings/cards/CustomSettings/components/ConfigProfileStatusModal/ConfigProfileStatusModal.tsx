@@ -32,7 +32,7 @@ const ConfigProfileStatusModal = ({
     () => configProfileAPI.getConfigProfileStatus(uuid),
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   const renderContent = () => {

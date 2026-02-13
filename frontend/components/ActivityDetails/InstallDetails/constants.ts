@@ -35,7 +35,7 @@ const INSTALL_DETAILS_STATUS_PREDICATES: Record<
 } as const;
 
 export const getInstallDetailsStatusPredicate = (
-  status: string | undefined
+  status: string | undefined,
 ) => {
   if (!status) {
     return INSTALL_DETAILS_STATUS_PREDICATES.pending_install;
@@ -57,14 +57,12 @@ export const SCRIPT_DETAILS_STATUS_ICONS: Record<
   failed_install: "error",
 } as const;
 
-const SCRIPT_DETAILS_STATUS_PREDICATES: Record<
-  SoftwareInstallStatus,
-  string
-> = {
-  pending_install: "is running or will run",
-  installed: "ran",
-  failed_install: "failed to run",
-} as const;
+const SCRIPT_DETAILS_STATUS_PREDICATES: Record<SoftwareInstallStatus, string> =
+  {
+    pending_install: "is running or will run",
+    installed: "ran",
+    failed_install: "failed to run",
+  } as const;
 
 export const getScriptDetailsStatusPredicate = (status: string | undefined) => {
   if (!status) {

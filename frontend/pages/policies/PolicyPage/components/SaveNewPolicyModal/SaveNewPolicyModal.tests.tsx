@@ -137,7 +137,7 @@ describe("SaveNewPolicyModal", () => {
       render(
         <PolicyProvider>
           <SaveNewPolicyModal {...props} />
-        </PolicyProvider>
+        </PolicyProvider>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("All hosts")).toBeInTheDocument();
@@ -163,7 +163,7 @@ describe("SaveNewPolicyModal", () => {
       render(
         <PolicyProvider>
           <SaveNewPolicyModal {...props} />
-        </PolicyProvider>
+        </PolicyProvider>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("All hosts")).toBeInTheDocument();
@@ -203,7 +203,7 @@ describe("SaveNewPolicyModal", () => {
       render(
         <PolicyProvider>
           <SaveNewPolicyModal {...props} />
-        </PolicyProvider>
+        </PolicyProvider>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("All hosts")).toBeInTheDocument();
@@ -212,7 +212,7 @@ describe("SaveNewPolicyModal", () => {
       // Set a name.
       await userEvent.type(
         screen.getByLabelText("Name"),
-        "A Brand New Policy!"
+        "A Brand New Policy!",
       );
 
       await userEvent.click(screen.getByRole("button", { name: "Save" }));

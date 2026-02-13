@@ -9,7 +9,7 @@ import LocationModal from "./LocationModal";
 
 const makeIosDetails = (
   status: HostMdmDeviceStatusUIState,
-  isIosOrIpadosHost = true
+  isIosOrIpadosHost = true,
 ) => ({
   isIosOrIpadosHost,
   hostMdmDeviceStatus: status,
@@ -22,7 +22,7 @@ describe("LocationModal", () => {
         hostGeolocation={createMockHostGeolocation()}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     // Location name (city, country)
@@ -33,7 +33,7 @@ describe("LocationModal", () => {
     expect(link).toBeVisible();
     expect(link).toHaveAttribute(
       "href",
-      "https://www.google.com/maps?q=-93.2602,44.9844"
+      "https://www.google.com/maps?q=-93.2602,44.9844",
     );
   });
 
@@ -48,7 +48,7 @@ describe("LocationModal", () => {
         detailsUpdatedAt={twoDaysAgo}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(screen.getByText(/Updated 2 days ago/i)).toBeInTheDocument();
@@ -60,13 +60,13 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("unlocked")}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /To view location, Apple requires that iOS hosts are locked \(Lost Mode\) first./i
-      )
+        /To view location, Apple requires that iOS hosts are locked \(Lost Mode\) first./i,
+      ),
     ).toBeVisible();
   });
 
@@ -76,18 +76,18 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("locking")}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /To view location, Apple requires that iOS hosts are locked \(Lost Mode\) first./i
-      )
+        /To view location, Apple requires that iOS hosts are locked \(Lost Mode\) first./i,
+      ),
     ).toBeVisible();
     expect(
       screen.getByText(
-        /Lock is pending. Host will lock the next time it checks in to Fleet./i
-      )
+        /Lock is pending. Host will lock the next time it checks in to Fleet./i,
+      ),
     ).toBeVisible();
   });
 
@@ -97,13 +97,13 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("locating")}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        /Location is pending. Host will share location the next time it checks in to Fleet./i
-      )
+        /Location is pending. Host will share location the next time it checks in to Fleet./i,
+      ),
     ).toBeVisible();
   });
 
@@ -114,7 +114,7 @@ describe("LocationModal", () => {
         // no hostGeolocation => hasLocation = false
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(screen.getByText(/Location not available/i)).toBeVisible();
@@ -129,7 +129,7 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("wiping")}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     // With a location present, the standard content renders
@@ -142,7 +142,7 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("unlocked")}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Cancel" })).toBeVisible();
@@ -157,7 +157,7 @@ describe("LocationModal", () => {
         iosOrIpadosDetails={makeIosDetails("unlocked", false)}
         onExit={noop}
         onClickLock={noop}
-      />
+      />,
     );
 
     expect(screen.getByRole("button", { name: "Done" })).toBeVisible();

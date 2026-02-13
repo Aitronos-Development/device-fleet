@@ -92,7 +92,7 @@ interface IInstallIconWithTooltipProps {
 
 const getInstallIconType = (
   isSelfService: boolean,
-  automaticInstallPoliciesCount = 0
+  automaticInstallPoliciesCount = 0,
 ): InstallType => {
   if (automaticInstallPoliciesCount > 0) {
     return isSelfService ? "automaticSelfService" : "automatic";
@@ -109,7 +109,7 @@ const InstallIconWithTooltip = ({
 }: IInstallIconWithTooltipProps) => {
   const iconType = getInstallIconType(
     isSelfService,
-    automaticInstallPoliciesCount
+    automaticInstallPoliciesCount,
   );
 
   // Don't show installer icon on host software library page

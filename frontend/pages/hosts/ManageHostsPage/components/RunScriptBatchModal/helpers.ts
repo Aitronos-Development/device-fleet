@@ -20,7 +20,7 @@ interface IValidation {
   name: string;
   isValid: (
     formData: IRunScriptBatchModalScheduleFormData,
-    validations?: IRunScriptBatchModalFormValidation
+    validations?: IRunScriptBatchModalFormValidation,
   ) => boolean;
   message?: IValidationMessage;
 }
@@ -57,7 +57,7 @@ const FORM_VALIDATIONS: IFormValidations = {
           const parsedDate = parse(
             `${formData.date} 23:59:59.999`,
             "yyyy-MM-dd HH:mm:ss.SSS",
-            now
+            now,
           );
           return parsedDate >= now;
         },
@@ -82,7 +82,7 @@ const FORM_VALIDATIONS: IFormValidations = {
           const parsedDate = parse(
             `1982-10-13 ${formData.time}`,
             "yyyy-MM-dd HH:mm",
-            new Date()
+            new Date(),
           );
           return isValid(parsedDate);
         },
@@ -92,7 +92,7 @@ const FORM_VALIDATIONS: IFormValidations = {
         name: "notInPast",
         isValid: (
           formData: IRunScriptBatchModalScheduleFormData,
-          validations?: IRunScriptBatchModalFormValidation
+          validations?: IRunScriptBatchModalFormValidation,
         ) => {
           if (validations?.date?.isValid === false) {
             return true; // If date is invalid, skip time validation
@@ -100,7 +100,7 @@ const FORM_VALIDATIONS: IFormValidations = {
           const parsedDate = parse(
             `${formData.date} ${formData.time}:00.000Z`,
             "yyyy-MM-dd HH:mm:ss.SSSX",
-            new Date()
+            new Date(),
           );
           return parsedDate >= new Date();
         },
@@ -112,7 +112,7 @@ const FORM_VALIDATIONS: IFormValidations = {
 
 const getErrorMessage = (
   formData: IRunScriptBatchModalScheduleFormData,
-  message?: IValidationMessage
+  message?: IValidationMessage,
 ) => {
   if (message === undefined || typeof message === "string") {
     return message;
@@ -122,7 +122,7 @@ const getErrorMessage = (
 
 export const validateFormData = (
   formData: IRunScriptBatchModalScheduleFormData,
-  runMode: "run_now" | "schedule" = "run_now"
+  runMode: "run_now" | "schedule" = "run_now",
 ) => {
   const formValidation: IRunScriptBatchModalFormValidation = {
     isValid: true,
@@ -134,7 +134,7 @@ export const validateFormData = (
   Object.keys(FORM_VALIDATIONS).forEach((key) => {
     const objKey = key as keyof typeof FORM_VALIDATIONS;
     const failedValidation = FORM_VALIDATIONS[objKey].validations.find(
-      (validation) => !validation.isValid(formData, formValidation)
+      (validation) => !validation.isValid(formData, formValidation),
     );
 
     if (!failedValidation) {

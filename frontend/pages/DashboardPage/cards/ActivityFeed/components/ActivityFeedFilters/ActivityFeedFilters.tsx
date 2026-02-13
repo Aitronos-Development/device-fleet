@@ -25,7 +25,7 @@ const DATE_FILTER_OPTIONS = [
 // Generate type filter options from ActivityType enum, sort them, and add
 // "All types" option at the beginning of the list
 const TYPE_FILTER_OPTIONS: { label: string; value: string }[] = Object.values(
-  ActivityType
+  ActivityType,
 )
   .map((type) => ({
     label: ACTIVITY_TYPE_TO_FILTER_LABEL[type],

@@ -22,7 +22,7 @@ describe("ConfigProfileStatusModal", () => {
         teamId={0}
         onClickResend={noop}
         onExit={noop}
-      />
+      />,
     );
 
     await screen.findByText("Verified");
@@ -56,7 +56,7 @@ describe("ConfigProfileStatusModal", () => {
         teamId={0}
         onClickResend={noop}
         onExit={noop}
-      />
+      />,
     );
 
     await screen.findByText("Verified");

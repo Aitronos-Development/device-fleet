@@ -72,7 +72,7 @@ const RunScriptModal = ({
         default: // do nothing
       }
     },
-    [onClickRun, onClickRunDetails]
+    [onClickRun, onClickRunDetails],
   );
 
   const onQueryChange = useCallback(({ pageIndex }: ITableQueryData) => {
@@ -88,7 +88,7 @@ const RunScriptModal = ({
         // Intentionally left disabled actions in as a safeguard
         !!config?.server_settings?.scripts_disabled,
         onClickViewScript,
-        onSelectAction
+        onSelectAction,
       ),
     [
       currentUser,
@@ -96,7 +96,7 @@ const RunScriptModal = ({
       config?.server_settings?.scripts_disabled,
       onClickViewScript,
       onSelectAction,
-    ]
+    ],
   );
 
   if (!config) return null;

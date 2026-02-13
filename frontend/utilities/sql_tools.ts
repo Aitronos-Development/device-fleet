@@ -21,13 +21,12 @@ interface IOsqueryTable {
 
 type IPlatformDictionary = Record<string, TableSchemaPlatform[]>;
 
-const platformsByTableDictionary: IPlatformDictionary = (osqueryTablesAvailable as IOsqueryTable[]).reduce(
-  (dictionary: IPlatformDictionary, osqueryTable) => {
-    dictionary[osqueryTable.name] = osqueryTable.platforms;
-    return dictionary;
-  },
-  {}
-);
+const platformsByTableDictionary: IPlatformDictionary = (
+  osqueryTablesAvailable as IOsqueryTable[]
+).reduce((dictionary: IPlatformDictionary, osqueryTable) => {
+  dictionary[osqueryTable.name] = osqueryTable.platforms;
+  return dictionary;
+}, {});
 
 Object.entries(MACADMINS_EXTENSION_TABLES).forEach(([tableName, platforms]) => {
   platformsByTableDictionary[tableName] = platforms;
@@ -41,7 +40,7 @@ const _isNode = (node: unknown): node is IAstNode => {
 const _visit = (
   abstractSyntaxTree: IAstNode,
   callback: (ast: IAstNode, parentKey: string) => void,
-  parentKey = ""
+  parentKey = "",
 ) => {
   if (abstractSyntaxTree) {
     callback(abstractSyntaxTree, parentKey);
@@ -50,7 +49,7 @@ const _visit = (
       const childNode = abstractSyntaxTree[key];
       if (Array.isArray(childNode)) {
         childNode.forEach((grandchildNode) =>
-          _visit(grandchildNode, callback, key)
+          _visit(grandchildNode, callback, key),
         );
       } else if (childNode && _isNode(childNode)) {
         _visit(childNode, callback, key);
@@ -60,7 +59,7 @@ const _visit = (
 };
 
 const filterCompatiblePlatforms = (
-  sqlTables: string[]
+  sqlTables: string[],
 ): QueryablePlatform[] => {
   if (!sqlTables.length) {
     return [...QUERYABLE_PLATFORMS]; // if a query has no tables but is still syntatically valid sql, it is treated as compatible with all platforms
@@ -68,8 +67,8 @@ const filterCompatiblePlatforms = (
 
   const compatiblePlatforms = intersection(
     ...sqlTables.map(
-      (tableName: string) => platformsByTableDictionary[tableName]
-    )
+      (tableName: string) => platformsByTableDictionary[tableName],
+    ),
   );
 
   return QUERYABLE_PLATFORMS.filter((p) => compatiblePlatforms.includes(p));
@@ -77,7 +76,7 @@ const filterCompatiblePlatforms = (
 
 export const parseSqlTables = (
   sqlString: string,
-  includeVirtualTables = false
+  includeVirtualTables = false,
 ): string[] => {
   let results: string[] = [];
 
@@ -163,7 +162,7 @@ export const parseSqlTables = (
 
 export const checkTable = (
   sqlString = "",
-  includeVirtualTables = false
+  includeVirtualTables = false,
 ): { tables: string[] | null; error: Error | null } => {
   let sqlTables: string[] | undefined;
   try {
@@ -176,7 +175,7 @@ export const checkTable = (
     return {
       tables: null,
       error: new Error(
-        "Unexpected error checking table names: sqlTables are undefined"
+        "Unexpected error checking table names: sqlTables are undefined",
       ),
     };
   }
@@ -186,7 +185,7 @@ export const checkTable = (
 
 export const checkPlatformCompatibility = (
   sqlString: string,
-  includeVirtualTables = false
+  includeVirtualTables = false,
 ): { platforms: QueryablePlatform[] | null; error: Error | null } => {
   let sqlTables: string[] | undefined;
   try {
@@ -200,7 +199,7 @@ export const checkPlatformCompatibility = (
     return {
       platforms: null,
       error: new Error(
-        "Unexpected error checking platform compatibility: sqlTables are undefined"
+        "Unexpected error checking platform compatibility: sqlTables are undefined",
       ),
     };
   }

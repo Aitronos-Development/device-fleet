@@ -68,14 +68,14 @@ export const generateSecretErrMsg = (err: unknown) => {
 export type InstallType = "manual" | "automatic";
 
 export const getInstallType = (
-  softwarePackage: ISoftwarePackage
+  softwarePackage: ISoftwarePackage,
 ): InstallType => {
   return softwarePackage.automatic_install_policies ? "automatic" : "manual";
 };
 
 // Used in EditSoftwareModal and PackageForm
 export const getTargetType = (
-  softwareInstaller: ISoftwarePackage | IAppStoreApp
+  softwareInstaller: ISoftwarePackage | IAppStoreApp,
 ) => {
   if (!softwareInstaller) return "All hosts";
 
@@ -87,7 +87,7 @@ export const getTargetType = (
 
 // Used in EditSoftwareModal and PackageForm
 export const getCustomTarget = (
-  softwareInstaller: ISoftwarePackage | IAppStoreApp
+  softwareInstaller: ISoftwarePackage | IAppStoreApp,
 ) => {
   if (!softwareInstaller) return "labelsIncludeAny";
 
@@ -98,7 +98,7 @@ export const getCustomTarget = (
 
 // Used in EditSoftwareModal and PackageForm
 export const generateSelectedLabels = (
-  softwareInstaller: ISoftwarePackage | IAppStoreApp
+  softwareInstaller: ISoftwarePackage | IAppStoreApp,
 ) => {
   if (
     !softwareInstaller ||
@@ -118,7 +118,7 @@ export const generateSelectedLabels = (
         acc[label.name] = true;
         return acc;
       },
-      {}
+      {},
     ) ?? {}
   );
 };
@@ -126,7 +126,7 @@ export const generateSelectedLabels = (
 // Used in FleetAppDetailsForm and PackageForm
 export const generateHelpText = (
   automaticInstall: boolean,
-  customTarget: string
+  customTarget: string,
 ) => {
   if (customTarget === "labelsIncludeAny") {
     return !automaticInstall ? (
@@ -172,7 +172,7 @@ export const CUSTOM_TARGET_OPTIONS: IDropdownOption[] = [
 
 export const getSelfServiceTooltip = (
   isIosOrIpadosApp: boolean,
-  isAndroidPlayStoreApp: boolean
+  isAndroidPlayStoreApp: boolean,
 ) => {
   if (isAndroidPlayStoreApp) {
     return (
@@ -223,7 +223,7 @@ export const getAutoUpdatesTooltip = (startTime: string, endTime: string) => {
 };
 
 export const getAutomaticInstallPoliciesCount = (
-  softwareTitle: ISoftwareTitle | IHostSoftware
+  softwareTitle: ISoftwareTitle | IHostSoftware,
 ): number => {
   const { software_package, app_store_app } = softwareTitle;
   if (software_package) {
@@ -270,7 +270,7 @@ const WELL_KNOWN_SOFTWARE_TITLES: Record<string, string> = {
  * listed in WELL_KNOWN_SOFTWARE_TITLES to more human readable names */
 export const getDisplayedSoftwareName = (
   name?: string | null,
-  display_name?: string | null
+  display_name?: string | null,
 ): string => {
   // 1. End-user custom name always wins.
   if (display_name) {

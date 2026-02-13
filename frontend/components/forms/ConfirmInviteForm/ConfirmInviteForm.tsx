@@ -97,7 +97,7 @@ const ConfirmInviteForm = ({
       }
       handleSubmit(formData);
     },
-    [formData, handleSubmit]
+    [formData, handleSubmit],
   );
 
   return (

@@ -49,7 +49,7 @@ const RenewVppModal = ({
       await mdmAppleAPI.renewVppToken(tokenId, tokenFile);
       renderFlash(
         "success",
-        "Volume Purchasing Program (VPP) integration enabled successfully."
+        "Volume Purchasing Program (VPP) integration enabled successfully.",
       );
       onRenewedToken();
     } catch (e) {

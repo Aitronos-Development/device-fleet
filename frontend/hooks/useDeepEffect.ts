@@ -16,7 +16,7 @@ export const useDeepEffect = (fn: () => void, deps: Array<any>) => {
 
   useEffect(() => {
     const isSame = prevDeps.current.every((obj, index) =>
-      isEqual(obj, deps[index])
+      isEqual(obj, deps[index]),
     );
 
     if (isFirst.current || !isSame) {

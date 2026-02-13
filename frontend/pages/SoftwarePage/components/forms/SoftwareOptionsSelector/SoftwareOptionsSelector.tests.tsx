@@ -23,7 +23,7 @@ const defaultProps = {
 describe("SoftwareOptionsSelector", () => {
   const renderComponent = (props = {}) => {
     return createCustomRenderer({ context: {} })(
-      <SoftwareOptionsSelector {...defaultProps} {...props} />
+      <SoftwareOptionsSelector {...defaultProps} {...props} />,
     );
   };
 
@@ -113,8 +113,8 @@ describe("SoftwareOptionsSelector", () => {
 
     expect(
       screen.getByText(
-        /Installing software over existing installations might cause issues/i
-      )
+        /Installing software over existing installations might cause issues/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -126,8 +126,8 @@ describe("SoftwareOptionsSelector", () => {
 
     expect(
       screen.queryByText(
-        /Installing software over existing installations might cause issues/i
-      )
+        /Installing software over existing installations might cause issues/i,
+      ),
     ).not.toBeInTheDocument();
   });
 
@@ -139,8 +139,8 @@ describe("SoftwareOptionsSelector", () => {
 
     expect(
       screen.queryByText(
-        /Installing software over existing installations might cause issues/i
-      )
+        /Installing software over existing installations might cause issues/i,
+      ),
     ).not.toBeInTheDocument();
   });
 
@@ -154,7 +154,7 @@ describe("SoftwareOptionsSelector", () => {
     renderComponent({ platform: "ios" });
 
     expect(
-      screen.getByText(/Automatic install for iOS and iPadOS is coming soon./i)
+      screen.getByText(/Automatic install for iOS and iPadOS is coming soon./i),
     ).toBeInTheDocument();
   });
 
@@ -162,7 +162,7 @@ describe("SoftwareOptionsSelector", () => {
     renderComponent({ platform: "ipados" });
 
     expect(
-      screen.getByText(/Automatic install for iOS and iPadOS is coming soon./i)
+      screen.getByText(/Automatic install for iOS and iPadOS is coming soon./i),
     ).toBeInTheDocument();
   });
 

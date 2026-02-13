@@ -51,7 +51,7 @@ const EditConfigurationModal = ({
   const [isUpdatingConfiguration, setIsUpdatingConfiguration] = useState(false);
   const [canSaveForm, setCanSaveForm] = useState(true);
   const [jsonFormData, setJsonFormData] = useState<string>(
-    JSON.stringify(softwareInstaller.configuration, null, "\t") || "{}"
+    JSON.stringify(softwareInstaller.configuration, null, "\t") || "{}",
   );
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -74,7 +74,7 @@ const EditConfigurationModal = ({
 
   // Edit package API call
   const onEditConfiguration = async (
-    evt: React.MouseEvent<HTMLFormElement>
+    evt: React.MouseEvent<HTMLFormElement>,
   ) => {
     setIsUpdatingConfiguration(true);
 
@@ -94,7 +94,7 @@ const EditConfigurationModal = ({
         "success",
         <>
           <strong>{softwareInstaller.name}</strong> configuration updated.
-        </>
+        </>,
       );
 
       refetchSoftwareTitle();
@@ -102,7 +102,7 @@ const EditConfigurationModal = ({
     } catch (e) {
       renderFlash(
         "error",
-        getErrorMessage(e, softwareInstaller as IAppStoreApp)
+        getErrorMessage(e, softwareInstaller as IAppStoreApp),
       );
     }
     setIsUpdatingConfiguration(false);

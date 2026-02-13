@@ -28,7 +28,7 @@ describe("userManagementHelpers module", () => {
       };
       const updatedData = userManagementHelpers.generateUpdateData(
         createMockUser({ role: "Observer", global_role: null }),
-        formData
+        formData,
       );
 
       expect(updatedData).toEqual({

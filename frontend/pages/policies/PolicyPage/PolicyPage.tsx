@@ -123,7 +123,7 @@ const PolicyPage = ({
       setPolicyTeamId(
         teamIdForApi === API_ALL_TEAMS_ID
           ? APP_CONTEXT_ALL_TEAMS_ID
-          : teamIdForApi
+          : teamIdForApi,
       );
     }
   }, [isRouteOk, teamIdForApi, policyTeamId, setPolicyTeamId]);
@@ -150,9 +150,8 @@ const PolicyPage = ({
   const [targetsTotalCount, setTargetsTotalCount] = useState(0);
   const [isLiveQueryRunnable, setIsLiveQueryRunnable] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [showOpenSchemaActionText, setShowOpenSchemaActionText] = useState(
-    false
-  );
+  const [showOpenSchemaActionText, setShowOpenSchemaActionText] =
+    useState(false);
 
   const {
     isLoading: isStoredPolicyLoading,
@@ -177,21 +176,21 @@ const PolicyPage = ({
         setLastEditedQueryCritical(returnedQuery.critical);
         setLastEditedQueryPlatform(returnedQuery.platform);
         setLastEditedQueryLabelsIncludeAny(
-          returnedQuery.labels_include_any || []
+          returnedQuery.labels_include_any || [],
         );
         setLastEditedQueryLabelsExcludeAny(
-          returnedQuery.labels_exclude_any || []
+          returnedQuery.labels_exclude_any || [],
         );
         // TODO(sarah): What happens if the team id in the policy response doesn't match the
         // url param? In theory, the backend should ensure this doesn't happen.
         setPolicyTeamId(
           deNulledReturnedQueryTeamId === API_ALL_TEAMS_ID
             ? APP_CONTEXT_ALL_TEAMS_ID
-            : deNulledReturnedQueryTeamId
+            : deNulledReturnedQueryTeamId,
         );
       },
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   useQuery<IHostResponse, Error, IHost>(
@@ -208,7 +207,7 @@ const PolicyPage = ({
         targets.push(host);
         setSelectedTargets([...targets]);
       },
-    }
+    },
   );
 
   /** Pesky bug affecting team level users:
@@ -228,7 +227,7 @@ const PolicyPage = ({
     router.push(
       getPathWithQueryParams(location.pathname, {
         team_id: storedPolicy?.team_id?.toString(),
-      })
+      }),
     );
   }
 
@@ -238,7 +237,7 @@ const PolicyPage = ({
       return formData.team_id !== undefined
         ? teamPoliciesAPI.create(formData)
         : globalPoliciesAPI.create(formData);
-    }
+    },
   );
 
   const detectIsFleetQueryRunnable = () => {

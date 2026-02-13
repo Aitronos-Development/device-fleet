@@ -21,7 +21,7 @@ describe("Actions dropdown", () => {
         options={DROPDOWN_OPTIONS} // Test
         placeholder={PLACEHOLDER}
         onChange={ON_CHANGE}
-      />
+      />,
     );
 
     await user.click(screen.getByText("Actions"));
@@ -38,7 +38,7 @@ describe("Actions dropdown", () => {
         placeholder={PLACEHOLDER}
         onChange={ON_CHANGE}
         disabled // Test
-      />
+      />,
     );
     expect(screen.getByRole("combobox")).toBeDisabled();
   });
@@ -50,7 +50,7 @@ describe("Actions dropdown", () => {
         options={DROPDOWN_OPTIONS}
         placeholder={PLACEHOLDER}
         onChange={mockOnChange}
-      />
+      />,
     );
 
     await user.click(screen.getByText("Actions"));
@@ -65,7 +65,7 @@ describe("Actions dropdown", () => {
         options={DROPDOWN_OPTIONS}
         placeholder={PLACEHOLDER}
         onChange={ON_CHANGE}
-      />
+      />,
     );
 
     await user.click(screen.getByText("Actions"));
@@ -80,7 +80,7 @@ describe("Actions dropdown", () => {
         options={DROPDOWN_OPTIONS}
         placeholder={PLACEHOLDER}
         onChange={ON_CHANGE}
-      />
+      />,
     );
 
     await user.click(screen.getByText("Actions"));

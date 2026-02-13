@@ -7,7 +7,7 @@ import Button from "components/buttons/Button";
 import TooltipWrapper from "components/TooltipWrapper";
 
 const pluralizeHost = (count: number) => {
-  return strUtils.pluralize(count, "host");
+  return strUtils.pluralize(count, "device");
 };
 
 const baseClass = "live-results-heading";

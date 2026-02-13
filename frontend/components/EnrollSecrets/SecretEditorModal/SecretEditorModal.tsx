@@ -24,7 +24,7 @@ const randomSecretGenerator = () => {
   let result = "";
   for (let i = 0; i < 32; i += 1) {
     result += randomChars.charAt(
-      Math.floor(Math.random() * randomChars.length)
+      Math.floor(Math.random() * randomChars.length),
     );
   }
   return result;
@@ -39,7 +39,7 @@ const SecretEditorModal = ({
   isUpdatingSecret,
 }: ISecretEditorModalProps): JSX.Element => {
   const [enrollSecretString, setEnrollSecretString] = useState(
-    selectedSecret ? selectedSecret.secret : randomSecretGenerator()
+    selectedSecret ? selectedSecret.secret : randomSecretGenerator(),
   );
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 

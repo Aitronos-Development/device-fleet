@@ -16,7 +16,7 @@ type ITableStringCellProps = IStringCellProps<IHost>;
 // NOTE: cellProps come from react-table
 // more info here https://react-table.tanstack.com/docs/api/useTable#cell-properties
 export const generateTableHeaders = (
-  handleRowRemove?: (value: Row<IHost>) => void
+  handleRowRemove?: (value: Row<IHost>) => void,
 ): ITargestInputHostTableConfig[] => {
   const deleteHeader = handleRowRemove
     ? [
@@ -38,12 +38,12 @@ export const generateTableHeaders = (
 
   return [
     {
-      Header: "Host",
+      Header: "Device",
       accessor: "display_name",
       Cell: (cellProps) => <TextCell value={cellProps.cell.value} />,
     },
     {
-      Header: "Hostname",
+      Header: "Device name",
       accessor: "hostname",
       Cell: (cellProps) => <TextCell value={cellProps.cell.value} />,
     },

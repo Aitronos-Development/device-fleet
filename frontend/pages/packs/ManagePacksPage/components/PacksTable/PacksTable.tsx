@@ -17,7 +17,7 @@ interface IPacksTableProps {
   onEnablePackClick: (selectedTablePackIds: number[]) => void;
   onDisablePackClick: (selectedTablePackIds: number[]) => void;
   onCreatePackClick: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
   packs?: IPack[];
   isLoading: boolean;
@@ -32,7 +32,7 @@ const PacksTable = ({
   isLoading,
 }: IPacksTableProps): JSX.Element => {
   const [filteredPacks, setFilteredPacks] = useState<IPack[] | undefined>(
-    packs
+    packs,
   );
   const [searchString, setSearchString] = useState("");
 
@@ -53,7 +53,7 @@ const PacksTable = ({
       const { searchQuery } = queryData;
       setSearchString(searchQuery);
     },
-    [setSearchString]
+    [setSearchString],
   );
 
   // TODO: useCallback search string
@@ -61,8 +61,7 @@ const PacksTable = ({
     const emptyPacks: IEmptyTableProps = {
       graphicName: "empty-packs",
       header: "You don't have any packs",
-      info:
-        "Query packs allow you to schedule recurring queries for your hosts.",
+      info: "Query packs allow you to schedule recurring queries for your hosts.",
       primaryButton: (
         <Button
           className={`${baseClass}__create-button`}

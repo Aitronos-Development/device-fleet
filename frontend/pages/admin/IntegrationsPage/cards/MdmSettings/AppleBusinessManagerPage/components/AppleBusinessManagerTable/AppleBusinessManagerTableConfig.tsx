@@ -51,7 +51,7 @@ const RENEW_DATE_CELL_STATUS_CONFIG: IRenewDateCellStatusConfig = {
 };
 
 export const generateTableConfig = (
-  actionSelectHandler: (value: string, team: IMdmAbmToken) => void
+  actionSelectHandler: (value: string, team: IMdmAbmToken) => void,
 ): IAbmTableConfig[] => {
   return [
     {

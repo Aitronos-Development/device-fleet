@@ -42,7 +42,7 @@ const AddHostsModal = ({
     {
       enabled: !isPreviewMode,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   const onManageEnrollSecretsClick = () => {
@@ -87,7 +87,7 @@ const AddHostsModal = ({
   return (
     <Modal
       onExit={onCancel}
-      title="Add hosts"
+      title="Add devices"
       className={baseClass}
       width="large"
     >

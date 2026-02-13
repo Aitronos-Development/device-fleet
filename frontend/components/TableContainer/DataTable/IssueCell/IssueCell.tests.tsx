@@ -12,7 +12,7 @@ describe("Issue cell", () => {
           failing_policies_count: 0,
         }}
         rowId={1}
-      />
+      />,
     );
 
     expect(screen.getByText(/---/i)).toBeInTheDocument();

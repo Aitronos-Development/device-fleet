@@ -31,8 +31,10 @@ import Icon from "components/Icon";
 import { IconNames } from "components/icons";
 import { TooltipContent } from "interfaces/dropdownOption";
 
-interface CustomOptionProps
-  extends Omit<OptionProps<CustomOptionType, false>, "data"> {
+interface CustomOptionProps extends Omit<
+  OptionProps<CustomOptionType, false>,
+  "data"
+> {
   data: CustomOptionType;
 }
 
@@ -68,7 +70,7 @@ export const CustomDropdownIndicator = (
     CustomOptionType,
     false,
     GroupBase<CustomOptionType>
-  >
+  >,
 ) => {
   const { isFocused, selectProps } = props;
   const color =
@@ -128,14 +130,14 @@ export interface IDropdownWrapper {
 }
 
 const getOptionBackgroundColor = (
-  state: OptionProps<CustomOptionType, false>
+  state: OptionProps<CustomOptionType, false>,
 ) => {
   return state.isFocused ? COLORS["ui-fleet-black-5"] : "transparent";
 };
 
 const getOptionFontWeight = (
   state: OptionProps<CustomOptionType, false>,
-  variant?: DropdownWrapperVariant
+  variant?: DropdownWrapperVariant,
 ) => {
   // For "button" dropdowns, selected options are not styled differently
   if (variant === "button") {
@@ -152,7 +154,7 @@ const getOptionFontWeight = (
 export const generateCustomDropdownStyles = (
   variant?: DropdownWrapperVariant,
   isDisabled = false,
-  nowrapMenu = false
+  nowrapMenu = false,
 ): StylesConfig<CustomOptionType, false> => {
   return {
     container: (provided) => {
@@ -487,7 +489,7 @@ const DropdownWrapper = ({
       {
         [`${baseClass}__label--error`]: !!error,
         [`${baseClass}__label--disabled`]: isDisabled,
-      }
+      },
     );
 
     if (!label) {

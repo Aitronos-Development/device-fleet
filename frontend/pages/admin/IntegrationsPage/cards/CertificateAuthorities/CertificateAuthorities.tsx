@@ -24,21 +24,15 @@ const baseClass = "certificate-authorities";
 const CertificateAuthorities = () => {
   const { isPremiumTier } = useContext(AppContext);
 
-  const [showAddCertAuthorityModal, setShowAddCertAuthorityModal] = useState(
-    false
-  );
-  const [showEditCertAuthorityModal, setShowEditCertAuthorityModal] = useState(
-    false
-  );
-  const [
-    showDeleteCertAuthorityModal,
-    setShowDeleteCertAuthorityModal,
-  ] = useState(false);
+  const [showAddCertAuthorityModal, setShowAddCertAuthorityModal] =
+    useState(false);
+  const [showEditCertAuthorityModal, setShowEditCertAuthorityModal] =
+    useState(false);
+  const [showDeleteCertAuthorityModal, setShowDeleteCertAuthorityModal] =
+    useState(false);
 
-  const [
-    selectedCertAuthority,
-    setSelectedCertAuthority,
-  ] = useState<ICertificateAuthorityPartial | null>(null);
+  const [selectedCertAuthority, setSelectedCertAuthority] =
+    useState<ICertificateAuthorityPartial | null>(null);
 
   const {
     data: certAuthorities,
@@ -53,7 +47,7 @@ const CertificateAuthorities = () => {
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
       select: (data) => data.certificate_authorities,
-    }
+    },
   );
 
   const onAddCertAuthority = () => {

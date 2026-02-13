@@ -58,7 +58,7 @@ const TurnOnAndroidMdm = ({ router }: ITurnOnAndroidMdmProps) => {
         setSetupSse(false);
       }
     },
-    [renderFlash, router]
+    [renderFlash, router],
   );
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const TurnOnAndroidMdm = ({ router }: ITurnOnAndroidMdmProps) => {
       newWindow.current = window.open(
         res.android_enterprise_signup_url,
         "_blank",
-        `width=${POPUP_WIDTH},height=${POPUP_HEIGHT},top=${top},left=${left}`
+        `width=${POPUP_WIDTH},height=${POPUP_HEIGHT},top=${top},left=${left}`,
       );
       setSetupSse(true);
     } catch (e: any) {
@@ -105,7 +105,7 @@ const TurnOnAndroidMdm = ({ router }: ITurnOnAndroidMdmProps) => {
               newTab
               variant="flash-message-link"
             />
-          </>
+          </>,
         );
       } else {
         renderFlash("error", "Couldn't connect. Please try again");
@@ -141,7 +141,7 @@ const TurnOffAndroidMdm = ({ onClickTurnOff }: ITurnOffAndroidMdmProps) => {
     () => mdmAndroidAPI.getAndroidEnterprise(),
     {
       ...DEFAULT_USE_QUERY_OPTIONS,
-    }
+    },
   );
 
   if (isLoading) {

@@ -87,7 +87,7 @@ describe("getVulnerabilities", () => {
         "CVE-2025-0445",
         "CVE-2025-0995",
         "CVE-2025-0996",
-      ])
+      ]),
     );
 
     // Should not contain unintended values

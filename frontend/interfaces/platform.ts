@@ -6,7 +6,8 @@ export const APPLE_PLATFORM_DISPLAY_NAMES = {
 } as const;
 
 export type ApplePlatform = keyof typeof APPLE_PLATFORM_DISPLAY_NAMES;
-export type AppleDisplayPlatform = typeof APPLE_PLATFORM_DISPLAY_NAMES[keyof typeof APPLE_PLATFORM_DISPLAY_NAMES];
+export type AppleDisplayPlatform =
+  (typeof APPLE_PLATFORM_DISPLAY_NAMES)[keyof typeof APPLE_PLATFORM_DISPLAY_NAMES];
 
 // --- All Platform Display Names (Single Source of Truth) ---
 
@@ -28,19 +29,20 @@ export const QUERYABLE_PLATFORMS = [
 export const NON_QUERYABLE_PLATFORMS = ["ios", "ipados", "android"] as const;
 
 export type Platform = keyof typeof PLATFORM_DISPLAY_NAMES;
-export type DisplayPlatform = typeof PLATFORM_DISPLAY_NAMES[keyof typeof PLATFORM_DISPLAY_NAMES];
+export type DisplayPlatform =
+  (typeof PLATFORM_DISPLAY_NAMES)[keyof typeof PLATFORM_DISPLAY_NAMES];
 
 // --- Query supported Platforms ---
 
 export type QueryableDisplayPlatform = Exclude<
   DisplayPlatform,
-  typeof PLATFORM_DISPLAY_NAMES[typeof NON_QUERYABLE_PLATFORMS[number]]
+  (typeof PLATFORM_DISPLAY_NAMES)[(typeof NON_QUERYABLE_PLATFORMS)[number]]
 >;
 
-export type QueryablePlatform = typeof QUERYABLE_PLATFORMS[number];
+export type QueryablePlatform = (typeof QUERYABLE_PLATFORMS)[number];
 
 export const isQueryablePlatform = (
-  platform: string | undefined
+  platform: string | undefined,
 ): platform is QueryablePlatform =>
   QUERYABLE_PLATFORMS.includes(platform as QueryablePlatform);
 
@@ -53,10 +55,10 @@ export const SCHEDULED_QUERYABLE_PLATFORMS: ScheduledQueryablePlatform[] = [
 export type ScheduledQueryablePlatform = Exclude<QueryablePlatform, "chrome">;
 
 export const isScheduledQueryablePlatform = (
-  platform: string | undefined
+  platform: string | undefined,
 ): platform is ScheduledQueryablePlatform =>
   SCHEDULED_QUERYABLE_PLATFORMS.includes(
-    platform as ScheduledQueryablePlatform
+    platform as ScheduledQueryablePlatform,
   );
 
 export type SelectedPlatform = QueryablePlatform | "all";
@@ -121,8 +123,8 @@ export const HOST_LINUX_PLATFORMS = [
 export const HOST_APPLE_PLATFORMS = ["darwin", "ios", "ipados"] as const;
 
 export type HostPlatform =
-  | typeof HOST_LINUX_PLATFORMS[number]
-  | typeof HOST_APPLE_PLATFORMS[number]
+  | (typeof HOST_LINUX_PLATFORMS)[number]
+  | (typeof HOST_APPLE_PLATFORMS)[number]
   | "windows"
   | "chrome"
   | "android";
@@ -136,13 +138,13 @@ export type HostPlatform =
  */
 export const isLinuxLike = (platform: string) => {
   return HOST_LINUX_PLATFORMS.includes(
-    platform as typeof HOST_LINUX_PLATFORMS[number]
+    platform as (typeof HOST_LINUX_PLATFORMS)[number],
   );
 };
 
 export const isAppleDevice = (platform = "") => {
   return HOST_APPLE_PLATFORMS.includes(
-    platform as typeof HOST_APPLE_PLATFORMS[number]
+    platform as (typeof HOST_APPLE_PLATFORMS)[number],
   );
 };
 
@@ -156,7 +158,7 @@ export const isIPadOrIPhone = (platform: string | HostPlatform) =>
   ["ios", "ipados"].includes(platform);
 
 export const isAndroid = (
-  platform: string | HostPlatform
+  platform: string | HostPlatform,
 ): platform is "android" => platform === "android";
 
 export const isChrome = (platform: string | HostPlatform) =>
@@ -179,7 +181,7 @@ export const DISK_ENCRYPTION_SUPPORTED_LINUX_PLATFORMS = [
 
 export const isDiskEncryptionSupportedLinuxPlatform = (
   platform: HostPlatform,
-  os_version: string
+  os_version: string,
 ) => {
   const isFedora =
     platform === "rhel" && os_version.toLowerCase().includes("fedora");
@@ -193,12 +195,13 @@ const DISK_ENCRYPTION_SUPPORTED_PLATFORMS = [
   ...DISK_ENCRYPTION_SUPPORTED_LINUX_PLATFORMS,
 ] as const;
 
-export type DiskEncryptionSupportedPlatform = typeof DISK_ENCRYPTION_SUPPORTED_PLATFORMS[number];
+export type DiskEncryptionSupportedPlatform =
+  (typeof DISK_ENCRYPTION_SUPPORTED_PLATFORMS)[number];
 
 export const platformSupportsDiskEncryption = (
   platform: HostPlatform,
   /** os_version necessary to differentiate Fedora from other rhel-like platforms */
-  os_version?: string
+  os_version?: string,
 ) => {
   if (isAndroid(platform)) {
     return false;
@@ -207,7 +210,7 @@ export const platformSupportsDiskEncryption = (
     return !!os_version && os_version.toLowerCase().includes("fedora");
   }
   return DISK_ENCRYPTION_SUPPORTED_PLATFORMS.includes(
-    platform as DiskEncryptionSupportedPlatform
+    platform as DiskEncryptionSupportedPlatform,
   );
 };
 
@@ -220,7 +223,7 @@ const OS_SETTINGS_DISPLAY_PLATFORMS = [
 
 export const isOsSettingsDisplayPlatform = (
   platform: HostPlatform,
-  os_version: string
+  os_version: string,
 ) => {
   if (platform === "rhel") {
     return !!os_version && os_version.toLowerCase().includes("fedora");
@@ -239,10 +242,11 @@ export const SETUP_EXPERIENCE_PLATFORMS = [
   "android",
 ] as const;
 
-export type SetupExperiencePlatform = typeof SETUP_EXPERIENCE_PLATFORMS[number];
+export type SetupExperiencePlatform =
+  (typeof SETUP_EXPERIENCE_PLATFORMS)[number];
 
 export const isSetupExperiencePlatform = (
-  s: string | undefined
+  s: string | undefined,
 ): s is SetupExperiencePlatform => {
   return SETUP_EXPERIENCE_PLATFORMS.includes(s as SetupExperiencePlatform);
 };
@@ -261,9 +265,10 @@ export const VULN_UNSUPPORTED_PLATFORMS: Platform[] = [
   "chrome",
 ];
 
-export type VulnUnsupportedPlatform = typeof VULN_UNSUPPORTED_PLATFORMS[number];
+export type VulnUnsupportedPlatform =
+  (typeof VULN_UNSUPPORTED_PLATFORMS)[number];
 
 export const isVulnUnsupportedPlatform = (
-  platform: string | undefined
+  platform: string | undefined,
 ): platform is VulnUnsupportedPlatform =>
   VULN_UNSUPPORTED_PLATFORMS.includes(platform as VulnUnsupportedPlatform);

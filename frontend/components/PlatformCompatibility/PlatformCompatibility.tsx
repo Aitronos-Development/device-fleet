@@ -27,7 +27,7 @@ const DISPLAY_ORDER = [
 const ERROR_NO_COMPATIBLE_TABLES = Error("no tables in query");
 
 const formatPlatformsForDisplay = (
-  compatiblePlatforms: QueryablePlatform[]
+  compatiblePlatforms: QueryablePlatform[],
 ): DisplayPlatform[] => {
   return compatiblePlatforms.map((str) => PLATFORM_DISPLAY_NAMES[str] || str);
 };

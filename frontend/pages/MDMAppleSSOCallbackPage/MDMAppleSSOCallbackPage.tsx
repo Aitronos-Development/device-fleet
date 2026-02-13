@@ -74,7 +74,7 @@ const EnrollmentGate = ({
       url={endpoints.MDM_APPLE_ENROLLMENT_PROFILE(
         profileToken as string,
         enrollmentReference,
-        deviceinfo
+        deviceinfo,
       )}
     />
   );
@@ -89,15 +89,10 @@ interface IMDMSSOCallbackQuery {
 }
 
 const MDMAppleSSOCallbackPage = (
-  props: WithRouterProps<object, IMDMSSOCallbackQuery>
+  props: WithRouterProps<object, IMDMSSOCallbackQuery>,
 ) => {
-  const {
-    eula_token,
-    profile_token,
-    enrollment_reference,
-    initiator,
-    error,
-  } = props.location.query;
+  const { eula_token, profile_token, enrollment_reference, initiator, error } =
+    props.location.query;
   return (
     <div className={baseClass}>
       <EnrollmentGate

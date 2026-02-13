@@ -60,8 +60,8 @@ const generateTableHeaders = (teamId?: number): IDataColumn[] => [
     ),
   },
   {
-    title: "Hosts",
-    Header: "Hosts",
+    title: "Devices",
+    Header: "Devices",
     disableSortBy: true,
     accessor: "hosts_count",
     Cell: (cellProps: ICellProps) => <TextCell value={cellProps.cell.value} />,

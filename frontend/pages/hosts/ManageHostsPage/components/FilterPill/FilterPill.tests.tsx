@@ -17,7 +17,7 @@ describe("Filter Pill Component", () => {
     render(<FilterPill label="Test Pill" icon="policy" onClear={noop} />);
 
     expect(
-      within(screen.getByRole("status")).getByTestId("policy-icon")
+      within(screen.getByRole("status")).getByTestId("policy-icon"),
     ).toBeInTheDocument();
   });
 
@@ -27,7 +27,7 @@ describe("Filter Pill Component", () => {
         label="Test Pill"
         tooltipDescription="Test Tooltip"
         onClear={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("Test Tooltip")).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("Filter Pill Component", () => {
         label="Test Pill"
         tooltipDescription={<p>This is a ReactNode</p>}
         onClear={noop}
-      />
+      />,
     );
 
     expect(screen.getByText("This is a ReactNode")).toBeInTheDocument();
@@ -49,11 +49,11 @@ describe("Filter Pill Component", () => {
     const spy = jest.fn();
 
     const { user } = renderWithSetup(
-      <FilterPill label="Test Pill" onClear={spy} />
+      <FilterPill label="Test Pill" onClear={spy} />,
     );
 
     await user.click(
-      within(screen.getByRole("button")).getByTestId("close-icon")
+      within(screen.getByRole("button")).getByTestId("close-icon"),
     );
 
     expect(spy).toHaveBeenCalled();

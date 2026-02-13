@@ -55,7 +55,7 @@ const HostQueryReport = ({
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   const {
@@ -72,7 +72,7 @@ const HostQueryReport = ({
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   const isLoading = queryLoading || hqrLoading;
@@ -112,7 +112,7 @@ const HostQueryReport = ({
   const HQRHeader = useCallback(() => {
     const fullReportPath = getPathWithQueryParams(
       PATHS.QUERY_DETAILS(queryId),
-      { team_id: currentTeam?.id }
+      { team_id: currentTeam?.id },
     );
     return (
       <div className={`${baseClass}__header`}>

@@ -14,7 +14,7 @@ describe("UpdatesCard", () => {
 
   const createEnhancedSoftware = (
     count = 3,
-    overrides = {} as Partial<IDeviceSoftwareWithUiStatus>
+    overrides = {} as Partial<IDeviceSoftwareWithUiStatus>,
   ): IDeviceSoftwareWithUiStatus[] => {
     const uiStatusDefaultOrOverride =
       (overrides?.ui_status as IHostSoftwareUiStatus) || "update_available";
@@ -39,13 +39,13 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError={false}
-      />
+      />,
     );
     expect(screen.getByText("Updates")).toBeInTheDocument();
     expect(
       screen.getByText(
-        /Your device has outdated software. Update to address potential security vulnerabilities or compatibility issues./i
-      )
+        /Your device has outdated software. Update to address potential security vulnerabilities or compatibility issues./i,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Update all" })).toBeEnabled();
   });
@@ -60,7 +60,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError={false}
-      />
+      />,
     );
     // Based on the default getUpdatesPageSize, expect 3 on first page (jsdom default width)
 
@@ -81,7 +81,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError={false}
-      />
+      />,
     );
     // Go to next page
     const nextPageButton = screen.getByRole("button", { name: /next/i });
@@ -103,7 +103,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError={false}
-      />
+      />,
     );
     const button = screen.getByRole("button", { name: "Update all" });
     expect(button).toBeDisabled();
@@ -120,7 +120,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading // true
         isError={false}
-      />
+      />,
     );
     expect(screen.getByTestId("spinner")).toBeInTheDocument();
   });
@@ -135,7 +135,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError // true
-      />
+      />,
     );
     expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
   });
@@ -160,7 +160,7 @@ describe("UpdatesCard", () => {
         onClickFailedUpdateStatus={noop}
         isLoading={false}
         isError={false}
-      />
+      />,
     );
     expect(container.firstChild).toBeNull();
   });

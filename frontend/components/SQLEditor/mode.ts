@@ -47,7 +47,7 @@ ace.define(
           "storage.type": dataTypes,
         },
         "identifier",
-        true
+        true,
       );
 
       this.$rules = {
@@ -103,7 +103,7 @@ ace.define(
     oop.inherits(FleetHighlightRules, SqlHighlightRules);
 
     exports.FleetHighlightRules = FleetHighlightRules;
-  }
+  },
 );
 
 ace.define(
@@ -122,8 +122,9 @@ ace.define(
 
     var oop = acequire("../lib/oop");
     var TextMode = acequire("./sql").Mode;
-    var FleetHighlightRules = acequire("./fleet_highlight_rules")
-      .FleetHighlightRules;
+    var FleetHighlightRules = acequire(
+      "./fleet_highlight_rules",
+    ).FleetHighlightRules;
     var Range = acequire("../range").Range;
 
     var Mode = function () {
@@ -135,8 +136,8 @@ ace.define(
       this.lineCommentStart = "--";
 
       this.$id = "ace/mode/fleet";
-    }.call(Mode.prototype));
+    }).call(Mode.prototype);
 
     exports.Mode = Mode;
-  }
+  },
 );

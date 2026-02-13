@@ -14,12 +14,15 @@ describe("EditTeamsAbmModal", () => {
 
   describe("getOptions", () => {
     it("excludes all teams", () => {
-      const expectedOptions = availableTeams.reduce((acc, t) => {
-        if (t.name !== "All teams") {
-          acc.push({ value: t.name, label: t.name });
-        }
-        return acc;
-      }, [] as { value: string; label: string }[]);
+      const expectedOptions = availableTeams.reduce(
+        (acc, t) => {
+          if (t.name !== "All teams") {
+            acc.push({ value: t.name, label: t.name });
+          }
+          return acc;
+        },
+        [] as { value: string; label: string }[],
+      );
       expect(getOptions(availableTeams)).toEqual(expectedOptions);
     });
   });

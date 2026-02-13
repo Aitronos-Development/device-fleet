@@ -29,8 +29,11 @@ type PerformanceImpactProps = {
 };
 
 const PerformanceImpact = ({ queryStats, queryId }: PerformanceImpactProps) => {
-  const { total_executions = 0, user_time_p50 = 0, system_time_p50 = 0 } =
-    queryStats || {};
+  const {
+    total_executions = 0,
+    user_time_p50 = 0,
+    system_time_p50 = 0,
+  } = queryStats || {};
 
   const scheduledQueryPerformance = {
     user_time_p50:
@@ -48,7 +51,7 @@ const PerformanceImpact = ({ queryStats, queryId }: PerformanceImpactProps) => {
   return (
     <TooltipWrapper
       tipContent={getPerformanceImpactIndicatorTooltip(
-        performanceImpact.indicator
+        performanceImpact.indicator,
       )}
     >
       <span className="performance-impact">
@@ -96,11 +99,11 @@ const HQRTable = ({
           generateCSVFilename(
             queryName && hostName
               ? `'${queryName}' query report results for host '${hostName}'`
-              : DEFAULT_CSV_TITLE
+              : DEFAULT_CSV_TITLE,
           ),
           columnConfigs,
-          true
-        )
+          true,
+        ),
       );
     };
     return (
@@ -183,7 +186,7 @@ const HQRTable = ({
         <PerformanceImpact queryStats={queryStats} queryId={queryId} />
       </div>
     ),
-    [queryDescription, queryName, queryStats, queryId]
+    [queryDescription, queryName, queryStats, queryId],
   );
 
   if (isLoading) {

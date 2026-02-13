@@ -16,7 +16,7 @@ const DEFAULT_MAC_ADMINS_MOCK: IMacadminsResponse = {
 };
 
 const createMockMacAdmins = (
-  overrides?: Partial<IMacadminsResponse>
+  overrides?: Partial<IMacadminsResponse>,
 ): IMacadminsResponse => {
   return { ...DEFAULT_MAC_ADMINS_MOCK, ...overrides };
 };

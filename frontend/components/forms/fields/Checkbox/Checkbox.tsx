@@ -66,7 +66,7 @@ const Checkbox = (props: ICheckboxProps) => {
   }, [indeterminate]);
 
   const handleChange = (
-    event: React.MouseEvent | React.KeyboardEvent
+    event: React.MouseEvent | React.KeyboardEvent,
   ): void => {
     event.preventDefault();
     if (readOnly || disabled) return;
@@ -98,7 +98,7 @@ const Checkbox = (props: ICheckboxProps) => {
   const checkBoxClass = classnames(
     { inverse: isLeftLabel },
     className,
-    baseClass
+    baseClass,
   );
 
   const checkBoxLabelClass = classnames(checkBoxClass, {

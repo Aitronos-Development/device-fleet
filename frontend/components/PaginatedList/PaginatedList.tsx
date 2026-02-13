@@ -54,7 +54,7 @@ interface IPaginatedListProps<TItem> {
     item: TItem,
     /** A callback function that the extra markup logic can call to indicate a change
     to the item, for example if a dropdown is changed. */
-    onChange: (item: TItem) => void
+    onChange: (item: TItem) => void,
   ) => ReactElement | false | null | undefined;
   /** Parents can use this to change whatever item metadata is needed to toggle
   the value indicated by `isSelected`. */
@@ -98,11 +98,11 @@ function PaginatedListInner<TItem extends Record<string, any>>(
     useCheckBoxes = true,
     helpText,
   }: IPaginatedListProps<TItem>,
-  ref: Ref<IPaginatedListHandle<TItem>>
+  ref: Ref<IPaginatedListHandle<TItem>>,
 ) {
   // The set of items that have been changed in some way.
   const [dirtyItems, setDirtyItems] = useState<Record<string | number, TItem>>(
-    {}
+    {},
   );
   const [error, setError] = useState<Error | null>(null);
   const idKey = _idKey ?? "id";
@@ -225,7 +225,7 @@ function PaginatedListInner<TItem extends Record<string, any>>(
 const PaginatedList = forwardRef(PaginatedListInner) as <TItem>(
   props: IPaginatedListProps<TItem> & {
     ref?: Ref<IPaginatedListHandle<TItem>>;
-  }
+  },
 ) => JSX.Element;
 
 export default PaginatedList;

@@ -32,7 +32,7 @@ interface IUserMenuProps {
 }
 
 const getOptionBackgroundColor = (
-  state: OptionProps<IDropdownOption, false, GroupBase<IDropdownOption>>
+  state: OptionProps<IDropdownOption, false, GroupBase<IDropdownOption>>,
 ) => {
   return state.isFocused ? COLORS["ui-fleet-black-10"] : "transparent";
 };
@@ -42,7 +42,7 @@ const CustomDropdownIndicator = (
     IDropdownOption,
     false,
     GroupBase<IDropdownOption>
-  >
+  >,
 ) => {
   return (
     <components.DropdownIndicator {...props} className={baseClass}>
@@ -151,7 +151,7 @@ const UserMenu = ({
 
   if (currentUser && (isAnyTeamAdmin || isGlobalAdmin)) {
     const userAdminTeams = currentUser.teams.filter(
-      (thisTeam: ITeam) => thisTeam.role === "admin"
+      (thisTeam: ITeam) => thisTeam.role === "admin",
     );
     const sortedTeams = getSortedTeamOptions(userAdminTeams);
 

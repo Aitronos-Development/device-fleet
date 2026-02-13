@@ -20,7 +20,7 @@ import { ScriptsLocation } from "../../Scripts";
 const waitForLoadingToFinish = async (container: HTMLElement) => {
   await waitFor(() => {
     expect(
-      container.querySelector(".script-batch-progress__loading")
+      container.querySelector(".script-batch-progress__loading"),
     ).not.toBeInTheDocument();
   });
 };
@@ -30,7 +30,7 @@ const emptyTeamBatchSummariesHandler = http.get(baseUrl("/scripts/batch"), () =>
     batch_executions: [],
     meta: { has_next_results: false, has_previous_results: false },
     count: 0,
-  })
+  }),
 );
 
 const teamBatchSummariesHandler = http.get(
@@ -62,7 +62,7 @@ const teamBatchSummariesHandler = http.get(
         now.getHours(),
         now.getMinutes(),
         now.getSeconds(),
-        now.getMilliseconds()
+        now.getMilliseconds(),
       ).toISOString();
 
       return HttpResponse.json({
@@ -105,7 +105,7 @@ const teamBatchSummariesHandler = http.get(
     }
 
     return HttpResponse.json({});
-  }
+  },
 );
 
 const getTestLocation = (status: ScriptBatchStatus): ScriptsLocation => ({
@@ -123,23 +123,26 @@ const testTabURLNavAndEmpty = async (status: ScriptBatchStatus) => {
       router={createMockRouter()}
       teamId={1}
       location={getTestLocation(status)}
-    />
+    />,
   );
 
   expect(
-    screen.getByRole("tab", { name: "Started", selected: status === "started" })
+    screen.getByRole("tab", {
+      name: "Started",
+      selected: status === "started",
+    }),
   ).toBeInTheDocument();
   expect(
     screen.getByRole("tab", {
       name: "Scheduled",
       selected: status === "scheduled",
-    })
+    }),
   ).toBeInTheDocument();
   expect(
     screen.getByRole("tab", {
       name: "Finished",
       selected: status === "finished",
-    })
+    }),
   ).toBeInTheDocument();
 
   await waitForLoadingToFinish(container);
@@ -176,7 +179,7 @@ describe("ScriptBatchProgress", () => {
         router={createMockRouter()}
         teamId={1}
         location={getTestLocation("started")}
-      />
+      />,
     );
 
     await waitForLoadingToFinish(container);
@@ -202,7 +205,7 @@ describe("ScriptBatchProgress", () => {
         router={createMockRouter()}
         teamId={1}
         location={getTestLocation("scheduled")}
-      />
+      />,
     );
 
     await waitForLoadingToFinish(container);
@@ -226,7 +229,7 @@ describe("ScriptBatchProgress", () => {
         router={createMockRouter()}
         teamId={1}
         location={getTestLocation("finished")}
-      />
+      />,
     );
 
     await waitForLoadingToFinish(container);

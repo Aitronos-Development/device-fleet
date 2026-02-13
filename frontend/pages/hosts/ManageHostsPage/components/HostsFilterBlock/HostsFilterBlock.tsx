@@ -101,13 +101,13 @@ interface IHostsFilterBlockProps {
   onChangeOsSettingsFilter: (newStatus: MdmProfileStatus) => void;
   onChangeDiskEncryptionStatusFilter: (response: DiskEncryptionStatus) => void;
   onChangeBootstrapPackageStatusFilter: (
-    response: BootstrapPackageStatus
+    response: BootstrapPackageStatus,
   ) => void;
   onChangeMacSettingsFilter: (
-    newMacSettingsStatus: MacSettingsStatusQueryParam
+    newMacSettingsStatus: MacSettingsStatusQueryParam,
   ) => void;
   onChangeSoftwareInstallStatusFilter: (
-    newStatus: SoftwareAggregateStatus
+    newStatus: SoftwareAggregateStatus,
   ) => void;
   onChangeConfigProfileStatusFilter: (newStatus: string) => void;
   onChangeScriptBatchStatusFilter: (newStatus: ScriptBatchHostCountV1) => void;
@@ -179,12 +179,8 @@ const HostsFilterBlock = ({
 
   const renderLabelFilterPill = () => {
     if (selectedLabel) {
-      const {
-        description,
-        display_text,
-        label_type,
-        label_membership_type,
-      } = selectedLabel;
+      const { description, display_text, label_type, label_membership_type } =
+        selectedLabel;
       const pillLabel =
         (isPlatformLabelNameFromAPI(display_text) &&
           PLATFORM_LABEL_DISPLAY_NAMES[display_text]) ||
@@ -194,7 +190,7 @@ const HostsFilterBlock = ({
       if (
         label_type === "builtin" &&
         Object.keys(PLATFORM_TYPE_ICONS).includes(
-          display_text as PlatformLabelNameFromAPI
+          display_text as PlatformLabelNameFromAPI,
         )
       ) {
         return <></>;
@@ -243,7 +239,7 @@ const HostsFilterBlock = ({
     let os: IOperatingSystemVersion | undefined;
     if (osVersionId) {
       os = osVersions?.find(
-        (v) => v.os_version_id === parseInt(osVersionId, 10)
+        (v) => v.os_version_id === parseInt(osVersionId, 10),
       );
     } else if (osName && osVersion) {
       const name: string = osName;
@@ -252,7 +248,7 @@ const HostsFilterBlock = ({
       os = osVersions?.find(
         ({ name_only, version }) =>
           name_only.toLowerCase() === name.toLowerCase() &&
-          version.toLowerCase() === vers.toLowerCase()
+          version.toLowerCase() === vers.toLowerCase(),
       );
     }
 
@@ -263,7 +259,7 @@ const HostsFilterBlock = ({
     const label = formatOperatingSystemDisplayName(
       name_only || version
         ? `${name_only || ""} ${version || ""}`
-        : `${name || ""}`
+        : `${name || ""}`,
     );
     const TooltipDescription = (
       <span>
@@ -388,7 +384,7 @@ const HostsFilterBlock = ({
 
     const label = `MDM status: ${
       Object.values(MDM_ENROLLMENT_STATUS_UI_MAP).find(
-        (status) => status.filterValue === mdmEnrollmentStatus
+        (status) => status.filterValue === mdmEnrollmentStatus,
       )?.displayName
     }`;
 

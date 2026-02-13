@@ -33,7 +33,7 @@ type ITableHeaderProps = IHeaderProps<ISoftwareVersion>;
 
 const generateTableHeaders = (
   router: InjectedRouter,
-  teamId?: number
+  teamId?: number,
 ): ISoftwareVersionsTableConfig[] => {
   const softwareTableHeaders: ISoftwareVersionsTableConfig[] = [
     {
@@ -49,7 +49,7 @@ const generateTableHeaders = (
           PATHS.SOFTWARE_VERSION_DETAILS(id.toString()),
           {
             team_id: teamId,
-          }
+          },
         );
 
         return (
@@ -97,7 +97,7 @@ const generateTableHeaders = (
     {
       Header: (cellProps: ITableHeaderProps) => (
         <HeaderCell
-          value="Hosts"
+          value="Devices"
           disableSortBy={false}
           isSortedDesc={cellProps.column.isSortedDesc}
         />

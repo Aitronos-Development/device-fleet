@@ -126,7 +126,7 @@ class SelectTargetsDropdown extends Component {
   fetchTargets = (
     query = "",
     queryId = this.props.queryId,
-    selectedTargets = this.props.selectedTargets
+    selectedTargets = this.props.selectedTargets,
   ) => {
     const { onFetchTargets } = this.props;
 
@@ -140,7 +140,7 @@ class SelectTargetsDropdown extends Component {
       .DEPRECATED_loadAll(
         query,
         queryId,
-        formatSelectedTargetsForApi(selectedTargets)
+        formatSelectedTargetsForApi(selectedTargets),
       )
       .then((response) => {
         const { targets } = response;
@@ -213,7 +213,7 @@ class SelectTargetsDropdown extends Component {
       onTargetSelectMoreInfo,
       moreInfoTarget,
       onBackToResults,
-      isPremiumTier
+      isPremiumTier,
     );
 
     const inputClasses = classnames({

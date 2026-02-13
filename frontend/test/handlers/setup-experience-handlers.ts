@@ -17,7 +17,7 @@ import {
 const setupExperienceScriptUrl = baseUrl("/setup_experience/script");
 const setupExperienceInstallSoftwareUrl = baseUrl(`/setup_experience/software`);
 const setupExperienceBootstrapMetadataUrl = baseUrl(
-  "/mdm/bootstrap/:teamId/metadata"
+  "/mdm/bootstrap/:teamId/metadata",
 );
 const setupExperienceBootstrapSummaryUrl = baseUrl("/mdm/bootstrap/summary");
 
@@ -25,15 +25,15 @@ export const defaultSetupExperienceScriptHandler = http.get(
   setupExperienceScriptUrl,
   () => {
     return HttpResponse.json(createMockSetupExperienceScriptResponse());
-  }
+  },
 );
 
 export const createSetupExperienceScriptHandler = (
-  overrides?: Partial<IGetSetupExperienceScriptResponse>
+  overrides?: Partial<IGetSetupExperienceScriptResponse>,
 ) =>
   http.get(setupExperienceScriptUrl, () => {
     return HttpResponse.json(
-      createMockSetupExperienceScriptResponse({ ...overrides })
+      createMockSetupExperienceScriptResponse({ ...overrides }),
     );
   });
 
@@ -41,24 +41,24 @@ export const errorNoSetupExperienceScriptHandler = http.get(
   setupExperienceScriptUrl,
   () => {
     return new HttpResponse("Not found", { status: 404 });
-  }
+  },
 );
 
 export const createSetupExperienceSoftwareHandler = (
-  overrides?: Partial<IGetSetupExperienceSoftwareResponse>
+  overrides?: Partial<IGetSetupExperienceSoftwareResponse>,
 ) =>
   http.get(setupExperienceInstallSoftwareUrl, () => {
     return HttpResponse.json(
-      createMockSetupExperienceSoftwareResponse({ ...overrides })
+      createMockSetupExperienceSoftwareResponse({ ...overrides }),
     );
   });
 
 export const createSetupExperienceBootstrapMetadataHandler = (
-  overrides?: Partial<IGetBootstrapPackageMetadataResponse>
+  overrides?: Partial<IGetBootstrapPackageMetadataResponse>,
 ) =>
   http.get(setupExperienceBootstrapMetadataUrl, () => {
     return HttpResponse.json(
-      createMockBootstrapPackageMetadataResponse({ ...overrides })
+      createMockBootstrapPackageMetadataResponse({ ...overrides }),
     );
   });
 
@@ -66,17 +66,17 @@ export const errorNoBootstrapPackageMetadataHandler = http.get(
   setupExperienceBootstrapMetadataUrl,
   () => {
     return new HttpResponse("Not found", { status: 404 });
-  }
+  },
 );
 
 export const createSetuUpExperienceBootstrapSummaryHandler = (
-  overrides?: Partial<IGetBootstrapPackageSummaryResponse>
+  overrides?: Partial<IGetBootstrapPackageSummaryResponse>,
 ) => {
   return http.get(setupExperienceBootstrapSummaryUrl, () => {
     return HttpResponse.json(
       createMockBootstrapPackageSummaryResponse({
         ...overrides,
-      })
+      }),
     );
   });
 };

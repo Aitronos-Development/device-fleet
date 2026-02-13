@@ -48,7 +48,7 @@ const ActionButtons = ({ baseClass, actions }: IProps): JSX.Element => {
           (action) =>
             !action.hideAction && (
               <Button onClick={action.onClick}>{action.label}</Button>
-            )
+            ),
         )}
       </div>
       <div className={`${baseClass}__action-buttons--secondary`}>

@@ -30,12 +30,8 @@ interface IRegistrationPageProps {
 const baseClass = "registration-page";
 
 const RegistrationPage = ({ router }: IRegistrationPageProps) => {
-  const {
-    currentUser,
-    setCurrentUser,
-    setAvailableTeams,
-    setUserSettings,
-  } = useContext(AppContext);
+  const { currentUser, setCurrentUser, setAvailableTeams, setUserSettings } =
+    useContext(AppContext);
   const [page, setPage] = useState(1);
   const [pageProgress, setPageProgress] = useState(1);
   const [showSetupError, setShowSetupError] = useState(false);

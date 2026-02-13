@@ -29,7 +29,7 @@ export interface INumberDropdownOption extends Omit<IDropdownOption, "value"> {
 const generateDropdownOptions = (
   teams: ITeamSummary[] | undefined,
   includeAllTeams: boolean,
-  includeNoTeams?: boolean
+  includeNoTeams?: boolean,
 ): INumberDropdownOption[] => {
   if (!teams) {
     return [];
@@ -46,7 +46,7 @@ const generateDropdownOptions = (
       !(
         (o.label === APP_CONTEXT_NO_TEAM_SUMMARY.name && !includeNoTeams) ||
         (o.label === APP_CONTEXT_ALL_TEAMS_SUMMARY.name && !includeAllTeams)
-      )
+      ),
   );
 
   return filtered;
@@ -57,7 +57,7 @@ const getOptionBackgroundColor = (
     INumberDropdownOption,
     false,
     GroupBase<INumberDropdownOption>
-  >
+  >,
 ) => {
   return state.isFocused ? COLORS["ui-fleet-black-5"] : "transparent";
 };
@@ -93,13 +93,13 @@ const TeamsDropdown = ({
       generateDropdownOptions(
         currentUserTeams,
         includeAllTeams,
-        includeNoTeams
+        includeNoTeams,
       ),
-    [currentUserTeams, includeAllTeams, includeNoTeams]
+    [currentUserTeams, includeAllTeams, includeNoTeams],
   );
 
   const selectedValue = teamOptions.find(
-    (option) => selectedTeamId === option.value
+    (option) => selectedTeamId === option.value,
   )
     ? selectedTeamId
     : teamOptions[0]?.value;
@@ -109,7 +109,7 @@ const TeamsDropdown = ({
   });
 
   const CustomDropdownIndicator = (
-    props: DropdownIndicatorProps<any, false, any>
+    props: DropdownIndicatorProps<any, false, any>,
   ) => {
     const { isFocused, selectProps } = props;
     const color =

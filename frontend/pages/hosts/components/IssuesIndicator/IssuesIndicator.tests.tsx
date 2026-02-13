@@ -12,12 +12,12 @@ describe("Issues indicator", () => {
         totalIssuesCount={5}
         criticalVulnerabilitiesCount={3}
         failingPoliciesCount={2}
-      />
+      />,
     );
     await user.hover(screen.getByText("5"));
 
     const vulnerabilitiesTooltip = screen.getByText(
-      /Critical vulnerabilities/i
+      /Critical vulnerabilities/i,
     );
     const policiesTooltip = screen.getByText(/Failing policies/i);
 

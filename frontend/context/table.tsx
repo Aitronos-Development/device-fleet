@@ -39,7 +39,7 @@ const TableProvider = ({ children }: Props) => {
         dispatch({ type: actions.RESET_SELECTED_ROWS, resetSelectedRows });
       },
     }),
-    [state.resetSelectedRows]
+    [state.resetSelectedRows],
   );
 
   return (

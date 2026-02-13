@@ -31,7 +31,7 @@ declare module "react-select-5/dist/declarations/src/Select" {
   export interface Props<
     Option,
     IsMulti extends boolean,
-    Group extends GroupBase<Option>
+    Group extends GroupBase<Option>,
   > {
     searchQuery?: string;
     onChangeSearchQuery?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -55,7 +55,7 @@ const CustomMenuList = (props: ICustomMenuListProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleInputClick = (
-    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
     onClickSearchInput && onClickSearchInput(event);
     inputRef.current?.focus();
@@ -71,7 +71,7 @@ const CustomMenuList = (props: ICustomMenuListProps) => {
           value={searchQuery}
           name="label-search-input"
           type="text"
-          placeholder="e.g. wiped host"
+          placeholder="e.g. wiped device"
           onKeyDown={(event) => {
             // Stops the parent dropdown from picking up on input keypresses
             event.stopPropagation();

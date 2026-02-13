@@ -78,7 +78,7 @@ const TargetsInput = ({
 
   useEffect(() => {
     setIsActiveSearch(
-      !isEmpty(searchText) && (!hasFetchError || isTargetsLoading)
+      !isEmpty(searchText) && (!hasFetchError || isTargetsLoading),
     );
   }, [searchText, hasFetchError, isTargetsLoading]);
   return (

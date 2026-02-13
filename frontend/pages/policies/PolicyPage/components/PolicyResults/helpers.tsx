@@ -10,7 +10,7 @@ export const getYesNoCounts = (hostResponses: IPolicyHostResponse[]) => {
       }
       return acc;
     },
-    { yes: 0, no: 0 }
+    { yes: 0, no: 0 },
   );
 
   return yesNoCounts;

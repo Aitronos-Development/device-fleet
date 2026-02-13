@@ -164,7 +164,7 @@ const QueryDetailsPage = ({
         setLastEditedQueryDiscardData(returnedQuery.discard_data);
       },
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   /** Pesky bug affecting team level users:
@@ -183,7 +183,7 @@ const QueryDetailsPage = ({
     router.push(
       getPathWithQueryParams(location.pathname, {
         team_id: storedQuery?.team_id?.toString(),
-      })
+      }),
     );
   }
 
@@ -203,14 +203,14 @@ const QueryDetailsPage = ({
       enabled: !!queryId,
       refetchOnWindowFocus: false,
       onError: (error) => handlePageError(error),
-    }
+    },
   );
 
   // Used to set host's team in AppContext for RBAC action buttons
   useEffect(() => {
     if (storedQuery?.team_id) {
       const querysTeam = availableTeams?.find(
-        (team) => team.id === storedQuery.team_id
+        (team) => team.id === storedQuery.team_id,
       );
       setCurrentTeam(querysTeam);
     }
@@ -305,8 +305,8 @@ const QueryDetailsPage = ({
                                 {
                                   host_id: hostId,
                                   team_id: currentTeamId,
-                                }
-                              )
+                                },
+                              ),
                             );
                         }}
                         disabled={isLiveQueryDisabled}
@@ -334,7 +334,7 @@ const QueryDetailsPage = ({
                           getPathWithQueryParams(PATHS.EDIT_QUERY(queryId), {
                             team_id: currentTeamId,
                             host_id: hostId,
-                          })
+                          }),
                         );
                     }}
                     className={`${baseClass}__manage-automations button`}

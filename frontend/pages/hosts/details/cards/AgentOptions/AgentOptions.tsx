@@ -34,23 +34,20 @@ const AgentOptions = ({
   let distributedInterval;
 
   if (isChromeOS) {
-    [
-      configTLSRefresh,
-      loggerTLSPeriod,
-      distributedInterval,
-    ] = CHROMEOS_AGENT_OPTIONS;
+    [configTLSRefresh, loggerTLSPeriod, distributedInterval] =
+      CHROMEOS_AGENT_OPTIONS;
   } else {
     configTLSRefresh = wrapFleetHelper(
       secondsToHms,
-      osqueryData.config_tls_refresh
+      osqueryData.config_tls_refresh,
     );
     loggerTLSPeriod = wrapFleetHelper(
       secondsToHms,
-      osqueryData.logger_tls_period
+      osqueryData.logger_tls_period,
     );
     distributedInterval = wrapFleetHelper(
       secondsToHms,
-      osqueryData.distributed_interval
+      osqueryData.distributed_interval,
     );
   }
 

@@ -88,8 +88,8 @@ const getDefaultWindowsDeadlineDays = ({
   teamConfig,
 }: GetDefaultFnParams) => {
   return currentTeamId === API_NO_TEAM_ID
-    ? appConfig.mdm.windows_updates.deadline_days?.toString() ?? ""
-    : teamConfig?.mdm?.windows_updates.deadline_days?.toString() ?? "";
+    ? (appConfig.mdm.windows_updates.deadline_days?.toString() ?? "")
+    : (teamConfig?.mdm?.windows_updates.deadline_days?.toString() ?? "");
 };
 
 const getDefaultWindowsGracePeriodDays = ({
@@ -98,8 +98,8 @@ const getDefaultWindowsGracePeriodDays = ({
   teamConfig,
 }: GetDefaultFnParams) => {
   return currentTeamId === API_NO_TEAM_ID
-    ? appConfig.mdm.windows_updates.grace_period_days?.toString() ?? ""
-    : teamConfig?.mdm?.windows_updates.grace_period_days?.toString() ?? "";
+    ? (appConfig.mdm.windows_updates.grace_period_days?.toString() ?? "")
+    : (teamConfig?.mdm?.windows_updates.grace_period_days?.toString() ?? "");
 };
 
 interface ITargetSectionProps {

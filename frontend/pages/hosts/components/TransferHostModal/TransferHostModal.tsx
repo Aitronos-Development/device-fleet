@@ -51,7 +51,7 @@ const TransferHostModal = ({
         setSelectedTeam(teamWithId as ITeam);
       }
     },
-    [teams, setSelectedTeam]
+    [teams, setSelectedTeam],
   );
 
   const onSubmitTransferHost = useCallback(() => {
@@ -80,7 +80,7 @@ const TransferHostModal = ({
         <form className={`${baseClass}__form`}>
           <Dropdown
             wrapperClassName={`${baseClass}__team-dropdown-wrapper`}
-            label={`Transfer ${multipleHosts ? "selected hosts" : "host"} to:`}
+            label={`Transfer ${multipleHosts ? "selected devices" : "device"} to:`}
             value={selectedTeam && selectedTeam.id}
             options={createTeamDropdownOptions()}
             onChange={onChangeSelectTeam}

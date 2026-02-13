@@ -51,8 +51,8 @@ export const generateSolutionsTableHeaders = (): IDataColumn[] => [
     ),
   },
   {
-    title: "Hosts",
-    Header: "Hosts",
+    title: "Devices",
+    Header: "Devices",
     disableSortBy: true,
     accessor: "hosts_count",
     Cell: (cellProps: ICellProps) => <TextCell value={cellProps.cell.value} />,
@@ -60,7 +60,7 @@ export const generateSolutionsTableHeaders = (): IDataColumn[] => [
 ];
 
 export const generateSolutionsDataSet = (
-  solutions: IMdmSolutionTableData[]
+  solutions: IMdmSolutionTableData[],
 ): IMdmSolutionTableData[] => {
   return solutions.map((solution) => {
     return {

@@ -88,7 +88,7 @@ const ViewAllHostsButton = ({
         <span
           className={`${baseClass}__text${responsive ? "--responsive" : ""}`}
         >
-          {customText ?? "View all hosts"}
+          {customText ?? "View all devices"}
         </span>
       )}
       {!excludeChevron && (

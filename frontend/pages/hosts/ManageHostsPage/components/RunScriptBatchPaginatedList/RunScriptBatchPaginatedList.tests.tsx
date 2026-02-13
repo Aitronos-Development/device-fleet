@@ -38,7 +38,7 @@ describe("RunScriptBatchPaginatedList - component", () => {
         teamId={1}
         scriptCount={2}
         setScriptForDetails={jest.fn()}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -60,7 +60,7 @@ describe("RunScriptBatchPaginatedList - component", () => {
         teamId={1}
         scriptCount={2}
         setScriptForDetails={jest.fn()}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const listedScripts = screen.getAllByRole("listitem");
@@ -85,14 +85,14 @@ describe("RunScriptBatchPaginatedList - component", () => {
         teamId={1}
         scriptCount={2}
         setScriptForDetails={onSetScriptForDetails}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
     const listedScripts = screen.getAllByRole("listitem");
     // click on the script's name
     await userEvent.click(
-      within(listedScripts[0]).getByText(team1ScriptOverrides[0].name)
+      within(listedScripts[0]).getByText(team1ScriptOverrides[0].name),
     );
     await waitFor(() => {
       expect(onSetScriptForDetails.mock.calls.length).toEqual(1); //

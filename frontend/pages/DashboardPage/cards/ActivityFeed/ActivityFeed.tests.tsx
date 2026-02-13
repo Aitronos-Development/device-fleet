@@ -23,7 +23,7 @@ describe("Activity Feed", () => {
         setRefetchActivities={noop}
         isPremiumTier
         router={createMockRouter()}
-      />
+      />,
     );
 
     // waiting for the activity data to render
@@ -45,7 +45,7 @@ describe("Activity Feed", () => {
         setRefetchActivities={noop}
         isPremiumTier
         router={createMockRouter()}
-      />
+      />,
     );
 
     // waiting for the activity data to render
@@ -68,7 +68,7 @@ describe("Activity Feed", () => {
         setRefetchActivities={noop}
         isPremiumTier
         router={createMockRouter()}
-      />
+      />,
     );
 
     // waiting for the activity data to render and pagination to be present
@@ -90,7 +90,7 @@ describe("Activity Feed", () => {
         setRefetchActivities={noop}
         isPremiumTier
         router={createMockRouter()}
-      />
+      />,
     );
 
     // waiting for the activity data to render

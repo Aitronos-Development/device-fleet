@@ -13,27 +13,27 @@ describe("FleetDetails - form", () => {
     render(<FleetDetails handleSubmit={handleSubmitSpy} />);
 
     expect(
-      screen.getByRole("textbox", { name: "Fleet web address" })
+      screen.getByRole("textbox", { name: "Fleet web address" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
   });
 
   it("validates the presence of the fleet web address field", async () => {
     const { user } = renderWithSetup(
-      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />
+      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
 
     await user.click(screen.getByRole("button", { name: "Next" }));
 
     expect(handleSubmitSpy).not.toHaveBeenCalled();
     expect(
-      screen.getByText("Fleet web address must be completed")
+      screen.getByText("Fleet web address must be completed"),
     ).toBeInTheDocument();
   });
 
   it("validates the Fleet server URL field starts with 'https://' or 'http://'", async () => {
     const { user } = renderWithSetup(
-      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />
+      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
 
     const inputField = screen.getByRole("textbox", {
@@ -56,12 +56,12 @@ describe("FleetDetails - form", () => {
 
   it("submits the form with valid https link", async () => {
     const { user } = renderWithSetup(
-      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />
+      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
     // when
     await user.type(
       screen.getByRole("textbox", { name: "Fleet web address" }),
-      "https://gnar.Fleet.co"
+      "https://gnar.Fleet.co",
     );
     await user.click(screen.getByRole("button", { name: "Next" }));
     // then
@@ -71,12 +71,12 @@ describe("FleetDetails - form", () => {
   });
   it("submits the form with valid http link", async () => {
     const { user } = renderWithSetup(
-      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />
+      <FleetDetails handleSubmit={handleSubmitSpy} currentPage />,
     );
     // when
     await user.type(
       screen.getByRole("textbox", { name: "Fleet web address" }),
-      "http://localhost:8080"
+      "http://localhost:8080",
     );
     await user.click(screen.getByRole("button", { name: "Next" }));
     // then

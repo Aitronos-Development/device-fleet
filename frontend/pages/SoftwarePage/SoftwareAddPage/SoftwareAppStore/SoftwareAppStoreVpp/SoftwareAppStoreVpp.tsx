@@ -92,10 +92,8 @@ const SoftwareAppStoreVpp = ({
   const { isPremiumTier } = useContext(AppContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [
-    showPreviewEndUserExperience,
-    setShowPreviewEndUserExperience,
-  ] = useState(false);
+  const [showPreviewEndUserExperience, setShowPreviewEndUserExperience] =
+    useState(false);
   const [isIosOrIpadosApp, setIsIosOrIpadosApp] = useState(false);
 
   const {
@@ -109,7 +107,7 @@ const SoftwareAppStoreVpp = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       staleTime: 30000,
       retry: (tries, error) => error.status !== 404 && tries <= 3,
-    }
+    },
   );
 
   const {
@@ -127,7 +125,7 @@ const SoftwareAppStoreVpp = ({
       ...DEFAULT_USE_QUERY_OPTIONS,
       enabled: isPremiumTier,
       staleTime: 10000,
-    }
+    },
   );
 
   const noVppTokenUploaded = !vppInfo || !vppInfo.vpp_tokens.length;
@@ -145,7 +143,7 @@ const SoftwareAppStoreVpp = ({
       enabled: hasVppToken,
       staleTime: 30000,
       select: (res) => res.app_store_apps,
-    }
+    },
   );
 
   const goBackToSoftwareTitles = (showAvailableForInstallOnly = false) => {
@@ -170,23 +168,22 @@ const SoftwareAppStoreVpp = ({
     setIsLoading(true);
 
     try {
-      const {
-        software_title_id: softwareVppTitleId,
-      } = await softwareAPI.addAppStoreApp(currentTeamId, formData);
+      const { software_title_id: softwareVppTitleId } =
+        await softwareAPI.addAppStoreApp(currentTeamId, formData);
 
       renderFlash(
         "success",
         <>
           <b>{formData.selectedApp.name}</b> successfully added.
         </>,
-        { persistOnPageChange: true }
+        { persistOnPageChange: true },
       );
 
       router.push(
         getPathWithQueryParams(
           PATHS.SOFTWARE_TITLE_DETAILS(softwareVppTitleId.toString()),
-          { team_id: currentTeamId }
-        )
+          { team_id: currentTeamId },
+        ),
       );
     } catch (e) {
       renderFlash("error", getErrorMessage(e));

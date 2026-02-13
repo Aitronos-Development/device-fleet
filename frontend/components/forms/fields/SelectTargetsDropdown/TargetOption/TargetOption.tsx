@@ -14,7 +14,7 @@ const baseClass = "target-option";
 
 interface ITargetOptionProps {
   onMoreInfoClick: (
-    target: ISelectTargetsEntity
+    target: ISelectTargetsEntity,
   ) => (event: React.MouseEvent) => void;
   onSelect: (target: ISelectTargetsEntity, event: React.MouseEvent) => void;
   target: ISelectTargetsEntity;
@@ -70,7 +70,7 @@ const TargetOption = ({
         <div>
           <TargetIcon target={target} />
           <span className={`${baseClass}__label-label`}>
-            {displayText !== "All Hosts" ? displayText : "All hosts"}
+            {displayText !== "All Hosts" ? displayText : "All devices"}
           </span>
         </div>
         {renderTargetDetail()}

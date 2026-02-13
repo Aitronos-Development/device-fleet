@@ -5,7 +5,7 @@ import { useLayoutEffect, useState } from "react";
  */
 // eslint-disable-next-line import/prefer-default-export
 export const useCheckTruncatedElement = <T extends HTMLElement>(
-  ref: React.RefObject<T>
+  ref: React.RefObject<T>,
 ) => {
   const [isTruncated, setIsTruncated] = useState(false);
 

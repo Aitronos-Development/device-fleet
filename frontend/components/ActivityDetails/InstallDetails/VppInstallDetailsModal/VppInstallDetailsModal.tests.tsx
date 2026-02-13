@@ -14,13 +14,13 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(screen.getByText(/Fleet tried to install/i)).toBeInTheDocument();
     expect(
       screen.getByText(
-        /but couldn't because the host was locked or was running on battery power while in Power Nap/i
-      )
+        /but couldn't because the host was locked or was running on battery power while in Power Nap/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -33,15 +33,15 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(
-      screen.getByText(/The MDM command \(request\) to install/i)
+      screen.getByText(/The MDM command \(request\) to install/i),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /was acknowledged but the installation has not been verified/i
-      )
+        /was acknowledged but the installation has not been verified/i,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText(/Refetch/i)).toBeInTheDocument();
   });
@@ -56,13 +56,13 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "windows",
-      })
+      }),
     );
     expect(
-      screen.getByText(/The MDM command \(request\) to install/i)
+      screen.getByText(/The MDM command \(request\) to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Please re-attempt this installation/i)
+      screen.getByText(/Please re-attempt this installation/i),
     ).toBeInTheDocument();
   });
 
@@ -76,15 +76,15 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "darwin",
-      })
+      }),
     );
     expect(screen.getByText(/The MDM command to install/i)).toBeInTheDocument();
     expect(screen.getByText(/Logic Pro/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/failed\. Please try again\./i)
+      screen.getByText(/failed\. Please try again\./i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/Please re-attempt this installation/i)
+      screen.queryByText(/Please re-attempt this installation/i),
     ).not.toBeInTheDocument();
   });
 
@@ -98,15 +98,15 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's iPhone",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ios",
-      })
+      }),
     );
     expect(screen.getByText(/The MDM command to install/i)).toBeInTheDocument();
     expect(screen.getByText(/Slack/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/failed\. Please try again\./i)
+      screen.getByText(/failed\. Please try again\./i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/Please re-attempt this installation/i)
+      screen.queryByText(/Please re-attempt this installation/i),
     ).not.toBeInTheDocument();
   });
 
@@ -120,15 +120,15 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's iPad",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ipados",
-      })
+      }),
     );
     expect(screen.getByText(/The MDM command to install/i)).toBeInTheDocument();
     expect(screen.getByText(/Pages/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/failed\. Please try again\./i)
+      screen.getByText(/failed\. Please try again\./i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/Please re-attempt this installation/i)
+      screen.queryByText(/Please re-attempt this installation/i),
     ).not.toBeInTheDocument();
   });
 
@@ -142,12 +142,12 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "windows",
-      })
+      }),
     );
     expect(
       screen.getByText(
-        /but the installation has not been verified. Please re-attempt this installation/i
-      )
+        /but the installation has not been verified. Please re-attempt this installation/i,
+      ),
     ).toBeInTheDocument();
   });
 
@@ -161,19 +161,19 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "darwin",
-      })
+      }),
     );
     expect(
-      screen.getByText(/The host acknowledged the MDM command to install/i)
+      screen.getByText(/The host acknowledged the MDM command to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/but the app failed to install/i)
+      screen.getByText(/but the app failed to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/but the installation has not been verified/i)
+      screen.queryByText(/but the installation has not been verified/i),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/If you're updating the app and the app is open/i)
+      screen.queryByText(/If you're updating the app and the app is open/i),
     ).not.toBeInTheDocument();
   });
 
@@ -187,16 +187,16 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's iPhone",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ios",
-      })
+      }),
     );
     expect(
-      screen.getByText(/The host acknowledged the MDM command to install/i)
+      screen.getByText(/The host acknowledged the MDM command to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/but the app failed to install/i)
+      screen.getByText(/but the app failed to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/but the installation has not been verified/i)
+      screen.queryByText(/but the installation has not been verified/i),
     ).not.toBeInTheDocument();
   });
 
@@ -210,16 +210,16 @@ describe("getStatusMessage helper function", () => {
         hostDisplayName: "Marko's iPad",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ipados",
-      })
+      }),
     );
     expect(
-      screen.getByText(/The host acknowledged the MDM command to install/i)
+      screen.getByText(/The host acknowledged the MDM command to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/but the app failed to install/i)
+      screen.getByText(/but the app failed to install/i),
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(/but the installation has not been verified/i)
+      screen.queryByText(/but the installation has not been verified/i),
     ).not.toBeInTheDocument();
   });
 
@@ -234,13 +234,13 @@ describe("getStatusMessage helper function", () => {
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "darwin",
         hasInstalledVersions: true,
-      })
+      }),
     );
 
     expect(screen.getByText(/Logic Pro/i)).toBeInTheDocument();
     expect(screen.getByText(/is installed\./i)).toBeInTheDocument();
     expect(
-      screen.queryByText(/If you're updating the app and the app is open/i)
+      screen.queryByText(/If you're updating the app and the app is open/i),
     ).not.toBeInTheDocument();
   });
 
@@ -255,13 +255,13 @@ describe("getStatusMessage helper function", () => {
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ios",
         hasInstalledVersions: true,
-      })
+      }),
     );
 
     expect(screen.getByText(/Slack/i)).toBeInTheDocument();
     expect(screen.getByText(/is installed\./i)).toBeInTheDocument();
     expect(
-      screen.queryByText(/The host acknowledged the MDM command to install/i)
+      screen.queryByText(/The host acknowledged the MDM command to install/i),
     ).not.toBeInTheDocument();
   });
 
@@ -276,13 +276,13 @@ describe("getStatusMessage helper function", () => {
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "ipados",
         hasInstalledVersions: true,
-      })
+      }),
     );
 
     expect(screen.getByText(/Slack/i)).toBeInTheDocument();
     expect(screen.getByText(/is installed\./i)).toBeInTheDocument();
     expect(
-      screen.queryByText(/The host acknowledged the MDM command to install/i)
+      screen.queryByText(/The host acknowledged the MDM command to install/i),
     ).not.toBeInTheDocument();
   });
 
@@ -297,17 +297,17 @@ describe("getStatusMessage helper function", () => {
         commandUpdatedAt: "2025-07-29T22:49:52Z",
         platform: "darwin",
         hasInstalledVersions: true,
-      })
+      }),
     );
 
     expect(
-      screen.queryByText(/The host acknowledged the MDM command to install/i)
+      screen.queryByText(/The host acknowledged the MDM command to install/i),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/but the app failed to install/i)
+      screen.queryByText(/but the app failed to install/i),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/If you're updating the app and the app is open/i)
+      screen.queryByText(/If you're updating the app and the app is open/i),
     ).not.toBeInTheDocument();
   });
 
@@ -320,7 +320,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(screen.getByText(/when it comes online/i)).toBeInTheDocument();
   });
@@ -334,7 +334,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(screen.getByText(/Fleet installed/i)).toBeInTheDocument();
     expect(screen.getByText(/Logic Pro/i)).toBeInTheDocument();
@@ -350,7 +350,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "", // <-- empty
-      })
+      }),
     );
 
     expect(screen.getByText(/Logic Pro/i)).toBeInTheDocument();
@@ -366,7 +366,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(screen.getByText(/Fleet installed/i)).toBeInTheDocument();
     expect(screen.getByText(/the host/i)).toBeInTheDocument();
@@ -381,7 +381,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: new Date().toISOString(),
-      })
+      }),
     );
     expect(screen.getByText(/\(.*ago\)/i)).toBeInTheDocument();
   });
@@ -396,7 +396,7 @@ describe("getStatusMessage helper function", () => {
         appName: "Logic Pro",
         hostDisplayName: "Marko's MacBook Pro",
         commandUpdatedAt: "2025-07-29T22:49:52Z",
-      })
+      }),
     );
     expect(screen.queryByText(/Marko's MacBook Pro/i)).not.toBeInTheDocument();
   });
@@ -407,7 +407,7 @@ describe("VPP Install Details Modal - ModalButtons component", () => {
     const onCancel = jest.fn();
 
     const { user } = renderWithSetup(
-      <ModalButtons displayStatus="installed" onCancel={onCancel} />
+      <ModalButtons displayStatus="installed" onCancel={onCancel} />,
     );
 
     const doneButton = screen.getByRole("button", { name: /done/i });
@@ -428,7 +428,7 @@ describe("VPP Install Details Modal - ModalButtons component", () => {
         onCancel={onCancel}
         onRetry={onRetry}
         hostSoftwareId={123}
-      />
+      />,
     );
 
     const cancelButton = screen.getByRole("button", { name: /cancel/i });

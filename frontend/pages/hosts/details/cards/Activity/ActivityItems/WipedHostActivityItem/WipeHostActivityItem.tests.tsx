@@ -10,7 +10,7 @@ describe("WipeHostActivityItem", () => {
       <WipeHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.getByText("Test User")).toBeVisible();
@@ -22,7 +22,7 @@ describe("WipeHostActivityItem", () => {
       <WipeHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("close-icon")).not.toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("WipeHostActivityItem", () => {
       <WipeHostActivityItem
         activity={createMockHostPastActivity({ actor_full_name: "Test User" })}
         tab="past"
-      />
+      />,
     );
 
     expect(screen.queryByTestId("info-outline-icon")).not.toBeInTheDocument();

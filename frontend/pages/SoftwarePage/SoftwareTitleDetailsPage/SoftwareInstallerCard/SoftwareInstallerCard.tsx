@@ -175,7 +175,7 @@ const SoftwareInstallerCard = ({
   if (!softwareInstallerMetaData) {
     // This should never happen for SoftwareInstallerCard; fail fast in dev.
     throw new Error(
-      "useSoftwareInstaller: called with a softwareTitle that has no installer"
+      "useSoftwareInstaller: called with a softwareTitle that has no installer",
     );
   }
 
@@ -211,12 +211,8 @@ const SoftwareInstallerCard = ({
     repoURL,
   } = softwareInstallerMeta;
 
-  const {
-    isGlobalAdmin,
-    isGlobalMaintainer,
-    isTeamAdmin,
-    isTeamMaintainer,
-  } = useContext(AppContext);
+  const { isGlobalAdmin, isGlobalMaintainer, isTeamAdmin, isTeamMaintainer } =
+    useContext(AppContext);
 
   const { renderFlash } = useContext(NotificationContext);
 
@@ -235,7 +231,7 @@ const SoftwareInstallerCard = ({
     try {
       const resp = await softwareAPI.getSoftwarePackageToken(
         softwareId,
-        teamId
+        teamId,
       );
       if (!resp.token) {
         throw new Error("No download token returned");
@@ -243,7 +239,7 @@ const SoftwareInstallerCard = ({
       // Now that we received the download token, we construct the download URL.
       const { origin } = global.window.location;
       const url = `${origin}${URL_PREFIX}/api${endpoints.SOFTWARE_PACKAGE_TOKEN(
-        softwareId
+        softwareId,
       )}/${resp.token}`;
       // The download occurs without any additional authentication.
       downloadFile(url, name);
@@ -292,7 +288,7 @@ const SoftwareInstallerCard = ({
                   position="top"
                   tipContent={getSelfServiceTooltip(
                     isIosOrIpadosApp,
-                    isAndroidPlayStoreApp
+                    isAndroidPlayStoreApp,
                   )}
                   underline={false}
                 >
@@ -306,7 +302,7 @@ const SoftwareInstallerCard = ({
                   position="top"
                   tipContent={getAutoUpdatesTooltip(
                     autoUpdateStartTime || "",
-                    autoUpdateEndTime || ""
+                    autoUpdateEndTime || "",
                   )}
                   underline={false}
                 >

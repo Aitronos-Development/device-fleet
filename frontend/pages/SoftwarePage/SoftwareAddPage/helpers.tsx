@@ -37,7 +37,8 @@ export const formatAlreadyAvailableInstallMessage = (msg: string) => {
 
   // New regex for "SoftwareInstaller <package> already exists with team <team>."
   // or "In-house app <package> already exists with team <team>."
-  const packageExistsRegex = /^(?:SoftwareInstaller|In-house app) "(.+?)" already.+ team "(.+?)"\./;
+  const packageExistsRegex =
+    /^(?:SoftwareInstaller|In-house app) "(.+?)" already.+ team "(.+?)"\./;
   match = cleaned.match(packageExistsRegex);
   if (match) {
     return (

@@ -33,7 +33,7 @@ const MfaPage = ({ router, params }: IMfaPage) => {
   const { redirectLocation } = useContext(RoutingContext);
   const [isExpired, setIsExpired] = useState(false);
   const [shouldFinishMFA, setShouldFinishMFA] = useState(
-    !!local.getItem("auth_pending_mfa")
+    !!local.getItem("auth_pending_mfa"),
   );
   local.removeItem("auth_pending_mfa");
 

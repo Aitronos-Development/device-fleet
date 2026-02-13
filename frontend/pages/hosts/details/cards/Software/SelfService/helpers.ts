@@ -33,7 +33,7 @@ export const CATEGORIES_NAV_ITEMS: ICategory[] = [
 
 export const filterSoftwareByCategory = (
   software?: IDeviceSoftwareWithUiStatus[],
-  category_id?: number
+  category_id?: number,
 ): IDeviceSoftwareWithUiStatus[] => {
   // Find the category value string for the given id
   const category = CATEGORIES_NAV_ITEMS.find((cat) => cat.id === category_id);
@@ -47,10 +47,10 @@ export const filterSoftwareByCategory = (
   return (software || []).filter(
     (softwareItem) =>
       softwareItem.software_package?.categories?.includes(
-        category.value as SoftwareCategory
+        category.value as SoftwareCategory,
       ) ||
       softwareItem.app_store_app?.categories?.includes(
-        category.value as SoftwareCategory
-      )
+        category.value as SoftwareCategory,
+      ),
   );
 };

@@ -139,9 +139,8 @@ const OSSettingStatusCell = ({
                   <TooltipContent
                     innerContent={tooltip}
                     innerProps={{
-                      isDiskEncryptionProfile: isDiskEncryptionProfile(
-                        profileName
-                      ),
+                      isDiskEncryptionProfile:
+                        isDiskEncryptionProfile(profileName),
                     }}
                   />
                 ) : (

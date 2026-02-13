@@ -31,7 +31,7 @@ export default {
     const { INVITES } = endpoints;
 
     return sendRequest("POST", INVITES, formData).then((response) =>
-      helpers.addGravatarUrlToResource(response.invite)
+      helpers.addGravatarUrlToResource(response.invite),
     );
   },
   update: (inviteId: number, formData: IEditInviteFormData) => {

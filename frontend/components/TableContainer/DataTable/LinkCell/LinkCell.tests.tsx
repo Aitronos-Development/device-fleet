@@ -9,7 +9,7 @@ const VALUE = "40 hosts";
 describe("Link cell", () => {
   it("renders text", async () => {
     const { user } = renderWithSetup(
-      <LinkCell value={VALUE} path={PATHS.MANAGE_HOSTS} />
+      <LinkCell value={VALUE} path={PATHS.MANAGE_HOSTS} />,
     );
 
     expect(screen.getByText("40 hosts")).toBeInTheDocument();

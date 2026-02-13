@@ -39,7 +39,7 @@ class YamlAce extends Component {
       "form-field__label",
       {
         "form-field__label--error": error,
-      }
+      },
     );
 
     return (
@@ -50,15 +50,8 @@ class YamlAce extends Component {
   };
 
   render() {
-    const {
-      label,
-      name,
-      onChange,
-      value,
-      error,
-      wrapperClassName,
-      disabled,
-    } = this.props;
+    const { label, name, onChange, value, error, wrapperClassName, disabled } =
+      this.props;
 
     const { renderLabel, onLoadHandler } = this;
 

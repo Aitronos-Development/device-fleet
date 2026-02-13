@@ -40,20 +40,20 @@ const DiskEncryption = ({
 
   const defaultShowDiskEncryption = currentTeamId
     ? false
-    : config?.mdm.enable_disk_encryption ?? false;
+    : (config?.mdm.enable_disk_encryption ?? false);
 
   const defaultRequireBitLockerPIN = currentTeamId
     ? false
-    : config?.mdm.windows_require_bitlocker_pin ?? false;
+    : (config?.mdm.windows_require_bitlocker_pin ?? false);
 
   const [isLoadingTeam, setIsLoadingTeam] = useState(true);
 
   const [showAggregate, setShowAggregate] = useState(defaultShowDiskEncryption);
   const [diskEncryptionEnabled, setDiskEncryptionEnabled] = useState(
-    defaultShowDiskEncryption
+    defaultShowDiskEncryption,
   );
   const [requireBitLockerPIN, setRequireBitLockerPIN] = useState(
-    defaultRequireBitLockerPIN
+    defaultRequireBitLockerPIN,
   );
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(false);
 
@@ -66,7 +66,7 @@ const DiskEncryption = ({
     } catch {
       renderFlash(
         "error",
-        "Could not retrieve updated app config. Please try again."
+        "Could not retrieve updated app config. Please try again.",
       );
     }
   };
@@ -95,7 +95,7 @@ const DiskEncryption = ({
         setShowAggregate(enableDiskEncryption);
         setIsLoadingTeam(false);
       },
-    }
+    },
   );
 
   const onUpdateDiskEncryption = async () => {
@@ -103,11 +103,11 @@ const DiskEncryption = ({
       await diskEncryptionAPI.updateDiskEncryption(
         diskEncryptionEnabled,
         requireBitLockerPIN,
-        currentTeamId
+        currentTeamId,
       );
       renderFlash(
         "success",
-        "Successfully updated disk encryption enforcement!"
+        "Successfully updated disk encryption enforcement!",
       );
       onMutation();
       setShowAggregate(diskEncryptionEnabled);
@@ -124,7 +124,7 @@ const DiskEncryption = ({
             Could&apos;t enable disk encryption. Missing required private key.
             Learn how to configure the private key here:{" "}
             <a href={link}>{link}</a>
-          </>
+          </>,
         );
       } else {
         const errorMsg =

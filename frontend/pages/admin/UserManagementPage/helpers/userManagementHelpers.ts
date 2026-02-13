@@ -24,7 +24,7 @@ export interface IRoleOptionsParams {
  */
 const generateUpdateData = (
   currentUserData: IUser | IInvite,
-  formData: IUserFormData
+  formData: IUserFormData,
 ): IUpdateUserFormData => {
   const updatableFields = [
     "global_role",
@@ -41,7 +41,7 @@ const generateUpdateData = (
         updatableFields.includes(attr) &&
         !isEqual(
           formData[attr as keyof ICurrentUserData],
-          currentUserData[attr as keyof ICurrentUserData]
+          currentUserData[attr as keyof ICurrentUserData],
         )
       ) {
         // Note: ignore TS error as we will never have undefined set to an
@@ -52,7 +52,7 @@ const generateUpdateData = (
       }
       return updatedAttributes;
     },
-    {}
+    {},
   );
 };
 

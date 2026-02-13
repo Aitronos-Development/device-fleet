@@ -7,7 +7,7 @@ import ColumnListItem from "./ColumnListItem";
 
 const sortAlphabetically = (
   columnA: IQueryTableColumn,
-  columnB: IQueryTableColumn
+  columnB: IQueryTableColumn,
 ) => {
   return columnA.name.localeCompare(columnB.name);
 };

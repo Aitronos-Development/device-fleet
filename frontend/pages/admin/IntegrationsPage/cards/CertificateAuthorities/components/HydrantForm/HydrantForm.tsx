@@ -46,11 +46,11 @@ const HydrantForm = ({
 }: IHydrantFormProps) => {
   const validations = useMemo(
     () => generateFormValidations(certAuthorities ?? [], isEditing),
-    [certAuthorities, isEditing]
+    [certAuthorities, isEditing],
   );
 
   const [formValidation, setFormValidation] = useState<IHydrantFormValidation>(
-    () => validateFormData(formData, validations)
+    () => validateFormData(formData, validations),
   );
 
   const { name, url, clientId, clientSecret } = formData;
@@ -64,8 +64,8 @@ const HydrantForm = ({
     setFormValidation(
       validateFormData(
         { ...formData, [update.name]: update.value },
-        validations
-      )
+        validations,
+      ),
     );
     onChange(update);
   };

@@ -18,13 +18,13 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={onExit}
         onUpdate={onUpdate}
-      />
+      />,
     );
 
     expect(screen.getByText("Update details")).toBeVisible();
 
     expect(
-      screen.queryByRole("button", { name: "Done" })
+      screen.queryByRole("button", { name: "Done" }),
     ).not.toBeInTheDocument();
 
     // Click Update: both handlers called
@@ -48,13 +48,13 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
     expect(
-      screen.queryByRole("button", { name: "Cancel" })
+      screen.queryByRole("button", { name: "Cancel" }),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByRole("button", { name: "Update" })
+      screen.queryByRole("button", { name: "Update" }),
     ).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Done" })).toBeInTheDocument();
   });
@@ -67,12 +67,12 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("pending-outline-icon")).toBeInTheDocument();
     expect(
-      screen.getByText(/Fleet is updating or will update/i)
+      screen.getByText(/Fleet is updating or will update/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/Offline Laptop/)).toBeInTheDocument();
     expect(screen.getByText(/\(mock software\.app\)/)).toBeInTheDocument();
@@ -89,12 +89,12 @@ describe("SoftwareUpdateModal", () => {
         isDeviceUser
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("pending-outline-icon")).toBeInTheDocument();
     expect(
-      screen.getByText(/Fleet is updating or will update/i)
+      screen.getByText(/Fleet is updating or will update/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/\(mock software\.app\)/i)).toBeInTheDocument();
     expect(screen.getByText(/Test Host/i)).toBeInTheDocument();
@@ -109,14 +109,14 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
 
     expect(screen.queryByTestId("error-outline-icon")).toBeInTheDocument();
     expect(screen.getByText(/New version of/i)).toBeInTheDocument();
     expect(screen.getByText(/Mock Software/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/Update the current version on/i)
+      screen.getByText(/Update the current version on/i),
     ).toBeInTheDocument();
     expect(screen.getByText(/Test PC/i)).toBeInTheDocument();
   });
@@ -129,7 +129,7 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
     expect(screen.getByText("Current version:")).toBeInTheDocument();
   });
@@ -159,7 +159,7 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
     expect(screen.getByText("Current versions:")).toBeInTheDocument();
   });
@@ -176,7 +176,7 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
     expect(screen.queryByText(/Current version:/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Current versions:/i)).not.toBeInTheDocument();
@@ -192,7 +192,7 @@ describe("SoftwareUpdateModal", () => {
         software={mockSoftware}
         onExit={noop}
         onUpdate={noop}
-      />
+      />,
     );
     expect(screen.queryByText(/Current version:/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Current versions:/i)).not.toBeInTheDocument();

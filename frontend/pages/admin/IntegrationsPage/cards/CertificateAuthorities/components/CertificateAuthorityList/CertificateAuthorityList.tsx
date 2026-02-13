@@ -18,7 +18,7 @@ export type ICertAuthorityListData = ICertificateAuthorityPartial & {
  * to provide a user-friendly description for each certificate authority.
  */
 export const generateListData = (
-  certAuthorities: ICertificateAuthorityPartial[]
+  certAuthorities: ICertificateAuthorityPartial[],
 ) => {
   return certAuthorities.map<ICertAuthorityListData>((cert) => {
     return {
@@ -41,9 +41,10 @@ const CertificateAuthorityList = ({
   onClickEdit,
   onClickDelete,
 }: ICertificateAuthorityListProps) => {
-  const listData = useMemo(() => generateListData(certAuthorities), [
-    certAuthorities,
-  ]);
+  const listData = useMemo(
+    () => generateListData(certAuthorities),
+    [certAuthorities],
+  );
   return (
     <UploadList<ICertAuthorityListData>
       className={baseClass}

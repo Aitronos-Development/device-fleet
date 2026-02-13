@@ -131,7 +131,7 @@ const SQLEditor = ({
           session: Ace.EditSession,
           pos: Ace.Point,
           prefix: string,
-          callback: Ace.CompleterCallback
+          callback: Ace.CompleterCallback,
         ): void => {
           callback(null, [
             ...sqlKeyWords.map(
@@ -140,7 +140,7 @@ const SQLEditor = ({
                   caption: `${keyWord}`,
                   value: keyWord.toUpperCase(),
                   meta: "keyword",
-                } as Ace.Completion)
+                }) as Ace.Completion,
             ),
             ...sqlBuiltinFunctions.map(
               (builtInFunction: string) =>
@@ -148,7 +148,7 @@ const SQLEditor = ({
                   caption: builtInFunction,
                   value: builtInFunction.toUpperCase(),
                   meta: "built-in function",
-                } as Ace.Completion)
+                }) as Ace.Completion,
             ),
             ...sqlDataTypes.map(
               (dataType: string) =>
@@ -156,7 +156,7 @@ const SQLEditor = ({
                   caption: dataType,
                   value: dataType.toUpperCase(),
                   meta: "data type",
-                } as Ace.Completion)
+                }) as Ace.Completion,
             ),
           ]);
         },
@@ -165,7 +165,7 @@ const SQLEditor = ({
       langTools.addCompleter(sqlKeyWordsCompleter); // Add selected table columns or all columns
 
       const sqlTableColumns = selectedTableColumns(
-        checkTableValues.tables || []
+        checkTableValues.tables || [],
       );
 
       // Autocomplete table columns
@@ -175,7 +175,7 @@ const SQLEditor = ({
           session: Ace.EditSession,
           pos: Ace.Point,
           prefix: string,
-          callback: Ace.CompleterCallback
+          callback: Ace.CompleterCallback,
         ): void => {
           callback(
             null,
@@ -185,8 +185,8 @@ const SQLEditor = ({
                   caption: column.name, // Distinct values from tables,
                   value: column.name,
                   meta: `${column.description.slice(0, 15)}... Column`,
-                } as Ace.Completion)
-            )
+                }) as Ace.Completion,
+            ),
           );
         },
       };
@@ -205,7 +205,7 @@ const SQLEditor = ({
             session: Ace.EditSession,
             pos: Ace.Point,
             prefix: string,
-            callback: Ace.CompleterCallback
+            callback: Ace.CompleterCallback,
           ): void => {
             callback(
               null,
@@ -216,8 +216,8 @@ const SQLEditor = ({
                     value: table,
                     meta: "Table",
                     score: 1,
-                  } as Ace.Completion)
-              )
+                  }) as Ace.Completion,
+              ),
             );
           },
         };

@@ -25,7 +25,7 @@ describe("Dropdown - component", () => {
   it("selects a value from dropdown", async () => {
     const onChangeSpy = jest.fn();
     const { user } = renderWithSetup(
-      <Dropdown {...props} onChange={onChangeSpy} />
+      <Dropdown {...props} onChange={onChangeSpy} />,
     );
     const inputNode = screen.getByRole("combobox");
 

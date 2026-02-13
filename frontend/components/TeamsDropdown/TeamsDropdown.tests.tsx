@@ -20,7 +20,7 @@ describe("TeamsDropdown - component", () => {
         currentUserTeams={USER_TEAMS}
         selectedTeamId={1}
         onChange={noop}
-      />
+      />,
     );
 
     const selectedTeam = screen.getByText("Team 1");
@@ -33,7 +33,7 @@ describe("TeamsDropdown - component", () => {
         currentUserTeams={USER_TEAMS}
         includeAllTeams={false}
         onChange={noop}
-      />
+      />,
     );
 
     const selectedTeam = screen.getByText("Team 1");
@@ -48,7 +48,7 @@ describe("TeamsDropdown - component", () => {
     it("renders 'All teams' when no selectedTeamId is given", () => {
       renderWithAppContext(
         <TeamsDropdown currentUserTeams={USER_TEAMS} onChange={noop} />,
-        { contextValue }
+        { contextValue },
       );
 
       const selectedTeam = screen.getByText("All teams");
@@ -62,7 +62,7 @@ describe("TeamsDropdown - component", () => {
           includeAllTeams={false}
           onChange={noop}
         />,
-        { contextValue }
+        { contextValue },
       );
 
       const selectedTeam = screen.getByText("Team 1");
@@ -73,13 +73,13 @@ describe("TeamsDropdown - component", () => {
   describe("user is not on the global team", () => {
     const contextValue = { isOnGlobalTeam: false };
     const filteredUserTeams = USER_TEAMS.filter(
-      (t) => t.id > APP_CONTEXT_NO_TEAM_ID
+      (t) => t.id > APP_CONTEXT_NO_TEAM_ID,
     );
 
     it("renders the first team when no selectedTeamId is given", () => {
       renderWithAppContext(
         <TeamsDropdown currentUserTeams={filteredUserTeams} onChange={noop} />,
-        { contextValue }
+        { contextValue },
       );
 
       expect(screen.getByText("Team 1")).toBeInTheDocument();

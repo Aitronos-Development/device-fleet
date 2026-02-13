@@ -34,7 +34,7 @@ const PackComposerPage = ({ router }: IPackComposerPageProps): JSX.Element => {
 
   const onFetchTargets = (
     query: IQuery,
-    targetsResponse: ITargetsAPIResponse
+    targetsResponse: ITargetsAPIResponse,
   ) => {
     const { targets_count } = targetsResponse;
     setSelectedTargetsCount(targets_count);
@@ -53,7 +53,7 @@ const PackComposerPage = ({ router }: IPackComposerPageProps): JSX.Element => {
       router.push(PATHS.PACK(packID));
       renderFlash(
         "success",
-        "Pack successfully created. Add queries to your pack."
+        "Pack successfully created. Add queries to your pack.",
       );
     } catch (e) {
       if (
@@ -63,7 +63,7 @@ const PackComposerPage = ({ router }: IPackComposerPageProps): JSX.Element => {
       ) {
         renderFlash(
           "error",
-          "Unable to create pack. Pack names must be unique."
+          "Unable to create pack. Pack names must be unique.",
         );
       } else {
         renderFlash("error", "Unable to create pack.");

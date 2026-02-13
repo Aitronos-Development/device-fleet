@@ -80,7 +80,7 @@ describe("PaginatedList", () => {
   const waitForLoadingToFinish = async (container: HTMLElement) => {
     await waitFor(() => {
       expect(
-        container.querySelector(".loading-overlay")
+        container.querySelector(".loading-overlay"),
       ).not.toBeInTheDocument();
     });
   };
@@ -96,7 +96,7 @@ describe("PaginatedList", () => {
         onClickRow={jest.fn()}
         onUpdate={jest.fn()}
         isSelected={jest.fn()}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -122,7 +122,7 @@ describe("PaginatedList", () => {
         onClickRow={jest.fn()}
         onUpdate={jest.fn()}
         isSelected={jest.fn()}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -131,7 +131,7 @@ describe("PaginatedList", () => {
     items.forEach((item, index) => {
       expect(checkboxes[index]).toHaveTextContent(item.val);
       expect(checkboxes[index]).toHaveAccessibleName(
-        `item_${item.key}_checkbox`
+        `item_${item.key}_checkbox`,
       );
       expect(checkboxes[index]).not.toBeChecked();
     });
@@ -149,7 +149,7 @@ describe("PaginatedList", () => {
         onClickRow={jest.fn()}
         onUpdate={jest.fn()}
         isSelected="checkMeBruh"
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -177,7 +177,7 @@ describe("PaginatedList", () => {
         onClickRow={jest.fn()}
         onUpdate={jest.fn()}
         isSelected={(item) => item.favoriteIceCreamFlavor === "Dirt"}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
 
@@ -272,7 +272,7 @@ describe("PaginatedList", () => {
         onUpdate={jest.fn()}
         isSelected={jest.fn()}
         renderItemRow={(item) => <span>{item.favoriteIceCreamFlavor}</span>}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = screen.getAllByRole("checkbox");
@@ -281,7 +281,7 @@ describe("PaginatedList", () => {
       expect(checkboxes[index]).toHaveTextContent(item.name);
       expect(checkboxes[index]).not.toBeChecked();
       expect(
-        checkboxes[index].closest(".form-field")?.nextElementSibling
+        checkboxes[index].closest(".form-field")?.nextElementSibling,
       ).toHaveTextContent(item.favoriteIceCreamFlavor);
     });
   });
@@ -298,7 +298,7 @@ describe("PaginatedList", () => {
         onUpdate={jest.fn()}
         isSelected={jest.fn()}
         renderItemLabel={(item) => <span>{item.favoriteIceCreamFlavor}</span>}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = screen.getAllByRole("checkbox");
@@ -328,7 +328,7 @@ describe("PaginatedList", () => {
         onClickRow={onToggleItem}
         onUpdate={jest.fn()}
         isSelected="checkMeBruh"
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = screen.getAllByRole("checkbox");
@@ -372,13 +372,13 @@ describe("PaginatedList", () => {
             Click me bruh
           </button>
         )}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = screen.getAllByRole("checkbox");
     expect(checkboxes).toHaveLength(3);
     userEvent.click(
-      checkboxes[1].closest(".form-field")?.nextElementSibling as HTMLElement
+      checkboxes[1].closest(".form-field")?.nextElementSibling as HTMLElement,
     );
     // Check that the item is marked as dirty.
     await waitFor(() => {
@@ -402,7 +402,7 @@ describe("PaginatedList", () => {
         onClickRow={jest.fn((item) => item)}
         onUpdate={onUpdate}
         isSelected={jest.fn()}
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = screen.getAllByRole("checkbox");
@@ -429,7 +429,7 @@ describe("PaginatedList", () => {
         onUpdate={jest.fn()}
         isSelected={jest.fn()}
         disabled
-      />
+      />,
     );
     await waitForLoadingToFinish(container);
     const checkboxes = container.querySelectorAll("input[checkbox]");

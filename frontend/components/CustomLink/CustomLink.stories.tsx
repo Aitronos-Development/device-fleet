@@ -41,8 +41,7 @@ export const Multiline: Story = {
   ),
   args: {
     url: "https://www.google.com",
-    text:
-      "This is a custom link that has multiple words that might span multiple lines and the icon should stick with the last word onto the new line",
+    text: "This is a custom link that has multiple words that might span multiple lines and the icon should stick with the last word onto the new line",
     multiline: true,
     newTab: true,
   },

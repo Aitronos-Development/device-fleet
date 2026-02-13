@@ -39,7 +39,7 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("Software inventory disabled")).toBeInTheDocument();
@@ -77,13 +77,13 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("No vulnerabilities detected")).toBeInTheDocument();
     expect(screen.getByText("0 items")).toBeInTheDocument();
     expect(
-      screen.getByText("Expecting to see vulnerabilities? Check back later.")
+      screen.getByText("Expecting to see vulnerabilities? Check back later."),
     ).toBeInTheDocument();
     expect(screen.queryByText("Vulnerability")).toBeNull();
   });
@@ -117,14 +117,14 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("No items match the current search criteria")
+      screen.getByText("No items match the current search criteria"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Expecting to see vulnerabilities? Check back later.")
+      screen.getByText("Expecting to see vulnerabilities? Check back later."),
     ).toBeInTheDocument();
     expect(screen.queryByText("Vulnerability")).toBeNull();
   });
@@ -159,14 +159,14 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(
-      screen.getByText("That vulnerability (CVE) is not valid")
+      screen.getByText("That vulnerability (CVE) is not valid"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Try updating your search to use CVE format:/i)
+      screen.getByText(/Try updating your search to use CVE format:/i),
     ).toBeInTheDocument();
     expect(screen.queryByText("Vulnerability")).toBeNull();
   });
@@ -201,16 +201,16 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(
       screen.getByText(
-        "This is a known vulnerability (CVE), but it wasn't detected on any hosts"
-      )
+        "This is a known vulnerability (CVE), but it wasn't detected on any hosts",
+      ),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Expecting to see vulnerabilities? Check back later.")
+      screen.getByText("Expecting to see vulnerabilities? Check back later."),
     ).toBeInTheDocument();
     expect(screen.queryByText("Vulnerability")).toBeNull();
   });
@@ -245,14 +245,14 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("This is not a known CVE")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "None of Fleet's vulnerability sources are aware of this CVE."
-      )
+        "None of Fleet's vulnerability sources are aware of this CVE.",
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByText("Vulnerability")).toBeNull();
   });
@@ -280,7 +280,7 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("Vulnerability")).toBeInTheDocument();
@@ -314,13 +314,13 @@ describe("Software Vulnerabilities table", () => {
         showExploitedVulnerabilitiesOnly={false}
         currentPage={0}
         isLoading={false}
-      />
+      />,
     );
 
     expect(screen.getByText("Vulnerability")).toBeInTheDocument();
     expect(screen.queryByText("Severity")).not.toBeInTheDocument();
     expect(
-      screen.queryByText("Probability of exploit")
+      screen.queryByText("Probability of exploit"),
     ).not.toBeInTheDocument();
     expect(screen.queryByText("Published")).not.toBeInTheDocument();
     expect(screen.getByText("Detected")).toBeInTheDocument();
@@ -330,7 +330,7 @@ describe("Software Vulnerabilities table", () => {
 
     expect(
       screen.getByText("Exploited vulnerabilities").parentElement?.parentElement
-        ?.parentElement
+        ?.parentElement,
     ).toHaveClass("react-select__option--is-disabled");
 
     await waitFor(() => {
@@ -339,7 +339,7 @@ describe("Software Vulnerabilities table", () => {
       });
 
       expect(
-        screen.getByText(/Available in Fleet Premium./i)
+        screen.getByText(/Available in Fleet Premium./i),
       ).toBeInTheDocument();
     });
   });

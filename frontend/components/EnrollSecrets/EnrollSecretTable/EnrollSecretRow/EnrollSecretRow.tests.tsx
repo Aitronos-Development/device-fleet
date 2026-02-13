@@ -12,7 +12,7 @@ const TEAM_SECRET = {
 describe("Enroll secret row", () => {
   it("Hides secret by default and shows secret on click of eye icon", async () => {
     const { user, container } = renderWithSetup(
-      <EnrollSecretRow secret={TEAM_SECRET} />
+      <EnrollSecretRow secret={TEAM_SECRET} />,
     );
 
     // Secret hidden by default

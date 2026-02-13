@@ -49,7 +49,7 @@ const OSVersionTable = ({
       });
       return changedEntry?.[0] ?? "";
     },
-    [queryParams.order_direction, queryParams.order_key, queryParams.page]
+    [queryParams.order_direction, queryParams.order_key, queryParams.page],
   );
 
   const generateNewQueryParams = useCallback(
@@ -63,7 +63,7 @@ const OSVersionTable = ({
 
       return newQueryParam;
     },
-    [currentTeamId]
+    [currentTeamId],
   );
   // NOTE: this is called once on initial render and every time the query changes
   const onQueryChange = useCallback(
@@ -86,7 +86,7 @@ const OSVersionTable = ({
 
       router.replace(newRoute);
     },
-    [determineQueryParamChange, generateNewQueryParams, router]
+    [determineQueryParamChange, generateNewQueryParams, router],
   );
 
   return (

@@ -29,7 +29,7 @@ export type OSUpdatesTargetPlatform = OSUpdatesSupportedPlatform | "android"; //
 const baseClass = "os-updates";
 
 const getDefaultSelectedPlatform = (
-  appConfig: IConfig | null
+  appConfig: IConfig | null,
 ): OSUpdatesTargetPlatform => {
   // We dont have the data ready yet so we default to mac.
   // This is usually when the users first comes to this page.
@@ -48,18 +48,11 @@ interface IOSUpdates {
 }
 
 const OSUpdates = ({ router, teamIdForApi, queryParams }: IOSUpdates) => {
-  const {
-    isPremiumTier,
-    isGlobalAdmin,
-    isTeamAdmin,
-    config,
-    setConfig,
-  } = useContext(AppContext);
+  const { isPremiumTier, isGlobalAdmin, isTeamAdmin, config, setConfig } =
+    useContext(AppContext);
 
-  const [
-    selectedPlatformTab,
-    setSelectedPlatformTab,
-  ] = useState<OSUpdatesTargetPlatform | null>(null);
+  const [selectedPlatformTab, setSelectedPlatformTab] =
+    useState<OSUpdatesTargetPlatform | null>(null);
 
   const {
     isFetching: isFetchingConfig,
@@ -83,7 +76,7 @@ const OSUpdates = ({ router, teamIdForApi, queryParams }: IOSUpdates) => {
       refetchOnWindowFocus: false,
       enabled: !!teamIdForApi,
       select: (data) => data.team,
-    }
+    },
   );
 
   // Not premium shows premium message
@@ -107,7 +100,7 @@ const OSUpdates = ({ router, teamIdForApi, queryParams }: IOSUpdates) => {
     router.replace(
       getPathWithQueryParams(PATHS.CONTROLS_OS_SETTINGS, {
         team_id: teamIdForApi,
-      })
+      }),
     );
   }
 
@@ -119,7 +112,7 @@ const OSUpdates = ({ router, teamIdForApi, queryParams }: IOSUpdates) => {
   ) {
     return (
       <GenericMsgWithNavButton
-        header="Manage your hosts"
+        header="Manage your devices"
         info="MDM must be turned on to change settings on your hosts."
         path={PATHS.ADMIN_INTEGRATIONS_MDM}
         buttonText="Turn on"

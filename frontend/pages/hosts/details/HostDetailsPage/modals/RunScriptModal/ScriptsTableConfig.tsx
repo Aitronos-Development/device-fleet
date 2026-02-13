@@ -49,7 +49,7 @@ interface IActionsDropdownProps {
 export const generateActionDropdownOptions = (
   currentUser: IUser | null,
   teamId: number | null,
-  { last_execution }: IHostScript
+  { last_execution }: IHostScript,
 ): IDropdownOption[] => {
   const isPending = last_execution?.status === "pending";
   const hasRunPermission =
@@ -85,7 +85,7 @@ export const generateTableColumnConfigs = (
   hostTeamId: number | null,
   scriptsDisabled: boolean,
   onClickViewScript: (scriptDetails: IHostScript) => void,
-  onSelectAction: (value: string, script: IHostScript) => void
+  onSelectAction: (value: string, script: IHostScript) => void,
 ) => {
   return [
     {
@@ -151,7 +151,7 @@ export const generateTableColumnConfigs = (
         const opts = generateActionDropdownOptions(
           currentUser,
           hostTeamId,
-          cellProps.row.original
+          cellProps.row.original,
         );
         return (
           <ActionsDropdown

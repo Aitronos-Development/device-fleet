@@ -35,7 +35,7 @@ const DropdownOptionTooltipWrapper = ({
   const tipClassNames = classnames(
     `${baseClass}__tip-text`,
     `${baseClass}__dropdown-tooltip-arrow`,
-    tooltipClass
+    tooltipClass,
   );
 
   const tipId = uniqueId();

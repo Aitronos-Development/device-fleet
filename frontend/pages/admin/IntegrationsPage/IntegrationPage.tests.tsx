@@ -28,11 +28,11 @@ describe("Integrations Page", () => {
         <IntegrationsPage
           router={createMockRouter()}
           params={{ section: "mdm" }}
-        />
+        />,
       );
 
       expect(
-        await screen.findAllByText("Mobile device management (MDM)")
+        await screen.findAllByText("Mobile device management (MDM)"),
       ).toHaveLength(1);
     });
   });
@@ -87,11 +87,11 @@ describe("Integrations Page", () => {
         <IntegrationsPage
           router={createMockRouter()}
           params={{ section: "sso" }}
-        />
+        />,
       );
 
       expect(await screen.findAllByText("Single sign-on (SSO)")).toHaveLength(
-        2
+        2,
       );
     });
   });
@@ -108,7 +108,7 @@ describe("Integrations Page", () => {
         <IntegrationsPage
           router={createMockRouter()}
           params={{ section: "host-status-webhook" }}
-        />
+        />,
       );
 
       expect(await screen.findAllByText("Host status webhook")).toHaveLength(2);

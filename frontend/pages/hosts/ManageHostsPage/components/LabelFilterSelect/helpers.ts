@@ -17,7 +17,7 @@ export interface IGroupOption {
 const createOptionGroup = (
   type: "platform" | "custom",
   label: string,
-  labels: ILabel[] | IEmptyOption[]
+  labels: ILabel[] | IEmptyOption[],
 ) => {
   return {
     type,
@@ -37,7 +37,7 @@ const createCustomLabelOptions = (labels: ILabel[], query: string) => {
   } else {
     const matchingLabels = customLabels.filter((label) =>
       // case-insensitive matching
-      label.display_text.toLowerCase().includes(query.toLowerCase())
+      label.display_text.toLowerCase().includes(query.toLowerCase()),
     );
     customLabelGroupOptions =
       matchingLabels.length !== 0 ? matchingLabels : [EMPTY_OPTION];
@@ -52,7 +52,7 @@ export const createDropdownOptions = (labels: ILabel[], query: string) => {
     (label) =>
       label.type === "platform" &&
       label.name !== "All Hosts" &&
-      !FILTERED_LINUX.includes(label.name)
+      !FILTERED_LINUX.includes(label.name),
   );
 
   const customLabels = createCustomLabelOptions(labels, query);

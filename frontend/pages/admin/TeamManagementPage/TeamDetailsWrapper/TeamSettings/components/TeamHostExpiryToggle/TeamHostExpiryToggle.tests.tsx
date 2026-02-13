@@ -13,7 +13,7 @@ describe("TeamHostExpiryToggle component", () => {
         globalHostExpiryWindow={undefined}
         teamExpiryEnabled={false}
         setTeamExpiryEnabled={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByText(/Enable host expiry/)).toBeInTheDocument();
@@ -28,12 +28,12 @@ describe("TeamHostExpiryToggle component", () => {
         globalHostExpiryWindow={2}
         teamExpiryEnabled={false}
         setTeamExpiryEnabled={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByText(/Enable host expiry/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Host expiry is globally enabled/)
+      screen.getByText(/Host expiry is globally enabled/),
     ).toBeInTheDocument();
     expect(screen.getByText(/Add custom expiry window/)).toBeInTheDocument();
   });
@@ -45,12 +45,12 @@ describe("TeamHostExpiryToggle component", () => {
         globalHostExpiryWindow={2}
         teamExpiryEnabled
         setTeamExpiryEnabled={jest.fn()}
-      />
+      />,
     );
 
     expect(screen.getByText(/Enable host expiry/)).toBeInTheDocument();
     expect(
-      screen.getByText(/Host expiry is globally enabled/)
+      screen.getByText(/Host expiry is globally enabled/),
     ).toBeInTheDocument();
     expect(screen.queryByText(/Add custom expiry window/)).toBeNull();
   });

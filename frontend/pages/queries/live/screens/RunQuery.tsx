@@ -44,7 +44,7 @@ const RunQuery = ({
   const [isQueryFinished, setIsQueryFinished] = useState(false);
   const [isQueryClipped, setIsQueryClipped] = useState(false);
   const [campaignState, setCampaignState] = useState<ICampaignState>(
-    DEFAULT_CAMPAIGN_STATE
+    DEFAULT_CAMPAIGN_STATE,
   );
 
   const isStoredQueryEdited = storedQuery?.query !== lastEditedQueryBody;
@@ -114,13 +114,13 @@ const RunQuery = ({
         JSON.stringify({
           type: "auth",
           data: { token: authToken() },
-        })
+        }),
       );
       websocket?.send(
         JSON.stringify({
           type: "select_campaign",
           data: { campaign_id: returnedCampaign.id },
-        })
+        }),
       );
     };
 
@@ -161,7 +161,7 @@ const RunQuery = ({
     if (!lastEditedQueryBody) {
       renderFlash(
         "error",
-        "Something went wrong running your query. Please try again."
+        "Something went wrong running your query. Please try again.",
       );
       return false;
     }
@@ -184,17 +184,17 @@ const RunQuery = ({
       if (err.includes("no hosts targeted")) {
         renderFlash(
           "error",
-          "Your target selections did not include any hosts. Please try again."
+          "Your target selections did not include any hosts. Please try again.",
         );
       } else if (err.includes("resource already created")) {
         renderFlash(
           "error",
-          "A campaign with the provided query text has already been created"
+          "A campaign with the provided query text has already been created",
         );
       } else if (err.includes("forbidden") || err.includes("unauthorized")) {
         renderFlash(
           "error",
-          "It seems you do not have the rights to run this query. If you believe this is in error, please contact your administrator."
+          "It seems you do not have the rights to run this query. If you believe this is in error, please contact your administrator.",
         );
       } else {
         renderFlash("error", "Something has gone wrong. Please try again.");

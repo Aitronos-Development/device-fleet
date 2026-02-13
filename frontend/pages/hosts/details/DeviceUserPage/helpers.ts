@@ -8,7 +8,7 @@ export const getErrorMessage = (e: unknown, hostName: string) => {
 };
 
 export const hasRemainingSetupSteps = (
-  statuses: ISetupStep[] | null | undefined
+  statuses: ISetupStep[] | null | undefined,
 ) => {
   if (!statuses || statuses.length === 0) {
     // not configured or no software selected
@@ -19,7 +19,7 @@ export const hasRemainingSetupSteps = (
 };
 
 export const getFailedSoftwareInstall = (
-  statuses: ISetupStep[] | null | undefined
+  statuses: ISetupStep[] | null | undefined,
 ): ISetupStep | null => {
   if (!statuses || statuses.length === 0) {
     // not configured or no software selected
@@ -29,7 +29,7 @@ export const getFailedSoftwareInstall = (
   const failedSoftware = statuses.filter(
     (s) =>
       (s.type === "software_install" || s.type === "software_script_run") &&
-      s.status === "failure"
+      s.status === "failure",
   );
   if (failedSoftware.length === 0) {
     return null;

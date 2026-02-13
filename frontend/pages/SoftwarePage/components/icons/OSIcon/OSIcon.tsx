@@ -23,7 +23,7 @@ const OSIcon = ({ name = "", size = "small", url }: IOSIconProps) => {
   if (url) {
     const imgClasses = classnames(
       `${baseClass}__os-img`,
-      `${baseClass}__os-img-${size}`
+      `${baseClass}__os-img-${size}`,
     );
     return (
       <div className={classNames}>
