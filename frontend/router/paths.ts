@@ -92,6 +92,7 @@ export default {
   SOFTWARE_OS_DETAILS: (id: number): string => {
     return `${URL_PREFIX}/software/os/${id}`;
   },
+  SOFTWARE_USAGE: `${URL_PREFIX}/software/usage`,
   SOFTWARE_VULNERABILITIES: `${URL_PREFIX}/software/vulnerabilities`,
   SOFTWARE_VULNERABILITY_DETAILS: (cve: string): string => {
     return `${URL_PREFIX}/software/vulnerabilities/${cve}`;
@@ -137,6 +138,9 @@ export default {
 
   LOGIN: `${URL_PREFIX}/login`,
   LOGOUT: `${URL_PREFIX}/logout`,
+  ADD_DEVICE: `${URL_PREFIX}/hosts/add-device`,
+  ADD_DEVICE_GUIDE: (packageType: string): string =>
+    `${URL_PREFIX}/hosts/add-device/guide/${packageType}`,
   MANAGE_HOSTS: `${URL_PREFIX}/hosts/manage`,
   MANAGE_HOSTS_LABEL: (labelId: number | string): string => {
     return `${URL_PREFIX}/hosts/manage/labels/${labelId}`;

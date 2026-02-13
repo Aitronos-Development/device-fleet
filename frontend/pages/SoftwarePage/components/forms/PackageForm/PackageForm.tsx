@@ -59,12 +59,17 @@ export interface IPackageFormValidation {
 const renderFileTypeMessage = () => {
   return (
     <>
-      macOS (.pkg), iOS/iPadOS (.ipa),
+      Upload an installer for macOS (.pkg), iOS/iPadOS (.ipa),
       <br />
-      Windows (.msi, .exe.,{" "}
-      <TooltipWrapper tipContent="Payload-free package">.ps1</TooltipWrapper>),
-      or Linux (.deb, .rpm,{" "}
-      <TooltipWrapper tipContent="Payload-free package">.sh</TooltipWrapper>)
+      Windows (.msi, .exe,{" "}
+      <TooltipWrapper tipContent="Script-only package (no bundled app)">
+        .ps1
+      </TooltipWrapper>
+      ), or Linux (.deb, .rpm,{" "}
+      <TooltipWrapper tipContent="Script-only package (no bundled app)">
+        .sh
+      </TooltipWrapper>
+      )
     </>
   );
 };

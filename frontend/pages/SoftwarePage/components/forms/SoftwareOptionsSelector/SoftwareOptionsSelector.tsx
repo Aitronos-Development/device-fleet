@@ -129,12 +129,9 @@ const SoftwareOptionsSelector = ({
     if (isExePackage || isTarballPackage) {
       return (
         <>
-          Fleet can&apos;t create a policy to detect existing installations for{" "}
-          {isExePackage ? ".exe packages" : ".tar.gz archives"}. To
-          automatically install{" "}
-          {isExePackage ? ".exe packages" : ".tar.gz archives"}, add a custom
-          policy and enable the install software automation on the{" "}
-          <b>Policies</b> page.
+          Automatic install is not available for{" "}
+          {isExePackage ? ".exe" : ".tar.gz"} files. You can set this up
+          manually using a policy on the <b>Policies</b> page.
         </>
       );
     }
@@ -142,14 +139,12 @@ const SoftwareOptionsSelector = ({
     if (isScriptPackage) {
       return (
         <>
-          Fleet can&apos;t create a policy to detect existing installations of
-          payload-free packages. To automatically install these packages, add a
-          custom policy and enable the install software automation on the{" "}
-          <b>Policies</b> page.
+          Automatic install is not available for script-only packages. You can
+          set this up manually using a policy on the <b>Policies</b> page.
         </>
       );
     }
-    return <>Automatically install only on hosts missing this software.</>;
+    return <>Automatically install on devices that don&apos;t have this software yet.</>;
   };
 
   // Ability to set categories when adding software is in a future ticket #28061
@@ -159,10 +154,9 @@ const SoftwareOptionsSelector = ({
     if (isPlatformAndroid) {
       return (
         <p>
-          Currently, Android apps can only be added as self-service and the end
-          user can install them from the <strong>Play Store</strong> in their
-          work profile. Additionally, you can install it when hosts enroll on
-          the{" "}
+          Android apps are available as self-service — users install them from
+          the <strong>Play Store</strong> in their work profile. You can also
+          install apps during device setup on the{" "}
           <CustomLink
             url={paths.CONTROLS_INSTALL_SOFTWARE("android")}
             text="Setup experience"
@@ -174,9 +168,9 @@ const SoftwareOptionsSelector = ({
     // Render unavailable description for iOS or iPadOS add software form only
     return isPlatformIosOrIpados && !isEditingSoftware ? (
       <p>
-        Automatic install for iOS and iPadOS is coming soon. Today, you can
-        manually install it from the <strong>Host details</strong> page for each
-        host.
+        Automatic install for iOS and iPadOS is coming soon. For now, you can
+        install it on individual devices from the{" "}
+        <strong>Host details</strong> page.
       </p>
     ) : null;
   };
@@ -222,9 +216,8 @@ const SoftwareOptionsSelector = ({
       )}
       {formData.automaticInstall && isCustomPackage && (
         <InfoBanner color="yellow">
-          Installing software over existing installations might cause issues.
-          Fleet&apos;s policy may not detect these existing installations.
-          Please create a test team in Fleet to verify a smooth installation.{" "}
+          Reinstalling software that&apos;s already on a device may cause
+          issues. We recommend testing with a small group of devices first.{" "}
           <CustomLink
             url={`${LEARN_MORE_ABOUT_BASE_LINK}/query-templates-for-automatic-software-install`}
             text="Learn more"

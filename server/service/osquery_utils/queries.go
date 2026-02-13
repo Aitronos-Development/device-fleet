@@ -2121,6 +2121,48 @@ func directIngestSoftware(ctx context.Context, logger log.Logger, host *fleet.Ho
 	return nil
 }
 
+func directIngestAppUsage(ctx context.Context, logger log.Logger, host *fleet.Host, ds fleet.Datastore, rows []map[string]string) error {
+	if len(rows) == 0 {
+		return nil
+	}
+
+	entries := make([]fleet.AppUsageEntry, 0, len(rows))
+	for _, row := range rows {
+		bundleID := row["bundle_identifier"]
+		if bundleID == "" {
+			continue
+		}
+		usageDate := row["usage_date"]
+		if usageDate == "" {
+			continue
+		}
+		activeSeconds, err := strconv.ParseUint(row["active_seconds"], 10, 64)
+		if err != nil {
+			level.Debug(logger).Log("msg", "app_usage: invalid active_seconds", "value", row["active_seconds"], "err", err)
+			continue
+		}
+
+		parsedDate, err := time.Parse("2006-01-02", usageDate)
+		if err != nil {
+			level.Debug(logger).Log("msg", "app_usage: invalid usage_date", "value", usageDate, "err", err)
+			continue
+		}
+
+		entries = append(entries, fleet.AppUsageEntry{
+			BundleIdentifier: bundleID,
+			AppName:          bundleID, // will be enriched later via software_titles join
+			ActiveSeconds:    activeSeconds,
+			UsageDate:        parsedDate,
+		})
+	}
+
+	if len(entries) == 0 {
+		return nil
+	}
+
+	return ds.ReplaceHostAppUsage(ctx, host.ID, entries)
+}
+
 var (
 	dcvVersionFormat         = regexp.MustCompile(`^(\d+\.\d+)\s*\(r(\d+)\)$`)
 	tunnelblickVersionFormat = regexp.MustCompile(`^(.+?)\s*\(build\s+\d+\)$`)
@@ -3134,6 +3176,14 @@ func GetDetailQueries(
 
 		for key, query := range SoftwareOverrideQueries {
 			generatedMap["software_"+key] = query
+		}
+
+		// App usage tracking from macOS knowledgeC.db
+		generatedMap["app_usage"] = DetailQuery{
+			Description:      "Collects application usage time from macOS knowledgeC.db",
+			Query:            "SELECT bundle_identifier, usage_date, active_seconds FROM app_usage",
+			Platforms:        []string{"darwin"},
+			DirectIngestFunc: directIngestAppUsage,
 		}
 	}
 

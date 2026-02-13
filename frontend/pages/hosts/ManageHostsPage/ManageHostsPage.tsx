@@ -116,7 +116,7 @@ import { getDeleteLabelErrorMessages, isAcceptableStatus } from "./helpers";
 
 import DeleteSecretModal from "../../../components/EnrollSecrets/DeleteSecretModal";
 import SecretEditorModal from "../../../components/EnrollSecrets/SecretEditorModal";
-import AddHostsModal from "../../../components/AddHostsModal";
+// AddHostsModal replaced by dedicated AddDevicePage
 import EnrollSecretModal from "../../../components/EnrollSecrets/EnrollSecretModal";
 // @ts-ignore
 import EditColumnsModal from "./components/EditColumnsModal/EditColumnsModal";
@@ -232,7 +232,7 @@ const ManageHostsPage = ({
   const [showEnrollSecretModal, setShowEnrollSecretModal] = useState(false);
   const [showDeleteLabelModal, setShowDeleteLabelModal] = useState(false);
   const [showEditColumnsModal, setShowEditColumnsModal] = useState(false);
-  const [showAddHostsModal, setShowAddHostsModal] = useState(false);
+  // showAddHostsModal removed — now uses dedicated AddDevicePage
   const [showTransferHostModal, setShowTransferHostModal] = useState(false);
   const [showDeleteHostModal, setShowDeleteHostModal] = useState(false);
   const [showRunScriptBatchModal, setShowRunScriptBatchModal] = useState(false);
@@ -681,8 +681,8 @@ const ManageHostsPage = ({
     setShowDeleteHostModal(!showDeleteHostModal);
   };
 
-  const toggleAddHostsModal = () => {
-    setShowAddHostsModal(!showAddHostsModal);
+  const navigateToAddDevice = () => {
+    router.push(PATHS.ADD_DEVICE);
   };
 
   const toggleRunScriptBatchModal = useCallback(() => {
@@ -1466,21 +1466,7 @@ const ManageHostsPage = ({
     />
   );
 
-  const renderAddHostsModal = () => {
-    const enrollSecret = isAnyTeamSelected
-      ? teamSecrets?.[0].secret
-      : globalSecrets?.[0].secret;
-    return (
-      <AddHostsModal
-        currentTeamName={currentTeamName || "Fleet"}
-        enrollSecret={enrollSecret}
-        isAnyTeamSelected={isAnyTeamSelected}
-        isLoading={isLoadingTeams || isGlobalSecretsLoading}
-        onCancel={toggleAddHostsModal}
-        openEnrollSecretModal={() => setShowEnrollSecretModal(true)}
-      />
-    );
-  };
+  // renderAddHostsModal removed — now uses dedicated AddDevicePage
 
   const renderTransferHostModal = () => {
     if (!teams) {
@@ -1719,7 +1705,7 @@ const ManageHostsPage = ({
           emptyHosts.info =
             "Generate Fleet's agent (fleetd) to add your own hosts.";
           emptyHosts.primaryButton = (
-            <Button onClick={toggleAddHostsModal} type="button">
+            <Button onClick={navigateToAddDevice} type="button">
               Add hosts
             </Button>
           );
@@ -1933,7 +1919,7 @@ const ManageHostsPage = ({
             )}
             {showAddHostsButton && (
               <Button
-                onClick={toggleAddHostsModal}
+                onClick={navigateToAddDevice}
                 className={`${baseClass}__add-hosts`}
               >
                 <span>Add hosts</span>
@@ -2011,7 +1997,7 @@ const ManageHostsPage = ({
       {canEnrollHosts && showEnrollSecretModal && renderEnrollSecretModal()}
       {showEditColumnsModal && renderEditColumnsModal()}
       {showDeleteLabelModal && renderDeleteLabelModal()}
-      {showAddHostsModal && renderAddHostsModal()}
+      {/* Add hosts modal removed — now uses dedicated AddDevicePage */}
       {showTransferHostModal && renderTransferHostModal()}
       {showDeleteHostModal && renderDeleteHostModal()}
       {showRunScriptBatchModal &&

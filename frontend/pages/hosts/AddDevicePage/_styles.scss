@@ -1,0 +1,38 @@
+.add-device-page {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $pad-xlarge;
+    gap: $pad-large;
+
+    h1 {
+      font-size: $large;
+      font-weight: $bold;
+      color: $core-fleet-black;
+      margin: 0;
+    }
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: $pad-xsmall;
+  }
+
+  &__subtitle {
+    font-size: $x-small;
+    color: $ui-fleet-black-75;
+    margin: 0;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: $pad-large;
+
+    @media (max-width: ($break-xs - 1px)) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

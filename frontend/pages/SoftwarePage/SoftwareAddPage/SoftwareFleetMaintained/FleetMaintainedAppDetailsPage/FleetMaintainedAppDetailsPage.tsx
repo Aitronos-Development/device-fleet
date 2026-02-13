@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { AxiosResponse } from "axios";
 import { Location } from "history";
 import { useQuery } from "react-query";
@@ -6,6 +6,7 @@ import { InjectedRouter } from "react-router";
 import { useErrorHandler } from "react-error-boundary";
 
 import PATHS from "router/paths";
+import { APP_CONTEXT_ALL_TEAMS_ID } from "interfaces/team";
 import { getPathWithQueryParams } from "utilities/url";
 import { DEFAULT_USE_QUERY_OPTIONS } from "utilities/constants";
 import softwareAPI from "services/entities/software";
@@ -30,6 +31,12 @@ import SoftwareIcon from "pages/SoftwarePage/components/icons/SoftwareIcon";
 import Button from "components/buttons/Button";
 import Icon from "components/Icon";
 import CategoriesEndUserExperienceModal from "pages/SoftwarePage/components/modals/CategoriesEndUserExperienceModal";
+
+import MultiTeamDeployProgressModal from "pages/SoftwarePage/components/modals/MultiTeamDeployProgressModal";
+import {
+  deployToMultipleTeams,
+  IMultiTeamDeployResult,
+} from "../../multiTeamDeploy";
 
 import FleetAppDetailsForm from "./FleetAppDetailsForm";
 import { IFleetMaintainedAppFormData } from "./FleetAppDetailsForm/FleetAppDetailsForm";
@@ -108,6 +115,7 @@ const FleetAppSummary = ({
 
 export interface IFleetMaintainedAppDetailsQueryParams {
   team_id?: string;
+  team_ids?: string;
 }
 
 interface IFleetMaintainedAppDetailsRouteParams {
@@ -140,7 +148,25 @@ const FleetMaintainedAppDetailsPage = ({
   const { renderFlash } = useContext(NotificationContext);
 
   const handlePageError = useErrorHandler();
-  const { isPremiumTier } = useContext(AppContext);
+  const { isPremiumTier, availableTeams } = useContext(AppContext);
+
+  // Multi-team support
+  const parsedTeamIds = useMemo(() => {
+    const raw = location.query.team_ids;
+    if (!raw) return [];
+    return raw
+      .split(",")
+      .map((s) => parseInt(s, 10))
+      .filter((n) => !isNaN(n));
+  }, [location.query.team_ids]);
+
+  const isMultiTeam = parsedTeamIds.length > 1;
+
+  const [deployResults, setDeployResults] = useState<IMultiTeamDeployResult[]>(
+    []
+  );
+  const [isDeployComplete, setIsDeployComplete] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
 
   const { selectedOsqueryTable, setSelectedOsqueryTable } =
     useContext(QueryContext);
@@ -197,19 +223,80 @@ const FleetMaintainedAppDetailsPage = ({
     setShowPreviewEndUserExperience(!showPreviewEndUserExperience);
   };
 
-  const backToAddSoftwareUrl = getPathWithQueryParams(
-    PATHS.SOFTWARE_ADD_FLEET_MAINTAINED,
-    { team_id: teamId },
-  );
+  const backToAddSoftwareUrl = isMultiTeam
+    ? getPathWithQueryParams(PATHS.SOFTWARE_ADD_FLEET_MAINTAINED, {
+        team_ids: parsedTeamIds.join(","),
+        team_id: teamId,
+      })
+    : getPathWithQueryParams(PATHS.SOFTWARE_ADD_FLEET_MAINTAINED, {
+        team_id: teamId,
+      });
 
   const onCancel = () => {
     router.push(backToAddSoftwareUrl);
+  };
+
+  const onMultiTeamDone = () => {
+    setShowProgressModal(false);
+    router.push(
+      getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
+        team_id: APP_CONTEXT_ALL_TEAMS_ID,
+      })
+    );
+    const successCount = deployResults.filter((r) => r.status === "success")
+      .length;
+    const errorCount = deployResults.filter((r) => r.status === "error").length;
+    if (errorCount > 0) {
+      renderFlash(
+        "error",
+        `${fleetApp?.name || "Software"} added to ${successCount} of ${
+          deployResults.length
+        } teams. ${errorCount} failed.`
+      );
+    } else {
+      renderFlash(
+        "success",
+        <>
+          <b>{fleetApp?.name}</b> successfully added to {successCount} teams.
+        </>
+      );
+    }
   };
 
   const onSubmit = async (formData: IFleetMaintainedAppFormData) => {
     // this should not happen but we need to handle the type correctly
     if (!teamId) return;
 
+    // Multi-team deploy
+    if (isMultiTeam && parsedTeamIds.length > 1) {
+      setShowProgressModal(true);
+      setIsDeployComplete(false);
+      const teamNameMap = parsedTeamIds.reduce<Record<number, string>>(
+        (acc, id) => {
+          const team = availableTeams?.find((t) => t.id === id);
+          acc[id] = team?.name || `Team ${id}`;
+          return acc;
+        },
+        {}
+      );
+
+      const results = await deployToMultipleTeams(
+        parsedTeamIds,
+        teamNameMap,
+        async (tid) => {
+          await softwareAPI.addFleetMaintainedApp(tid, {
+            ...formData,
+            appId,
+          });
+        },
+        setDeployResults
+      );
+      setDeployResults(results);
+      setIsDeployComplete(true);
+      return;
+    }
+
+    // Single-team deploy (existing logic)
     setShowAddFleetAppSoftwareModal(true);
 
     try {
@@ -325,6 +412,13 @@ const FleetMaintainedAppDetailsPage = ({
             slug={fleetApp.slug}
             url={fleetApp.url}
             onCancel={() => setShowAppDetailsModal(false)}
+          />
+        )}
+        {showProgressModal && (
+          <MultiTeamDeployProgressModal
+            results={deployResults}
+            onDone={onMultiTeamDone}
+            isComplete={isDeployComplete}
           />
         )}
       </>

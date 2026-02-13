@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router";
 import classnames from "classnames";
 
+import paths from "router/paths";
 import { getPathWithQueryParams, QueryParams } from "utilities/url";
 import { LEARN_MORE_ABOUT_BASE_LINK } from "utilities/constants";
 
@@ -18,6 +19,7 @@ import Icon from "components/Icon";
 import TooltipWrapper from "components/TooltipWrapper";
 import CustomLink from "components/CustomLink";
 
+import HostStatusIndicator from "../HostStatusIndicator";
 import UserMenu from "../UserMenu";
 import getNavItems, { INavItem } from "./navItems";
 
@@ -120,6 +122,8 @@ const SiteTopNav = ({
     isAnyTeamMaintainer,
     isNoAccess,
   } = useContext(AppContext);
+
+  const showSettingsGear = isGlobalAdmin || isAnyTeamAdmin;
 
   const isActiveDetailPage = isDetailPage(currentPath);
   const isActiveGlobalPage = isGlobalPage(currentPath);
@@ -244,6 +248,16 @@ const SiteTopNav = ({
         </ul>
         <div className="site-nav-right">
           {config.gitops.gitops_mode_enabled && <GitOpsModeIndicator />}
+          <HostStatusIndicator />
+          {showSettingsGear && (
+            <Link
+              to={paths.ADMIN_SETTINGS}
+              className="settings-gear"
+              title="Settings"
+            >
+              <Icon name="settings" />
+            </Link>
+          )}
           <UserMenu
             onLogout={onLogoutUser}
             onUserMenuItemClick={onUserMenuItemClick}

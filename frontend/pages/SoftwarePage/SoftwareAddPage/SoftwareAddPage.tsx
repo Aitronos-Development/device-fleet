@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import { Tab, TabList, Tabs } from "react-tabs";
 import { InjectedRouter } from "react-router";
 import { Location } from "history";
@@ -7,7 +7,10 @@ import PATHS from "router/paths";
 import { getPathWithQueryParams } from "utilities/url";
 import { QueryContext } from "context/query";
 import useToggleSidePanel from "hooks/useToggleSidePanel";
-import { APP_CONTEXT_NO_TEAM_ID } from "interfaces/team";
+import {
+  APP_CONTEXT_ALL_TEAMS_ID,
+  APP_CONTEXT_NO_TEAM_ID,
+} from "interfaces/team";
 
 import SidePanelPage from "components/SidePanelPage";
 import MainContent from "components/MainContent";
@@ -48,6 +51,7 @@ const getTabIndex = (path: string): number => {
 
 export interface ISoftwareAddPageQueryParams {
   team_id?: string;
+  team_ids?: string;
   query?: string;
   page?: string;
   order_key?: string;
@@ -69,22 +73,45 @@ const SoftwareAddPage = ({
     useContext(QueryContext);
   const { isSidePanelOpen, setSidePanelOpen } = useToggleSidePanel(false);
 
+  // Parse multi-team IDs from query param (e.g. "1,2,3")
+  const teamIds = useMemo(() => {
+    if (location.query.team_ids) {
+      return location.query.team_ids
+        .split(",")
+        .map((id) => parseInt(id, 10))
+        .filter((id) => !Number.isNaN(id));
+    }
+    if (location.query.team_id) {
+      const parsed = parseInt(location.query.team_id, 10);
+      return Number.isNaN(parsed) ? [] : [parsed];
+    }
+    return [];
+  }, [location.query.team_ids, location.query.team_id]);
+
+  const isMultiTeam = teamIds.length > 1;
+  const currentTeamId = teamIds[0] ?? APP_CONTEXT_NO_TEAM_ID;
+
   const navigateToNav = useCallback(
     (i: number): void => {
       setSidePanelOpen(false);
-      // Only query param to persist between tabs is team id
-      const navPath = getPathWithQueryParams(addSoftwareSubNav[i].pathname, {
-        team_id: location.query.team_id,
-      });
+      // Persist team params between tabs
+      const teamParams: Record<string, string | undefined> = location.query
+        .team_ids
+        ? { team_ids: location.query.team_ids, team_id: location.query.team_id }
+        : { team_id: location.query.team_id };
+      const navPath = getPathWithQueryParams(
+        addSoftwareSubNav[i].pathname,
+        teamParams
+      );
       router.replace(navPath);
     },
-    [location.query.team_id, router, setSidePanelOpen],
+    [location.query.team_id, location.query.team_ids, router, setSidePanelOpen]
   );
 
-  // Quick exit if no team_id param. This page must have a team id to function
-  // correctly. We redirect to the same page with the "No team" context if it
-  // is not provieded.
-  if (!location.query.team_id) {
+  // Quick exit if no team_id or team_ids param. This page must have a team id
+  // to function correctly. We redirect to the same page with the "No team"
+  // context if it is not provided.
+  if (!location.query.team_id && !location.query.team_ids) {
     router.replace(
       getPathWithQueryParams(location.pathname, {
         team_id: APP_CONTEXT_NO_TEAM_ID,
@@ -97,9 +124,14 @@ const SoftwareAddPage = ({
     setSelectedOsqueryTable(tableName);
   };
 
-  const backUrl = getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
-    team_id: location.query.team_id,
-  });
+  // When multi-team, back button goes to "All teams" software view
+  const backUrl = isMultiTeam
+    ? getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
+        team_id: APP_CONTEXT_ALL_TEAMS_ID,
+      })
+    : getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
+        team_id: location.query.team_id,
+      });
 
   return (
     <SidePanelPage>
@@ -112,7 +144,15 @@ const SoftwareAddPage = ({
               className={`${baseClass}__back-to-software`}
             />
           </div>
-          <h1>Add software</h1>
+          <h1>
+            Add software
+            {isMultiTeam && (
+              <span className={`${baseClass}__multi-team-badge`}>
+                {" "}
+                ({teamIds.length} teams)
+              </span>
+            )}
+          </h1>
           <TabNav>
             <Tabs
               selectedIndex={getTabIndex(location?.pathname || "")}
@@ -131,7 +171,9 @@ const SoftwareAddPage = ({
           </TabNav>
           {React.cloneElement(children, {
             router,
-            currentTeamId: parseInt(location.query.team_id, 10),
+            currentTeamId,
+            teamIds,
+            isMultiTeam,
             isSidePanelOpen,
             setSidePanelOpen,
           })}

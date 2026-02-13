@@ -9,7 +9,8 @@
 .site-nav-left {
   list-style: none;
   height: 50px;
-  width: 671px;
+  flex-shrink: 1;
+  min-width: 0;
   margin: 0;
   padding: 0;
   display: flex;
@@ -19,7 +20,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: $pad-large;
+  gap: $pad-medium;
+  flex-shrink: 0;
+}
+
+.settings-gear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $ui-fleet-black-75;
+  text-decoration: none;
+  padding: $pad-xsmall;
+  border-radius: $border-radius-medium;
+  transition: color 150ms ease, background-color 150ms ease;
+
+  &:hover {
+    color: $core-fleet-black;
+    background-color: $ui-fleet-black-5;
+  }
 }
 
 .gitops-mode-indicator {

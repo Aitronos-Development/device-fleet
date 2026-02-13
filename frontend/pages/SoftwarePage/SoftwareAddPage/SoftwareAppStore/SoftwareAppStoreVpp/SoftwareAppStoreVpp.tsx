@@ -25,7 +25,13 @@ import PremiumFeatureMessage from "components/PremiumFeatureMessage";
 import Button from "components/buttons/Button";
 import CategoriesEndUserExperienceModal from "pages/SoftwarePage/components/modals/CategoriesEndUserExperienceModal";
 
+import { APP_CONTEXT_ALL_TEAMS_ID } from "interfaces/team";
 import { getPathWithQueryParams } from "utilities/url";
+import MultiTeamDeployProgressModal from "pages/SoftwarePage/components/modals/MultiTeamDeployProgressModal";
+import {
+  deployToMultipleTeams,
+  IMultiTeamDeployResult,
+} from "../../multiTeamDeploy";
 import SoftwareVppForm from "../../../components/forms/SoftwareVppForm";
 import { getErrorMessage, teamHasVPPToken } from "./helpers";
 import { ISoftwareVppFormData } from "../../../components/forms/SoftwareVppForm/SoftwareVppForm";
@@ -81,20 +87,29 @@ const NoVppAppsMessage = () => (
 
 interface ISoftwareAppStoreProps {
   currentTeamId: number;
+  teamIds?: number[];
+  isMultiTeam?: boolean;
   router: InjectedRouter;
 }
 
 const SoftwareAppStoreVpp = ({
   currentTeamId,
+  teamIds = [],
+  isMultiTeam = false,
   router,
 }: ISoftwareAppStoreProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const { isPremiumTier } = useContext(AppContext);
+  const { isPremiumTier, availableTeams } = useContext(AppContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [showPreviewEndUserExperience, setShowPreviewEndUserExperience] =
     useState(false);
   const [isIosOrIpadosApp, setIsIosOrIpadosApp] = useState(false);
+  const [deployResults, setDeployResults] = useState<IMultiTeamDeployResult[]>(
+    []
+  );
+  const [isDeployComplete, setIsDeployComplete] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
 
   const {
     data: vppInfo,
@@ -160,11 +175,55 @@ const SoftwareAppStoreVpp = ({
     setIsIosOrIpadosApp(iosOrIpadosApp || false);
   };
 
+  const onMultiTeamDone = () => {
+    setShowProgressModal(false);
+    router.push(
+      getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
+        team_id: APP_CONTEXT_ALL_TEAMS_ID,
+      })
+    );
+    const successCount = deployResults.filter((r) => r.status === "success")
+      .length;
+    const errorCount = deployResults.filter((r) => r.status === "error").length;
+    if (errorCount > 0) {
+      renderFlash(
+        "error",
+        `Software added to ${successCount} of ${deployResults.length} teams. ${errorCount} failed.`
+      );
+    } else {
+      renderFlash("success", `Software added to ${successCount} teams.`);
+    }
+  };
+
   const onAddSoftware = async (formData: ISoftwareVppFormData) => {
     if (!formData.selectedApp) {
       return;
     }
 
+    // Multi-team deploy
+    if (isMultiTeam && teamIds.length > 1) {
+      setShowProgressModal(true);
+      setIsDeployComplete(false);
+      const teamNameMap = teamIds.reduce<Record<number, string>>((acc, id) => {
+        const team = availableTeams?.find((t) => t.id === id);
+        acc[id] = team?.name || `Team ${id}`;
+        return acc;
+      }, {});
+
+      const results = await deployToMultipleTeams(
+        teamIds,
+        teamNameMap,
+        async (tid) => {
+          await softwareAPI.addAppStoreApp(tid, formData);
+        },
+        setDeployResults
+      );
+      setDeployResults(results);
+      setIsDeployComplete(true);
+      return;
+    }
+
+    // Single-team deploy (existing logic)
     setIsLoading(true);
 
     try {
@@ -246,7 +305,18 @@ const SoftwareAppStoreVpp = ({
     );
   };
 
-  return <div className={baseClass}>{renderContent()}</div>;
+  return (
+    <div className={baseClass}>
+      {renderContent()}
+      {showProgressModal && (
+        <MultiTeamDeployProgressModal
+          results={deployResults}
+          onDone={onMultiTeamDone}
+          isComplete={isDeployComplete}
+        />
+      )}
+    </div>
+  );
 };
 
 export default SoftwareAppStoreVpp;

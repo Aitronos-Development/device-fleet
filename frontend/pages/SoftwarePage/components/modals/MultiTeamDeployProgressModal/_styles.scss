@@ -1,0 +1,40 @@
+.multi-team-deploy-progress-modal {
+  &__progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  &__team-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__status-icon {
+    flex-shrink: 0;
+  }
+
+  &__status-spinner {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__team-name {
+    font-weight: 600;
+  }
+
+  &__team-error {
+    color: $ui-error;
+    font-size: $x-small;
+    margin-left: auto;
+  }
+
+  &__summary {
+    margin-bottom: 16px;
+  }
+}

@@ -19,6 +19,7 @@ interface IInstallerActionCellProps {
   router?: InjectedRouter;
   className?: string;
   teamId?: number;
+  teamIds?: number[];
 }
 
 const InstallerActionCell = ({
@@ -26,6 +27,7 @@ const InstallerActionCell = ({
   router,
   className = "w250",
   teamId,
+  teamIds,
 }: IInstallerActionCellProps) => {
   const cellClasses = classnames(baseClass, className);
 
@@ -42,9 +44,13 @@ const InstallerActionCell = ({
   const { id, software_title_id: softwareTitleId } = value;
 
   const onClick = () => {
+    const queryParams =
+      teamIds && teamIds.length > 1
+        ? { team_id: teamId, team_ids: teamIds.join(",") }
+        : { team_id: teamId };
     const path = getPathWithQueryParams(
       PATHS.SOFTWARE_FLEET_MAINTAINED_DETAILS(id),
-      { team_id: teamId },
+      queryParams
     );
     if (router && path) {
       router?.push(path);

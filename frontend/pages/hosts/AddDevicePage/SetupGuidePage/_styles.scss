@@ -1,0 +1,129 @@
+.setup-guide-page {
+  .back-button {
+    margin-bottom: $pad-large;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $pad-smedium;
+    margin-bottom: $pad-xlarge;
+
+    h1 {
+      font-size: $large;
+      font-weight: $bold;
+      color: $core-fleet-black;
+      margin: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: $x-small;
+    color: $ui-fleet-black-75;
+    margin: 0;
+  }
+
+  &__host-type {
+    display: flex;
+    align-items: center;
+    gap: $pad-medium;
+    margin-bottom: $pad-xlarge;
+
+    &-label {
+      font-size: $x-small;
+      font-weight: $bold;
+      color: $core-fleet-black;
+    }
+  }
+
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: $pad-xlarge;
+  }
+
+  &__step {
+    display: flex;
+    gap: $pad-medium;
+  }
+
+  &__step-number {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $core-fleet-blue;
+    color: $core-fleet-white;
+    font-size: $x-small;
+    font-weight: $bold;
+  }
+
+  &__step-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__step-title {
+    font-size: $small;
+    font-weight: $bold;
+    color: $core-fleet-black;
+    margin: 0 0 $pad-small;
+    line-height: 32px; // Align with step number
+  }
+
+  &__step-text {
+    font-size: $x-small;
+    color: $ui-fleet-black-75;
+    margin: 0 0 $pad-small;
+    line-height: 1.5;
+
+    code {
+      background-color: $ui-fleet-black-5;
+      padding: 2px $pad-xsmall;
+      border-radius: $border-radius;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+        monospace;
+      font-size: $xxx-small;
+    }
+  }
+
+  &__command-block {
+    background-color: $ui-fleet-black-5;
+    border: 1px solid $ui-fleet-black-10;
+    border-radius: $border-radius-large;
+    padding: $pad-medium;
+    margin-top: $pad-small;
+  }
+
+  &__command-pre {
+    // Override global pre styles (dark background for syntax highlighting)
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+      monospace;
+    font-size: $xxx-small;
+    color: $core-fleet-black;
+    margin: 0 0 $pad-medium;
+    line-height: 1.6;
+  }
+
+  &__copy-btn {
+    display: flex;
+    align-items: center;
+    gap: $pad-xsmall;
+  }
+
+  &__footer {
+    display: flex;
+    gap: $pad-medium;
+    margin-top: $pad-xxlarge;
+    padding-top: $pad-xlarge;
+    border-top: 1px solid $ui-fleet-black-10;
+  }
+}

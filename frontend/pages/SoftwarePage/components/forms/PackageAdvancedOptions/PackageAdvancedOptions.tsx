@@ -18,9 +18,9 @@ import { IPackageFormData } from "../PackageForm/PackageForm";
 import AdvancedOptionsFields from "../AdvancedOptionsFields";
 
 const getSupportedScriptTypeText = (pkgType: PackageType) => {
-  return `Currently, ${
-    isWindowsPackageType(pkgType) ? "PowerS" : "s"
-  }hell scripts are supported.`;
+  return isWindowsPackageType(pkgType)
+    ? "Supports PowerShell scripts."
+    : "Supports shell scripts.";
 };
 
 const PKG_TYPE_TO_ID_TEXT = {
@@ -37,39 +37,21 @@ const PKG_TYPE_TO_ID_TEXT = {
 
 const getInstallScriptTooltip = (pkgType: PackageType) => {
   if (pkgType === "exe" || pkgType === "tar.gz") {
-    if (pkgType === "exe") {
-      return "Required for .exe packages.";
-    }
-    return "Required for .tar.gz archives.";
+    return `You need to provide an install script for .${pkgType} files.`;
   }
   if (pkgType === "zip" && isWindowsPackageType(pkgType)) {
-    return "Required for .zip packages.";
+    return "You need to provide an install script for .zip files.";
   }
   return undefined;
 };
 
 const getInstallHelpText = (pkgType: PackageType) => {
-  if (pkgType === "exe") {
+  if (pkgType === "exe" || pkgType === "zip") {
     return (
       <>
-        For Windows, Fleet only creates install scripts for .msi packages. Use
-        the $INSTALLER_PATH variable to point to the installer.{" "}
-        {getSupportedScriptTypeText(pkgType)}{" "}
-        <CustomLink
-          url={`${LEARN_MORE_ABOUT_BASE_LINK}/exe-install-scripts`}
-          text="Learn more"
-          newTab
-        />
-      </>
-    );
-  }
-
-  if (pkgType === "zip") {
-    return (
-      <>
-        For Windows, Fleet only creates install scripts for .msi packages. Use
-        the $INSTALLER_PATH variable to point to the installer.{" "}
-        {getSupportedScriptTypeText(pkgType)}{" "}
+        Fleet auto-generates install scripts for .msi files only. For .
+        {pkgType} files, write your own script. Use $INSTALLER_PATH to
+        reference the downloaded file. {getSupportedScriptTypeText(pkgType)}{" "}
         <CustomLink
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/exe-install-scripts`}
           text="Learn more"
@@ -81,11 +63,12 @@ const getInstallHelpText = (pkgType: PackageType) => {
 
   return (
     <>
-      Use the $INSTALLER_PATH variable to point to the installer.{" "}
+      Fleet fills this in automatically. Edit if you need a custom install
+      process. Use $INSTALLER_PATH to reference the downloaded file.{" "}
       {getSupportedScriptTypeText(pkgType)}{" "}
       <CustomLink
         url={`${LEARN_MORE_ABOUT_BASE_LINK}/install-scripts`}
-        text="Learn more about install scripts"
+        text="Learn more"
         newTab
       />
     </>
@@ -98,13 +81,10 @@ const getPostInstallHelpText = (pkgType: PackageType) => {
 
 const getUninstallScriptTooltip = (pkgType: PackageType) => {
   if (pkgType === "exe" || pkgType === "tar.gz") {
-    if (pkgType === "exe") {
-      return "Required for .exe packages.";
-    }
-    return "Required for .tar.gz archives.";
+    return `You need to provide an uninstall script for .${pkgType} files.`;
   }
   if (pkgType === "zip" && isWindowsPackageType(pkgType)) {
-    return "Required for .zip packages.";
+    return "You need to provide an uninstall script for .zip files.";
   }
   return undefined;
 };
@@ -114,9 +94,9 @@ const getUninstallHelpText = (pkgType: PackageType) => {
   if (pkgType === "zip" && isWindowsPackageType(pkgType)) {
     return (
       <>
-        For Windows, Fleet only creates uninstall scripts for .msi packages.
-        $PACKAGE_ID will be populated with the software name from the .zip file
-        after it&apos;s added. {getSupportedScriptTypeText(pkgType)}{" "}
+        Fleet auto-generates uninstall scripts for .msi files only. For .zip
+        files, write your own script. $PACKAGE_ID will be filled in with the
+        software name automatically. {getSupportedScriptTypeText(pkgType)}{" "}
         <CustomLink
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/exe-install-scripts`}
           text="Learn more"
@@ -127,15 +107,15 @@ const getUninstallHelpText = (pkgType: PackageType) => {
   }
 
   if (isFleetMaintainedPackageType(pkgType)) {
-    return "Currently, only shell scripts are supported.";
+    return getSupportedScriptTypeText(pkgType);
   }
 
   if (pkgType === "exe") {
     return (
       <>
-        For Windows, Fleet only creates uninstall scripts for .msi packages.
-        $PACKAGE_ID will be populated with the software name from the .exe file
-        after it&apos;s added. {getSupportedScriptTypeText(pkgType)}{" "}
+        Fleet auto-generates uninstall scripts for .msi files only. For .exe
+        files, write your own script. $PACKAGE_ID will be filled in with the
+        software name automatically. {getSupportedScriptTypeText(pkgType)}{" "}
         <CustomLink
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/exe-install-scripts`}
           text="Learn more"
@@ -148,10 +128,10 @@ const getUninstallHelpText = (pkgType: PackageType) => {
   if (pkgType === "tar.gz") {
     return (
       <>
-        Currently, only shell scripts are supported.{" "}
+        {getSupportedScriptTypeText(pkgType)}{" "}
         <CustomLink
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/uninstall-scripts`}
-          text="Learn more about uninstall scripts"
+          text="Learn more"
           newTab
         />
       </>
@@ -161,12 +141,12 @@ const getUninstallHelpText = (pkgType: PackageType) => {
   if (pkgType === "msi") {
     return (
       <>
-        $UPGRADE_CODE will be populated with the .msi&apos;s upgrade code if
-        available, and $PACKAGE_ID will be populated with its product code,
-        after the software is added. {getSupportedScriptTypeText(pkgType)}{" "}
+        Fleet fills this in automatically using the installer&apos;s product
+        code. Edit if you need a custom uninstall process.{" "}
+        {getSupportedScriptTypeText(pkgType)}{" "}
         <CustomLink
           url={`${LEARN_MORE_ABOUT_BASE_LINK}/uninstall-scripts`}
-          text="Learn more about uninstall scripts"
+          text="Learn more"
           newTab
         />
       </>
@@ -175,12 +155,12 @@ const getUninstallHelpText = (pkgType: PackageType) => {
 
   return (
     <>
-      $PACKAGE_ID will be populated with the {PKG_TYPE_TO_ID_TEXT[pkgType]} from
-      the .{pkgType} file after the software is added.{" "}
+      Fleet fills this in automatically. $PACKAGE_ID will be set to the{" "}
+      {PKG_TYPE_TO_ID_TEXT[pkgType]} from the .{pkgType} file.{" "}
       {getSupportedScriptTypeText(pkgType)}{" "}
       <CustomLink
         url={`${LEARN_MORE_ABOUT_BASE_LINK}/uninstall-scripts`}
-        text="Learn more about uninstall scripts"
+        text="Learn more"
         newTab
       />
     </>
@@ -273,11 +253,14 @@ const PackageAdvancedOptions = ({
         disabled={!selectedPackage || requiresAdvancedOptions}
         disabledTooltipContent={
           requiresAdvancedOptions ? (
-            <>Install and uninstall scripts are required for .{ext} packages.</>
+            <>
+              .{ext} files need install and uninstall scripts. These are shown
+              below.
+            </>
           ) : (
             <>
-              Choose a file to modify <br />
-              advanced options.
+              Upload a file first to see <br />
+              these options.
             </>
           )
         }

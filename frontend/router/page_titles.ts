@@ -6,6 +6,10 @@ import PATHS from "router/paths";
 // Note: Order matters for use of array.find() (specific subpaths must be listed before their parent path)
 export default [
   { path: PATHS.DASHBOARD, title: `Dashboard | ${DOCUMENT_TITLE_SUFFIX}` },
+  {
+    path: PATHS.ADD_DEVICE,
+    title: `Add device | ${DOCUMENT_TITLE_SUFFIX}`,
+  },
   { path: PATHS.MANAGE_HOSTS, title: `Devices | ${DOCUMENT_TITLE_SUFFIX}` },
   {
     path: PATHS.CONTROLS,

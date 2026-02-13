@@ -1,0 +1,33 @@
+.host-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: $pad-small;
+  text-decoration: none;
+  color: $ui-fleet-black-75;
+  font-size: $xxx-small;
+  font-weight: $regular;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: $core-fleet-black;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $ui-fleet-black-25;
+    flex-shrink: 0;
+
+    &--online {
+      background-color: $ui-success;
+    }
+  }
+
+  &__text {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

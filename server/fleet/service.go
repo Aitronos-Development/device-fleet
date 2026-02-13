@@ -713,6 +713,12 @@ type Service interface {
 	SaveHostSoftwareInstallResult(ctx context.Context, result *HostSoftwareInstallResultPayload) error
 
 	// /////////////////////////////////////////////////////////////////////////////
+	// App Usage
+
+	GetHostAppUsage(ctx context.Context, hostID uint, opts AppUsageListOptions) ([]AppUsageEntry, *PaginationMetadata, error)
+	GetAppUsage(ctx context.Context, opts AppUsageAggregateOptions) ([]AppUsageAggregate, *PaginationMetadata, error)
+
+	// /////////////////////////////////////////////////////////////////////////////
 	// Software Titles
 
 	ListSoftwareTitles(ctx context.Context, opt SoftwareTitleListOptions) ([]SoftwareTitleListResult, int, *PaginationMetadata, error)

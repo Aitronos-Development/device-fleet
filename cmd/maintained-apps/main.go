@@ -23,6 +23,12 @@ import (
 func main() {
 	slugPtr := flag.String("slug", "", "app slug")
 	debugPtr := flag.Bool("debug", false, "enable debug logging")
+	createPtr := flag.String("create", "", "homebrew cask token to create a new maintained app")
+	categoryPtr := flag.String("category", "", "default category (Browsers, Communication, Developer tools, Productivity, Security, Utilities)")
+	bundleIDPtr := flag.String("bundle-id", "", "bundle identifier (auto-detected from /Applications if omitted)")
+	formatPtr := flag.String("format", "", "installer format override (dmg, zip, pkg)")
+	namePtr := flag.String("name", "", "app name override (auto-detected from Homebrew)")
+	descriptionPtr := flag.String("description", "", "app description override (auto-detected from Homebrew)")
 	flag.Parse()
 	ctx := context.Background()
 	logger := kitlog.NewJSONLogger(os.Stderr)
@@ -32,6 +38,22 @@ func main() {
 	}
 	logger = level.NewFilter(logger, lvl)
 	logger = kitlog.With(logger, "ts", kitlog.DefaultTimestampUTC)
+
+	// --create mode: create a new maintained app from a Homebrew cask token
+	if *createPtr != "" {
+		if err := createApp(ctx, logger, createOptions{
+			token:       *createPtr,
+			category:    *categoryPtr,
+			bundleID:    *bundleIDPtr,
+			format:      *formatPtr,
+			name:        *namePtr,
+			description: *descriptionPtr,
+		}); err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+			os.Exit(1)
+		}
+		return
+	}
 
 	level.Info(logger).Log("msg", "starting maintained app ingestion")
 
@@ -178,6 +200,7 @@ func updateAppsListFile(ctx context.Context, outApp *maintained_apps.FMAManifest
 			Slug:             outApp.Slug,
 			Platform:         platform,
 			UniqueIdentifier: outApp.UniqueIdentifier,
+			Description:      outApp.Description,
 		})
 
 		// Keep existing order

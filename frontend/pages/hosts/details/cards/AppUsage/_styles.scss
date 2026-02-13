@@ -1,0 +1,17 @@
+.app-usage-card {
+  .app-usage-table {
+    &__app-name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__name {
+      font-weight: $bold;
+    }
+
+    &__bundle-id {
+      font-size: $xx-small;
+      color: $ui-fleet-black-50;
+    }
+  }
+}

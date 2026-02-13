@@ -65,16 +65,20 @@ const CoreLayout = ({ children, router, location }: ICoreLayoutProps) => {
     return null;
   }
 
+  const isLowWidthSupported = !shouldShowUnsupportedScreen(location.pathname);
+
   const coreWrapperClassnames = classNames("core-wrapper", {
-    "low-width-supported": !shouldShowUnsupportedScreen(location.pathname),
+    "low-width-supported": isLowWidthSupported,
+  });
+
+  const navClassnames = classNames("site-nav-container", {
+    "low-width-supported": isLowWidthSupported,
   });
 
   return (
     <div className="app-wrap">
-      {shouldShowUnsupportedScreen(location.pathname) && (
-        <UnsupportedScreenSize />
-      )}
-      <nav className="site-nav-container">
+      {!isLowWidthSupported && <UnsupportedScreenSize />}
+      <nav className={navClassnames}>
         <SiteTopNav
           config={config}
           currentUser={currentUser}

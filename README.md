@@ -56,6 +56,90 @@ In keeping with Fleet's value of openness, [Fleet Device Management's company ha
 <!-- > To upgrade from Fleet ≤3.2.0, just follow the upgrading steps for the earliest subsequent major release from this repository (it'll work out of the box until the release of Fleet 5.0). -->
 
 
+## Development Setup
+
+### Prerequisites
+- [Go](https://go.dev/dl/) (latest stable)
+- [Node.js](https://nodejs.org/) 24+
+- [Yarn](https://yarnpkg.com/) 1.22+
+- [Docker](https://www.docker.com/) with Docker Compose
+
+### Quick Start
+
+```bash
+# One command to start everything (Docker services, build, DB migration, server + frontend watcher)
+./start-dev.sh
+```
+
+This will:
+1. Check all prerequisites are installed
+2. Start MySQL and Redis via Docker Compose
+3. Install JavaScript dependencies
+4. Generate frontend assets (webpack + go-bindata)
+5. Build the Fleet binary
+6. Run database migrations
+7. Start the backend server on https://localhost:8080
+8. Start the frontend webpack watcher for hot reload
+
+### Other Dev Commands
+
+```bash
+./start-dev.sh backend      # Start backend only (Docker + Go server)
+./start-dev.sh frontend     # Start frontend watcher only
+./start-dev.sh status       # Show service status
+./start-dev.sh stop         # Stop all services
+./start-dev.sh db-reset     # Reset the database
+./start-dev.sh logs         # Tail backend logs
+```
+
+### Interactive Mode
+
+While the dev server is running, press:
+- `s` - Show status and connection info
+- `r` - Restart backend
+- `b` - Full rebuild (binary + assets)
+- `l` - Tail logs
+- `d` - Reset database
+- `q` - Quit
+
+### Manual Setup (Alternative)
+
+```bash
+# Install JS dependencies
+yarn
+
+# Start Docker services
+docker compose up -d mysql redis
+
+# Build Fleet
+make fleet
+
+# Prepare database
+./build/fleet prepare db --dev
+
+# Generate assets + start watching
+make generate-dev
+
+# In another terminal, start the server
+./build/fleet serve --dev --dev_license --server_address=localhost:8080
+```
+
+### AI-Assisted Development
+
+This project is configured for AI-assisted development with Claude Code, Cursor, and other AI tools:
+- `CLAUDE.md` - Essential commands and project overview for AI agents
+- `.claude/rules/` - Detailed development rules and patterns
+
+### Testing
+
+```bash
+make test           # Full test suite (lint + Go + JS)
+yarn test           # JavaScript tests only
+make lint           # All linters (Go + JS)
+make run-go-tests PKG_TO_TEST="server/service"  # Specific Go package
+yarn storybook      # Component development & docs on port 6006
+```
+
 ## Is it any good?
 Fleet is used in production by IT and security teams with thousands of laptops and servers.  Many deployments support tens of thousands of hosts, and a few large organizations manage deployments as large as 400,000+ hosts.
 

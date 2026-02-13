@@ -3,6 +3,7 @@ import { InjectedRouter } from "react-router";
 import { useQuery } from "react-query";
 
 import PATHS from "router/paths";
+import { APP_CONTEXT_ALL_TEAMS_ID } from "interfaces/team";
 import { DEFAULT_USE_QUERY_OPTIONS } from "utilities/constants";
 import { getFileDetails, IFileDetails } from "utilities/file/fileUtils";
 import { getPathWithQueryParams, QueryParams } from "utilities/url";
@@ -22,12 +23,19 @@ import CategoriesEndUserExperienceModal from "pages/SoftwarePage/components/moda
 import PackageForm from "pages/SoftwarePage/components/forms/PackageForm";
 import { IPackageFormData } from "pages/SoftwarePage/components/forms/PackageForm/PackageForm";
 
+import MultiTeamDeployProgressModal from "pages/SoftwarePage/components/modals/MultiTeamDeployProgressModal";
+import {
+  deployToMultipleTeams,
+  IMultiTeamDeployResult,
+} from "../multiTeamDeploy";
 import { getErrorMessage } from "./helpers";
 
 const baseClass = "software-custom-package";
 
 interface ISoftwarePackageProps {
   currentTeamId: number;
+  teamIds?: number[];
+  isMultiTeam?: boolean;
   router: InjectedRouter;
   isSidePanelOpen: boolean;
   setSidePanelOpen: (isOpen: boolean) => void;
@@ -35,20 +43,31 @@ interface ISoftwarePackageProps {
 
 const SoftwareCustomPackage = ({
   currentTeamId,
+  teamIds = [],
+  isMultiTeam = false,
   router,
   isSidePanelOpen,
   setSidePanelOpen,
 }: ISoftwarePackageProps) => {
   const { renderFlash } = useContext(NotificationContext);
-  const { isPremiumTier, config } = useContext(AppContext);
+  const { isPremiumTier, config, availableTeams } = useContext(AppContext);
   const gitOpsModeEnabled = config?.gitops.gitops_mode_enabled;
 
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadDetails, setUploadDetails] = useState<IFileDetails | null>(null);
-  const [showPreviewEndUserExperience, setShowPreviewEndUserExperience] =
-    useState(false);
-  const [isIpadOrIphoneSoftwareSource, setIsIpadOrIphoneSoftwareSource] =
-    useState(false);
+  const [
+    showPreviewEndUserExperience,
+    setShowPreviewEndUserExperience,
+  ] = useState(false);
+  const [
+    isIpadOrIphoneSoftwareSource,
+    setIsIpadOrIphoneSoftwareSource,
+  ] = useState(false);
+  const [deployResults, setDeployResults] = useState<IMultiTeamDeployResult[]>(
+    []
+  );
+  const [isDeployComplete, setIsDeployComplete] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
 
   const {
     data: labels,
@@ -100,6 +119,26 @@ const SoftwareCustomPackage = ({
     );
   };
 
+  const onMultiTeamDone = () => {
+    setShowProgressModal(false);
+    router.push(
+      getPathWithQueryParams(PATHS.SOFTWARE_TITLES, {
+        team_id: APP_CONTEXT_ALL_TEAMS_ID,
+      })
+    );
+    const successCount = deployResults.filter((r) => r.status === "success")
+      .length;
+    const errorCount = deployResults.filter((r) => r.status === "error").length;
+    if (errorCount > 0) {
+      renderFlash(
+        "error",
+        `Software added to ${successCount} of ${deployResults.length} teams. ${errorCount} failed.`
+      );
+    } else {
+      renderFlash("success", `Software added to ${successCount} teams.`);
+    }
+  };
+
   const onSubmit = async (formData: IPackageFormData) => {
     if (!formData.software) {
       renderFlash(
@@ -109,6 +148,33 @@ const SoftwareCustomPackage = ({
       return;
     }
 
+    // Multi-team deploy
+    if (isMultiTeam && teamIds.length > 1) {
+      setShowProgressModal(true);
+      setIsDeployComplete(false);
+      const teamNameMap = teamIds.reduce<Record<number, string>>((acc, id) => {
+        const team = availableTeams?.find((t) => t.id === id);
+        acc[id] = team?.name || `Team ${id}`;
+        return acc;
+      }, {});
+
+      const results = await deployToMultipleTeams(
+        teamIds,
+        teamNameMap,
+        async (tid) => {
+          await softwareAPI.addSoftwarePackage({
+            data: formData,
+            teamId: tid,
+          });
+        },
+        setDeployResults
+      );
+      setDeployResults(results);
+      setIsDeployComplete(true);
+      return;
+    }
+
+    // Single-team deploy (existing logic)
     setUploadDetails(getFileDetails(formData.software, true));
 
     // Note: This TODO is copied to onSaveSoftwareChanges in EditSoftwareModal
@@ -185,6 +251,13 @@ const SoftwareCustomPackage = ({
           <CategoriesEndUserExperienceModal
             onCancel={onClickPreviewEndUserExperience}
             isIosOrIpadosApp={isIpadOrIphoneSoftwareSource}
+          />
+        )}
+        {showProgressModal && (
+          <MultiTeamDeployProgressModal
+            results={deployResults}
+            onDone={onMultiTeamDone}
+            isComplete={isDeployComplete}
           />
         )}
       </>
